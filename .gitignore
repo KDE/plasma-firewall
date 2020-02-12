@@ -40,3 +40,9 @@ CMakeLists.txt.user*
 # VSCODE
 .vscode
 build
+
+#nvim
+.nvimrc
+
+#Kdevelop
+*.kdev4
