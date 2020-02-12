@@ -1,0 +1,5 @@
+polkit.addRule(function(action, subject) {
+    if (action.id == "org.fedoraproject.FirewallD1.all"){
+        return polkit.Result.YES;
+    }
+});
