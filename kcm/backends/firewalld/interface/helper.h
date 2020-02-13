@@ -25,11 +25,30 @@
  */
 
 #include <QtCore/QObject>
-#include <QtCore/QVariantMap>
+#include <QDBusArgument>
 #include <kauth.h>
 
 class QStringList;
 class QByteArray;
+
+/* custom struct to receive reply from firewalld dbus interface */
+struct firewalld_reply {
+    QString ipv;
+    QString table;
+    QString chain;
+    int priority = 0;
+    QStringList rules = {};
+};
+
+Q_DECLARE_METATYPE(firewalld_reply)
+
+const QDBusArgument &operator>>(const QDBusArgument &argument, firewalld_reply &mystruct)
+{
+    argument.beginStructure();
+    argument >> mystruct.ipv >> mystruct.table >> mystruct.chain >> mystruct.priority >> mystruct.rules;
+    argument.endStructure();
+    return argument;
+}
 
 using namespace KAuth;
 
