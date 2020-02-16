@@ -32,6 +32,7 @@
 #include <QtDBus/QDBusArgument>
 #include <QtDBus/QDBusConnection>
 #include <QtDBus/QDBusInterface>
+#include <QVariantList>
 
 const QDBusArgument &operator>>(const QDBusArgument &argument, firewalld_reply &mystruct)
 {
@@ -49,7 +50,6 @@ FirewalldClient::FirewalldClient(FirewallClient *parent) :
     m_rulesModel(new RuleListModel(this)),
     m_logs(new LogListModel(this))
 {
-   
     QTimer::singleShot(100, this, &FirewalldClient::refresh);
     QTimer::singleShot(2000, this, &FirewalldClient::refreshLogs);
 }
@@ -68,7 +68,7 @@ bool FirewalldClient::enabled() const
 {
     return m_currentProfile.getEnabled();
 }
-
+/* TODO create a call to systemd/openrc/sysvinit? */
 void FirewalldClient::setEnabled(bool enabled)
 {
     QVariantMap args {
@@ -83,8 +83,7 @@ void FirewalldClient::setEnabled(bool enabled)
 
 
     KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this] (KJob *kjob)
-    {
+    connect(job, &KAuth::ExecuteJob::result, [this](KJob * kjob) {
         auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
         setBusy(false);
 
@@ -105,8 +104,7 @@ bool FirewalldClient::isBusy() const
 
 void FirewalldClient::queryStatus(bool readDefaults, bool listProfiles)
 {
-    if (isBusy())
-    {
+    if (isBusy()) {
         qWarning() << "Ufw client is busy";
         return;
     }
@@ -121,12 +119,10 @@ void FirewalldClient::queryStatus(bool readDefaults, bool listProfiles)
     }
 
     KAuth::ExecuteJob *job = m_queryAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this] (KJob *kjob)
-    {
+    connect(job, &KAuth::ExecuteJob::result, [this](KJob * kjob) {
         auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
 
-        if (!job->error())
-        {
+        if (!job->error()) {
             QByteArray response = job->data().value("response", "").toByteArray();
             setProfile(Profile(response));
         } else {
@@ -174,12 +170,10 @@ void FirewalldClient::refreshLogs()
     action.setArguments(args);
 
     KAuth::ExecuteJob *job = action.execute();
-    connect(job, &KAuth::ExecuteJob::finished, [this] (KJob *kjob)
-    {
+    connect(job, &KAuth::ExecuteJob::finished, [this](KJob * kjob) {
         auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
 
-        if (!job->error())
-        {
+        if (!job->error()) {
             QStringList newLogs = job->data().value("lines", "").toStringList();
             m_rawLogs.append(newLogs);
             m_logs->addRawLogs(newLogs);
@@ -200,8 +194,7 @@ void FirewalldClient::setStatus(const QString &status)
 
 void FirewalldClient::setBusy(const bool &isBusy)
 {
-    if (m_isBusy != isBusy)
-    {
+    if (m_isBusy != isBusy) {
         m_isBusy = isBusy;
         emit parentClient()->isBusyChanged(isBusy);
     }
@@ -246,7 +239,7 @@ RuleWrapper *FirewalldClient::getRule(int index)
 
     auto rule = rules.at(index);
     rule.setPosition(index);
-    RuleWrapper * wrapper = new RuleWrapper(rule, this);
+    RuleWrapper *wrapper = new RuleWrapper(rule, this);
 
     return wrapper;
 }
@@ -257,33 +250,39 @@ void FirewalldClient::addRule(RuleWrapper *ruleWrapper)
         qWarning() << __FUNCTION__ << "NULL rule";
         return;
     }
-
     Rule rule = ruleWrapper->getRule();
 
     QVariantMap args {
-        {"cmd", "addRules"},
-        {"count",1},
-        {"xml0", rule.toXml()},
+        {"priority", rule.getPosition()},
+        {"destinationPort", rule.getDestPort()},
+        {"sourcePort", rule.getSourcePort()},
+        {"type", rule.getProtocol()},
+        {"table", "filter"} // default iptables / nftables table showed in iptables - L.
     };
 
-    KAuth::Action modifyAction = buildModifyAction(args);
+    rule.getIncoming() ? args.insert("chain", "INPUT") : args.insert("chain", "OUTPUT");
 
-    KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this] (KJob *kjob)
-    {
-        auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
+    if(rule.getAction() == Types::POLICY_ALLOW)
+        args.insert("action", "ACCEPT");
+    else if(rule.getAction() == Types::POLICY_REJECT)
+        args.insert("action", "REJECT");
+    else
+        args.insert("action", "DROP");
+    ;
+    QStringList firewalld_direct_rule = {"-p", args.value("type").toString(), "-j",
+                                         args.value("action").toString()
+                                        };
+    //     "--dport",
+    //         args.value("destinationPort").toString(), };
 
-        if (!job->error())
-        {
-            QByteArray response = job->data().value("response", "").toByteArray();
-            setProfile(Profile(response));
-        } else {
-            qWarning() << job->action().name() << job->errorString();
-        }
-        setBusy(false);
-    });
-
-    job->start();
+    /* TODO create calls functions to ipv4 and ipv6 familty*/
+    /*  {"destinationAddress", rule.getDestAddress()},
+     *  {"sourceAddress", rule.getSourceAddress()},
+     */
+    QVariantList dbusArgs = { "ipv4", args.value("table").toString(),
+                              args.value("chain").toString(), args.value("priority").toInt(), firewalld_direct_rule
+                            };
+    dbusCall("addRule",  dbusArgs);
 }
 
 void FirewalldClient::removeRule(int index)
@@ -303,12 +302,10 @@ void FirewalldClient::removeRule(int index)
 
     KAuth::Action modifyAction = buildModifyAction(args);
     KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this] (KJob *kjob)
-    {
+    connect(job, &KAuth::ExecuteJob::result, [this](KJob * kjob) {
         auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
 
-        if (!job->error())
-        {
+        if (!job->error()) {
             QByteArray response = job->data().value("response", "").toByteArray();
             setProfile(Profile(response));
         } else {
@@ -337,12 +334,10 @@ void FirewalldClient::updateRule(RuleWrapper *ruleWrapper)
 
     KAuth::Action modifyAction = buildModifyAction(args);
     KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this] (KJob *kjob)
-    {
+    connect(job, &KAuth::ExecuteJob::result, [this](KJob * kjob) {
         auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
 
-        if (!job->error())
-        {
+        if (!job->error()) {
             QByteArray response = job->data().value("response", "").toByteArray();
             setProfile(Profile(response));
         } else {
@@ -378,12 +373,10 @@ void FirewalldClient::moveRule(int from, int to)
 
     KAuth::Action modifyAction = buildModifyAction(args);
     KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::finished, [this] (KJob *kjob)
-    {
+    connect(job, &KAuth::ExecuteJob::finished, [this](KJob * kjob) {
         auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
 
-        if (!job->error())
-        {
+        if (!job->error()) {
             QByteArray response = job->data().value("response", "").toByteArray();
             setProfile(Profile(response));
         } else {
@@ -400,13 +393,13 @@ void FirewalldClient::moveRule(int from, int to)
 //     auto policy_t = m_currentProfile.getDefaultIncomingPolicy();
 //     return Types::toString(policy_t);
 // }
-// 
+//
 // QString FirewalldClient::defaultOutgoingPolicy() const
 // {
 //     auto policy_t = m_currentProfile.getDefaultOutgoingPolicy();
 //     return Types::toString(policy_t);
 // }
-// 
+//
 // LogListModel *FirewalldClient::logs()
 // {
 //     return m_logs;
@@ -418,7 +411,7 @@ bool FirewalldClient::logsAutoRefresh() const
     return m_logsAutoRefresh;
 }
 
-RuleWrapper* FirewalldClient::createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status)
+RuleWrapper *FirewalldClient::createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status)
 {
     auto _localAddress = localAddress;
     _localAddress.replace("*", "");
@@ -461,41 +454,43 @@ RuleWrapper *FirewalldClient::createRuleFromLog(
     const QString &inn,
     const QString &out)
 {
-        // Transform to the ufw notation
-        auto rule = new RuleWrapper({});
+    // Transform to the ufw notation
+    auto rule = new RuleWrapper({});
 
-        auto _sourceAddress = sourceAddress;
-        _sourceAddress.replace("*", "");
-        _sourceAddress.replace("0.0.0.0", "");
+    auto _sourceAddress = sourceAddress;
+    _sourceAddress.replace("*", "");
+    _sourceAddress.replace("0.0.0.0", "");
 
-        auto _destinationAddress = destinationAddress;
-        _destinationAddress.replace("*", "");
-        _destinationAddress.replace("0.0.0.0", "");
+    auto _destinationAddress = destinationAddress;
+    _destinationAddress.replace("*", "");
+    _destinationAddress.replace("0.0.0.0", "");
 
-        // Prepare rule draft
-        rule->setIncoming(inn.size());
-        rule->setPolicy("allow");
-        rule->setSourceAddress(_sourceAddress);
-        rule->setSourcePort(sourcePort);
+    // Prepare rule draft
+    rule->setIncoming(inn.size());
+    rule->setPolicy("allow");
+    rule->setSourceAddress(_sourceAddress);
+    rule->setSourcePort(sourcePort);
 
-        rule->setDestinationAddress(_destinationAddress);
-        rule->setDestinationPort(destinationPort);
+    rule->setDestinationAddress(_destinationAddress);
+    rule->setDestinationPort(destinationPort);
 
-        rule->setProtocol(FirewallClient::getKnownProtocols().indexOf(protocol.toUpper()));
-        return rule;
+    rule->setProtocol(FirewallClient::getKnownProtocols().indexOf(protocol.toUpper()));
+    return rule;
 }
 
-IFirewallClientBackend* FirewalldClient::createMethod(FirewallClient* parent)
+IFirewallClientBackend *FirewalldClient::createMethod(FirewallClient *parent)
 {
     IFirewallClientBackend *instance = new FirewalldClient(parent);
     return instance;
 }
 
-bool FirewalldClient::hasExecutable() const {
-     return !QStandardPaths::findExecutable("ufw").isEmpty();
+bool FirewalldClient::hasExecutable() const
+{
+    return !QStandardPaths::findExecutable("ufw").isEmpty();
 }
- 
-void FirewalldClient::setExecutable(const bool &hasExecutable){
+
+void FirewalldClient::setExecutable(const bool &hasExecutable)
+{
     emit parentClient()->hasExecutableChanged(hasExecutable);
 }
 
@@ -503,27 +498,28 @@ void FirewalldClient::refreshProfiles()
 {
 
 }
-
-QDBusMessage FirewalldClient::dbusCall (QString method, QVariantList args) {
-        QDBusMessage msg;
-        // saving config call is in another interface which has the same name as SERVICE_NAME
-        if(method == "runtimeToPermanent") {
-            if(QDBusConnection::systemBus().isConnected()) {
+QDBusMessage FirewalldClient::dbusCall(QString method, QVariantList args)
+{
+    QDBusMessage msg;
+    // saving config call is in another interface which has the same name as SERVICE_NAME
+    if (method == "runtimeToPermanent") {
+        if (QDBusConnection::systemBus().isConnected()) {
             QDBusInterface iface(SERVICE_NAME, DBUS_PATH, SERVICE_NAME, QDBusConnection::systemBus());
-            if(iface.isValid())
-                msg= args.isEmpty() ? iface.call(QDBus::AutoDetect, method.toLatin1())
-                    : iface.callWithArgumentList(QDBus::AutoDetect, method.toLatin1(), args);
-            if(msg.type() == QDBusMessage::ErrorMessage)
-                qDebug() << msg.errorMessage(); }
-        } else {
-        if(QDBusConnection::systemBus().isConnected()) {
-            QDBusInterface iface(SERVICE_NAME, DBUS_PATH, INTERFACE_NAME, QDBusConnection::systemBus());
-            if(iface.isValid())
-                msg= args.isEmpty() ? iface.call(QDBus::AutoDetect, method.toLatin1())
-                    : iface.callWithArgumentList(QDBus::AutoDetect, method.toLatin1(), args);
-            if(msg.type() == QDBusMessage::ErrorMessage)
-                qDebug() << msg.errorMessage(); }
-     
+            if (iface.isValid())
+                msg = args.isEmpty() ? iface.call(QDBus::AutoDetect, method.toLatin1())
+                      : iface.callWithArgumentList(QDBus::AutoDetect, method.toLatin1(), args);
+            if (msg.type() == QDBusMessage::ErrorMessage)
+                qDebug() << msg.errorMessage();
         }
-        return msg;
- }
+    } else {
+        if (QDBusConnection::systemBus().isConnected()) {
+            QDBusInterface iface(SERVICE_NAME, DBUS_PATH, INTERFACE_NAME, QDBusConnection::systemBus());
+            if (iface.isValid())
+                msg = args.isEmpty() ? iface.call(QDBus::AutoDetect, method.toLatin1())
+                      : iface.callWithArgumentList(QDBus::AutoDetect, method.toLatin1(), args);
+            if (msg.type() == QDBusMessage::ErrorMessage)
+                qDebug() << msg.errorMessage();
+        }
+    }
+    return msg;
+}
