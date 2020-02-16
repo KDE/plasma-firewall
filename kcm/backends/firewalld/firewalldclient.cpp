@@ -26,17 +26,22 @@
 #include <QNetworkInterface>
 #include <QStandardPaths>
 #include <QDir>
-#include <QDBusInterface>
 #include <KConfig>
 #include <KLocalizedString>
 #include <KConfigGroup>
+#include <QtDBus/QDBusArgument>
+#include <QtDBus/QDBusConnection>
+#include <QtDBus/QDBusInterface>
 
-#define INTERFACE_NAME  "org.fedoraproject.FirewallD1"
-enum InterfacesEndpoints {STANDARD,  ZONE};
-const std::string endpoints[2] = {INTERFACE_NAME, "org.fedoraproject.FirewallD1.zone"};
+const QDBusArgument &operator>>(const QDBusArgument &argument, firewalld_reply &mystruct)
+{
+    argument.beginStructure();
+    argument >> mystruct.ipv >> mystruct.table >> mystruct.chain >> mystruct.priority >> mystruct.rules;
+    argument.endStructure();
+    return argument;
+}
 
-// TODO: Figure out what's wrong with the registering
-// REGISTER_BACKEND("ufw", UfwClient::createMethod);
+
 
 FirewalldClient::FirewalldClient(FirewallClient *parent) :
     IFirewallClientBackend(parent),
@@ -44,18 +49,14 @@ FirewalldClient::FirewalldClient(FirewallClient *parent) :
     m_rulesModel(new RuleListModel(this)),
     m_logs(new LogListModel(this))
 {
-    // HACK: Quering the firewall status in this context
-    // creates a segmentation fault error in some situations
-    // due to an usage of the rootObject before it's
-    // initialization. So, it's delayed a little.
-    //    refresh();
+   
     QTimer::singleShot(100, this, &FirewalldClient::refresh);
     QTimer::singleShot(2000, this, &FirewalldClient::refreshLogs);
 }
 
 QString FirewalldClient::name() const
 {
-    return QStringLiteral("ufw");
+    return QStringLiteral("firewalld");
 }
 
 void FirewalldClient::refresh()
@@ -142,71 +143,6 @@ void FirewalldClient::queryStatus(bool readDefaults, bool listProfiles)
     job->start();
 }
 
-void FirewalldClient::setDefaultIncomingPolicy(QString policy)
-{
-    if (policy == defaultIncomingPolicy()) {
-        return;
-    }
-
-    const QString xmlArg = QStringLiteral("<defaults incoming=\"%1\"/>").arg(policy);
-
-    QVariantMap args {
-        {"cmd","setDefaults"},
-        {"xml", xmlArg},
-    };
-
-    KAuth::Action modifyAction = buildModifyAction(args);
-    m_status = i18n("Setting firewall default incomming policy...");
-    m_isBusy = true;
-
-    KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this] (KJob *kjob)
-    {
-        auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
-
-        setBusy(false);
-
-        if (!job->error())
-            queryStatus(true, false);
-
-
-    });
-
-    job->start();
-}
-
-void FirewalldClient::setDefaultOutgoingPolicy(QString policy)
-{
-    if (policy == defaultOutgoingPolicy()) {
-        return;
-    }
-
-    const QString xmlArg = QStringLiteral("<defaults outgoing=\"%1\"/>").arg(policy);
-
-    QVariantMap args {
-        {"cmd", "setDefaults"},
-        {"xml", xmlArg},
-    };
-
-    KAuth::Action modifyAction = buildModifyAction(args);
-    m_status = i18n("Setting firewall default outgoing policy...");
-    m_isBusy = true;
-
-    KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this] (KJob *kjob)
-    {
-        auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
-
-        setBusy(false);
-
-        if (!job->error())
-            queryStatus(true, false);
-
-
-    });
-
-    job->start();
-}
 
 void FirewalldClient::setLogsAutoRefresh(bool logsAutoRefresh)
 {
@@ -271,25 +207,6 @@ void FirewalldClient::setBusy(const bool &isBusy)
     }
 }
 
-void FirewalldClient::setProfile(Profile profile)
-{
-    auto oldProfile = m_currentProfile;
-    m_currentProfile = profile;
-
-    m_rulesModel->setProfile(m_currentProfile);
-    if (m_currentProfile.getEnabled() != oldProfile.getEnabled())
-        emit parentClient()->enabledChanged(m_currentProfile.getEnabled());
-
-    if (m_currentProfile.getDefaultIncomingPolicy() != oldProfile.getDefaultIncomingPolicy()) {
-        QString policy = Types::toString(m_currentProfile.getDefaultIncomingPolicy());
-        emit parentClient()->defaultIncomingPolicyChanged(policy);
-    }
-
-    if (m_currentProfile.getDefaultOutgoingPolicy() != oldProfile.getDefaultOutgoingPolicy()) {
-        QString policy = Types::toString(m_currentProfile.getDefaultOutgoingPolicy());
-        emit parentClient()->defaultOutgoingPolicyChanged(policy);
-    }
-}
 
 KAuth::Action FirewalldClient::buildQueryAction(const QVariantMap &arguments)
 {
@@ -478,22 +395,22 @@ void FirewalldClient::moveRule(int from, int to)
     job->start();
 }
 
-QString FirewalldClient::defaultIncomingPolicy() const
-{
-    auto policy_t = m_currentProfile.getDefaultIncomingPolicy();
-    return Types::toString(policy_t);
-}
-
-QString FirewalldClient::defaultOutgoingPolicy() const
-{
-    auto policy_t = m_currentProfile.getDefaultOutgoingPolicy();
-    return Types::toString(policy_t);
-}
-
-LogListModel *FirewalldClient::logs()
-{
-    return m_logs;
-}
+// QString FirewalldClient::defaultIncomingPolicy() const
+// {
+//     auto policy_t = m_currentProfile.getDefaultIncomingPolicy();
+//     return Types::toString(policy_t);
+// }
+// 
+// QString FirewalldClient::defaultOutgoingPolicy() const
+// {
+//     auto policy_t = m_currentProfile.getDefaultOutgoingPolicy();
+//     return Types::toString(policy_t);
+// }
+// 
+// LogListModel *FirewalldClient::logs()
+// {
+//     return m_logs;
+// }
 
 
 bool FirewalldClient::logsAutoRefresh() const
@@ -585,29 +502,28 @@ void FirewalldClient::setExecutable(const bool &hasExecutable){
 void FirewalldClient::refreshProfiles()
 {
 
-    QList<Entry> profiles;
-    static const char * constProfileDir="/etc/ufw/applications.d/";
-
-    QStringList                files(QDir(constProfileDir).entryList());
-    QStringList::ConstIterator it(files.constBegin()),
-                                end(files.constEnd());
-
-    for(; it!=end; ++it) {
-        if((*it)!="." && (*it)!="..") {
-            KConfig                    cfg(constProfileDir+(*it), KConfig::SimpleConfig);
-            QStringList                groups(cfg.groupList());
-            QStringList::ConstIterator gIt(groups.constBegin()),
-                                        gEnd(groups.constEnd());
-
-            for(; gIt!=gEnd; ++gIt)
-            {
-                QString ports(cfg.group(*gIt).readEntry("ports", QString()));
-
-                if(!ports.isEmpty() && !profiles.contains(*gIt))
-                    profiles.append(Entry(*gIt, ports));
-            }
-        }
-    }
-
-    setProfiles(profiles);
 }
+
+QDBusMessage FirewalldClient::dbusCall (QString method, QVariantList args) {
+        QDBusMessage msg;
+        // saving config call is in another interface which has the same name as SERVICE_NAME
+        if(method == "runtimeToPermanent") {
+            if(QDBusConnection::systemBus().isConnected()) {
+            QDBusInterface iface(SERVICE_NAME, DBUS_PATH, SERVICE_NAME, QDBusConnection::systemBus());
+            if(iface.isValid())
+                msg= args.isEmpty() ? iface.call(QDBus::AutoDetect, method.toLatin1())
+                    : iface.callWithArgumentList(QDBus::AutoDetect, method.toLatin1(), args);
+            if(msg.type() == QDBusMessage::ErrorMessage)
+                qDebug() << msg.errorMessage(); }
+        } else {
+        if(QDBusConnection::systemBus().isConnected()) {
+            QDBusInterface iface(SERVICE_NAME, DBUS_PATH, INTERFACE_NAME, QDBusConnection::systemBus());
+            if(iface.isValid())
+                msg= args.isEmpty() ? iface.call(QDBus::AutoDetect, method.toLatin1())
+                    : iface.callWithArgumentList(QDBus::AutoDetect, method.toLatin1(), args);
+            if(msg.type() == QDBusMessage::ErrorMessage)
+                qDebug() << msg.errorMessage(); }
+     
+        }
+        return msg;
+ }

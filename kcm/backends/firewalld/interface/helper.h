@@ -24,33 +24,17 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#include <QtCore/QObject>
-#include <QDBusArgument>
-#include <kauth.h>
+#include <QObject>
+
+
 
 class QStringList;
 class QByteArray;
 
 /* custom struct to receive reply from firewalld dbus interface */
-struct firewalld_reply {
-    QString ipv;
-    QString table;
-    QString chain;
-    int priority = 0;
-    QStringList rules = {};
-};
 
-Q_DECLARE_METATYPE(firewalld_reply)
 
-const QDBusArgument &operator>>(const QDBusArgument &argument, firewalld_reply &mystruct)
-{
-    argument.beginStructure();
-    argument >> mystruct.ipv >> mystruct.table >> mystruct.chain >> mystruct.priority >> mystruct.rules;
-    argument.endStructure();
-    return argument;
-}
 
-using namespace KAuth;
 
 namespace FIREWALLD
 {
@@ -73,28 +57,19 @@ class Helper : public QObject
 
     public Q_SLOTS:
 
-    ActionReply query(const QVariantMap &args);
+    /*ActionReply query(const QVariantMap &args);
     ActionReply viewlog(const QVariantMap &args);
-    ActionReply modify(const QVariantMap &args);
+    ActionReply modify(const QVariantMap &args);*/
 
     private:
-
-    /* ActionReply setStatus(const QVariantMap &args, const QString &cmd); */
-    /* ActionReply setDefaults(const QVariantMap &args, const QString &cmd); */
-    /* ActionReply setModules(const QVariantMap &args, const QString &cmd); */
-    /* ActionReply setProfile(const QVariantMap &args, const QString &cmd); */
-    /* ActionReply saveProfile(const QVariantMap &args, const QString &cmd); */
-    /* ActionReply deleteProfile(const QVariantMap &args, const QString &cmd); */
-    ActionReply addRules(const QVariantMap &args, const QString &cmd);
+   /* ActionReply addRules(const QVariantMap &args, const QString &cmd);
     ActionReply removeRule(const QVariantMap &args, const QString &cmd);
-    /* ActionReply moveRule(const QVariantMap &args, const QString &cmd); */
     ActionReply editRule(const QVariantMap &args, const QString &cmd);
-//     ActionReply editRuleDescr(const QVariantMap &args, const QString &cmd);
     ActionReply reset(const QString &cmd);
-    ActionReply run(const QString &cmd, const QList<QVariant> &args);
+    ActionReply run(const QString &cmd, const QList<QVariant> &args);*/
 
     private:
-
+    
     LogLister *lister;
 };
 
