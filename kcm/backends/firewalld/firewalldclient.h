@@ -66,8 +66,8 @@ class FirewalldClient : public IFirewallClientBackend
         RuleListModel* rules() const override;
         RuleWrapper* getRule(int index) override;
         void addRule(RuleWrapper *rule) override;
-        void removeRule(RuleWrapper *rule) override;
-        void updateRule(RuleWrapper * rule) override;
+        void removeRule(int index) override;
+        void updateRule(RuleWrapper *rule) override;
         void moveRule(int from, int to) override;
         /* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connecion Table. */
         RuleWrapper* createRuleFromConnection(
@@ -82,14 +82,13 @@ class FirewalldClient : public IFirewallClientBackend
                 const QString &sourcePort,
                 const QString &destinationAddress,
                 const QString &destinationPort,
-                const QString &inn,
-                const QString &out) override;
+                const QString &inn) override;
 
         bool enabled() const override;
         bool isBusy() const override;
         QString status() const override;
-        //QString defaultIncomingPolicy() const override;
-        //QString defaultOutgoingPolicy() const override;
+        QString defaultIncomingPolicy() const override;
+        QString defaultOutgoingPolicy() const override;
         QString name() const override;
 
         LogListModel* logs() override;
@@ -100,8 +99,8 @@ class FirewalldClient : public IFirewallClientBackend
 
         public slots:
             void queryStatus(bool readDefaults=true, bool listProfiles=true) override;
-        //void setDefaultIncomingPolicy(QString defaultIncomingPolicy) override;
-        //void setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) override;
+       void setDefaultIncomingPolicy(QString defaultIncomingPolicy) override;
+       void setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) override;
 
         void setLogsAutoRefresh(bool logsAutoRefresh) override;
         void setEnabled(bool enabled) override;
@@ -113,8 +112,8 @@ class FirewalldClient : public IFirewallClientBackend
         void setStatus(const QString &status);
         void setBusy(const bool &busy);
         void setExecutable(const bool &hasExecutable);
-        KAuth::Action buildQueryAction(const QVariantMap &arguments);
-        KAuth::Action buildModifyAction(const QVariantMap &arguments);
+        /* KAuth::Action buildQueryAction(const QVariantMap &arguments); */
+        /* KAuth::Action buildModifyAction(const QVariantMap &arguments); */
         QVariantList buildRule(Rule r, bool isIpv6);
         QDBusMessage dbusCall(QString method, QVariantList args= {});
     private:

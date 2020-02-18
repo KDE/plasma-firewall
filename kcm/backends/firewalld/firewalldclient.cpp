@@ -73,27 +73,27 @@ void FirewalldClient::setEnabled(bool enabled)
 {
     QVariantMap args {
         {"cmd", "setStatus"},
-        {"status", enabled},
+            {"status", enabled},
     };
 
-    KAuth::Action modifyAction = buildModifyAction(args);
+    /* KAuth::Action modifyAction = buildModifyAction(args); */
 
-    m_status = enabled ? i18n("Enabling the firewall...") : i18n("Disabling the firewall...");
-    m_isBusy = true;
-
-
-    KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this](KJob * kjob) {
-        auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
-        setBusy(false);
-
-        if (!job->error())
-            queryStatus(true, false);
+    /* m_status = enabled ? i18n("Enabling the firewall...") : i18n("Disabling the firewall..."); */
+    /* m_isBusy = true; */
 
 
-    });
+    /* KAuth::ExecuteJob *job = modifyAction.execute(); */
+    /* connect(job, &KAuth::ExecuteJob::result, [this](KJob * kjob) { */
+    /*         auto job = qobject_cast<KAuth::ExecuteJob *>(kjob); */
+    /*         setBusy(false); */
 
-    job->start();
+    /*         if (!job->error()) */
+    /*         queryStatus(true, false); */
+
+
+    /*         }); */
+
+    /* job->start(); */
 }
 
 
@@ -104,39 +104,39 @@ bool FirewalldClient::isBusy() const
 
 void FirewalldClient::queryStatus(bool readDefaults, bool listProfiles)
 {
-    if (isBusy()) {
-        qWarning() << "Ufw client is busy";
-        return;
-    }
+    /* if (isBusy()) { */
+    /*     qWarning() << "Ufw client is busy"; */
+    /*     return; */
+    /* } */
 
-    QVariantMap args {
-        {"defaults", readDefaults},
-        {"profiles", listProfiles},
-    };
+    /* QVariantMap args { */
+    /*     {"defaults", readDefaults}, */
+    /*         {"profiles", listProfiles}, */
+    /* }; */
 
-    if (m_queryAction.name().isEmpty()) {
-        m_queryAction = buildQueryAction(args);
-    }
+    /* if (m_queryAction.name().isEmpty()) { */
+    /*     m_queryAction = buildQueryAction(args); */
+    /* } */
 
-    KAuth::ExecuteJob *job = m_queryAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this](KJob * kjob) {
-        auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
+    /* KAuth::ExecuteJob *job = m_queryAction.execute(); */
+    /* connect(job, &KAuth::ExecuteJob::result, [this](KJob * kjob) { */
+    /*         auto job = qobject_cast<KAuth::ExecuteJob *>(kjob); */
 
-        if (!job->error()) {
-            QByteArray response = job->data().value("response", "").toByteArray();
-            setProfile(Profile(response));
-        } else {
-            setStatus(
-                QStringLiteral("There was an error in the backend! Please report it. \n") +
-                job->action().name() + QStringLiteral(" ") + job->errorString()
-            );
-            qWarning() << job->action().name() << job->errorString();
-        }
+    /*         if (!job->error()) { */
+    /*         QByteArray response = job->data().value("response", "").toByteArray(); */
+    /*         setProfile(Profile(response)); */
+    /*         } else { */
+    /*         setStatus( */
+    /*                 QStringLiteral("There was an error in the backend! Please report it. \n") + */
+    /*                 job->action().name() + QStringLiteral(" ") + job->errorString() */
+    /*                 ); */
+    /*         qWarning() << job->action().name() << job->errorString(); */
+    /*         } */
 
-        setBusy(false);
-    });
+    /*         setBusy(false); */
+    /*         }); */
 
-    job->start();
+    /* job->start(); */
 }
 
 
@@ -158,33 +158,33 @@ void FirewalldClient::setLogsAutoRefresh(bool logsAutoRefresh)
     emit parentClient()->logsAutoRefreshChanged(m_logsAutoRefresh);
 }
 
-void FirewalldClient::refreshLogs()
-{
-    KAuth::Action action("org.kde.ufw.viewlog");
-    action.setHelperId("org.kde.ufw");
+ void FirewalldClient::refreshLogs() {};
+/* { */
+/*     KAuth::Action action("org.kde.ufw.viewlog"); */
+/*     action.setHelperId("org.kde.ufw"); */
 
-    QVariantMap args;
-    if (m_rawLogs.size() > 0)
-        args["lastLine"] = m_rawLogs.last();
+/*     QVariantMap args; */
+/*     if (m_rawLogs.size() > 0) */
+/*         args["lastLine"] = m_rawLogs.last(); */
 
-    action.setArguments(args);
+/*     action.setArguments(args); */
 
-    KAuth::ExecuteJob *job = action.execute();
-    connect(job, &KAuth::ExecuteJob::finished, [this](KJob * kjob) {
-        auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
+/*     KAuth::ExecuteJob *job = action.execute(); */
+/*     connect(job, &KAuth::ExecuteJob::finished, [this](KJob * kjob) { */
+/*             auto job = qobject_cast<KAuth::ExecuteJob *>(kjob); */
 
-        if (!job->error()) {
-            QStringList newLogs = job->data().value("lines", "").toStringList();
-            m_rawLogs.append(newLogs);
-            m_logs->addRawLogs(newLogs);
-        } else {
-            qWarning() << "org.kde.ufw.viewlog" << job->errorString();
-        }
-        setBusy(false);
-    });
+/*             if (!job->error()) { */
+/*             QStringList newLogs = job->data().value("lines", "").toStringList(); */
+/*             m_rawLogs.append(newLogs); */
+/*             m_logs->addRawLogs(newLogs); */
+/*             } else { */
+/*             qWarning() << "org.kde.ufw.viewlog" << job->errorString(); */
+/*             } */
+/*             setBusy(false); */
+/*             }); */
 
-    job->start();
-}
+/*     job->start(); */
+/* } */
 
 void FirewalldClient::setStatus(const QString &status)
 {
@@ -201,23 +201,23 @@ void FirewalldClient::setBusy(const bool &isBusy)
 }
 
 
-KAuth::Action FirewalldClient::buildQueryAction(const QVariantMap &arguments)
-{
-    auto action = KAuth::Action("org.kde.ufw.query");
-    action.setHelperId("org.kde.ufw");
-    action.setArguments(arguments);
+/* KAuth::Action FirewalldClient::buildQueryAction(const QVariantMap &arguments) */
+/* { */
+/*     auto action = KAuth::Action("org.kde.ufw.query"); */
+/*     action.setHelperId("org.kde.ufw"); */
+/*     action.setArguments(arguments); */
 
-    return action;
-}
+/*     return action; */
+/* } */
 
-KAuth::Action FirewalldClient::buildModifyAction(const QVariantMap &arguments)
-{
-    auto action = KAuth::Action("org.kde.ufw.modify");
-    action.setHelperId("org.kde.ufw");
-    action.setArguments(arguments);
+/* KAuth::Action FirewalldClient::buildModifyAction(const QVariantMap &arguments) */
+/* { */
+/*     auto action = KAuth::Action("org.kde.ufw.modify"); */
+/*     action.setHelperId("org.kde.ufw"); */
+/*     action.setArguments(arguments); */
 
-    return action;
-}
+/*     return action; */
+/* } */
 
 QString FirewalldClient::status() const
 {
@@ -254,17 +254,15 @@ void FirewalldClient::addRule(RuleWrapper *ruleWrapper)
 
     /* TODO create calls functions to ipv4 and ipv6 familty*/
     QVariantList dbusArgs = buildRule(rule, false);
-    dbusCall("addRule",  dbusArgs);
+    // check if it exist before adding.
+    if (!dbusCall("queryRule", dbusArgs).arguments().at(0).toBool())
+        dbusCall("addRule",  dbusArgs);
 }
 
-void FirewalldClient::removeRule(RuleWrapper *ruleWrapper)
+void FirewalldClient::removeRule(int index)
 {
-    if (ruleWrapper == NULL) {
-        qWarning() << __FUNCTION__ << "NULL rule";
-        return;
-    }
-    Rule rule = ruleWrapper->getRule();
 
+    Rule rule = getRule(index)->getRule();
     /* TODO create calls functions to ipv4 and ipv6 familty*/
     QVariantList dbusArgs = buildRule(rule, false);
     dbusCall("removeRule",  dbusArgs);
@@ -276,10 +274,8 @@ void FirewalldClient::updateRule(RuleWrapper *ruleWrapper)
         qWarning() << __FUNCTION__ << "NULL rule";
         return;
     }
-
-    Rule rule = ruleWrapper->getRule();
-    QVariantList dbusArgs = buildRule(rule, false);
-    dbusCall("removeRule",  dbusArgs);
+    removeRule(ruleWrapper->position());
+    addRule(ruleWrapper);
 }
 
 void FirewalldClient::moveRule(int from, int to)
@@ -300,25 +296,25 @@ void FirewalldClient::moveRule(int from, int to)
 
     QVariantMap args {
         {"cmd", "moveRule"},
-        {"from", from},
-        {"to", to},
+            {"from", from},
+            {"to", to},
     };
 
-    KAuth::Action modifyAction = buildModifyAction(args);
-    KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::finished, [this](KJob * kjob) {
-        auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
+    /* KAuth::Action modifyAction = buildModifyAction(args); */
+    /* KAuth::ExecuteJob *job = modifyAction.execute(); */
+    /* connect(job, &KAuth::ExecuteJob::finished, [this](KJob * kjob) { */
+    /*         auto job = qobject_cast<KAuth::ExecuteJob *>(kjob); */
 
-        if (!job->error()) {
-            QByteArray response = job->data().value("response", "").toByteArray();
-            setProfile(Profile(response));
-        } else {
-            qWarning() << job->action().name() << job->errorString();
-        }
-        setBusy(false);
-    });
+    /*         if (!job->error()) { */
+    /*         QByteArray response = job->data().value("response", "").toByteArray(); */
+    /*         setProfile(Profile(response)); */
+    /*         } else { */
+    /*         qWarning() << job->action().name() << job->errorString(); */
+    /*         } */
+    /*         setBusy(false); */
+    /*         }); */
 
-    job->start();
+    /* job->start(); */
 }
 
 // QString FirewalldClient::defaultIncomingPolicy() const
@@ -379,13 +375,13 @@ RuleWrapper *FirewalldClient::createRuleFromConnection(const QString &protocol, 
 }
 
 RuleWrapper *FirewalldClient::createRuleFromLog(
-    const QString &protocol,
-    const QString &sourceAddress,
-    const QString &sourcePort,
-    const QString &destinationAddress,
-    const QString &destinationPort,
-    const QString &inn,
-    const QString &out)
+        const QString &protocol,
+        const QString &sourceAddress,
+        const QString &sourcePort,
+        const QString &destinationAddress,
+        const QString &destinationPort,
+        const QString &inn
+        )
 {
     // Transform to the ufw notation
     auto rule = new RuleWrapper({});
@@ -457,7 +453,8 @@ QDBusMessage FirewalldClient::dbusCall(QString method, QVariantList args)
     }
     return msg;
 }
-QVariantList buildRule(Rule r, bool isIpv6)
+
+QVariantList FirewalldClient::buildRule(Rule r, bool isIpv6)
 {
     QVariantMap args {
         {"priority", r.getPosition()},
@@ -499,4 +496,15 @@ QVariantList buildRule(Rule r, bool isIpv6)
     return QVariantList({"ipv4", args.value("table").toString(),
             args.value("chain").toString(), args.value("priority").toInt(), firewalld_direct_rule
             });
+}
+QString FirewalldClient::defaultIncomingPolicy() const {return "test";};
+QString FirewalldClient::defaultOutgoingPolicy() const {return "test";};
+
+void FirewalldClient::setDefaultIncomingPolicy(QString defaultIncomingPolicy) {};
+void FirewalldClient::setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) {};
+
+
+LogListModel *FirewalldClient::logs()
+{
+    return m_logs;
 }

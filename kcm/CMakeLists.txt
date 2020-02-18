@@ -18,7 +18,8 @@ add_library(kcm_firewall MODULE ${kcm_SRCS})
 target_link_libraries(kcm_firewall
     Qt5::Quick
     Qt5::X11Extras
-    Qt5::Xml
+    Qt5::DBus
+
     KF5::CoreAddons
     KF5::Declarative
     KF5::I18n
