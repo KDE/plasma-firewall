@@ -1,5 +1,6 @@
 /*
  * Copyright 2018 Alexis Lopes Zubeta <contact@azubieta.net>
+ * Copyright 2020 Tomaz Canabrava <tcanabrava@kde.org>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -17,6 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 
 import QtQuick 2.12
 import QtQuick.Layouts 1.3

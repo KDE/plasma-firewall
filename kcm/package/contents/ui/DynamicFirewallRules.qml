@@ -1,4 +1,5 @@
 /*
+ * Copyright 2018 Alexis Lopes Zubeta <contact@azubieta.net>
  * Copyright 2020 Tomaz Canabrava <tcanabrava@kde.org>
  *
  * This program is free software; you can redistribute it and/or

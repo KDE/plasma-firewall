@@ -5,6 +5,8 @@
  * UFW KControl Module
  *
  * Copyright 2011 Craig Drummond <craig.p.drummond@gmail.com>
+ * Copyright 2018 Alexis Lopes Zubeta <contact@azubieta.net>
+ * Copyright 2020 Tomaz Canabrava <tcanabrava@kde.org>
  *
  * ----
  *
@@ -23,6 +25,7 @@
  * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA 02110-1301, USA.
  */
+
 
 #include <QtCore/QObject>
 #include <QtCore/QVariantMap>

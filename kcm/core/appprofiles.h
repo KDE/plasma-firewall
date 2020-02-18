@@ -1,10 +1,11 @@
 #ifndef UFW_APP_PROFILES_H
 #define UFW_APP_PROFILES_H
-
 /*
  * UFW KControl Module
  *
  * Copyright 2011 Craig Drummond <craig.p.drummond@gmail.com>
+ * Copyright 2018 Alexis Lopes Zubeta <contact@azubieta.net>
+ * Copyright 2020 Tomaz Canabrava <tcanabrava@kde.org>
  *
  * ----
  *
