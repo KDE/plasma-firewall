@@ -1,0 +1,17 @@
+[Desktop Entry]
+Icon=security-high
+Exec=kcmshell5 kcm_firewall
+
+Type=Service
+X-KDE-ServiceTypes=KCModule
+X-KDE-Library=kcm_firewall
+X-KDE-ParentApp=kcontrol
+X-KDE-System-Settings-Parent-Category=network
+X-KDE-Weight=80
+X-DocPath=kcontrol/firewall/index.html
+
+
+Name=Firewall
+Comment=Control your network rules
+X-KDE-Keywords=firewall, network, security
+Categories=Qt;KDE;X-KDE-settings-looknfeel;
