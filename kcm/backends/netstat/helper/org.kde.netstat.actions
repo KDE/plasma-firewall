@@ -1,0 +1,10 @@
+[Domain]
+Name=KCM Firewall netstat utils
+Icon=network-card
+URL=
+
+[org.kde.netstat.query]
+Name=Read connections
+Description=Get system open connections.
+Policy=yes
+Persistence=session
