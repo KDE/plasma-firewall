@@ -252,69 +252,22 @@ void FirewalldClient::addRule(RuleWrapper *ruleWrapper)
     }
     Rule rule = ruleWrapper->getRule();
 
-    QVariantMap args {
-        {"priority", rule.getPosition()},
-        {"destinationPort", rule.getDestPort()},
-        {"sourcePort", rule.getSourcePort()},
-        {"type", rule.getProtocol()},
-        {"table", "filter"} // default iptables / nftables table showed in iptables - L.
-    };
-
-    rule.getIncoming() ? args.insert("chain", "INPUT") : args.insert("chain", "OUTPUT");
-
-    if(rule.getAction() == Types::POLICY_ALLOW)
-        args.insert("action", "ACCEPT");
-    else if(rule.getAction() == Types::POLICY_REJECT)
-        args.insert("action", "REJECT");
-    else
-        args.insert("action", "DROP");
-    ;
-    QStringList firewalld_direct_rule = {"-p", args.value("type").toString(), "-j",
-                                         args.value("action").toString()
-                                        };
-    //     "--dport",
-    //         args.value("destinationPort").toString(), };
-
     /* TODO create calls functions to ipv4 and ipv6 familty*/
-    /*  {"destinationAddress", rule.getDestAddress()},
-     *  {"sourceAddress", rule.getSourceAddress()},
-     */
-    QVariantList dbusArgs = { "ipv4", args.value("table").toString(),
-                              args.value("chain").toString(), args.value("priority").toInt(), firewalld_direct_rule
-                            };
+    QVariantList dbusArgs = buildRule(rule, false);
     dbusCall("addRule",  dbusArgs);
 }
 
-void FirewalldClient::removeRule(int index)
+void FirewalldClient::removeRule(RuleWrapper *ruleWrapper)
 {
-    if (index < 0 || index >= m_currentProfile.getRules().count()) {
-        qWarning() << __FUNCTION__ << "invalid rule index";
+    if (ruleWrapper == NULL) {
+        qWarning() << __FUNCTION__ << "NULL rule";
         return;
     }
+    Rule rule = ruleWrapper->getRule();
 
-    // Correct index
-    index += 1;
-
-    QVariantMap args {
-        {"cmd", "removeRule"},
-        {"index", QString::number(index)},
-    };
-
-    KAuth::Action modifyAction = buildModifyAction(args);
-    KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this](KJob * kjob) {
-        auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
-
-        if (!job->error()) {
-            QByteArray response = job->data().value("response", "").toByteArray();
-            setProfile(Profile(response));
-        } else {
-            qWarning() << job->action().name() << job->errorString();
-        }
-        setBusy(false);
-    });
-
-    job->start();
+    /* TODO create calls functions to ipv4 and ipv6 familty*/
+    QVariantList dbusArgs = buildRule(rule, false);
+    dbusCall("removeRule",  dbusArgs);
 }
 
 void FirewalldClient::updateRule(RuleWrapper *ruleWrapper)
@@ -325,28 +278,8 @@ void FirewalldClient::updateRule(RuleWrapper *ruleWrapper)
     }
 
     Rule rule = ruleWrapper->getRule();
-
-    rule.setPosition(rule.getPosition() + 1);
-    QVariantMap args {
-        {"cmd", "editRule"},
-        {"xml", rule.toXml()},
-    };
-
-    KAuth::Action modifyAction = buildModifyAction(args);
-    KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this](KJob * kjob) {
-        auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
-
-        if (!job->error()) {
-            QByteArray response = job->data().value("response", "").toByteArray();
-            setProfile(Profile(response));
-        } else {
-            qWarning() << job->action().name() << job->errorString();
-        }
-        setBusy(false);
-    });
-
-    job->start();
+    QVariantList dbusArgs = buildRule(rule, false);
+    dbusCall("removeRule",  dbusArgs);
 }
 
 void FirewalldClient::moveRule(int from, int to)
@@ -498,6 +431,7 @@ void FirewalldClient::refreshProfiles()
 {
 
 }
+
 QDBusMessage FirewalldClient::dbusCall(QString method, QVariantList args)
 {
     QDBusMessage msg;
@@ -507,7 +441,7 @@ QDBusMessage FirewalldClient::dbusCall(QString method, QVariantList args)
             QDBusInterface iface(SERVICE_NAME, DBUS_PATH, SERVICE_NAME, QDBusConnection::systemBus());
             if (iface.isValid())
                 msg = args.isEmpty() ? iface.call(QDBus::AutoDetect, method.toLatin1())
-                      : iface.callWithArgumentList(QDBus::AutoDetect, method.toLatin1(), args);
+                    : iface.callWithArgumentList(QDBus::AutoDetect, method.toLatin1(), args);
             if (msg.type() == QDBusMessage::ErrorMessage)
                 qDebug() << msg.errorMessage();
         }
@@ -516,10 +450,53 @@ QDBusMessage FirewalldClient::dbusCall(QString method, QVariantList args)
             QDBusInterface iface(SERVICE_NAME, DBUS_PATH, INTERFACE_NAME, QDBusConnection::systemBus());
             if (iface.isValid())
                 msg = args.isEmpty() ? iface.call(QDBus::AutoDetect, method.toLatin1())
-                      : iface.callWithArgumentList(QDBus::AutoDetect, method.toLatin1(), args);
+                    : iface.callWithArgumentList(QDBus::AutoDetect, method.toLatin1(), args);
             if (msg.type() == QDBusMessage::ErrorMessage)
                 qDebug() << msg.errorMessage();
         }
     }
     return msg;
+}
+QVariantList buildRule(Rule r, bool isIpv6)
+{
+    QVariantMap args {
+        {"priority", r.getPosition()},
+            {"destinationPort", r.getDestPort()},
+            {"sourcePort", r.getSourcePort()},
+            {"type", r.getProtocol()},
+            {"destinationAddress", r.getDestAddress()},
+            {"sourceAddress", r.getSourceAddress()},
+
+    };
+
+    r.getIncoming() ? args.insert("chain", "INPUT") : args.insert("chain", "OUTPUT");
+
+    if (r.getAction() == Types::POLICY_ALLOW)
+        args.insert("action", "ACCEPT");
+    else if (r.getAction() == Types::POLICY_REJECT)
+        args.insert("action", "REJECT");
+    else
+        args.insert("action", "DROP");
+
+    QStringList firewalld_direct_rule = {"-p", args.value("type").toString(), "-j",
+        args.value("action").toString()
+    };
+
+    if (!args.value("destinationAddress").toString().isEmpty())
+        firewalld_direct_rule << "-d" <<  args.value("destinationAddress").toString();
+    if (!args.value("destinationPort").toString().isEmpty())
+        firewalld_direct_rule << "--dport" <<  args.value("destinationPort").toString();
+    if (!args.value("sourceAddress").toString().isEmpty())
+        firewalld_direct_rule << "-s" <<  args.value("sourceAddress").toString();
+    if (!args.value("sourcePort").toString().isEmpty())
+        firewalld_direct_rule << "--sport" <<  args.value("sourcePort").toString();
+
+    if (isIpv6 == true)
+        return QVariantList({"ipv6", args.value("table").toString(),
+                args.value("chain").toString(), args.value("priority").toInt(), firewalld_direct_rule
+                });
+
+    return QVariantList({"ipv4", args.value("table").toString(),
+            args.value("chain").toString(), args.value("priority").toInt(), firewalld_direct_rule
+            });
 }
