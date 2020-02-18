@@ -1,0 +1,22 @@
+add_library(kcm_firewall_core
+    STATIC
+    firewallclient.cpp
+    ifirewallclientbackend.cpp
+    rule.cpp
+    rulewrapper.cpp
+    types.cpp
+    loglistmodel.cpp
+    rulelistmodel.cpp
+    profile.cpp
+    appprofiles.cpp
+)
+
+target_link_libraries(kcm_firewall_core
+    Qt5::Quick
+    Qt5::Xml
+    KF5::CoreAddons
+    KF5::Declarative
+    KF5::I18n
+    KF5::QuickAddons
+    KF5::Auth
+)
