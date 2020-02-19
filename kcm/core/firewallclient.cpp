@@ -247,7 +247,6 @@ void FirewallClient::setBackend(const QString& backend)
         enabledChanged(false);
         delete m_currentBackend;
     }
-
     const auto plugins = KPluginLoader::findPlugins(QStringLiteral("kf5/plasma_firewall"));
     for (const KPluginMetaData &metadata : plugins) {
         // FIXME FIXME add criteria for loading it (e.g. service registered) and some priority thing
