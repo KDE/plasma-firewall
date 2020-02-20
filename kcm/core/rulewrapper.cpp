@@ -119,7 +119,7 @@ void RuleWrapper::setIncoming(bool incoming)
 
 void RuleWrapper::setSourceAddress(const QString &sourceAddress)
 {
-    if (m_rule.getSourceAddress().compare(sourceAddress) == 0)
+    if (m_rule.getSourceAddress() == sourceAddress)
         return;
 
     m_rule.setSourceAddress(sourceAddress);
@@ -128,7 +128,7 @@ void RuleWrapper::setSourceAddress(const QString &sourceAddress)
 
 void RuleWrapper::setSourcePort(const QString &sourcePort)
 {
-    if (m_rule.getSourcePort().compare(sourcePort) == 0)
+    if (m_rule.getSourcePort() == sourcePort)
         return;
 
     m_rule.setSourcePort(sourcePort);
@@ -137,7 +137,7 @@ void RuleWrapper::setSourcePort(const QString &sourcePort)
 
 void RuleWrapper::setDestinationAddress(const QString &destinationAddress)
 {
-    if (m_rule.getDestAddress().compare(destinationAddress)  == 0)
+    if (m_rule.getDestAddress() == destinationAddress)
         return;
 
     m_rule.setDestAddress(destinationAddress);
@@ -146,7 +146,7 @@ void RuleWrapper::setDestinationAddress(const QString &destinationAddress)
 
 void RuleWrapper::setDestinationPort(const QString &destinationPort)
 {
-    if (m_rule.getDestPort().compare(destinationPort) == 0)
+    if (m_rule.getDestPort() == destinationPort)
         return;
 
     m_rule.setDestPort(destinationPort);
