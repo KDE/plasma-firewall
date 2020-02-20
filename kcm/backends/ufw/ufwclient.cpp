@@ -62,7 +62,8 @@ QString UfwClient::name() const
 
 void UfwClient::refresh()
 {
-    queryStatus();
+    queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
+                FirewallClient::ProfilesBehavior::ListenProfiles);
 }
 
 bool UfwClient::enabled() const
@@ -95,7 +96,8 @@ void UfwClient::setEnabled(bool value)
 
         if (!job->error()) {
             setStatus(QString());
-            queryStatus(true, false);
+            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
+                        FirewallClient::ProfilesBehavior::DontListenProfiles);
         } else {
             setStatus(job->errorText());
             parentClient()->enabledChanged(enabled());
@@ -111,13 +113,16 @@ bool UfwClient::isBusy() const
     return m_isBusy;
 }
 
-void UfwClient::queryStatus(bool readDefaults, bool listProfiles)
+void UfwClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior)
 {
     if (isBusy())
     {
         qWarning() << "Ufw client is busy";
         return;
     }
+
+    const bool readDefaults = defaultsBehavior == FirewallClient::DefaultDataBehavior::ReadDefaults;
+    const bool listProfiles = profilesBehavior == FirewallClient::ProfilesBehavior::ListenProfiles;
 
     QVariantMap args {
         {"defaults", readDefaults},
@@ -176,7 +181,8 @@ void UfwClient::setDefaultIncomingPolicy(QString policy)
         setBusy(false);
 
         if (!job->error())
-            queryStatus(true, false);
+            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
+                        FirewallClient::ProfilesBehavior::DontListenProfiles);
 
 
     });
@@ -209,7 +215,8 @@ void UfwClient::setDefaultOutgoingPolicy(QString policy)
         setBusy(false);
 
         if (!job->error())
-            queryStatus(true, false);
+            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
+                        FirewallClient::ProfilesBehavior::DontListenProfiles);
 
 
     });
@@ -367,7 +374,8 @@ void UfwClient::addRule(RuleWrapper *ruleWrapper)
         auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
         if (!job->error())
         {
-            queryStatus();
+            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
+                        FirewallClient::ProfilesBehavior::ListenProfiles);
         } else {
             qWarning() << job->action().name() << job->errorString();
         }
@@ -399,7 +407,8 @@ void UfwClient::removeRule(int index)
 
         if (!job->error())
         {
-            queryStatus();
+            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
+                        FirewallClient::ProfilesBehavior::ListenProfiles);
         } else {
             qWarning() << job->action().name() << job->errorString();
         }
@@ -432,7 +441,8 @@ void UfwClient::updateRule(RuleWrapper *ruleWrapper)
 
         if (!job->error())
         {
-            queryStatus();
+            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
+                        FirewallClient::ProfilesBehavior::ListenProfiles);
         } else {
             qWarning() << job->action().name() << job->errorString();
         }
@@ -472,7 +482,8 @@ void UfwClient::moveRule(int from, int to)
 
         if (!job->error())
         {
-            queryStatus();
+            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
+                        FirewallClient::ProfilesBehavior::ListenProfiles);
         } else {
             qWarning() << job->action().name() << job->errorString();
         }

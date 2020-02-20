@@ -55,6 +55,9 @@ class FirewallClient : public QObject {
     Q_PROPERTY(bool hasExecutable READ hasExecutable NOTIFY hasExecutableChanged)
 
 public:
+    enum DefaultDataBehavior{DontReadDefaults, ReadDefaults};
+    enum ProfilesBehavior{DontListenProfiles, ListenProfiles};
+
     explicit FirewallClient(QObject *parent = nullptr);
 
     Q_INVOKABLE static QStringList getKnownProtocols();
@@ -101,16 +104,17 @@ signals:
     void isBusyChanged(const bool isBusy);
     void enabledChanged(const bool enabled);
     void statusChanged(const QString &status);
-    void defaultIncomingPolicyChanged(QString defaultIncomingPolicy);
-    void defaultOutgoingPolicyChanged(QString defaultOutgoingPolicy);
+    void defaultIncomingPolicyChanged(const QString &defaultIncomingPolicy);
+    void defaultOutgoingPolicyChanged(const QString &defaultOutgoingPolicy);
     void logsAutoRefreshChanged(bool logsAutoRefresh);
     void backendChanged(const QString &backend);
     void hasExecutableChanged(bool changed);
 public slots:
     void setEnabled(bool enabled);
-    void queryStatus(bool readDefaults=true, bool listProfiles=true);
-    void setDefaultIncomingPolicy(QString defaultIncomingPolicy);
-    void setDefaultOutgoingPolicy(QString defaultOutgoingPolicy);
+    void queryStatus(DefaultDataBehavior defaultDataBehavior = ReadDefaults,
+                     ProfilesBehavior ProfilesBehavior = ListenProfiles);
+    void setDefaultIncomingPolicy(const QString &defaultIncomingPolicy);
+    void setDefaultOutgoingPolicy(const QString &defaultOutgoingPolicy);
     void setLogsAutoRefresh(bool logsAutoRefresh);
     void setBackend(const QString &backend);
 

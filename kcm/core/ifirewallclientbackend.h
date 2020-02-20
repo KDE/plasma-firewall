@@ -91,10 +91,11 @@ public:
 
 public slots:
     virtual void setEnabled(bool enabled) = 0;
-    virtual void queryStatus(bool readDefaults=true, bool listProfiles=true) = 0;
+    virtual void queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior) = 0;
     virtual void setDefaultIncomingPolicy(QString defaultIncomingPolicy) = 0;
     virtual void setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) = 0;
     virtual void setLogsAutoRefresh(bool logsAutoRefresh) = 0;
+
 private:
     FirewallClient *m_parent;
     QList<Entry> m_profiles;

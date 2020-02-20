@@ -194,19 +194,20 @@ void FirewallClient::setEnabled(bool enabled)
         m_currentBackend->setEnabled(enabled);
 }
 
-void FirewallClient::queryStatus(bool readDefaults, bool listProfiles)
+void FirewallClient::queryStatus(DefaultDataBehavior defaultsBehavior, ProfilesBehavior profilesBehavior)
 {
-    if (m_currentBackend)
-        m_currentBackend->queryStatus(readDefaults, listProfiles);
+    if (m_currentBackend) {
+        m_currentBackend->queryStatus(defaultsBehavior, profilesBehavior);
+    }
 }
 
-void FirewallClient::setDefaultIncomingPolicy(QString defaultIncomingPolicy)
+void FirewallClient::setDefaultIncomingPolicy(const QString &defaultIncomingPolicy)
 {
     if (m_currentBackend)
         m_currentBackend->setDefaultIncomingPolicy(defaultIncomingPolicy);
 }
 
-void FirewallClient::setDefaultOutgoingPolicy(QString defaultOutgoingPolicy)
+void FirewallClient::setDefaultOutgoingPolicy(const QString &defaultOutgoingPolicy)
 {
     if (m_currentBackend)
         m_currentBackend->setDefaultOutgoingPolicy(defaultOutgoingPolicy);

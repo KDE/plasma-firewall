@@ -82,7 +82,7 @@ public:
     void refreshProfiles() override;
 
 public slots:
-    void queryStatus(bool readDefaults=true, bool listProfiles=true) override;
+    void queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior) override;
     void setDefaultIncomingPolicy(QString defaultIncomingPolicy) override;
     void setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) override;
 
