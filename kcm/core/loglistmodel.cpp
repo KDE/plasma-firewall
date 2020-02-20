@@ -53,13 +53,18 @@ QVariant LogListModel::data(const QModelIndex &index, int role) const
         return {};
     }
 
-    if (index.row() >= 0 && index.row() < m_logsData.size()) {
-        QVariantList logData = m_logsData[index.row()].toList();
-
-        int valueIndex = role - (Qt::UserRole + 1);
-        if (valueIndex < logData.size())
-            return logData.value(valueIndex);
-    }
+    LogData data = m_logsData.at(index.row());
+    switch(role) {
+        case SourceAddressRole: return data.sourceAddress;
+        case SourcePortRole: return data.sourcePort;
+        case DestinationAddressRole: return data.destinationAddress;
+        case DestinationPortRole: return data.destinationPort;
+        case ProtocolRole: return data.protocol;
+        case InterfaceRole: return data.interface;
+        case ActionRole: return data.action;
+        case TimeRole: return data.time;
+        case DateRole: return data.date;
+    };
 
     return {};
 }
@@ -85,29 +90,27 @@ void LogListModel::addRawLogs(const QStringList &rawLogsList)
         ".*PROTO=([\\w|\\.|\\d]*)"
         "\\s(SPT=(\\d*)\\sDPT=(\\d*))?.*");
 
+    m_logsData.reserve(rawLogsList.size());
     for (const QString &log : rawLogsList) {
-
         auto match = regex.match(log);
         if (match.hasMatch()) {
             QDateTime date = QDateTime::fromString(match.captured(1), "MMM d HH:mm:ss");
             const QString host = match.captured(2);
             const QString id = match.captured(4);
-            const QString action = match.captured(5);
-            const QString interface = match.captured(6);
-            const QString sourceAddress = match.captured(7);
-            const QString destinationAddress = match.captured(8);
-            const QString protocol = match.captured(9);
-            const QString sourcePort = match.captured(11);
-            const QString destinationPort = match.captured(12);
 
-            QVariantList logDetails ({
-                sourceAddress, sourcePort,
-                destinationAddress, destinationPort,
-                protocol, interface,
-                action, date.toString("HH:mm:ss"), date.toString("MMM dd")
-            });
+            LogData logDetails {
+                .sourceAddress = match.captured(7),
+                .sourcePort = match.captured(11),
+                .destinationAddress = match.captured(8),
+                .destinationPort = match.captured(12),
+                .protocol =  match.captured(9),
+                .interface = match.captured(6),
+                .action = match.captured(5),
+                .time = date.toString("HH:mm:ss"),
+                .date = date.toString("MMM dd")
+            };
 
-            m_logsData.push_front((QVariant) logDetails);
+            m_logsData.append(logDetails);
         }
     }
     endInsertRows();

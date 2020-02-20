@@ -29,6 +29,18 @@
 #include <QAbstractListModel>
 #include <QVariantList>
 
+struct LogData {
+    QString sourceAddress;
+    QString sourcePort;
+    QString destinationAddress;
+    QString destinationPort;
+    QString protocol;
+    QString interface;
+    QString action;
+    QString time;
+    QString date;
+};
+
 class LogListModel : public QAbstractListModel
 {
     Q_OBJECT
@@ -60,7 +72,7 @@ protected:
     QHash<int, QByteArray> roleNames() const override;
 
 private:
-    QVariantList m_logsData;
+    QVector<LogData> m_logsData;
 };
 
 #endif // LOGLISTMODEL_H
