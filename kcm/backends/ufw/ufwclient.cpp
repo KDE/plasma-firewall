@@ -93,8 +93,13 @@ void UfwClient::setEnabled(bool value)
         auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
         setBusy(false);
 
-        if (!job->error())
+        if (!job->error()) {
+            setStatus(QString());
             queryStatus(true, false);
+        } else {
+            setStatus(job->errorText());
+            parentClient()->enabledChanged(enabled());
+        }
     });
 
     job->start();
