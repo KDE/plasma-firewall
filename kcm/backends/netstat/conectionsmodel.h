@@ -27,6 +27,15 @@
 
 #include <KAuth>
 
+struct ConnectionsData {
+    QString protocol;
+    QString localAddress;
+    QString foreignAddress;
+    QString status;
+    QString pid;
+    QString program;
+};
+
 class ConnectionsModel : public QAbstractListModel
 {
     Q_OBJECT
@@ -58,7 +67,7 @@ protected slots:
 
 private:
     bool m_queryRunning;
-    QVariantList m_connectionsData;
+    QVector<ConnectionsData> m_connectionsData;
     KAuth::Action m_queryAction;
     QTimer timer;
 };

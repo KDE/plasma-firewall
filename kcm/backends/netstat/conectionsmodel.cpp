@@ -58,14 +58,16 @@ QVariant ConnectionsModel::data(const QModelIndex &index, int role) const
         return {};
     }
 
-    QVariantList connection = m_connectionsData.at(index.row()).toList();
-
-    int value_index = role - ProtocolRole;
-    if (value_index < 0 || value_index >= connection.size())
-        return {};
-
-
-    return connection.at(value_index);
+    ConnectionsData data = m_connectionsData.at(index.row());
+    switch(role) {
+        case ProtocolRole: return data.protocol;
+        case LocalAddressRole: return data.localAddress;
+        case ForeignAddressRole: return data.foreignAddress;
+        case StatusRole: return data.status;
+        case PidRole: return data.pid;
+        case ProgramRole: return data.program;
+    }
+    return {};
 }
 
 QVariant ConnectionsModel::data2(int row, const QByteArray &roleName) const
@@ -106,7 +108,20 @@ void ConnectionsModel::refreshConnections()
         if (!job->error())
         {
             beginResetModel();
-            m_connectionsData = job->data().value("connections", QVariantList()).toList();
+            m_connectionsData.clear();
+            for (const auto connection : job->data().value("connections", QVariantList()).toList()) {
+                const auto connList = connection.toList();
+                qDebug() << connList;
+                ConnectionsData conn {
+                    .protocol = connList.at(0).toString(),
+                    .localAddress = connList.at(1).toString(),
+                    .foreignAddress = connList.at(2).toString(),
+                    .status = connList.at(3).toString(),
+                    .pid = connList.at(4).toString(),
+                    .program = connList.at(5).toString()
+                };
+                m_connectionsData.append(conn);
+            }
             endResetModel();
             NetstatClient::self()->setStatus({});
         } else {
