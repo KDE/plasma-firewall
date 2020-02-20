@@ -54,7 +54,10 @@ int RuleListModel::rowCount(const QModelIndex &parent) const
 
 QVariant RuleListModel::data(const QModelIndex &index, int role) const
 {
-    if (index.row() < 0 || index.row() >= m_rules.count()) {
+    const auto checkIndexFlags = QAbstractItemModel::CheckIndexOption::IndexIsValid
+                               | QAbstractItemModel::CheckIndexOption::ParentIsInvalid;
+
+    if (!checkIndex(index, checkIndexFlags)) {
         return {};
     }
 

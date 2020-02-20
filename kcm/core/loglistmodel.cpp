@@ -46,8 +46,12 @@ int LogListModel::rowCount(const QModelIndex &parent) const
 
 QVariant LogListModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid())
+    const auto checkIndexFlags =  QAbstractItemModel::CheckIndexOption::IndexIsValid
+                               | QAbstractItemModel::CheckIndexOption::ParentIsInvalid;
+
+    if (!checkIndex(index, checkIndexFlags)) {
         return {};
+    }
 
     if (index.row() >= 0 && index.row() < m_logsData.size()) {
         QVariantList logData = m_logsData[index.row()].toList();

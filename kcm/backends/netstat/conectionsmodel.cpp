@@ -51,11 +51,12 @@ int ConnectionsModel::rowCount(const QModelIndex &parent) const
 
 QVariant ConnectionsModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid())
-        return {};
+    const auto checkIndexFlags = QAbstractItemModel::CheckIndexOption::IndexIsValid
+                               | QAbstractItemModel::CheckIndexOption::ParentIsInvalid;
 
-    if (index.row() < 0 || index.row() >= m_connectionsData.size())
+    if (!checkIndex(index, checkIndexFlags)) {
         return {};
+    }
 
     QVariantList connection = m_connectionsData.at(index.row()).toList();
 
