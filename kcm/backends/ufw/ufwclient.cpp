@@ -599,27 +599,19 @@ void UfwClient::setExecutable(const bool &hasExecutable){
 void UfwClient::refreshProfiles()
 {
 
-    QList<Entry> profiles;
     static const char * constProfileDir="/etc/ufw/applications.d/";
 
-    QStringList                files(QDir(constProfileDir).entryList());
-    QStringList::ConstIterator it(files.constBegin()),
-                                end(files.constEnd());
+    const QStringList files(QDir(constProfileDir).entryList(QDir::NoDotAndDotDot));
 
-    for(; it!=end; ++it) {
-        if((*it)!="." && (*it)!="..") {
-            KConfig                    cfg(constProfileDir+(*it), KConfig::SimpleConfig);
-            QStringList                groups(cfg.groupList());
-            QStringList::ConstIterator gIt(groups.constBegin()),
-                                        gEnd(groups.constEnd());
+    QVector<Entry> profiles;
+    for (const auto &file : files) {
+        KConfig cfg(constProfileDir + file, KConfig::SimpleConfig);
 
-            for(; gIt!=gEnd; ++gIt)
-            {
-                QString ports(cfg.group(*gIt).readEntry("ports", QString()));
+        for(const auto group : cfg.groupList()) {
+            const QString ports(cfg.group(group).readEntry("ports", QString()));
 
-                if(!ports.isEmpty() && !profiles.contains(*gIt))
-                    profiles.append(Entry(*gIt, ports));
-            }
+            if(!ports.isEmpty() && !profiles.contains(group))
+                profiles.append(Entry(group, ports));
         }
     }
 

@@ -36,7 +36,7 @@ FirewallClient *IFirewallClientBackend::parentClient() const
     return m_parent;
 }
 
-void IFirewallClientBackend::setProfiles(const QList<Entry> &profiles)
+void IFirewallClientBackend::setProfiles(const QVector<Entry> &profiles)
 {
     std::sort(std::begin(m_profiles), std::end(m_profiles));
     m_profiles = profiles;
@@ -44,10 +44,15 @@ void IFirewallClientBackend::setProfiles(const QList<Entry> &profiles)
 
 Entry IFirewallClientBackend::profileByName(const QString &name)
 {
-    for(const auto entry : qAsConst(m_profiles)) {
-        if (entry.name == name) {
-            return entry;
+    auto it = std::find_if(std::begin(m_profiles), std::end(m_profiles),
+        [name](const Entry &entry) {
+            return entry.name == name;
         }
+    );
+
+    if (it != std::end(m_profiles)) {
+        return *it;
     }
+
     return Entry({});
 }

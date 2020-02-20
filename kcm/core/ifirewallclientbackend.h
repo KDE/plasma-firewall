@@ -85,8 +85,8 @@ public:
 
     virtual void refreshProfiles() = 0;
 
-    void setProfiles(const QList<Entry> &profiles);
-    QList<Entry> profiles();
+    void setProfiles(const QVector<Entry> &profiles);
+    QVector<Entry> profiles();
     Entry profileByName(const QString &profileName);
 
 public slots:
@@ -98,7 +98,7 @@ public slots:
 
 private:
     FirewallClient *m_parent;
-    QList<Entry> m_profiles;
+    QVector<Entry> m_profiles;
 };
 
 #endif
