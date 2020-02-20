@@ -98,9 +98,9 @@ class FirewalldClient : public IFirewallClientBackend
         void refreshProfiles() override;
 
         public slots:
-        void queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior) override;
-    void setDefaultIncomingPolicy(QString defaultIncomingPolicy) override;
-    void setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) override;
+            void queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior) override;
+        void setDefaultIncomingPolicy(QString defaultIncomingPolicy) override;
+        void setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) override;
 
         void setLogsAutoRefresh(bool logsAutoRefresh) override;
         void setEnabled(bool enabled) override;
