@@ -34,6 +34,11 @@ KCM.ScrollViewKCM {
     property var ruleEdit: null
     title: i18n("Firewall Logs")
 
+    /* TODO:
+     *   onClicked: Qt.openUrlExternally(
+     *               "https://www.geoiptool.com/?ip=%1".arg(model.sourceAddress))
+     *   }
+     */
     view:  Flickable {
         QQC1.TableView {
             id: tableView
