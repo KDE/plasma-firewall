@@ -61,7 +61,7 @@ QString FirewalldClient::name() const
 
 void FirewalldClient::refresh()
 {
-    queryStatus();
+    queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::ListenProfiles);
 }
 
 bool FirewalldClient::enabled() const
@@ -102,41 +102,8 @@ bool FirewalldClient::isBusy() const
     return m_isBusy;
 }
 
-void FirewalldClient::queryStatus(bool readDefaults, bool listProfiles)
-{
-    /* if (isBusy()) { */
-    /*     qWarning() << "Ufw client is busy"; */
-    /*     return; */
-    /* } */
-
-    /* QVariantMap args { */
-    /*     {"defaults", readDefaults}, */
-    /*         {"profiles", listProfiles}, */
-    /* }; */
-
-    /* if (m_queryAction.name().isEmpty()) { */
-    /*     m_queryAction = buildQueryAction(args); */
-    /* } */
-
-    /* KAuth::ExecuteJob *job = m_queryAction.execute(); */
-    /* connect(job, &KAuth::ExecuteJob::result, [this](KJob * kjob) { */
-    /*         auto job = qobject_cast<KAuth::ExecuteJob *>(kjob); */
-
-    /*         if (!job->error()) { */
-    /*         QByteArray response = job->data().value("response", "").toByteArray(); */
-    /*         setProfile(Profile(response)); */
-    /*         } else { */
-    /*         setStatus( */
-    /*                 QStringLiteral("There was an error in the backend! Please report it. \n") + */
-    /*                 job->action().name() + QStringLiteral(" ") + job->errorString() */
-    /*                 ); */
-    /*         qWarning() << job->action().name() << job->errorString(); */
-    /*         } */
-
-    /*         setBusy(false); */
-    /*         }); */
-
-    /* job->start(); */
+void FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior) {
+    return;
 }
 
 
@@ -158,7 +125,7 @@ void FirewalldClient::setLogsAutoRefresh(bool logsAutoRefresh)
     emit parentClient()->logsAutoRefreshChanged(m_logsAutoRefresh);
 }
 
- void FirewalldClient::refreshLogs() {};
+void FirewalldClient::refreshLogs() {};
 /* { */
 /*     KAuth::Action action("org.kde.ufw.viewlog"); */
 /*     action.setHelperId("org.kde.ufw"); */
@@ -253,7 +220,7 @@ void FirewalldClient::addRule(RuleWrapper *ruleWrapper)
     Rule rule = ruleWrapper->getRule();
 
     /* TODO create calls functions to ipv4 and ipv6 familty*/
-    QVariantList dbusArgs = buildRule(rule, false);
+    QVariantList dbusArgs = buildRule(rule);
     // check if it exist before adding.
     if (!dbusCall("queryRule", dbusArgs).arguments().at(0).toBool())
         dbusCall("addRule",  dbusArgs);
@@ -264,7 +231,7 @@ void FirewalldClient::removeRule(int index)
 
     Rule rule = getRule(index)->getRule();
     /* TODO create calls functions to ipv4 and ipv6 familty*/
-    QVariantList dbusArgs = buildRule(rule, false);
+    QVariantList dbusArgs = buildRule(rule);
     dbusCall("removeRule",  dbusArgs);
 }
 
@@ -280,7 +247,7 @@ void FirewalldClient::updateRule(RuleWrapper *ruleWrapper)
 
 void FirewalldClient::moveRule(int from, int to)
 {
-    QList<Rule> rules = m_currentProfile.getRules();
+    QVector<Rule> rules = m_currentProfile.getRules();
     if (from < 0 || from >= rules.count()) {
         qWarning() << __FUNCTION__ << "invalid from index";
         return;
@@ -454,7 +421,7 @@ QDBusMessage FirewalldClient::dbusCall(QString method, QVariantList args)
     return msg;
 }
 
-QVariantList FirewalldClient::buildRule(Rule r, bool isIpv6)
+QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily)
 {
     QVariantMap args {
         {"priority", r.getPosition()},
@@ -488,7 +455,7 @@ QVariantList FirewalldClient::buildRule(Rule r, bool isIpv6)
     if (!args.value("sourcePort").toString().isEmpty())
         firewalld_direct_rule << "--sport" <<  args.value("sourcePort").toString();
 
-    if (isIpv6 == true)
+    if (ipvfamily == FirewallClient::IPV6)
         return QVariantList({"ipv6", args.value("table").toString(),
                 args.value("chain").toString(), args.value("priority").toInt(), firewalld_direct_rule
                 });

@@ -45,16 +45,16 @@ struct firewalld_reply {
     QStringList rules = {};
 };
 
-Q_DECLARE_METATYPE(firewalld_reply)
+Q_DECLARE_METATYPE(firewalld_reply);
 
-    namespace {
-        //const QString KCM_FIREWALLD_DIR = QStringLiteral("/etc/kcm_firewalld");
-        const QString LOG_FILE = QStringLiteral("/var/log/firewalld.log");
-        const QString SERVICE_NAME = "org.fedoraproject.FirewallD1";
-        const QString INTERFACE_NAME = SERVICE_NAME + ".direct";
-        const QString DBUS_PATH = "/org/fedoraproject/FirewallD1";
+namespace {
+    const QString KCM_FIREWALLD_DIR = QStringLiteral("/etc/kcm_firewalld");
+    const QString LOG_FILE = QStringLiteral("/var/log/firewalld.log");
+    const QString SERVICE_NAME = "org.fedoraproject.FirewallD1";
+    const QString INTERFACE_NAME = SERVICE_NAME + ".direct";
+    const QString DBUS_PATH = "/org/fedoraproject/FirewallD1";
 
-    }
+}
 
 class FirewalldClient : public IFirewallClientBackend
 {
@@ -98,9 +98,9 @@ class FirewalldClient : public IFirewallClientBackend
         void refreshProfiles() override;
 
         public slots:
-            void queryStatus(bool readDefaults=true, bool listProfiles=true) override;
-       void setDefaultIncomingPolicy(QString defaultIncomingPolicy) override;
-       void setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) override;
+        void queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior) override;
+    void setDefaultIncomingPolicy(QString defaultIncomingPolicy) override;
+    void setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) override;
 
         void setLogsAutoRefresh(bool logsAutoRefresh) override;
         void setEnabled(bool enabled) override;
@@ -114,7 +114,7 @@ class FirewalldClient : public IFirewallClientBackend
         void setExecutable(const bool &hasExecutable);
         /* KAuth::Action buildQueryAction(const QVariantMap &arguments); */
         /* KAuth::Action buildModifyAction(const QVariantMap &arguments); */
-        QVariantList buildRule(Rule r, bool isIpv6);
+        QVariantList buildRule(Rule r, FirewallClient::Ipv ipvfamily = FirewallClient::IPV4);
         QDBusMessage dbusCall(QString method, QVariantList args= {});
     private:
         QString m_status;
@@ -131,4 +131,3 @@ class FirewalldClient : public IFirewallClientBackend
 };
 
 #endif // FIREWALLDCLIENT_H
-
