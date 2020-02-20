@@ -61,7 +61,7 @@ protected:
 
 private:
     Profile m_profile;
-    QList<Rule> m_rules;
+    QVector<Rule> m_rules;
 };
 
 #endif // PROFILEITEMMODEL_H

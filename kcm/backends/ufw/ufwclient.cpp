@@ -454,14 +454,14 @@ void UfwClient::updateRule(RuleWrapper *ruleWrapper)
 
 void UfwClient::moveRule(int from, int to)
 {
-    QList<Rule> rules = m_currentProfile.getRules();
+    const QVector<Rule> rules = m_currentProfile.getRules();
     if (from < 0 || from >= rules.count()) {
-        qWarning() << __FUNCTION__ << "invalid from index";
+        qWarning() << "invalid from index";
         return;
     }
 
     if (to < 0 || to >= rules.count()) {
-        qWarning() << __FUNCTION__ << "invalid to index";
+        qWarning() << "invalid to index";
         return;
     }
     // Correct indices

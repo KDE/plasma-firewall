@@ -55,7 +55,7 @@ class Profile
     }
     Profile(const QByteArray &xml, bool isSys=false);
     Profile(QFile &file, bool isSys=false);
-    Profile(bool ipv6, Types::LogLevel ll, Types::Policy dip, Types::Policy dop, const QList<Rule> &r, const QSet<QString> &m)
+    Profile(bool ipv6, Types::LogLevel ll, Types::Policy dip, Types::Policy dop, const QVector<Rule> &r, const QSet<QString> &m)
         : fields(0xFF), enabled(true), ipv6Enabled(ipv6), logLevel(ll), defaultIncomingPolicy(dip), defaultOutgoingPolicy(dop)
         , rules(r), modules(m), isSystem(false)
     {
@@ -86,7 +86,7 @@ class Profile
     Types::LogLevel       getLogLevel() const              { return logLevel; }
     Types::Policy         getDefaultIncomingPolicy() const { return defaultIncomingPolicy; }
     Types::Policy         getDefaultOutgoingPolicy() const { return defaultOutgoingPolicy; }
-    const QList<Rule> &   getRules() const                 { return rules; }
+    const QVector<Rule> &   getRules() const                 { return rules; }
     const QSet<QString> & getModules() const               { return modules; }
     const QString &       getFileName() const              { return fileName; }
     bool                  getIsSystem() const              { return isSystem; }
@@ -103,7 +103,7 @@ class Profile
     Types::LogLevel logLevel;
     Types::Policy   defaultIncomingPolicy,
                     defaultOutgoingPolicy;
-    QList<Rule>     rules;
+    QVector<Rule>     rules;
     QSet<QString>   modules;
     QString         fileName;
     bool            isSystem;

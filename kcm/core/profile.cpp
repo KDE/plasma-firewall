@@ -71,14 +71,15 @@ QString Profile::toXml() const
 {
     QString                    str;
     QTextStream                stream(&str);
-    QList<Rule>::ConstIterator it(rules.constBegin()),
-                               end(rules.constEnd());
 
     stream << "<ufw full=\"true\" >" << endl
            << ' ' << defaultsXml() << endl
             << " <rules>" << endl;
-    for(; it!=end; ++it)
-        stream << "  " << (*it).toXml();
+
+    for(const auto &rule : rules) {
+        stream << "  " << rule.toXml();
+    }
+
     stream << " </rules>" << endl
             << ' ' << modulesXml() << endl
             << "</ufw>" << endl;
