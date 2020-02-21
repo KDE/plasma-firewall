@@ -201,7 +201,9 @@ KCM.ScrollViewKCM {
         }
         QQC2.Button {
             height: 48
-            enabled: firewallClient.enabled && tableView.currentRow !== -1
+            enabled: firewallClient.enabled 
+                     && tableView.currentRow !== -1 
+                     && tableView.rowCount > 0
 
             icon.name: "edit-entry"
             text: i18n("Edit Rule")
@@ -214,7 +216,9 @@ KCM.ScrollViewKCM {
         }
         QQC2.Button {
             height: 48
-            enabled: firewallClient.enabled && tableView.currentRow !== -1
+            enabled: firewallClient.enabled 
+                     && tableView.currentRow !== -1 
+                     && tableView.rowCount > 0
 
             icon.name: "list-remove"
             text: i18n("Remove Rule")
