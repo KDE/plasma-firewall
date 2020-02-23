@@ -48,12 +48,24 @@ struct firewalld_reply {
 Q_DECLARE_METATYPE(firewalld_reply);
 
 namespace {
-    const QString KCM_FIREWALLD_DIR = QStringLiteral("/etc/kcm_firewalld");
+    const QString KCM_FIREWALLD_DIR = QStringLiteral("/etc/kcm/firewalld");
     const QString LOG_FILE = QStringLiteral("/var/log/firewalld.log");
     const QString SERVICE_NAME = "org.fedoraproject.FirewallD1";
     const QString INTERFACE_NAME = SERVICE_NAME + ".direct";
     const QString DBUS_PATH = "/org/fedoraproject/FirewallD1";
 
+}
+
+namespace SYSTEMD {
+    enum actions {STOP, START};
+    const QString PATH = "/org/freedesktop/systemd1";
+    const QString DBUS_INTERFACE = "org.freedesktop.DBus.Properties";
+    const QString INTERFACE = "org.freedesktop.systemd1";
+    const QString SDMAN_INTERFACE = "org.freedesktop.systemd1.Manager";
+    const QString SERVICE = "firewalld.service";
+    QString sdManager;
+    QString sdService;
+    bool executeAction(actions value);
 }
 
 class FirewalldClient : public IFirewallClientBackend
@@ -126,6 +138,7 @@ class FirewalldClient : public IFirewallClientBackend
         QTimer              m_logsRefreshTimer;
         //    Blocker       *blocker;
         bool m_logsAutoRefresh;
+        bool m_serviceStatus;
         //KAuth::Action m_queryAction;
 
 };

@@ -26,14 +26,12 @@
 #include <QNetworkInterface>
 #include <QStandardPaths>
 #include <QDir>
-#include <KConfig>
 #include <KLocalizedString>
-#include <KConfigGroup>
 #include <QtDBus/QDBusArgument>
 #include <QtDBus/QDBusConnection>
 #include <QtDBus/QDBusInterface>
 #include <QVariantList>
-
+#include <QProcess>
 const QDBusArgument &operator>>(const QDBusArgument &argument, firewalld_reply &mystruct)
 {
     argument.beginStructure();
@@ -69,33 +67,8 @@ bool FirewalldClient::enabled() const
     return m_currentProfile.getEnabled();
 }
 /* TODO create a call to systemd/openrc/sysvinit? */
-void FirewalldClient::setEnabled(bool enabled)
-{
-    QVariantMap args {
-        {"cmd", "setStatus"},
-            {"status", enabled},
-    };
-
-    /* KAuth::Action modifyAction = buildModifyAction(args); */
-
-    /* m_status = enabled ? i18n("Enabling the firewall...") : i18n("Disabling the firewall..."); */
-    /* m_isBusy = true; */
-
-
-    /* KAuth::ExecuteJob *job = modifyAction.execute(); */
-    /* connect(job, &KAuth::ExecuteJob::result, [this](KJob * kjob) { */
-    /*         auto job = qobject_cast<KAuth::ExecuteJob *>(kjob); */
-    /*         setBusy(false); */
-
-    /*         if (!job->error()) */
-    /*         queryStatus(true, false); */
-
-
-    /*         }); */
-
-    /* job->start(); */
-}
-
+void FirewalldClient::setEnabled(bool value)
+{ return;}
 
 bool FirewalldClient::isBusy() const
 {
@@ -382,7 +355,7 @@ IFirewallClientBackend *FirewalldClient::createMethod(FirewallClient *parent)
 
 bool FirewalldClient::hasExecutable() const
 {
-    return !QStandardPaths::findExecutable("ufw").isEmpty();
+    return !QStandardPaths::findExecutable("firewalld").isEmpty();
 }
 
 void FirewalldClient::setExecutable(const bool &hasExecutable)
@@ -474,4 +447,31 @@ void FirewalldClient::setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) {}
 LogListModel *FirewalldClient::logs()
 {
     return m_logs;
+}
+
+bool SYSTEMD::executeAction(SYSTEMD::actions value) {
+    QDBusMessage msg;
+    if (QDBusConnection::systemBus().isConnected()) {
+        QDBusInterface iface(SYSTEMD::DBUS_INTERFACE, SYSTEMD::PATH, SYSTEMD::SDMAN_INTERFACE, QDBusConnection::systemBus());
+        if (iface.isValid() && value == SYSTEMD::START) {
+            msg = iface.callWithArgumentList(QDBus::AutoDetect, "StartUnit", QVariantList({"firewalld.service", "fail"}));
+            if (msg.type() == QDBusMessage::ErrorMessage){
+                qDebug() << msg.errorMessage();
+                return false;
+            }
+            return SYSTEMD::START;
+        }
+        else {
+            QDBusInterface iface(SERVICE_NAME, DBUS_PATH, INTERFACE_NAME, QDBusConnection::systemBus());
+            if (iface.isValid())
+                msg = iface.callWithArgumentList(QDBus::AutoDetect, "StopUnit", QVariantList({"firewalld.service", "fail"}));
+            if (msg.type() == QDBusMessage::ErrorMessage){
+                qDebug() << msg.errorMessage();
+                return -1;
+            }
+            return SYSTEMD::STOP;
+
+        }
+    }
+    return -1;
 }
