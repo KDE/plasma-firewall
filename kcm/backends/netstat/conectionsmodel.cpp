@@ -110,7 +110,6 @@ void ConnectionsModel::refreshConnections()
             m_connectionsData.clear();
             for (const auto connection : job->data().value("connections", QVariantList()).toList()) {
                 const auto connList = connection.toList();
-                qDebug() << connList;
                 ConnectionsData conn {
                     .protocol = connList.at(0).toString(),
                     .localAddress = connList.at(1).toString(),
