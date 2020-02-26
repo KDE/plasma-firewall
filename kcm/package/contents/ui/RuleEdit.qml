@@ -57,7 +57,7 @@ Kirigami.FormLayout {
 
     QQC2.ComboBox {
         id: policy
-        Kirigami.FormData.label: "Policy:"
+        Kirigami.FormData.label: i18n("Policy:")
         model: policyChoices
         textRole: "text"
         currentIndex: policyChoices.arrayIndex((policy) => policy.data == rule.policy)
@@ -65,7 +65,7 @@ Kirigami.FormLayout {
     }
 
     RowLayout {
-        Kirigami.FormData.label: "Direction:"
+        Kirigami.FormData.label: i18n("Direction:")
         QQC2.RadioButton {
             id: incoming
             text: i18n("Incoming")
@@ -82,7 +82,7 @@ Kirigami.FormLayout {
     }
 
     RowLayout {
-        Kirigami.FormData.label: "Source:"
+        Kirigami.FormData.label: i18n("Source:")
 
         IpV4TextField {
             id: sourceAddress
@@ -100,7 +100,7 @@ Kirigami.FormLayout {
     }
 
     RowLayout {
-        Kirigami.FormData.label: "Destination:"
+        Kirigami.FormData.label: i18n("Destination:")
 
         IpV4TextField {
             id: destinationAddress
@@ -117,7 +117,7 @@ Kirigami.FormLayout {
     }
 
     QQC2.ComboBox {
-        Kirigami.FormData.label: "Protocol:"
+        Kirigami.FormData.label: i18n("Protocol:")
 
         id: protocolCb
 
@@ -127,7 +127,7 @@ Kirigami.FormLayout {
         onCurrentIndexChanged: rule.protocol = currentIndex
     }
     QQC2.ComboBox {
-        Kirigami.FormData.label: "Interface:"
+        Kirigami.FormData.label: i18n("Interface:")
 
         id: interfaceCb
 
@@ -139,7 +139,7 @@ Kirigami.FormLayout {
     }
 
     QQC2.ComboBox {
-        Kirigami.FormData.label: "Logging:"
+        Kirigami.FormData.label: i18n("Logging:")
         model: ruleChoices
         textRole: "text"
         currentIndex: ruleChoices.arrayIndex((rules) => rules.data == rule.logging)
