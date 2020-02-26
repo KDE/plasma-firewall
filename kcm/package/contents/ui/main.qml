@@ -43,15 +43,6 @@ KCM.ScrollViewKCM {
         {text: i18n("Reject"), data: "reject", tooltip: i18n("Produces an immediate and very informative 'Connection refused' message")}
     ]
 
-    function getCurrentIndex(data, model) {
-        for (var i = 0; i < model.length; i++) {
-            if (model[i].data === data) {
-                return i;
-            }
-        }
-        return 0;
-    }
-
     FirewallClient {
         id: firewallClient
         backend: "ufw"
@@ -106,7 +97,7 @@ KCM.ScrollViewKCM {
                 Kirigami.FormData.label: i18n("Default Incoming Policy:")
                 model: policyChoices
                 textRole: "text"
-                currentIndex: getCurrentIndex(firewallClient.defaultIncomingPolicy, policyChoices)
+                currentIndex: policyChoices.findIndex((choice) => choice.data === firewallClient.defaultIncomingPolicy)
                 onCurrentIndexChanged: firewallClient.defaultIncomingPolicy = policyChoices[currentIndex].data
                 enabled: firewallClient.enabled
                 QQC2.ToolTip.text:  policyChoices[currentIndex].tooltip
@@ -120,7 +111,7 @@ KCM.ScrollViewKCM {
                 Kirigami.FormData.label: i18n("Default Outgoing Policy:")
                 model: policyChoices
                 textRole: "text"
-                currentIndex: getCurrentIndex(firewallClient.defaultOutgoingPolicy, policyChoices)
+                currentIndex: policyChoices.findIndex((choice) => choice.data == firewallClient.defaultOutgoingPolicy)
                 onCurrentIndexChanged: firewallClient.defaultOutgoingPolicy = policyChoices[currentIndex].data
                 enabled: firewallClient.enabled
                 QQC2.ToolTip.text:  policyChoices[currentIndex].tooltip
