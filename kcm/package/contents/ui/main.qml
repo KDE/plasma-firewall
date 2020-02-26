@@ -154,10 +154,28 @@ KCM.ScrollViewKCM {
             QQC1.TableViewColumn {
                 title: i18n("Logging")
                 role: "logging"
-                width: 100
+            }
+            QQC1.TableViewColumn {
+                delegate: RowLayout {
+                    QQC2.ToolButton {
+                        icon.name: "edit-entry"
+                        onClicked: {
+                            ruleEdit.rule = firewallClient.getRule(model.row)
+                            ruleEdit.newRule = false
+                            drawer.open()
+                        }
+                    }
+                    QQC2.ToolButton {
+                        icon.name: "list-remove"
+                        onClicked: {
+                            firewallClient.removeRule(model.row)
+                        }
+                    }
+                }
             }
         }
     }
+
 
     footer: RowLayout {
         QQC2.Button {
@@ -184,33 +202,6 @@ KCM.ScrollViewKCM {
             onClicked: {
                 ruleEdit.newRule = true
                 drawer.open()
-            }
-        }
-        QQC2.Button {
-            height: 48
-            enabled: firewallClient.enabled 
-                     && tableView.currentRow !== -1 
-                     && tableView.rowCount > 0
-
-            icon.name: "edit-entry"
-            text: i18n("Edit Rule")
-            onClicked: {
-                var rule = firewallClient.getRule(tableView.currentRow)
-                ruleEdit.rule = rule
-                ruleEdit.newRule = false
-                drawer.open()
-            }
-        }
-        QQC2.Button {
-            height: 48
-            enabled: firewallClient.enabled 
-                     && tableView.currentRow !== -1 
-                     && tableView.rowCount > 0
-
-            icon.name: "list-remove"
-            text: i18n("Remove Rule")
-            onClicked: {
-                firewallClient.removeRule(tableView.currentRow)
             }
         }
     }

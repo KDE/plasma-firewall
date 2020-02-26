@@ -73,27 +73,26 @@ KCM.ScrollViewKCM {
             }
             QQC1.TableViewColumn {
                 title: i18n("Program")
-                role: "program"
                 width: 100
+                role: "program"
             }
-        }
-    }
-    footer: RowLayout {
-        QQC2.Button {
-            text: i18n("Blacklist Connection")
-            enabled: tableView.currentRow !== -1
-            onClicked: {
-                var protocol = tableView.model.data2(tableView.currentRow, "protocol");
-                var localAddress = tableView.model.data2(tableView.currentRow, "localAddress");
-                var foreignAddress = tableView.model.data2(tableView.currentRow, "foreignAddress");
-                var status = tableView.model.data2(tableView.currentRow, "status");
 
-                var rule = firewallClient.createRuleFromConnection(protocol, localAddress, foreignAddress, status)
-                firewallClient.addRule(rule);
+            QQC1.TableViewColumn {
+                delegate: QQC2.ToolButton {
+                    icon.name: "list-remove"
+                    height: delegateLabel.height
+                    Layout.alignment: Qt.AlignRight
+                    onClicked: {
+                        var protocol = tableView.model.data2(model.row, "protocol");
+                        var localAddress = tableView.model.data2(model.row, "localAddress");
+                        var foreignAddress = tableView.model.data2(model.row, "foreignAddress");
+                        var status = tableView.model.data2(model.row, "status");
+
+                        var rule = firewallClient.createRuleFromConnection(protocol, localAddress, foreignAddress, status)
+                        firewallClient.addRule(rule);
+                    }
+                }
             }
-        }
-        Item {
-            Layout.fillWidth: true
         }
     }
 }

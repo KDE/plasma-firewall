@@ -72,26 +72,27 @@ KCM.ScrollViewKCM {
                 role: "interface"
                 width: 100
             }
+            QQC1.TableViewColumn {
+                delegate: QQC2.ToolButton {
+                    icon.name: "list-remove"
+                    onClicked: {
+                        var rule = firewallClient.createRuleFromLog(
+                            model.data2(model.row, "protocol"),
+                            model.data2(model.row, "sourceAddress"),
+                            model.data2(model.row, "sourcePort"),
+                            model.data2(model.row, "destinationAddress"),
+                            model.data2(model.row, "destinationPort"),
+                            model.data2(model.row, "interface")
+                        );
+                        firewallClient.addRule(rule)
+                    }
+                }
+            }
         }
     }
 
     footer: RowLayout {
-        QQC2.Button {
-            text: i18n("Blacklist Log Entry")
-            enabled: tableView.currentRow !== -1
-            onClicked: {
-                var  model = TableView.model
-                var rule = firewallClient.createRuleFromLog(
-                    model.data2(tableView.currentRow, "protocol"),
-                    model.data2(tableView.currentRow, "sourceAddress"),
-                    model.data2(tableView.currentRow, "sourcePort"),
-                    model.data2(tableView.currentRow, "destinationAddress"),
-                    model.data2(tableView.currentRow, "destinationPort"),
-                    model.data2(tableView.currentRow, "interface")
-                );
-                firewallClient.addRule(rule)
-            }
-        }
+
         Item {
             Layout.fillWidth: true
         }
