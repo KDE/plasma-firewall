@@ -41,10 +41,9 @@ ConnectionsModel::ConnectionsModel(QObject *parent)
 
 int ConnectionsModel::rowCount(const QModelIndex &parent) const
 {
-    // For list models only the root node (an invalid parent) should return the list's size. For all
-    // other (valid) parents, rowCount() should return 0 so that it does not become a tree model.
-    if (parent.isValid())
+    if (parent.isValid()) {
         return 0;
+    }
 
     return m_connectionsData.size();
 }
