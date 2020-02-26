@@ -95,7 +95,7 @@ KCM.ScrollViewKCM {
         }
         Kirigami.FormLayout {
             QQC2.CheckBox {
-                Kirigami.FormData.label: "Firewall Status:"
+                Kirigami.FormData.label: i18n("Firewall Status:")
                 text: i18n("Enabled")
                 onClicked: firewallClient.enabled = !firewallClient.enabled
                 checked: firewallClient.enabled
@@ -103,7 +103,7 @@ KCM.ScrollViewKCM {
 
             QQC2.ComboBox {
                 id: defaultIncomingPolicy
-                Kirigami.FormData.label: "Default Incoming Policy:"
+                Kirigami.FormData.label: i18n("Default Incoming Policy:")
                 model: policyChoices
                 textRole: "text"
                 currentIndex: getCurrentIndex(firewallClient.defaultIncomingPolicy, policyChoices)
@@ -117,7 +117,7 @@ KCM.ScrollViewKCM {
 
             QQC2.ComboBox {
                 id: defaultOutgoingPolicy
-                Kirigami.FormData.label: "Default Outgoing Policy:"
+                Kirigami.FormData.label: i18n("Default Outgoing Policy:")
                 model: policyChoices
                 textRole: "text"
                 currentIndex: getCurrentIndex(firewallClient.defaultOutgoingPolicy, policyChoices)
