@@ -136,7 +136,8 @@ KCM.ScrollViewKCM {
                 id: mouseArea
                 height: 50
                 hoverEnabled: true
-                onContainsMouseChanged: tableView.currentHoveredRow = containsMouse ? model.row : -1
+                onContainsMouseChanged: tableView.currentHoveredRow = model === null ? -1
+                                                                       : containsMouse ? model.row : -1
                 onPressed: mouse.accepted = false
             }
 

@@ -52,7 +52,8 @@ KCM.ScrollViewKCM {
                 id: mouseArea
                 height: 50
                 hoverEnabled: true
-                onContainsMouseChanged: root.currentHoveredRow = containsMouse ? model.row : -1
+                onContainsMouseChanged: root.currentHoveredRow = model === null ? -1
+                                                                : containsMouse ? model.row : -1
                 onPressed: mouse.accepted = false
             }
 
@@ -89,9 +90,8 @@ KCM.ScrollViewKCM {
             QQC1.TableViewColumn {
                 delegate: QQC2.ToolButton {
                     icon.name: "list-remove"
-                    height: delegateLabel.height
                     Layout.alignment: Qt.AlignRight
-                    visible: root.currentHoveredRow === model.row
+                    visible: model ? root.currentHoveredRow === model.row : false
                     onClicked: {
                         var protocol = tableView.model.data2(model.row, "protocol");
                         var localAddress = tableView.model.data2(model.row, "localAddress");
