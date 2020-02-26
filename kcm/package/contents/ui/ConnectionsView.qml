@@ -39,6 +39,7 @@ KCM.ScrollViewKCM {
     property var drawer: null
     property var firewallClient: null
     property var netStatClient: null
+    property int currentHoveredRow: -1
 
     title: i18n("Connections")
     view: Flickable {
@@ -46,6 +47,14 @@ KCM.ScrollViewKCM {
             id: tableView
             width: parent.width
             height: parent.height
+
+            rowDelegate: MouseArea{
+                id: mouseArea
+                height: 50
+                hoverEnabled: true
+                onContainsMouseChanged: root.currentHoveredRow = containsMouse ? model.row : -1
+                onPressed: mouse.accepted = false
+            }
 
             model: netStatClient.connections()
             QQC1.TableViewColumn {
@@ -82,6 +91,7 @@ KCM.ScrollViewKCM {
                     icon.name: "list-remove"
                     height: delegateLabel.height
                     Layout.alignment: Qt.AlignRight
+                    visible: root.currentHoveredRow === model.row
                     onClicked: {
                         var protocol = tableView.model.data2(model.row, "protocol");
                         var localAddress = tableView.model.data2(model.row, "localAddress");

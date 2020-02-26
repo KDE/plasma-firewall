@@ -130,6 +130,15 @@ KCM.ScrollViewKCM {
             height: parent.height
             model: firewallClient.rules()
             enabled: firewallClient.enabled
+            property int currentHoveredRow: -1
+
+            rowDelegate: MouseArea{
+                id: mouseArea
+                height: 50
+                hoverEnabled: true
+                onContainsMouseChanged: tableView.currentHoveredRow = containsMouse ? model.row : -1
+                onPressed: mouse.accepted = false
+            }
 
             QQC1.TableViewColumn {
                 title: i18n("Action")
@@ -157,6 +166,8 @@ KCM.ScrollViewKCM {
             }
             QQC1.TableViewColumn {
                 delegate: RowLayout {
+                    id: buttonLayout
+                    visible: tableView.currentHoveredRow === model.row
                     QQC2.ToolButton {
                         icon.name: "edit-entry"
                         onClicked: {

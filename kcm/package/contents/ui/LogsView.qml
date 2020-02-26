@@ -30,6 +30,8 @@ import org.kde.kcm 1.2 as KCM
 KCM.ScrollViewKCM {
     id: root
     property var firewallClient: null
+    property int currentHoveredRow: -1
+
     title: i18n("Firewall Logs")
 
     /* TODO:
@@ -42,6 +44,14 @@ KCM.ScrollViewKCM {
             id: tableView
             width: parent.width
             height: parent.height
+
+            rowDelegate: MouseArea{
+                id: mouseArea
+                height: 50
+                hoverEnabled: true
+                onContainsMouseChanged: tableView.currentHoveredRow = containsMouse ? model.row : -1
+                onPressed: mouse.accepted = false
+            }
 
             model: firewallClient ? firewallClient.logs() : null
             QQC1.TableViewColumn {
@@ -75,6 +85,7 @@ KCM.ScrollViewKCM {
             QQC1.TableViewColumn {
                 delegate: QQC2.ToolButton {
                     icon.name: "list-remove"
+                    visible: root.currentHoveredRow === model.row
                     onClicked: {
                         var rule = firewallClient.createRuleFromLog(
                             model.data2(model.row, "protocol"),
