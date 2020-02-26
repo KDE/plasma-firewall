@@ -29,9 +29,7 @@ import org.kde.kcm 1.2 as KCM
 
 KCM.ScrollViewKCM {
     id: root
-    property var drawer: null
     property var firewallClient: null
-    property var ruleEdit: null
     title: i18n("Firewall Logs")
 
     /* TODO:

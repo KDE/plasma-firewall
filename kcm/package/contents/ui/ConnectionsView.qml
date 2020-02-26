@@ -39,7 +39,6 @@ KCM.ScrollViewKCM {
     property var drawer: null
     property var firewallClient: null
     property var netStatClient: null
-    property var ruleEdit: null
 
     title: i18n("Connections")
     view: Flickable {

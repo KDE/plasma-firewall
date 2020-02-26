@@ -163,18 +163,14 @@ KCM.ScrollViewKCM {
         QQC2.Button {
             text: i18n("Connections...")
             onClicked: kcm.push("ConnectionsView.qml", {
-                "drawer": drawer,
                 "firewallClient": firewallClient,
                 "netStatClient" : netStatClient,
-                "ruleEdit": ruleEdit,
             });
         }
         QQC2.Button {
             text: i18n("Logs...")
             onClicked: kcm.push("LogsView.qml", {
-                "drawer": drawer,
                 "firewallClient": firewallClient,
-                "ruleEdit": ruleEdit,
             });
         }
         Item {
