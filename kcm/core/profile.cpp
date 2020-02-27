@@ -89,10 +89,14 @@ QString Profile::toXml() const
 
 QString Profile::defaultsXml() const
 {
-    return QString("<defaults ipv6=\"")+QString(ipv6Enabled ? "yes" : "no")+QChar('\"')+
-           QString(" loglevel=\"")+Types::toString(logLevel)+QChar('\"')+
-           QString(" incoming=\"")+Types::toString(defaultIncomingPolicy)+QChar('\"')+
-           QString(" outgoing=\"")+Types::toString(defaultOutgoingPolicy)+QString("\"/>");
+    static const auto defaultString = QStringLiteral(
+        R"(<defaults ipv6="%1" loglevel="%2" incoming="%3" outgoing="%4"/>)");
+
+    return defaultString
+                .arg(ipv6Enabled ? "yes" : "no")
+                .arg(Types::toString(logLevel))
+                .arg(Types::toString(defaultIncomingPolicy))
+                .arg(Types::toString(defaultOutgoingPolicy));
 }
 
 QString Profile::modulesXml() const
