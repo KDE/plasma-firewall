@@ -80,14 +80,16 @@ QVariant LogListModel::data2(int row, const QByteArray &roleName) const
 void LogListModel::addRawLogs(const QStringList &rawLogsList)
 {
     beginInsertRows(QModelIndex(), 0, rawLogsList.size() - 1);
-    // UNSCAPED REGEX: (.*)\s(.*)\s(.*):\s\[(.*)\]\s\[(.*)\].*IN=([\w|\d]*).*SRC=([\w|\.|\d]*).*DST=([\w|\.|\d]*).*PROTO=([\w|\.|\d]*)\s(SPT=(\d*)\sDPT=(\d*))?.*
     static QRegularExpression regex(
-        "(.*)\\s(.*)\\s(.*):\\s\\[(.*)\\]\\s\\[(.*)\\]"
-        ".*IN=([\\w|\\d]*)"
-        ".*SRC=([\\w|\\.|\\d]*)"
-        ".*DST=([\\w|\\.|\\d]*)"
-        ".*PROTO=([\\w|\\.|\\d]*)"
-        "\\s(SPT=(\\d*)\\sDPT=(\\d*))?.*");
+        R"regex(
+            "(.*)\s(.*)\s(.*):\s\[(.*)\]\s\[(.*)\]"
+            ".*IN=([\w|\d]*)"
+            ".*SRC=([\w|\.|\d]*)"
+            ".*DST=([\w|\.|\d]*)"
+            ".*PROTO=([\w|\.|\d]*)"
+            "\s(SPT=(\d*)\sDPT=(\d*))?.*"
+        ")regex"
+    );
 
     m_logsData.reserve(rawLogsList.size());
     for (const QString &log : rawLogsList) {
