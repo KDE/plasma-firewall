@@ -32,6 +32,7 @@
 
 namespace Types
 {
+Q_NAMESPACE
 
 enum LogLevel
 {
@@ -43,6 +44,7 @@ enum LogLevel
 
     LOG_COUNT
 };
+Q_ENUM_NS(LogLevel)
 
 enum Logging
 {
@@ -52,6 +54,7 @@ enum Logging
 
     LOGGING_COUNT
 };
+Q_ENUM_NS(Logging)
 
 enum Policy
 {
@@ -63,6 +66,7 @@ enum Policy
     POLICY_COUNT,
     POLICY_COUNT_DEFAULT=POLICY_COUNT-1 // No 'Limit' for defaults...
 };
+Q_ENUM_NS(Policy)
 
 enum PredefinedPort
 {
@@ -96,6 +100,7 @@ enum PredefinedPort
 
     PP_COUNT
 };
+Q_ENUM_NS(PredefinedPort)
 
 enum Protocol
 {
@@ -105,6 +110,7 @@ enum Protocol
 
     PROTO_COUNT
 };
+Q_ENUM_NS(Protocol)
 
 QString        toString(LogLevel level, bool ui=false);
 LogLevel       toLogLevel(const QString &str);
