@@ -216,61 +216,6 @@ Rule::Rule()
 {
 }
 
-Rule::Rule(QDomElement &elem)
-{
-    QString val=elem.attribute("position");
-
-    position=val.toUInt();
-    val=elem.attribute("action");
-    action=Types::POLICY_ALLOW;
-    if(!val.isEmpty())
-        for(int i=Types::POLICY_ALLOW; i<Types::POLICY_COUNT; ++i)
-            if(val==toString((Types::Policy)i))
-            {
-                action=(Types::Policy)i;
-                break;
-            }
-    incoming=elem.attribute("direction")=="in";
-    destApplication=elem.attribute("dapp");
-    sourceApplication=elem.attribute("sapp");
-    destAddress=elem.attribute("dst");
-    sourceAddress=elem.attribute("src");
-    val=elem.attribute("protocol");
-    protocol=Types::PROTO_BOTH;
-    if(!val.isEmpty() && ANY_PROTOCOL!=val)
-        for(int i=Types::PROTO_TCP; i<Types::PROTO_COUNT; ++i)
-            if(val==toString((Types::Protocol)i))
-            {
-                protocol=(Types::Protocol)i;
-                break;
-            }
-    val=elem.attribute("logtype");
-    logtype=Types::LOGGING_OFF;
-    if(!val.isEmpty())
-        for(int i=Types::LOGGING_OFF; i<Types::LOGGING_COUNT; ++i)
-            if(val==toString((Types::Logging)i))
-            {
-                logtype=(Types::Logging)i;
-                break;
-            }
-    v6=elem.attribute("v6").toLower()=="true";
-    destPort=elem.attribute("dport");
-    sourcePort=elem.attribute("sport");
-    interfaceIn=elem.attribute("interface_in");
-    interfaceOut=elem.attribute("interface_out");
-
-    if(ANY_ADDR==destAddress || ANY_ADDR_V6==destAddress)
-        destAddress=QString();
-    if(ANY_ADDR==sourceAddress || ANY_ADDR_V6==sourceAddress)
-        sourceAddress=QString();
-    if(ANY_PORT==destPort)
-        destPort=QString();
-    if(ANY_PORT==sourcePort)
-        sourcePort=QString();
-//     description=elem.attribute("descr");
-//     hash=elem.attribute("hash");
-}
-
 QString Rule::fromStr() const
 {
     return modify(sourceAddress, sourcePort, sourceApplication, interfaceIn, protocol);

@@ -30,8 +30,6 @@
 #include <QString>
 #include <QObject>
 
-class QDomElement;
-
 class Rule
 {
     public:
@@ -42,15 +40,14 @@ class Rule
                           const QString &iface, const Types::Protocol &protocol, bool matchPortNoProto=false);
 
     Rule();
-    Rule(QDomElement &elem);
-    Rule(Types::Policy pol, bool in, Types::Logging log, Types::Protocol prot,
+    Rule(Types::Policy pol, bool incomming, Types::Logging log, Types::Protocol prot,
 //          const QString &descr=QString(), const QString &hsh=QString(),
          const QString &srcHost=QString(), const QString &srcPort=QString(),
          const QString &destHost=QString(), const QString &destPort=QString(),
          const QString &ifaceIn=QString(), const QString &ifaceOut=QString(),
          const QString &srcApp=QString(), const QString &destApp=QString(),
-         unsigned int i=0)
-        : position(i), action(pol), incoming(in), v6(false), protocol(prot), logtype(log),
+         unsigned int i=0, bool ipv6 = false)
+        : position(i), action(pol), incoming(incomming), v6(ipv6), protocol(prot), logtype(log),
           destApplication(destApp), sourceApplication(srcApp),
           destAddress(destHost), sourceAddress(srcHost), destPort(destPort), sourcePort(srcPort),
           interfaceIn(ifaceIn), interfaceOut(ifaceOut) // , description(descr), hash(hsh)

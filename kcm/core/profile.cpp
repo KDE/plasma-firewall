@@ -24,17 +24,18 @@
  */
 
 
-#include <QDomDocument>
-#include <QDomElement>
-#include <QDomNode>
-#include <QDomText>
 #include <QFile>
 #include <QStringList>
 #include <QTextStream>
+#include <QBuffer>
+#include <QXmlStreamReader>
+#include <QIODevice>
+#include <QDebug>
+#include <QMetaEnum>
 
 #include "profile.h"
 
-Profile::Profile(const QByteArray &xml, bool isSys)
+Profile::Profile(QByteArray &xml, bool isSys)
        : fields(0)
        , enabled(false)
        , ipv6Enabled(false)
@@ -43,9 +44,10 @@ Profile::Profile(const QByteArray &xml, bool isSys)
        , defaultOutgoingPolicy(Types::POLICY_ALLOW)
        , isSystem(isSys)
 {
-    QDomDocument doc;
-    doc.setContent(xml);
-    load(doc);
+    qDebug() << "Xml read" << xml;
+    QBuffer buffer;
+    buffer.setBuffer(&xml);
+    load(&buffer);
 }
 
 Profile::Profile(QFile &file, bool isSys)
@@ -58,13 +60,7 @@ Profile::Profile(QFile &file, bool isSys)
        , fileName(file.fileName())
        , isSystem(isSys)
 {
-    QDomDocument doc;
-
-    if(file.open(QIODevice::ReadOnly))
-    {
-        doc.setContent(&file);
-        load(doc);
-    }
+    load(&file);
 }
 
 QString Profile::toXml() const
@@ -104,88 +100,103 @@ QString Profile::modulesXml() const
     return QString("<modules enabled=\"")+QStringList(modules.toList()).join(" ")+QString("\" />");
 }
 
-void Profile::load(const QDomDocument &doc)
+void Profile::load(QIODevice *device)
 {
-    QDomNode ufw=doc.namedItem("ufw");
+    device->open(QIODevice::ReadOnly);
+    QXmlStreamReader reader(device);
 
-    if(!ufw.isNull())
-    {
-        QDomElement elem=ufw.toElement();
-        bool        isFull=elem.attribute("full")=="true";
-
-        QDomNode status=ufw.namedItem("status");
-        if(!status.isNull())
-        {
-            QDomElement elem=status.toElement();
-            enabled=elem.attribute("enabled")=="true";
-            fields|=FIELD_STATUS;
+    bool isFullProfile = false;
+    while (!reader.atEnd()) {
+        auto token = reader.readNext();
+        if (token == QXmlStreamReader::Invalid) {
+            break;
         }
-
-        QDomNode rulesNode=ufw.namedItem("rules"),
-                 defaultsNode=ufw.namedItem("defaults"),
-                 modulesNode=ufw.namedItem("modules");
-
-        if(!rulesNode.isNull())
-        {
-            QDomNodeList nodes=rulesNode.childNodes();
-
-            fields|=FIELD_RULES;
-            if(nodes.count()>0)
-            {
-                for(int i=0; i<nodes.count(); ++i)
-                {
-                    QDomElement rule=nodes.at(i).toElement();
-
-                    if(!rule.isNull() && "rule"==rule.tagName())
-                        rules.append(Rule(rule));
-                }
-            }
+        if (token != QXmlStreamReader::StartElement) {
+            continue;
         }
-
-        if(!defaultsNode.isNull())
-        {
-            QDomElement elem=defaultsNode.toElement();
-            fields|=FIELD_DEFAULTS;
-            if(!elem.isNull())
-            {
-                QString val=elem.attribute("loglevel");
-                if(!val.isEmpty())
-                    for(int i=Types::LOG_LOW; i<Types::LOG_COUNT; ++i)
-                        if(val==toString((Types::LogLevel)i))
-                        {
-                            logLevel=(Types::LogLevel)i;
-                            break;
-                        }
-
-                val=elem.attribute("incoming");
-                if(!val.isEmpty())
-                    for(int i=Types::POLICY_ALLOW; i<Types::POLICY_COUNT_DEFAULT; ++i)
-                        if(val==toString((Types::Policy)i))
-                        {
-                            defaultIncomingPolicy=(Types::Policy)i;
-                            break;
-                        }
-
-                val=elem.attribute("outgoing");
-                if(!val.isEmpty())
-                    for(int i=Types::POLICY_ALLOW; i<Types::POLICY_COUNT_DEFAULT; ++i)
-                        if(val==toString((Types::Policy)i))
-                        {
-                            defaultOutgoingPolicy=(Types::Policy)i;
-                            break;
-                        }
-                ipv6Enabled=elem.attribute("ipv6")=="yes";
-            }
+        if (reader.name() == QStringLiteral("ufw")) {
+             isFullProfile = reader.attributes().value("full") == QStringLiteral("true");
+            continue;
         }
-
-        if(!modulesNode.isNull())
-        {
-            fields|=FIELD_MODULES;
-            modules=modulesNode.toElement().attribute("enabled").split(" ", QString::SkipEmptyParts).toSet();
+        if (reader.name() == QStringLiteral("status")) {
+            enabled = reader.attributes().value("enabled") == QStringLiteral("true");
+            fields |= FIELD_STATUS;
         }
+        if (reader.name() == QStringLiteral("rules")) {
+            fields |= FIELD_RULES;
+            continue;
+        }
+        if (reader.name() == "rule") {
+            static QString ANY_ADDR     = "0.0.0.0/0";
+            static QString ANY_ADDR_V6  = "::/0";
+            static QString ANY_PORT     = "any";
+            static QString ANY_PROTOCOL = "any";
 
-        // If this is a 'full' profile - then we expect rules/defaults/modules
-        if(isFull && ( !(fields&FIELD_RULES) || !(fields&FIELD_DEFAULTS) || !(fields&FIELD_MODULES) ) )
-            fields=0;
+            const auto attr = reader.attributes();
+
+            // Handle Enums.
+            const char *policyKey = attr.value("action").toString().toLocal8Bit().constData();
+            const auto action = (Types::Policy) QMetaEnum::fromType<Types::Policy>().keyToValue(policyKey);
+
+            const char *protocolKey = attr.value("protocol").toString().toLocal8Bit().constData();
+            const auto protocol = (Types::Protocol) QMetaEnum::fromType<Types::Protocol>().keyToValue(protocolKey);
+
+            const char *logTypeKey = attr.value("logtype").toString().toLocal8Bit().constData();
+            const auto logType = (Types::Logging) QMetaEnum::fromType<Types::Logging>().keyToValue(logTypeKey);
+
+            // Handle values that have weird defaults.
+            const auto anyAddrs = QList<QString>({ANY_ADDR, ANY_ADDR_V6});
+            const auto dst = attr.value("dst").toString();
+            const auto src = attr.value("src").toString();
+            const auto sport = attr.value("sport").toString();
+            const auto dport = attr.value("dport").toString();
+
+            const QString destAddress = anyAddrs.contains(dst) ? QString() : dst;
+            const QString sourceAddress = anyAddrs.contains(src) ? QString() : src;
+            const QString sourcePort = sport == ANY_PORT ? QString() : sport;
+            const QString destPort = dport == ANY_PORT ? QString() : dport;
+
+            rules.append(Rule(
+                action,
+                attr.value("direction") == QStringLiteral("in"),
+                logType,
+                protocol,
+                sourceAddress,
+                sourcePort,
+                destAddress,
+                destPort,
+                attr.value("interface_in").toString(),
+                attr.value("interface_out").toString(),
+                attr.value("sapp").toString(),
+                attr.value("dapp").toString(),
+                attr.value("position").toInt(),
+                attr.value("v6") == QStringLiteral("False")
+            ));
+        }
+        if (reader.name() == "defaults") {
+            fields |= FIELD_DEFAULTS;
+
+            const auto attr = reader.attributes();
+
+            const char *logKey = attr.value("loglevel").toString().toLocal8Bit().constData();
+            logLevel = (Types::LogLevel) QMetaEnum::fromType<Types::LogLevel>().keyToValue(logKey);
+
+            const char *incomingPolicyKey= attr.value("incoming").toString().toLocal8Bit().constData();
+            defaultIncomingPolicy = (Types::Policy) QMetaEnum::fromType<Types::Policy>().keyToValue(incomingPolicyKey);
+
+            const char *outcomingPolicyKey = attr.value("outgoing").toString().toLocal8Bit().constData();
+            defaultOutgoingPolicy = (Types::Policy) QMetaEnum::fromType<Types::Policy>().keyToValue(outcomingPolicyKey);
+
+            ipv6Enabled=attr.value("ipv6") == QStringLiteral("yes");
+        }
+        if (reader.name() == "modules") {
+            fields |= FIELD_MODULES;
+            const auto attr = reader.attributes();
+            const auto moduleList = attr.value("enabled").toString().split(" ", Qt::SkipEmptyParts);
+            modules = QSet<QString>(std::begin(moduleList), std::end(moduleList));
+        }
+    }
+    if(isFullProfile && ( !(fields & FIELD_RULES) || !(fields & FIELD_DEFAULTS) || !(fields & FIELD_MODULES) ) ) {
+        fields=0;
     }
 }

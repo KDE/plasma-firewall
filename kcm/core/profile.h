@@ -35,7 +35,7 @@
 #include "core/types.h"
 
 class QFile;
-class QDomDocument;
+class QIODevice;
 
 class Profile
 {
@@ -53,7 +53,7 @@ class Profile
         : fields(0), enabled(false), ipv6Enabled(false)
     {
     }
-    Profile(const QByteArray &xml, bool isSys=false);
+    Profile(QByteArray &xml, bool isSys=false);
     Profile(QFile &file, bool isSys=false);
     Profile(bool ipv6, Types::LogLevel ll, Types::Policy dip, Types::Policy dop, const QVector<Rule> &r, const QSet<QString> &m)
         : fields(0xFF), enabled(true), ipv6Enabled(ipv6), logLevel(ll), defaultIncomingPolicy(dip), defaultOutgoingPolicy(dop)
@@ -93,7 +93,7 @@ class Profile
 
     private:
 
-    void load(const QDomDocument &doc);
+    void load(QIODevice *device);
 
     private:
 
