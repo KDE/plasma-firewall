@@ -30,7 +30,6 @@
 #include <QBuffer>
 #include <QXmlStreamReader>
 #include <QIODevice>
-#include <QDebug>
 #include <QMetaEnum>
 
 #include "profile.h"
@@ -44,7 +43,6 @@ Profile::Profile(QByteArray &xml, bool isSys)
        , defaultOutgoingPolicy(Types::POLICY_ALLOW)
        , isSystem(isSys)
 {
-    qDebug() << "Xml read" << xml;
     QBuffer buffer;
     buffer.setBuffer(&xml);
     load(&buffer);
@@ -130,7 +128,6 @@ void Profile::load(QIODevice *device)
             static QString ANY_ADDR     = "0.0.0.0/0";
             static QString ANY_ADDR_V6  = "::/0";
             static QString ANY_PORT     = "any";
-            static QString ANY_PROTOCOL = "any";
 
             const auto attr = reader.attributes();
 
