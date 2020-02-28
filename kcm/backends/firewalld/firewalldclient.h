@@ -57,15 +57,16 @@ namespace {
 }
 
 namespace SYSTEMD {
-    enum actions {STOP, START};
+    enum actions {STOP, START, ERROR};
     const QString PATH = "/org/freedesktop/systemd1";
     const QString DBUS_INTERFACE = "org.freedesktop.DBus.Properties";
     const QString INTERFACE = "org.freedesktop.systemd1";
     const QString SDMAN_INTERFACE = "org.freedesktop.systemd1.Manager";
     const QString SERVICE = "firewalld.service";
-    QString sdManager;
-    QString sdService;
-    bool executeAction(actions value);
+    static QString sdManager;
+    static QString sdService;
+    actions executeAction(actions value);
+    bool getStatus();
 }
 
 class FirewalldClient : public IFirewallClientBackend
