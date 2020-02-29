@@ -26,7 +26,7 @@
 #include <QTimer>
 
 #include <QtDBus/QDBusMessage>
-
+#include <QtDBus/QDBusObjectPath>
 //#include <KAuth>
 
 #include "core/profile.h"
@@ -47,26 +47,21 @@ struct firewalld_reply {
 
 Q_DECLARE_METATYPE(firewalld_reply);
 
-namespace {
+namespace HELPER {
     const QString KCM_FIREWALLD_DIR = QStringLiteral("/etc/kcm/firewalld");
     const QString LOG_FILE = QStringLiteral("/var/log/firewalld.log");
     const QString SERVICE_NAME = "org.fedoraproject.FirewallD1";
     const QString INTERFACE_NAME = SERVICE_NAME + ".direct";
     const QString DBUS_PATH = "/org/fedoraproject/FirewallD1";
-
+    QDBusMessage dbusCall(QString method, QString dpath, QString dinterface, QString dservice, QVariantList args);
 }
-
 namespace SYSTEMD {
     enum actions {STOP, START, ERROR};
     const QString PATH = "/org/freedesktop/systemd1";
     const QString DBUS_INTERFACE = "org.freedesktop.DBus.Properties";
     const QString INTERFACE = "org.freedesktop.systemd1";
-    const QString SDMAN_INTERFACE = "org.freedesktop.systemd1.Manager";
-    const QString SERVICE = "firewalld.service";
-    static QString sdManager;
-    static QString sdService;
+    const QString MANAGER_INTERFACE = "org.freedesktop.systemd1.Manager";
     actions executeAction(actions value);
-    bool getStatus();
 }
 
 class FirewalldClient : public IFirewallClientBackend
@@ -116,7 +111,7 @@ class FirewalldClient : public IFirewallClientBackend
         void setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) override;
 
         void setLogsAutoRefresh(bool logsAutoRefresh) override;
-        void setEnabled(bool enabled) override;
+        void setEnabled(const bool enabled) override;
 
         protected slots:
             void refreshLogs();
@@ -128,7 +123,7 @@ class FirewalldClient : public IFirewallClientBackend
         /* KAuth::Action buildQueryAction(const QVariantMap &arguments); */
         /* KAuth::Action buildModifyAction(const QVariantMap &arguments); */
         QVariantList buildRule(Rule r, FirewallClient::Ipv ipvfamily = FirewallClient::IPV4);
-        QDBusMessage dbusCall(QString method, QVariantList args= {});
+        /* QDBusMessage dbusCall(QString method, QVariantList args= {}); */
     private:
         QString m_status;
         QStringList         m_rawLogs;

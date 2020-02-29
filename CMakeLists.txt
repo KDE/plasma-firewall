@@ -20,6 +20,7 @@ find_package(PythonInterp 3 REQUIRED)
 find_package(Qt5 REQUIRED COMPONENTS
     Core
     Qml
+    DBus
     X11Extras
 )
 
