@@ -177,7 +177,7 @@ KCM.ScrollViewKCM {
                 delegate: RowLayout {
                     id: buttonLayout
 
-                    visible: tableView.currentHoveredRow === model.row
+                    visible: model ? tableView.currentHoveredRow === model.row : false
                     QQC2.ToolButton {
                         icon.name: "edit-entry"
                         onClicked: {
