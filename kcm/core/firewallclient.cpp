@@ -46,6 +46,11 @@ FirewallClient::FirewallClient(QObject *parent)
     : QObject(parent)
     , m_currentBackend(nullptr)
 {
+    m_clearStatusTimer = new QTimer();
+    m_clearStatusTimer->setSingleShot(true);
+    connect(m_clearStatusTimer, &QTimer::timeout, this, [this]{
+        setStatus(QString());
+    });
 }
 
 QStringList FirewallClient::getKnownProtocols()
@@ -157,6 +162,9 @@ void FirewallClient::setStatus(const QString& status)
     if (m_status != status) {
         m_status = status;
         emit statusChanged(m_status);
+        if (!m_status.isEmpty()) {
+            m_clearStatusTimer->start(5000);
+        }
     }
 }
 

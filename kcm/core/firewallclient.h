@@ -28,6 +28,7 @@
 #define FIREWALLCLIENT_H
 
 #include <QObject>
+#include <QTimer>
 #include <functional>
 
 class RuleListModel;
@@ -122,6 +123,7 @@ private:
     IFirewallClientBackend *m_currentBackend;
     static std::map<QString, tcreateMethod> m_avaiableBackends;
     QString m_status;
+    QTimer *m_clearStatusTimer;
 };
 
 #endif
