@@ -147,30 +147,36 @@ KCM.ScrollViewKCM {
             QQC1.TableViewColumn {
                 title: i18n("Action")
                 role: "action"
-                width: 140
+                width: Kirigami.Units.gridUnit * 8
             }
             QQC1.TableViewColumn {
                 title: i18n("From")
                 role: "from"
-                width: 140
+                width: Kirigami.Units.gridUnit * 10
             }
             QQC1.TableViewColumn {
                 title: i18n("To")
                 role: "to"
-                width: 140
+                width: Kirigami.Units.gridUnit * 10
             }
             QQC1.TableViewColumn {
                 title: i18n("Ip")
                 role: "ipVersion"
-                width: 50
+                width: Kirigami.Units.gridUnit * 4
             }
             QQC1.TableViewColumn {
                 title: i18n("Logging")
                 role: "logging"
+                width: Kirigami.Units.gridUnit * 5
             }
+
             QQC1.TableViewColumn {
+                width: Kirigami.Units.iconSizes.small * 2
+                resizable: false
                 delegate: RowLayout {
                     id: buttonLayout
+                    width: Kirigami.Units.IconSizes.small * 2
+
                     visible: tableView.currentHoveredRow === model.row
                     QQC2.ToolButton {
                         icon.name: "edit-entry"
