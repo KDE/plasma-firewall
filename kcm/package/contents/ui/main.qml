@@ -175,7 +175,6 @@ KCM.ScrollViewKCM {
                 resizable: false
                 delegate: RowLayout {
                     id: buttonLayout
-                    width: Kirigami.Units.IconSizes.small * 2
 
                     visible: tableView.currentHoveredRow === model.row
                     QQC2.ToolButton {

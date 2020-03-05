@@ -64,33 +64,37 @@ KCM.ScrollViewKCM {
             QQC1.TableViewColumn {
                 title: i18n("Protocol")
                 role: "protocol"
-                width: 80
+                width: Kirigami.Units.gridUnit * 4
             }
             QQC1.TableViewColumn {
                 title: i18n("Local Address")
                 role: "localAddress"
+                width: Kirigami.Units.gridUnit * 10
             }
             QQC1.TableViewColumn {
                 title: i18n("Foreign Address")
                 role: "foreignAddress"
+                width: Kirigami.Units.gridUnit * 10
             }
             QQC1.TableViewColumn {
                 title: i18n("Status")
                 role: "status"
-                width: 80
+                width: Kirigami.Units.gridUnit * 5
             }
             QQC1.TableViewColumn {
                 title: i18n("PID")
                 role: "pid"
-                width: 50
+                width: Kirigami.Units.gridUnit * 3
             }
             QQC1.TableViewColumn {
                 title: i18n("Program")
-                width: 100
                 role: "program"
+                width: Kirigami.Units.gridUnit * 7
             }
 
             QQC1.TableViewColumn {
+                width: Kirigami.Units.iconSizes.small
+
                 delegate: QQC2.ToolButton {
                     icon.name: "list-remove"
                     Layout.alignment: Qt.AlignRight
