@@ -96,7 +96,7 @@ KCM.ScrollViewKCM {
                 width: Kirigami.Units.iconSizes.small
 
                 delegate: QQC2.ToolButton {
-                    icon.name: "list-remove"
+                    icon.name: "user-trash"
                     Layout.alignment: Qt.AlignRight
                     visible: model ? root.currentHoveredRow === model.row : false
                     onClicked: {

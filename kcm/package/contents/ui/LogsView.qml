@@ -61,34 +61,37 @@ KCM.ScrollViewKCM {
             QQC1.TableViewColumn {
                 title: i18n("Protocol")
                 role: "protocol"
-                width: 80
+                width: Kirigami.Units.gridUnit * 3
             }
             QQC1.TableViewColumn {
                 title: i18n("From")
                 role: "sourceAddress"
-                width: 100
+                width: Kirigami.Units.gridUnit * 10
             }
             QQC1.TableViewColumn {
                 role: "sourcePort"
-                width: 50
+                width: Kirigami.Units.gridUnit * 3
             }
             QQC1.TableViewColumn {
                 title: i18n("To")
                 role: "destinationAddress"
-                width: 100
+                width: Kirigami.Units.gridUnit * 10
             }
             QQC1.TableViewColumn {
                 role: "destinationPort"
-                width: 50
+                width: Kirigami.Units.gridUnit * 3
             }
             QQC1.TableViewColumn {
                 title: i18n("Interface")
                 role: "interface"
-                width: 100
+                width: Kirigami.Units.gridUnit * 3
             }
             QQC1.TableViewColumn {
+                resizable: false
+                width: Kirigami.Units.iconSizes.small
+
                 delegate: QQC2.ToolButton {
-                    icon.name: "list-remove"
+                    icon.name: "user-trash"
                     visible: root.currentHoveredRow === model.row
                     onClicked: {
                         var rule = firewallClient.createRuleFromLog(
