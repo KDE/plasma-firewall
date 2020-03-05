@@ -52,7 +52,7 @@ KCMFirewall::KCMFirewall(QObject *parent, const QVariantList &args) :
     about->addAuthor("Tomaz Canabrava", QString(), "tcanabrava@kde.org");
 
     setAboutData(about);
-    setButtons(Help | Apply);
+    setButtons(Help);
 
     qmlRegisterType<FirewallClient>("org.kcm.firewall", 1, 0, "FirewallClient");
     qmlRegisterType<RuleListModel>("org.kcm.firewall", 1, 0, "RuleListModel");
