@@ -180,10 +180,13 @@ void UfwClient::setDefaultIncomingPolicy(QString policy)
 
         setBusy(false);
 
-        if (!job->error())
+        if (!job->error()) {
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
                         FirewallClient::ProfilesBehavior::DontListenProfiles);
-
+            parentClient()->setStatus(i18n("Default incomming policy setted successfully"));
+        } else {
+            parentClient()->setStatus(i18n("Error setting the firewall default incomming policy ") + job->errorString());
+        }
 
     });
 
@@ -213,10 +216,13 @@ void UfwClient::setDefaultOutgoingPolicy(QString policy)
         auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
 
         setBusy(false);
-
-        if (!job->error())
+        if (!job->error()) {
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
                         FirewallClient::ProfilesBehavior::DontListenProfiles);
+            parentClient()->setStatus(i18n("Default outcomming policy setted successfully"));
+        } else {
+            parentClient()->setStatus(i18n("Error setting the firewall default outcomming policy ") + job->errorString());
+        }
 
 
     });
