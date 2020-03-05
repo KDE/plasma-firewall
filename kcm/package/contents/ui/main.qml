@@ -186,7 +186,7 @@ KCM.ScrollViewKCM {
                         }
                     }
                     QQC2.ToolButton {
-                        icon.name: "user-trash"
+                        icon.name: "edit-delete"
                         onClicked: {
                             firewallClient.removeRule(model.row)
                         }

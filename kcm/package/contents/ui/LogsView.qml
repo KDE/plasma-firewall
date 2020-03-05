@@ -91,7 +91,7 @@ KCM.ScrollViewKCM {
                 width: Kirigami.Units.iconSizes.small
 
                 delegate: QQC2.ToolButton {
-                    icon.name: "user-trash"
+                    icon.name: "edit-delete"
                     visible: root.currentHoveredRow === model.row
                     onClicked: {
                         var rule = firewallClient.createRuleFromLog(
