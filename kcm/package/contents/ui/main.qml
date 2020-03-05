@@ -75,7 +75,14 @@ KCM.ScrollViewKCM {
             type: Kirigami.MessageType.Information
             text: netStatClient.status !== ""
             visible: netStatClient.status !== ""
-            Layout.fillWidth: true
+            actions: [
+                Kirigami.Action {
+                    iconName: "close"
+                    text: i18n("Close")
+                    onTriggered: netStatClient.status = ""
+                }
+            ]
+
         }
 
         Kirigami.InlineMessage {
@@ -84,6 +91,13 @@ KCM.ScrollViewKCM {
             text: firewallClient.status
             visible: firewallClient.status !== ""
             Layout.fillWidth: true
+            actions: [
+                Kirigami.Action {
+                    iconName: "close"
+                    text: i18n("Close")
+                    onTriggered:firewallClient.status = ""
+                }
+            ]
         }
         Kirigami.FormLayout {
             QQC2.CheckBox {
