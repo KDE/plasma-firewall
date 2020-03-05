@@ -60,7 +60,7 @@ Kirigami.FormLayout {
         Kirigami.FormData.label: i18n("Policy:")
         model: policyChoices
         textRole: "text"
-        currentIndex: policyChoices.arrayIndex((policy) => policy.data == rule.policy)
+        currentIndex: policyChoices.findIndex((policy) => policy.data == rule.policy)
         onCurrentIndexChanged: rule.policy = policyChoices[currentIndex].data
     }
 
@@ -142,7 +142,7 @@ Kirigami.FormLayout {
         Kirigami.FormData.label: i18n("Logging:")
         model: ruleChoices
         textRole: "text"
-        currentIndex: ruleChoices.arrayIndex((rules) => rules.data == rule.logging)
+        currentIndex: ruleChoices.findIndex((rules) => rules.data == rule.logging)
         onCurrentIndexChanged: rule.logging = ruleChoices[currentIndex].data
     }
 
