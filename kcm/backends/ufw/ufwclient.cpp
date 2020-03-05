@@ -84,7 +84,7 @@ void UfwClient::setEnabled(bool value)
 
     KAuth::Action modifyAction = buildModifyAction(args);
 
-    m_status = value ? i18n("Enabling the firewall...") : i18n("Disabling the firewall...");
+    parentClient()->setStatus(value ? i18n("Enabling the firewall...") : i18n("Disabling the firewall..."));
     m_isBusy = true;
 
 
@@ -95,11 +95,11 @@ void UfwClient::setEnabled(bool value)
         setBusy(false);
 
         if (!job->error()) {
-            setStatus(QString());
+            parentClient()->setStatus(QString());
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
                         FirewallClient::ProfilesBehavior::DontListenProfiles);
         } else {
-            setStatus(job->errorText());
+            parentClient()->setStatus(job->errorText());
             parentClient()->enabledChanged(enabled());
         }
     });
@@ -143,7 +143,7 @@ void UfwClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior
             QByteArray response = job->data().value("response", "").toByteArray();
             setProfile(Profile(response));
         } else {
-            setStatus(
+            parentClient()->setStatus(
                 QStringLiteral("There was an error in the backend! Please report it. \n") +
                 job->action().name() + QStringLiteral(" ") + job->errorString()
             );
@@ -170,7 +170,7 @@ void UfwClient::setDefaultIncomingPolicy(QString policy)
     };
 
     KAuth::Action modifyAction = buildModifyAction(args);
-    m_status = i18n("Setting firewall default incomming policy...");
+    parentClient()->setStatus(i18n("Setting firewall default incomming policy..."));
     m_isBusy = true;
 
     KAuth::ExecuteJob *job = modifyAction.execute();
@@ -204,7 +204,7 @@ void UfwClient::setDefaultOutgoingPolicy(QString policy)
     };
 
     KAuth::Action modifyAction = buildModifyAction(args);
-    m_status = i18n("Setting firewall default outgoing policy...");
+    parentClient()->setStatus(i18n("Setting firewall default outgoing policy..."));
     m_isBusy = true;
 
     KAuth::ExecuteJob *job = modifyAction.execute();
@@ -272,12 +272,6 @@ void UfwClient::refreshLogs()
     job->start();
 }
 
-void UfwClient::setStatus(const QString &status)
-{
-    m_status = status;
-    emit parentClient()->statusChanged(m_status);
-}
-
 void UfwClient::setBusy(const bool &isBusy)
 {
     if (m_isBusy != isBusy)
@@ -323,11 +317,6 @@ KAuth::Action UfwClient::buildModifyAction(const QVariantMap &arguments)
     action.setArguments(arguments);
 
     return action;
-}
-
-QString UfwClient::status() const
-{
-    return m_status;
 }
 
 RuleListModel *UfwClient::rules() const
@@ -376,7 +365,15 @@ void UfwClient::addRule(RuleWrapper *ruleWrapper)
         {
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
                         FirewallClient::ProfilesBehavior::ListenProfiles);
+            parentClient()->setStatus("Rule Created successfully");
         } else {
+            auto errorMessage = i18n("Error creating the rule. ");
+            if (job->errorString().isEmpty()) {
+                errorMessage += i18n("But the backend did not returned a userfull message.");
+            } else {
+                errorMessage += job->errorString();
+            }
+            parentClient()->setStatus(errorMessage);
             qWarning() << job->action().name() << job->errorString();
         }
     });

@@ -70,7 +70,6 @@ public:
 
     bool enabled() const override;
     bool isBusy() const override;
-    QString status() const override;
     QString defaultIncomingPolicy() const override;
     QString defaultOutgoingPolicy() const override;
     QString name() const override;
@@ -93,7 +92,6 @@ protected slots:
         void refreshLogs();
 
 protected:
-    void setStatus(const QString &status);
     void setBusy(const bool &busy);
     void setProfile(Profile profile);
     void setExecutable(const bool &hasExecutable);
@@ -101,7 +99,6 @@ protected:
     KAuth::Action buildModifyAction(const QVariantMap &arguments);
 
 private:
-    QString m_status;
     QStringList         m_rawLogs;
     bool                m_isBusy;
     Profile        m_currentProfile;

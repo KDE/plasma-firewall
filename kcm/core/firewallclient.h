@@ -47,7 +47,7 @@ class FirewallClient : public QObject {
     Q_OBJECT
     Q_PROPERTY(bool enabled READ enabled WRITE setEnabled NOTIFY enabledChanged)
     Q_PROPERTY(bool isBusy READ isBusy NOTIFY isBusyChanged)
-    Q_PROPERTY(QString status READ status NOTIFY statusChanged)
+    Q_PROPERTY(QString status READ status WRITE setStatus NOTIFY statusChanged)
     Q_PROPERTY(QString defaultIncomingPolicy READ defaultIncomingPolicy WRITE setDefaultIncomingPolicy NOTIFY defaultIncomingPolicyChanged)
     Q_PROPERTY(QString defaultOutgoingPolicy READ defaultOutgoingPolicy WRITE setDefaultOutgoingPolicy NOTIFY defaultOutgoingPolicyChanged)
     Q_PROPERTY(bool logsAutoRefresh READ logsAutoRefresh WRITE setLogsAutoRefresh NOTIFY logsAutoRefreshChanged)
@@ -117,10 +117,11 @@ public slots:
     void setDefaultOutgoingPolicy(const QString &defaultOutgoingPolicy);
     void setLogsAutoRefresh(bool logsAutoRefresh);
     void setBackend(const QString &backend);
-
+    void setStatus(const QString& status);
 private:
     IFirewallClientBackend *m_currentBackend;
     static std::map<QString, tcreateMethod> m_avaiableBackends;
+    QString m_status;
 };
 
 #endif

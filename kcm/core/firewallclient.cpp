@@ -152,10 +152,18 @@ bool FirewallClient::isBusy() const
     return true;
 }
 
+void FirewallClient::setStatus(const QString& status)
+{
+    if (m_status != status) {
+        m_status = status;
+        emit statusChanged(m_status);
+    }
+}
+
 QString FirewallClient::status() const
 {
     if (m_currentBackend)
-        return m_currentBackend->status();
+        return m_status;
     return {};
 }
 

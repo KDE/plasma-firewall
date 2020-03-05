@@ -75,7 +75,6 @@ public:
 
     virtual bool enabled() const = 0;
     virtual bool isBusy() const = 0;
-    virtual QString status() const = 0;
     virtual QString defaultIncomingPolicy() const = 0;
     virtual QString defaultOutgoingPolicy() const = 0;
     virtual bool hasExecutable() const = 0;
