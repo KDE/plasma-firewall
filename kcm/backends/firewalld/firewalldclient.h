@@ -56,7 +56,7 @@ namespace HELPER {
     QDBusMessage dbusCall(QString method, QString dpath, QString dinterface, QString dservice, QVariantList args);
 }
 namespace SYSTEMD {
-    enum actions {STOP, START, ERROR};
+    enum actions {ERROR=-1, STOP=0, START };
     const QString PATH = "/org/freedesktop/systemd1";
     const QString DBUS_INTERFACE = "org.freedesktop.DBus.Properties";
     const QString INTERFACE = "org.freedesktop.systemd1";

@@ -65,20 +65,21 @@ void FirewalldClient::refresh()
 
 bool FirewalldClient::enabled() const
 {
-    QDBusMessage status;
-    status = HELPER::dbusCall("GetUnit", SYSTEMD::PATH, SYSTEMD::MANAGER_INTERFACE, 
-            SYSTEMD::INTERFACE, {"firewalld.service"});
-    return status.type() == QDBusMessage::ErrorMessage ? false : true;
+    /* QDBusMessage status; */
+    /* status = HELPER::dbusCall("GetUnit", SYSTEMD::PATH, SYSTEMD::MANAGER_INTERFACE, */ 
+    /*         SYSTEMD::INTERFACE, {"firewalld.service"}); */
+    /* return status.type() == QDBusMessage::ErrorMessage ? false : true; */
+    /* status = HELPER::dbusCall("GetUnit", SYSTEMD::PATH, SYSTEMD::MANAGER_INTERFACE, */ 
+    return m_serviceStatus;    /* QDBusMessage status; */
 }
-/* TODO create a call to systemd/openrc/sysvinit? */
 void FirewalldClient::setEnabled(const bool value)
 {
     if (m_serviceStatus != value) {
-        m_serviceStatus = value;
-        SYSTEMD::executeAction(static_cast<SYSTEMD::actions>(value));
+        m_serviceStatus = SYSTEMD::executeAction(static_cast<SYSTEMD::actions>(value));
         emit parentClient()->enabledChanged(value);
-    }
 }
+    qDebug() << "Service STATUS "<< m_serviceStatus;
+    }
 
 bool FirewalldClient::isBusy() const
 {
@@ -395,6 +396,7 @@ QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily)
             {"type", r.getProtocol()},
             {"destinationAddress", r.getDestAddress()},
             {"sourceAddress", r.getSourceAddress()},
+            {"table", "filter"}
 
     };
 
@@ -414,17 +416,17 @@ QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily)
     if (!args.value("destinationAddress").toString().isEmpty())
         firewalld_direct_rule << "-d" <<  args.value("destinationAddress").toString();
     if (!args.value("destinationPort").toString().isEmpty())
-        firewalld_direct_rule << "--dport" <<  args.value("destinationPort").toString();
+        firewalld_direct_rule << "--dport=" +  args.value("destinationPort").toString();
     if (!args.value("sourceAddress").toString().isEmpty())
         firewalld_direct_rule << "-s" <<  args.value("sourceAddress").toString();
     if (!args.value("sourcePort").toString().isEmpty())
-        firewalld_direct_rule << "--sport" <<  args.value("sourcePort").toString();
+        firewalld_direct_rule << "--sport=" +  args.value("sourcePort").toString();
 
     if (ipvfamily == FirewallClient::IPV6)
         return QVariantList({"ipv6", args.value("table").toString(),
                 args.value("chain").toString(), args.value("priority").toInt(), firewalld_direct_rule
                 });
-
+    qDebug() << firewalld_direct_rule;
     return QVariantList({"ipv4", args.value("table").toString(),
             args.value("chain").toString(), args.value("priority").toInt(), firewalld_direct_rule
             });
@@ -445,7 +447,7 @@ SYSTEMD::actions SYSTEMD::executeAction(SYSTEMD::actions value) {
     QDBusMessage msg;
     if (QDBusConnection::systemBus().isConnected()) {
         if(value == SYSTEMD::START){
-        QDBusInterface iface(SYSTEMD::DBUS_INTERFACE, SYSTEMD::PATH, SYSTEMD::MANAGER_INTERFACE, 
+        QDBusInterface iface(SYSTEMD::INTERFACE, SYSTEMD::PATH, SYSTEMD::MANAGER_INTERFACE, 
                              QDBusConnection::systemBus());
             if (iface.isValid()) {
                 msg = iface.callWithArgumentList(QDBus::AutoDetect, "StartUnit", 
@@ -458,7 +460,7 @@ SYSTEMD::actions SYSTEMD::executeAction(SYSTEMD::actions value) {
             }
         }
         else {
-            QDBusInterface iface(SYSTEMD::DBUS_INTERFACE, SYSTEMD::PATH, SYSTEMD::MANAGER_INTERFACE, 
+            QDBusInterface iface(SYSTEMD::INTERFACE, SYSTEMD::PATH, SYSTEMD::MANAGER_INTERFACE, 
                              QDBusConnection::systemBus());
             if (iface.isValid())
                 msg = iface.callWithArgumentList(QDBus::AutoDetect, "StopUnit", 
