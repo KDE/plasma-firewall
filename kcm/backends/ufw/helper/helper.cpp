@@ -38,6 +38,7 @@
 
 #include <KAuth>
 #include <KAuthHelperSupport>
+#include <KLocalizedString>
 
 #include "ufw_helper_config.h"
 
@@ -103,7 +104,12 @@ ActionReply Helper::viewlog(const QVariantMap &args)
     ActionReply reply;
 
     if(!file.open(QIODevice::ReadOnly|QIODevice::Text)) {
-        return ActionReply::HelperErrorReply(STATUS_OPERATION_FAILED);
+        reply.setErrorCode(KAuth::ActionReply::BackendError);
+        reply.setError(STATUS_OPERATION_FAILED);
+        reply.setErrorDescription(i18n("Could not open the log file for the ufw client. \n "
+            "Please verify that the following file exist \n "
+            "and you have read permissions. \n") + file.fileName());
+        return reply;
     }
 
     QStringList lines;
@@ -209,7 +215,9 @@ ActionReply Helper::setProfile(const QVariantMap &args, const QString &cmd)
     }
 
     if(cmdArgs.isEmpty()) {
-        return ActionReply::HelperErrorReply(STATUS_INVALID_ARGUMENTS);
+        auto action = ActionReply::HelperErrorReply(STATUS_INVALID_ARGUMENTS);
+        action.setErrorDescription(i18n("Invalid arguments passed to the profile"));
+        return action;
     }
 
     checkFolder();
@@ -242,7 +250,8 @@ ActionReply Helper::saveProfile(const QVariantMap &args, const QString &cmd)
         }
         else
         {
-            reply=ActionReply::HelperErrorReply(STATUS_OPERATION_FAILED);
+            reply = ActionReply::HelperErrorReply(STATUS_OPERATION_FAILED);
+            reply.setErrorDescription(i18n("Error saving the profile."));
         }
     }
 
@@ -262,10 +271,12 @@ ActionReply Helper::deleteProfile(const QVariantMap &args, const QString &cmd)
     if(name.isEmpty())
     {
         reply=ActionReply::HelperErrorReply(STATUS_INVALID_ARGUMENTS);
+        reply.setErrorDescription(i18n("Invalid arguments passed to delete profile"));
     }
     else if(!QFile::remove(QString(KCM_UFW_DIR)+"/"+name+PROFILE_EXTENSION))
     {
         reply=ActionReply::HelperErrorReply(STATUS_OPERATION_FAILED);
+        reply.setErrorDescription(i18n("Could not remove the profile from disk."));
     }
 
     reply.addData("cmd", cmd);
@@ -289,6 +300,7 @@ ActionReply Helper::addRules(const QVariantMap &args, const QString &cmd)
         return run(cmdArgs, {"--list"}, cmd);
     }
     ActionReply reply=ActionReply::HelperErrorReply(STATUS_INVALID_ARGUMENTS);
+    reply.setErrorDescription(i18n("Invalid argument passed to add Rules"));
     return reply;
 }
 
@@ -325,8 +337,9 @@ ActionReply Helper::reset(const QString &cmd)
 ActionReply Helper::run(const QStringList &args, const QStringList &second, const QString &cmd)
 {
     ActionReply reply=run(args, cmd);
-    if(0==reply.errorCode())
-        reply=run(second, cmd);
+    if( reply.errorCode() == EXIT_SUCCESS ) {
+        reply = run(second, cmd);
+    }
     return reply;
 }
 
@@ -342,13 +355,12 @@ ActionReply Helper::run(const QStringList &args, const QString &cmd)
 
     int exitCode(ufw.exitCode());
 
-    if(0!=exitCode)
-    {
+    if(0!=exitCode) {
         reply=ActionReply::HelperErrorReply(exitCode);
-        reply.addData("response", ufw.readAllStandardError());
-    }
-    else
+        reply.setErrorDescription(i18n("An error happened: ") + ufw.readAllStandardError() + i18n("Command: ") + cmd);
+    } else {
         reply.addData("response", ufw.readAllStandardOutput());
+    }
     reply.addData("cmd", cmd);
     return reply;
 }
