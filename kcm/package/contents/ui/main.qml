@@ -74,7 +74,7 @@ KCM.ScrollViewKCM {
             id: netstatError
             type: Kirigami.MessageType.Information
             text: netStatClient.status !== ""
-            visible: netStatClient.status !== ""
+            visible: netStatClient && netStatClient.status !== ""
             actions: [
                 Kirigami.Action {
                     iconName: "close"
@@ -89,7 +89,7 @@ KCM.ScrollViewKCM {
             id: ufwError
             type: Kirigami.MessageType.Information
             text: firewallClient.status
-            visible: firewallClient.status !== ""
+            visible: firewallClient && firewallClient.status !== ""
             Layout.fillWidth: true
             actions: [
                 Kirigami.Action {
