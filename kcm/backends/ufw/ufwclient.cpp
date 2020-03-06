@@ -99,7 +99,7 @@ void UfwClient::setEnabled(bool value)
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
                         FirewallClient::ProfilesBehavior::DontListenProfiles);
         } else {
-            parentClient()->setStatus(job->errorText());
+            parentClient()->setStatus(i18n("Error setting the state of the firewall: ") + job->errorText());
             parentClient()->enabledChanged(enabled());
         }
     });
@@ -183,7 +183,6 @@ void UfwClient::setDefaultIncomingPolicy(QString policy)
         if (!job->error()) {
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
                         FirewallClient::ProfilesBehavior::DontListenProfiles);
-            parentClient()->setStatus(i18n("Default incomming policy setted successfully"));
         } else {
             parentClient()->setStatus(i18n("Error setting the firewall default incomming policy ") + job->errorString());
         }
@@ -219,7 +218,6 @@ void UfwClient::setDefaultOutgoingPolicy(QString policy)
         if (!job->error()) {
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
                         FirewallClient::ProfilesBehavior::DontListenProfiles);
-            parentClient()->setStatus(i18n("Default outcomming policy setted successfully"));
         } else {
             parentClient()->setStatus(i18n("Error setting the firewall default outcomming policy ") + job->errorString());
         }
@@ -270,6 +268,7 @@ void UfwClient::refreshLogs()
             m_rawLogs.append(newLogs);
             m_logs->addRawLogs(newLogs);
         } else {
+            parentClient()->setStatus(i18n("Error fetching the logs: ") + job->errorString());
             qWarning() << "org.kde.ufw.viewlog" << job->errorString();
         }
         setBusy(false);
@@ -348,7 +347,7 @@ RuleWrapper *UfwClient::getRule(int index)
 void UfwClient::addRule(RuleWrapper *ruleWrapper)
 {
     if (ruleWrapper == nullptr) {
-        qWarning() << __FUNCTION__ << "nullptr rule";
+        qWarning() << "nullptr rule";
         return;
     }
 
@@ -413,6 +412,7 @@ void UfwClient::removeRule(int index)
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
                         FirewallClient::ProfilesBehavior::ListenProfiles);
         } else {
+            parentClient()->setStatus(i18n("Error removing rule: ") + job->errorString());
             qWarning() << job->action().name() << job->errorString();
         }
         setBusy(false);
@@ -424,7 +424,7 @@ void UfwClient::removeRule(int index)
 void UfwClient::updateRule(RuleWrapper *ruleWrapper)
 {
     if (ruleWrapper == nullptr) {
-        qWarning() << __FUNCTION__ << "nullptr rule";
+        qWarning() <<  "nullptr rule";
         return;
     }
 
@@ -447,6 +447,7 @@ void UfwClient::updateRule(RuleWrapper *ruleWrapper)
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
                         FirewallClient::ProfilesBehavior::ListenProfiles);
         } else {
+            parentClient()->setStatus(i18n("Error updating rule: ") + job->errorString());
             qWarning() << job->action().name() << job->errorString();
         }
         setBusy(false);
@@ -488,6 +489,8 @@ void UfwClient::moveRule(int from, int to)
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
                         FirewallClient::ProfilesBehavior::ListenProfiles);
         } else {
+            parentClient()->setStatus(i18n("Error moving rule: ") + job->errorString());
+
             qWarning() << job->action().name() << job->errorString();
         }
         setBusy(false);
