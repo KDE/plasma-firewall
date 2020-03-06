@@ -123,7 +123,6 @@ private:
     IFirewallClientBackend *m_currentBackend;
     static std::map<QString, tcreateMethod> m_avaiableBackends;
     QString m_status;
-    QTimer *m_clearStatusTimer;
 };
 
 #endif
