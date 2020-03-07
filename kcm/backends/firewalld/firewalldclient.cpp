@@ -393,7 +393,7 @@ QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily)
         {"priority", r.getPosition()},
             {"destinationPort", r.getDestPort()},
             {"sourcePort", r.getSourcePort()},
-            {"type", r.getProtocol()},
+            {"type", QString(r.protocolSuffix(r.getProtocol())).replace("/", "")}, // tcp or udp
             {"destinationAddress", r.getDestAddress()},
             {"sourceAddress", r.getSourceAddress()},
             {"table", "filter"}
