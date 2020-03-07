@@ -56,9 +56,8 @@ namespace HELPER {
     QDBusMessage dbusCall(QString method, QString dpath, QString dinterface, QString dservice, QVariantList args);
 }
 namespace SYSTEMD {
-    enum actions {ERROR=-1, STOP=0, START };
+    enum actions {ERROR=-1, STOP, START };
     const QString PATH = "/org/freedesktop/systemd1";
-    const QString DBUS_INTERFACE = "org.freedesktop.DBus.Properties";
     const QString INTERFACE = "org.freedesktop.systemd1";
     const QString MANAGER_INTERFACE = "org.freedesktop.systemd1.Manager";
     actions executeAction(actions value);
@@ -94,7 +93,7 @@ class FirewalldClient : public IFirewallClientBackend
 
         bool enabled() const override;
         bool isBusy() const override;
-        QString status() const override;
+        QString status() const;
         QString defaultIncomingPolicy() const override;
         QString defaultOutgoingPolicy() const override;
         QString name() const override;
