@@ -41,7 +41,14 @@ KAuth::ActionReply NetstatHelper::query(const QVariantMap)
     KAuth::ActionReply reply;
 
     QProcess    netstat;
-    QStringList netstatArgs("-ntuap");
+    /* parameters passed to ss
+     *  -r, --resolve       resolve host names
+     *  -a, --all           display all sockets
+     *  -p, --processes     show process using socket
+     *  -u, --udp           display only UDP sockets
+     *  -t, --tcp           display only TCP sockets
+     */
+    QStringList netstatArgs({"-tuapr"});
     QString executable = mHasSS ? QStringLiteral("ss")
                       : mHasNetstat ? QStringLiteral("netstat")
                       : QString();
