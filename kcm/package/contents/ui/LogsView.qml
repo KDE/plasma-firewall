@@ -96,7 +96,7 @@ KCM.ScrollViewKCM {
             }
             QQC1.TableViewColumn {
                 resizable: false
-                width: Kirigami.Units.iconSizes.small
+                width: Kirigami.Units.iconSizes.small * 3
 
                 delegate: QQC2.ToolButton {
                     icon.name: "edit-delete"

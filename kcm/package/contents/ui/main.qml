@@ -166,7 +166,7 @@ KCM.ScrollViewKCM {
             }
 
             QQC1.TableViewColumn {
-                width: Kirigami.Units.iconSizes.small * 2
+                width: Kirigami.Units.iconSizes.small * 6
                 resizable: false
                 delegate: RowLayout {
                     id: buttonLayout
