@@ -61,7 +61,11 @@ Kirigami.FormLayout {
         model: policyChoices
         textRole: "text"
         currentIndex: rule.policy == "" ? 0 : policyChoices.findIndex((policy) => policy.data == rule.policy)
-        onCurrentIndexChanged: rule.policy = policyChoices[currentIndex].data
+        onCurrentIndexChanged: {
+            if ( rule.policy != policyChoices[currentIndex].data ) {
+                rule.policy = policyChoices[currentIndex].data
+            }
+        }
     }
 
     RowLayout {
@@ -123,6 +127,7 @@ Kirigami.FormLayout {
 
         model: firewallClient.getKnownProtocols()
 
+        // TODO: Fix the protocol retrieval.
         currentIndex: rule.protocol
         onCurrentIndexChanged: rule.protocol = currentIndex
     }
@@ -131,8 +136,8 @@ Kirigami.FormLayout {
 
         id: interfaceCb
 
-        model: firewallClient.getKnownInterfaces()
 
+        model: firewallClient.getKnownInterfaces()
         currentIndex: rule.interface
         onCurrentIndexChanged: rule.interface = currentIndex
 

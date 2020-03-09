@@ -36,7 +36,7 @@ Kirigami.InlineMessage {
     showCloseButton: true
     onTextChanged: {
         if (text.length != 0) {
-            show();
+            visible = true
         }
     }
 }
