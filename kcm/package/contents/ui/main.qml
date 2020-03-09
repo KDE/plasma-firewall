@@ -70,35 +70,15 @@ KCM.ScrollViewKCM {
 
     header: ColumnLayout {
         id: columnLayout
-        Kirigami.InlineMessage {
-            id: netstatError
-            type: Kirigami.MessageType.Information
-            text: netStatClient.status !== ""
-            visible: netStatClient && netStatClient.status !== ""
-            actions: [
-                Kirigami.Action {
-                    iconName: "close"
-                    text: i18n("Close")
-                    onTriggered: netStatClient.status = ""
-                }
-            ]
 
+        FirewallInlineMessage {
+            text: netStatClient.status
         }
 
-        Kirigami.InlineMessage {
-            id: ufwError
-            type: Kirigami.MessageType.Information
+        FirewallInlineMessage {
             text: firewallClient.status
-            visible: firewallClient && firewallClient.status !== ""
-            Layout.fillWidth: true
-            actions: [
-                Kirigami.Action {
-                    iconName: "close"
-                    text: i18n("Close")
-                    onTriggered:firewallClient.status = ""
-                }
-            ]
         }
+
         Kirigami.FormLayout {
             QQC2.CheckBox {
                 Kirigami.FormData.label: i18n("Firewall Status:")

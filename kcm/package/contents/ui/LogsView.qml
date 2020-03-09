@@ -42,18 +42,8 @@ KCM.ScrollViewKCM {
      */
 
     header: RowLayout {
-        Kirigami.InlineMessage {
-            type: Kirigami.MessageType.Information
-            text: firewallClient ? firewallClient.status : ""
-            visible: firewallClient && firewallClient.status != ""
-            Layout.fillWidth: true
-            actions: [
-                Kirigami.Action {
-                    iconName: "close"
-                    text: i18n("Close")
-                    onTriggered:firewallClient.status = ""
-                }
-            ]
+        FirewallInlineMessage {
+            text: firewallClient.status
         }
     }
 
