@@ -40,6 +40,20 @@
 // TODO: Figure out what's wrong with the registering
 // REGISTER_BACKEND("ufw", UfwClient::createMethod);
 
+namespace {
+    void debugState(KAuth::Action::AuthStatus status) {
+        using Status = KAuth::Action::AuthStatus;
+        switch(status) {
+            case Status::AuthorizedStatus: qDebug() << "Job Authorized"; break;
+            case Status::AuthRequiredStatus: qDebug() << "Job Requires authentication"; break;
+            case Status::UserCancelledStatus: qDebug() << "User cancelled!"; break;
+            case Status::DeniedStatus: qDebug() << "Password denied"; break;
+            case Status::InvalidStatus: qDebug() << "Invalid Status!"; break;
+            case Status::ErrorStatus: qDebug() << "Job is in an error state"; break;
+        }
+    }
+}
+
 UfwClient::UfwClient(FirewallClient *parent) :
     IFirewallClientBackend(parent),
     m_isBusy(false),
@@ -99,6 +113,10 @@ void UfwClient::setEnabled(bool value)
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
                         FirewallClient::ProfilesBehavior::DontListenProfiles);
         } else {
+            // User cancelled. returned error = 4.
+            if (job->error() == 4) {
+                return;
+            }
             parentClient()->setStatus(i18n("Error setting the state of the firewall: ") + job->errorText());
             parentClient()->enabledChanged(enabled());
         }
@@ -184,6 +202,11 @@ void UfwClient::setDefaultIncomingPolicy(QString policy)
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
                         FirewallClient::ProfilesBehavior::DontListenProfiles);
         } else {
+            // User cancelled. returned error = 4.
+            if (job->error() == 4) {
+                return;
+            }
+
             parentClient()->setStatus(i18n("Error setting the firewall default incomming policy ") + job->errorString());
         }
 
@@ -219,6 +242,10 @@ void UfwClient::setDefaultOutgoingPolicy(QString policy)
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
                         FirewallClient::ProfilesBehavior::DontListenProfiles);
         } else {
+            // User cancelled. returned error = 4.
+            if (job->error() == 4) {
+                return;
+            }
             parentClient()->setStatus(i18n("Error setting the firewall default outcomming policy ") + job->errorString());
         }
 
@@ -372,9 +399,14 @@ void UfwClient::addRule(RuleWrapper *ruleWrapper)
                         FirewallClient::ProfilesBehavior::ListenProfiles);
             parentClient()->setStatus("Rule Created successfully");
         } else {
+            // User Cancelled the rule removal, returned error = 4.
+            if (job->error() == 4) {
+                return;
+            }
+
             auto errorMessage = i18n("Error creating the rule. ");
             if (job->errorString().isEmpty()) {
-                errorMessage += i18n("But the backend did not returned a userfull message.");
+                errorMessage += i18n("Error code:") + QString::number(job->error());
             } else {
                 errorMessage += job->errorString();
             }
@@ -403,7 +435,11 @@ void UfwClient::removeRule(int index)
 
     KAuth::Action modifyAction = buildModifyAction(args);
     KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this] (KJob *kjob)
+    connect(job, &KAuth::ExecuteJob::statusChanged, this, [this] (KAuth::Action::AuthStatus status) {
+        debugState(status);
+    });
+
+    connect(job, &KAuth::ExecuteJob::result, this, [this] (KJob *kjob)
     {
         auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
 
@@ -412,7 +448,11 @@ void UfwClient::removeRule(int index)
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
                         FirewallClient::ProfilesBehavior::ListenProfiles);
         } else {
-            parentClient()->setStatus(i18n("Error removing rule: ") + job->errorString());
+            // User Cancelled the rule removal, returned error = 4.
+            if (job->error() == 4) {
+                return;
+            }
+            parentClient()->setStatus(i18n("Error removing rule: ") + job->errorText());
             qWarning() << job->action().name() << job->errorString();
         }
         setBusy(false);
@@ -447,6 +487,10 @@ void UfwClient::updateRule(RuleWrapper *ruleWrapper)
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
                         FirewallClient::ProfilesBehavior::ListenProfiles);
         } else {
+            // User Cancelled the rule edition, returned error = 4.
+            if (job->error() == 4) {
+                return;
+            }
             parentClient()->setStatus(i18n("Error updating rule: ") + job->errorString());
             qWarning() << job->action().name() << job->errorString();
         }
@@ -489,6 +533,10 @@ void UfwClient::moveRule(int from, int to)
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
                         FirewallClient::ProfilesBehavior::ListenProfiles);
         } else {
+            // User cancelled. returned error = 4.
+            if (job->error() == 4) {
+                return;
+            }
             parentClient()->setStatus(i18n("Error moving rule: ") + job->errorString());
 
             qWarning() << job->action().name() << job->errorString();
