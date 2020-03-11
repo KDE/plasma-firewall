@@ -80,7 +80,12 @@ QVariant LogListModel::data2(int row, const QByteArray &roleName) const
 void LogListModel::addRawLogs(const QStringList &rawLogsList)
 {
     static QRegularExpression regex(
-        R"regex((.*)\s(.*)\s(.*):\s\[(.*)\]\s\[(.*)\].*IN=([\w|\d]*).*SRC=([\w|\.|\d]*).*DST=([\w|\.|\d]*).*PROTO=([\w|\.|\d]*)\s(SPT=(\d*)\sDPT=(\d*))?.*)regex"
+        R"((.*)\s(.*)\s(.*):\s\[(.*)\]\s\[(.*)\].*)"
+        R"(IN=([\w|\d]*).*)"
+        R"(SRC=([\w|\.|\d]*).*)"
+        R"(DST=([\w|\.|\d]*).*)"
+        R"(PROTO=([\w|\.|\d]*)\s)"
+        R"((SPT=(\d*)\sDPT=(\d*))?.*)"
     );
 
     QVector<LogData> newLogs;
