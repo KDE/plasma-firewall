@@ -101,7 +101,7 @@ void ConnectionsModel::refreshConnections()
     m_queryRunning = true;
 
     KAuth::ExecuteJob *job = m_queryAction.execute();
-    connect(job, &KAuth::ExecuteJob::finished, [this] (KJob *kjob)
+    connect(job, &KAuth::ExecuteJob::finished, this, [this] (KJob *kjob)
     {
         auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
         if (!job->error())

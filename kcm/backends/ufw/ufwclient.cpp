@@ -119,7 +119,7 @@ void UfwClient::setEnabled(bool value)
     KAuth::Action modifyAction = buildModifyAction(args);
 
     KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this, job] {
+    connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
         setStatus(FirewallClient::Idle);
 
         if (!job->error()) {
@@ -160,7 +160,7 @@ void UfwClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior
     }
 
     KAuth::ExecuteJob *job = m_queryAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this, job] {
+    connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
         setStatus(FirewallClient::Idle);
 
         if (!job->error()) {
@@ -196,7 +196,7 @@ void UfwClient::setDefaultIncomingPolicy(QString policy)
     KAuth::Action modifyAction = buildModifyAction(args);
 
     KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this, job] {
+    connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
         setStatus(FirewallClient::Idle);
 
         if (!job->error()) {
@@ -233,7 +233,7 @@ void UfwClient::setDefaultOutgoingPolicy(QString policy)
     KAuth::Action modifyAction = buildModifyAction(args);
 
     KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this, job] {
+    connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
         setStatus(FirewallClient::Idle);
 
         if (!job->error()) {
@@ -284,7 +284,7 @@ void UfwClient::refreshLogs()
     action.setArguments(args);
 
     KAuth::ExecuteJob *job = action.execute();
-    connect(job, &KAuth::ExecuteJob::finished, [this, job] {
+    connect(job, &KAuth::ExecuteJob::finished, this, [this, job] {
         //setStatus(FirewallClient::Idle);
 
         if (!job->error()) {
@@ -379,7 +379,7 @@ void UfwClient::addRule(RuleWrapper *ruleWrapper)
     KAuth::Action modifyAction = buildModifyAction(args);
 
     KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this, job] {
+    connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
         setStatus(FirewallClient::Idle);
 
         if (!job->error()) {
@@ -465,7 +465,7 @@ void UfwClient::updateRule(RuleWrapper *ruleWrapper)
 
     KAuth::Action modifyAction = buildModifyAction(args);
     KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this, job] {
+    connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
         setStatus(FirewallClient::Idle);
 
         if (!job->error()) {
@@ -512,7 +512,7 @@ void UfwClient::moveRule(int from, int to)
 
     KAuth::Action modifyAction = buildModifyAction(args);
     KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::finished, [this, job] {
+    connect(job, &KAuth::ExecuteJob::finished, this, [this, job] {
         setStatus(FirewallClient::Idle);
 
         if (!job->error()) {
