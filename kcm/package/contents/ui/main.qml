@@ -71,48 +71,111 @@ KCM.ScrollViewKCM {
     header: ColumnLayout {
         id: columnLayout
 
+        FirewallClientInlineMessages {
+            Layout.fillWidth: true
+            client: firewallClient
+            enabled: isCurrentPage
+        }
+
         FirewallInlineMessage {
             text: netStatClient.status
         }
 
-        FirewallInlineMessage {
-            text: firewallClient.status
-        }
-
         Kirigami.FormLayout {
-            QQC2.CheckBox {
+            RowLayout {
                 Kirigami.FormData.label: i18n("Firewall Status:")
-                text: i18n("Enabled")
-                onClicked: firewallClient.enabled = !firewallClient.enabled
-                checked: firewallClient.enabled
+                Kirigami.FormData.enabled: !firewallClient.busy
+
+                QQC2.CheckBox {
+                    id: enabledCheckBox
+                    text: i18n("Enabled")
+                    enabled: !firewallClient.busy
+
+                    function bindCurrent() {
+                        checked = Qt.binding(function() {
+                            return firewallClient.enabled;
+                        });
+                    }
+                    Component.onCompleted: bindCurrent()
+
+                    onToggled: {
+                        firewallClient.enabled = checked;
+                        bindCurrent();
+                    }
+                }
+
+                InlineBusyIndicator {
+                    Layout.fillHeight: true
+                    running: firewallClient.status === FirewallClient.Enabling || firewallClient.status === FirewallClient.Disabling
+                }
             }
 
-            QQC2.ComboBox {
-                id: defaultIncomingPolicy
+            RowLayout {
                 Kirigami.FormData.label: i18n("Default Incoming Policy:")
-                model: policyChoices
-                textRole: "text"
-                currentIndex: policyChoices.findIndex((choice) => choice.data === firewallClient.defaultIncomingPolicy)
-                onCurrentIndexChanged: firewallClient.defaultIncomingPolicy = policyChoices[currentIndex].data
-                enabled: firewallClient.enabled
-                QQC2.ToolTip.text:  policyChoices[currentIndex].tooltip
-                QQC2.ToolTip.delay: 1000
-                QQC2.ToolTip.timeout: 5000
-                QQC2.ToolTip.visible: hovered
+                Kirigami.FormData.enabled: !firewallClient.busy
+
+                QQC2.ComboBox {
+                    id: defaultIncomingPolicy
+
+                    model: policyChoices
+                    textRole: "text"
+                    enabled: !firewallClient.busy && firewallClient.enabled
+                    QQC2.ToolTip.text:  policyChoices[currentIndex].tooltip
+                    QQC2.ToolTip.delay: 1000
+                    QQC2.ToolTip.timeout: 5000
+                    QQC2.ToolTip.visible: hovered
+
+                    function bindCurrent() {
+                        currentIndex = Qt.binding(function() {
+                            return policyChoices.findIndex((choice) => choice.data === firewallClient.defaultIncomingPolicy);
+                        });
+                    }
+                    Component.onCompleted: bindCurrent()
+
+                    onActivated: {
+                        firewallClient.defaultIncomingPolicy = policyChoices[index].data;
+                        bindCurrent();
+                    }
+                }
+
+                InlineBusyIndicator {
+                    Layout.fillHeight: true
+                    running: firewallClient.status === FirewallClient.SettingDefaultIncomingPolicy
+                }
             }
 
-            QQC2.ComboBox {
-                id: defaultOutgoingPolicy
+            RowLayout {
                 Kirigami.FormData.label: i18n("Default Outgoing Policy:")
-                model: policyChoices
-                textRole: "text"
-                currentIndex: policyChoices.findIndex((choice) => choice.data == firewallClient.defaultOutgoingPolicy)
-                onCurrentIndexChanged: firewallClient.defaultOutgoingPolicy = policyChoices[currentIndex].data
-                enabled: firewallClient.enabled
-                QQC2.ToolTip.text:  policyChoices[currentIndex].tooltip
-                QQC2.ToolTip.delay: 1000
-                QQC2.ToolTip.timeout: 5000
-                QQC2.ToolTip.visible: hovered
+                Kirigami.FormData.enabled: !firewallClient.busy
+
+                QQC2.ComboBox {
+                    id: defaultOutgoingPolicy
+                    model: policyChoices
+                    textRole: "text"
+
+                    enabled: !firewallClient.busy && firewallClient.enabled
+                    QQC2.ToolTip.text:  policyChoices[currentIndex].tooltip
+                    QQC2.ToolTip.delay: 1000
+                    QQC2.ToolTip.timeout: 5000
+                    QQC2.ToolTip.visible: hovered
+
+                    function bindCurrent() {
+                        currentIndex = Qt.binding(function() {
+                            return policyChoices.findIndex((choice) => choice.data === firewallClient.defaultOutgoingPolicy);
+                        });
+                    }
+                    Component.onCompleted: bindCurrent()
+
+                    onActivated:  {
+                        firewallClient.defaultOutgoingPolicy = policyChoices[index].data;
+                        bindCurrent();
+                    }
+                }
+
+                InlineBusyIndicator {
+                    Layout.fillHeight: true
+                    running: firewallClient.status === FirewallClient.SettingDefaultOutgoingPolicy
+                }
             }
         }
     }
@@ -209,9 +272,12 @@ KCM.ScrollViewKCM {
         Item {
             Layout.fillWidth: true
         }
+        InlineBusyIndicator {
+            horizontalAlignment: Qt.AlignRight
+            running: firewallClient.status === FirewallClient.AddingRule
+        }
         QQC2.Button {
-            enabled: firewallClient.enabled
-            height: 48
+            enabled: !firewallClient.busy && firewallClient.enabled
             icon.name: "list-add"
             text: i18n("Add Rule")
             onClicked: {

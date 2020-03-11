@@ -44,8 +44,9 @@ KCM.ScrollViewKCM {
     title: i18n("Connections")
 
     header: RowLayout {
-        FirewallInlineMessage {
-            text: firewallClient.status
+        FirewallClientInlineMessages {
+            Layout.fillWidth: true
+            client: firewallClient
         }
     }
 

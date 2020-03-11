@@ -47,7 +47,6 @@ class IFirewallClientBackend : public QObject
 public:
     IFirewallClientBackend(FirewallClient *parent);
     ~IFirewallClientBackend() = default;
-    FirewallClient *parentClient() const;
 
     virtual QString name() const = 0;
     virtual void refresh() = 0;
@@ -74,19 +73,32 @@ public:
         const QString &inn) = 0;
 
     virtual bool enabled() const = 0;
-    virtual bool isBusy() const = 0;
+    virtual bool busy() const;
+    virtual FirewallClient::Status status() const = 0;
     virtual QString defaultIncomingPolicy() const = 0;
     virtual QString defaultOutgoingPolicy() const = 0;
     virtual bool hasExecutable() const = 0;
     virtual LogListModel* logs() = 0;
     virtual bool logsAutoRefresh() const = 0;
 
-
     virtual void refreshProfiles() = 0;
 
     void setProfiles(const QVector<Entry> &profiles);
     QVector<Entry> profiles();
     Entry profileByName(const QString &profileName);
+
+signals:
+    void enabledChanged(bool enabled);
+    void busyChanged(bool busy);
+    void statusChanged(FirewallClient::Status status);
+    void defaultIncomingPolicyChanged(const QString &defaultIncomingPolicy);
+    void defaultOutgoingPolicyChanged(const QString &defaultOutgoingPolicy);
+    void logsAutoRefreshChanged(bool logsAutoRefresh);
+    // Is this even used?
+    void hasExecutableChanged(bool changed);
+
+    void showSuccessMessage(const QString &message);
+    void showErrorMessage(const QString &message);
 
 public slots:
     virtual void setEnabled(bool enabled) = 0;
@@ -96,7 +108,6 @@ public slots:
     virtual void setLogsAutoRefresh(bool logsAutoRefresh) = 0;
 
 private:
-    FirewallClient *m_parent;
     QVector<Entry> m_profiles;
 };
 

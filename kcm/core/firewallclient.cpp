@@ -145,26 +145,20 @@ bool FirewallClient::enabled() const
     return false;
 }
 
-bool FirewallClient::isBusy() const
+bool FirewallClient::busy() const
 {
-    if (m_currentBackend)
-        return m_currentBackend->isBusy();
-    return true;
-}
-
-void FirewallClient::setStatus(const QString& status)
-{
-    if (m_status != status) {
-        m_status = status;
-        emit statusChanged(m_status);
+    if (m_currentBackend) {
+        return m_currentBackend->busy();
     }
+    return false;
 }
 
-QString FirewallClient::status() const
+FirewallClient::Status FirewallClient::status() const
 {
-    if (m_currentBackend)
-        return m_status;
-    return {};
+    if (m_currentBackend) {
+        return m_currentBackend->status();
+    }
+    return NoBackendStatus;
 }
 
 QString FirewallClient::defaultIncomingPolicy() const
@@ -245,6 +239,20 @@ void FirewallClient::setBackend(const QString& backend)
     // To properly fix we should use a plugin system with dynamic libs.
     if (backend == "ufw") {
         m_currentBackend = new UfwClient(this);
+    }
+
+    if (m_currentBackend) {
+        connect(m_currentBackend, &IFirewallClientBackend::enabledChanged, this, &FirewallClient::enabledChanged);
+        connect(m_currentBackend, &IFirewallClientBackend::busyChanged, this, &FirewallClient::busyChanged);
+        connect(m_currentBackend, &IFirewallClientBackend::statusChanged, this, &FirewallClient::statusChanged);
+
+        connect(m_currentBackend, &IFirewallClientBackend::defaultIncomingPolicyChanged, this, &FirewallClient::defaultIncomingPolicyChanged);
+        connect(m_currentBackend, &IFirewallClientBackend::defaultOutgoingPolicyChanged, this, &FirewallClient::defaultOutgoingPolicyChanged);
+        connect(m_currentBackend, &IFirewallClientBackend::logsAutoRefreshChanged, this, &FirewallClient::logsAutoRefreshChanged);
+        connect(m_currentBackend, &IFirewallClientBackend::hasExecutableChanged, this, &FirewallClient::hasExecutableChanged);
+
+        connect(m_currentBackend, &IFirewallClientBackend::showSuccessMessage, this, &FirewallClient::showSuccessMessage);
+        connect(m_currentBackend, &IFirewallClientBackend::showErrorMessage, this, &FirewallClient::showErrorMessage);
     }
 }
 

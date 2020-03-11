@@ -26,14 +26,14 @@
 #include "ifirewallclientbackend.h"
 
 IFirewallClientBackend::IFirewallClientBackend(FirewallClient *parent)
-    : m_parent(parent)
+    : QObject(parent)
 {
 
 };
 
-FirewallClient *IFirewallClientBackend::parentClient() const
+bool IFirewallClientBackend::busy() const
 {
-    return m_parent;
+    return status() > FirewallClient::Idle;
 }
 
 void IFirewallClientBackend::setProfiles(const QVector<Entry> &profiles)

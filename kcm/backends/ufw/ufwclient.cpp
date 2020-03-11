@@ -56,7 +56,6 @@ namespace {
 
 UfwClient::UfwClient(FirewallClient *parent) :
     IFirewallClientBackend(parent),
-    m_isBusy(false),
     m_rulesModel(new RuleListModel(this)),
     m_logs(new LogListModel(this))
 {
@@ -85,11 +84,32 @@ bool UfwClient::enabled() const
     return m_currentProfile.getEnabled();
 }
 
+FirewallClient::Status UfwClient::status() const
+{
+    return m_status;
+}
+
+void UfwClient::setStatus(FirewallClient::Status status)
+{
+    if (m_status != status) {
+        const bool oldBusy = busy();
+
+        m_status = status;
+        emit statusChanged(status);
+
+        if (busy() != oldBusy) {
+            emit busyChanged(busy());
+        }
+    }
+}
+
 void UfwClient::setEnabled(bool value)
 {
     if (enabled() == value) {
         return;
     }
+
+    setStatus(value ? FirewallClient::Enabling : FirewallClient::Disabling);
 
     QVariantMap args {
         {"cmd", "setStatus"},
@@ -98,46 +118,34 @@ void UfwClient::setEnabled(bool value)
 
     KAuth::Action modifyAction = buildModifyAction(args);
 
-    parentClient()->setStatus(value ? i18n("Enabling the firewall...") : i18n("Disabling the firewall..."));
-    m_isBusy = true;
-
-
     KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this] (KJob *kjob)
-    {
-        auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
-        setBusy(false);
+    connect(job, &KAuth::ExecuteJob::result, [this, job] {
+        setStatus(FirewallClient::Idle);
 
         if (!job->error()) {
-            parentClient()->setStatus(QString());
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
                         FirewallClient::ProfilesBehavior::DontListenProfiles);
         } else {
             // User cancelled. returned error = 4.
             if (job->error() == 4) {
-                return;
+                //return; FIXME FIXME FIXME
             }
-            parentClient()->setStatus(i18n("Error setting the state of the firewall: ") + job->errorText());
-            parentClient()->enabledChanged(enabled());
+            emit showErrorMessage(i18n("Error setting the state of the firewall: %1", job->errorText()));
+            emit enabledChanged(enabled());
         }
     });
 
     job->start();
 }
 
-
-bool UfwClient::isBusy() const
-{
-    return m_isBusy;
-}
-
 void UfwClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior)
 {
-    if (isBusy())
-    {
+    if (busy()) {
         qWarning() << "Ufw client is busy";
         return;
     }
+
+    setStatus(FirewallClient::QueryingStatus);
 
     const bool readDefaults = defaultsBehavior == FirewallClient::DefaultDataBehavior::ReadDefaults;
     const bool listProfiles = profilesBehavior == FirewallClient::ProfilesBehavior::ListenProfiles;
@@ -152,23 +160,19 @@ void UfwClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior
     }
 
     KAuth::ExecuteJob *job = m_queryAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this] (KJob *kjob)
-    {
-        auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
+    connect(job, &KAuth::ExecuteJob::result, [this, job] {
+        setStatus(FirewallClient::Idle);
 
-        if (!job->error())
-        {
+        if (!job->error()) {
             QByteArray response = job->data().value("response", "").toByteArray();
             setProfile(Profile(response));
         } else {
-            parentClient()->setStatus(
-                QStringLiteral("There was an error in the backend! Please report it. \n") +
-                job->action().name() + QStringLiteral(" ") + job->errorString()
+            emit showErrorMessage(
+                i18n("There was an error in the backend! Please report it.\n%1 %2",
+                job->action().name(), job->errorString())
             );
             qWarning() << job->action().name() << job->errorString();
         }
-
-        setBusy(false);
     });
 
     job->start();
@@ -180,6 +184,8 @@ void UfwClient::setDefaultIncomingPolicy(QString policy)
         return;
     }
 
+    setStatus(FirewallClient::SettingDefaultIncomingPolicy);
+
     const QString xmlArg = QStringLiteral("<defaults incoming=\"%1\"/>").arg(policy);
 
     QVariantMap args {
@@ -188,15 +194,10 @@ void UfwClient::setDefaultIncomingPolicy(QString policy)
     };
 
     KAuth::Action modifyAction = buildModifyAction(args);
-    parentClient()->setStatus(i18n("Setting firewall default incomming policy..."));
-    m_isBusy = true;
 
     KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this] (KJob *kjob)
-    {
-        auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
-
-        setBusy(false);
+    connect(job, &KAuth::ExecuteJob::result, [this, job] {
+        setStatus(FirewallClient::Idle);
 
         if (!job->error()) {
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
@@ -207,9 +208,8 @@ void UfwClient::setDefaultIncomingPolicy(QString policy)
                 return;
             }
 
-            parentClient()->setStatus(i18n("Error setting the firewall default incomming policy ") + job->errorString());
+            emit showErrorMessage(i18n("Error setting the firewall default incomming policy: %1", job->errorString()));
         }
-
     });
 
     job->start();
@@ -221,6 +221,8 @@ void UfwClient::setDefaultOutgoingPolicy(QString policy)
         return;
     }
 
+    setStatus(FirewallClient::SettingDefaultOutgoingPolicy);
+
     const QString xmlArg = QStringLiteral("<defaults outgoing=\"%1\"/>").arg(policy);
 
     QVariantMap args {
@@ -229,15 +231,11 @@ void UfwClient::setDefaultOutgoingPolicy(QString policy)
     };
 
     KAuth::Action modifyAction = buildModifyAction(args);
-    parentClient()->setStatus(i18n("Setting firewall default outgoing policy..."));
-    m_isBusy = true;
 
     KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this] (KJob *kjob)
-    {
-        auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
+    connect(job, &KAuth::ExecuteJob::result, [this, job] {
+        setStatus(FirewallClient::Idle);
 
-        setBusy(false);
         if (!job->error()) {
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
                         FirewallClient::ProfilesBehavior::DontListenProfiles);
@@ -246,10 +244,9 @@ void UfwClient::setDefaultOutgoingPolicy(QString policy)
             if (job->error() == 4) {
                 return;
             }
-            parentClient()->setStatus(i18n("Error setting the firewall default outcomming policy ") + job->errorString());
+
+            emit showErrorMessage(i18n("Error setting the firewall default outcomming policy: %1", job->errorString()));
         }
-
-
     });
 
     job->start();
@@ -270,11 +267,13 @@ void UfwClient::setLogsAutoRefresh(bool logsAutoRefresh)
     }
 
     m_logsAutoRefresh = logsAutoRefresh;
-    emit parentClient()->logsAutoRefreshChanged(m_logsAutoRefresh);
+    emit logsAutoRefreshChanged(m_logsAutoRefresh);
 }
 
 void UfwClient::refreshLogs()
 {
+    //setStatus(FirewallClient::RefreshingLogs);
+
     KAuth::Action action("org.kde.ufw.viewlog");
     action.setHelperId("org.kde.ufw");
 
@@ -285,32 +284,21 @@ void UfwClient::refreshLogs()
     action.setArguments(args);
 
     KAuth::ExecuteJob *job = action.execute();
-    connect(job, &KAuth::ExecuteJob::finished, [this] (KJob *kjob)
-    {
-        auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
+    connect(job, &KAuth::ExecuteJob::finished, [this, job] {
+        //setStatus(FirewallClient::Idle);
 
-        if (!job->error())
-        {
+        if (!job->error()) {
             QStringList newLogs = job->data().value("lines", "").toStringList();
+            qDebug() << "NEW LOGS" << newLogs;
             m_rawLogs.append(newLogs);
             m_logs->addRawLogs(newLogs);
         } else {
-            parentClient()->setStatus(i18n("Error fetching the logs: ") + job->errorString());
+            showErrorMessage(i18n("Error fetching firewall logs: %1", job->errorString()));
             qWarning() << "org.kde.ufw.viewlog" << job->errorString();
         }
-        setBusy(false);
     });
 
     job->start();
-}
-
-void UfwClient::setBusy(const bool &isBusy)
-{
-    if (m_isBusy != isBusy)
-    {
-        m_isBusy = isBusy;
-        emit parentClient()->isBusyChanged(isBusy);
-    }
 }
 
 void UfwClient::setProfile(Profile profile)
@@ -320,16 +308,16 @@ void UfwClient::setProfile(Profile profile)
 
     m_rulesModel->setProfile(m_currentProfile);
     if (m_currentProfile.getEnabled() != oldProfile.getEnabled())
-        emit parentClient()->enabledChanged(m_currentProfile.getEnabled());
+        emit enabledChanged(m_currentProfile.getEnabled());
 
     if (m_currentProfile.getDefaultIncomingPolicy() != oldProfile.getDefaultIncomingPolicy()) {
-        QString policy = Types::toString(m_currentProfile.getDefaultIncomingPolicy());
-        emit parentClient()->defaultIncomingPolicyChanged(policy);
+        const QString policy = Types::toString(m_currentProfile.getDefaultIncomingPolicy());
+        emit defaultIncomingPolicyChanged(policy);
     }
 
     if (m_currentProfile.getDefaultOutgoingPolicy() != oldProfile.getDefaultOutgoingPolicy()) {
-        QString policy = Types::toString(m_currentProfile.getDefaultOutgoingPolicy());
-        emit parentClient()->defaultOutgoingPolicyChanged(policy);
+        const QString policy = Types::toString(m_currentProfile.getDefaultOutgoingPolicy());
+        emit defaultOutgoingPolicyChanged(policy);
     }
 }
 
@@ -378,6 +366,8 @@ void UfwClient::addRule(RuleWrapper *ruleWrapper)
         return;
     }
 
+    setStatus(FirewallClient::AddingRule);
+
     Rule rule = ruleWrapper->getRule();
 
     QVariantMap args {
@@ -389,28 +379,23 @@ void UfwClient::addRule(RuleWrapper *ruleWrapper)
     KAuth::Action modifyAction = buildModifyAction(args);
 
     KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this] (KJob *kjob)
-    {
-        setBusy(false);
-        auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
-        if (!job->error())
-        {
+    connect(job, &KAuth::ExecuteJob::result, [this, job] {
+        setStatus(FirewallClient::Idle);
+
+        if (!job->error()) {
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
                         FirewallClient::ProfilesBehavior::ListenProfiles);
-            parentClient()->setStatus("Rule Created successfully");
+
+            emit showSuccessMessage(i18n("Rule was created successfully."));
         } else {
             // User Cancelled the rule removal, returned error = 4.
             if (job->error() == 4) {
                 return;
             }
 
-            auto errorMessage = i18n("Error creating the rule. ");
-            if (job->errorString().isEmpty()) {
-                errorMessage += i18n("Error code:") + QString::number(job->error());
-            } else {
-                errorMessage += job->errorString();
-            }
-            parentClient()->setStatus(errorMessage);
+            // TODO what about error code?
+            showErrorMessage(i18n("Error creating the rule: %1", job->errorString()));
+
             qWarning() << job->action().name() << job->errorString();
         }
     });
@@ -424,6 +409,8 @@ void UfwClient::removeRule(int index)
         qWarning() << __FUNCTION__ << "invalid rule index";
         return;
     }
+
+    setStatus(FirewallClient::RemovingRule);
 
     // Correct index
     index += 1;
@@ -439,12 +426,10 @@ void UfwClient::removeRule(int index)
         debugState(status);
     });
 
-    connect(job, &KAuth::ExecuteJob::result, this, [this] (KJob *kjob)
-    {
-        auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
+    connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
+        setStatus(FirewallClient::Idle);
 
-        if (!job->error())
-        {
+        if (!job->error()) {
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
                         FirewallClient::ProfilesBehavior::ListenProfiles);
         } else {
@@ -452,10 +437,10 @@ void UfwClient::removeRule(int index)
             if (job->error() == 4) {
                 return;
             }
-            parentClient()->setStatus(i18n("Error removing rule: ") + job->errorText());
+
+            emit showErrorMessage(i18n("Error removing rule: %1", job->errorText()));
             qWarning() << job->action().name() << job->errorString();
         }
-        setBusy(false);
     });
 
     job->start();
@@ -468,6 +453,8 @@ void UfwClient::updateRule(RuleWrapper *ruleWrapper)
         return;
     }
 
+    setStatus(FirewallClient::UpdatingRule);
+
     Rule rule = ruleWrapper->getRule();
 
     rule.setPosition(rule.getPosition() + 1);
@@ -478,12 +465,10 @@ void UfwClient::updateRule(RuleWrapper *ruleWrapper)
 
     KAuth::Action modifyAction = buildModifyAction(args);
     KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, [this] (KJob *kjob)
-    {
-        auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
+    connect(job, &KAuth::ExecuteJob::result, [this, job] {
+        setStatus(FirewallClient::Idle);
 
-        if (!job->error())
-        {
+        if (!job->error()) {
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
                         FirewallClient::ProfilesBehavior::ListenProfiles);
         } else {
@@ -491,10 +476,10 @@ void UfwClient::updateRule(RuleWrapper *ruleWrapper)
             if (job->error() == 4) {
                 return;
             }
-            parentClient()->setStatus(i18n("Error updating rule: ") + job->errorString());
+
+            emit showErrorMessage(i18n("Error updating rule: %1", job->errorString()));
             qWarning() << job->action().name() << job->errorString();
         }
-        setBusy(false);
     });
 
     job->start();
@@ -512,6 +497,9 @@ void UfwClient::moveRule(int from, int to)
         qWarning() << "invalid to index";
         return;
     }
+
+    setStatus(FirewallClient::MovingRule);
+
     // Correct indices
     from += 1;
     to += 1;
@@ -524,12 +512,10 @@ void UfwClient::moveRule(int from, int to)
 
     KAuth::Action modifyAction = buildModifyAction(args);
     KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::finished, [this] (KJob *kjob)
-    {
-        auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
+    connect(job, &KAuth::ExecuteJob::finished, [this, job] {
+        setStatus(FirewallClient::Idle);
 
-        if (!job->error())
-        {
+        if (!job->error()) {
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
                         FirewallClient::ProfilesBehavior::ListenProfiles);
         } else {
@@ -537,11 +523,11 @@ void UfwClient::moveRule(int from, int to)
             if (job->error() == 4) {
                 return;
             }
-            parentClient()->setStatus(i18n("Error moving rule: ") + job->errorString());
+
+            emit showErrorMessage(i18n("Error moving rule: %1", job->errorString()));
 
             qWarning() << job->action().name() << job->errorString();
         }
-        setBusy(false);
     });
 
     job->start();
@@ -646,8 +632,9 @@ bool UfwClient::hasExecutable() const {
      return !QStandardPaths::findExecutable("ufw").isEmpty();
 }
  
+// FIXME is this even used?
 void UfwClient::setExecutable(const bool &hasExecutable){
-    emit parentClient()->hasExecutableChanged(hasExecutable);
+    emit hasExecutableChanged(hasExecutable);
 }
 
 void UfwClient::refreshProfiles()

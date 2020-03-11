@@ -47,8 +47,16 @@ class IFirewallClientBackend;
 class FirewallClient : public QObject {
     Q_OBJECT
     Q_PROPERTY(bool enabled READ enabled WRITE setEnabled NOTIFY enabledChanged)
-    Q_PROPERTY(bool isBusy READ isBusy NOTIFY isBusyChanged)
-    Q_PROPERTY(QString status READ status WRITE setStatus NOTIFY statusChanged)
+    /**
+     * Whether the client is currently busy
+     *
+     * This can be used to disable the UI while an operation is ongoing
+     */
+    Q_PROPERTY(bool busy READ busy NOTIFY busyChanged)
+    /**
+     * The current operation the client is executing
+     */
+    Q_PROPERTY(Status status READ status NOTIFY statusChanged)
     Q_PROPERTY(QString defaultIncomingPolicy READ defaultIncomingPolicy WRITE setDefaultIncomingPolicy NOTIFY defaultIncomingPolicyChanged)
     Q_PROPERTY(QString defaultOutgoingPolicy READ defaultOutgoingPolicy WRITE setDefaultOutgoingPolicy NOTIFY defaultOutgoingPolicyChanged)
     Q_PROPERTY(bool logsAutoRefresh READ logsAutoRefresh WRITE setLogsAutoRefresh NOTIFY logsAutoRefreshChanged)
@@ -60,6 +68,23 @@ public:
     enum ProfilesBehavior{DontListenProfiles, ListenProfiles};
 
     explicit FirewallClient(QObject *parent = nullptr);
+
+    enum Status {
+        NoBackendStatus = -2,
+        UnknownStatus = -1,
+        Idle = 0,
+        QueryingStatus,
+        Enabling,
+        Disabling,
+        SettingDefaultIncomingPolicy,
+        SettingDefaultOutgoingPolicy,
+        AddingRule,
+        RemovingRule,
+        UpdatingRule,
+        MovingRule,
+        //RefreshingLogs,
+    };
+    Q_ENUM(Status)
 
     Q_INVOKABLE static QStringList getKnownProtocols();
     Q_INVOKABLE static QStringList getKnownInterfaces();
@@ -88,10 +113,10 @@ public:
         const QString &inn);
 
     bool enabled() const;
-    bool isBusy() const;
+    bool busy() const;
+    Status status() const;
     bool hasExecutable() const;
 
-    QString status() const;
     QString defaultIncomingPolicy() const;
     QString defaultOutgoingPolicy() const;
     QString backend() const;
@@ -100,16 +125,30 @@ public:
     using tcreateMethod = std::function<IFirewallClientBackend*(FirewallClient*)>;
     IFirewallClientBackend* create(const QString& name);
     static bool registerfw ( const QString name, tcreateMethod funcReg );
-    
+
 signals:
-    void isBusyChanged(const bool isBusy);
+    void busyChanged(bool busy);
     void enabledChanged(const bool enabled);
-    void statusChanged(const QString &status);
+    void statusChanged(Status status);
     void defaultIncomingPolicyChanged(const QString &defaultIncomingPolicy);
     void defaultOutgoingPolicyChanged(const QString &defaultOutgoingPolicy);
     void logsAutoRefreshChanged(bool logsAutoRefresh);
     void backendChanged(const QString &backend);
     void hasExecutableChanged(bool changed);
+
+    /**
+     * Emitted when a success message should be displayed.
+     *
+     * This is typically a brief popup showing, e.g. "Action was created successfully."
+     */
+    void showSuccessMessage(const QString &message);
+    /**
+     * Emitted when an error message should be displabed.
+     *
+     * This is typically shown as an inline message, e.g. "Failed to create action: Not authorized."
+     */
+    void showErrorMessage(const QString &message);
+
 public slots:
     void setEnabled(bool enabled);
     void queryStatus(DefaultDataBehavior defaultDataBehavior = ReadDefaults,
@@ -118,11 +157,10 @@ public slots:
     void setDefaultOutgoingPolicy(const QString &defaultOutgoingPolicy);
     void setLogsAutoRefresh(bool logsAutoRefresh);
     void setBackend(const QString &backend);
-    void setStatus(const QString& status);
 private:
     IFirewallClientBackend *m_currentBackend;
     static std::map<QString, tcreateMethod> m_avaiableBackends;
-    QString m_status;
+    Status m_status = UnknownStatus;
 };
 
 #endif

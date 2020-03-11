@@ -69,7 +69,7 @@ public:
         const QString &inn) override;
 
     bool enabled() const override;
-    bool isBusy() const override;
+    FirewallClient::Status status() const override;
     QString defaultIncomingPolicy() const override;
     QString defaultOutgoingPolicy() const override;
     QString name() const override;
@@ -92,15 +92,16 @@ protected slots:
         void refreshLogs();
 
 protected:
-    void setBusy(const bool &busy);
     void setProfile(Profile profile);
     void setExecutable(const bool &hasExecutable);
     KAuth::Action buildQueryAction(const QVariantMap &arguments);
     KAuth::Action buildModifyAction(const QVariantMap &arguments);
 
 private:
+    void setStatus(FirewallClient::Status);
+
+    FirewallClient::Status m_status = FirewallClient::UnknownStatus;
     QStringList         m_rawLogs;
-    bool                m_isBusy;
     Profile        m_currentProfile;
     RuleListModel*      m_rulesModel;
     LogListModel*       m_logs;
