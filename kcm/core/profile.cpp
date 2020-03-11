@@ -30,7 +30,6 @@
 #include <QBuffer>
 #include <QXmlStreamReader>
 #include <QIODevice>
-#include <QMetaEnum>
 
 #include "profile.h"
 
@@ -132,14 +131,9 @@ void Profile::load(QIODevice *device)
             const auto attr = reader.attributes();
 
             // Handle Enums.
-            const char *policyKey = attr.value("action").toString().toLocal8Bit().constData();
-            const auto action = (Types::Policy) QMetaEnum::fromType<Types::Policy>().keyToValue(policyKey);
-
-            const char *protocolKey = attr.value("protocol").toString().toLocal8Bit().constData();
-            const auto protocol = (Types::Protocol) QMetaEnum::fromType<Types::Protocol>().keyToValue(protocolKey);
-
-            const char *logTypeKey = attr.value("logtype").toString().toLocal8Bit().constData();
-            const auto logType = (Types::Logging) QMetaEnum::fromType<Types::Logging>().keyToValue(logTypeKey);
+            const auto action = Types::toPolicy(attr.value(QLatin1String("action")).toString());
+            const auto protocol = Types::toProtocol(attr.value(QLatin1String("protocol")).toString());
+            const auto logType = Types::toLogging(attr.value(QLatin1String("logtype")).toString());
 
             // Handle values that have weird defaults.
             const auto anyAddrs = QList<QString>({ANY_ADDR, ANY_ADDR_V6});
@@ -175,16 +169,12 @@ void Profile::load(QIODevice *device)
 
             const auto attr = reader.attributes();
 
-            const char *logKey = attr.value("loglevel").toString().toLocal8Bit().constData();
-            logLevel = (Types::LogLevel) QMetaEnum::fromType<Types::LogLevel>().keyToValue(logKey);
+            logLevel = Types::toLogLevel(attr.value(QLatin1String("loglevel")).toString());
 
-            const char *incomingPolicyKey= attr.value("incoming").toString().toLocal8Bit().constData();
-            defaultIncomingPolicy = (Types::Policy) QMetaEnum::fromType<Types::Policy>().keyToValue(incomingPolicyKey);
+            defaultIncomingPolicy = Types::toPolicy(attr.value(QLatin1String("incoming")).toString());
+            defaultOutgoingPolicy = Types::toPolicy(attr.value(QLatin1String("outgoing")).toString());
 
-            const char *outcomingPolicyKey = attr.value("outgoing").toString().toLocal8Bit().constData();
-            defaultOutgoingPolicy = (Types::Policy) QMetaEnum::fromType<Types::Policy>().keyToValue(outcomingPolicyKey);
-
-            ipv6Enabled=attr.value("ipv6") == QStringLiteral("yes");
+            ipv6Enabled = (attr.value("ipv6") == QLatin1String("yes"));
         }
         if (reader.name() == "modules") {
             fields |= FIELD_MODULES;
