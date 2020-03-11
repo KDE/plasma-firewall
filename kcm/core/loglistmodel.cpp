@@ -79,7 +79,6 @@ QVariant LogListModel::data2(int row, const QByteArray &roleName) const
 
 void LogListModel::addRawLogs(const QStringList &rawLogsList)
 {
-    beginInsertRows(QModelIndex(), 0, rawLogsList.size() - 1);
     static QRegularExpression regex(
         R"regex(
             "(.*)\s(.*)\s(.*):\s\[(.*)\]\s\[(.*)\]"
@@ -91,9 +90,11 @@ void LogListModel::addRawLogs(const QStringList &rawLogsList)
         ")regex"
     );
 
-    m_logsData.reserve(rawLogsList.size());
+    QVector<LogData> newLogs;
+    newLogs.reserve(rawLogsList.count());
     for (const QString &log : rawLogsList) {
         auto match = regex.match(log);
+        qDebug() << "Adding log" << log;
         if (match.hasMatch()) {
             QDateTime date = QDateTime::fromString(match.captured(1), "MMM d HH:mm:ss");
             const QString host = match.captured(2);
@@ -110,11 +111,15 @@ void LogListModel::addRawLogs(const QStringList &rawLogsList)
                 .time = date.toString("HH:mm:ss"),
                 .date = date.toString("MMM dd")
             };
-
-            m_logsData.append(logDetails);
+            newLogs.append(logDetails);
         }
     }
-    endInsertRows();
+
+    if (!newLogs.isEmpty()) {
+        beginInsertRows(QModelIndex(), rowCount(), rowCount() + newLogs.count() - 1);
+        m_logsData << newLogs;
+        endInsertRows();
+    }
 }
 
 QHash<int, QByteArray> LogListModel::roleNames() const
