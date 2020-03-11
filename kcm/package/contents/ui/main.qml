@@ -34,7 +34,7 @@ KCM.ScrollViewKCM {
     id: root
 
     implicitHeight: Kirigami.Units.gridUnit * 22
-    implicitWidth: Kirigami.Units.gridUnit * 43
+    implicitWidth: Kirigami.Units.gridUnit * 44
 
     KCM.ConfigModule.quickHelp: i18n("This module lets you configure firewall.")
 
