@@ -208,7 +208,7 @@ KJob *FirewallClient::setDefaultIncomingPolicy(const QString &defaultIncomingPol
 KJob *FirewallClient::setDefaultOutgoingPolicy(const QString &defaultOutgoingPolicy)
 {
     if (m_currentBackend) {
-        m_currentBackend->setDefaultOutgoingPolicy(defaultOutgoingPolicy);
+        return m_currentBackend->setDefaultOutgoingPolicy(defaultOutgoingPolicy);
     }
     return nullptr;
 }
