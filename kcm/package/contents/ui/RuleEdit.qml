@@ -61,11 +61,7 @@ Kirigami.FormLayout {
         model: policyChoices
         textRole: "text"
         currentIndex: rule.policy == "" ? 0 : policyChoices.findIndex((policy) => policy.data == rule.policy)
-        onCurrentIndexChanged: {
-            if ( rule.policy != policyChoices[currentIndex].data ) {
-                rule.policy = policyChoices[currentIndex].data
-            }
-        }
+        onActivated: rule.policy = policyChoices[index].data
     }
 
     RowLayout {
@@ -92,14 +88,13 @@ Kirigami.FormLayout {
             id: sourceAddress
             text: rule.sourceAddress
             Layout.preferredWidth: policy.width * 0.6
-
-            onTextChanged: rule.sourceAddress = text
+            onEditingFinished: rule.sourceAddress = text
         }
         PortTextField{
             id: sourcePort
             Layout.preferredWidth: policy.width * 0.38
             text: rule.sourcePort
-            onTextChanged: rule.sourcePort = text
+            onEditingFinished: rule.sourcePort = text
         }
     }
 
@@ -110,13 +105,13 @@ Kirigami.FormLayout {
             id: destinationAddress
             text: rule.destinationAddress
             Layout.preferredWidth: policy.width * 0.6
-            onTextChanged: rule.destinationAddress = text
+            onEditingFinished: rule.destinationAddress = text
         }
         PortTextField {
             id: destinationPort
             Layout.preferredWidth: policy.width * 0.38
             text: rule.destinationPort
-            onTextChanged: rule.destinationPort = text
+            onEditingFinished: rule.destinationPort = text
         }
     }
 
@@ -129,7 +124,7 @@ Kirigami.FormLayout {
 
         // TODO: Fix the protocol retrieval.
         currentIndex: rule.protocol
-        onCurrentIndexChanged: rule.protocol = currentIndex
+        onActivated: rule.protocol = index
     }
     QQC2.ComboBox {
         Kirigami.FormData.label: i18n("Interface:")
@@ -139,8 +134,7 @@ Kirigami.FormLayout {
 
         model: firewallClient.getKnownInterfaces()
         currentIndex: rule.interface
-        onCurrentIndexChanged: rule.interface = currentIndex
-
+        onActivated: rule.interface = index
     }
 
     QQC2.ComboBox {
@@ -148,7 +142,7 @@ Kirigami.FormLayout {
         model: ruleChoices
         textRole: "text"
         currentIndex: rule.logging == "" ? 0 : ruleChoices.findIndex((rules) => rules.data == rule.logging)
-        onCurrentIndexChanged: rule.logging = ruleChoices[currentIndex].data
+        onActivated: rule.logging = ruleChoices[index].data
     }
 
     Item {
