@@ -27,7 +27,6 @@
 
 #include <QtDBus/QDBusMessage>
 #include <QtDBus/QDBusObjectPath>
-//#include <KAuth>
 
 #include "core/profile.h"
 #include "core/rulelistmodel.h"
@@ -119,10 +118,7 @@ class FirewalldClient : public IFirewallClientBackend
         void setStatus(const QString &status);
         void setBusy(const bool &busy);
         void setExecutable(const bool &hasExecutable);
-        /* KAuth::Action buildQueryAction(const QVariantMap &arguments); */
-        /* KAuth::Action buildModifyAction(const QVariantMap &arguments); */
         QVariantList buildRule(Rule r, FirewallClient::Ipv ipvfamily = FirewallClient::IPV4);
-        /* QDBusMessage dbusCall(QString method, QVariantList args= {}); */
     private:
         QString m_status;
         QStringList         m_rawLogs;
@@ -131,11 +127,8 @@ class FirewalldClient : public IFirewallClientBackend
         RuleListModel*      m_rulesModel;
         LogListModel*       m_logs;
         QTimer              m_logsRefreshTimer;
-        //    Blocker       *blocker;
         bool m_logsAutoRefresh;
         bool m_serviceStatus;
-        //KAuth::Action m_queryAction;
-
 };
 
 #endif // FIREWALLDCLIENT_H

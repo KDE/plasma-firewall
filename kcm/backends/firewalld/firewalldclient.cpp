@@ -60,26 +60,21 @@ QString FirewalldClient::name() const
 void FirewalldClient::refresh()
 {
     queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, 
-                FirewallClient::ProfilesBehavior::ListenProfiles);
+            FirewallClient::ProfilesBehavior::ListenProfiles);
 }
 
 bool FirewalldClient::enabled() const
 {
-    /* QDBusMessage status; */
-    /* status = HELPER::dbusCall("GetUnit", SYSTEMD::PATH, SYSTEMD::MANAGER_INTERFACE, */ 
-    /*         SYSTEMD::INTERFACE, {"firewalld.service"}); */
-    /* return status.type() == QDBusMessage::ErrorMessage ? false : true; */
-    /* status = HELPER::dbusCall("GetUnit", SYSTEMD::PATH, SYSTEMD::MANAGER_INTERFACE, */ 
-    return m_serviceStatus;    /* QDBusMessage status; */
+    return m_serviceStatus;
 }
 void FirewalldClient::setEnabled(const bool value)
 {
     if (m_serviceStatus != value) {
         m_serviceStatus = SYSTEMD::executeAction(static_cast<SYSTEMD::actions>(value));
         emit parentClient()->enabledChanged(value);
-}
-    qDebug() << "Service STATUS "<< m_serviceStatus;
     }
+    qDebug() << "Service STATUS "<< m_serviceStatus;
+}
 
 bool FirewalldClient::isBusy() const
 {
@@ -87,7 +82,7 @@ bool FirewalldClient::isBusy() const
 }
 
 void FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, 
-                                  FirewallClient::ProfilesBehavior profilesBehavior) {
+        FirewallClient::ProfilesBehavior profilesBehavior) {
     return;
 }
 
@@ -111,32 +106,6 @@ void FirewalldClient::setLogsAutoRefresh(bool logsAutoRefresh)
 }
 
 void FirewalldClient::refreshLogs() {};
-/* { */
-/*     KAuth::Action action("org.kde.ufw.viewlog"); */
-/*     action.setHelperId("org.kde.ufw"); */
-
-/*     QVariantMap args; */
-/*     if (m_rawLogs.size() > 0) */
-/*         args["lastLine"] = m_rawLogs.last(); */
-
-/*     action.setArguments(args); */
-
-/*     KAuth::ExecuteJob *job = action.execute(); */
-/*     connect(job, &KAuth::ExecuteJob::finished, [this](KJob * kjob) { */
-/*             auto job = qobject_cast<KAuth::ExecuteJob *>(kjob); */
-
-/*             if (!job->error()) { */
-/*             QStringList newLogs = job->data().value("lines", "").toStringList(); */
-/*             m_rawLogs.append(newLogs); */
-/*             m_logs->addRawLogs(newLogs); */
-/*             } else { */
-/*             qWarning() << "org.kde.ufw.viewlog" << job->errorString(); */
-/*             } */
-/*             setBusy(false); */
-/*             }); */
-
-/*     job->start(); */
-/* } */
 
 void FirewalldClient::setStatus(const QString &status)
 {
@@ -197,7 +166,7 @@ void FirewalldClient::removeRule(int index)
 {
 
     Rule rule = getRule(index)->getRule();
-    /* TODO create calls functions to ipv4 and ipv6 familty*/
+    /* TODO create calls functions to ipv6 familty*/
     QVariantList dbusArgs = buildRule(rule);
     HELPER::dbusCall("removeRule",  HELPER::DBUS_PATH, HELPER::INTERFACE_NAME, HELPER::SERVICE_NAME,dbusArgs);
 }
@@ -348,44 +317,7 @@ void FirewalldClient::refreshProfiles()
 
 }
 
-QDBusMessage HELPER::dbusCall(QString method, QString dpath, QString dinterface, QString dservice, QVariantList args= {}) {
-    QDBusMessage msg;
-    if(QDBusConnection::systemBus().isConnected()) {
-        /* QDBusInterface iface(SERVICE_NAME, DBUS_PATH, INTERFACE_NAME, QDBusConnection::systemBus()); */
-        QDBusInterface iface(dservice, dpath, dinterface, QDBusConnection::systemBus());
-        if(iface.isValid())
-            msg= args.isEmpty() ? iface.call(QDBus::AutoDetect, method.toLatin1())
-                : iface.callWithArgumentList(QDBus::AutoDetect, method.toLatin1(), args);
-        if(msg.type() == QDBusMessage::ErrorMessage)
-            qDebug() << msg.errorMessage(); }
-    return msg;
-}
 
-/* QDBusMessage FirewalldClient::dbusCall(QString method, QVariantList args) */
-/* { */
-/*     QDBusMessage msg; */
-/*     // saving config call is in another interface which has the same name as SERVICE_NAME */
-/*     if (method == "runtimeToPermanent") { */
-/*         if (QDBusConnection::systemBus().isConnected()) { */
-/*             QDBusInterface iface(SERVICE_NAME, DBUS_PATH, SERVICE_NAME, QDBusConnection::systemBus()); */
-/*             if (iface.isValid()) */
-/*                 msg = args.isEmpty() ? iface.call(QDBus::AutoDetect, method.toLatin1()) */
-/*                     : iface.callWithArgumentList(QDBus::AutoDetect, method.toLatin1(), args); */
-/*             if (msg.type() == QDBusMessage::ErrorMessage) */
-/*                 qDebug() << msg.errorMessage(); */
-/*         } */
-/*     } else { */
-/*         if (QDBusConnection::systemBus().isConnected()) { */
-/*             QDBusInterface iface(SERVICE_NAME, DBUS_PATH, INTERFACE_NAME, QDBusConnection::systemBus()); */
-/*             if (iface.isValid()) */
-/*                 msg = args.isEmpty() ? iface.call(QDBus::AutoDetect, method.toLatin1()) */
-/*                     : iface.callWithArgumentList(QDBus::AutoDetect, method.toLatin1(), args); */
-/*             if (msg.type() == QDBusMessage::ErrorMessage) */
-/*                 qDebug() << msg.errorMessage(); */
-/*         } */
-/*     } */
-/*     return msg; */
-/* } */
 
 QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily)
 {
@@ -400,14 +332,18 @@ QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily)
 
     };
 
-    r.getIncoming() ? args.insert("chain", "INPUT") : args.insert("chain", "OUTPUT");
+    args.insert("chain",  r.getIncoming() ? "INPUT" : "OUTPUT");
 
-    if (r.getAction() == Types::POLICY_ALLOW)
+    switch(r.getAction()){
+    case Types::POLICY_ALLOW:
         args.insert("action", "ACCEPT");
-    else if (r.getAction() == Types::POLICY_REJECT)
+        break;
+    case Types::POLICY_REJECT:
         args.insert("action", "REJECT");
-    else
+        break;
+    default:
         args.insert("action", "DROP");
+    }
 
     QStringList firewalld_direct_rule = {"-p", args.value("type").toString(), "-j",
         args.value("action").toString()
@@ -443,36 +379,90 @@ LogListModel *FirewalldClient::logs()
     return m_logs;
 }
 
-SYSTEMD::actions SYSTEMD::executeAction(SYSTEMD::actions value) {
+QDBusMessage HELPER::dbusCall(QString method, QString dpath, QString dinterface, QString dservice, QVariantList args= {}) {
     QDBusMessage msg;
-    if (QDBusConnection::systemBus().isConnected()) {
-        if(value == SYSTEMD::START){
-        QDBusInterface iface(SYSTEMD::INTERFACE, SYSTEMD::PATH, SYSTEMD::MANAGER_INTERFACE, 
-                             QDBusConnection::systemBus());
-            if (iface.isValid()) {
-                msg = iface.callWithArgumentList(QDBus::AutoDetect, "StartUnit", 
-                                             QVariantList({"firewalld.service", "fail"}));
-                if (msg.type() == QDBusMessage::ErrorMessage){
-                    qDebug() << msg.errorMessage();
-                    return SYSTEMD::ERROR;
-                }
-            return SYSTEMD::START;
-            }
-        }
-        else {
-            QDBusInterface iface(SYSTEMD::INTERFACE, SYSTEMD::PATH, SYSTEMD::MANAGER_INTERFACE, 
-                             QDBusConnection::systemBus());
-            if (iface.isValid())
-                msg = iface.callWithArgumentList(QDBus::AutoDetect, "StopUnit", 
-                                                 QVariantList({"firewalld.service", "fail"}));
-            if (msg.type() == QDBusMessage::ErrorMessage){
-                qDebug() << msg.errorMessage();
-                return SYSTEMD::ERROR;
-            }
-            return SYSTEMD::STOP;
-
-        }
+    if(QDBusConnection::systemBus().isConnected()) {
+        QDBusInterface iface(dservice, dpath, dinterface, QDBusConnection::systemBus());
+        if(iface.isValid())
+            msg= args.isEmpty() ? iface.call(QDBus::AutoDetect, method.toLatin1())
+                : iface.callWithArgumentList(QDBus::AutoDetect, method.toLatin1(), args);
+        if(msg.type() == QDBusMessage::ErrorMessage)
+            qDebug() << msg.errorMessage(); 
     }
-    return SYSTEMD::ERROR;
+    return msg;
 }
+
+SYSTEMD::actions SYSTEMD::executeAction(SYSTEMD::actions value)
+{
+    if (!QDBusConnection::systemBus().isConnected()) {
+        return SYSTEMD::ERROR;
+    }
+   
+    QDBusInterface iface(SYSTEMD::INTERFACE, SYSTEMD::PATH, SYSTEMD::MANAGER_INTERFACE,
+                QDBusConnection::systemBus());
+ 
+    if(!iface.isValid()) {
+        return SYSTEMD::ERROR;
+    }
+ 
+    auto callIface = [&iface] (const QByteArray &call, SYSTEMD::actions retNonError) {
+        QDBusMessage msg = iface.callWithArgumentList(
+            QDBus::AutoDetect,
+            call,
+            {"firewalld.service", "fail"});
+ 
+        if (msg.type() == QDBusMessage::ErrorMessage){
+            qDebug() << msg.errorMessage();
+            return SYSTEMD::ERROR;
+        }
+        return retNonError;
+    };
+ 
+    switch(value) {
+ 
+        case SYSTEMD::START:
+            return callIface("StartUnit", SYSTEMD::START);
+        case SYSTEMD::STOP:
+            return callIface("StopUnit", SYSTEMD::STOP);
+        default:
+            return SYSTEMD::ERROR;
+    }
+}
+/* SYSTEMD::actions SYSTEMD::executeAction(SYSTEMD::actions value) { */
+/*     QDBusMessage msg; */
+/*     if (QDBusConnection::systemBus().isConnected()) { */
+/*         QDBusInterface iface(SYSTEMD::INTERFACE, SYSTEMD::PATH, SYSTEMD::MANAGER_INTERFACE, */ 
+/*                     QDBusConnection::systemBus()); */
+
+/*         if(!iface.isValid()) { */
+/*             return SYSTEMD::ERROR; */
+/*         } */
+
+/*         switch(value) { */
+
+/*             case SYSTEMD::START: */
+/*                 msg = iface.callWithArgumentList(QDBus::AutoDetect, "StartUnit", */ 
+/*                         QVariantList({"firewalld.service", "fail"})); */
+/*                 if (msg.type() == QDBusMessage::ErrorMessage){ */
+/*                     qDebug() << msg.errorMessage(); */
+/*                     return SYSTEMD::ERROR; */
+/*                 } */
+/*                 return SYSTEMD::START; */
+
+/*             case SYSTEMD::STOP: */
+/*                 msg = iface.callWithArgumentList(QDBus::AutoDetect, "StopUnit", */ 
+/*                         QVariantList({"firewalld.service", "fail"})); */
+/*                 if (msg.type() == QDBusMessage::ErrorMessage){ */
+/*                     qDebug() << msg.errorMessage(); */
+/*                     return SYSTEMD::ERROR; */
+/*                 } */
+/*                 return SYSTEMD::STOP; */
+
+/*             default: */
+/*                 return SYSTEMD::ERROR; */
+
+/*         } */
+/*     } */
+/*     return SYSTEMD::ERROR; */
+/* } */
 
