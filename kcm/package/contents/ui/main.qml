@@ -62,9 +62,20 @@ KCM.ScrollViewKCM {
             id: ruleEdit
             height: childrenRect.height
             implicitWidth: 30 * Kirigami.Units.gridUnit
-            onAccept: drawer.close()
+            busy: firewallClient.status === FirewallClient.AddingRule || firewallClient.status === FirewallClient.UpdatingRule
+            onAccept: {
+                firewallClient.statusChanged.connect(closeWhenIdle);
+            }
             defaultOutgoingPolicyRule: policyChoices[defaultOutgoingPolicy.currentIndex].data
             defaultIncomingPolicyRule: policyChoices[defaultIncomingPolicy.currentIndex].data
+
+            // TODO we should have some job pattern for saving/creating rules
+            function closeWhenIdle() {
+                if (firewallClient.status === FirewallClient.Idle) {
+                    drawer.close();
+                    firewallClient.statusChanged.disconnect(closeWhenIdle);
+                }
+            }
         }
     }
 

@@ -29,8 +29,12 @@ import org.kde.kirigami 2.4 as Kirigami
 import org.kcm.firewall 1.0 as Firewall
 
 Kirigami.FormLayout {
+    id: ruleEdit
+
     signal accept(var rule)
     signal reject()
+
+    property bool busy: false
 
     property var defaultOutgoingPolicyRule: null
     property var defaultIncomingPolicyRule: null
@@ -48,11 +52,14 @@ Kirigami.FormLayout {
     ]
     property bool newRule: false
 
+    enabled: !busy
+
     onAccept: {
-        if (newRule)
+        if (newRule) {
             firewallClient.addRule(rule)
-        else
+        } else {
             firewallClient.updateRule(rule)
+        }
     }
 
     QQC2.ComboBox {
@@ -150,11 +157,16 @@ Kirigami.FormLayout {
     }
     RowLayout {
         QQC2.Button {
-            text: i18n("Accept")
-            icon.name: "dialog-ok"
+            text: ruleEdit.newRule ? i18n("Create") : i18n("Save")
+            icon.name: ruleEdit.newRule ? "document-new" : "document-save"
             enabled: (!incoming.checked && policyChoices[policy.currentIndex].data !== defaultOutgoingPolicyRule)
                   || (incoming.checked && policyChoices[policy.currentIndex].data !== defaultIncomingPolicyRule)
             onClicked: accept(rule)
+        }
+
+        // Would be nice to not have this one "disabled"
+        InlineBusyIndicator {
+            running: ruleEdit.busy
         }
     }
 }
