@@ -80,21 +80,13 @@ QVariant LogListModel::data2(int row, const QByteArray &roleName) const
 void LogListModel::addRawLogs(const QStringList &rawLogsList)
 {
     static QRegularExpression regex(
-        R"regex(
-            "(.*)\s(.*)\s(.*):\s\[(.*)\]\s\[(.*)\]"
-            ".*IN=([\w|\d]*)"
-            ".*SRC=([\w|\.|\d]*)"
-            ".*DST=([\w|\.|\d]*)"
-            ".*PROTO=([\w|\.|\d]*)"
-            "\s(SPT=(\d*)\sDPT=(\d*))?.*"
-        ")regex"
+        R"regex((.*)\s(.*)\s(.*):\s\[(.*)\]\s\[(.*)\].*IN=([\w|\d]*).*SRC=([\w|\.|\d]*).*DST=([\w|\.|\d]*).*PROTO=([\w|\.|\d]*)\s(SPT=(\d*)\sDPT=(\d*))?.*)regex"
     );
 
     QVector<LogData> newLogs;
     newLogs.reserve(rawLogsList.count());
     for (const QString &log : rawLogsList) {
         auto match = regex.match(log);
-        qDebug() << "Adding log" << log;
         if (match.hasMatch()) {
             QDateTime date = QDateTime::fromString(match.captured(1), "MMM d HH:mm:ss");
             const QString host = match.captured(2);
