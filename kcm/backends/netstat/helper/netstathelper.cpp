@@ -28,10 +28,9 @@
 
 NetstatHelper::NetstatHelper()
 {
-    mHasNetstat = !QStandardPaths::findExecutable("netstat").isEmpty();
     mHasSS = !QStandardPaths::findExecutable("ss").isEmpty();
 
-    if (!mHasNetstat && !mHasSS) { // could not execute file
+    if (!mHasSS) { // could not execute file
         qWarning() << "could not find iproute2 or net-tools packages installed.";
     }
 }
@@ -50,7 +49,6 @@ KAuth::ActionReply NetstatHelper::query(const QVariantMap)
      */
     QStringList netstatArgs({"-tuapr"});
     QString executable = mHasSS ? QStringLiteral("ss")
-                      : mHasNetstat ? QStringLiteral("netstat")
                       : QString();
 
     if (executable.isEmpty()) {
@@ -83,8 +81,6 @@ QVariantList NetstatHelper::parseOutput(const QByteArray &netstatOutput)
 {
     if (mHasSS) {
         return parseSSOutput(netstatOutput);
-    } else if (mHasNetstat) {
-        return parseNetstatOutput(netstatOutput);
     }
     return {};
 }
