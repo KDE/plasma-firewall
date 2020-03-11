@@ -49,10 +49,17 @@ public:
      void refresh() override;
      RuleListModel* rules() const override;
      RuleWrapper* getRule(int index) override;
-     void addRule(RuleWrapper * rule) override;
-     void removeRule(int index) override;
-     void updateRule(RuleWrapper * rule) override;
-     void moveRule(int from, int to) override;
+     KJob *addRule(RuleWrapper * rule) override;
+     KJob *removeRule(int index) override;
+     KJob *updateRule(RuleWrapper * rule) override;
+     KJob *moveRule(int from, int to) override;
+
+     KJob *queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior) override;
+     KJob *setDefaultIncomingPolicy(QString defaultIncomingPolicy) override;
+     KJob *setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) override;
+
+     KJob *setEnabled(bool enabled) override;
+
     /* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connecion Table. */
      RuleWrapper* createRuleFromConnection(
         const QString &protocol,
@@ -69,24 +76,16 @@ public:
         const QString &inn) override;
 
     bool enabled() const override;
-    FirewallClient::Status status() const override;
     QString defaultIncomingPolicy() const override;
     QString defaultOutgoingPolicy() const override;
     QString name() const override;
 
     LogListModel* logs() override;
     bool logsAutoRefresh() const override;
+    void setLogsAutoRefresh(bool logsAutoRefresh) override;
     static IFirewallClientBackend* createMethod(FirewallClient *parent);
     bool hasExecutable() const override;
     void refreshProfiles() override;
-
-public slots:
-    void queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior) override;
-    void setDefaultIncomingPolicy(QString defaultIncomingPolicy) override;
-    void setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) override;
-
-    void setLogsAutoRefresh(bool logsAutoRefresh) override;
-    void setEnabled(bool enabled) override;
 
 protected slots:
         void refreshLogs();
@@ -98,9 +97,6 @@ protected:
     KAuth::Action buildModifyAction(const QVariantMap &arguments);
 
 private:
-    void setStatus(FirewallClient::Status);
-
-    FirewallClient::Status m_status = FirewallClient::UnknownStatus;
     QStringList         m_rawLogs;
     Profile        m_currentProfile;
     RuleListModel*      m_rulesModel;
@@ -109,6 +105,7 @@ private:
     //    Blocker       *blocker;
     bool m_logsAutoRefresh;
     KAuth::Action m_queryAction;
+    bool m_busy = false;
 };
 
 #endif // UFWCLIENT_H

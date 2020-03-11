@@ -31,6 +31,7 @@
 #include <QTimer>
 #include <functional>
 
+class KJob;
 class RuleListModel;
 class RuleWrapper;
 class LogListModel;
@@ -46,19 +47,12 @@ class IFirewallClientBackend;
 
 class FirewallClient : public QObject {
     Q_OBJECT
-    Q_PROPERTY(bool enabled READ enabled WRITE setEnabled NOTIFY enabledChanged)
     /**
-     * Whether the client is currently busy
-     *
-     * This can be used to disable the UI while an operation is ongoing
+     * Whether the firewall is enabled
      */
-    Q_PROPERTY(bool busy READ busy NOTIFY busyChanged)
-    /**
-     * The current operation the client is executing
-     */
-    Q_PROPERTY(Status status READ status NOTIFY statusChanged)
-    Q_PROPERTY(QString defaultIncomingPolicy READ defaultIncomingPolicy WRITE setDefaultIncomingPolicy NOTIFY defaultIncomingPolicyChanged)
-    Q_PROPERTY(QString defaultOutgoingPolicy READ defaultOutgoingPolicy WRITE setDefaultOutgoingPolicy NOTIFY defaultOutgoingPolicyChanged)
+    Q_PROPERTY(bool enabled READ enabled NOTIFY enabledChanged)
+    Q_PROPERTY(QString defaultIncomingPolicy READ defaultIncomingPolicy NOTIFY defaultIncomingPolicyChanged)
+    Q_PROPERTY(QString defaultOutgoingPolicy READ defaultOutgoingPolicy NOTIFY defaultOutgoingPolicyChanged)
     Q_PROPERTY(bool logsAutoRefresh READ logsAutoRefresh WRITE setLogsAutoRefresh NOTIFY logsAutoRefreshChanged)
     Q_PROPERTY(QString backend READ backend WRITE setBackend NOTIFY backendChanged)
     Q_PROPERTY(bool hasExecutable READ hasExecutable NOTIFY hasExecutableChanged)
@@ -69,33 +63,20 @@ public:
 
     explicit FirewallClient(QObject *parent = nullptr);
 
-    enum Status {
-        NoBackendStatus = -2,
-        UnknownStatus = -1,
-        Idle = 0,
-        QueryingStatus,
-        Enabling,
-        Disabling,
-        SettingDefaultIncomingPolicy,
-        SettingDefaultOutgoingPolicy,
-        AddingRule,
-        RemovingRule,
-        UpdatingRule,
-        MovingRule,
-        //RefreshingLogs,
-    };
-    Q_ENUM(Status)
-
     Q_INVOKABLE static QStringList getKnownProtocols();
     Q_INVOKABLE static QStringList getKnownInterfaces();
 
     Q_INVOKABLE void refresh();
     Q_INVOKABLE RuleListModel* rules() const;
     Q_INVOKABLE RuleWrapper* getRule(int index);
-    Q_INVOKABLE void addRule(RuleWrapper * rule);
-    Q_INVOKABLE void removeRule(int index);
-    Q_INVOKABLE void updateRule(RuleWrapper * rule);
-    Q_INVOKABLE void moveRule(int from, int to);
+    Q_INVOKABLE KJob *addRule(RuleWrapper * rule);
+    Q_INVOKABLE KJob *removeRule(int index);
+    Q_INVOKABLE KJob *updateRule(RuleWrapper * rule);
+    Q_INVOKABLE KJob *moveRule(int from, int to);
+
+    Q_INVOKABLE KJob *setEnabled(bool enabled);
+    Q_INVOKABLE KJob *setDefaultIncomingPolicy(const QString &defaultIncomingPolicy);
+    Q_INVOKABLE KJob *setDefaultOutgoingPolicy(const QString &defaultOutgoingPolicy);
 
     /* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connecion Table. */
     Q_INVOKABLE RuleWrapper* createRuleFromConnection(
@@ -113,8 +94,6 @@ public:
         const QString &inn);
 
     bool enabled() const;
-    bool busy() const;
-    Status status() const;
     bool hasExecutable() const;
 
     QString defaultIncomingPolicy() const;
@@ -127,9 +106,7 @@ public:
     static bool registerfw ( const QString name, tcreateMethod funcReg );
 
 signals:
-    void busyChanged(bool busy);
     void enabledChanged(const bool enabled);
-    void statusChanged(Status status);
     void defaultIncomingPolicyChanged(const QString &defaultIncomingPolicy);
     void defaultOutgoingPolicyChanged(const QString &defaultOutgoingPolicy);
     void logsAutoRefreshChanged(bool logsAutoRefresh);
@@ -137,30 +114,20 @@ signals:
     void hasExecutableChanged(bool changed);
 
     /**
-     * Emitted when a success message should be displayed.
-     *
-     * This is typically a brief popup showing, e.g. "Action was created successfully."
-     */
-    void showSuccessMessage(const QString &message);
-    /**
      * Emitted when an error message should be displabed.
      *
      * This is typically shown as an inline message, e.g. "Failed to create action: Not authorized."
      */
     void showErrorMessage(const QString &message);
 
-public slots:
-    void setEnabled(bool enabled);
+private:
+    void setBackend(const QString &backend);
+    void setLogsAutoRefresh(bool logsAutoRefresh);
     void queryStatus(DefaultDataBehavior defaultDataBehavior = ReadDefaults,
                      ProfilesBehavior ProfilesBehavior = ListenProfiles);
-    void setDefaultIncomingPolicy(const QString &defaultIncomingPolicy);
-    void setDefaultOutgoingPolicy(const QString &defaultOutgoingPolicy);
-    void setLogsAutoRefresh(bool logsAutoRefresh);
-    void setBackend(const QString &backend);
-private:
+
     IFirewallClientBackend *m_currentBackend;
     static std::map<QString, tcreateMethod> m_avaiableBackends;
-    Status m_status = UnknownStatus;
 };
 
 #endif

@@ -31,11 +31,6 @@ IFirewallClientBackend::IFirewallClientBackend(FirewallClient *parent)
 
 };
 
-bool IFirewallClientBackend::busy() const
-{
-    return status() > FirewallClient::Idle;
-}
-
 void IFirewallClientBackend::setProfiles(const QVector<Entry> &profiles)
 {
     std::sort(std::begin(m_profiles), std::end(m_profiles));

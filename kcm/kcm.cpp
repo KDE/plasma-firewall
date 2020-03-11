@@ -27,6 +27,7 @@
 #include "kcm.h"
 
 #include <KAboutData>
+#include <KJob>
 #include <KLocalizedString>
 #include <KPluginFactory>
 #include <KAboutData>
@@ -54,6 +55,7 @@ KCMFirewall::KCMFirewall(QObject *parent, const QVariantList &args) :
     setAboutData(about);
     setButtons(Help);
 
+    qmlRegisterAnonymousType<KJob>("org.kcm.firewall", 1);
     qmlRegisterType<FirewallClient>("org.kcm.firewall", 1, 0, "FirewallClient");
     qmlRegisterType<RuleListModel>("org.kcm.firewall", 1, 0, "RuleListModel");
     qmlRegisterType<RuleWrapper>("org.kcm.firewall", 1, 0, "Rule");

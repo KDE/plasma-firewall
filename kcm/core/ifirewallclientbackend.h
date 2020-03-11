@@ -31,6 +31,7 @@
 
 #include <QString>
 
+class KJob;
 class LogListModel;
 class RuleWrapper;
 class RuleListModel;
@@ -52,10 +53,18 @@ public:
     virtual void refresh() = 0;
     virtual RuleListModel* rules() const = 0;
     virtual RuleWrapper* getRule(int index) = 0;
-    virtual void addRule(RuleWrapper * rule) = 0;
-    virtual void removeRule(int index) = 0;
-    virtual void updateRule(RuleWrapper * rule) = 0;
-    virtual void moveRule(int from, int to) = 0;
+
+    Q_INVOKABLE virtual KJob *addRule(RuleWrapper * rule) = 0;
+    Q_INVOKABLE virtual KJob *removeRule(int index) = 0;
+    Q_INVOKABLE virtual KJob *updateRule(RuleWrapper * rule) = 0;
+    Q_INVOKABLE virtual KJob *moveRule(int from, int to) = 0;
+
+    Q_INVOKABLE virtual KJob *setEnabled(bool enabled) = 0;
+    Q_INVOKABLE virtual KJob *queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior) = 0;
+    Q_INVOKABLE virtual KJob *setDefaultIncomingPolicy(QString defaultIncomingPolicy) = 0;
+    Q_INVOKABLE virtual KJob *setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) = 0;
+
+    virtual void setLogsAutoRefresh(bool logsAutoRefresh) = 0;
 
     /* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connecion Table. */
     virtual RuleWrapper* createRuleFromConnection(
@@ -73,8 +82,6 @@ public:
         const QString &inn) = 0;
 
     virtual bool enabled() const = 0;
-    virtual bool busy() const;
-    virtual FirewallClient::Status status() const = 0;
     virtual QString defaultIncomingPolicy() const = 0;
     virtual QString defaultOutgoingPolicy() const = 0;
     virtual bool hasExecutable() const = 0;
@@ -89,23 +96,14 @@ public:
 
 signals:
     void enabledChanged(bool enabled);
-    void busyChanged(bool busy);
-    void statusChanged(FirewallClient::Status status);
     void defaultIncomingPolicyChanged(const QString &defaultIncomingPolicy);
     void defaultOutgoingPolicyChanged(const QString &defaultOutgoingPolicy);
     void logsAutoRefreshChanged(bool logsAutoRefresh);
     // Is this even used?
     void hasExecutableChanged(bool changed);
 
-    void showSuccessMessage(const QString &message);
+    // TODO is this needed?
     void showErrorMessage(const QString &message);
-
-public slots:
-    virtual void setEnabled(bool enabled) = 0;
-    virtual void queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior) = 0;
-    virtual void setDefaultIncomingPolicy(QString defaultIncomingPolicy) = 0;
-    virtual void setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) = 0;
-    virtual void setLogsAutoRefresh(bool logsAutoRefresh) = 0;
 
 private:
     QVector<Entry> m_profiles;

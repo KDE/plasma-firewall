@@ -31,10 +31,11 @@ import org.kcm.firewall 1.0 as Firewall
 Kirigami.FormLayout {
     id: ruleEdit
 
-    signal accept(var rule)
-    signal reject()
+    signal accepted(Firewall.Rule rule)
 
     property bool busy: false
+
+    property Firewall.FirewallClient client: null
 
     property var defaultOutgoingPolicyRule: null
     property var defaultIncomingPolicyRule: null
@@ -53,14 +54,6 @@ Kirigami.FormLayout {
     property bool newRule: false
 
     enabled: !busy
-
-    onAccept: {
-        if (newRule) {
-            firewallClient.addRule(rule)
-        } else {
-            firewallClient.updateRule(rule)
-        }
-    }
 
     QQC2.ComboBox {
         id: policy
@@ -127,7 +120,7 @@ Kirigami.FormLayout {
 
         id: protocolCb
 
-        model: firewallClient.getKnownProtocols()
+        model: ruleEdit.client.getKnownProtocols()
 
         // TODO: Fix the protocol retrieval.
         currentIndex: rule.protocol
@@ -139,7 +132,7 @@ Kirigami.FormLayout {
         id: interfaceCb
 
 
-        model: firewallClient.getKnownInterfaces()
+        model: ruleEdit.client.getKnownInterfaces()
         currentIndex: rule.interface
         onActivated: rule.interface = index
     }
@@ -161,7 +154,7 @@ Kirigami.FormLayout {
             icon.name: ruleEdit.newRule ? "document-new" : "document-save"
             enabled: (!incoming.checked && policyChoices[policy.currentIndex].data !== defaultOutgoingPolicyRule)
                   || (incoming.checked && policyChoices[policy.currentIndex].data !== defaultIncomingPolicyRule)
-            onClicked: accept(rule)
+            onClicked: ruleEdit.accepted(rule)
         }
 
         // Would be nice to not have this one "disabled"

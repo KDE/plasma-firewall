@@ -57,23 +57,50 @@ KCM.ScrollViewKCM {
     Kirigami.OverlaySheet {
         id: drawer
         parent: root.parent
-
-        RuleEdit {
-            id: ruleEdit
-            height: childrenRect.height
-            implicitWidth: 30 * Kirigami.Units.gridUnit
-            busy: firewallClient.status === FirewallClient.AddingRule || firewallClient.status === FirewallClient.UpdatingRule
-            onAccept: {
-                firewallClient.statusChanged.connect(closeWhenIdle);
+        onSheetOpenChanged: {
+            if (!sheetOpen) {
+                // FIXME also reset rule
+                ruleEditMessage.visible = false;
             }
-            defaultOutgoingPolicyRule: policyChoices[defaultOutgoingPolicy.currentIndex].data
-            defaultIncomingPolicyRule: policyChoices[defaultIncomingPolicy.currentIndex].data
+        }
 
-            // TODO we should have some job pattern for saving/creating rules
-            function closeWhenIdle() {
-                if (firewallClient.status === FirewallClient.Idle) {
-                    drawer.close();
-                    firewallClient.statusChanged.disconnect(closeWhenIdle);
+        ColumnLayout {
+            Kirigami.InlineMessage {
+                id: ruleEditMessage
+                type: Kirigami.MessageType.Error
+                Layout.fillWidth: true
+            }
+
+            RuleEdit {
+                id: ruleEdit
+                client: firewallClient
+                height: childrenRect.height
+                implicitWidth: 30 * Kirigami.Units.gridUnit
+                defaultOutgoingPolicyRule: policyChoices[defaultOutgoingPolicy.currentIndex].data
+                defaultIncomingPolicyRule: policyChoices[defaultIncomingPolicy.currentIndex].data
+
+                onAccepted:  {
+                    var job = firewallClient[newRule ? "addRule" : "updateRule"](rule);
+                    busy = true;
+                    job.result.connect(function() {
+                        busy = false;
+
+                        if (job.error) {
+                            // don't show an error when user canceled...
+                            if (job.error !== 4) { // FIXME magic number
+                                if (newRule) {
+                                    ruleEditMessage.text = i18n("Error creating rule: %1", job.errorString);
+                                } else {
+                                    ruleEditMessage.text = i18n("Error updating rule: %1", job.errorString);
+                                }
+                                ruleEditMessage.visible = true;
+                            }
+                            // ...but also don't close in this case!
+                            return;
+                        }
+
+                        drawer.close();
+                    });
                 }
             }
         }
@@ -82,10 +109,9 @@ KCM.ScrollViewKCM {
     header: ColumnLayout {
         id: columnLayout
 
-        FirewallClientInlineMessages {
-            Layout.fillWidth: true
-            client: firewallClient
-            enabled: isCurrentPage
+        Kirigami.InlineMessage {
+            id: firewallInlineErrorMessage
+            type: Kirigami.MessageType.Error
         }
 
         FirewallInlineMessage {
@@ -95,12 +121,13 @@ KCM.ScrollViewKCM {
         Kirigami.FormLayout {
             RowLayout {
                 Kirigami.FormData.label: i18n("Firewall Status:")
-                Kirigami.FormData.enabled: !firewallClient.busy
+                Kirigami.FormData.enabled: enabledCheckBox.enabled
 
                 QQC2.CheckBox {
                     id: enabledCheckBox
+                    property QtObject activeJob: nuill
                     text: i18n("Enabled")
-                    enabled: !firewallClient.busy
+                    enabled: !activeJob
 
                     function bindCurrent() {
                         checked = Qt.binding(function() {
@@ -110,82 +137,89 @@ KCM.ScrollViewKCM {
                     Component.onCompleted: bindCurrent()
 
                     onToggled: {
-                        firewallClient.enabled = checked;
-                        bindCurrent();
+                        const enable = checked; // store the state on job begin, not when it finished
+
+                        const job = firewallClient.setEnabled(checked);
+                        enabledCheckBox.activeJob = job;
+                        job.result.connect(function () {
+                            enabledCheckBox.activeJob = null; // need to explicitly unset since gc will clear it non-deterministic
+                            bindCurrent();
+
+                            if (job.error && job.error !== 4) { // TODO magic number
+                                if (enable) {
+                                    firewallInlineErrorMessage.text = i18n("Error enabling firewall: %1", job.errorString)
+                                } else {
+                                    firewallInlineErrorMessage.text = i18n("Error disabling firewall: %1", job.errorString)
+                                }
+                                firewallInlineErrorMessage.visible = true;
+                            }
+                        });
                     }
                 }
 
                 InlineBusyIndicator {
                     Layout.fillHeight: true
-                    running: firewallClient.status === FirewallClient.Enabling || firewallClient.status === FirewallClient.Disabling
+                    running: enabledCheckBox.activeJob !== null
                 }
             }
 
-            RowLayout {
-                Kirigami.FormData.label: i18n("Default Incoming Policy:")
-                Kirigami.FormData.enabled: !firewallClient.busy
+            Repeater {
+                model: [
+                    {label: i18n("Default Incoming Policy:"), key: "Incoming"},
+                    {label: i18n("Default Outgoing Policy:"), key: "Outgoing"}
+                ]
 
-                QQC2.ComboBox {
-                    id: defaultIncomingPolicy
+                RowLayout {
+                    Kirigami.FormData.label: modelData.label
+                    Kirigami.FormData.enabled: policyCombo.enabled
 
-                    model: policyChoices
-                    textRole: "text"
-                    enabled: !firewallClient.busy && firewallClient.enabled
-                    QQC2.ToolTip.text:  policyChoices[currentIndex].tooltip
-                    QQC2.ToolTip.delay: 1000
-                    QQC2.ToolTip.timeout: 5000
-                    QQC2.ToolTip.visible: hovered
+                    QQC2.ComboBox {
+                        id: policyCombo
 
-                    function bindCurrent() {
-                        currentIndex = Qt.binding(function() {
-                            return policyChoices.findIndex((choice) => choice.data === firewallClient.defaultIncomingPolicy);
-                        });
+                        property QtObject activeJob: null
+                        // TODO currentValue
+                        readonly property string currentPolicy: policyChoices[currentIndex].data
+
+                        model: policyChoices
+                        textRole: "text"
+                        enabled: !activeJob && firewallClient.enabled
+                        QQC2.ToolTip.text: policyChoices[currentIndex].tooltip
+                        QQC2.ToolTip.delay: 1000
+                        QQC2.ToolTip.timeout: 5000
+                        QQC2.ToolTip.visible: hovered
+
+                        Binding { // :(
+                            target: ruleEdit
+                            property: "default" + modelData.key + "Policy"
+                            value: policyChoices.currentPolicy
+                        }
+
+                        function bindCurrent() {
+                            currentIndex = Qt.binding(function() {
+                                return policyChoices.findIndex((choice) => choice.data === firewallClient["default" + modelData.key + "Policy"]);
+                            });
+                        }
+                        Component.onCompleted: bindCurrent()
+
+                        onActivated: {
+                            const job = firewallClient["setDefault" + modelData.key + "Policy"](currentPolicy)
+                            policyCombo.activeJob = job;
+                            job.result.connect(function () {
+                                policyCombo.activeJob = null;
+                                bindCurrent();
+
+                                if (job.error && job.error !== 4) { // TODO magic number
+                                    firewallInlineErrorMessage.text = i18n("Error changing policy: %1", job.errorString)
+                                    firewallInlineErrorMessage.visible = true;
+                                }
+                            });
+                        }
                     }
-                    Component.onCompleted: bindCurrent()
 
-                    onActivated: {
-                        firewallClient.defaultIncomingPolicy = policyChoices[index].data;
-                        bindCurrent();
+                    InlineBusyIndicator {
+                        Layout.fillHeight: true
+                        running: policyCombo.activeJob !== null
                     }
-                }
-
-                InlineBusyIndicator {
-                    Layout.fillHeight: true
-                    running: firewallClient.status === FirewallClient.SettingDefaultIncomingPolicy
-                }
-            }
-
-            RowLayout {
-                Kirigami.FormData.label: i18n("Default Outgoing Policy:")
-                Kirigami.FormData.enabled: !firewallClient.busy
-
-                QQC2.ComboBox {
-                    id: defaultOutgoingPolicy
-                    model: policyChoices
-                    textRole: "text"
-
-                    enabled: !firewallClient.busy && firewallClient.enabled
-                    QQC2.ToolTip.text:  policyChoices[currentIndex].tooltip
-                    QQC2.ToolTip.delay: 1000
-                    QQC2.ToolTip.timeout: 5000
-                    QQC2.ToolTip.visible: hovered
-
-                    function bindCurrent() {
-                        currentIndex = Qt.binding(function() {
-                            return policyChoices.findIndex((choice) => choice.data === firewallClient.defaultOutgoingPolicy);
-                        });
-                    }
-                    Component.onCompleted: bindCurrent()
-
-                    onActivated:  {
-                        firewallClient.defaultOutgoingPolicy = policyChoices[index].data;
-                        bindCurrent();
-                    }
-                }
-
-                InlineBusyIndicator {
-                    Layout.fillHeight: true
-                    running: firewallClient.status === FirewallClient.SettingDefaultOutgoingPolicy
                 }
             }
         }
@@ -257,6 +291,7 @@ KCM.ScrollViewKCM {
                     QQC2.ToolButton {
                         icon.name: "edit-delete"
                         onClicked: {
+                            // FIXME busy indicator and error reporting
                             firewallClient.removeRule(model.row)
                         }
                     }
@@ -282,10 +317,6 @@ KCM.ScrollViewKCM {
         }
         Item {
             Layout.fillWidth: true
-        }
-        InlineBusyIndicator {
-            horizontalAlignment: Qt.AlignRight
-            running: firewallClient.status === FirewallClient.AddingRule
         }
         QQC2.Button {
             enabled: !firewallClient.busy && firewallClient.enabled

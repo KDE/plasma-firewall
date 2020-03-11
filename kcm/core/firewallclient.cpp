@@ -85,33 +85,41 @@ RuleWrapper* FirewallClient::getRule(int index)
     return nullptr;
 }
 
-void FirewallClient::addRule(RuleWrapper * rule)
+KJob *FirewallClient::addRule(RuleWrapper * rule)
 {
     Q_ASSERT(m_currentBackend);
-    if(m_currentBackend)
+    if (m_currentBackend) {
         return m_currentBackend->addRule(rule);
+    }
+    return nullptr;
 }
 
-void FirewallClient::removeRule(int index)
+KJob *FirewallClient::removeRule(int index)
 {
     Q_ASSERT(m_currentBackend);
-    if(m_currentBackend)
+    if (m_currentBackend) {
         return m_currentBackend->removeRule(index);
+    }
+    return nullptr;
 }
 
-void FirewallClient::updateRule(RuleWrapper * rule)
+KJob *FirewallClient::updateRule(RuleWrapper * rule)
 {
     Q_ASSERT(m_currentBackend);
-    if(m_currentBackend)
-        m_currentBackend->updateRule(rule);
+    if (m_currentBackend) {
+        return m_currentBackend->updateRule(rule);
+    }
+    return nullptr;
 }
 
-void FirewallClient::moveRule(int from, int to)
+KJob *FirewallClient::moveRule(int from, int to)
 {
     // TODO: Verify if this method is needed.
     Q_ASSERT(m_currentBackend);
-    if(m_currentBackend)
-        m_currentBackend->moveRule(from, to);
+    if (m_currentBackend) {
+        return m_currentBackend->moveRule(from, to);
+    }
+    return nullptr;
 }
 
 
@@ -145,22 +153,6 @@ bool FirewallClient::enabled() const
     return false;
 }
 
-bool FirewallClient::busy() const
-{
-    if (m_currentBackend) {
-        return m_currentBackend->busy();
-    }
-    return false;
-}
-
-FirewallClient::Status FirewallClient::status() const
-{
-    if (m_currentBackend) {
-        return m_currentBackend->status();
-    }
-    return NoBackendStatus;
-}
-
 QString FirewallClient::defaultIncomingPolicy() const
 {
     if (m_currentBackend)
@@ -190,10 +182,12 @@ bool FirewallClient::logsAutoRefresh() const
     return false;
 }
 
-void FirewallClient::setEnabled(bool enabled)
+KJob *FirewallClient::setEnabled(bool enabled)
 {
-    if (m_currentBackend)
-        m_currentBackend->setEnabled(enabled);
+    if (m_currentBackend) {
+        return m_currentBackend->setEnabled(enabled);
+    }
+    return nullptr;
 }
 
 void FirewallClient::queryStatus(DefaultDataBehavior defaultsBehavior, ProfilesBehavior profilesBehavior)
@@ -203,16 +197,20 @@ void FirewallClient::queryStatus(DefaultDataBehavior defaultsBehavior, ProfilesB
     }
 }
 
-void FirewallClient::setDefaultIncomingPolicy(const QString &defaultIncomingPolicy)
+KJob *FirewallClient::setDefaultIncomingPolicy(const QString &defaultIncomingPolicy)
 {
-    if (m_currentBackend)
-        m_currentBackend->setDefaultIncomingPolicy(defaultIncomingPolicy);
+    if (m_currentBackend) {
+        return m_currentBackend->setDefaultIncomingPolicy(defaultIncomingPolicy);
+    }
+    return nullptr;
 }
 
-void FirewallClient::setDefaultOutgoingPolicy(const QString &defaultOutgoingPolicy)
+KJob *FirewallClient::setDefaultOutgoingPolicy(const QString &defaultOutgoingPolicy)
 {
-    if (m_currentBackend)
+    if (m_currentBackend) {
         m_currentBackend->setDefaultOutgoingPolicy(defaultOutgoingPolicy);
+    }
+    return nullptr;
 }
 
 void FirewallClient::setLogsAutoRefresh(bool logsAutoRefresh)
@@ -243,15 +241,12 @@ void FirewallClient::setBackend(const QString& backend)
 
     if (m_currentBackend) {
         connect(m_currentBackend, &IFirewallClientBackend::enabledChanged, this, &FirewallClient::enabledChanged);
-        connect(m_currentBackend, &IFirewallClientBackend::busyChanged, this, &FirewallClient::busyChanged);
-        connect(m_currentBackend, &IFirewallClientBackend::statusChanged, this, &FirewallClient::statusChanged);
 
         connect(m_currentBackend, &IFirewallClientBackend::defaultIncomingPolicyChanged, this, &FirewallClient::defaultIncomingPolicyChanged);
         connect(m_currentBackend, &IFirewallClientBackend::defaultOutgoingPolicyChanged, this, &FirewallClient::defaultOutgoingPolicyChanged);
         connect(m_currentBackend, &IFirewallClientBackend::logsAutoRefreshChanged, this, &FirewallClient::logsAutoRefreshChanged);
         connect(m_currentBackend, &IFirewallClientBackend::hasExecutableChanged, this, &FirewallClient::hasExecutableChanged);
 
-        connect(m_currentBackend, &IFirewallClientBackend::showSuccessMessage, this, &FirewallClient::showSuccessMessage);
         connect(m_currentBackend, &IFirewallClientBackend::showErrorMessage, this, &FirewallClient::showErrorMessage);
     }
 }
