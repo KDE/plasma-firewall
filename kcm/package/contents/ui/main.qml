@@ -73,8 +73,6 @@ KCM.ScrollViewKCM {
                 client: firewallClient
                 height: childrenRect.height
                 implicitWidth: 30 * Kirigami.Units.gridUnit
-                defaultOutgoingPolicyRule: policyChoices[defaultOutgoingPolicy.currentIndex].data
-                defaultIncomingPolicyRule: policyChoices[defaultIncomingPolicy.currentIndex].data
 
                 onAccepted:  {
                     var job = firewallClient[newRule ? "addRule" : "updateRule"](rule);
@@ -183,8 +181,8 @@ KCM.ScrollViewKCM {
 
                         Binding { // :(
                             target: ruleEdit
-                            property: "default" + modelData.key + "Policy"
-                            value: policyChoices.currentPolicy
+                            property: "default" + modelData.key + "PolicyRule"
+                            value: policyCombo.currentPolicy
                         }
 
                         function bindCurrent() {
