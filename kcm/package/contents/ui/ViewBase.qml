@@ -152,11 +152,22 @@ KCM.ScrollViewKCM {
             model: proxyModel
 
             Instantiator {
+                id: columnInstantiator
                 model: root.roles
                 delegate: QQC1.TableViewColumn {
                     title: modelData.title
                     role: modelData.role
-                    width: modelData.width
+                    width: {
+                        // Stretch last column to fill
+                        if (index === columnInstantiator.count - 1) {
+                            let rest = tableView.viewport.width;
+                            for (let i = 0; i < tableView.columnCount - 1; ++i) {
+                                rest -= tableView.getColumn(i).width;
+                            }
+                            return Math.max(modelData.width, rest);
+                        }
+                        return modelData.width;
+                    }
                 }
                 onObjectAdded: tableView.addColumn(object);
             }
