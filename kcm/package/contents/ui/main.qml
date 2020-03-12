@@ -222,7 +222,7 @@ KCM.ScrollViewKCM {
             id: tableView
             width: parent.width
             height: parent.height
-            model: firewallClient.rules()
+            model: firewallClient.rulesModel
             enabled: firewallClient.enabled
             property int currentHoveredRow: -1
 
