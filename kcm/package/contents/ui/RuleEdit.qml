@@ -96,13 +96,14 @@ FocusScope {
                 focus: true // default focus object
                 text: rule.sourceAddress
                 Layout.preferredWidth: policy.width * 0.6
-                onEditingFinished: rule.sourceAddress = text
+                // NOTE onEditingFinished doesn't fire with non-acceptable / empty input
+                onTextChanged: rule.sourceAddress = text
             }
             PortTextField{
                 id: sourcePort
                 Layout.preferredWidth: policy.width * 0.38
                 text: rule.sourcePort
-                onEditingFinished: rule.sourcePort = text
+                onTextChanged: rule.sourcePort = text
             }
         }
 
@@ -113,13 +114,13 @@ FocusScope {
                 id: destinationAddress
                 text: rule.destinationAddress
                 Layout.preferredWidth: policy.width * 0.6
-                onEditingFinished: rule.destinationAddress = text
+                onTextChanged: rule.destinationAddress = text
             }
             PortTextField {
                 id: destinationPort
                 Layout.preferredWidth: policy.width * 0.38
                 text: rule.destinationPort
-                onEditingFinished: rule.destinationPort = text
+                onTextChanged: rule.destinationPort = text
             }
         }
 
