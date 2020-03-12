@@ -118,7 +118,7 @@ KCM.ScrollViewKCM {
 
                 QQC2.CheckBox {
                     id: enabledCheckBox
-                    property QtObject activeJob: nuill
+                    property QtObject activeJob: null
                     text: i18n("Enabled")
                     enabled: !activeJob
 
