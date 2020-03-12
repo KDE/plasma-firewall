@@ -40,10 +40,14 @@ struct LogData {
     QString time;
     QString date;
 };
+Q_DECLARE_TYPEINFO(LogData, Q_MOVABLE_TYPE);
 
 class LogListModel : public QAbstractListModel
 {
     Q_OBJECT
+
+    Q_PROPERTY(bool busy READ busy NOTIFY busyChanged)
+    Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
 
 public:
     explicit LogListModel(QObject *parent = nullptr);
@@ -60,19 +64,29 @@ public:
         TimeRole,
         DateRole,
     };
+    Q_ENUM(LogItemModelRoles)
 
+    bool busy() const;
+    void setBusy(bool busy);
+    Q_SIGNAL void busyChanged();
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
-    Q_INVOKABLE QVariant data2(int row, const QByteArray &roleName) const;
 
     void addRawLogs(const QStringList &rawLogsList);
+
+signals:
+    void countChanged();
+
+    void showErrorMessage(const QString &message);
+
 protected:
     QHash<int, QByteArray> roleNames() const override;
 
 private:
     QVector<LogData> m_logsData;
+    bool m_busy = false;
 };
 
 #endif // LOGLISTMODEL_H

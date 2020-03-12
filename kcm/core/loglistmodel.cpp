@@ -34,6 +34,19 @@ LogListModel::LogListModel(QObject *parent)
 {
 }
 
+bool LogListModel::busy() const
+{
+    return m_busy;
+}
+
+void LogListModel::setBusy(bool busy)
+{
+    if (m_busy != busy) {
+        m_busy = busy;
+        emit busyChanged();
+    }
+}
+
 int LogListModel::rowCount(const QModelIndex &parent) const
 {
     if (parent.isValid()) {
@@ -66,15 +79,6 @@ QVariant LogListModel::data(const QModelIndex &index, int role) const
     };
 
     return {};
-}
-
-QVariant LogListModel::data2(int row, const QByteArray &roleName) const
-{
-    const auto keys = roleNames().keys(roleName);
-    if (keys.empty()) {
-        return {};
-    }
-    return data(createIndex(row, 0), keys.first());
 }
 
 void LogListModel::addRawLogs(const QStringList &rawLogsList)
@@ -116,6 +120,8 @@ void LogListModel::addRawLogs(const QStringList &rawLogsList)
         beginInsertRows(QModelIndex(), rowCount(), rowCount() + newLogs.count() - 1);
         m_logsData << newLogs;
         endInsertRows();
+
+        emit countChanged();
     }
 }
 
