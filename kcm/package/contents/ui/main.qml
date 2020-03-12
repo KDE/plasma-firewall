@@ -263,7 +263,7 @@ KCM.ScrollViewKCM {
                 height: Kirigami.Units.gridUnit + 2 * Kirigami.Units.smallSpacing // fit action buttons
                 hoverEnabled: true
                 acceptedButtons: Qt.NoButton
-                onEntered: tableView.currentHoveredRow = model.row
+                onEntered: tableView.currentHoveredRow = styleData.row
 
                 // Restore upstream TableView background...
                 BorderImage {
@@ -310,7 +310,7 @@ KCM.ScrollViewKCM {
                     spacing: 0
                     // TODO InlineBusyIndicator?
                     enabled: !activeJob
-                    visible: tableView.currentHoveredRow === model.row || tableView.selection.contains(model.row)
+                    visible: tableView.currentHoveredRow === styleData.row || tableView.selection.contains(styleData.row)
 
                     Item {
                         Layout.fillWidth: true
