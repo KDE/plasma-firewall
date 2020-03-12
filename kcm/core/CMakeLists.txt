@@ -13,7 +13,6 @@ add_library(kcm_firewall_core
 
 target_link_libraries(kcm_firewall_core
     Qt5::Quick
-    Qt5::Xml
     KF5::CoreAddons
     KF5::Declarative
     KF5::I18n

@@ -30,7 +30,7 @@
 #include <QtCore/QMap>
 #include <QtCore/QByteArray>
 #include <QtCore/QTextStream>
-#include <QtXml/QDomElement>
+#include <QXmlStreamWriter>
 #include <netdb.h>
 #include <arpa/inet.h>
 
@@ -244,37 +244,60 @@ QString Rule::loggingStr() const
 
 QString Rule::toXml() const
 {
-    QDomDocument doc;
-    QDomElement  elem=doc.createElement("rule");
+    QString xmlString;
 
-    if(0!=position)
-        elem.setAttribute("position", position);
-    elem.setAttribute("action", Types::toString(action));
-    elem.setAttribute("direction", incoming ? "in" : "out");
-    if(!destApplication.isEmpty())
-        elem.setAttribute("dapp", destApplication);
-    if(!sourceApplication.isEmpty())
-        elem.setAttribute("sapp", sourceApplication);
-    if(!destPort.isEmpty() && destApplication.isEmpty())
-        elem.setAttribute("dport", getPortNumber(destPort));
-    if(!sourcePort.isEmpty() && sourceApplication.isEmpty())
-        elem.setAttribute("sport", getPortNumber(sourcePort));
-    if(Types::PROTO_BOTH!=protocol)
-        elem.setAttribute("protocol", Types::toString(protocol));
-    if(!destAddress.isEmpty())
-        elem.setAttribute("dst", destAddress);
-    if(!sourceAddress.isEmpty())
-        elem.setAttribute("src", sourceAddress);
-    if(!interfaceIn.isEmpty())
-        elem.setAttribute("interface_in", interfaceIn);
-    if(!interfaceOut.isEmpty())
-        elem.setAttribute("interface_out", interfaceOut);
-    elem.setAttribute("logtype", Types::toString(logtype));
-//     if(!description.isEmpty())
-//         elem.setAttribute("descr", description);
-//     if(!hash.isEmpty())
-//         elem.setAttribute("hash", hash);
-    elem.setAttribute("v6", v6 ? "True" : "False");
-    doc.appendChild(elem);
-    return doc.toString();
+    QXmlStreamWriter xml(&xmlString);
+
+    xml.writeStartElement(QStringLiteral("rule"));
+
+    if (position != 0) {
+        xml.writeAttribute(QStringLiteral("position"), QString::number(position));
+    }
+
+    xml.writeAttribute(QStringLiteral("action"), Types::toString(action));
+    xml.writeAttribute(QStringLiteral("direction"), incoming ? QStringLiteral("in") : QStringLiteral("out"));
+
+    if (!destApplication.isEmpty()) {
+        xml.writeAttribute(QStringLiteral("dapp"), destApplication);
+    } else if (!destPort.isEmpty()) {
+        xml.writeAttribute(QStringLiteral("dport"), destPort);
+    }
+    if (!sourceApplication.isEmpty()) {
+        xml.writeAttribute(QStringLiteral("sapp"), sourceApplication);
+    } else if (!sourcePort.isEmpty()) {
+        xml.writeAttribute(QStringLiteral("sport"), sourcePort);
+    }
+
+    if (protocol != Types::PROTO_BOTH) {
+        xml.writeAttribute(QStringLiteral("protocol"), Types::toString(protocol));
+    }
+
+    if (!destAddress.isEmpty()) {
+        xml.writeAttribute(QStringLiteral("dst"), destAddress);
+    }
+    if (!sourceAddress.isEmpty()) {
+        xml.writeAttribute(QStringLiteral("src"), sourceAddress);
+    }
+
+    if (!interfaceIn.isEmpty()) {
+        xml.writeAttribute(QStringLiteral("interface_in"), interfaceIn);
+    }
+    if (!interfaceOut.isEmpty()) {
+        xml.writeAttribute(QStringLiteral("interface_out"), interfaceOut);
+    }
+
+    xml.writeAttribute(QStringLiteral("logtype"), Types::toString(logtype));
+
+    /*if (!description.isEmpty()) {
+        xml.writeAttribute(QStringLiteral("descr"), description);
+    }
+    if (!hash.isEmpty()) {
+        xml.writeAttribute(QStringLiteral("hash"), hash);
+    }*/
+
+    xml.writeAttribute(QStringLiteral("v6"), v6 ? QStringLiteral("True") : QStringLiteral("False"));
+
+    xml.writeEndElement();
+
+    return xmlString;
 }

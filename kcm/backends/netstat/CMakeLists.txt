@@ -25,7 +25,6 @@ target_link_libraries(networkstatus
     kcm_firewall_core
     Qt5::Core
     Qt5::Quick
-    Qt5::Xml
     Qt5::X11Extras
     KF5::CoreAddons
     KF5::ConfigCore
