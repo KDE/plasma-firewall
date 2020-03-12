@@ -36,7 +36,7 @@ NetstatClient::NetstatClient(QObject *parent)
     _self = this;
 }
 
-ConnectionsModel *NetstatClient::connections()
+ConnectionsModel *NetstatClient::connectionsModel() const
 {
     return m_connections;
 }

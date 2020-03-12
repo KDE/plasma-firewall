@@ -23,10 +23,12 @@
 
 #include <QDebug>
 
+#include <KLocalizedString>
+
 #include "netstatclient.h"
 
 ConnectionsModel::ConnectionsModel(QObject *parent)
-    : QAbstractListModel(parent), m_queryRunning(false)
+    : QAbstractListModel(parent)
     , m_queryAction(KAuth::Action(QStringLiteral("org.kde.netstat.query")))
 {
     m_queryAction.setHelperId("org.kde.netstat");
@@ -35,8 +37,20 @@ ConnectionsModel::ConnectionsModel(QObject *parent)
     timer.setInterval(30000);
     timer.start();
 
+    QTimer::singleShot(0, this, &ConnectionsModel::refreshConnections);
+}
 
-    QTimer::singleShot(200, this, &ConnectionsModel::refreshConnections);
+bool ConnectionsModel::busy() const
+{
+    return m_busy;
+}
+
+void ConnectionsModel::setBusy(bool busy)
+{
+    if (m_busy != busy) {
+        m_busy = busy;
+        emit busyChanged();
+    }
 }
 
 int ConnectionsModel::rowCount(const QModelIndex &parent) const
@@ -69,15 +83,6 @@ QVariant ConnectionsModel::data(const QModelIndex &index, int role) const
     return {};
 }
 
-QVariant ConnectionsModel::data2(int row, const QByteArray &roleName) const
-{
-    const auto keys = roleNames().keys(roleName);
-    if (keys.empty()) {
-        return {};
-    }
-    return data(createIndex(row, 0), keys.first());
-}
-
 QHash<int, QByteArray> ConnectionsModel::roleNames() const
 {
     return {
@@ -92,40 +97,42 @@ QHash<int, QByteArray> ConnectionsModel::roleNames() const
 
 void ConnectionsModel::refreshConnections()
 {
-    if (m_queryRunning)
-    {
-        NetstatClient::self()->setStatus("Netstat client is bussy");
+    if (m_busy) {
         return;
     }
 
-    m_queryRunning = true;
+    setBusy(true);
 
     KAuth::ExecuteJob *job = m_queryAction.execute();
-    connect(job, &KAuth::ExecuteJob::finished, this, [this] (KJob *kjob)
-    {
-        auto job = qobject_cast<KAuth::ExecuteJob *>(kjob);
-        if (!job->error())
-        {
-            beginResetModel();
-            m_connectionsData.clear();
-            for (const auto connection : job->data().value("connections", QVariantList()).toList()) {
-                const auto connList = connection.toList();
-                ConnectionsData conn {
-                    .protocol = connList.at(0).toString(),
-                    .localAddress = connList.at(1).toString(),
-                    .foreignAddress = connList.at(2).toString(),
-                    .status = connList.at(3).toString(),
-                    .pid = connList.at(4).toString(),
-                    .program = connList.at(5).toString()
-                };
-                m_connectionsData.append(conn);
-            }
-            endResetModel();
-            NetstatClient::self()->setStatus({});
-        } else {
-            NetstatClient::self()->setStatus(QStringLiteral("BACKEND ERROR: ") + job->error() + QStringLiteral(" ") + job->errorText());
+    connect(job, &KAuth::ExecuteJob::finished, this, [this, job] {
+        setBusy(false);
+
+        if (job->error()) {
+            emit showErrorMessage(i18n("Failed to get connections: %1", job->errorString()));
+            return;
         }
-        m_queryRunning = false;
+
+        const int oldCount = m_connectionsData.count();
+
+        beginResetModel();
+        m_connectionsData.clear();
+        for (const auto connection : job->data().value("connections", QVariantList()).toList()) {
+            const auto connList = connection.toList();
+            ConnectionsData conn {
+                .protocol = connList.at(0).toString(),
+                .localAddress = connList.at(1).toString(),
+                .foreignAddress = connList.at(2).toString(),
+                .status = connList.at(3).toString(),
+                .pid = connList.at(4).toString(),
+                .program = connList.at(5).toString()
+            };
+            m_connectionsData.append(conn);
+        }
+        endResetModel();
+
+        if (m_connectionsData.count() != oldCount) {
+            emit countChanged();
+        }
     });
 
     job->start();

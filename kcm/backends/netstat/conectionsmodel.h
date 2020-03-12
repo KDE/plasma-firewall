@@ -39,6 +39,10 @@ struct ConnectionsData {
 class ConnectionsModel : public QAbstractListModel
 {
     Q_OBJECT
+
+    Q_PROPERTY(bool busy READ busy NOTIFY busyChanged)
+    Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
+
 public:
     enum ConnectionsModelRoles
     {
@@ -49,24 +53,31 @@ public:
         PidRole,
         ProgramRole
     };
+    Q_ENUM(ConnectionsModelRoles)
 
     explicit ConnectionsModel(QObject *parent = nullptr);
 
-    // Basic functionality:
+    bool busy() const;
+    Q_SIGNAL void busyChanged();
+
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
-    // Translate a Qml call into a proper data() call.
-    Q_INVOKABLE QVariant data2(int row, const QByteArray &roleName) const;
-
     QHash<int, QByteArray> roleNames() const override;
+
+signals:
+    void countChanged();
+
+    void showErrorMessage(const QString &message);
 
 protected slots:
     void refreshConnections();
 
 private:
-    bool m_queryRunning;
+    void setBusy(bool busy);
+
+    bool m_busy = false;
     QVector<ConnectionsData> m_connectionsData;
     KAuth::Action m_queryAction;
     QTimer timer;

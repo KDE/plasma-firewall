@@ -30,12 +30,13 @@ class NetstatClient : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString status READ status WRITE setStatus NOTIFY statusChanged)
+    Q_PROPERTY(ConnectionsModel *connectionsModel READ connectionsModel CONSTANT)
 
 public:
     explicit NetstatClient(QObject *parent = nullptr);
     static NetstatClient* self();
 
-    Q_INVOKABLE ConnectionsModel * connections();
+    ConnectionsModel *connectionsModel() const;
 
     Q_SLOT void setStatus(const QString& message);
     QString status() const;
