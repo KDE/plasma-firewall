@@ -27,11 +27,16 @@ import QtQuick.Controls 1.4 as QQC1
 import org.kde.kirigami 2.10 as Kirigami
 
 import org.kde.kcm 1.2 as KCM
+import org.kcm.firewall 1.0
 
 KCM.ScrollViewKCM {
     id: root
     property var firewallClient: null
     property int currentHoveredRow: -1
+
+    property QtObject model: firewallClient.logsModel
+
+    property QtObject currentJob: null
 
     title: i18n("Firewall Logs")
 
@@ -41,32 +46,87 @@ KCM.ScrollViewKCM {
      *   }
      */
 
+    function blacklistRow(row) {
+        const idx = root.model.index(row, 0);
+
+        const roles = ["Protocol",
+                       "SourceAddress",
+                       "SourcePort",
+                       "DestinationAddress",
+                       "DestinationPort",
+                       "Interface"];
+
+        const args = roles.map((role) => {
+            return role + "Role";
+        }).map((role) => {
+            return model.data(idx, LogListModel[role]);
+        });
+
+        const rule = firewallClient.createRuleFromLog(...args);
+
+        const job = firewallClient.addRule(rule);
+        currentJob = job;
+
+        ruleCreationMessage.visible = false;
+
+        job.result.connect(function() {
+            currentJob = null;
+
+            if (job.error) {
+                if (job.error !== 4) { // FIXME magic number
+                    ruleCreationMessage.type = Kirigami.MessageType.Error;
+                    ruleCreationMessage.text = i18n("Error creating rule: %1", job.errorString);
+                    ruleCreationMessage.visible = true;
+                }
+                return;
+            }
+
+            ruleCreationMessage.type = Kirigami.MessageType.Positive;
+            ruleCreationMessage.text = i18n("Created a blacklist rule for this log entry.");
+            ruleCreationMessage.visible = true;
+        });
+    }
+
     header: RowLayout {
-        FirewallClientInlineMessages {
+        Kirigami.InlineMessage {
+            id: logsModelError
             Layout.fillWidth: true
-            client: firewallClient
+            type: Kirigami.MessageType.Error
+            showCloseButton: true
+
+            Connections {
+                target: root.model
+                onShowErrorMessage: {
+                    logsModelError.text = message;
+                    logsModelError.visible = true;
+                }
+            }
+        }
+
+        Kirigami.InlineMessage {
+            id: ruleCreationMessage
+            Layout.fillWidth: true
+            showCloseButton: true
         }
     }
 
-    view:  Flickable {
+    view: Flickable {
         QQC1.TableView {
             id: tableView
-            width: parent.width
-            height: parent.height
+            anchors.fill: parent
+            activeFocusOnTab: true
+            // Would be nice to support multi-selection
+            //selectionMode: QQC1.SelectionMode.ExtendedSelection
 
-            rowDelegate: MouseArea{
-                id: mouseArea
-                height: 50
-                hoverEnabled: true
-                onContainsMouseChanged: {
-                    if (mouseArea.containsMouse) {
-                        root.currentHoveredRow = model.row
-                    }
-                }
-                onPressed: mouse.accepted = false
+            // TODO let Delete key add rule?
+
+            QQC2.BusyIndicator {
+                anchors.centerIn: parent
+                // Show busy spinner only on initial population and not while an error is shown
+                running: tableView.model.count === 0 && tableView.model.busy && !logsModelError.visible
             }
 
-            model: firewallClient ? firewallClient.logs() : null
+            model: root.model
             QQC1.TableViewColumn {
                 title: i18n("Protocol")
                 role: "protocol"
@@ -95,33 +155,25 @@ KCM.ScrollViewKCM {
                 role: "interface"
                 width: Kirigami.Units.gridUnit * 3
             }
-            QQC1.TableViewColumn {
-                resizable: false
-                width: Kirigami.Units.iconSizes.small * 3
-
-                delegate: QQC2.ToolButton {
-                    icon.name: "edit-delete"
-                    visible: root.currentHoveredRow === model.row
-                    onClicked: {
-                        var rule = firewallClient.createRuleFromLog(
-                            model.data2(model.row, "protocol"),
-                            model.data2(model.row, "sourceAddress"),
-                            model.data2(model.row, "sourcePort"),
-                            model.data2(model.row, "destinationAddress"),
-                            model.data2(model.row, "destinationPort"),
-                            model.data2(model.row, "interface")
-                        );
-                        firewallClient.addRule(rule)
-                    }
-                }
-            }
         }
     }
 
     footer: RowLayout {
-
         Item {
             Layout.fillWidth: true
+        }
+
+        InlineBusyIndicator {
+            horizontalAlignment: Qt.AlignRight
+            running: root.currentJob
+        }
+
+        QQC2.Button {
+            text: i18n("Blacklist Connection")
+            icon.name: "network-disconnect"
+            // HACK TableView lets us select a fake zero index when view is empty...
+            enabled: tableView.selection.count > 0 && model.count > 0 && !root.currentJob
+            onClicked: blacklistRow(tableView.selection.forEach(blacklistRow))
         }
     }
 }
