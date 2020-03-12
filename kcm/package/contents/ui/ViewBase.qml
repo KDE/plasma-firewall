@@ -54,6 +54,13 @@ KCM.ScrollViewKCM {
     }
 
     function blacklistRow(row) {
+        // FIXME why does TableView does that? :(
+        // Unfortunately it also casts to 0, so the resulting model index is deemed valid
+        if (row === undefined) {
+            console.warn("Cannot blacklist invalid row", row);
+            return;
+        }
+
         const idx = proxyModel.index(row, 0);
 
         const roles = blacklistRuleRoleNames;
