@@ -116,6 +116,9 @@ QVariantList NetstatHelper::parseSSOutput(const QByteArray &netstatOutput)
     for (auto line : outputLines)
     {
         QStringList values = line.split(" ", QString::SkipEmptyParts);
+        if (values.isEmpty()) {
+            continue;
+        }
 
         // Some lines lack one or two values.
         while (values.size() < headerLines.size()) {
