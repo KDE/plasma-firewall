@@ -100,7 +100,7 @@ private:
     QStringList         m_rawLogs;
     Profile        m_currentProfile;
     RuleListModel*      m_rulesModel;
-    LogListModel*       m_logs;
+    LogListModel*       m_logs = nullptr;
     QTimer              m_logsRefreshTimer;
     //    Blocker       *blocker;
     bool m_logsAutoRefresh;

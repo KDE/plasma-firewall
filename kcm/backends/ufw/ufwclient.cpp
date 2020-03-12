@@ -56,8 +56,7 @@ namespace {
 
 UfwClient::UfwClient(FirewallClient *parent) :
     IFirewallClientBackend(parent),
-    m_rulesModel(new RuleListModel(this)),
-    m_logs(new LogListModel(this))
+    m_rulesModel(new RuleListModel(this))
 {
     // HACK: Quering the firewall status in this context
     // creates a segmentation fault error in some situations
@@ -65,7 +64,6 @@ UfwClient::UfwClient(FirewallClient *parent) :
     // initialization. So, it's delayed a little.
     //    refresh();
     QTimer::singleShot(100, this, &UfwClient::refresh);
-    QTimer::singleShot(2000, this, &UfwClient::refreshLogs);
 }
 
 QString UfwClient::name() const
@@ -224,6 +222,11 @@ void UfwClient::setLogsAutoRefresh(bool logsAutoRefresh)
 
 void UfwClient::refreshLogs()
 {
+    if (!m_logs) {
+        qWarning() << "Trying to refresh logs without logs model";
+        return;
+    }
+
     KAuth::Action action("org.kde.ufw.viewlog");
     action.setHelperId("org.kde.ufw");
 
@@ -233,16 +236,21 @@ void UfwClient::refreshLogs()
 
     action.setArguments(args);
 
+    m_logs->setBusy(true);
+
     KAuth::ExecuteJob *job = action.execute();
     connect(job, &KAuth::ExecuteJob::finished, this, [this, job] {
-        if (!job->error()) {
-            QStringList newLogs = job->data().value("lines", "").toStringList();
-            m_rawLogs.append(newLogs);
-            m_logs->addRawLogs(newLogs);
-        } else {
-            showErrorMessage(i18n("Error fetching firewall logs: %1", job->errorString()));
-            qWarning() << "org.kde.ufw.viewlog" << job->errorString();
+        m_logs->setBusy(false);
+
+        if (job->error()) {
+            emit m_logs->showErrorMessage(i18n("Error fetching firewall logs: %1", job->errorString()));
+            return;
         }
+
+        const QStringList newLogs = job->data().value("lines", "").toStringList();
+        // FIXME do we really need to store this raw thing here and then processed in the model?
+        m_rawLogs.append(newLogs);
+        m_logs->addRawLogs(newLogs);
     });
 
     job->start();
@@ -445,6 +453,10 @@ QString UfwClient::defaultOutgoingPolicy() const
 
 LogListModel *UfwClient::logs()
 {
+    if (!m_logs) {
+        m_logs = new LogListModel(this);
+        refreshLogs();
+    }
     return m_logs;
 }
 
