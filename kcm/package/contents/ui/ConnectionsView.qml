@@ -1,6 +1,7 @@
 /*
  * Copyright 2018 Alexis Lopes Zubeta <contact@azubieta.net>
  * Copyright 2020 Tomaz Canabrava <tcanabrava@kde.org>
+ * Copyright 2020 Kai Uwe Broulik <kde@broulik.de>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -19,105 +20,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 import QtQuick 2.12
-import QtQuick.Layouts 1.3
-import QtQuick.Controls 2.12 as QQC2
-import org.kde.kcm 1.2 as KCM
+
+import org.kde.kirigami 2.10 as Kirigami
+
 import org.kcm.firewall 1.0
 
-// for TableView
-import QtQuick.Controls 1.4 as QQC1
-
-import org.kde.kirigami 2.4 as Kirigami
-
-/* ScrollViewKCM does not work
- *
- * because TableView is not flickable */
-KCM.ScrollViewKCM {
-    id: root
-    property var drawer: null
-    property var firewallClient: null
-    property var netStatClient: null
-    property int currentHoveredRow: -1
-
+ViewBase {
     title: i18n("Connections")
 
-    header: RowLayout {
-        FirewallClientInlineMessages {
-            Layout.fillWidth: true
-            client: firewallClient
-        }
-    }
+    model: netStatClient.connectionsModel
+    roles: [
+        {title: i18n("Protocol"), role: "protocol", width: Kirigami.Units.gridUnit * 4},
+        {title: i18n("Local Address"), role: "localAddress", width: Kirigami.Units.gridUnit * 10},
+        {title: i18n("Foreign Address"), role: "foreignAddress", width: Kirigami.Units.gridUnit * 10},
+        {title: i18n("Status"), role: "status", width: Kirigami.Units.gridUnit * 5},
+        {title: i18n("PID"), role: "pid", width: Kirigami.Units.gridUnit * 3},
+        {title: i18n("Program"), role: "program", width: Kirigami.Units.gridUnit * 7}
+    ]
 
-    view: Flickable {
-        QQC1.TableView {
-            id: tableView
-            width: parent.width
-            height: parent.height
+    blacklistRuleFactory: firewallClient.createRuleFromConnection
+    blacklistRuleRoleNames: [
+        "Protocol",
+        "LocalAddress",
+        "ForeignAddress",
+        "Status"
+    ]
 
-            rowDelegate: MouseArea{
-                id: mouseArea
-                height: 50
-                hoverEnabled: true
-                onContainsMouseChanged: {
-                    if (mouseArea.containsMouse) {
-                        root.currentHoveredRow = model.row
-                    }
-                }
-                onPressed: mouse.accepted = false
-            }
-
-            model: netStatClient.connections()
-            QQC1.TableViewColumn {
-                title: i18n("Protocol")
-                role: "protocol"
-                width: Kirigami.Units.gridUnit * 4
-            }
-            QQC1.TableViewColumn {
-                title: i18n("Local Address")
-                role: "localAddress"
-                width: Kirigami.Units.gridUnit * 10
-            }
-            QQC1.TableViewColumn {
-                title: i18n("Foreign Address")
-                role: "foreignAddress"
-                width: Kirigami.Units.gridUnit * 10
-            }
-            QQC1.TableViewColumn {
-                title: i18n("Status")
-                role: "status"
-                width: Kirigami.Units.gridUnit * 5
-            }
-            QQC1.TableViewColumn {
-                title: i18n("PID")
-                role: "pid"
-                width: Kirigami.Units.gridUnit * 3
-            }
-            QQC1.TableViewColumn {
-                title: i18n("Program")
-                role: "program"
-                width: Kirigami.Units.gridUnit * 7
-            }
-
-            QQC1.TableViewColumn {
-                width: Kirigami.Units.iconSizes.small * 3
-
-                delegate: QQC2.ToolButton {
-                    icon.name: "edit-delete"
-                    Layout.alignment: Qt.AlignRight
-                    visible: model ? root.currentHoveredRow === model.row : false
-                    onClicked: {
-                        var protocol = tableView.model.data2(model.row, "protocol");
-                        var localAddress = tableView.model.data2(model.row, "localAddress");
-                        var foreignAddress = tableView.model.data2(model.row, "foreignAddress");
-                        var status = tableView.model.data2(model.row, "status");
-
-                        var rule = firewallClient.createRuleFromConnection(protocol, localAddress, foreignAddress, status)
-                        firewallClient.addRule(rule);
-                    }
-                }
-            }
-        }
+    NetstatClient {
+        id: netStatClient
     }
 }

@@ -47,11 +47,8 @@ KCM.ScrollViewKCM {
     FirewallClient {
         id: firewallClient
         backend: "ufw"
+        // TODO only when on logs page but Binding {} is broken in Qt 5.14+...
         logsAutoRefresh: !isCurrentPage
-    }
-
-    NetstatClient {
-        id: netStatClient
     }
 
     Kirigami.OverlaySheet {
@@ -112,10 +109,6 @@ KCM.ScrollViewKCM {
         Kirigami.InlineMessage {
             id: firewallInlineErrorMessage
             type: Kirigami.MessageType.Error
-        }
-
-        FirewallInlineMessage {
-            text: netStatClient.status
         }
 
         Kirigami.FormLayout {
@@ -305,8 +298,7 @@ KCM.ScrollViewKCM {
         QQC2.Button {
             text: i18n("Connections...")
             onClicked: kcm.push("ConnectionsView.qml", {
-                "firewallClient": firewallClient,
-                "netStatClient" : netStatClient,
+                "firewallClient": firewallClient
             });
         }
         QQC2.Button {
