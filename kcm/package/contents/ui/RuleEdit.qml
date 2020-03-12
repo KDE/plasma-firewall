@@ -28,7 +28,7 @@ import org.kde.kirigami 2.4 as Kirigami
 
 import org.kcm.firewall 1.0 as Firewall
 
-Kirigami.FormLayout {
+FocusScope {
     id: ruleEdit
 
     signal accepted(Firewall.Rule rule)
@@ -55,111 +55,120 @@ Kirigami.FormLayout {
 
     enabled: !busy
 
-    QQC2.ComboBox {
-        id: policy
-        Kirigami.FormData.label: i18n("Policy:")
-        model: policyChoices
-        textRole: "text"
-        currentIndex: rule.policy == "" ? 0 : policyChoices.findIndex((policy) => policy.data == rule.policy)
-        onActivated: rule.policy = policyChoices[index].data
-    }
+    implicitWidth: formLayout.implicitWidth
+    implicitHeight: formLayout.implicitHeight
 
-    RowLayout {
-        Kirigami.FormData.label: i18n("Direction:")
-        QQC2.RadioButton {
-            id: incoming
-            text: i18n("Incoming")
-            icon.name: "arrow-down"
-            checked: rule.incoming
-            onClicked: rule.incoming = true
-        }
-        QQC2.RadioButton {
-            text: i18n("Outgoing")
-            icon.name: "arrow-up"
-            checked: !rule.incoming
-            onClicked: rule.incoming = false
-        }
-    }
+    Kirigami.FormLayout {
+        id: formLayout
+        width: parent.width
 
-    RowLayout {
-        Kirigami.FormData.label: i18n("Source:")
-
-        IpV4TextField {
-            id: sourceAddress
-            text: rule.sourceAddress
-            Layout.preferredWidth: policy.width * 0.6
-            onEditingFinished: rule.sourceAddress = text
-        }
-        PortTextField{
-            id: sourcePort
-            Layout.preferredWidth: policy.width * 0.38
-            text: rule.sourcePort
-            onEditingFinished: rule.sourcePort = text
-        }
-    }
-
-    RowLayout {
-        Kirigami.FormData.label: i18n("Destination:")
-
-        IpV4TextField {
-            id: destinationAddress
-            text: rule.destinationAddress
-            Layout.preferredWidth: policy.width * 0.6
-            onEditingFinished: rule.destinationAddress = text
-        }
-        PortTextField {
-            id: destinationPort
-            Layout.preferredWidth: policy.width * 0.38
-            text: rule.destinationPort
-            onEditingFinished: rule.destinationPort = text
-        }
-    }
-
-    QQC2.ComboBox {
-        Kirigami.FormData.label: i18n("Protocol:")
-
-        id: protocolCb
-
-        model: ruleEdit.client.getKnownProtocols()
-
-        // TODO: Fix the protocol retrieval.
-        currentIndex: rule.protocol
-        onActivated: rule.protocol = index
-    }
-    QQC2.ComboBox {
-        Kirigami.FormData.label: i18n("Interface:")
-
-        id: interfaceCb
-
-
-        model: ruleEdit.client.getKnownInterfaces()
-        currentIndex: rule.interface
-        onActivated: rule.interface = index
-    }
-
-    QQC2.ComboBox {
-        Kirigami.FormData.label: i18n("Logging:")
-        model: ruleChoices
-        textRole: "text"
-        currentIndex: rule.logging == "" ? 0 : ruleChoices.findIndex((rules) => rules.data == rule.logging)
-        onActivated: rule.logging = ruleChoices[index].data
-    }
-
-    Item {
-        Layout.fillHeight: true
-    }
-    RowLayout {
-        QQC2.Button {
-            text: ruleEdit.newRule ? i18n("Create") : i18n("Save")
-            icon.name: ruleEdit.newRule ? "document-new" : "document-save"
-            enabled: (!incoming.checked && policyChoices[policy.currentIndex].data !== defaultOutgoingPolicyRule)
-                  || (incoming.checked && policyChoices[policy.currentIndex].data !== defaultIncomingPolicyRule)
-            onClicked: ruleEdit.accepted(rule)
+        QQC2.ComboBox {
+            id: policy
+            Kirigami.FormData.label: i18n("Policy:")
+            model: policyChoices
+            textRole: "text"
+            currentIndex: rule.policy == "" ? 0 : policyChoices.findIndex((policy) => policy.data == rule.policy)
+            onActivated: rule.policy = policyChoices[index].data
         }
 
-        // Would be nice to not have this one "disabled"
-        InlineBusyIndicator {
-            running: ruleEdit.busy
+        RowLayout {
+            Kirigami.FormData.label: i18n("Direction:")
+            QQC2.RadioButton {
+                id: incoming
+                text: i18n("Incoming")
+                icon.name: "arrow-down"
+                checked: rule.incoming
+                onClicked: rule.incoming = true
+            }
+            QQC2.RadioButton {
+                text: i18n("Outgoing")
+                icon.name: "arrow-up"
+                checked: !rule.incoming
+                onClicked: rule.incoming = false
+            }
+        }
+
+        RowLayout {
+            Kirigami.FormData.label: i18n("Source:")
+
+            IpV4TextField {
+                id: sourceAddress
+                focus: true // default focus object
+                text: rule.sourceAddress
+                Layout.preferredWidth: policy.width * 0.6
+                onEditingFinished: rule.sourceAddress = text
+            }
+            PortTextField{
+                id: sourcePort
+                Layout.preferredWidth: policy.width * 0.38
+                text: rule.sourcePort
+                onEditingFinished: rule.sourcePort = text
+            }
+        }
+
+        RowLayout {
+            Kirigami.FormData.label: i18n("Destination:")
+
+            IpV4TextField {
+                id: destinationAddress
+                text: rule.destinationAddress
+                Layout.preferredWidth: policy.width * 0.6
+                onEditingFinished: rule.destinationAddress = text
+            }
+            PortTextField {
+                id: destinationPort
+                Layout.preferredWidth: policy.width * 0.38
+                text: rule.destinationPort
+                onEditingFinished: rule.destinationPort = text
+            }
+        }
+
+        QQC2.ComboBox {
+            Kirigami.FormData.label: i18n("Protocol:")
+
+            id: protocolCb
+
+            model: ruleEdit.client.getKnownProtocols()
+
+            // TODO: Fix the protocol retrieval.
+            currentIndex: rule.protocol
+            onActivated: rule.protocol = index
+        }
+        QQC2.ComboBox {
+            Kirigami.FormData.label: i18n("Interface:")
+
+            id: interfaceCb
+
+
+            model: ruleEdit.client.getKnownInterfaces()
+            currentIndex: rule.interface
+            onActivated: rule.interface = index
+        }
+
+        QQC2.ComboBox {
+            Kirigami.FormData.label: i18n("Logging:")
+            model: ruleChoices
+            textRole: "text"
+            currentIndex: rule.logging == "" ? 0 : ruleChoices.findIndex((rules) => rules.data == rule.logging)
+            onActivated: rule.logging = ruleChoices[index].data
+        }
+
+        Item {
+            Layout.fillHeight: true
+        }
+        RowLayout {
+            QQC2.Button {
+                text: ruleEdit.newRule ? i18n("Create") : i18n("Save")
+                icon.name: ruleEdit.newRule ? "document-new" : "document-save"
+                enabled: (!incoming.checked && policyChoices[policy.currentIndex].data !== defaultOutgoingPolicyRule)
+                      || (incoming.checked && policyChoices[policy.currentIndex].data !== defaultIncomingPolicyRule)
+                onClicked: ruleEdit.accepted(rule)
+            }
+
+            // Would be nice to not have this one "disabled"
+            InlineBusyIndicator {
+                running: ruleEdit.busy
+            }
         }
     }
 }

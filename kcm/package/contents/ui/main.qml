@@ -55,7 +55,9 @@ KCM.ScrollViewKCM {
         id: drawer
         parent: root.parent
         onSheetOpenChanged: {
-            if (!sheetOpen) {
+            if (sheetOpen) {
+                ruleEdit.forceActiveFocus();
+            } else {
                 // FIXME also reset rule
                 ruleEditMessage.visible = false;
             }
