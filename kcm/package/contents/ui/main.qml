@@ -243,6 +243,8 @@ KCM.ScrollViewKCM {
             anchors.fill: parent
             model: firewallClient.rulesModel
             enabled: firewallClient.enabled
+            // ScrollViewKCM does its own frame
+            frameVisible: false
 
             function editRule(row) {
                 ruleEdit.rule = firewallClient.getRule(row);

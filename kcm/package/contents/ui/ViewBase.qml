@@ -133,6 +133,9 @@ KCM.ScrollViewKCM {
             anchors.fill: parent
             activeFocusOnTab: true
 
+            // ScrollViewKCM does its own frame
+            frameVisible: false
+
             sortIndicatorVisible: sortIndicatorColumn > 0 // column -1 apparently means "do something stupid" rather than "no column"
             sortIndicatorColumn: root.roles.findIndex((column) => {
                 return column.role === root.defaultSortRole;
