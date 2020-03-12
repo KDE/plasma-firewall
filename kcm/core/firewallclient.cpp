@@ -167,7 +167,7 @@ QString FirewallClient::defaultOutgoingPolicy() const
     return {};
 }
 
-LogListModel* FirewallClient::logs()
+LogListModel* FirewallClient::logsModel()
 {
     // TODO: Perhaps this function is uneeded.
     if (m_currentBackend)

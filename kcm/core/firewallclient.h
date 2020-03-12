@@ -53,6 +53,7 @@ class FirewallClient : public QObject {
     Q_PROPERTY(bool enabled READ enabled NOTIFY enabledChanged)
     Q_PROPERTY(QString defaultIncomingPolicy READ defaultIncomingPolicy NOTIFY defaultIncomingPolicyChanged)
     Q_PROPERTY(QString defaultOutgoingPolicy READ defaultOutgoingPolicy NOTIFY defaultOutgoingPolicyChanged)
+    Q_PROPERTY(LogListModel *logsModel READ logsModel CONSTANT)
     Q_PROPERTY(bool logsAutoRefresh READ logsAutoRefresh WRITE setLogsAutoRefresh NOTIFY logsAutoRefreshChanged)
     Q_PROPERTY(QString backend READ backend WRITE setBackend NOTIFY backendChanged)
     Q_PROPERTY(bool hasExecutable READ hasExecutable NOTIFY hasExecutableChanged)
@@ -99,7 +100,7 @@ public:
     QString defaultIncomingPolicy() const;
     QString defaultOutgoingPolicy() const;
     QString backend() const;
-    Q_INVOKABLE LogListModel* logs();
+    LogListModel* logsModel();
     bool logsAutoRefresh() const;
     using tcreateMethod = std::function<IFirewallClientBackend*(FirewallClient*)>;
     IFirewallClientBackend* create(const QString& name);
