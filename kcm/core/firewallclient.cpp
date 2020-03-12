@@ -71,7 +71,7 @@ void FirewallClient::refresh()
         m_currentBackend->refresh();
 }
 
-RuleListModel* FirewallClient::rules() const
+RuleListModel* FirewallClient::rulesModel() const
 {
     if (m_currentBackend)
         return m_currentBackend->rules();

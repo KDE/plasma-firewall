@@ -53,6 +53,7 @@ class FirewallClient : public QObject {
     Q_PROPERTY(bool enabled READ enabled NOTIFY enabledChanged)
     Q_PROPERTY(QString defaultIncomingPolicy READ defaultIncomingPolicy NOTIFY defaultIncomingPolicyChanged)
     Q_PROPERTY(QString defaultOutgoingPolicy READ defaultOutgoingPolicy NOTIFY defaultOutgoingPolicyChanged)
+    Q_PROPERTY(RuleListModel *rulesModel READ rulesModel CONSTANT)
     Q_PROPERTY(LogListModel *logsModel READ logsModel CONSTANT)
     Q_PROPERTY(bool logsAutoRefresh READ logsAutoRefresh WRITE setLogsAutoRefresh NOTIFY logsAutoRefreshChanged)
     Q_PROPERTY(QString backend READ backend WRITE setBackend NOTIFY backendChanged)
@@ -68,8 +69,8 @@ public:
     Q_INVOKABLE static QStringList getKnownInterfaces();
 
     Q_INVOKABLE void refresh();
-    Q_INVOKABLE RuleListModel* rules() const;
-    Q_INVOKABLE RuleWrapper* getRule(int index);
+    RuleListModel* rulesModel() const;
+    Q_INVOKABLE RuleWrapper* getRule(int index); // TODO move into the model?
     Q_INVOKABLE KJob *addRule(RuleWrapper * rule);
     Q_INVOKABLE KJob *removeRule(int index);
     Q_INVOKABLE KJob *updateRule(RuleWrapper * rule);
