@@ -57,9 +57,7 @@ KCM.ScrollViewKCM {
                        "Interface"];
 
         const args = roles.map((role) => {
-            return role + "Role";
-        }).map((role) => {
-            return model.data(idx, LogListModel[role]);
+            return model.data(idx, LogListModel[role + "Role"]);
         });
 
         const rule = firewallClient.createRuleFromLog(...args);
