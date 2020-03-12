@@ -47,6 +47,7 @@ ViewBase {
         "ForeignAddress",
         "Status"
     ]
+    blacklistRuleSuccessMessage: i18n("Created a blacklist rule from this connection.");
 
     NetstatClient {
         id: netStatClient

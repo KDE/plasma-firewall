@@ -42,6 +42,7 @@ KCM.ScrollViewKCM {
 
     property var blacklistRuleFactory
     property var blacklistRuleRoleNames: []
+    property string blacklistRuleSuccessMessage
 
     property string defaultSortRole: ""
 
@@ -88,9 +89,11 @@ KCM.ScrollViewKCM {
                 return;
             }
 
-            ruleCreationMessage.type = Kirigami.MessageType.Positive;
-            ruleCreationMessage.text = i18n("Created a blacklist rule for this log entry.");
-            ruleCreationMessage.visible = true;
+            if (blacklistRuleSuccessMessage) {
+                ruleCreationMessage.type = Kirigami.MessageType.Positive;
+                ruleCreationMessage.text = blacklistRuleSuccessMessage;
+                ruleCreationMessage.visible = true;
+            }
         });
     }
 
