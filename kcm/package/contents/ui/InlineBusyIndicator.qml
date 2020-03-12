@@ -42,6 +42,7 @@ Item {
         }
         width: height
         height: Kirigami.Units.iconSizes.medium
+        running: false
         visible: running
     }
 }
