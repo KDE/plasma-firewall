@@ -76,6 +76,22 @@ KCM.ScrollViewKCM {
                 height: childrenRect.height
                 implicitWidth: 30 * Kirigami.Units.gridUnit
 
+                Keys.onEnterPressed: Keys.onReturnPressed(event)
+                Keys.onReturnPressed: {
+                    if (drawer.sheetOpen) {
+                        accepted();
+                    } else { // FIXME OverlaySheet should lose focus once hidden
+                        event.accepted = false;
+                    }
+                }
+                Keys.onEscapePressed: {
+                    if (drawer.sheetOpen) {
+                        drawer.close()
+                    } else {
+                        event.accepted = false;
+                    }
+                }
+
                 onAccepted:  {
                     var job = firewallClient[newRule ? "addRule" : "updateRule"](rule);
                     busy = true;

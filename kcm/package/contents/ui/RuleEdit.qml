@@ -31,7 +31,7 @@ import org.kcm.firewall 1.0 as Firewall
 FocusScope {
     id: ruleEdit
 
-    signal accepted(Firewall.Rule rule)
+    signal accepted
 
     property bool busy: false
 
@@ -162,7 +162,7 @@ FocusScope {
                 icon.name: ruleEdit.newRule ? "document-new" : "document-save"
                 enabled: (!incoming.checked && policyChoices[policy.currentIndex].data !== defaultOutgoingPolicyRule)
                       || (incoming.checked && policyChoices[policy.currentIndex].data !== defaultIncomingPolicyRule)
-                onClicked: ruleEdit.accepted(rule)
+                onClicked: ruleEdit.accepted()
             }
 
             // Would be nice to not have this one "disabled"
