@@ -38,6 +38,7 @@ ViewBase {
         {title: i18n("PID"), role: "pid", width: Kirigami.Units.gridUnit * 3},
         {title: i18n("Program"), role: "program", width: Kirigami.Units.gridUnit * 7}
     ]
+    defaultSortRole: "program"
 
     blacklistRuleFactory: firewallClient.createRuleFromConnection
     blacklistRuleRoleNames: [

@@ -27,6 +27,7 @@ import QtQuick.Controls 1.4 as QQC1
 import org.kde.kirigami 2.10 as Kirigami
 
 import org.kde.kcm 1.2 as KCM
+import org.kde.kitemmodels 1.0
 import org.kcm.firewall 1.0
 
 KCM.ScrollViewKCM {
@@ -42,8 +43,17 @@ KCM.ScrollViewKCM {
     property var blacklistRuleFactory
     property var blacklistRuleRoleNames: []
 
+    property string defaultSortRole: ""
+
+    KSortFilterProxyModel {
+        id: proxyModel
+        sourceModel: root.model
+        sortRole: tableView.sortIndicatorColumn > -1 ? roles[tableView.sortIndicatorColumn].role : ""
+        sortOrder: tableView.sortIndicatorOrder
+    }
+
     function blacklistRow(row) {
-        const idx = root.model.index(row, 0);
+        const idx = proxyModel.index(row, 0);
 
         const roles = blacklistRuleRoleNames;
 
@@ -56,7 +66,7 @@ KCM.ScrollViewKCM {
         }
 
         const args = roles.map((role) => {
-            return model.data(idx, modelType[role + "Role"]);
+            return proxyModel.data(idx, modelType[role + "Role"]);
         });
 
         const rule = blacklistRuleFactory(...args);
@@ -112,6 +122,12 @@ KCM.ScrollViewKCM {
             id: tableView
             anchors.fill: parent
             activeFocusOnTab: true
+
+            sortIndicatorVisible: sortIndicatorColumn > 0 // column -1 apparently means "do something stupid" rather than "no column"
+            sortIndicatorColumn: root.roles.findIndex((column) => {
+                return column.role === root.defaultSortRole;
+            });
+
             // Would be nice to support multi-selection
             //selectionMode: QQC1.SelectionMode.ExtendedSelection
 
@@ -123,7 +139,7 @@ KCM.ScrollViewKCM {
                 running: root.model.count === 0 && root.model.busy && !modelErrorMessage.visible
             }
 
-            model: root.model
+            model: proxyModel
 
             Instantiator {
                 model: root.roles
