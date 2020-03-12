@@ -238,22 +238,41 @@ KCM.ScrollViewKCM {
     view: Flickable  {
         QQC1.TableView {
             id: tableView
-            width: parent.width
-            height: parent.height
-            model: firewallClient.rulesModel
-            enabled: firewallClient.enabled
             property int currentHoveredRow: -1
 
-            rowDelegate: MouseArea{
-                id: mouseArea
-                height: 50
-                hoverEnabled: true
-                onContainsMouseChanged: {
-                    if (mouseArea.containsMouse) {
-                        tableView.currentHoveredRow = model.row
-                    }
+            anchors.fill: parent
+            model: firewallClient.rulesModel
+            enabled: firewallClient.enabled
+
+            function editRule(row) {
+                ruleEdit.rule = firewallClient.getRule(row);
+                ruleEdit.newRule = false;
+                drawer.open();
+            }
+
+            onDoubleClicked: editRule(row)
+            Keys.onEnterPressed: Keys.onReturnPressed(event)
+            Keys.onReturnPressed: {
+                if (tableView.selection.count === 1) {
+                    tableView.selection.forEach(editRule);
+                    event.accepted = true;
                 }
-                onPressed: mouse.accepted = false
+            }
+
+            rowDelegate: MouseArea {
+                height: Kirigami.Units.gridUnit + 2 * Kirigami.Units.smallSpacing // fit action buttons
+                hoverEnabled: true
+                acceptedButtons: Qt.NoButton
+                onEntered: tableView.currentHoveredRow = model.row
+
+                // Restore upstream TableView background...
+                BorderImage {
+                    visible: styleData.selected || styleData.alternate
+                    source: "image://__tablerow/" + (styleData.alternate ? "alternate_" : "")
+                            + (styleData.selected ? "selected_" : "")
+                            + (tableView.activeFocus ? "active" : "")
+                    anchors.fill: parent
+                }
             }
 
             QQC1.TableViewColumn {
@@ -286,29 +305,49 @@ KCM.ScrollViewKCM {
                 width: Kirigami.Units.iconSizes.small * 6
                 resizable: false
                 delegate: RowLayout {
-                    id: buttonLayout
+                    id: ruleActionsRow
+                    property QtObject activeJob: null
+                    spacing: 0
+                    // TODO InlineBusyIndicator?
+                    enabled: !activeJob
+                    visible: tableView.currentHoveredRow === model.row || tableView.selection.contains(model.row)
 
-                    visible: model ? tableView.currentHoveredRow === model.row : false
+                    Item {
+                        Layout.fillWidth: true
+                    }
+
                     QQC2.ToolButton {
+                        Layout.fillHeight: true
                         icon.name: "edit-entry"
-                        onClicked: {
-                            ruleEdit.rule = firewallClient.getRule(model.row)
-                            ruleEdit.newRule = false
-                            drawer.open()
+                        onClicked: tableView.editRule(styleData.row)
+                        QQC2.ToolTip {
+                            text: i18nc("@info:tooltip", "Edit Rule")
                         }
                     }
                     QQC2.ToolButton {
+                        Layout.fillHeight: true
                         icon.name: "edit-delete"
                         onClicked: {
-                            // FIXME busy indicator and error reporting
-                            firewallClient.removeRule(model.row)
+                            const job = firewallClient.removeRule(styleData.row);
+                            ruleActionsRow.activeJob = job;
+
+                            job.result.connect(function () {
+                                ruleActionsRow.activeJob = null;
+
+                                if (job.error && job.error !== 4) { // TODO magic number
+                                    firewallInlineErrorMessage.text = i18n("Error removing rule: %1", job.errorString);
+                                    firewallInlineErrorMessage.visible = true;
+                                }
+                            });
+                        }
+                        QQC2.ToolTip {
+                            text: i18nc("@info:tooltip", "Remove Rule")
                         }
                     }
                 }
             }
         }
     }
-
 
     footer: RowLayout {
         QQC2.Button {
