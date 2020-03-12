@@ -101,12 +101,19 @@ void LogListModel::addRawLogs(const QStringList &rawLogsList)
             const QString host = match.captured(2);
             const QString id = match.captured(4);
 
+            QString protocol = match.captured(9);
+            if (protocol == QLatin1String("1")) {
+                protocol = QStringLiteral("ICMP");
+            } else if (protocol == QLatin1String("2")) {
+                protocol = QStringLiteral("IGMP");
+            }
+
             LogData logDetails {
                 .sourceAddress = match.captured(7),
                 .sourcePort = match.captured(11),
                 .destinationAddress = match.captured(8),
                 .destinationPort = match.captured(12),
-                .protocol =  match.captured(9),
+                .protocol = protocol,
                 .interface = match.captured(6),
                 .action = match.captured(5),
                 .time = date.toString("HH:mm:ss"),
