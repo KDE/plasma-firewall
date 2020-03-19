@@ -75,15 +75,6 @@ QVariant RuleListModel::data(const QModelIndex &index, int role) const
     return {};
 }
 
-QVariant RuleListModel::data2(int row, const QByteArray &roleName) const
-{
-    const auto keys = roleNames().keys(roleName);
-    if (keys.empty()) {
-        return {};
-    }
-    return data(createIndex(row, 0), keys.first());
-}
-
 void RuleListModel::setProfile(Profile profile)
 {
     beginResetModel();
