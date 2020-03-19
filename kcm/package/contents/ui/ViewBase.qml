@@ -56,7 +56,7 @@ KCM.ScrollViewKCM {
         sortOrder: tableView.sortIndicatorOrder
 
         function filterCb(source_row, source_parent) {
-            const query = searchField.text.toLowerCase();
+            const query = searchField.text.toLocaleLowerCase();
             const roleNames = filterRoleNames;
 
             const modelType = getModelType();
