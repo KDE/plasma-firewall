@@ -354,12 +354,14 @@ KCM.ScrollViewKCM {
     footer: RowLayout {
         QQC2.Button {
             text: i18n("Connections...")
+            icon.name: "network-connect"
             onClicked: kcm.push("ConnectionsView.qml", {
                 "firewallClient": firewallClient
             });
         }
         QQC2.Button {
             text: i18n("Logs...")
+            icon.name: "viewlog"
             onClicked: kcm.push("LogsView.qml", {
                 "firewallClient": firewallClient,
             });
