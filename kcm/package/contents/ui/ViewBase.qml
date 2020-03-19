@@ -156,10 +156,7 @@ KCM.ScrollViewKCM {
         Kirigami.SearchField {
             id: searchField
             Layout.fillWidth: true
-            onTextChanged: {
-                // This bind() trick creates a new function, so the proxyModel invalidates its filter
-                proxyModel.filterRowCallback = length > 0 ? proxyModel.filterCb.bind(text) : null;
-            }
+            onTextChanged: proxyModel.invalidate(); // invalidateFilter is unfortunately private
             enabled: root.model.count > 0
             visible: root.filterRoleNames.length > 0
         }
