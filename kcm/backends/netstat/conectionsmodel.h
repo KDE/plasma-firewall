@@ -34,6 +34,15 @@ struct ConnectionsData {
     QString status;
     QString pid;
     QString program;
+
+    bool operator==(const ConnectionsData &other) const {
+        return other.protocol == protocol
+                && other.localAddress == localAddress
+                && other.foreignAddress == foreignAddress
+                && other.status == status
+                && other.pid == pid
+                && other.program == program;
+    }
 };
 
 class ConnectionsModel : public QAbstractListModel

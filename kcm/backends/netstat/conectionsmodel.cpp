@@ -112,7 +112,8 @@ void ConnectionsModel::refreshConnections()
             return;
         }
 
-        const int oldCount = m_connectionsData.count();
+        const auto oldConnectionsData = m_connectionsData;
+        QVector<ConnectionsData> newConnectionsData;
 
         beginResetModel();
         m_connectionsData.clear();
@@ -126,11 +127,16 @@ void ConnectionsModel::refreshConnections()
                 .pid = connList.at(4).toString(),
                 .program = connList.at(5).toString()
             };
-            m_connectionsData.append(conn);
+            newConnectionsData.append(conn);
         }
-        endResetModel();
 
-        if (m_connectionsData.count() != oldCount) {
+        if (newConnectionsData != oldConnectionsData) {
+            beginResetModel();
+            m_connectionsData = newConnectionsData;
+            endResetModel();
+        }
+
+        if (newConnectionsData.count() != oldConnectionsData.count()) {
             emit countChanged();
         }
     });
