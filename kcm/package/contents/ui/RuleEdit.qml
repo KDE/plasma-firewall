@@ -97,10 +97,26 @@ FocusScope {
         }
 
         RowLayout {
+            Kirigami.FormData.label: i18n("IP Version:")
+
+            QQC2.RadioButton {
+                text: i18n("IPv4")
+                checked: !rule.ipv6
+                onClicked: rule.ipv6 = false;
+            }
+            QQC2.RadioButton {
+                text: i18n("IPv6")
+                checked: rule.ipv6
+                onClicked: rule.ipv6 = true
+            }
+        }
+
+        RowLayout {
             Kirigami.FormData.label: i18n("Source:")
 
-            IpV4TextField {
+            IpTextField {
                 id: sourceAddress
+                ipv6: rule.ipv6
                 focus: true // default focus object
                 text: rule.sourceAddress
                 Layout.preferredWidth: policy.width * 0.6
@@ -118,8 +134,9 @@ FocusScope {
         RowLayout {
             Kirigami.FormData.label: i18n("Destination:")
 
-            IpV4TextField {
+            IpTextField {
                 id: destinationAddress
+                ipv6: rule.ipv6
                 text: rule.destinationAddress
                 Layout.preferredWidth: policy.width * 0.6
                 onTextChanged: rule.destinationAddress = text

@@ -468,6 +468,7 @@ bool UfwClient::logsAutoRefresh() const
 
 RuleWrapper* UfwClient::createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status)
 {
+    // FIXME use a regexp for that and support ipv6!
     auto _localAddress = localAddress;
     _localAddress.replace("*", "");
     _localAddress.replace("0.0.0.0", "");
@@ -518,6 +519,13 @@ RuleWrapper *UfwClient::createRuleFromLog(
         auto _destinationAddress = destinationAddress;
         _destinationAddress.replace("*", "");
         _destinationAddress.replace("0.0.0.0", "");
+
+        // Heuristic to determine whether we should be ipv6
+        // TODO error when one is ipv6 and the other isn't?
+        if (sourceAddress.contains(QLatin1Char(':'))
+            && destinationAddress.contains(QLatin1Char(':'))) {
+            rule->setIpv6(true);
+        }
 
         // Prepare rule draft
         rule->setIncoming(inn.size());
