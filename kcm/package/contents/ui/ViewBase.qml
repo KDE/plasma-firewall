@@ -37,6 +37,7 @@ KCM.ScrollViewKCM {
 
     property QtObject model
     property var roles: []
+    property alias emptyListText: emptyListLabel.text
 
     property QtObject currentJob: null
 
@@ -159,6 +160,7 @@ KCM.ScrollViewKCM {
                 // This bind() trick creates a new function, so the proxyModel invalidates its filter
                 proxyModel.filterRowCallback = length > 0 ? proxyModel.filterCb.bind(text) : null;
             }
+            enabled: root.model.count > 0
             visible: root.filterRoleNames.length > 0
         }
     }
@@ -186,6 +188,17 @@ KCM.ScrollViewKCM {
                 anchors.centerIn: parent
                 // Show busy spinner only on initial population and not while an error is shown
                 running: root.model.count === 0 && root.model.busy && !modelErrorMessage.visible
+            }
+
+            Kirigami.Heading {
+                id: emptyListLabel
+                anchors.fill: parent
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                wrapMode: Text.WordWrap
+                enabled: false
+                level: 3
+                visible: root.model.count === 0 && !root.model.busy && !modelErrorMessage.visible
             }
 
             model: proxyModel
