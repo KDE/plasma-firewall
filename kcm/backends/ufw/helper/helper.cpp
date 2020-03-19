@@ -356,17 +356,16 @@ ActionReply Helper::run(const QStringList &args, const QString &cmd)
     int exitCode(ufw.exitCode());
 
     if(0!=exitCode) {
-        QString errorString = ufw.readAllStandardError();
+        QString errorString = ufw.readAllStandardError().simplified();
+
+        const QString errorPrefix = QStringLiteral("ERROR: ");
+        if (errorString.startsWith(errorPrefix)) {
+            errorString = errorString.mid(errorPrefix.length());
+        }
 
         reply=ActionReply::HelperErrorReply(exitCode);
 
-        // We are having issues with ipv6 addresses, don't try to block them atm.
-        // TODO: Figure out the error.
-        if (errorString.contains("Could not normalize source address")) {
-            reply.setErrorDescription(i18n("Plasma firewall does not block ipv6 rules yet."));
-        } else {
-            reply.setErrorDescription(i18n("An error happened: ") + ufw.readAllStandardError() + i18n("Command: ") + cmd);
-        }
+        reply.setErrorDescription(i18n("An error occurred in command '%1': %2", cmd, errorString));
     } else {
         reply.addData("response", ufw.readAllStandardOutput());
     }
