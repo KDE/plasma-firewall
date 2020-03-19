@@ -82,24 +82,21 @@ KCM.ScrollViewKCM {
         const job = firewallClient.addRule(rule);
         currentJob = job;
 
-        ruleCreationMessage.visible = false;
+        ruleCreationErrorMessage.visible = false;
 
         job.result.connect(function() {
             currentJob = null;
 
             if (job.error) {
                 if (job.error !== 4) { // FIXME magic number
-                    ruleCreationMessage.type = Kirigami.MessageType.Error;
-                    ruleCreationMessage.text = i18n("Error creating rule: %1", job.errorString);
-                    ruleCreationMessage.visible = true;
+                    ruleCreationErrorMessage.text = i18n("Error creating rule: %1", job.errorString);
+                    ruleCreationErrorMessage.visible = true;
                 }
                 return;
             }
 
             if (blacklistRuleSuccessMessage) {
-                ruleCreationMessage.type = Kirigami.MessageType.Positive;
-                ruleCreationMessage.text = blacklistRuleSuccessMessage;
-                ruleCreationMessage.visible = true;
+                kcm.showPassiveNotification(blacklistRuleSuccessMessage);
             }
         });
     }
@@ -121,7 +118,8 @@ KCM.ScrollViewKCM {
         }
 
         Kirigami.InlineMessage {
-            id: ruleCreationMessage
+            id: ruleCreationErrorMessage
+            type: Kirigami.MessageType.Error
             Layout.fillWidth: true
             showCloseButton: true
         }
