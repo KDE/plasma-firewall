@@ -70,6 +70,11 @@ QString RuleWrapper::destinationPort() const
     return m_rule.getDestPort();
 }
 
+bool RuleWrapper::ipv6() const
+{
+    return m_rule.getV6();
+}
+
 int RuleWrapper::protocol() const
 {
     auto protocol = m_rule.getProtocol();
@@ -151,6 +156,16 @@ void RuleWrapper::setDestinationPort(const QString &destinationPort)
 
     m_rule.setDestPort(destinationPort);
     emit destinationPortChanged(destinationPort);
+}
+
+void RuleWrapper::setIpv6(bool ipv6)
+{
+    if (m_rule.getV6() == ipv6) {
+        return;
+    }
+
+    m_rule.setV6(ipv6);
+    emit ipv6Changed(ipv6);
 }
 
 void RuleWrapper::setProtocol(int protocol)
