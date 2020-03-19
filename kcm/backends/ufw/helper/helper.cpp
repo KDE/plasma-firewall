@@ -103,6 +103,11 @@ ActionReply Helper::viewlog(const QVariantMap &args)
     QFile       file(logFile.isEmpty() ? LOG_FILE : logFile);
     ActionReply reply;
 
+    // There might be no logs if the firewall is disabled
+    if (!file.exists()) {
+        return reply;
+    }
+
     if(!file.open(QIODevice::ReadOnly|QIODevice::Text)) {
         reply.setErrorCode(KAuth::ActionReply::BackendError);
         reply.setError(STATUS_OPERATION_FAILED);
