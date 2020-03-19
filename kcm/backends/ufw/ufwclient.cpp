@@ -521,7 +521,7 @@ RuleWrapper *UfwClient::createRuleFromLog(
 
         // Prepare rule draft
         rule->setIncoming(inn.size());
-        rule->setPolicy("allow");
+        rule->setPolicy("deny");
         rule->setSourceAddress(_sourceAddress);
         rule->setSourcePort(sourcePort);
 
