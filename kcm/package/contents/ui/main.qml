@@ -124,6 +124,7 @@ KCM.ScrollViewKCM {
 
         Kirigami.InlineMessage {
             id: firewallInlineErrorMessage
+            Layout.fillWidth: true
             type: Kirigami.MessageType.Error
         }
 
