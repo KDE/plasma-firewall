@@ -62,6 +62,14 @@ FocusScope {
         id: formLayout
         width: parent.width
 
+        Kirigami.InlineMessage {
+            Layout.fillWidth: true
+            type: Kirigami.MessageType.Information
+            text: rule.incoming ? i18n("The default incoming policy is already '%1'.", policy.currentText)
+                                : i18n("The default outgoing policy is already '%1'.", policy.currentText)
+            visible: rule.policy === (incoming.checked ? defaultIncomingPolicyRule : defaultOutgoingPolicyRule)
+        }
+
         QQC2.ComboBox {
             id: policy
             Kirigami.FormData.label: i18n("Policy:")
@@ -161,8 +169,6 @@ FocusScope {
             QQC2.Button {
                 text: ruleEdit.newRule ? i18n("Create") : i18n("Save")
                 icon.name: ruleEdit.newRule ? "document-new" : "document-save"
-                enabled: (!incoming.checked && policyChoices[policy.currentIndex].data !== defaultOutgoingPolicyRule)
-                      || (incoming.checked && policyChoices[policy.currentIndex].data !== defaultIncomingPolicyRule)
                 onClicked: ruleEdit.accepted()
             }
 
