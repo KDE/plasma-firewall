@@ -24,7 +24,7 @@ import QtQuick 2.12
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.12 as QQC2
 import QtQuick.Controls 1.4 as QQC1
-import org.kde.kirigami 2.10 as Kirigami
+import org.kde.kirigami 2.12 as Kirigami
 
 import org.kde.kcm 1.2 as KCM
 import org.kde.kitemmodels 1.0
@@ -46,11 +46,45 @@ KCM.ScrollViewKCM {
 
     property string defaultSortRole: ""
 
+    property alias filterPlaceholderText: searchField.placeholderText
+    property var filterRoleNames: []
+
     KSortFilterProxyModel {
         id: proxyModel
         sourceModel: root.model
         sortRole: tableView.sortIndicatorColumn > -1 ? roles[tableView.sortIndicatorColumn].role : ""
         sortOrder: tableView.sortIndicatorOrder
+
+        function filterCb(source_row, source_parent) {
+            const query = searchField.text.toLowerCase();
+            const roleNames = filterRoleNames;
+
+            const modelType = getModelType();
+            const idx = sourceModel.index(source_row, 0, source_parent);
+
+            for (var i = 0, length = roleNames.length; i < length; ++i) {
+                const roleName = roleNames[i];
+                const data = String(sourceModel.data(idx, modelType[roleName + "Role"]) || "").toLocaleLowerCase();
+
+                if (data.includes(query)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        filterRowCallback: searchField.length > 0 && filterRoleNames.length > 0 ? filterCb : null
+    }
+
+    function getModelType() {
+        // can this be done generically? :(
+        if (root.model instanceof LogListModel) {
+            return LogListModel;
+        } else if (root.model instanceof ConnectionsModel) {
+            return ConnectionsModel;
+        }
+        return null;
     }
 
     function blacklistRow(row) {
@@ -65,13 +99,7 @@ KCM.ScrollViewKCM {
 
         const roles = blacklistRuleRoleNames;
 
-        // Can this be done generically? :(
-        let modelType = null;
-        if (root.model instanceof LogListModel) {
-            modelType = LogListModel;
-        } else if (root.model instanceof ConnectionsModel) {
-            modelType = ConnectionsModel;
-        }
+        const modelType = getModelType();
 
         const args = roles.map((role) => {
             return proxyModel.data(idx, modelType[role + "Role"]);
@@ -101,7 +129,7 @@ KCM.ScrollViewKCM {
         });
     }
 
-    header: RowLayout {
+    header: ColumnLayout {
         Kirigami.InlineMessage {
             id: modelErrorMessage
             Layout.fillWidth: true
@@ -122,6 +150,16 @@ KCM.ScrollViewKCM {
             type: Kirigami.MessageType.Error
             Layout.fillWidth: true
             showCloseButton: true
+        }
+
+        Kirigami.SearchField {
+            id: searchField
+            Layout.fillWidth: true
+            onTextChanged: {
+                // This bind() trick creates a new function, so the proxyModel invalidates its filter
+                proxyModel.filterRowCallback = length > 0 ? proxyModel.filterCb.bind(text) : null;
+            }
+            visible: root.filterRoleNames.length > 0
         }
     }
 

@@ -49,6 +49,8 @@ ViewBase {
     ]
     blacklistRuleSuccessMessage: i18n("Created a blacklist rule from this connection.");
 
+    filterRoleNames: blacklistRuleRoleNames.concat(["Pid", "Program"])
+
     NetstatClient {
         id: netStatClient
     }

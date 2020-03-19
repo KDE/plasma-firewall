@@ -50,4 +50,6 @@ ViewBase {
         "Interface"
     ]
     blacklistRuleSuccessMessage: i18n("Created a blacklist rule from this log entry.");
+
+    filterRoleNames: blacklistRuleRoleNames
 }
