@@ -278,6 +278,17 @@ KCM.ScrollViewKCM {
                 }
             }
 
+            Kirigami.Heading {
+                anchors.fill: parent
+                text: i18n("No firewall rules have been added.")
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                wrapMode: Text.WordWrap
+                enabled: false
+                level: 3
+                visible: tableView.rowCount === 0
+            }
+
             QQC1.TableViewColumn {
                 title: i18n("Action")
                 role: "action"
