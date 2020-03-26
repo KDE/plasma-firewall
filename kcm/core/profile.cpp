@@ -60,6 +60,12 @@ Profile::Profile(QFile &file, bool isSys)
     load(&file);
 }
 
+void Profile::setRules(QVector<Rule> &rls) {
+    rules.clear();
+    for(auto i: rls)
+        rules.push_back(i);
+    return;
+}
 QString Profile::toXml() const
 {
     QString                    str;

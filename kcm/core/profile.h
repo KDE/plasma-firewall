@@ -92,7 +92,10 @@ class KCM_FIREWALL_CORE_EXPORT Profile
     const QString &       getFileName() const              { return fileName; }
     bool                  getIsSystem() const              { return isSystem; }
 
+    void                  setRules(QVector<Rule> &rls);
+
     private:
+
 
     void load(QIODevice *device);
 
