@@ -33,7 +33,7 @@ import org.kde.kirigami 2.10 as Kirigami
 KCM.ScrollViewKCM {
     id: root
 
-    implicitHeight: Kirigami.Units.gridUnit * 22
+    implicitHeight: Kirigami.Units.gridUnit * 24
     implicitWidth: Kirigami.Units.gridUnit * 44
 
     KCM.ConfigModule.quickHelp: i18n("This module lets you configure firewall.")
@@ -64,6 +64,11 @@ KCM.ScrollViewKCM {
         }
 
         ColumnLayout {
+            Kirigami.Heading {
+                Layout.fillWidth: true
+                text: ruleEdit.newRule ? i18n("Create New Firewall Rule") : i18n("Edit Firewall Rule")
+            }
+
             Kirigami.InlineMessage {
                 id: ruleEditMessage
                 type: Kirigami.MessageType.Error
