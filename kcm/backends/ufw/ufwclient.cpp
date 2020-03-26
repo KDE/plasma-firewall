@@ -160,65 +160,64 @@ QVector<Rule> UfwClient::responseProcess(const QByteArray &message) {
     xml.readNextStartElement();
     int i = 0;
     while (!xml.atEnd()) {
-        xml.readNextStartElement();
-        if(xml.name().toString() == "rule") {
-            i++;
-            Types::Policy pol;
-            Types::Logging log;
-            Types::Protocol prot;
-            qDebug() << xml.text().toString();
-            /* transform policy to the respective type */
-            if(xml.attributes().value("action").toString() == "allow") {
-                pol = Types::POLICY_ALLOW;
-            }
-            else if(xml.attributes().value("action").toString() == "reject") {
-                pol = Types::POLICY_REJECT;
-            }
-            else {
-                pol = Types::POLICY_DENY;
-            }
+        if(xml.readNextStartElement()){
+            if(xml.name().toString() == "rule") {
+                i++;
+                Types::Policy pol;
+                Types::Logging log;
+                Types::Protocol prot;
+                qDebug() << xml.text().toString();
+                /* transform policy to the respective type */
+                if(xml.attributes().value("action").toString() == "allow") {
+                    pol = Types::POLICY_ALLOW;
+                }
+                else if(xml.attributes().value("action").toString() == "reject") {
+                    pol = Types::POLICY_REJECT;
+                }
+                else {
+                    pol = Types::POLICY_DENY;
+                }
 
-            /* transform protocol to the respective type */
-            if(xml.attributes().value("protocol").toString() == "tcp") {
-                prot = Types::PROTO_TCP;
-            }
-            else if(xml.attributes().value("protocol").toString() == "udp") {
-                prot = Types::PROTO_UDP;
-            }
-            else {
-                prot = Types::PROTO_BOTH;
-            }
+                /* transform protocol to the respective type */
+                if(xml.attributes().value("protocol").toString() == "tcp") {
+                    prot = Types::PROTO_TCP;
+                }
+                else if(xml.attributes().value("protocol").toString() == "udp") {
+                    prot = Types::PROTO_UDP;
+                }
+                else {
+                    prot = Types::PROTO_BOTH;
+                }
 
-            /* transform log to the respective type */
-            if(xml.attributes().value("logtype").toString() == "new") {
-                log = Types::LOGGING_NEW;
-            }
-            else if(xml.attributes().value("logtype").toString() == "all") {
-                log = Types::LOGGING_ALL;
-            }
-            else {
-                log = Types::LOGGING_OFF;
-            }
+                /* transform log to the respective type */
+                if(xml.attributes().value("logtype").toString() == "new") {
+                    log = Types::LOGGING_NEW;
+                }
+                else if(xml.attributes().value("logtype").toString() == "all") {
+                    log = Types::LOGGING_ALL;
+                }
+                else {
+                    log = Types::LOGGING_OFF;
+                }
 
-            Rule r(
-               pol,
-               xml.attributes().value("direction").toString() == "in" ? true : false,
-               log,
-               prot,
-               xml.attributes().value("src").toString(),
-               xml.attributes().value("sport").toString(),
-               xml.attributes().value("dst").toString(),
-               xml.attributes().value("dport").toString(),
-               xml.attributes().value("interface_in").toString(),
-               xml.attributes().value("interface_out").toString(),
-               xml.attributes().value("dapp").toString(),
-               xml.attributes().value("sapp").toString(),
-               xml.attributes().value("position").toInt(), 
-               xml.attributes().value("v6").toInt() == 1 ? true: false
-               );
-            r.toXml();
-            message_rules.push_back(r);
-            
+                Rule r(
+                        pol,
+                        xml.attributes().value("direction").toString() == "in" ? true : false,
+                        log,
+                        prot,
+                        xml.attributes().value("src").toString(),
+                        xml.attributes().value("sport").toString(),
+                        xml.attributes().value("dst").toString(),
+                        xml.attributes().value("dport").toString(),
+                        xml.attributes().value("interface_in").toString(),
+                        xml.attributes().value("interface_out").toString(),
+                        xml.attributes().value("dapp").toString(),
+                        xml.attributes().value("sapp").toString(),
+                        xml.attributes().value("position").toInt(),
+                        xml.attributes().value("v6").toInt() == 1 ? true: false
+                      );
+                message_rules.push_back(r);
+            }
         }
     }
 
@@ -226,7 +225,6 @@ QVector<Rule> UfwClient::responseProcess(const QByteArray &message) {
         qDebug() << "Error when processing UFW xml response: "<< xml.errorString();
     }
     
-    qDebug() << i;
     return message_rules;
 }
 
