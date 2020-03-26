@@ -138,9 +138,11 @@ KJob *UfwClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavio
 
         if (!job->error()) {
             QByteArray response = job->data().value("response", "").toByteArray();
-            QVector<Rule> rules = responseProcess(response);
-            qDebug() << "rules parsed from response: " << rules.size();
-            setProfile(Profile(response));
+            QVariantMap args = extractArgsFromResponse(response);
+            QVector<Rule> rules = extractRulesFromResponse(response);
+            qDebug() << "rules extracted: " << rules.size() << "\narguments extracted: " << args;
+            /* setProfile(Profile(response)); */
+            setProfile(Profile(rules,args));
         } else {
             emit showErrorMessage(
                 i18n("There was an error in the backend! Please report it.\n%1 %2",
@@ -154,64 +156,117 @@ KJob *UfwClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavio
     return job;
 }
 
-QVector<Rule> UfwClient::responseProcess(const QByteArray &message) {
+QVariantMap UfwClient::extractArgsFromResponse(const QByteArray &message) {
+    QVariantMap args;
+    QXmlStreamReader reader(message);
+    int fields = 0;
+    while (!reader.atEnd()) {
+        auto token = reader.readNext();
+        if (token == QXmlStreamReader::Invalid) {
+            break;
+        }
+        if (token != QXmlStreamReader::StartElement) {
+            continue;
+        }
+        if (reader.name() == QStringLiteral("ufw")) {
+             args.insert("isFullProfile", 
+                     reader.attributes().value("full") == QStringLiteral("true"));
+            continue;
+        }
+        if (reader.name() == QStringLiteral("status")) {
+            args.insert(reader.name().toString(),
+                    reader.attributes().value("enabled") == QStringLiteral("true"));
+            fields |= Profile::FIELD_STATUS;
+        }
+        if (reader.name() == "defaults") {
+            fields |= Profile::FIELD_DEFAULTS;
+
+            const auto attr = reader.attributes();
+
+            args.insert("logLevel",
+                    attr.value(QLatin1String("loglevel")).toString());
+
+            args.insert("defaultIncomingPolicy",
+                    attr.value(QLatin1String("incoming")).toString());
+            args.insert(
+            "defaultOutgoingPolicy",
+            attr.value(QLatin1String("outgoing")).toString());
+
+            args.insert("ipv6Enabled",
+                    (attr.value("ipv6") == QLatin1String("yes")));
+        }
+        if (reader.name() == "modules") {
+            fields |= Profile::FIELD_MODULES;
+            const auto attr = reader.attributes();
+            const auto moduleList = attr.value("enabled").toString().split(" ", Qt::SkipEmptyParts);
+            args.insert("modules", moduleList);
+        }
+    }
+    args.insert("fields", fields);
+    return args;
+}
+QVector<Rule> UfwClient::extractRulesFromResponse(const QByteArray &message) {
     QXmlStreamReader xml(message);
     QVector<Rule> message_rules;
     xml.readNextStartElement();
     int i = 0;
     while (!xml.atEnd()) {
+
         if(xml.readNext() == QXmlStreamReader::EndDocument) {
             continue;
         }
+
+        if(xml.readNext() == QXmlStreamReader::Invalid) {
+            break;
+        }
+        
         if(xml.name().toString() == "rule" && xml.isStartElement()) {
             i++;
-            Types::Policy pol;
-            Types::Logging log;
-            Types::Protocol prot;
-            /* qDebug() << xml.text().toString(); */
+            const auto attr = xml.attributes();
+            static QString ANY_ADDR     = "0.0.0.0/0";
+            static QString ANY_ADDR_V6  = "::/0";
+            static QString ANY_PORT     = "any";
 
-            /* transform policy to the respective type */
-            const auto logtype = xml.attributes().value("logtype").toString();
-            log = logtype == "new" ? Types::LOGGING_NEW
-                : logtype == "all" ? Types::LOGGING_ALL
-                : Types::LOGGING_OFF;
+            // Handle Enums.
+            const auto action = Types::toPolicy(attr.value(QLatin1String("action")).toString());
+            const auto protocol = Types::toProtocol(attr.value(QLatin1String("protocol")).toString());
+            const auto logType = Types::toLogging(attr.value(QLatin1String("logtype")).toString());
 
-            /* transform policy action to the respective type */
-            const auto action = xml.attributes().value("action").toString();
-            pol = action == "allow" ? Types::POLICY_ALLOW
-                : action == "reject" ? Types::POLICY_REJECT
-                : Types::POLICY_DENY;
+            // Handle values that have weird defaults.
+            const auto anyAddrs = QList<QString>({ANY_ADDR, ANY_ADDR_V6});
+            const auto dst = attr.value("dst").toString();
+            const auto src = attr.value("src").toString();
+            const auto sport = attr.value("sport").toString();
+            const auto dport = attr.value("dport").toString();
 
-            /* transform protocol to the respective type */
-            const auto protocol = xml.attributes().value("protocol").toString();
-            prot = protocol == "tcp" ? Types::PROTO_TCP
-                : protocol == "udp" ? Types::PROTO_UDP
-                : Types::PROTO_BOTH;
-
-            Rule r(
-                    pol,
-                    xml.attributes().value("direction").toString() == "in" ? true : false,
-                    log,
-                    prot,
-                    xml.attributes().value("src").toString(),
-                    xml.attributes().value("sport").toString(),
-                    xml.attributes().value("dst").toString(),
-                    xml.attributes().value("dport").toString(),
-                    xml.attributes().value("interface_in").toString(),
-                    xml.attributes().value("interface_out").toString(),
-                    xml.attributes().value("dapp").toString(),
-                    xml.attributes().value("sapp").toString(),
-                    xml.attributes().value("position").toInt(),
-                    xml.attributes().value("v6").toString() == "True" ? true: false
-                  );
-            message_rules.push_back(r);
+            const QString destAddress = anyAddrs.contains(dst) ? QString() : dst;
+            const QString sourceAddress = anyAddrs.contains(src) ? QString() : src;
+            const QString sourcePort = sport == ANY_PORT ? QString() : sport;
+            const QString destPort = dport == ANY_PORT ? QString() : dport;
+            message_rules.push_back(
+            Rule(
+                action,
+                attr.value("direction") == QStringLiteral("in"),
+                logType,
+                protocol,
+                sourceAddress,
+                sourcePort,
+                destAddress,
+                destPort,
+                attr.value("interface_in").toString(),
+                attr.value("interface_out").toString(),
+                attr.value("sapp").toString(),
+                attr.value("dapp").toString(),
+                attr.value("position").toInt(),
+                attr.value("v6") == QStringLiteral("True")
+               )
+            );
         }
     }
 
     if (xml.hasError()) {
-        qDebug() << "Error when processing UFW xml response: "<< xml.errorString();
+        qDebug() << "Error when processing rules from UFW xml response: "<< xml.errorString();
     }
-
    /*  for (auto i: message_rules){ */
    /*          qDebug() << i.toXml(); */
    /*  } */
@@ -330,7 +385,6 @@ void UfwClient::setProfile(Profile profile)
 {
     auto oldProfile = m_currentProfile;
     m_currentProfile = profile;
-
     m_rulesModel->setProfile(m_currentProfile);
     if (m_currentProfile.getEnabled() != oldProfile.getEnabled())
         emit enabledChanged(m_currentProfile.getEnabled());

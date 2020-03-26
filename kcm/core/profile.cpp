@@ -30,8 +30,9 @@
 #include <QBuffer>
 #include <QXmlStreamReader>
 #include <QIODevice>
-
+#include <QDebug>
 #include "profile.h"
+#include "types.h"
 
 Profile::Profile(QByteArray &xml, bool isSys)
        : fields(0)
@@ -60,10 +61,38 @@ Profile::Profile(QFile &file, bool isSys)
     load(&file);
 }
 
+Profile::Profile(QVector<Rule> &rls, QVariantMap args, bool isSys)
+       : fields(0)
+       , enabled(false)
+       , ipv6Enabled(false)
+       , logLevel(Types::LOG_OFF)
+       , defaultIncomingPolicy(Types::POLICY_ALLOW)
+       , defaultOutgoingPolicy(Types::POLICY_ALLOW)
+       , isSystem(isSys)
+{
+    setRules(rls);
+    setArgs(args);
+
+}
+
 void Profile::setRules(QVector<Rule> &rls) {
     rules.clear();
-    for(auto i: rls)
-        rules.push_back(i);
+    rules = rls;
+    return;
+}
+
+void Profile::setArgs(QVariantMap  args) {
+
+    defaultIncomingPolicy = Types::toPolicy(args.value("defaultIncomingPolicy").toString());
+    defaultOutgoingPolicy = Types::toPolicy(args.value("defaultOutgoingPolicy").toString());
+    enabled = args.value("status").toBool();
+    ipv6Enabled = args.value("ipv6Enabled").toBool();
+    logLevel = Types::toLogLevel(args.value("logLevel").toString());
+    if( args.value("modules").toList().size() >= 1)
+    {
+        const auto moduleList = args.value("modules").toStringList();
+        modules = QSet<QString>(std::begin(moduleList), std::end(moduleList));
+    }
     return;
 }
 QString Profile::toXml() const
