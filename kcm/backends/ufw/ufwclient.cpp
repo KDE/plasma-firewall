@@ -139,7 +139,7 @@ KJob *UfwClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavio
         if (!job->error()) {
             QByteArray response = job->data().value("response", "").toByteArray();
             QVector<Rule> rules = responseProcess(response);
-            qDebug() << rules.size();
+            qDebug() << "rules parsed from response: " << rules.size();
             setProfile(Profile(response));
         } else {
             emit showErrorMessage(
@@ -168,7 +168,7 @@ QVector<Rule> UfwClient::responseProcess(const QByteArray &message) {
             Types::Policy pol;
             Types::Logging log;
             Types::Protocol prot;
-            qDebug() << xml.text().toString();
+            /* qDebug() << xml.text().toString(); */
 
             /* transform policy to the respective type */
             const auto logtype = xml.attributes().value("logtype").toString();
