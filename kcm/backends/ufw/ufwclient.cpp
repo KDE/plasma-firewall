@@ -138,6 +138,8 @@ KJob *UfwClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavio
 
         if (!job->error()) {
             QByteArray response = job->data().value("response", "").toByteArray();
+            QVector<Rule> rules = responseProcess(response);
+            qDebug() << rules.size();
             setProfile(Profile(response));
         } else {
             emit showErrorMessage(
@@ -150,6 +152,82 @@ KJob *UfwClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavio
 
     job->start();
     return job;
+}
+
+QVector<Rule> UfwClient::responseProcess(const QByteArray &message) {
+    QXmlStreamReader xml(message);
+    QVector<Rule> message_rules;
+    xml.readNextStartElement();
+    int i = 0;
+    while (!xml.atEnd()) {
+        xml.readNextStartElement();
+        if(xml.name().toString() == "rule") {
+            i++;
+            Types::Policy pol;
+            Types::Logging log;
+            Types::Protocol prot;
+            qDebug() << xml.text().toString();
+            /* transform policy to the respective type */
+            if(xml.attributes().value("action").toString() == "allow") {
+                pol = Types::POLICY_ALLOW;
+            }
+            else if(xml.attributes().value("action").toString() == "reject") {
+                pol = Types::POLICY_REJECT;
+            }
+            else {
+                pol = Types::POLICY_DENY;
+            }
+
+            /* transform protocol to the respective type */
+            if(xml.attributes().value("protocol").toString() == "tcp") {
+                prot = Types::PROTO_TCP;
+            }
+            else if(xml.attributes().value("protocol").toString() == "udp") {
+                prot = Types::PROTO_UDP;
+            }
+            else {
+                prot = Types::PROTO_BOTH;
+            }
+
+            /* transform log to the respective type */
+            if(xml.attributes().value("logtype").toString() == "new") {
+                log = Types::LOGGING_NEW;
+            }
+            else if(xml.attributes().value("logtype").toString() == "all") {
+                log = Types::LOGGING_ALL;
+            }
+            else {
+                log = Types::LOGGING_OFF;
+            }
+
+            Rule r(
+               pol,
+               xml.attributes().value("direction").toString() == "in" ? true : false,
+               log,
+               prot,
+               xml.attributes().value("src").toString(),
+               xml.attributes().value("sport").toString(),
+               xml.attributes().value("dst").toString(),
+               xml.attributes().value("dport").toString(),
+               xml.attributes().value("interface_in").toString(),
+               xml.attributes().value("interface_out").toString(),
+               xml.attributes().value("dapp").toString(),
+               xml.attributes().value("sapp").toString(),
+               xml.attributes().value("position").toInt(), 
+               xml.attributes().value("v6").toInt() == 1 ? true: false
+               );
+            r.toXml();
+            message_rules.push_back(r);
+            
+        }
+    }
+
+    if (xml.hasError()) {
+        qDebug() << "Error when processing UFW xml response: "<< xml.errorString();
+    }
+    
+    qDebug() << i;
+    return message_rules;
 }
 
 KJob *UfwClient::setDefaultIncomingPolicy(QString policy)

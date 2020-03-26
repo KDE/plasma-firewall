@@ -91,6 +91,7 @@ protected:
     void setExecutable(const bool &hasExecutable);
     KAuth::Action buildQueryAction(const QVariantMap &arguments);
     KAuth::Action buildModifyAction(const QVariantMap &arguments);
+    QVector<Rule> responseProcess(const QByteArray &message);
 
 private:
     QStringList         m_rawLogs;
