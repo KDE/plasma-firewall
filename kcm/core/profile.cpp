@@ -62,13 +62,7 @@ Profile::Profile(QFile &file, bool isSys)
 }
 
 Profile::Profile(QVector<Rule> &rls, QVariantMap args, bool isSys)
-       : fields(0)
-       , enabled(false)
-       , ipv6Enabled(false)
-       , logLevel(Types::LOG_OFF)
-       , defaultIncomingPolicy(Types::POLICY_ALLOW)
-       , defaultOutgoingPolicy(Types::POLICY_ALLOW)
-       , isSystem(isSys)
+       : isSystem(isSys)
 {
     setRules(rls);
     setArgs(args);
@@ -83,16 +77,27 @@ void Profile::setRules(QVector<Rule> &rls) {
 
 void Profile::setArgs(QVariantMap  args) {
 
-    defaultIncomingPolicy = Types::toPolicy(args.value("defaultIncomingPolicy").toString());
-    defaultOutgoingPolicy = Types::toPolicy(args.value("defaultOutgoingPolicy").toString());
-    enabled = args.value("status").toBool();
-    ipv6Enabled = args.value("ipv6Enabled").toBool();
-    logLevel = Types::toLogLevel(args.value("logLevel").toString());
-    if( args.value("modules").toList().size() >= 1)
-    {
+    defaultIncomingPolicy = args.contains("defaultIncomingPolicy") ?
+        Types::toPolicy(args.value("defaultIncomingPolicy").toString()) :
+        Types::POLICY_ALLOW;
+
+    defaultOutgoingPolicy = args.contains("defaultOutgoingPolicy") ?
+        Types::toPolicy(args.value("defaultOutgoingPolicy").toString()) :
+        Types::POLICY_ALLOW;
+
+    logLevel = args.contains("logLevel") ?
+        Types::toLogLevel(args.value("logLevel").toString()) :
+        Types::LOG_OFF;
+
+    enabled = args.contains("enabled") ? args.value("status").toBool() : false;
+
+    ipv6Enabled = args.contains("ipv6Enabled") ? args.value("ipv6Enabled").toBool() : false;
+
+    if( args.contains("modules") && args.value("modules").toStringList().size() >= 1) {
         const auto moduleList = args.value("modules").toStringList();
         modules = QSet<QString>(std::begin(moduleList), std::end(moduleList));
     }
+
     return;
 }
 QString Profile::toXml() const
