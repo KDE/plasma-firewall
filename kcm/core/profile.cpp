@@ -89,7 +89,7 @@ void Profile::setArgs(QVariantMap  args) {
         Types::toLogLevel(args.value("logLevel").toString()) :
         Types::LOG_OFF;
 
-    enabled = args.contains("enabled") ? args.value("status").toBool() : false;
+    enabled = args.contains("status") ? args.value("status").toBool() : false;
 
     ipv6Enabled = args.contains("ipv6Enabled") ? args.value("ipv6Enabled").toBool() : false;
 
