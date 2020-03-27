@@ -203,8 +203,13 @@ QVariantMap UfwClient::extractArgsFromResponse(const QByteArray &message) {
         }
     }
     args.insert("fields", fields);
+    if (reader.hasError()) {
+        qDebug() << "Error when extracting arguments from UFW xml response: "<< reader.errorString();
+    }
+
     return args;
 }
+
 QVector<Rule> UfwClient::extractRulesFromResponse(const QByteArray &message) {
     QXmlStreamReader xml(message);
     QVector<Rule> message_rules;
@@ -265,7 +270,7 @@ QVector<Rule> UfwClient::extractRulesFromResponse(const QByteArray &message) {
     }
 
     if (xml.hasError()) {
-        qDebug() << "Error when processing rules from UFW xml response: "<< xml.errorString();
+        qDebug() << "Error when extracting rules from UFW xml response: "<< xml.errorString();
     }
    /*  for (auto i: message_rules){ */
    /*          qDebug() << i.toXml(); */
