@@ -156,7 +156,7 @@ KCM.ScrollViewKCM {
         Kirigami.SearchField {
             id: searchField
             Layout.fillWidth: true
-            onTextChanged: proxyModel.invalidate(); // invalidateFilter is unfortunately private
+            onTextChanged: proxyModel.invalidateFilter();
             enabled: root.model.count > 0
             visible: root.filterRoleNames.length > 0
         }
