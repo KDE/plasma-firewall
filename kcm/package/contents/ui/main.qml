@@ -33,7 +33,7 @@ import org.kde.kirigami 2.10 as Kirigami
 KCM.ScrollViewKCM {
     id: root
 
-    implicitHeight: Kirigami.Units.gridUnit * 24
+    implicitHeight: Kirigami.Units.gridUnit * 25
     implicitWidth: Kirigami.Units.gridUnit * 44
 
     KCM.ConfigModule.quickHelp: i18n("This module lets you configure firewall.")
