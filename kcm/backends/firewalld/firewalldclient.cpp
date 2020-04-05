@@ -18,7 +18,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "firewalldclient.h"
 
 #include <QDebug>
 #include <QTimer>
@@ -31,6 +30,25 @@
 #include <QtDBus/QDBusConnection>
 #include <QtDBus/QDBusInterface>
 #include <QVariantList>
+
+#include "firewalldclient.h"
+#include "firewalldjob.h"
+
+namespace HELPER {
+    const QString KCM_FIREWALLD_DIR = QStringLiteral("/etc/kcm/firewalld");
+    const QString LOG_FILE = QStringLiteral("/var/log/firewalld.log");
+    const QString SERVICE_NAME = QStringLiteral("org.fedoraproject.FirewallD1");
+    const QString INTERFACE_NAME = QString(SERVICE_NAME + ".direct");
+    const QString DBUS_PATH = QStringLiteral("/org/fedoraproject/FirewallD1");
+    QDBusMessage dbusCall(const QString &method, const QVariantList& args);
+}
+namespace SYSTEMD {
+    enum actions {ERROR=-1, STOP, START };
+    const QString PATH = QStringLiteral("/org/freedesktop/systemd1");
+    const QString INTERFACE = QStringLiteral("org.freedesktop.systemd1");
+    const QString MANAGER_INTERFACE = QStringLiteral("org.freedesktop.systemd1.Manager");
+    actions executeAction(actions value);
+}
 
 const QDBusArgument &operator>>(const QDBusArgument &argument, firewalld_reply &mystruct)
 {
@@ -67,23 +85,20 @@ bool FirewalldClient::enabled() const
 {
     return m_serviceStatus;
 }
-void FirewalldClient::setEnabled(const bool value)
+KJob *FirewalldClient::setEnabled(const bool value)
 {
     if (m_serviceStatus != value) {
         m_serviceStatus = SYSTEMD::executeAction(static_cast<SYSTEMD::actions>(value));
-        emit parentClient()->enabledChanged(value);
+        emit enabledChanged(value);
     }
     qDebug() << "Service STATUS "<< m_serviceStatus;
+    FirewalldJob *job = new FirewalldJob();
+    return job;
+
 }
 
-bool FirewalldClient::isBusy() const
-{
-    return m_isBusy;
-}
-
-void FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, 
+KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, 
         FirewallClient::ProfilesBehavior profilesBehavior) {
-    return;
 }
 
 
@@ -102,30 +117,10 @@ void FirewalldClient::setLogsAutoRefresh(bool logsAutoRefresh)
     }
 
     m_logsAutoRefresh = logsAutoRefresh;
-    emit parentClient()->logsAutoRefreshChanged(m_logsAutoRefresh);
+    emit logsAutoRefreshChanged(m_logsAutoRefresh);
 }
 
 void FirewalldClient::refreshLogs() {};
-
-void FirewalldClient::setStatus(const QString &status)
-{
-    m_status = status;
-    emit parentClient()->statusChanged(m_status);
-}
-
-void FirewalldClient::setBusy(const bool &isBusy)
-{
-    if (m_isBusy != isBusy) {
-        m_isBusy = isBusy;
-        emit parentClient()->isBusyChanged(isBusy);
-    }
-}
-
-
-QString FirewalldClient::status() const
-{
-    return m_status;
-}
 
 RuleListModel *FirewalldClient::rules() const
 {
@@ -147,51 +142,49 @@ RuleWrapper *FirewalldClient::getRule(int index)
     return wrapper;
 }
 
-void FirewalldClient::addRule(RuleWrapper *ruleWrapper)
+KJob  *FirewalldClient::addRule(RuleWrapper *ruleWrapper)
 {
     if (ruleWrapper == NULL) {
-        qWarning() << __FUNCTION__ << "NULL rule";
-        return;
+        qWarning() << "NULL rule";
     }
-    Rule rule = ruleWrapper->getRule();
-
-    /* TODO create calls functions to ipv4 and ipv6 familty*/
-    QVariantList dbusArgs = buildRule(rule);
+    QDBusMessage message;
+    QVariantList dbusArgs = buildRule(ruleWrapper->getRule());
     // check if it exist before adding.
-    if (!HELPER::dbusCall("queryRule", HELPER::DBUS_PATH, HELPER::INTERFACE_NAME, HELPER::SERVICE_NAME, dbusArgs).arguments().at(0).toBool())
-        HELPER::dbusCall("addRule", HELPER::DBUS_PATH, HELPER::INTERFACE_NAME, HELPER::SERVICE_NAME,dbusArgs);
+    FirewalldJob *job = new FirewalldJob();
+    if (!HELPER::dbusCall("queryRule", dbusArgs).arguments().at(0).toBool())
+        message = HELPER::dbusCall("addRule", dbusArgs);
+
+    job->setErrorText(message.errorMessage());
+    return job;
 }
 
-void FirewalldClient::removeRule(int index)
+KJob *FirewalldClient::removeRule(int index)
 {
-
-    Rule rule = getRule(index)->getRule();
-    /* TODO create calls functions to ipv6 familty*/
-    QVariantList dbusArgs = buildRule(rule);
-    HELPER::dbusCall("removeRule",  HELPER::DBUS_PATH, HELPER::INTERFACE_NAME, HELPER::SERVICE_NAME,dbusArgs);
+    FirewalldJob *job = new FirewalldJob();
+    QVariantList dbusArgs = buildRule(getRule(index)->getRule());
+    QDBusMessage message = HELPER::dbusCall("removeRule",  dbusArgs);
+    job->setErrorText(message.errorMessage());
 }
 
-void FirewalldClient::updateRule(RuleWrapper *ruleWrapper)
+KJob *FirewalldClient::updateRule(RuleWrapper *ruleWrapper)
 {
     if (ruleWrapper == NULL) {
-        qWarning() << __FUNCTION__ << "NULL rule";
-        return;
+        qWarning() << "NULL rule";
     }
-    removeRule(ruleWrapper->position());
-    addRule(ruleWrapper);
+    auto action = removeRule(ruleWrapper->position());
+    action = addRule(ruleWrapper);
+    return action;
 }
 
-void FirewalldClient::moveRule(int from, int to)
+KJob *FirewalldClient::moveRule(int from, int to)
 {
     QVector<Rule> rules = m_currentProfile.getRules();
     if (from < 0 || from >= rules.count()) {
-        qWarning() << __FUNCTION__ << "invalid from index";
-        return;
+        qWarning() << "invalid from index";
     }
 
     if (to < 0 || to >= rules.count()) {
-        qWarning() << __FUNCTION__ << "invalid to index";
-        return;
+        qWarning() << "invalid to index";
     }
     // Correct indices
     from += 1;
@@ -203,21 +196,6 @@ void FirewalldClient::moveRule(int from, int to)
             {"to", to},
     };
 
-    /* KAuth::Action modifyAction = buildModifyAction(args); */
-    /* KAuth::ExecuteJob *job = modifyAction.execute(); */
-    /* connect(job, &KAuth::ExecuteJob::finished, [this](KJob * kjob) { */
-    /*         auto job = qobject_cast<KAuth::ExecuteJob *>(kjob); */
-
-    /*         if (!job->error()) { */
-    /*         QByteArray response = job->data().value("response", "").toByteArray(); */
-    /*         setProfile(Profile(response)); */
-    /*         } else { */
-    /*         qWarning() << job->action().name() << job->errorString(); */
-    /*         } */
-    /*         setBusy(false); */
-    /*         }); */
-
-    /* job->start(); */
 }
 
 bool FirewalldClient::logsAutoRefresh() const
@@ -309,7 +287,7 @@ bool FirewalldClient::hasExecutable() const
 
 void FirewalldClient::setExecutable(const bool &hasExecutable)
 {
-    emit parentClient()->hasExecutableChanged(hasExecutable);
+    emit hasExecutableChanged(hasExecutable);
 }
 
 void FirewalldClient::refreshProfiles()
@@ -349,23 +327,29 @@ QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily)
         args.value("action").toString()
     };
 
-    if (!args.value("destinationAddress").toString().isEmpty())
-        firewalld_direct_rule << "-d" <<  args.value("destinationAddress").toString();
-    if (!args.value("destinationPort").toString().isEmpty())
-        firewalld_direct_rule << "--dport=" +  args.value("destinationPort").toString();
-    if (!args.value("sourceAddress").toString().isEmpty())
-        firewalld_direct_rule << "-s" <<  args.value("sourceAddress").toString();
-    if (!args.value("sourcePort").toString().isEmpty())
-        firewalld_direct_rule << "--sport=" +  args.value("sourcePort").toString();
+    auto value = args.value("destinationAddress").toString();
+    if (!value.isEmpty())
+        firewalld_direct_rule << "-d" <<  value;
 
-    if (ipvfamily == FirewallClient::IPV6)
-        return QVariantList({"ipv6", args.value("table").toString(),
+    value = args.value("destinationPort").toString();
+    if (!value.isEmpty())
+        firewalld_direct_rule << "--dport=" +  value;
+
+    value = args.value("sourceAddress").toString();
+    if (!value.isEmpty())
+        firewalld_direct_rule << "-s" <<  value;
+
+    value = args.value("sourcePort").toString();
+    if (!value.isEmpty())
+        firewalld_direct_rule << "--sport=" +  value;
+
+    auto ipvf = ipvfamily == FirewallClient::IPV6 ? "ipv6" : "ipv4";
+
+    qDebug() << firewalld_direct_rule;
+    return QVariantList({ipvf, args.value("table").toString(),
                 args.value("chain").toString(), args.value("priority").toInt(), firewalld_direct_rule
                 });
-    qDebug() << firewalld_direct_rule;
-    return QVariantList({"ipv4", args.value("table").toString(),
-            args.value("chain").toString(), args.value("priority").toInt(), firewalld_direct_rule
-            });
+
 }
 QString FirewalldClient::defaultIncomingPolicy() const {return "test";};
 QString FirewalldClient::defaultOutgoingPolicy() const {return "test";};
@@ -379,15 +363,15 @@ LogListModel *FirewalldClient::logs()
     return m_logs;
 }
 
-QDBusMessage HELPER::dbusCall(QString method, QString dpath, QString dinterface, QString dservice, QVariantList args= {}) {
+QDBusMessage HELPER::dbusCall(const QString &method, const QVariantList args= {}) {
     QDBusMessage msg;
     if(QDBusConnection::systemBus().isConnected()) {
-        QDBusInterface iface(dservice, dpath, dinterface, QDBusConnection::systemBus());
+        QDBusInterface iface(HELPER::SERVICE_NAME, HELPER::DBUS_PATH, HELPER::INTERFACE_NAME, QDBusConnection::systemBus());
         if(iface.isValid())
             msg= args.isEmpty() ? iface.call(QDBus::AutoDetect, method.toLatin1())
                 : iface.callWithArgumentList(QDBus::AutoDetect, method.toLatin1(), args);
         if(msg.type() == QDBusMessage::ErrorMessage)
-            qDebug() << msg.errorMessage(); 
+            qDebug() << msg.errorMessage();
     }
     return msg;
 }
@@ -397,29 +381,28 @@ SYSTEMD::actions SYSTEMD::executeAction(SYSTEMD::actions value)
     if (!QDBusConnection::systemBus().isConnected()) {
         return SYSTEMD::ERROR;
     }
-   
+
     QDBusInterface iface(SYSTEMD::INTERFACE, SYSTEMD::PATH, SYSTEMD::MANAGER_INTERFACE,
                 QDBusConnection::systemBus());
- 
     if(!iface.isValid()) {
         return SYSTEMD::ERROR;
     }
- 
+
     auto callIface = [&iface] (const QByteArray &call, SYSTEMD::actions retNonError) {
         QDBusMessage msg = iface.callWithArgumentList(
             QDBus::AutoDetect,
             call,
             {"firewalld.service", "fail"});
- 
+
         if (msg.type() == QDBusMessage::ErrorMessage){
             qDebug() << msg.errorMessage();
             return SYSTEMD::ERROR;
         }
         return retNonError;
     };
- 
+
     switch(value) {
- 
+
         case SYSTEMD::START:
             return callIface("StartUnit", SYSTEMD::START);
         case SYSTEMD::STOP:
@@ -428,41 +411,4 @@ SYSTEMD::actions SYSTEMD::executeAction(SYSTEMD::actions value)
             return SYSTEMD::ERROR;
     }
 }
-/* SYSTEMD::actions SYSTEMD::executeAction(SYSTEMD::actions value) { */
-/*     QDBusMessage msg; */
-/*     if (QDBusConnection::systemBus().isConnected()) { */
-/*         QDBusInterface iface(SYSTEMD::INTERFACE, SYSTEMD::PATH, SYSTEMD::MANAGER_INTERFACE, */ 
-/*                     QDBusConnection::systemBus()); */
-
-/*         if(!iface.isValid()) { */
-/*             return SYSTEMD::ERROR; */
-/*         } */
-
-/*         switch(value) { */
-
-/*             case SYSTEMD::START: */
-/*                 msg = iface.callWithArgumentList(QDBus::AutoDetect, "StartUnit", */ 
-/*                         QVariantList({"firewalld.service", "fail"})); */
-/*                 if (msg.type() == QDBusMessage::ErrorMessage){ */
-/*                     qDebug() << msg.errorMessage(); */
-/*                     return SYSTEMD::ERROR; */
-/*                 } */
-/*                 return SYSTEMD::START; */
-
-/*             case SYSTEMD::STOP: */
-/*                 msg = iface.callWithArgumentList(QDBus::AutoDetect, "StopUnit", */ 
-/*                         QVariantList({"firewalld.service", "fail"})); */
-/*                 if (msg.type() == QDBusMessage::ErrorMessage){ */
-/*                     qDebug() << msg.errorMessage(); */
-/*                     return SYSTEMD::ERROR; */
-/*                 } */
-/*                 return SYSTEMD::STOP; */
-
-/*             default: */
-/*                 return SYSTEMD::ERROR; */
-
-/*         } */
-/*     } */
-/*     return SYSTEMD::ERROR; */
-/* } */
 

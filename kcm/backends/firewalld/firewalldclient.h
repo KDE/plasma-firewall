@@ -21,10 +21,10 @@
 #ifndef FIREWALLDCLIENT_H
 #define FIREWALLDCLIENT_H
 
+#include <functional>
 #include <QObject>
 #include <QString>
 #include <QTimer>
-
 #include <QtDBus/QDBusMessage>
 #include <QtDBus/QDBusObjectPath>
 
@@ -34,7 +34,6 @@
 #include "core/ifirewallclientbackend.h"
 #include "core/appprofiles.h"
 #include "core/rule.h"
-#include <functional>
 
 struct firewalld_reply {
     QString ipv;
@@ -46,22 +45,6 @@ struct firewalld_reply {
 
 Q_DECLARE_METATYPE(firewalld_reply);
 
-namespace HELPER {
-    const QString KCM_FIREWALLD_DIR = QStringLiteral("/etc/kcm/firewalld");
-    const QString LOG_FILE = QStringLiteral("/var/log/firewalld.log");
-    const QString SERVICE_NAME = "org.fedoraproject.FirewallD1";
-    const QString INTERFACE_NAME = SERVICE_NAME + ".direct";
-    const QString DBUS_PATH = "/org/fedoraproject/FirewallD1";
-    QDBusMessage dbusCall(QString method, QString dpath, QString dinterface, QString dservice, QVariantList args);
-}
-namespace SYSTEMD {
-    enum actions {ERROR=-1, STOP, START };
-    const QString PATH = "/org/freedesktop/systemd1";
-    const QString INTERFACE = "org.freedesktop.systemd1";
-    const QString MANAGER_INTERFACE = "org.freedesktop.systemd1.Manager";
-    actions executeAction(actions value);
-}
-
 class FirewalldClient : public IFirewallClientBackend
 {
     Q_OBJECT
@@ -71,10 +54,15 @@ class FirewalldClient : public IFirewallClientBackend
         void refresh() override;
         RuleListModel* rules() const override;
         RuleWrapper* getRule(int index) override;
-        void addRule(RuleWrapper *rule) override;
-        void removeRule(int index) override;
-        void updateRule(RuleWrapper *rule) override;
-        void moveRule(int from, int to) override;
+        KJob *addRule(RuleWrapper *rule) override;
+        KJob *removeRule(int index) override;
+        KJob *updateRule(RuleWrapper *rule) override;
+        KJob *moveRule(int from, int to) override;
+        KJob *queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior) override;
+        KJob *setDefaultIncomingPolicy(QString defaultIncomingPolicy) override;
+        KJob *setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) override;
+        KJob *setEnabled(const bool enabled) override;
+
         /* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connecion Table. */
         RuleWrapper* createRuleFromConnection(
                 const QString &protocol,
@@ -91,34 +79,24 @@ class FirewalldClient : public IFirewallClientBackend
                 const QString &inn) override;
 
         bool enabled() const override;
-        bool isBusy() const override;
-        QString status() const;
         QString defaultIncomingPolicy() const override;
         QString defaultOutgoingPolicy() const override;
         QString name() const override;
 
         LogListModel* logs() override;
         bool logsAutoRefresh() const override;
+        void setLogsAutoRefresh(bool logsAutoRefresh) override;
         static IFirewallClientBackend* createMethod(FirewallClient *parent);
         bool hasExecutable() const override;
         void refreshProfiles() override;
 
-        public slots:
-            void queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior) override;
-        void setDefaultIncomingPolicy(QString defaultIncomingPolicy) override;
-        void setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) override;
-
-        void setLogsAutoRefresh(bool logsAutoRefresh) override;
-        void setEnabled(const bool enabled) override;
-
-        protected slots:
-            void refreshLogs();
+    protected slots:
+        void refreshLogs();
 
     protected:
-        void setStatus(const QString &status);
-        void setBusy(const bool &busy);
         void setExecutable(const bool &hasExecutable);
         QVariantList buildRule(Rule r, FirewallClient::Ipv ipvfamily = FirewallClient::IPV4);
+
     private:
         QString m_status;
         QStringList         m_rawLogs;
