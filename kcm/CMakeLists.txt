@@ -12,7 +12,6 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/version.h.cmake ${CMAKE_CURRENT_BINAR
 set(kcm_SRCS
 # Static Library is discarding the things that i need. Temporarely link things into the executable.
    backends/ufw/ufwclient.cpp
-   backends/ufw/blocker.cpp
    kcm.cpp
 )
 

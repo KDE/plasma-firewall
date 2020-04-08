@@ -102,7 +102,6 @@ private:
     RuleListModel*      m_rulesModel;
     LogListModel*       m_logs = nullptr;
     QTimer              m_logsRefreshTimer;
-    //    Blocker       *blocker;
     bool m_logsAutoRefresh;
     KAuth::Action m_queryAction;
     bool m_busy = false;
