@@ -103,9 +103,6 @@ public:
     QString backend() const;
     LogListModel* logsModel();
     bool logsAutoRefresh() const;
-    using tcreateMethod = std::function<IFirewallClientBackend*(FirewallClient*)>;
-    IFirewallClientBackend* create(const QString& name);
-    static bool registerfw ( const QString name, tcreateMethod funcReg );
 
 signals:
     void enabledChanged(const bool enabled);
@@ -128,6 +125,5 @@ private:
     void queryStatus(DefaultDataBehavior defaultDataBehavior = ReadDefaults,
                      ProfilesBehavior ProfilesBehavior = ListenProfiles);
 
-    IFirewallClientBackend *m_currentBackend;
-    static std::map<QString, tcreateMethod> m_avaiableBackends;
+    IFirewallClientBackend *m_currentBackend = nullptr;
 };

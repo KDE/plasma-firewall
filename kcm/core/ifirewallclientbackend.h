@@ -37,11 +37,6 @@ class RuleWrapper;
 class RuleListModel;
 class FirewallClient;
 
-#define REGISTER_BACKEND(NAME, CreateMethod) \
-namespace { \
-static bool unused = FirewallClient::registerfw(NAME, CreateMethod); \
-}
-
 class Q_DECL_EXPORT IFirewallClientBackend : public QObject
 {
     Q_OBJECT

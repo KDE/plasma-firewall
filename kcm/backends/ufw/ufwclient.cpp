@@ -42,9 +42,6 @@
 #include <rulelistmodel.h>
 #include <loglistmodel.h>
 
-// TODO: Figure out what's wrong with the registering
-// REGISTER_BACKEND("ufw", UfwClient::createMethod);
-
 K_PLUGIN_CLASS_WITH_JSON(UfwClient, "ufwbackend.json")
 
 namespace {

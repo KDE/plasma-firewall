@@ -41,11 +41,8 @@
 #include <QList>
 #include <QtGlobal>
 
-std::map<QString, FirewallClient::tcreateMethod> FirewallClient::m_avaiableBackends;
-
 FirewallClient::FirewallClient(QObject *parent)
     : QObject(parent)
-    , m_currentBackend(nullptr)
 {
 }
 
@@ -271,26 +268,3 @@ QString FirewallClient::backend() const
     }
     return {};
 }
-
-bool FirewallClient::registerfw ( const QString name, tcreateMethod funcReg )
-{
-    qDebug() << "Registering " << name;
-    auto item = m_avaiableBackends.find(name);
-    if(item == m_avaiableBackends.end())
-    { 
-        FirewallClient::m_avaiableBackends[name] = funcReg;
-        return true;
-    }
-    return false;
-}
-
-
-IFirewallClientBackend* FirewallClient::create (const QString& name )
-{
-    auto item = m_avaiableBackends.find(name);
-    if(item != m_avaiableBackends.end())
-        return item->second(this);
-    return nullptr;
-}
-
-
