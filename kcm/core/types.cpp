@@ -162,3 +162,5 @@ Logging toLogging(const QString &str)
 }
 
 }
+
+#include "moc_types.cpp"

@@ -23,28 +23,24 @@
  * Boston, MA 02110-1301, USA.
  */
 
+#pragma once
 
-#ifndef UFWCLIENT_H
-#define UFWCLIENT_H
-
-#include <QObject>
 #include <QString>
 #include <QTimer>
 
 #include <KAuth>
 
-#include "core/profile.h"
-#include "core/rulelistmodel.h"
-#include "core/loglistmodel.h"
-#include "core/ifirewallclientbackend.h"
-#include "core/appprofiles.h"
+#include <ifirewallclientbackend.h>
+#include <profile.h>
 
-#include <functional>
-class UfwClient : public IFirewallClientBackend
+class RuleListModel;
+class LogListModel;
+
+class Q_DECL_EXPORT UfwClient : public IFirewallClientBackend
 {
     Q_OBJECT
 public:
-    explicit UfwClient(FirewallClient *parent);
+    explicit UfwClient(QObject *parent, const QVariantList &args);
 
      void refresh() override;
      RuleListModel* rules() const override;
@@ -106,6 +102,3 @@ private:
     KAuth::Action m_queryAction;
     bool m_busy = false;
 };
-
-#endif // UFWCLIENT_H
-

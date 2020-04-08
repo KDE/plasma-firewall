@@ -1,5 +1,4 @@
 add_library(kcm_firewall_core
-    STATIC
     firewallclient.cpp
     ifirewallclientbackend.cpp
     rule.cpp
@@ -11,6 +10,10 @@ add_library(kcm_firewall_core
     appprofiles.cpp
 )
 
+generate_export_header(kcm_firewall_core)
+
+target_include_directories(kcm_firewall_core PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>")
+
 target_link_libraries(kcm_firewall_core
     Qt5::Quick
     KF5::CoreAddons
@@ -19,3 +22,5 @@ target_link_libraries(kcm_firewall_core
     KF5::QuickAddons
     KF5::Auth
 )
+
+install(TARGETS kcm_firewall_core ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

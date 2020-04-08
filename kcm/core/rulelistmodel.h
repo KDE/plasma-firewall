@@ -23,17 +23,16 @@
  * Boston, MA 02110-1301, USA.
  */
 
+#pragma once
 
-#ifndef PROFILEITEMMODEL_H
-#define PROFILEITEMMODEL_H
+#include <kcm_firewall_core_export.h>
 
 #include <QAbstractListModel>
 
 #include "rulewrapper.h"
 #include "profile.h"
 
-class RuleListModel : public QAbstractListModel
-
+class KCM_FIREWALL_CORE_EXPORT RuleListModel : public QAbstractListModel
 {
     Q_OBJECT
 
@@ -62,5 +61,3 @@ private:
     Profile m_profile;
     QVector<Rule> m_rules;
 };
-
-#endif // PROFILEITEMMODEL_H

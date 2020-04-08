@@ -23,8 +23,9 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef LOGLISTMODEL_H
-#define LOGLISTMODEL_H
+#pragma once
+
+#include <kcm_firewall_core_export.h>
 
 #include <QAbstractListModel>
 #include <QVariantList>
@@ -42,7 +43,7 @@ struct LogData {
 };
 Q_DECLARE_TYPEINFO(LogData, Q_MOVABLE_TYPE);
 
-class LogListModel : public QAbstractListModel
+class KCM_FIREWALL_CORE_EXPORT LogListModel : public QAbstractListModel
 {
     Q_OBJECT
 
@@ -88,5 +89,3 @@ private:
     QVector<LogData> m_logsData;
     bool m_busy = false;
 };
-
-#endif // LOGLISTMODEL_H

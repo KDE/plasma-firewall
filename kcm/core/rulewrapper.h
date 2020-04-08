@@ -23,16 +23,16 @@
  * Boston, MA 02110-1301, USA.
  */
 
+#pragma once
 
-#ifndef RULEWRAPPER_H
-#define RULEWRAPPER_H
+#include <kcm_firewall_core_export.h>
 
 #include <QObject>
 
 #include "rule.h"
 #include "types.h"
 
-class RuleWrapper : public QObject
+class KCM_FIREWALL_CORE_EXPORT RuleWrapper : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString policy READ policy WRITE setPolicy NOTIFY policyChanged)
@@ -97,5 +97,3 @@ private:
     Rule m_rule;
     int m_interface;
 };
-
-#endif // RULEWRAPPER_H

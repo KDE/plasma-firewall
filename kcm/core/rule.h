@@ -25,12 +25,13 @@
  * Boston, MA 02110-1301, USA.
  */
 
+#include <kcm_firewall_core_export.h>
 
 #include "types.h"
 #include <QString>
 #include <QObject>
 
-class Rule
+class KCM_FIREWALL_CORE_EXPORT Rule
 {
     public:
 

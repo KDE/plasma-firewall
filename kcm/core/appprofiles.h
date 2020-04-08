@@ -25,10 +25,12 @@
  * Boston, MA 02110-1301, USA.
  */
 
+#include <kcm_firewall_core_export.h>
+
 #include <QList>
 #include <QString>
 
-struct Entry
+struct KCM_FIREWALL_CORE_EXPORT Entry
 {
     Entry(const QString &n, const QString &p=QString());
     bool operator<(const Entry &o) const  { return name.localeAwareCompare(o.name)<0; }

@@ -26,13 +26,14 @@
  * Boston, MA 02110-1301, USA.
  */
 
+#include <kcm_firewall_core_export.h>
 
 #include <QtCore/QString>
 #include <QtCore/QVariant>
 
-namespace Types
+namespace KCM_FIREWALL_CORE_EXPORT Types
 {
-Q_NAMESPACE
+KCM_FIREWALL_CORE_EXPORT Q_NAMESPACE
 
 enum LogLevel
 {

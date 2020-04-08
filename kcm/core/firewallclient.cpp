@@ -32,13 +32,14 @@
 #include "ifirewallclientbackend.h"
 
 #include <KLocalizedString>
+#include <KPluginFactory>
+#include <KPluginLoader>
+#include <KPluginMetaData>
 
 #include <QStringList>
 #include <QNetworkInterface>
 #include <QList>
 #include <QtGlobal>
-
-#include "backends/ufw/ufwclient.h"
 
 std::map<QString, FirewallClient::tcreateMethod> FirewallClient::m_avaiableBackends;
 
@@ -233,10 +234,22 @@ void FirewallClient::setBackend(const QString& backend)
         enabledChanged(false);
         delete m_currentBackend;
     }
-    // For now let's use a lazy way of doing this.
-    // To properly fix we should use a plugin system with dynamic libs.
-    if (backend == "ufw") {
-        m_currentBackend = new UfwClient(this);
+
+    const auto plugins = KPluginLoader::findPlugins(QStringLiteral("kf5/plasma_firewall"));
+    for (const KPluginMetaData &metadata : plugins) {
+        // FIXME FIXME add criteria for loading it (e.g. service registered) and some priority thing
+        if (metadata.pluginId() != backend + QLatin1String("backend")) {
+            continue;
+        }
+
+        KPluginFactory *factory = KPluginLoader(metadata.fileName()).factory();
+        if (!factory) {
+            continue;
+        }
+
+        // FIXME not working
+        m_currentBackend = factory->create<IFirewallClientBackend>(this, QVariantList() /*args*/);
+        break;
     }
 
     if (m_currentBackend) {

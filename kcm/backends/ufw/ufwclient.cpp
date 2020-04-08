@@ -36,9 +36,16 @@
 #include <KConfig>
 #include <KLocalizedString>
 #include <KConfigGroup>
+#include <KPluginFactory>
+
+#include <rulewrapper.h>
+#include <rulelistmodel.h>
+#include <loglistmodel.h>
 
 // TODO: Figure out what's wrong with the registering
 // REGISTER_BACKEND("ufw", UfwClient::createMethod);
+
+K_PLUGIN_CLASS_WITH_JSON(UfwClient, "ufwbackend.json")
 
 namespace {
     void debugState(KAuth::Action::AuthStatus status) {
@@ -54,9 +61,9 @@ namespace {
     }
 }
 
-UfwClient::UfwClient(FirewallClient *parent) :
-    IFirewallClientBackend(parent),
-    m_rulesModel(new RuleListModel(this))
+UfwClient::UfwClient(QObject *parent, const QVariantList &args)
+    : IFirewallClientBackend(parent, args)
+    , m_rulesModel(new RuleListModel(this))
 {
     // HACK: Quering the firewall status in this context
     // creates a segmentation fault error in some situations
@@ -542,7 +549,7 @@ RuleWrapper *UfwClient::createRuleFromLog(
 
 IFirewallClientBackend* UfwClient::createMethod(FirewallClient* parent)
 {
-    IFirewallClientBackend *instance = new UfwClient(parent);
+    IFirewallClientBackend *instance = new UfwClient(parent, {} /*args*/);
     return instance;
 }
 
@@ -576,3 +583,5 @@ void UfwClient::refreshProfiles()
 
     setProfiles(profiles);
 }
+
+#include "ufwclient.moc"

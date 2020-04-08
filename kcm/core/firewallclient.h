@@ -23,9 +23,9 @@
  * Boston, MA 02110-1301, USA.
  */
 
+#pragma once
 
-#ifndef FIREWALLCLIENT_H
-#define FIREWALLCLIENT_H
+#include <kcm_firewall_core_export.h>
 
 #include <QObject>
 #include <QTimer>
@@ -45,7 +45,7 @@ class IFirewallClientBackend;
  * like firewalld and ufw, then bsd specifics, etc.
  */
 
-class FirewallClient : public QObject {
+class KCM_FIREWALL_CORE_EXPORT FirewallClient : public QObject {
     Q_OBJECT
     /**
      * Whether the firewall is enabled
@@ -131,5 +131,3 @@ private:
     IFirewallClientBackend *m_currentBackend;
     static std::map<QString, tcreateMethod> m_avaiableBackends;
 };
-
-#endif

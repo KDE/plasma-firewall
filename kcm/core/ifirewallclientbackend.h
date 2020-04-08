@@ -42,11 +42,11 @@ namespace { \
 static bool unused = FirewallClient::registerfw(NAME, CreateMethod); \
 }
 
-class IFirewallClientBackend : public QObject
+class Q_DECL_EXPORT IFirewallClientBackend : public QObject
 {
     Q_OBJECT
 public:
-    IFirewallClientBackend(FirewallClient *parent);
+    IFirewallClientBackend(QObject *parent, const QVariantList &args);
     ~IFirewallClientBackend() = default;
 
     virtual QString name() const = 0;

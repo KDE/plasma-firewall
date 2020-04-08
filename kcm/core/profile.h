@@ -26,6 +26,7 @@
  * Boston, MA 02110-1301, USA.
  */
 
+#include <kcm_firewall_core_export.h>
 
 #include <QtCore/QByteArray>
 #include <QtCore/QList>
@@ -37,7 +38,7 @@
 class QFile;
 class QIODevice;
 
-class Profile
+class KCM_FIREWALL_CORE_EXPORT Profile
 {
     public:
 

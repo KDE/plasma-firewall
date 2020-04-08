@@ -25,7 +25,7 @@
 
 #include "ifirewallclientbackend.h"
 
-IFirewallClientBackend::IFirewallClientBackend(FirewallClient *parent)
+IFirewallClientBackend::IFirewallClientBackend(QObject *parent, const QVariantList &args)
     : QObject(parent)
 {
 
