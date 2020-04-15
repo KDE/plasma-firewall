@@ -23,10 +23,10 @@
  * Boston, MA 02110-1301, USA.
  */
 
-
-#include "types.h"
 #include <KLocalizedString>
 #include <QtCore/QVariantMap>
+#include "types.h"
+
 
 namespace Types
 {

@@ -34,7 +34,7 @@
 namespace Types
 {
 KCM_FIREWALL_CORE_EXPORT Q_NAMESPACE
-
+    
 enum LogLevel
 {
     LOG_OFF,

@@ -27,9 +27,11 @@
 
 #include <kcm_firewall_core_export.h>
 
-#include "types.h"
+
 #include <QString>
 #include <QObject>
+
+#include "types.h"
 
 class KCM_FIREWALL_CORE_EXPORT Rule
 {

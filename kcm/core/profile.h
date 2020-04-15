@@ -32,8 +32,8 @@
 #include <QtCore/QList>
 #include <QtCore/QSet>
 
-#include "core/rule.h"
-#include "core/types.h"
+#include "rule.h"
+#include "types.h"
 
 class QFile;
 class QIODevice;
