@@ -17,7 +17,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
+#include "firewalldclient.h"
+#include "firewalldjob.h"
 
 #include <QDebug>
 #include <QTimer>
@@ -30,9 +31,15 @@
 #include <QtDBus/QDBusConnection>
 #include <QtDBus/QDBusInterface>
 #include <QVariantList>
+#include <KConfigGroup>
+#include <KPluginFactory>
+#include <KLocalizedString>
 
-#include "firewalldclient.h"
-#include "firewalldjob.h"
+
+#include <rulewrapper.h>
+#include <rulelistmodel.h>
+#include <loglistmodel.h>
+K_PLUGIN_CLASS_WITH_JSON(FirewalldClient, "firewalldbackend.json")
 
 namespace HELPER {
     const QString KCM_FIREWALLD_DIR = QStringLiteral("/etc/kcm/firewalld");
@@ -58,17 +65,18 @@ const QDBusArgument &operator>>(const QDBusArgument &argument, firewalld_reply &
     return argument;
 }
 
-
-
-FirewalldClient::FirewalldClient(FirewallClient *parent) :
-    IFirewallClientBackend(parent),
-    m_isBusy(false),
-    m_rulesModel(new RuleListModel(this)),
-    m_logs(new LogListModel(this))
+FirewalldClient::FirewalldClient(QObject *parent, const QVariantList &args)
+    : IFirewallClientBackend(parent, args)
+    , m_rulesModel(new RuleListModel(this))
 {
+    // HACK: Quering the firewall status in this context
+    // creates a segmentation fault error in some situations
+    // due to an usage of the rootObject before it's
+    // initialization. So, it's delayed a little.
+    //    refresh();
     QTimer::singleShot(100, this, &FirewalldClient::refresh);
-    QTimer::singleShot(2000, this, &FirewalldClient::refreshLogs);
 }
+
 
 QString FirewalldClient::name() const
 {
@@ -412,3 +420,4 @@ SYSTEMD::actions SYSTEMD::executeAction(SYSTEMD::actions value)
     }
 }
 
+#include "firewalldclient.moc"

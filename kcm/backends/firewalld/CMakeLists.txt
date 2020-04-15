@@ -1,16 +1,13 @@
-# # set(CMAKE_INCLUDE_CURRENT_DIR ON)
-# include_directories(${CMAKE_BINARY_DIR})
+set(firewalld_backend_SRCS
+    firewalldclient.cpp
+)
 
-# # Instruct CMake to run moc automatically when needed.
-# set(CMAKE_AUTOMOC ON)
+kcoreaddons_add_plugin(
+    firewalldbackend
+    SOURCES ${firewalld_backend_SRCS}
+    JSON firewalldbackend.json
+    INSTALL_NAMESPACE "kf5/plasma_firewall")
 
-# find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
-#     Quick
-#     X11Extras
-#     DBus
-# )
-
-# find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
-#     I18n
-#     Auth
-# )
+target_link_libraries(firewalldbackend
+    kcm_firewall_core
+)

@@ -41,7 +41,7 @@ struct firewalld_reply {
 
 Q_DECLARE_METATYPE(firewalld_reply);
 
-class Q_DECL_EXPORT UfwClient : public IFirewallClientBackend
+class Q_DECL_EXPORT FirewalldClient : public IFirewallClientBackend
 {
     Q_OBJECT
 public:
