@@ -9,5 +9,7 @@ kcoreaddons_add_plugin(
     INSTALL_NAMESPACE "kf5/plasma_firewall")
 
 target_link_libraries(firewalldbackend
+    Qt5::DBus
+    KF5::CoreAddons
     kcm_firewall_core
 )

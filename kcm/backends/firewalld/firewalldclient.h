@@ -23,7 +23,6 @@
 
 #include <QString>
 #include <QTimer>
-#include <QtDBus/QDBusMessage>
 
 #include <ifirewallclientbackend.h>
 #include <profile.h>

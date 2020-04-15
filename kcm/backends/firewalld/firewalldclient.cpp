@@ -30,6 +30,7 @@
 #include <QtDBus/QDBusArgument>
 #include <QtDBus/QDBusConnection>
 #include <QtDBus/QDBusInterface>
+#include <QtDBus/QDBusMessage>
 #include <QVariantList>
 #include <KConfigGroup>
 #include <KPluginFactory>
@@ -47,7 +48,20 @@ namespace HELPER {
     const QString SERVICE_NAME = QStringLiteral("org.fedoraproject.FirewallD1");
     const QString INTERFACE_NAME = QString(SERVICE_NAME + ".direct");
     const QString DBUS_PATH = QStringLiteral("/org/fedoraproject/FirewallD1");
-    QDBusMessage dbusCall(const QString &method, const QVariantList& args);
+
+    QDBusMessage dbusCall ( const QString &method, const QVariantList args= {} )
+    {
+        QDBusMessage msg;
+        if ( QDBusConnection::systemBus().isConnected() ) {
+            QDBusInterface iface ( HELPER::SERVICE_NAME, HELPER::DBUS_PATH, HELPER::INTERFACE_NAME, QDBusConnection::systemBus() );
+            if ( iface.isValid() )
+                msg= args.isEmpty() ? iface.call ( QDBus::AutoDetect, method.toLatin1() )
+                    : iface.callWithArgumentList ( QDBus::AutoDetect, method.toLatin1(), args );
+            if ( msg.type() == QDBusMessage::ErrorMessage )
+                qDebug() << msg.errorMessage();
+        }
+        return msg;
+    }
 }
 namespace SYSTEMD {
     enum actions {ERROR=-1, STOP, START };
@@ -107,6 +121,8 @@ KJob *FirewalldClient::setEnabled(const bool value)
 
 KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, 
         FirewallClient::ProfilesBehavior profilesBehavior) {
+    FirewalldJob *job = new FirewalldJob();
+    return job;
 }
 
 
@@ -172,6 +188,7 @@ KJob *FirewalldClient::removeRule(int index)
     QVariantList dbusArgs = buildRule(getRule(index)->getRule());
     QDBusMessage message = HELPER::dbusCall("removeRule",  dbusArgs);
     job->setErrorText(message.errorMessage());
+    return job;
 }
 
 KJob *FirewalldClient::updateRule(RuleWrapper *ruleWrapper)
@@ -203,7 +220,9 @@ KJob *FirewalldClient::moveRule(int from, int to)
             {"from", from},
             {"to", to},
     };
-
+    
+    FirewalldJob *job = new FirewalldJob();
+    return job;
 }
 
 bool FirewalldClient::logsAutoRefresh() const
@@ -282,12 +301,6 @@ RuleWrapper *FirewalldClient::createRuleFromLog(
     return rule;
 }
 
-IFirewallClientBackend *FirewalldClient::createMethod(FirewallClient *parent)
-{
-    IFirewallClientBackend *instance = new FirewalldClient(parent);
-    return instance;
-}
-
 bool FirewalldClient::hasExecutable() const
 {
     return !QStandardPaths::findExecutable("firewalld").isEmpty();
@@ -362,8 +375,15 @@ QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily)
 QString FirewalldClient::defaultIncomingPolicy() const {return "test";};
 QString FirewalldClient::defaultOutgoingPolicy() const {return "test";};
 
-void FirewalldClient::setDefaultIncomingPolicy(QString defaultIncomingPolicy) {};
-void FirewalldClient::setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) {};
+KJob* FirewalldClient::setDefaultIncomingPolicy(QString defaultIncomingPolicy) {
+    
+    FirewalldJob *job = new FirewalldJob();
+    return job;
+};
+KJob* FirewalldClient::setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) {
+    FirewalldJob *job = new FirewalldJob();
+    return job;
+};
 
 
 LogListModel *FirewalldClient::logs()
@@ -371,18 +391,6 @@ LogListModel *FirewalldClient::logs()
     return m_logs;
 }
 
-QDBusMessage HELPER::dbusCall(const QString &method, const QVariantList args= {}) {
-    QDBusMessage msg;
-    if(QDBusConnection::systemBus().isConnected()) {
-        QDBusInterface iface(HELPER::SERVICE_NAME, HELPER::DBUS_PATH, HELPER::INTERFACE_NAME, QDBusConnection::systemBus());
-        if(iface.isValid())
-            msg= args.isEmpty() ? iface.call(QDBus::AutoDetect, method.toLatin1())
-                : iface.callWithArgumentList(QDBus::AutoDetect, method.toLatin1(), args);
-        if(msg.type() == QDBusMessage::ErrorMessage)
-            qDebug() << msg.errorMessage();
-    }
-    return msg;
-}
 
 SYSTEMD::actions SYSTEMD::executeAction(SYSTEMD::actions value)
 {
