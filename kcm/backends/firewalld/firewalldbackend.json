@@ -1,0 +1,11 @@
+{
+    "KPlugin": {
+        "Icon": "firewalld",
+        "Name": "Backend for Firewalld",
+        "ServiceTypes": [
+            "KFileItemAction/Plugin",
+            "Plasma/FirewallBackend"
+        ]
+    },
+    "MimeType": "application/octet-stream;"
+}
