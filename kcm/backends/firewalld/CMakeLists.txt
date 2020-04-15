@@ -10,6 +10,5 @@ kcoreaddons_add_plugin(
 
 target_link_libraries(firewalldbackend
     Qt5::DBus
-    KF5::CoreAddons
     kcm_firewall_core
 )
