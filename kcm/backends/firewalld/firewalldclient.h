@@ -21,19 +21,15 @@
 #ifndef FIREWALLDCLIENT_H
 #define FIREWALLDCLIENT_H
 
-#include <functional>
-#include <QObject>
 #include <QString>
 #include <QTimer>
 #include <QtDBus/QDBusMessage>
-#include <QtDBus/QDBusObjectPath>
 
-#include "core/profile.h"
-#include "core/rulelistmodel.h"
-#include "core/loglistmodel.h"
-#include "core/ifirewallclientbackend.h"
-#include "core/appprofiles.h"
-#include "core/rule.h"
+#include <ifirewallclientbackend.h>
+#include <profile.h>
+
+class RuleListModel;
+class LogListModel;
 
 struct firewalld_reply {
     QString ipv;
@@ -45,11 +41,11 @@ struct firewalld_reply {
 
 Q_DECLARE_METATYPE(firewalld_reply);
 
-class FirewalldClient : public IFirewallClientBackend
+class Q_DECL_EXPORT UfwClient : public IFirewallClientBackend
 {
     Q_OBJECT
-    public:
-        explicit FirewalldClient(FirewallClient *parent);
+public:
+    explicit FirewalldClient(QObject *parent, const QVariantList &args);
 
         void refresh() override;
         RuleListModel* rules() const override;
