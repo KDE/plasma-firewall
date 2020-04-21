@@ -5,8 +5,7 @@
 #include <KJob>
 
 class FirewalldJob : public KJob {
-    
-    
+
 public:
     FirewalldJob();
     ~FirewalldJob();

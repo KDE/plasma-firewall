@@ -40,6 +40,7 @@
 #include <rulewrapper.h>
 #include <rulelistmodel.h>
 #include <loglistmodel.h>
+
 K_PLUGIN_CLASS_WITH_JSON(FirewalldClient, "firewalldbackend.json")
 
 namespace HELPER {
