@@ -81,39 +81,26 @@ void FirewalldJob::setFirewalldMessage(const QByteArray &call, const QVariantLis
 }
 
 void FirewalldJob::systemdAction(const SYSTEMD::actions value) {
-    if (!QDBusConnection::systemBus().isConnected()) {
-        setErrorText("NO systembus avaiable | " + QDBusConnection::systemBus().lastError().message());
-        setError(DBUSSYSTEMDERROR);
-        emitResult();
-    }
-
-    QDBusInterface iface(SYSTEMD::BUS, SYSTEMD::PATH, SYSTEMD::INTERFACE,
-                QDBusConnection::systemBus());
     
-    if(!iface.isValid()) {
-        setErrorText("Interface is not valid | " + iface.lastError().message());
-        setError(DBUSSYSTEMDERROR);
-        emitResult();
-    }
    
-    QDBusPendingReply<> message;
+    QDBusMessage call;
     switch(value) {
 
         case SYSTEMD::START:
-            message = iface.asyncCallWithArgumentList("StartUnit",
-            {"firewalld.service", "fail"});
+            call = QDBusMessage::createMethodCall(SYSTEMD::BUS,SYSTEMD::PATH,SYSTEMD::INTERFACE,"StartUnit");
+            call.setArguments({"firewalld.service", "fail"});
             break;
         case SYSTEMD::STOP:
-            message = iface.asyncCallWithArgumentList("StopUnit",
-            {"firewalld.service", "fail"});
+            call = QDBusMessage::createMethodCall(SYSTEMD::BUS,SYSTEMD::PATH,SYSTEMD::INTERFACE,"StopUnit");
+            call.setArguments({"firewalld.service", "fail"});
             break;
         
         default:
-            setErrorText("Invalid Call | " + iface.lastError().message());
+            setErrorText("Invalid Call");
             setError(DBUSSYSTEMDERROR);
             emitResult();
     }
-    
+    QDBusPendingCall message = QDBusConnection::systemBus().asyncCall(call);
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(message, this);
     
     /* waiting for start/stop of firewalld */
@@ -128,22 +115,10 @@ void FirewalldJob::systemdAction(const SYSTEMD::actions value) {
     });
 }
 void FirewalldJob::firewalldAction(const QByteArray &method, const QVariantList &args ) 
-{
-    if (!QDBusConnection::systemBus().isConnected()) {
-        setErrorText("NO systembus avaiable | " + QDBusConnection::systemBus().lastError().message());
-        setError(DBUSFIREWALLDDERROR);
-        emitResult();
-    }
-    
-   QDBusInterface iface(HELPER::BUS, HELPER::PATH, HELPER::INTERFACE,
-                QDBusConnection::systemBus());
-   
-    if(!iface.isValid()) {
-        setErrorText("Interface is not valid | " + iface.lastError().message());
-        setError(DBUSFIREWALLDDERROR);
-        emitResult();
-    }
-    QDBusPendingCall message = args.isEmpty() ? iface.asyncCall(method) : iface.asyncCallWithArgumentList(method, args);
+{    
+    QDBusMessage call = QDBusMessage::createMethodCall(HELPER::BUS,HELPER::PATH,HELPER::INTERFACE,method);
+    call.setArguments(args);
+    QDBusPendingCall message = QDBusConnection::systemBus().asyncCall(call);
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(message, this);
     if (args.isEmpty()){
         connect(watcher, &QDBusPendingCallWatcher::finished, [this](QDBusPendingCallWatcher *watcher) {
@@ -211,16 +186,7 @@ QString FirewalldJob::name() {
 }
 
 void FirewalldJob::saveFirewalld() {
-    
-    QDBusInterface iface(SAVE::BUS, SAVE::PATH, SAVE::INTERFACE,
-                QDBusConnection::systemBus());
-    
-    if(!iface.isValid()) {
-        setErrorText("Interface is not valid | " + iface.lastError().message());
-        setError(DBUSFIREWALLDDERROR);
-        emitResult();
-    }
-    QDBusPendingCall message = iface.asyncCall(SAVE::METHOD);
+    QDBusPendingCall message = QDBusConnection::systemBus().asyncCall(QDBusMessage::createMethodCall(SAVE::BUS,SAVE::PATH,SAVE::INTERFACE,SAVE::METHOD));
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(message, this);
     
     connect(watcher, &QDBusPendingCallWatcher::finished, [this](QDBusPendingCallWatcher *watcher) {

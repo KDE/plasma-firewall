@@ -192,9 +192,16 @@ KJob *FirewalldClient::updateRule(RuleWrapper *ruleWrapper)
     if (ruleWrapper == NULL) {
         qWarning() << "NULL rule";
     }
-    auto action = removeRule(ruleWrapper->position());
-    action = addRule(ruleWrapper);
-    return action;
+    KJob *addJob = addRule(ruleWrapper);
+    KJob *removeJob = removeRule(ruleWrapper->position());
+    connect(addJob, &KJob::finished, this, [addJob,removeJob]() {
+        if (!addJob->error()) {
+            removeJob->start();
+        } else
+            qDebug() << addJob->errorString() << addJob->error();
+    });
+        
+    return addJob;
 }
 
 KJob *FirewalldClient::moveRule(int from, int to)
@@ -302,7 +309,7 @@ void FirewalldClient::refreshProfiles()
 
 QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily)
 {
-    QVariantMap args {{"priority", r.getPosition()},
+    QVariantMap args {{"priority", 0},
                       {"destinationPort", r.getDestPort()},
                       {"sourcePort", r.getSourcePort()},
                       {"type", QString(r.protocolSuffix(r.getProtocol())).replace("/", "")}, // tcp or udp
@@ -347,13 +354,11 @@ QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily)
     
     if (args.value("chain") == "INPUT"){
         value = args.value("interface_in").toString();
-        qDebug() << "valor interface_in " << value;
         if (!value.isEmpty() && !value.isNull())
             firewalld_direct_rule << "-i" << value;
     }
     else {
         value = args.value("interface_out").toString();
-        qDebug() << "valor interface_out " << value;
         if (!value.isEmpty() && !value.isNull())
             firewalld_direct_rule << "-i" << value;
     }
@@ -418,12 +423,11 @@ QVector<Rule> FirewalldClient::extractRulesFromResponse(const QList<firewalld_re
             const auto action = r.rules.at(r.rules.indexOf("-j")+1) == "ACCEPT" ? Types::POLICY_ALLOW 
                 : r.rules.at(r.rules.indexOf("-j")+1) == "REJECT" ? Types::POLICY_REJECT : Types::POLICY_DENY;
             
-            
-            const auto sourceAddress = r.rules.at(r.rules.indexOf("-s")+1);
-            const auto destinationAddress = r.rules.at(r.rules.indexOf("-d")+1);
-            const auto protocol = Types::toProtocol(r.rules.at(r.rules.indexOf("-p")+1));
-            const auto interface_in = r.rules.indexOf("-i") > 0 ? r.rules.at(r.rules.indexOf("-i")+1) : "";
-            const auto interface_out = r.rules.indexOf("-i") > 0 ? r.rules.at(r.rules.indexOf("-i")+1) : "";
+            const auto sourceAddress = r.rules.indexOf("-s") > 0 ? r.rules.at(r.rules.indexOf("-s")+1) : "";
+            const auto destinationAddress = r.rules.indexOf("-d") >= 0 ? r.rules.at(r.rules.indexOf("-d")+1) : "";
+            const auto protocol = r.rules.indexOf("-p") >= 0 ? Types::toProtocol(r.rules.at(r.rules.indexOf("-p")+1)) : Types::PROTO_BOTH;
+            const auto interface_in = r.rules.indexOf("-i") >= 0 ? r.rules.at(r.rules.indexOf("-i")+1) : "";
+            const auto interface_out = r.rules.indexOf("-i") >= 0 ? r.rules.at(r.rules.indexOf("-i")+1) : "";
             
             const auto sourcePort = r.rules.at(r.rules.indexOf(QRegExp("^" + QRegExp::escape("--sport") + ".+"))).section("=", -1);
             const auto destPort = r.rules.at(r.rules.indexOf(QRegExp("^" + QRegExp::escape("--dport") + ".+"))).section("=", -1);
