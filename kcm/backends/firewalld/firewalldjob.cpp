@@ -56,31 +56,31 @@ const QDBusArgument &operator<<(QDBusArgument &argument, const firewalld_reply &
 
 FirewalldJob::FirewalldJob() {};
 
-FirewalldJob::FirewalldJob(const QByteArray& call, const QVariantList args, FirewalldJob::JobType type) : m_type(type)
+FirewalldJob::FirewalldJob(const QByteArray& call, const QVariantList &args, const FirewalldJob::JobType &type) : m_type(type)
 {
     setFirewalldMessage(call, args);
     qDBusRegisterMetaType<firewalld_reply>();
     qDBusRegisterMetaType<QList<firewalld_reply>>();
 };
 
-FirewalldJob::FirewalldJob(SYSTEMD::actions action, JobType type): m_type(type) {
+FirewalldJob::FirewalldJob(const SYSTEMD::actions &action, const JobType &type): m_type(type) {
     setStatus(action);
 };
 
-void FirewalldJob::setStatus(SYSTEMD::actions action) {
-    if (m_type) {
-        m_action = action;
-    }
+void FirewalldJob::setStatus(const SYSTEMD::actions action) {
+    
+    m_type == FirewalldJob::SYSTEMD ?  m_action = action : m_action = SYSTEMD::ERROR;
+       
 }
 
-void FirewalldJob::setFirewalldMessage(const QByteArray &call, QVariantList args) {
+void FirewalldJob::setFirewalldMessage(const QByteArray &call, const QVariantList &args) {
     if (!m_type) {
         m_call = call;
         m_args = args;
     }
 }
 
-void FirewalldJob::systemdAction(SYSTEMD::actions value) {
+void FirewalldJob::systemdAction(const SYSTEMD::actions value) {
     if (!QDBusConnection::systemBus().isConnected()) {
         setErrorText("NO systembus avaiable | " + QDBusConnection::systemBus().lastError().message());
         setError(DBUSSYSTEMDERROR);
@@ -109,7 +109,7 @@ void FirewalldJob::systemdAction(SYSTEMD::actions value) {
             break;
         
         default:
-            setErrorText("Something not expected happened");
+            setErrorText("Invalid Call | " + iface.lastError().message());
             setError(DBUSSYSTEMDERROR);
             emitResult();
     }
@@ -127,7 +127,7 @@ void FirewalldJob::systemdAction(SYSTEMD::actions value) {
         emitResult();
     });
 }
-void FirewalldJob::firewalldAction(const QByteArray &method, const QVariantList args ) 
+void FirewalldJob::firewalldAction(const QByteArray &method, const QVariantList &args ) 
 {
     if (!QDBusConnection::systemBus().isConnected()) {
         setErrorText("NO systembus avaiable | " + QDBusConnection::systemBus().lastError().message());
@@ -153,7 +153,6 @@ void FirewalldJob::firewalldAction(const QByteArray &method, const QVariantList 
                 setErrorText(reply.error().message());
                 setError(DBUSFIREWALLDDERROR);
                 qDebug() << errorString();
-                emitResult();
             }
 
             m_firewalldreply = reply.value();
@@ -194,19 +193,21 @@ void FirewalldJob::start() {
         qDebug() << "firewalld " << m_call << m_args;
         firewalldAction(m_call, m_args);
     }
-    else {
+    else if (m_type == FirewalldJob::SYSTEMD) {
         qDebug() << "systemd" << m_type << m_action;
         systemdAction(m_action);
-        
-        
     }
+    else
+        // fake action (e.g : setting default inc/out policy)
+        emitResult();
 };
 
 QString FirewalldJob::name() {
-    if(m_type)
-        return QString("systemd %1").arg(m_action);
-    else
-        return QString("firewalld %1").arg(QString(m_call));
+    
+    return m_type == FirewalldJob::SYSTEMD ? 
+            QString("systemd %1").arg(m_action) : 
+            QString("firewalld %1").arg(QString(m_call));
+        
 }
 
 void FirewalldJob::saveFirewalld() {

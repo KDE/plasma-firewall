@@ -26,6 +26,7 @@
 
 #include <ifirewallclientbackend.h>
 #include <profile.h>
+#include "firewalldjob.h"
 
 class RuleListModel;
 class LogListModel;
@@ -73,14 +74,15 @@ public:
   static IFirewallClientBackend *createMethod(FirewallClient *parent);
   bool hasExecutable() const override;
   void refreshProfiles() override;
-
 protected slots:
   void refreshLogs();
 
 protected:
   void setExecutable(const bool &hasExecutable);
+  QVector<Rule> extractRulesFromResponse(const QList<firewalld_reply> &reply);
   QVariantList buildRule(Rule r,
                          FirewallClient::Ipv ipvfamily = FirewallClient::IPV4);
+  void setProfile(Profile profile);
 
 private:
   QString m_status;
