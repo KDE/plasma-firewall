@@ -93,9 +93,6 @@ KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsB
         if (!job->error()) {
             qDebug() << job->name();
             const QVector<Rule> rules = extractRulesFromResponse(job->get_firewalldreply());
-            for (auto x: rules)
-                qDebug() << x.getSourceAddress() << x.getSourcePort() << x.getDestAddress() << x.getDestPort();
-            
             QVariantMap args = {
                 {"defaultIncomingPolicy", defaultIncomingPolicy()}, 
                 {"defaultOutgoingPolicy", defaultOutgoingPolicy()}, 
@@ -194,11 +191,11 @@ KJob *FirewalldClient::updateRule(RuleWrapper *ruleWrapper)
     }
     KJob *addJob = addRule(ruleWrapper);
     KJob *removeJob = removeRule(ruleWrapper->position());
-    connect(addJob, &KJob::finished, this, [addJob,removeJob]() {
-        if (!addJob->error()) {
-            removeJob->start();
+    connect(removeJob, &KJob::finished, this, [addJob,removeJob]() {
+        if (!removeJob->error()) {
+            addJob->start();
         } else
-            qDebug() << addJob->errorString() << addJob->error();
+            qDebug() << removeJob->errorString() << removeJob->error();
     });
         
     return addJob;
