@@ -110,6 +110,7 @@ void FirewalldJob::systemdAction(const SYSTEMD::actions value) {
         if (reply.isError()) {
             setErrorText(reply.reply().errorMessage());
             setError(DBUSSYSTEMDERROR);
+            emitResult();
         }
         emitResult();
     });
