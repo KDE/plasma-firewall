@@ -25,6 +25,8 @@
 
 
 #include "ufwclient.h"
+#include "rule.h"
+#include "types.h"
 
 #include <QDebug>
 #include <QTimer>
