@@ -304,7 +304,7 @@ void FirewalldClient::refreshProfiles()
 {
 }
 
-QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily)
+QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily) const
 {
     QVariantMap args {{"priority", 0},
                       {"destinationPort", r.getDestPort()},
@@ -412,7 +412,7 @@ LogListModel *FirewalldClient::logs()
     return m_logs;
 }
 
-QVector<Rule> FirewalldClient::extractRulesFromResponse(const QList<firewalld_reply> &reply)
+QVector<Rule> FirewalldClient::extractRulesFromResponse(const QList<firewalld_reply> &reply) const
 {
     QVector<Rule> message_rules;
     if (reply.size() > 0) {

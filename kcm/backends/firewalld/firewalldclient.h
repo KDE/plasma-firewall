@@ -79,9 +79,8 @@ protected slots:
 
 protected:
   void setExecutable(const bool &hasExecutable);
-  QVector<Rule> extractRulesFromResponse(const QList<firewalld_reply> &reply);
-  QVariantList buildRule(Rule r,
-                         FirewallClient::Ipv ipvfamily = FirewallClient::IPV4);
+  QVector<Rule> extractRulesFromResponse(const QList<firewalld_reply> &reply) const;
+  QVariantList buildRule(Rule r, FirewallClient::Ipv ipvfamily = FirewallClient::IPV4) const ;
   void setProfile(Profile profile);
 
 private:
