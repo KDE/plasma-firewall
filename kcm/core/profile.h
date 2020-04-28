@@ -54,7 +54,7 @@ class KCM_FIREWALL_CORE_EXPORT Profile
         : fields(0), enabled(false), ipv6Enabled(false)
     {
     }
-    Profile(QVector<Rule> &rules, QVariantMap args, bool isSys=false);
+    Profile(const QVector<Rule> &rules, const QVariantMap &args, bool isSys=false);
     Profile(QByteArray &xml, bool isSys=false);
     Profile(QFile &file, bool isSys=false);
     Profile(bool ipv6, Types::LogLevel ll, Types::Policy dip, Types::Policy dop, const QVector<Rule> &r, const QSet<QString> &m)
@@ -93,8 +93,10 @@ class KCM_FIREWALL_CORE_EXPORT Profile
     const QString &       getFileName() const              { return fileName; }
     bool                  getIsSystem() const              { return isSystem; }
 
-    void                  setRules(QVector<Rule> &rls);
-    void                  setArgs(QVariantMap args);
+    void                  setRules(const QVector<Rule> &newrules);
+    void                  setArgs(const QVariantMap &args);
+    void                  setDefaultIncomingPolicy(const QString &policy);
+    void                  setDefaultOutgoingPolicy(const QString &policy);
     private:
 
 

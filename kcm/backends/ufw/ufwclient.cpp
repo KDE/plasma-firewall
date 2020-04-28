@@ -32,6 +32,7 @@
 #include <QNetworkInterface>
 #include <QStandardPaths>
 #include <QDir>
+#include <QXmlStreamReader>
 
 #include <KConfig>
 #include <KLocalizedString>
@@ -138,10 +139,8 @@ KJob *UfwClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavio
 
         if (!job->error()) {
             QByteArray response = job->data().value("response", "").toByteArray();
-            QVariantMap args = extractArgsFromResponse(response);
-            QVector<Rule> rules = extractRulesFromResponse(response);
-            qDebug() << "rules extracted: " << rules.size() << "\narguments extracted: " << args;
-            /* setProfile(Profile(response)); */
+            const QVariantMap args = extractArgsFromResponse(response);
+            const QVector<Rule> rules = extractRulesFromResponse(response);
             setProfile(Profile(rules,args));
         } else {
             emit showErrorMessage(

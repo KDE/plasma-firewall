@@ -24,13 +24,13 @@
  */
 
 
+#include <QBuffer>
+#include <QDebug>
 #include <QFile>
+#include <QIODevice>
 #include <QStringList>
 #include <QTextStream>
-#include <QBuffer>
 #include <QXmlStreamReader>
-#include <QIODevice>
-#include <QDebug>
 #include "profile.h"
 #include "types.h"
 
@@ -61,45 +61,58 @@ Profile::Profile(QFile &file, bool isSys)
     load(&file);
 }
 
-Profile::Profile(QVector<Rule> &rls, QVariantMap args, bool isSys)
+Profile::Profile(const QVector<Rule> &rules, const QVariantMap &args, bool isSys)
        : isSystem(isSys)
 {
-    setRules(rls);
+    setRules(rules);
     setArgs(args);
 
 }
 
-void Profile::setRules(QVector<Rule> &rls) {
-    rules.clear();
-    rules = rls;
-    return;
+void Profile::setRules(const QVector<Rule> &newrules) {
+    rules = newrules;
 }
 
-void Profile::setArgs(QVariantMap  args) {
+void Profile::setArgs(const QVariantMap  &args) {
 
-    defaultIncomingPolicy = args.contains("defaultIncomingPolicy") ?
-        Types::toPolicy(args.value("defaultIncomingPolicy").toString()) :
-        Types::POLICY_ALLOW;
+    const QString new_defaultIncomingPolicy = args.value(QStringLiteral("defaultIncomingPolicy")).toString();
+    const QString new_defaultOutgoingPolicy = args.value(QStringLiteral("defaultIncomingPolicy")).toString();
+    const QString new_loglevel = args.value(QStringLiteral("logLevel")).toString();
+    const QStringList new_modules = args.value(QStringLiteral("modules")).toStringList();
 
-    defaultOutgoingPolicy = args.contains("defaultOutgoingPolicy") ?
-        Types::toPolicy(args.value("defaultOutgoingPolicy").toString()) :
-        Types::POLICY_ALLOW;
+    if (new_defaultIncomingPolicy.isEmpty())
+        defaultIncomingPolicy = Types::POLICY_ALLOW;
+    else
+        defaultIncomingPolicy = Types::toPolicy(new_defaultIncomingPolicy);
 
-    logLevel = args.contains("logLevel") ?
-        Types::toLogLevel(args.value("logLevel").toString()) :
-        Types::LOG_OFF;
+    if (new_defaultOutgoingPolicy.isEmpty())
+        defaultOutgoingPolicy = Types::POLICY_ALLOW;
+    else
+        defaultOutgoingPolicy = Types::toPolicy(new_defaultOutgoingPolicy);
 
-    enabled = args.contains("status") ? args.value("status").toBool() : false;
+    if (new_loglevel.isEmpty())
+        logLevel = Types::LOG_OFF;
+    else
+        logLevel = Types::toLogLevel(new_loglevel);
 
-    ipv6Enabled = args.contains("ipv6Enabled") ? args.value("ipv6Enabled").toBool() : false;
+    enabled = args.value("status").toBool();
 
-    if( args.contains("modules") && args.value("modules").toStringList().size() >= 1) {
-        const auto moduleList = args.value("modules").toStringList();
-        modules = QSet<QString>(std::begin(moduleList), std::end(moduleList));
+    ipv6Enabled = args.value("ipv6Enabled").toBool();
+
+    if (!new_modules.isEmpty()) {
+        modules = QSet<QString>(std::begin(new_modules), std::end(new_modules));
     }
 
-    return;
 }
+
+void Profile::setDefaultIncomingPolicy(const QString &policy) {
+    defaultIncomingPolicy = Types::toPolicy(policy);
+}
+
+void Profile::setDefaultOutgoingPolicy(const QString &policy) {
+    defaultOutgoingPolicy = Types::toPolicy(policy);
+}
+
 QString Profile::toXml() const
 {
     QString                    str;
