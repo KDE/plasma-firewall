@@ -139,9 +139,7 @@ KJob *UfwClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavio
 
         if (!job->error()) {
             QByteArray response = job->data().value("response", "").toByteArray();
-            const QVariantMap args = extractArgsFromResponse(response);
-            const QVector<Rule> rules = extractRulesFromResponse(response);
-            setProfile(Profile(rules,args));
+            setProfile(Profile(response));
         } else {
             emit showErrorMessage(
                 i18n("There was an error in the backend! Please report it.\n%1 %2",
