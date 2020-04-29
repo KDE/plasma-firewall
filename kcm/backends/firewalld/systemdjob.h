@@ -36,7 +36,7 @@ class SystemdJob : public KJob {
 
 public:
     SystemdJob(const SYSTEMD::actions &action);
-    ~SystemdJob() {};
+    ~SystemdJob();
     void start() override;
     QString name();
 

@@ -76,6 +76,8 @@ void SystemdJob::systemdAction(const SYSTEMD::actions value) {
     });
 }
 
+SystemdJob::~SystemdJob() = default;
+
 void SystemdJob::start() {
     qDebug() << "systemd " << m_action;
     systemdAction(m_action);

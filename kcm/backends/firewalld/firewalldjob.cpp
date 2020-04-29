@@ -121,7 +121,7 @@ QList<firewalld_reply> FirewalldJob::get_firewalldreply()
     return m_firewalldreply;
 }
 
-FirewalldJob::~FirewalldJob() {};
+FirewalldJob::~FirewalldJob() = default;
 
 void FirewalldJob::start() {
 
