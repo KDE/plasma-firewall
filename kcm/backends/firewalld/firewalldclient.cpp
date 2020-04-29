@@ -108,7 +108,7 @@ KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsB
     job->start();
     return job;
 }
-
+#if 0
 void FirewalldClient::setLogsAutoRefresh(bool logsAutoRefresh)
 {
     if (m_logsAutoRefresh == logsAutoRefresh)
@@ -126,7 +126,7 @@ void FirewalldClient::setLogsAutoRefresh(bool logsAutoRefresh)
     m_logsAutoRefresh = logsAutoRefresh;
     emit logsAutoRefreshChanged(m_logsAutoRefresh);
 }
-
+#endif
 void FirewalldClient::refreshLogs() {};
 
 RuleListModel *FirewalldClient::rules() const
