@@ -20,7 +20,6 @@ find_package(PythonInterp 3 REQUIRED)
 find_package(Qt5 REQUIRED COMPONENTS
     Core
     Qml
-    DBus
     X11Extras
 )
 
@@ -49,9 +48,6 @@ find_package(KF5 REQUIRED COMPONENTS
 #                               SOURCES
 #-----------------------------------------------------------------------------
 add_subdirectory(kcm)
-include(KDEClangFormat)
-file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES kcm/*.cpp kcm/*.h)
-kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 #-----------------------------------------------------------------------------
 #                               BUILD SUMMARY
 #-----------------------------------------------------------------------------
