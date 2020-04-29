@@ -21,35 +21,29 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef FIREWALLDJOB_H
-#define FIREWALLDJOB_H
+#ifndef SYSTEMDJOB_H
+#define SYSTEMDJOB_H
 
 #include <KJob>
 #include <types.h>
 
-#include "dbustypes.h"
+namespace SYSTEMD {
+    enum actions {ERROR=-1, STOP, START };
+}
 
-class FirewalldJob : public KJob {
+class SystemdJob : public KJob {
     Q_OBJECT
 
 public:
-    enum JobType { FIREWALLD, SAVEFIREWALLD, FAKEJOB};
-    FirewalldJob(const QByteArray &call, const QVariantList &args = {}, const JobType &type=FIREWALLD);
-    FirewalldJob(const JobType &type);
-    FirewalldJob();
-    ~FirewalldJob();
+    SystemdJob(const SYSTEMD::actions &action);
+    ~SystemdJob() {};
     void start() override;
-    QList<firewalld_reply> get_firewalldreply();
     QString name();
 
 private:
-    void setFirewalldMessage(const QByteArray &call, const QVariantList &args = {});
-    void saveFirewalld();
-    void firewalldAction(const QByteArray &method, const QVariantList &args = {} );
-    QList<firewalld_reply> m_firewalldreply;
-    JobType m_type;
-    QByteArray m_call;
-    QVariantList m_args;
+    void systemdAction(const SYSTEMD::actions value);
+    SYSTEMD::actions m_action;
 
 };
+
 #endif

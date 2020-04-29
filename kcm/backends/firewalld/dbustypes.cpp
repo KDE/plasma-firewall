@@ -20,36 +20,22 @@
  * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA 02110-1301, USA.
  */
-
-#ifndef FIREWALLDJOB_H
-#define FIREWALLDJOB_H
-
-#include <KJob>
-#include <types.h>
-
 #include "dbustypes.h"
 
-class FirewalldJob : public KJob {
-    Q_OBJECT
+const QDBusArgument &operator>>(const QDBusArgument &argument, firewalld_reply &mystruct)
+{
+    argument.beginStructure();
+    argument >> mystruct.ipv >> mystruct.table >> mystruct.chain >> mystruct.priority >> mystruct.rules;
+    argument.endStructure();
+    return argument;
+}
 
-public:
-    enum JobType { FIREWALLD, SAVEFIREWALLD, FAKEJOB};
-    FirewalldJob(const QByteArray &call, const QVariantList &args = {}, const JobType &type=FIREWALLD);
-    FirewalldJob(const JobType &type);
-    FirewalldJob();
-    ~FirewalldJob();
-    void start() override;
-    QList<firewalld_reply> get_firewalldreply();
-    QString name();
+const QDBusArgument &operator<<(QDBusArgument &argument, const firewalld_reply &mystruct)
+{
+    argument.beginStructure();
+    argument << mystruct.ipv << mystruct.table << mystruct.chain << mystruct.priority << mystruct.rules;
+    argument.endStructure();
+    return argument;
+}
 
-private:
-    void setFirewalldMessage(const QByteArray &call, const QVariantList &args = {});
-    void saveFirewalld();
-    void firewalldAction(const QByteArray &method, const QVariantList &args = {} );
-    QList<firewalld_reply> m_firewalldreply;
-    JobType m_type;
-    QByteArray m_call;
-    QVariantList m_args;
-
-};
-#endif
+  

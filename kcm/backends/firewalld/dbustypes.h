@@ -21,35 +21,20 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef FIREWALLDJOB_H
-#define FIREWALLDJOB_H
+#ifndef FIREWALLDCLIENTDBUS_H
+#define FIREWALLDCLIENTDBUS_H
+#include <QDBusArgument>
 
-#include <KJob>
-#include <types.h>
-
-#include "dbustypes.h"
-
-class FirewalldJob : public KJob {
-    Q_OBJECT
-
-public:
-    enum JobType { FIREWALLD, SAVEFIREWALLD, FAKEJOB};
-    FirewalldJob(const QByteArray &call, const QVariantList &args = {}, const JobType &type=FIREWALLD);
-    FirewalldJob(const JobType &type);
-    FirewalldJob();
-    ~FirewalldJob();
-    void start() override;
-    QList<firewalld_reply> get_firewalldreply();
-    QString name();
-
-private:
-    void setFirewalldMessage(const QByteArray &call, const QVariantList &args = {});
-    void saveFirewalld();
-    void firewalldAction(const QByteArray &method, const QVariantList &args = {} );
-    QList<firewalld_reply> m_firewalldreply;
-    JobType m_type;
-    QByteArray m_call;
-    QVariantList m_args;
-
+struct firewalld_reply {
+    QString ipv;
+    QString table;
+    QString chain;
+    int priority = 0;
+    QStringList rules;
 };
+
+Q_DECLARE_METATYPE(firewalld_reply);
+const QDBusArgument &operator>>(const QDBusArgument &argument, firewalld_reply &mystruct);
+const QDBusArgument &operator<<(QDBusArgument &argument, const firewalld_reply &mystruct);
+
 #endif

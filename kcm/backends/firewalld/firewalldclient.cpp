@@ -1,27 +1,31 @@
 /*
- * Copyright 2018 Alexis Lopes Zubeta <contact@azubieta.net>
+ * Firewalld backend for plasma firewall
  *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
- * the License or (at your option) version 3 or any later version
- * accepted by the membership of KDE e.V. (or its successor approved
- * by the membership of KDE e.V.), which shall act as a proxy
- * defined in Section 14 of version 3 of the license.
+ * Copyright 2020 Lucas Biaggi <lbjanuario@gmail.com>
+ *
+ * ----
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program; see the file COPYING.  If not, write to
+ * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
  */
-#include "firewalldclient.h"
 
 #include <KConfigGroup>
 #include <KLocalizedString>
 #include <KPluginFactory>
+
+#include <QDBusMetaType>
 #include <QDebug>
 #include <QDir>
 #include <QNetworkInterface>
@@ -29,17 +33,20 @@
 #include <QTimer>
 #include <QVariantList>
 #include <QVariantMap>
-#include <QtDBus/QDBusArgument>
-#include <QtDBus/QDBusConnection>
-#include <QtDBus/QDBusInterface>
-#include <QtDBus/QDBusMessage>
 
 #include <loglistmodel.h>
 #include <rulelistmodel.h>
 #include <rulewrapper.h>
 #include <profile.h>
 
+#include "firewalldclient.h"
+#include "firewalldjob.h"
+#include "systemdjob.h"
+
+#include "dbustypes.h"
+
 K_PLUGIN_CLASS_WITH_JSON(FirewalldClient, "firewalldbackend.json")
+
 
 FirewalldClient::FirewalldClient(QObject *parent, const QVariantList &args)
     : IFirewallClientBackend(parent, args)
@@ -51,6 +58,8 @@ FirewalldClient::FirewalldClient(QObject *parent, const QVariantList &args)
     // initialization. So, it's delayed a little.
     //    refresh();
     QTimer::singleShot(1, this, &FirewalldClient::refresh);
+    qDBusRegisterMetaType<firewalld_reply>();
+    qDBusRegisterMetaType<QList<firewalld_reply>>(); 
 }
 
 QString FirewalldClient::name() const
@@ -69,18 +78,18 @@ bool FirewalldClient::enabled() const
 }
 KJob *FirewalldClient::setEnabled(const bool value)
 {
-    FirewalldJob *job = new FirewalldJob(static_cast<SYSTEMD::actions>(value));
+    SystemdJob *job = new SystemdJob(static_cast<SYSTEMD::actions>(value));
     if (m_serviceStatus != value) {
         m_serviceStatus = static_cast<SYSTEMD::actions>(value);
     }
-    
+
     connect(job, &KJob::result, this, [this, job] {
         if (!job->error()) {
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
         } else
             qDebug() << job->errorString() << job->error();
     });
-    
+
     job->start();
     return job;
 }
@@ -93,12 +102,11 @@ KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsB
         if (!job->error()) {
             qDebug() << job->name();
             const QVector<Rule> rules = extractRulesFromResponse(job->get_firewalldreply());
-            QVariantMap args = {
+            const QVariantMap args = {
                 {"defaultIncomingPolicy", defaultIncomingPolicy()}, 
                 {"defaultOutgoingPolicy", defaultOutgoingPolicy()}, 
                 {"status", true}, 
                 {"ipv6Enabled", true}
-                
             };
             setProfile(Profile(rules, args));
         } else {
@@ -108,7 +116,7 @@ KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsB
     job->start();
     return job;
 }
-#if 0
+
 void FirewalldClient::setLogsAutoRefresh(bool logsAutoRefresh)
 {
     if (m_logsAutoRefresh == logsAutoRefresh)
@@ -126,7 +134,7 @@ void FirewalldClient::setLogsAutoRefresh(bool logsAutoRefresh)
     m_logsAutoRefresh = logsAutoRefresh;
     emit logsAutoRefreshChanged(m_logsAutoRefresh);
 }
-#endif
+
 void FirewalldClient::refreshLogs() {};
 
 RuleListModel *FirewalldClient::rules() const
@@ -470,4 +478,5 @@ void FirewalldClient::setProfile(Profile profile)
         emit defaultOutgoingPolicyChanged(policy);
     }
 }
+
 #include "firewalldclient.moc"

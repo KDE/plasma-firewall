@@ -1,6 +1,8 @@
 set(firewalld_backend_SRCS
     firewalldclient.cpp
     firewalldjob.cpp
+    systemdjob.cpp
+    dbustypes.cpp
 )
 
 kcoreaddons_add_plugin(
