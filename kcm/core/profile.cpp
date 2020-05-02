@@ -230,3 +230,7 @@ void Profile::load(QIODevice *device)
         fields = 0;
     }
 }
+
+void Profile::setEnabled(const bool &value) {
+        enabled = value;
+}

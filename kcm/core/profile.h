@@ -95,6 +95,7 @@ class KCM_FIREWALL_CORE_EXPORT Profile
 
     void                  setRules(const QVector<Rule> &newrules);
     void                  setArgs(const QVariantMap &args);
+    void                  setEnabled(const bool &value);
     void                  setDefaultIncomingPolicy(const QString &policy);
     void                  setDefaultOutgoingPolicy(const QString &policy);
     private:
