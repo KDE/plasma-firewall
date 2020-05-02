@@ -30,7 +30,6 @@ import org.kcm.firewall 1.0
 
 import org.kde.kirigami 2.10 as Kirigami
 
-
 KCM.ScrollViewKCM {
     id: root
 
