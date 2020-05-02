@@ -43,43 +43,6 @@
 
 K_PLUGIN_CLASS_WITH_JSON(FirewalldClient, "firewalldbackend.json")
 
-namespace HELPER {
-    const QString KCM_FIREWALLD_DIR = QStringLiteral("/etc/kcm/firewalld");
-    const QString LOG_FILE = QStringLiteral("/var/log/firewalld.log");
-    const QString SERVICE_NAME = QStringLiteral("org.fedoraproject.FirewallD1");
-    const QString INTERFACE_NAME = QString(SERVICE_NAME + ".direct");
-    const QString DBUS_PATH = QStringLiteral("/org/fedoraproject/FirewallD1");
-
-    QDBusMessage dbusCall ( const QString &method, const QVariantList args= {} )
-    {
-        QDBusMessage msg;
-        if ( QDBusConnection::systemBus().isConnected() ) {
-            QDBusInterface iface ( HELPER::SERVICE_NAME, HELPER::DBUS_PATH, HELPER::INTERFACE_NAME, QDBusConnection::systemBus() );
-            if ( iface.isValid() )
-                msg= args.isEmpty() ? iface.call ( QDBus::AutoDetect, method.toLatin1() )
-                    : iface.callWithArgumentList ( QDBus::AutoDetect, method.toLatin1(), args );
-            if ( msg.type() == QDBusMessage::ErrorMessage )
-                qDebug() << msg.errorMessage();
-        }
-        return msg;
-    }
-}
-namespace SYSTEMD {
-    enum actions {ERROR=-1, STOP, START };
-    const QString PATH = QStringLiteral("/org/freedesktop/systemd1");
-    const QString INTERFACE = QStringLiteral("org.freedesktop.systemd1");
-    const QString MANAGER_INTERFACE = QStringLiteral("org.freedesktop.systemd1.Manager");
-    actions executeAction(actions value);
-}
-
-const QDBusArgument &operator>>(const QDBusArgument &argument, firewalld_reply &mystruct)
-{
-    argument.beginStructure();
-    argument >> mystruct.ipv >> mystruct.table >> mystruct.chain >> mystruct.priority >> mystruct.rules;
-    argument.endStructure();
-    return argument;
-}
-
 FirewalldClient::FirewalldClient(QObject *parent, const QVariantList &args)
     : IFirewallClientBackend(parent, args)
     , m_rulesModel(new RuleListModel(this))
@@ -89,7 +52,7 @@ FirewalldClient::FirewalldClient(QObject *parent, const QVariantList &args)
     // due to an usage of the rootObject before it's
     // initialization. So, it's delayed a little.
     //    refresh();
-    QTimer::singleShot(100, this, &FirewalldClient::refresh);
+    QTimer::singleShot(1, this, &FirewalldClient::refresh);
 }
 
 
@@ -110,19 +73,32 @@ bool FirewalldClient::enabled() const
 }
 KJob *FirewalldClient::setEnabled(const bool value)
 {
+
+    FirewalldJob *job = new FirewalldJob(static_cast<SYSTEMD::actions>(value));
     if (m_serviceStatus != value) {
-        m_serviceStatus = SYSTEMD::executeAction(static_cast<SYSTEMD::actions>(value));
-        emit enabledChanged(value);
+        m_serviceStatus = static_cast<SYSTEMD::actions>(value);
+        QTimer::singleShot(500, this, [this] { emit enabledChanged(true); });
     }
-    qDebug() << "Service STATUS "<< m_serviceStatus;
-    FirewalldJob *job = new FirewalldJob();
+    job->start();
     return job;
 
 }
 
 KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, 
         FirewallClient::ProfilesBehavior profilesBehavior) {
-    FirewalldJob *job = new FirewalldJob();
+    
+    FirewalldJob *job = new FirewalldJob("getAllRules");    
+    
+     connect(job, &KJob::result, this, [job] {
+        if (!job->error()) {
+            qDebug() << job->name();
+            for (auto x: job->get_firewalldreply())
+                qDebug() << x.rules;
+        } else {
+            qDebug() << job->errorString();
+        }
+    });
+    job->start();
     return job;
 }
 
@@ -172,23 +148,27 @@ KJob  *FirewalldClient::addRule(RuleWrapper *ruleWrapper)
     if (ruleWrapper == NULL) {
         qWarning() << "NULL rule";
     }
-    QDBusMessage message;
     QVariantList dbusArgs = buildRule(ruleWrapper->getRule());
-    // check if it exist before adding.
-    FirewalldJob *job = new FirewalldJob();
-    if (!HELPER::dbusCall("queryRule", dbusArgs).arguments().at(0).toBool())
-        message = HELPER::dbusCall("addRule", dbusArgs);
-
-    job->setErrorText(message.errorMessage());
+    FirewalldJob *job = new FirewalldJob("addRule", dbusArgs);
+    job->start();
+    connect(job, &KJob::result, this, [this, job] {
+        if (!job->error()) {
+            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
+                        FirewallClient::ProfilesBehavior::DontListenProfiles);
+        }
+        else
+            qDebug() << job->errorString() << job->error();
+        
+    });
     return job;
+   
 }
 
 KJob *FirewalldClient::removeRule(int index)
 {
-    FirewalldJob *job = new FirewalldJob();
     QVariantList dbusArgs = buildRule(getRule(index)->getRule());
-    QDBusMessage message = HELPER::dbusCall("removeRule",  dbusArgs);
-    job->setErrorText(message.errorMessage());
+    FirewalldJob *job = new FirewalldJob("removeRule", dbusArgs);
+    job->start();
     return job;
 }
 
@@ -393,40 +373,6 @@ LogListModel *FirewalldClient::logs()
 }
 
 
-SYSTEMD::actions SYSTEMD::executeAction(SYSTEMD::actions value)
-{
-    if (!QDBusConnection::systemBus().isConnected()) {
-        return SYSTEMD::ERROR;
-    }
 
-    QDBusInterface iface(SYSTEMD::INTERFACE, SYSTEMD::PATH, SYSTEMD::MANAGER_INTERFACE,
-                QDBusConnection::systemBus());
-    if(!iface.isValid()) {
-        return SYSTEMD::ERROR;
-    }
-
-    auto callIface = [&iface] (const QByteArray &call, SYSTEMD::actions retNonError) {
-        QDBusMessage msg = iface.callWithArgumentList(
-            QDBus::AutoDetect,
-            call,
-            {"firewalld.service", "fail"});
-
-        if (msg.type() == QDBusMessage::ErrorMessage){
-            qDebug() << msg.errorMessage();
-            return SYSTEMD::ERROR;
-        }
-        return retNonError;
-    };
-
-    switch(value) {
-
-        case SYSTEMD::START:
-            return callIface("StartUnit", SYSTEMD::START);
-        case SYSTEMD::STOP:
-            return callIface("StopUnit", SYSTEMD::STOP);
-        default:
-            return SYSTEMD::ERROR;
-    }
-}
 
 #include "firewalldclient.moc"
