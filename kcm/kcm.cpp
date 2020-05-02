@@ -51,10 +51,12 @@ KCMFirewall::KCMFirewall(QObject *parent, const QVariantList &args) :
     about->addAuthor("Alexis López Zubieta", QString(), "azubieta90@gmail.com");
     about->addAuthor("Tomaz Canabrava", QString(), "tcanabrava@kde.org");
 
-    setAboutData(about);
-    setButtons(Help);
     if (m_client->capabilities() & FirewallClient::SaveCapability) {
         setButtons(Help | Apply);
+    }
+    else{
+        setAboutData(about);
+        setButtons(Help);
     }
 
     qmlRegisterAnonymousType<KJob>("org.kcm.firewall", 1);
