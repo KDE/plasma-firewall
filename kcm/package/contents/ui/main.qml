@@ -26,7 +26,7 @@ import QtQuick.Controls 2.9 as QQC2
 import QtQuick.Controls 1.4 as QQC1 // for Table View.
 
 import org.kde.kcm 1.2 as KCM
-import org.kcm.firewall 1.0 
+import org.kcm.firewall 1.0
 
 import org.kde.kirigami 2.10 as Kirigami
 
