@@ -44,6 +44,12 @@ KCM.ScrollViewKCM {
         {text: i18n("Reject"), data: "reject", tooltip: i18n("Produces an immediate and very informative 'Connection refused' message")}
     ]
 
+    Binding {
+    target: kcm.client
+    property: "logsAutoRefresh"
+    value: !isCurrentPage
+    }
+    
     Kirigami.OverlaySheet {
         id: drawer
         parent: root.parent
