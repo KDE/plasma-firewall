@@ -23,7 +23,8 @@
  * Boston, MA 02110-1301, USA.
  */
 
-
+#include "profile.h"
+#include "types.h"
 #include <QBuffer>
 #include <QDebug>
 #include <QFile>
@@ -31,17 +32,15 @@
 #include <QStringList>
 #include <QTextStream>
 #include <QXmlStreamReader>
-#include "profile.h"
-#include "types.h"
 
 Profile::Profile(QByteArray &xml, bool isSys)
-       : fields(0)
-       , enabled(false)
-       , ipv6Enabled(false)
-       , logLevel(Types::LOG_OFF)
-       , defaultIncomingPolicy(Types::POLICY_ALLOW)
-       , defaultOutgoingPolicy(Types::POLICY_ALLOW)
-       , isSystem(isSys)
+    : fields(0)
+    , enabled(false)
+    , ipv6Enabled(false)
+    , logLevel(Types::LOG_OFF)
+    , defaultIncomingPolicy(Types::POLICY_ALLOW)
+    , defaultOutgoingPolicy(Types::POLICY_ALLOW)
+    , isSystem(isSys)
 {
     QBuffer buffer;
     buffer.setBuffer(&xml);
@@ -49,32 +48,32 @@ Profile::Profile(QByteArray &xml, bool isSys)
 }
 
 Profile::Profile(QFile &file, bool isSys)
-       : fields(0)
-       , enabled(false)
-       , ipv6Enabled(false)
-       , logLevel(Types::LOG_OFF)
-       , defaultIncomingPolicy(Types::POLICY_ALLOW)
-       , defaultOutgoingPolicy(Types::POLICY_ALLOW)
-       , fileName(file.fileName())
-       , isSystem(isSys)
+    : fields(0)
+    , enabled(false)
+    , ipv6Enabled(false)
+    , logLevel(Types::LOG_OFF)
+    , defaultIncomingPolicy(Types::POLICY_ALLOW)
+    , defaultOutgoingPolicy(Types::POLICY_ALLOW)
+    , fileName(file.fileName())
+    , isSystem(isSys)
 {
     load(&file);
 }
 
 Profile::Profile(const QVector<Rule> &rules, const QVariantMap &args, bool isSys)
-       : isSystem(isSys)
+    : isSystem(isSys)
 {
     setRules(rules);
     setArgs(args);
-
 }
 
-void Profile::setRules(const QVector<Rule> &newrules) {
+void Profile::setRules(const QVector<Rule> &newrules)
+{
     rules = newrules;
 }
 
-void Profile::setArgs(const QVariantMap  &args) {
-
+void Profile::setArgs(const QVariantMap &args)
+{
     const QString new_defaultIncomingPolicy = args.value(QStringLiteral("defaultIncomingPolicy")).toString();
     const QString new_defaultOutgoingPolicy = args.value(QStringLiteral("defaultIncomingPolicy")).toString();
     const QString new_loglevel = args.value(QStringLiteral("logLevel")).toString();
@@ -102,52 +101,44 @@ void Profile::setArgs(const QVariantMap  &args) {
     if (!new_modules.isEmpty()) {
         modules = QSet<QString>(std::begin(new_modules), std::end(new_modules));
     }
-
 }
 
-void Profile::setDefaultIncomingPolicy(const QString &policy) {
+void Profile::setDefaultIncomingPolicy(const QString &policy)
+{
     defaultIncomingPolicy = Types::toPolicy(policy);
 }
 
-void Profile::setDefaultOutgoingPolicy(const QString &policy) {
+void Profile::setDefaultOutgoingPolicy(const QString &policy)
+{
     defaultOutgoingPolicy = Types::toPolicy(policy);
 }
 
 QString Profile::toXml() const
 {
-    QString                    str;
-    QTextStream                stream(&str);
+    QString str;
+    QTextStream stream(&str);
 
-    stream << "<ufw full=\"true\" >" << endl
-           << ' ' << defaultsXml() << endl
-            << " <rules>" << endl;
+    stream << "<ufw full=\"true\" >" << endl << ' ' << defaultsXml() << endl << " <rules>" << endl;
 
-    for(const auto &rule : rules) {
+    for (const auto &rule : rules) {
         stream << "  " << rule.toXml();
     }
 
-    stream << " </rules>" << endl
-            << ' ' << modulesXml() << endl
-            << "</ufw>" << endl;
+    stream << " </rules>" << endl << ' ' << modulesXml() << endl << "</ufw>" << endl;
 
     return str;
 }
 
 QString Profile::defaultsXml() const
 {
-    static const auto defaultString = QStringLiteral(
-        R"(<defaults ipv6="%1" loglevel="%2" incoming="%3" outgoing="%4"/>)");
+    static const auto defaultString = QStringLiteral(R"(<defaults ipv6="%1" loglevel="%2" incoming="%3" outgoing="%4"/>)");
 
-    return defaultString
-                .arg(ipv6Enabled ? "yes" : "no")
-                .arg(Types::toString(logLevel))
-                .arg(Types::toString(defaultIncomingPolicy))
-                .arg(Types::toString(defaultOutgoingPolicy));
+    return defaultString.arg(ipv6Enabled ? "yes" : "no").arg(Types::toString(logLevel)).arg(Types::toString(defaultIncomingPolicy)).arg(Types::toString(defaultOutgoingPolicy));
 }
 
 QString Profile::modulesXml() const
 {
-    return QString("<modules enabled=\"")+QStringList(modules.toList()).join(" ")+QString("\" />");
+    return QString("<modules enabled=\"") + QStringList(modules.toList()).join(" ") + QString("\" />");
 }
 
 void Profile::load(QIODevice *device)
@@ -165,7 +156,7 @@ void Profile::load(QIODevice *device)
             continue;
         }
         if (reader.name() == QStringLiteral("ufw")) {
-             isFullProfile = reader.attributes().value("full") == QStringLiteral("true");
+            isFullProfile = reader.attributes().value("full") == QStringLiteral("true");
             continue;
         }
         if (reader.name() == QStringLiteral("status")) {
@@ -177,9 +168,9 @@ void Profile::load(QIODevice *device)
             continue;
         }
         if (reader.name() == "rule") {
-            static QString ANY_ADDR     = "0.0.0.0/0";
-            static QString ANY_ADDR_V6  = "::/0";
-            static QString ANY_PORT     = "any";
+            static QString ANY_ADDR = "0.0.0.0/0";
+            static QString ANY_ADDR_V6 = "::/0";
+            static QString ANY_PORT = "any";
 
             const auto attr = reader.attributes();
 
@@ -200,22 +191,20 @@ void Profile::load(QIODevice *device)
             const QString sourcePort = sport == ANY_PORT ? QString() : sport;
             const QString destPort = dport == ANY_PORT ? QString() : dport;
 
-            rules.append(Rule(
-                action,
-                attr.value("direction") == QStringLiteral("in"),
-                logType,
-                protocol,
-                sourceAddress,
-                sourcePort,
-                destAddress,
-                destPort,
-                attr.value("interface_in").toString(),
-                attr.value("interface_out").toString(),
-                attr.value("sapp").toString(),
-                attr.value("dapp").toString(),
-                attr.value("position").toInt(),
-                attr.value("v6") == QStringLiteral("True")
-            ));
+            rules.append(Rule(action,
+                              attr.value("direction") == QStringLiteral("in"),
+                              logType,
+                              protocol,
+                              sourceAddress,
+                              sourcePort,
+                              destAddress,
+                              destPort,
+                              attr.value("interface_in").toString(),
+                              attr.value("interface_out").toString(),
+                              attr.value("sapp").toString(),
+                              attr.value("dapp").toString(),
+                              attr.value("position").toInt(),
+                              attr.value("v6") == QStringLiteral("True")));
         }
         if (reader.name() == "defaults") {
             fields |= FIELD_DEFAULTS;
@@ -236,7 +225,7 @@ void Profile::load(QIODevice *device)
             modules = QSet<QString>(std::begin(moduleList), std::end(moduleList));
         }
     }
-    if(isFullProfile && ( !(fields & FIELD_RULES) || !(fields & FIELD_DEFAULTS) || !(fields & FIELD_MODULES) ) ) {
-        fields=0;
+    if (isFullProfile && (!(fields & FIELD_RULES) || !(fields & FIELD_DEFAULTS) || !(fields & FIELD_MODULES))) {
+        fields = 0;
     }
 }
