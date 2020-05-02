@@ -72,11 +72,13 @@ KCMFirewall::~KCMFirewall()
 
 }
 
-void KCMFirewall::save() {
+void KCMFirewall::save() 
+{
      m_client->save();
 }
 
-FirewallClient *KCMFirewall::client() {
+FirewallClient *KCMFirewall::client() const 
+{
     return m_client;
 }
 

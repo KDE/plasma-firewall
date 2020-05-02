@@ -39,7 +39,7 @@ public:
 
     ~KCMFirewall();
     void save() override;
-    FirewallClient *client();
+    FirewallClient *client() const;
     
 private:
     FirewallClient *m_client;
