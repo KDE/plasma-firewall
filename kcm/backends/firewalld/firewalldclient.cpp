@@ -74,20 +74,19 @@ void FirewalldClient::refresh()
 
 bool FirewalldClient::enabled() const
 {
-    return m_serviceStatus;
+    return m_currentProfile.getEnabled();
 }
 KJob *FirewalldClient::setEnabled(const bool value)
 {
     SystemdJob *job = new SystemdJob(static_cast<SYSTEMD::actions>(value));
-    if (m_serviceStatus != value) {
-        m_serviceStatus = static_cast<SYSTEMD::actions>(value);
-    }
 
-    connect(job, &KJob::result, this, [this, job] {
+    connect(job, &KJob::result, this, [this, job,value] {
         if (!job->error()) {
+            m_currentProfile.setEnabled(value);
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
+            emit enabledChanged(value);
         } else
-            qDebug() << job->errorString() << job->error();
+            qDebug() << "Job Error: " << job->error() << job->errorString() ;
     });
 
     job->start();
@@ -415,6 +414,21 @@ KJob *FirewalldClient::setDefaultOutgoingPolicy(QString defaultOutgoingPolicy)
     return job;
 };
 
+KJob *FirewalldClient::save() 
+{
+    //fake job just to change default policy
+    FirewalldJob *job = new FirewalldJob(FirewalldJob::SAVEFIREWALLD); 
+
+    connect(job, &KJob::result, this, [this, job] {
+        if (!job->error()) {
+            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
+        } else
+            qDebug() << job->name() << job->errorString() << job->error();
+    });
+    job->exec();
+    return job;
+};
+
 LogListModel *FirewalldClient::logs()
 {
     return m_logs;
@@ -479,4 +493,7 @@ void FirewalldClient::setProfile(Profile profile)
     }
 }
 
+FirewallClient::Capabilities FirewalldClient::capabilities() const {
+    return FirewallClient::SaveCapability;
+};
 #include "firewalldclient.moc"

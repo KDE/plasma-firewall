@@ -52,6 +52,7 @@ public:
   KJob *setDefaultIncomingPolicy(QString defaultIncomingPolicy) override;
   KJob *setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) override;
   KJob *setEnabled(const bool enabled) override;
+  KJob *save() override;
 
   /* Creates a new Rule and returns it to the Qml side, passing arguments based
    * on the Connecion Table. */
@@ -72,6 +73,7 @@ public:
   QString defaultOutgoingPolicy() const override;
   QString name() const override;
 
+  FirewallClient::Capabilities capabilities() const override;
   LogListModel *logs() override;
   bool logsAutoRefresh() const override;
   void setLogsAutoRefresh(bool logsAutoRefresh) override;

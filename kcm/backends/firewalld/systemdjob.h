@@ -28,7 +28,7 @@
 #include <types.h>
 
 namespace SYSTEMD {
-    enum actions {ERROR=-1, STOP, START };
+    enum actions {ERROR=-1, STOP, START};
 }
 
 class SystemdJob : public KJob {

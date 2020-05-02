@@ -68,12 +68,13 @@ void SystemdJob::systemdAction(const SYSTEMD::actions value) {
             QDBusPendingReply<> reply = *watcher;
             watcher->deleteLater();
             if (reply.isError()) {
-                setErrorText(reply.reply().errorMessage());
+                setErrorText(reply.reply().errorMessage() + DBUSSYSTEMDERROR);
                 setError(DBUSSYSTEMDERROR);
             }
             emitResult();
             return;
     });
+    return;
 }
 
 SystemdJob::~SystemdJob() = default;
