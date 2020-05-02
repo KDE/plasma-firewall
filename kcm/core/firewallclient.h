@@ -28,8 +28,8 @@
 #include <kcm_firewall_core_export.h>
 
 #include <QObject>
+#include <QFlags>
 #include <QTimer>
-#include <functional>
 
 class KJob;
 class RuleListModel;
@@ -58,6 +58,7 @@ class KCM_FIREWALL_CORE_EXPORT FirewallClient : public QObject {
     Q_PROPERTY(bool logsAutoRefresh READ logsAutoRefresh WRITE setLogsAutoRefresh NOTIFY logsAutoRefreshChanged)
     Q_PROPERTY(QString backend READ backend WRITE setBackend NOTIFY backendChanged)
     Q_PROPERTY(bool hasExecutable READ hasExecutable NOTIFY hasExecutableChanged)
+    Q_PROPERTY(Capabilities capabilities READ capabilities NOTIFY capabilitiesChanged)
 
 public:
     enum DefaultDataBehavior{DontReadDefaults, ReadDefaults};
@@ -79,7 +80,7 @@ public:
     Q_INVOKABLE KJob *setEnabled(bool enabled);
     Q_INVOKABLE KJob *setDefaultIncomingPolicy(const QString &defaultIncomingPolicy);
     Q_INVOKABLE KJob *setDefaultOutgoingPolicy(const QString &defaultOutgoingPolicy);
-
+    Q_INVOKABLE KJob *save();
     /* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connecion Table. */
     Q_INVOKABLE RuleWrapper* createRuleFromConnection(
         const QString &protocol,
@@ -104,6 +105,16 @@ public:
     LogListModel* logsModel();
     bool logsAutoRefresh() const;
 
+    enum Capability{
+        None = 0x0,
+        SaveCapability = 0x1,
+    } ;
+
+    Q_ENUM(Capability)
+    Q_DECLARE_FLAGS(Capabilities, Capability)
+    Q_FLAG(Capabilities);
+    
+    Capabilities capabilities() const;
 signals:
     void enabledChanged(const bool enabled);
     void defaultIncomingPolicyChanged(const QString &defaultIncomingPolicy);
@@ -111,7 +122,7 @@ signals:
     void logsAutoRefreshChanged(bool logsAutoRefresh);
     void backendChanged(const QString &backend);
     void hasExecutableChanged(bool changed);
-
+    void capabilitiesChanged(const Capabilities &capabilities);
     /**
      * Emitted when an error message should be displabed.
      *
@@ -127,3 +138,5 @@ private:
 
     IFirewallClientBackend *m_currentBackend = nullptr;
 };
+
+Q_DECLARE_OPERATORS_FOR_FLAGS(FirewallClient::Capabilities)

@@ -51,3 +51,15 @@ Entry IFirewallClientBackend::profileByName(const QString &name)
 
     return Entry({});
 }
+
+FirewallClient::Capabilities IFirewallClientBackend::capabilities() const
+{ 
+    return FirewallClient::None;
+};
+
+
+// just implement it when needed.
+KJob *IFirewallClientBackend::save()
+{
+    return nullptr;
+};

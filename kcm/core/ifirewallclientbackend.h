@@ -58,7 +58,7 @@ public:
     Q_INVOKABLE virtual KJob *queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior) = 0;
     Q_INVOKABLE virtual KJob *setDefaultIncomingPolicy(QString defaultIncomingPolicy) = 0;
     Q_INVOKABLE virtual KJob *setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) = 0;
-
+    Q_INVOKABLE virtual KJob *save();
     virtual void setLogsAutoRefresh(bool logsAutoRefresh) = 0;
 
     /* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connecion Table. */
@@ -84,7 +84,7 @@ public:
     virtual bool logsAutoRefresh() const = 0;
 
     virtual void refreshProfiles() = 0;
-
+    virtual FirewallClient::Capabilities capabilities() const;
     void setProfiles(const QVector<Entry> &profiles);
     QVector<Entry> profiles();
     Entry profileByName(const QString &profileName);

@@ -26,9 +26,10 @@ import QtQuick.Controls 2.9 as QQC2
 import QtQuick.Controls 1.4 as QQC1 // for Table View.
 
 import org.kde.kcm 1.2 as KCM
-import org.kcm.firewall 1.0
+import org.kcm.firewall 1.0 
 
 import org.kde.kirigami 2.10 as Kirigami
+
 
 KCM.ScrollViewKCM {
     id: root
@@ -37,19 +38,12 @@ KCM.ScrollViewKCM {
     implicitWidth: Kirigami.Units.gridUnit * 44
 
     KCM.ConfigModule.quickHelp: i18n("This module lets you configure firewall.")
-
+    
     property var policyChoices : [
         {text: i18n("Allow"), data: "allow", tooltip: i18n("Allow all connections")},
         {text: i18n("Ignore"), data: "deny", tooltip: i18n("Keeps the program waiting until the connection attempt times out, some short time later.")},
         {text: i18n("Reject"), data: "reject", tooltip: i18n("Produces an immediate and very informative 'Connection refused' message")}
     ]
-
-    FirewallClient {
-        id: firewallClient
-        backend: "ufw"
-        // TODO only when on logs page but Binding {} is broken in Qt 5.14+...
-        logsAutoRefresh: !isCurrentPage
-    }
 
     Kirigami.OverlaySheet {
         id: drawer
@@ -77,7 +71,7 @@ KCM.ScrollViewKCM {
 
             RuleEdit {
                 id: ruleEdit
-                client: firewallClient
+                client: kcm.client
                 height: childrenRect.height
                 implicitWidth: 30 * Kirigami.Units.gridUnit
 
@@ -98,8 +92,9 @@ KCM.ScrollViewKCM {
                 }
 
                 onAccepted:  {
-                    var job = firewallClient[newRule ? "addRule" : "updateRule"](rule);
+                    var job = kcm.client[newRule ? "addRule" : "updateRule"](rule);
                     busy = true;
+                    kcm.needsSave = true;
                     job.result.connect(function() {
                         busy = false;
 
@@ -112,12 +107,14 @@ KCM.ScrollViewKCM {
                                     ruleEditMessage.text = i18n("Error updating rule: %1", job.errorString);
                                 }
                                 ruleEditMessage.visible = true;
+                                
                             }
                             // ...but also don't close in this case!
                             return;
                         }
-
+                        
                         drawer.close();
+                        
                     });
                 }
             }
@@ -146,7 +143,7 @@ KCM.ScrollViewKCM {
 
                     function bindCurrent() {
                         checked = Qt.binding(function() {
-                            return firewallClient.enabled;
+                            return kcm.client.enabled;
                         });
                     }
                     Component.onCompleted: bindCurrent()
@@ -154,7 +151,7 @@ KCM.ScrollViewKCM {
                     onToggled: {
                         const enable = checked; // store the state on job begin, not when it finished
 
-                        const job = firewallClient.setEnabled(checked);
+                        const job = kcm.client.setEnabled(checked);
                         enabledCheckBox.activeJob = job;
                         job.result.connect(function () {
                             enabledCheckBox.activeJob = null; // need to explicitly unset since gc will clear it non-deterministic
@@ -197,7 +194,7 @@ KCM.ScrollViewKCM {
 
                         model: policyChoices
                         textRole: "text"
-                        enabled: !activeJob && firewallClient.enabled
+                        enabled: !activeJob && kcm.client.enabled
                         QQC2.ToolTip.text: policyChoices[currentIndex].tooltip
                         QQC2.ToolTip.delay: 1000
                         QQC2.ToolTip.timeout: 5000
@@ -211,13 +208,13 @@ KCM.ScrollViewKCM {
 
                         function bindCurrent() {
                             currentIndex = Qt.binding(function() {
-                                return policyChoices.findIndex((choice) => choice.data === firewallClient["default" + modelData.key + "Policy"]);
+                                return policyChoices.findIndex((choice) => choice.data === kcm.client["default" + modelData.key + "Policy"]);
                             });
                         }
                         Component.onCompleted: bindCurrent()
 
                         onActivated: {
-                            const job = firewallClient["setDefault" + modelData.key + "Policy"](currentPolicy)
+                            const job = kcm.client["setDefault" + modelData.key + "Policy"](currentPolicy)
                             policyCombo.activeJob = job;
                             job.result.connect(function () {
                                 policyCombo.activeJob = null;
@@ -247,13 +244,13 @@ KCM.ScrollViewKCM {
             property int currentHoveredRow: -1
 
             anchors.fill: parent
-            model: firewallClient.rulesModel
-            enabled: firewallClient.enabled
+            model: kcm.client.rulesModel
+            enabled: kcm.client.enabled
             // ScrollViewKCM does its own frame
             frameVisible: false
 
             function editRule(row) {
-                ruleEdit.rule = firewallClient.getRule(row);
+                ruleEdit.rule = kcm.client.getRule(row);
                 ruleEdit.newRule = false;
                 drawer.open();
             }
@@ -347,9 +344,9 @@ KCM.ScrollViewKCM {
                         Layout.fillHeight: true
                         icon.name: "edit-delete"
                         onClicked: {
-                            const job = firewallClient.removeRule(styleData.row);
+                            const job = kcm.client.removeRule(styleData.row);
                             ruleActionsRow.activeJob = job;
-
+                            kcm.needsSave = true;
                             job.result.connect(function () {
                                 ruleActionsRow.activeJob = null;
 
@@ -357,6 +354,7 @@ KCM.ScrollViewKCM {
                                     firewallInlineErrorMessage.text = i18n("Error removing rule: %1", job.errorString);
                                     firewallInlineErrorMessage.visible = true;
                                 }
+                                
                             });
                         }
                         QQC2.ToolTip {
@@ -373,21 +371,22 @@ KCM.ScrollViewKCM {
             text: i18n("Connections...")
             icon.name: "network-connect"
             onClicked: kcm.push("ConnectionsView.qml", {
-                "firewallClient": firewallClient
+                "kcm.client": kcm.client
             });
         }
         QQC2.Button {
             text: i18n("Logs...")
             icon.name: "viewlog"
             onClicked: kcm.push("LogsView.qml", {
-                "firewallClient": firewallClient,
+                "kcm.client": kcm.client,
             });
         }
         Item {
             Layout.fillWidth: true
         }
+        
         QQC2.Button {
-            enabled: !firewallClient.busy && firewallClient.enabled
+            enabled: !kcm.client.busy && kcm.client.enabled
             icon.name: "list-add"
             text: i18n("Add Rule")
             onClicked: {

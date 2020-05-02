@@ -35,7 +35,6 @@
 #include "version.h"
 #include "core/rulelistmodel.h"
 #include "core/loglistmodel.h"
-#include "core/firewallclient.h"
 
 #include "backends/netstat/netstatclient.h"
 #include "backends/netstat/conectionsmodel.h"
@@ -45,7 +44,7 @@ K_PLUGIN_FACTORY_WITH_JSON(KCMFirewallFactory,
                            registerPlugin<KCMFirewall>(); )
 
 KCMFirewall::KCMFirewall(QObject *parent, const QVariantList &args) :
-    KQuickAddons::ConfigModule(parent, args)
+    KQuickAddons::ConfigModule(parent, args), m_client(new FirewallClient(this))
 {
     KAboutData* about = new KAboutData("kcm_firewall", i18n("Configure Firewall"),
                                        "0.1", QString(), KAboutLicense::GPL_V3);
@@ -54,19 +53,32 @@ KCMFirewall::KCMFirewall(QObject *parent, const QVariantList &args) :
 
     setAboutData(about);
     setButtons(Help);
+    if (m_client->capabilities() & FirewallClient::SaveCapability) {
+        qDebug() <<  "settng apply button";
+        setButtons(Help | Apply);
+    }
 
     qmlRegisterAnonymousType<KJob>("org.kcm.firewall", 1);
-    qmlRegisterType<FirewallClient>("org.kcm.firewall", 1, 0, "FirewallClient");
     qmlRegisterType<RuleListModel>("org.kcm.firewall", 1, 0, "RuleListModel");
     qmlRegisterType<RuleWrapper>("org.kcm.firewall", 1, 0, "Rule");
+    qmlRegisterUncreatableType<FirewallClient>("org.kcm.firewall", 1, 0, "FirewallClient", "FirewallClient is created by the KCM.");
     qmlRegisterUncreatableType<LogListModel>("org.kcm.firewall", 1, 0, "LogListModel", "Only created from the UfwClient.");
     qmlRegisterType<NetstatClient>("org.kcm.firewall", 1, 0, "NetstatClient");
     qmlRegisterUncreatableType<ConnectionsModel>("org.kcm.firewall", 1, 0, "ConnectionsModel", "Use the NetstatClient");
+    
 }
 
 KCMFirewall::~KCMFirewall()
 {
 
+}
+
+void KCMFirewall::save() {
+     m_client->save();
+}
+
+FirewallClient *KCMFirewall::client() {
+    return m_client;
 }
 
 #include "kcm.moc"

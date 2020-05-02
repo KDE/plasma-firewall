@@ -120,6 +120,22 @@ KJob *FirewallClient::moveRule(int from, int to)
     return nullptr;
 }
 
+KJob *FirewallClient::save()
+{
+    Q_ASSERT(m_currentBackend);
+    if (m_currentBackend) {
+        return m_currentBackend->save();
+    }
+    return nullptr;
+}
+
+FirewallClient::Capabilities FirewallClient::capabilities() const {
+    Q_ASSERT(m_currentBackend);
+    if (m_currentBackend) {
+        return m_currentBackend->capabilities();
+    }
+    return nullptr;
+}
 
 /* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connecion Table. */
 RuleWrapper* FirewallClient::createRuleFromConnection(
@@ -256,7 +272,6 @@ void FirewallClient::setBackend(const QString& backend)
         connect(m_currentBackend, &IFirewallClientBackend::defaultOutgoingPolicyChanged, this, &FirewallClient::defaultOutgoingPolicyChanged);
         connect(m_currentBackend, &IFirewallClientBackend::logsAutoRefreshChanged, this, &FirewallClient::logsAutoRefreshChanged);
         connect(m_currentBackend, &IFirewallClientBackend::hasExecutableChanged, this, &FirewallClient::hasExecutableChanged);
-
         connect(m_currentBackend, &IFirewallClientBackend::showErrorMessage, this, &FirewallClient::showErrorMessage);
     }
 }
