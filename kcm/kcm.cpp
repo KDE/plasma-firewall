@@ -54,7 +54,6 @@ KCMFirewall::KCMFirewall(QObject *parent, const QVariantList &args) :
     setAboutData(about);
     setButtons(Help);
     if (m_client->capabilities() & FirewallClient::SaveCapability) {
-        qDebug() <<  "settng apply button";
         setButtons(Help | Apply);
     }
 
