@@ -23,39 +23,35 @@
  * Boston, MA 02110-1301, USA.
  */
 
-
 #include "kcm.h"
 
 #include <KAboutData>
 #include <KJob>
 #include <KLocalizedString>
 #include <KPluginFactory>
-#include <KAboutData>
 
-#include "version.h"
-#include "core/rulelistmodel.h"
 #include "core/loglistmodel.h"
+#include "core/rulelistmodel.h"
+#include "version.h"
 
-#include "backends/netstat/netstatclient.h"
 #include "backends/netstat/conectionsmodel.h"
+#include "backends/netstat/netstatclient.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(KCMFirewallFactory,
-                           "kcm_firewall.json",
-                           registerPlugin<KCMFirewall>(); )
+K_PLUGIN_FACTORY_WITH_JSON(KCMFirewallFactory, "kcm_firewall.json", registerPlugin<KCMFirewall>();)
 
-KCMFirewall::KCMFirewall(QObject *parent, const QVariantList &args) :
-    KQuickAddons::ConfigModule(parent, args), m_client(new FirewallClient(this))
+KCMFirewall::KCMFirewall(QObject *parent, const QVariantList &args)
+    : KQuickAddons::ConfigModule(parent, args)
+    , m_client(new FirewallClient(this))
 {
-    KAboutData* about = new KAboutData("kcm_firewall", i18n("Configure Firewall"),
-                                       "0.1", QString(), KAboutLicense::GPL_V3);
+    KAboutData *about = new KAboutData("kcm_firewall", i18n("Configure Firewall"), "0.1", QString(), KAboutLicense::GPL_V3);
     about->addAuthor("Alexis López Zubieta", QString(), "azubieta90@gmail.com");
     about->addAuthor("Tomaz Canabrava", QString(), "tcanabrava@kde.org");
 
+    setAboutData(about);
+
     if (m_client->capabilities() & FirewallClient::SaveCapability) {
         setButtons(Help | Apply);
-        setAboutData(about);
     } else {
-        setAboutData(about);
         setButtons(Help);
     }
 
@@ -66,20 +62,18 @@ KCMFirewall::KCMFirewall(QObject *parent, const QVariantList &args) :
     qmlRegisterUncreatableType<LogListModel>("org.kcm.firewall", 1, 0, "LogListModel", "Only created from the UfwClient.");
     qmlRegisterType<NetstatClient>("org.kcm.firewall", 1, 0, "NetstatClient");
     qmlRegisterUncreatableType<ConnectionsModel>("org.kcm.firewall", 1, 0, "ConnectionsModel", "Use the NetstatClient");
-    
 }
 
 KCMFirewall::~KCMFirewall()
 {
-
 }
 
-void KCMFirewall::save() 
+void KCMFirewall::save()
 {
-     m_client->save();
+    m_client->save();
 }
 
-FirewallClient *KCMFirewall::client() const 
+FirewallClient *KCMFirewall::client() const
 {
     return m_client;
 }
