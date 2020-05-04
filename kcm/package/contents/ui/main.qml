@@ -45,9 +45,9 @@ KCM.ScrollViewKCM {
     ]
 
     Binding {
-    target: kcm.client
-    property: "logsAutoRefresh"
-    value: !isCurrentPage
+        target: kcm.client
+        property: "logsAutoRefresh"
+        value: !isCurrentPage
     }
     
     Kirigami.OverlaySheet {
