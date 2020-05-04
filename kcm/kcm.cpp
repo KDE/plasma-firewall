@@ -53,8 +53,8 @@ KCMFirewall::KCMFirewall(QObject *parent, const QVariantList &args) :
 
     if (m_client->capabilities() & FirewallClient::SaveCapability) {
         setButtons(Help | Apply);
-    }
-    else{
+        setAboutData(about);
+    } else {
         setAboutData(about);
         setButtons(Help);
     }
