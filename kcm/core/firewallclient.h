@@ -105,7 +105,7 @@ public:
     LogListModel* logsModel();
     bool logsAutoRefresh() const;
 
-    enum Capability{
+    enum Capability {
         None = 0x0,
         SaveCapability = 0x1,
     } ;
