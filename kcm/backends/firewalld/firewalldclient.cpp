@@ -35,9 +35,9 @@
 #include <QVariantMap>
 
 #include <loglistmodel.h>
+#include <profile.h>
 #include <rulelistmodel.h>
 #include <rulewrapper.h>
-#include <profile.h>
 
 #include "firewalldclient.h"
 #include "firewalldjob.h"
@@ -46,7 +46,6 @@
 #include "dbustypes.h"
 
 K_PLUGIN_CLASS_WITH_JSON(FirewalldClient, "firewalldbackend.json")
-
 
 FirewalldClient::FirewalldClient(QObject *parent, const QVariantList &args)
     : IFirewallClientBackend(parent, args)
@@ -59,7 +58,7 @@ FirewalldClient::FirewalldClient(QObject *parent, const QVariantList &args)
     //    refresh();
     QTimer::singleShot(1, this, &FirewalldClient::refresh);
     qDBusRegisterMetaType<firewalld_reply>();
-    qDBusRegisterMetaType<QList<firewalld_reply>>(); 
+    qDBusRegisterMetaType<QList<firewalld_reply>>();
 }
 
 QString FirewalldClient::name() const
@@ -80,13 +79,13 @@ KJob *FirewalldClient::setEnabled(const bool value)
 {
     SystemdJob *job = new SystemdJob(static_cast<SYSTEMD::actions>(value));
 
-    connect(job, &KJob::result, this, [this, job,value] {
+    connect(job, &KJob::result, this, [this, job, value] {
         if (!job->error()) {
             m_currentProfile.setEnabled(value);
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
             emit enabledChanged(value);
         } else
-            qDebug() << "Job Error: " << job->error() << job->errorString() ;
+            qDebug() << "Job Error: " << job->error() << job->errorString();
     });
 
     job->start();
@@ -97,16 +96,11 @@ KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsB
 {
     FirewalldJob *job = new FirewalldJob("getAllRules");
 
-    connect(job, &KJob::result, this, [this,job] {
+    connect(job, &KJob::result, this, [this, job] {
         if (!job->error()) {
             qDebug() << job->name();
             const QVector<Rule> rules = extractRulesFromResponse(job->get_firewalldreply());
-            const QVariantMap args = {
-                {"defaultIncomingPolicy", defaultIncomingPolicy()}, 
-                {"defaultOutgoingPolicy", defaultOutgoingPolicy()}, 
-                {"status", true}, 
-                {"ipv6Enabled", true}
-            };
+            const QVariantMap args = {{"defaultIncomingPolicy", defaultIncomingPolicy()}, {"defaultOutgoingPolicy", defaultOutgoingPolicy()}, {"status", true}, {"ipv6Enabled", true}};
             setProfile(Profile(rules, args));
         } else {
             qDebug() << job->errorString();
@@ -163,14 +157,14 @@ KJob *FirewalldClient::addRule(RuleWrapper *ruleWrapper)
     }
     QVariantList dbusArgs = buildRule(ruleWrapper->getRule());
     FirewalldJob *job = new FirewalldJob("addRule", dbusArgs);
-    
+
     connect(job, &KJob::result, this, [this, job] {
         if (!job->error()) {
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
         } else
             qDebug() << job->errorString() << job->error();
     });
-    
+
     job->start();
     return job;
 }
@@ -179,14 +173,14 @@ KJob *FirewalldClient::removeRule(int index)
 {
     QVariantList dbusArgs = buildRule(getRule(index)->getRule());
     FirewalldJob *job = new FirewalldJob("removeRule", dbusArgs);
-    
+
     connect(job, &KJob::result, this, [this, job] {
         if (!job->error()) {
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
         } else
             qDebug() << job->errorString() << job->error();
     });
-    
+
     job->start();
     return job;
 }
@@ -198,13 +192,13 @@ KJob *FirewalldClient::updateRule(RuleWrapper *ruleWrapper)
     }
     KJob *addJob = addRule(ruleWrapper);
     KJob *removeJob = removeRule(ruleWrapper->position());
-    connect(removeJob, &KJob::finished, this, [addJob,removeJob]() {
+    connect(removeJob, &KJob::finished, this, [addJob, removeJob]() {
         if (!removeJob->error()) {
             addJob->start();
         } else
             qDebug() << removeJob->errorString() << removeJob->error();
     });
-        
+
     return addJob;
 }
 
@@ -321,7 +315,8 @@ QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily) c
                       {"sourceAddress", r.getSourceAddress()},
                       {"interface_in", r.getInterfaceIn()},
                       {"interface_out", r.getInterfaceOut()},
-                      {"table", "filter"}
+                      {"table", "filter"},
+                      {}
 
     };
 
@@ -338,9 +333,11 @@ QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily) c
         args.insert("action", "DROP");
     }
 
-    QStringList firewalld_direct_rule = {"-p", args.value("type").toString(), "-j", args.value("action").toString()};
+    QStringList firewalld_direct_rule = {"-j", args.value("action").toString()};
 
-    auto value = args.value("destinationAddress").toString();
+    auto value = args.value("type").toString(), if (!value.isEmpty()) firewalld_direct_rule << "-p" << value;
+
+    value = args.value("destinationAddress").toString();
     if (!value.isEmpty())
         firewalld_direct_rule << "-d" << value;
 
@@ -355,13 +352,12 @@ QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily) c
     value = args.value("sourcePort").toString();
     if (!value.isEmpty())
         firewalld_direct_rule << "--sport=" + value;
-    
-    if (args.value("chain") == "INPUT"){
+
+    if (args.value("chain") == "INPUT") {
         value = args.value("interface_in").toString();
         if (!value.isEmpty() && !value.isNull())
             firewalld_direct_rule << "-i" << value;
-    }
-    else {
+    } else {
         value = args.value("interface_out").toString();
         if (!value.isEmpty() && !value.isNull())
             firewalld_direct_rule << "-i" << value;
@@ -385,8 +381,8 @@ QString FirewalldClient::defaultOutgoingPolicy() const
 
 KJob *FirewalldClient::setDefaultIncomingPolicy(QString defaultIncomingPolicy)
 {
-    //fake job just to change default policy
-    FirewalldJob *job = new FirewalldJob();    
+    // fake job just to change default policy
+    FirewalldJob *job = new FirewalldJob();
     connect(job, &KJob::result, this, [this, job, defaultIncomingPolicy] {
         if (!job->error()) {
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
@@ -394,14 +390,14 @@ KJob *FirewalldClient::setDefaultIncomingPolicy(QString defaultIncomingPolicy)
         } else
             qDebug() << job->errorString() << job->error();
     });
-    
+
     job->start();
     return job;
 };
 KJob *FirewalldClient::setDefaultOutgoingPolicy(QString defaultOutgoingPolicy)
 {
-    //fake job just to change default policy
-    FirewalldJob *job = new FirewalldJob();    
+    // fake job just to change default policy
+    FirewalldJob *job = new FirewalldJob();
     connect(job, &KJob::result, this, [this, job, defaultOutgoingPolicy] {
         if (!job->error()) {
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
@@ -409,15 +405,15 @@ KJob *FirewalldClient::setDefaultOutgoingPolicy(QString defaultOutgoingPolicy)
         } else
             qDebug() << job->errorString() << job->error();
     });
-    
+
     job->start();
     return job;
 };
 
-KJob *FirewalldClient::save() 
+KJob *FirewalldClient::save()
 {
-    //fake job just to change default policy
-    FirewalldJob *job = new FirewalldJob(FirewalldJob::SAVEFIREWALLD); 
+    // fake job just to change default policy
+    FirewalldJob *job = new FirewalldJob(FirewalldJob::SAVEFIREWALLD);
 
     connect(job, &KJob::result, this, [this, job] {
         if (!job->error()) {
@@ -439,36 +435,31 @@ QVector<Rule> FirewalldClient::extractRulesFromResponse(const QList<firewalld_re
     QVector<Rule> message_rules;
     if (reply.size() > 0) {
         for (auto r : reply) {
-            const auto action = r.rules.at(r.rules.indexOf("-j")+1) == "ACCEPT" ? Types::POLICY_ALLOW 
-                : r.rules.at(r.rules.indexOf("-j")+1) == "REJECT" ? Types::POLICY_REJECT : Types::POLICY_DENY;
-            
-            const auto sourceAddress = r.rules.indexOf("-s") > 0 ? r.rules.at(r.rules.indexOf("-s")+1) : "";
-            const auto destinationAddress = r.rules.indexOf("-d") >= 0 ? r.rules.at(r.rules.indexOf("-d")+1) : "";
-            const auto protocol = r.rules.indexOf("-p") >= 0 ? Types::toProtocol(r.rules.at(r.rules.indexOf("-p")+1)) : Types::PROTO_BOTH;
-            const auto interface_in = r.rules.indexOf("-i") >= 0 ? r.rules.at(r.rules.indexOf("-i")+1) : "";
-            const auto interface_out = r.rules.indexOf("-i") >= 0 ? r.rules.at(r.rules.indexOf("-i")+1) : "";
-            
+            const auto action = r.rules.at(r.rules.indexOf("-j") + 1) == "ACCEPT" ? Types::POLICY_ALLOW : r.rules.at(r.rules.indexOf("-j") + 1) == "REJECT" ? Types::POLICY_REJECT : Types::POLICY_DENY;
+
+            const auto sourceAddress = r.rules.indexOf("-s") > 0 ? r.rules.at(r.rules.indexOf("-s") + 1) : "";
+            const auto destinationAddress = r.rules.indexOf("-d") >= 0 ? r.rules.at(r.rules.indexOf("-d") + 1) : "";
+            const auto protocol = r.rules.indexOf("-p") >= 0 ? Types::toProtocol(r.rules.at(r.rules.indexOf("-p") + 1)) : Types::PROTO_BOTH;
+            const auto interface_in = r.rules.indexOf("-i") >= 0 ? r.rules.at(r.rules.indexOf("-i") + 1) : "";
+            const auto interface_out = r.rules.indexOf("-i") >= 0 ? r.rules.at(r.rules.indexOf("-i") + 1) : "";
+
             const auto sourcePort = r.rules.at(r.rules.indexOf(QRegExp("^" + QRegExp::escape("--sport") + ".+"))).section("=", -1);
             const auto destPort = r.rules.at(r.rules.indexOf(QRegExp("^" + QRegExp::escape("--dport") + ".+"))).section("=", -1);
             qDebug() << r.ipv << r.chain << r.table << r.priority << r.rules;
-            message_rules.push_back(
-                Rule(
-                    action,
-                    r.chain == "INPUT",
-                    Types::LOGGING_OFF,
-                    protocol,
-                    sourceAddress,
-                    sourcePort,
-                    destinationAddress,
-                    destPort,
-                    r.chain == "INPUT" ? interface_in : "",
-                    r.chain == "OUTPUT" ? interface_out : "",
-                    "",
-                    "",
-                    r.priority,
-                    r.ipv == "ipv6"
-                    )
-            );
+            message_rules.push_back(Rule(action,
+                                         r.chain == "INPUT",
+                                         Types::LOGGING_OFF,
+                                         protocol,
+                                         sourceAddress,
+                                         sourcePort,
+                                         destinationAddress,
+                                         destPort,
+                                         r.chain == "INPUT" ? interface_in : "",
+                                         r.chain == "OUTPUT" ? interface_out : "",
+                                         "",
+                                         "",
+                                         r.priority,
+                                         r.ipv == "ipv6"));
         }
     }
     return message_rules;
@@ -493,7 +484,8 @@ void FirewalldClient::setProfile(Profile profile)
     }
 }
 
-FirewallClient::Capabilities FirewalldClient::capabilities() const {
+FirewallClient::Capabilities FirewalldClient::capabilities() const
+{
     return FirewallClient::SaveCapability;
 };
 #include "firewalldclient.moc"
