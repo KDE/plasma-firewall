@@ -334,8 +334,9 @@ QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily) c
     }
 
     QStringList firewalld_direct_rule = {"-j", args.value("action").toString()};
-
-    auto value = args.value("type").toString(), if (!value.isEmpty()) firewalld_direct_rule << "-p" << value;
+    auto value = args.value("type").toString();
+    if (!value.isEmpty())
+        firewalld_direct_rule << "-p" << value;
 
     value = args.value("destinationAddress").toString();
     if (!value.isEmpty())
