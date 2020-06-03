@@ -221,33 +221,33 @@ ActionReply Helper::saveProfile(const QVariantMap &args, const QString &cmd)
     QString     name(args["name"].toString()),
                 xml(args["xml"].toString());
     ActionReply reply;
+    auto prepareData = [&] {
+        reply.addData("cmd", cmd);
+        reply.addData("name", name);
+        reply.addData("profiles", QDir(KCM_UFW_DIR).entryList({"*" + PROFILE_EXTENSION }));
+    };
 
-    if(name.isEmpty() || xml.isEmpty())
-    {
+    if (name.isEmpty() || xml.isEmpty()) {
         reply=ActionReply::HelperErrorReply(STATUS_INVALID_ARGUMENTS);
-    }
-    else
-    {
-        checkFolder();
-
-        QFile f(QString(KCM_UFW_DIR)+"/"+name+PROFILE_EXTENSION);
-
-        if(f.open(QIODevice::WriteOnly))
-        {
-            QTextStream(&f) << xml;
-            f.close();
-            setPermissions(f.fileName(), FILE_PERMS);
-        }
-        else
-        {
-            reply = ActionReply::HelperErrorReply(STATUS_OPERATION_FAILED);
-            reply.setErrorDescription(i18n("Error saving the profile."));
-        }
+        prepareData();
+        return reply;
     }
 
-    reply.addData("cmd", cmd);
-    reply.addData("name", name);
-    reply.addData("profiles", QDir(KCM_UFW_DIR).entryList({"*" + PROFILE_EXTENSION }));
+    checkFolder();
+
+    QFile f(QString(KCM_UFW_DIR)+"/"+name+PROFILE_EXTENSION);
+
+    if (!f.open(QIODevice::WriteOnly)) {
+        reply = ActionReply::HelperErrorReply(STATUS_OPERATION_FAILED);
+        reply.setErrorDescription(i18n("Error saving the profile."));
+        prepareData();
+        return reply;
+    }
+
+    QTextStream(&f) << xml;
+    f.close();
+    setPermissions(f.fileName(), FILE_PERMS);
+    prepareData();
     return reply;
 }
 
