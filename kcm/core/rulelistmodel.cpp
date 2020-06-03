@@ -34,7 +34,7 @@ RuleListModel::RuleListModel(QObject *parent)
 
 void RuleListModel::move(int from, int to)
 {
-    if (to < 0 && to >= m_rules.count()) {
+    if (to < 0 || to >= m_rules.count()) {
         return;
     }
 
