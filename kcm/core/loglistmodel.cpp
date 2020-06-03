@@ -96,31 +96,32 @@ void LogListModel::addRawLogs(const QStringList &rawLogsList)
     newLogs.reserve(rawLogsList.count());
     for (const QString &log : rawLogsList) {
         auto match = regex.match(log);
-        if (match.hasMatch()) {
-            QDateTime date = QDateTime::fromString(match.captured(1), "MMM d HH:mm:ss");
-            const QString host = match.captured(2);
-            const QString id = match.captured(4);
-
-            QString protocol = match.captured(9);
-            if (protocol == QLatin1String("1")) {
-                protocol = QStringLiteral("ICMP");
-            } else if (protocol == QLatin1String("2")) {
-                protocol = QStringLiteral("IGMP");
-            }
-
-            LogData logDetails {
-                .sourceAddress = match.captured(7),
-                .sourcePort = match.captured(11),
-                .destinationAddress = match.captured(8),
-                .destinationPort = match.captured(12),
-                .protocol = protocol,
-                .interface = match.captured(6),
-                .action = match.captured(5),
-                .time = date.toString("HH:mm:ss"),
-                .date = date.toString("MMM dd")
-            };
-            newLogs.append(logDetails);
+        if (!match.hasMatch()) {
+            continue;
         }
+        QDateTime date = QDateTime::fromString(match.captured(1), "MMM d HH:mm:ss");
+        const QString host = match.captured(2);
+        const QString id = match.captured(4);
+
+        QString protocol = match.captured(9);
+        if (protocol == QLatin1String("1")) {
+            protocol = QStringLiteral("ICMP");
+        } else if (protocol == QLatin1String("2")) {
+            protocol = QStringLiteral("IGMP");
+        }
+
+        LogData logDetails {
+            .sourceAddress = match.captured(7),
+            .sourcePort = match.captured(11),
+            .destinationAddress = match.captured(8),
+            .destinationPort = match.captured(12),
+            .protocol = protocol,
+            .interface = match.captured(6),
+            .action = match.captured(5),
+            .time = date.toString("HH:mm:ss"),
+            .date = date.toString("MMM dd")
+        };
+        newLogs.append(logDetails);
     }
 
     if (!newLogs.isEmpty()) {
