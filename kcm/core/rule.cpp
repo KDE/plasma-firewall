@@ -91,16 +91,16 @@ static QString formatPort(const QString &port, Types::Protocol prot)
 // Try to convert 'port' into a port number, not a service name...
 static QString getPortNumber(const QString &port)
 {
-    if(-1==port.indexOf(':'))
-    {
-        bool ok;
-        int  num=port.toInt(&ok);
+    if(port.indexOf(':') != -1) {
+        return port;
+    }
+    bool ok;
+    int  num = port.toInt(&ok);
 
-        if(!ok) // 'port' is not a number...
-        {
-            num=Rule::getServicePort(port);
-            if(0!=num)
-                return QString().setNum(num);
+    if(!ok) {
+        num = Rule::getServicePort(port);
+        if(num != 0) {
+            return QString::number(num);
         }
     }
 
