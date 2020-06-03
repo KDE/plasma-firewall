@@ -353,7 +353,7 @@ ActionReply Helper::run(const QStringList &args, const QString &cmd)
 
     int exitCode(ufw.exitCode());
 
-    if(0!=exitCode) {
+    if(exitCode != EXIT_SUCCESS) {
         QString errorString = ufw.readAllStandardError().simplified();
 
         const QString errorPrefix = QStringLiteral("ERROR: ");
