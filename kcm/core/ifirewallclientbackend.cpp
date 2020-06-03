@@ -38,7 +38,8 @@ void IFirewallClientBackend::setProfiles(const QVector<Entry> &profiles)
 
 Entry IFirewallClientBackend::profileByName(const QString &name)
 {
-    auto it = std::find_if(std::begin(m_profiles), std::end(m_profiles), [name](const Entry &entry) { return entry.name == name; });
+    auto it = std::find_if(std::begin(m_profiles), std::end(m_profiles),
+                [&name](const Entry &entry) { return entry.name == name; });
 
     if (it != std::end(m_profiles)) {
         return *it;
