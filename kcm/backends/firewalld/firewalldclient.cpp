@@ -113,8 +113,9 @@ KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsB
 
 void FirewalldClient::setLogsAutoRefresh(bool logsAutoRefresh)
 {
-    if (m_logsAutoRefresh == logsAutoRefresh)
+    if (m_logsAutoRefresh == logsAutoRefresh) {
         return;
+    }
 
     if (logsAutoRefresh) {
         connect(&m_logsRefreshTimer, &QTimer::timeout, this, &FirewalldClient::refreshLogs);
@@ -480,8 +481,9 @@ void FirewalldClient::setProfile(Profile profile)
     auto oldProfile = m_currentProfile;
     m_currentProfile = profile;
     m_rulesModel->setProfile(m_currentProfile);
-    if (m_currentProfile.getEnabled() != oldProfile.getEnabled())
+    if (m_currentProfile.getEnabled() != oldProfile.getEnabled()) {
         emit enabledChanged(m_currentProfile.getEnabled());
+    }
 
     if (m_currentProfile.getDefaultIncomingPolicy() != oldProfile.getDefaultIncomingPolicy()) {
         const QString policy = Types::toString(m_currentProfile.getDefaultIncomingPolicy());
