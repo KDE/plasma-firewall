@@ -572,7 +572,7 @@ void UfwClient::refreshProfiles()
     for (const auto &file : files) {
         KConfig cfg(constProfileDir + file, KConfig::SimpleConfig);
 
-        for(const auto group : cfg.groupList()) {
+        for(const auto &group : cfg.groupList()) {
             const QString ports(cfg.group(group).readEntry("ports", QString()));
 
             if(!ports.isEmpty() && !profiles.contains(group))
