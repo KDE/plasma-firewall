@@ -139,16 +139,16 @@ KJob *UfwClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavio
     connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
         m_busy = false;
 
-        if (!job->error()) {
-            QByteArray response = job->data().value("response", "").toByteArray();
-            setProfile(Profile(response));
-        } else {
+        if (job->error()) {
             emit showErrorMessage(
                 i18n("There was an error in the backend! Please report it.\n%1 %2",
                 job->action().name(), job->errorString())
             );
             qWarning() << job->action().name() << job->errorString();
+            return;
         }
+        QByteArray response = job->data().value("response", "").toByteArray();
+        setProfile(Profile(response));
     });
 
     job->start();
