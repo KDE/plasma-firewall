@@ -109,12 +109,8 @@ static QString getPortNumber(const QString &port)
 
 static QString modifyAddress(const QString &addr, const QString &port)
 {
-    if(addr.isEmpty() || ANY_ADDR==addr || ANY_ADDR_V6==addr)
-    {
-        if(port.isEmpty())
-            return i18n("Anywhere");
-        else
-            return QString();
+    if (addr.isEmpty() || ANY_ADDR==addr || ANY_ADDR_V6==addr) {
+        return port.isEmpty() ? i18n("Anywhere") : QString();
     }
 
     return shortenAddress(addr);
