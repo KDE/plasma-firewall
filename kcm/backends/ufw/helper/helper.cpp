@@ -287,19 +287,18 @@ ActionReply Helper::addRules(const QVariantMap &args, const QString &cmd)
 {
     unsigned int count=args["count"].toUInt();
 
-    if(count>0)
-    {
-        QStringList cmdArgs;
-
-        for(unsigned int i=0; i<count; ++i)
-            cmdArgs << "--add="+args["xml"+QString::number(i)].toString();
-
-        checkFolder();
-        return run(cmdArgs, {"--list"}, cmd);
+    if (count <= 0) {
+        ActionReply reply=ActionReply::HelperErrorReply(STATUS_INVALID_ARGUMENTS);
+        reply.setErrorDescription(i18n("Invalid argument passed to add Rules"));
+        return reply;
     }
-    ActionReply reply=ActionReply::HelperErrorReply(STATUS_INVALID_ARGUMENTS);
-    reply.setErrorDescription(i18n("Invalid argument passed to add Rules"));
-    return reply;
+    QStringList cmdArgs;
+
+    for(unsigned int i=0; i<count; ++i)
+        cmdArgs << "--add="+args["xml"+QString::number(i)].toString();
+
+    checkFolder();
+    return run(cmdArgs, {"--list"}, cmd);
 }
 
 ActionReply Helper::removeRule(const QVariantMap &args, const QString &cmd)
