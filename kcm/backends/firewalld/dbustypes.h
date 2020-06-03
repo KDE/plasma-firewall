@@ -23,6 +23,7 @@
 
 #ifndef FIREWALLDCLIENTDBUS_H
 #define FIREWALLDCLIENTDBUS_H
+
 #include <QDBusArgument>
 
 struct firewalld_reply {

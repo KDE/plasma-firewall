@@ -80,6 +80,7 @@ public:
   static IFirewallClientBackend *createMethod(FirewallClient *parent);
   bool hasExecutable() const override;
   void refreshProfiles() override;
+
 protected slots:
   void refreshLogs();
 
