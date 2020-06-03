@@ -80,12 +80,13 @@ KJob *FirewalldClient::setEnabled(const bool value)
     SystemdJob *job = new SystemdJob(static_cast<SYSTEMD::actions>(value));
 
     connect(job, &KJob::result, this, [this, job, value] {
-        if (!job->error()) {
-            m_currentProfile.setEnabled(value);
-            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
-            emit enabledChanged(value);
-        } else
+        if (job->error()) {
             qDebug() << "Job Error: " << job->error() << job->errorString();
+            return;
+        }
+        m_currentProfile.setEnabled(value);
+        queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
+        emit enabledChanged(value);
     });
 
     job->start();
@@ -97,14 +98,14 @@ KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsB
     FirewalldJob *job = new FirewalldJob("getAllRules");
 
     connect(job, &KJob::result, this, [this, job] {
-        if (!job->error()) {
-            qDebug() << job->name();
-            const QVector<Rule> rules = extractRulesFromResponse(job->get_firewalldreply());
-            const QVariantMap args = {{"defaultIncomingPolicy", defaultIncomingPolicy()}, {"defaultOutgoingPolicy", defaultOutgoingPolicy()}, {"status", true}, {"ipv6Enabled", true}};
-            setProfile(Profile(rules, args));
-        } else {
+        if (job->error()) {
             qDebug() << job->errorString();
+            return;
         }
+        qDebug() << job->name();
+        const QVector<Rule> rules = extractRulesFromResponse(job->get_firewalldreply());
+        const QVariantMap args = {{"defaultIncomingPolicy", defaultIncomingPolicy()}, {"defaultOutgoingPolicy", defaultOutgoingPolicy()}, {"status", true}, {"ipv6Enabled", true}};
+        setProfile(Profile(rules, args));
     });
     job->start();
     return job;
@@ -145,24 +146,26 @@ RuleWrapper *FirewalldClient::getRule(int index)
 
     auto rule = rules.at(index);
     rule.setPosition(index);
-    RuleWrapper *wrapper = new RuleWrapper(rule, this);
 
-    return wrapper;
+    return new RuleWrapper(rule, this);
 }
 
 KJob *FirewalldClient::addRule(RuleWrapper *ruleWrapper)
 {
-    if (ruleWrapper == NULL) {
-        qWarning() << "NULL rule";
+    if (ruleWrapper == nullptr) {
+        qWarning() << "Invalid rule";
+        return;
     }
+
     QVariantList dbusArgs = buildRule(ruleWrapper->getRule());
     FirewalldJob *job = new FirewalldJob("addRule", dbusArgs);
 
     connect(job, &KJob::result, this, [this, job] {
-        if (!job->error()) {
-            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
-        } else
+        if (job->error()) {
             qDebug() << job->errorString() << job->error();
+            return;
+        }
+        queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
     });
 
     job->start();
@@ -175,10 +178,11 @@ KJob *FirewalldClient::removeRule(int index)
     FirewalldJob *job = new FirewalldJob("removeRule", dbusArgs);
 
     connect(job, &KJob::result, this, [this, job] {
-        if (!job->error()) {
-            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
-        } else
+        if (job->error()) {
             qDebug() << job->errorString() << job->error();
+            return;
+        }
+        queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
     });
 
     job->start();
@@ -193,10 +197,11 @@ KJob *FirewalldClient::updateRule(RuleWrapper *ruleWrapper)
     KJob *addJob = addRule(ruleWrapper);
     KJob *removeJob = removeRule(ruleWrapper->position());
     connect(removeJob, &KJob::finished, this, [addJob, removeJob]() {
-        if (!removeJob->error()) {
-            addJob->start();
-        } else
+        if (removeJob->error()) {
             qDebug() << removeJob->errorString() << removeJob->error();
+            return;
+        }
+        addJob->start();
     });
 
     return addJob;
@@ -385,26 +390,29 @@ KJob *FirewalldClient::setDefaultIncomingPolicy(QString defaultIncomingPolicy)
     // fake job just to change default policy
     FirewalldJob *job = new FirewalldJob();
     connect(job, &KJob::result, this, [this, job, defaultIncomingPolicy] {
-        if (!job->error()) {
-            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
-            m_currentProfile.setDefaultIncomingPolicy(defaultIncomingPolicy);
-        } else
+        if (job->error()) {
             qDebug() << job->errorString() << job->error();
+            return;
+        }
+        queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
+        m_currentProfile.setDefaultIncomingPolicy(defaultIncomingPolicy);
     });
 
     job->start();
     return job;
 };
+
 KJob *FirewalldClient::setDefaultOutgoingPolicy(QString defaultOutgoingPolicy)
 {
     // fake job just to change default policy
     FirewalldJob *job = new FirewalldJob();
     connect(job, &KJob::result, this, [this, job, defaultOutgoingPolicy] {
-        if (!job->error()) {
-            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
-            m_currentProfile.setDefaultIncomingPolicy(defaultOutgoingPolicy);
-        } else
+        if (job->error()) {
             qDebug() << job->errorString() << job->error();
+            return;
+        }
+        queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
+        m_currentProfile.setDefaultIncomingPolicy(defaultOutgoingPolicy);
     });
 
     job->start();
@@ -417,10 +425,11 @@ KJob *FirewalldClient::save()
     FirewalldJob *job = new FirewalldJob(FirewalldJob::SAVEFIREWALLD);
 
     connect(job, &KJob::result, this, [this, job] {
-        if (!job->error()) {
-            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
-        } else
+        if (job->error()) {
             qDebug() << job->name() << job->errorString() << job->error();
+            return;
+        }
+        queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
     });
     job->exec();
     return job;
