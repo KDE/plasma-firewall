@@ -363,14 +363,10 @@ QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily) c
         firewalld_direct_rule << "--sport=" + value;
     }
 
-    if (args.value("chain") == "INPUT") {
-        value = args.value("interface_in").toString();
-        if (!value.isEmpty() && !value.isNull())
-            firewalld_direct_rule << "-i" << value;
-    } else {
-        value = args.value("interface_out").toString();
-        if (!value.isEmpty() && !value.isNull())
-            firewalld_direct_rule << "-i" << value;
+
+    value = args.value(args.value("chain") == "INPUT" ? "interface_in" : "interface_out").toString();
+    if (!value.isEmpty() && !value.isNull()) {
+        firewalld_direct_rule << "-i" << value;
     }
 
     auto ipvf = ipvfamily == FirewallClient::IPV6 ? "ipv6" : "ipv4";
