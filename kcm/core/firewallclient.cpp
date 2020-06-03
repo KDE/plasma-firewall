@@ -56,8 +56,9 @@ QStringList FirewallClient::getKnownInterfaces()
     QStringList interfaces_names({i18n("Any")});
 
     QList<QNetworkInterface> interfaces = QNetworkInterface::allInterfaces();
-    for (QNetworkInterface iface : qAsConst(interfaces))
+    for (QNetworkInterface iface : qAsConst(interfaces)) {
         interfaces_names << iface.name();
+    }
 
     return interfaces_names;
 }
@@ -65,76 +66,59 @@ QStringList FirewallClient::getKnownInterfaces()
 void FirewallClient::refresh()
 {
     Q_ASSERT(m_currentBackend);
-    if(m_currentBackend)
-        m_currentBackend->refresh();
+    m_currentBackend->refresh();
 }
 
 RuleListModel* FirewallClient::rulesModel() const
 {
-    if (m_currentBackend)
-        return m_currentBackend->rules();
-    return nullptr;
+    if (!m_currentBackend) {
+        return nullptr;
+    }
+    return m_currentBackend->rules();
 }
 
 RuleWrapper* FirewallClient::getRule(int index)
 {
-    if (m_currentBackend)
-        return m_currentBackend->getRule(index);
-    return nullptr;
+    if (!m_currentBackend) {
+        return nullptr;
+    }
+    return m_currentBackend->getRule(index);
 }
 
 KJob *FirewallClient::addRule(RuleWrapper * rule)
 {
     Q_ASSERT(m_currentBackend);
-    if (m_currentBackend) {
-        return m_currentBackend->addRule(rule);
-    }
-    return nullptr;
+    return m_currentBackend->addRule(rule);
 }
 
 KJob *FirewallClient::removeRule(int index)
 {
     Q_ASSERT(m_currentBackend);
-    if (m_currentBackend) {
-        return m_currentBackend->removeRule(index);
-    }
-    return nullptr;
+    return m_currentBackend->removeRule(index);
 }
 
 KJob *FirewallClient::updateRule(RuleWrapper * rule)
 {
     Q_ASSERT(m_currentBackend);
-    if (m_currentBackend) {
-        return m_currentBackend->updateRule(rule);
-    }
-    return nullptr;
+    return m_currentBackend->updateRule(rule);
 }
 
 KJob *FirewallClient::moveRule(int from, int to)
 {
     // TODO: Verify if this method is needed.
     Q_ASSERT(m_currentBackend);
-    if (m_currentBackend) {
-        return m_currentBackend->moveRule(from, to);
-    }
-    return nullptr;
+    return m_currentBackend->moveRule(from, to);
 }
 
 KJob *FirewallClient::save()
 {
     Q_ASSERT(m_currentBackend);
-    if (m_currentBackend) {
-        return m_currentBackend->save();
-    }
-    return nullptr;
+    return m_currentBackend->save();
 }
 
 FirewallClient::Capabilities FirewallClient::capabilities() const {
     Q_ASSERT(m_currentBackend);
-    if (m_currentBackend) {
-        return m_currentBackend->capabilities();
-    }
-    return nullptr;
+    return m_currentBackend->capabilities();
 }
 
 /* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connecion Table. */
@@ -162,83 +146,92 @@ RuleWrapper* FirewallClient::createRuleFromLog(
 
 bool FirewallClient::enabled() const
 {
-    if (m_currentBackend)
-        return m_currentBackend->enabled();
-    return false;
+    if (!m_currentBackend) {
+        return false;
+    }
+    return m_currentBackend->enabled();
 }
 
 QString FirewallClient::defaultIncomingPolicy() const
 {
-    if (m_currentBackend)
-        return m_currentBackend->defaultIncomingPolicy();
-    return {};
+    if (!m_currentBackend) {
+        return {};
+    }
+    return m_currentBackend->defaultIncomingPolicy();
 }
 
 QString FirewallClient::defaultOutgoingPolicy() const
 {
-    if (m_currentBackend)
-        return m_currentBackend->defaultOutgoingPolicy();
-    return {};
+    if (!m_currentBackend) {
+        return {};
+    }
+    return m_currentBackend->defaultOutgoingPolicy();
 }
 
 LogListModel* FirewallClient::logsModel()
 {
     // TODO: Perhaps this function is uneeded.
-    if (m_currentBackend)
-        return m_currentBackend->logs();
-    return nullptr;
+    if (!m_currentBackend) {
+        return nullptr;
+    }
+    return m_currentBackend->logs();
 }
 
 bool FirewallClient::logsAutoRefresh() const
 {
-    if (m_currentBackend)
-        return m_currentBackend->logsAutoRefresh();
-    return false;
+    if (!m_currentBackend) {
+        return false;
+    }
+    return m_currentBackend->logsAutoRefresh();
 }
 
 KJob *FirewallClient::setEnabled(bool enabled)
 {
-    if (m_currentBackend) {
-        return m_currentBackend->setEnabled(enabled);
+    if (!m_currentBackend) {
+        return nullptr;
     }
-    return nullptr;
+    return m_currentBackend->setEnabled(enabled);
 }
 
 void FirewallClient::queryStatus(DefaultDataBehavior defaultsBehavior, ProfilesBehavior profilesBehavior)
 {
-    if (m_currentBackend) {
-        m_currentBackend->queryStatus(defaultsBehavior, profilesBehavior);
+    if (!m_currentBackend) {
+        return;
     }
+    m_currentBackend->queryStatus(defaultsBehavior, profilesBehavior);
 }
 
 KJob *FirewallClient::setDefaultIncomingPolicy(const QString &defaultIncomingPolicy)
 {
-    if (m_currentBackend) {
-        return m_currentBackend->setDefaultIncomingPolicy(defaultIncomingPolicy);
+    if (!m_currentBackend) {
+        return nullptr;
     }
-    return nullptr;
+    return m_currentBackend->setDefaultIncomingPolicy(defaultIncomingPolicy);
 }
 
 KJob *FirewallClient::setDefaultOutgoingPolicy(const QString &defaultOutgoingPolicy)
 {
-    if (m_currentBackend) {
-        return m_currentBackend->setDefaultOutgoingPolicy(defaultOutgoingPolicy);
+    if (!m_currentBackend) {
+        return nullptr;
     }
-    return nullptr;
+
+    return m_currentBackend->setDefaultOutgoingPolicy(defaultOutgoingPolicy);
 }
 
 void FirewallClient::setLogsAutoRefresh(bool logsAutoRefresh)
 {
-    if (m_currentBackend)
-        m_currentBackend->setLogsAutoRefresh(logsAutoRefresh);
+    if (!m_currentBackend) {
+        return;
+    }
+    m_currentBackend->setLogsAutoRefresh(logsAutoRefresh);
 }
 
 bool FirewallClient::hasExecutable() const
 {
-    if (m_currentBackend) {
-        return m_currentBackend->hasExecutable();
+    if (!m_currentBackend) {
+        return false;
     }
-    return false;
+    return m_currentBackend->hasExecutable();
 }
 
 void FirewallClient::setBackend(const QString& backend)
@@ -247,6 +240,7 @@ void FirewallClient::setBackend(const QString& backend)
         enabledChanged(false);
         delete m_currentBackend;
     }
+
     const auto plugins = KPluginLoader::findPlugins(QStringLiteral("kf5/plasma_firewall"));
 
     for (const KPluginMetaData &metadata : plugins) {
@@ -279,8 +273,8 @@ void FirewallClient::setBackend(const QString& backend)
 
 QString FirewallClient::backend() const
 {
-    if (m_currentBackend) {
-        return m_currentBackend->name();
+    if (!m_currentBackend) {
+        return {};
     }
-    return {};
+    return m_currentBackend->name();
 }
