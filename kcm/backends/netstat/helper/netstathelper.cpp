@@ -87,7 +87,7 @@ QVariantList NetstatHelper::parseOutput(const QByteArray &netstatOutput)
 
 QVariantList NetstatHelper::parseSSOutput(const QByteArray &netstatOutput)
 {
-   QString rawOutput = netstatOutput;
+    QString rawOutput = netstatOutput;
     QStringList outputLines = rawOutput.split("\n");
 
     QVariantList connections;
