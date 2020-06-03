@@ -257,21 +257,29 @@ ActionReply Helper::deleteProfile(const QVariantMap &args, const QString &cmd)
 
     QString     name(args["name"].toString());
     ActionReply reply;
+    auto prepareData = [&] {
+        reply.addData("cmd", cmd);
+        reply.addData("name", name);
+        reply.addData("profiles", QDir(KCM_UFW_DIR).entryList({"*" +  PROFILE_EXTENSION }));
+    };
 
     if(name.isEmpty())
     {
         reply=ActionReply::HelperErrorReply(STATUS_INVALID_ARGUMENTS);
         reply.setErrorDescription(i18n("Invalid arguments passed to delete profile"));
+        prepareData();
+        return reply;
     }
-    else if(!QFile::remove(QString(KCM_UFW_DIR)+"/"+name+PROFILE_EXTENSION))
+
+    if(!QFile::remove(QString(KCM_UFW_DIR)+"/"+name+PROFILE_EXTENSION))
     {
         reply=ActionReply::HelperErrorReply(STATUS_OPERATION_FAILED);
         reply.setErrorDescription(i18n("Could not remove the profile from disk."));
+        prepareData();
+        return reply;
     }
 
-    reply.addData("cmd", cmd);
-    reply.addData("name", name);
-    reply.addData("profiles", QDir(KCM_UFW_DIR).entryList({"*" +  PROFILE_EXTENSION }));
+    prepareData();
     return reply;
 }
 
