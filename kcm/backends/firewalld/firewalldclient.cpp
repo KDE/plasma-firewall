@@ -372,13 +372,21 @@ QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily) c
     auto ipvf = ipvfamily == FirewallClient::IPV6 ? "ipv6" : "ipv4";
 
     qDebug() << firewalld_direct_rule;
-    return QVariantList({ipvf, args.value("table").toString(), args.value("chain").toString(), args.value("priority").toInt(), firewalld_direct_rule});
+    return QVariantList({
+        ipvf,
+        args.value("table"),
+        args.value("chain"),
+        args.value("priority"),
+        firewalld_direct_rule}
+    );
 }
+
 QString FirewalldClient::defaultIncomingPolicy() const
 {
     auto policy_t = m_currentProfile.getDefaultIncomingPolicy();
     return Types::toString(policy_t);
 };
+
 QString FirewalldClient::defaultOutgoingPolicy() const
 {
     auto policy_t = m_currentProfile.getDefaultOutgoingPolicy();
