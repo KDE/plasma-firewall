@@ -67,7 +67,6 @@ public:
     explicit ConnectionsModel(QObject *parent = nullptr);
 
     bool busy() const;
-    Q_SIGNAL void busyChanged();
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
 
@@ -77,7 +76,7 @@ public:
 
 signals:
     void countChanged();
-
+    void busyChanged();
     void showErrorMessage(const QString &message);
 
 protected slots:
