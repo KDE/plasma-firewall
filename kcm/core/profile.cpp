@@ -80,23 +80,10 @@ void Profile::setArgs(const QVariantMap &args)
     const QString new_loglevel = args.value(QStringLiteral("logLevel")).toString();
     const QStringList new_modules = args.value(QStringLiteral("modules")).toStringList();
 
-    if (new_defaultIncomingPolicy.isEmpty())
-        defaultIncomingPolicy = Types::POLICY_ALLOW;
-    else
-        defaultIncomingPolicy = Types::toPolicy(new_defaultIncomingPolicy);
-
-    if (new_defaultOutgoingPolicy.isEmpty())
-        defaultOutgoingPolicy = Types::POLICY_ALLOW;
-    else
-        defaultOutgoingPolicy = Types::toPolicy(new_defaultOutgoingPolicy);
-
-    if (new_loglevel.isEmpty())
-        logLevel = Types::LOG_OFF;
-    else
-        logLevel = Types::toLogLevel(new_loglevel);
-
+    defaultIncomingPolicy = new_defaultIncomingPolicy.isEmpty() ? Types::POLICY_ALLOW : Types::toPolicy(new_defaultIncomingPolicy);
+    defaultOutgoingPolicy = new_defaultOutgoingPolicy.isEmpty() ? Types::POLICY_ALLOW : Types::toPolicy(new_defaultOutgoingPolicy);
+    logLevel = new_loglevel.isEmpty() ? Types::LOG_OFF : Types::toLogLevel(new_loglevel);
     enabled = args.value("status").toBool();
-
     ipv6Enabled = args.value("ipv6Enabled").toBool();
 
     if (!new_modules.isEmpty()) {
