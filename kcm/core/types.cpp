@@ -119,8 +119,7 @@ QString toString(PredefinedPort pp, bool ui)
 
 PredefinedPort toPredefinedPort(const QString &str)
 {
-    for(int i=0; i<Types::PP_COUNT; ++i)
-    {
+    for(int i=0; i<Types::PP_COUNT; ++i) {
         const auto enumPort = static_cast<Types::PredefinedPort>(i);
         const auto typesAtIndex = Types::toString(enumPort).split(" ");
 
@@ -136,8 +135,7 @@ PredefinedPort toPredefinedPort(const QString &str)
 
 QString toString(Protocol proto, bool ui)
 {
-    switch(proto)
-    {
+    switch(proto) {
         case PROTO_TCP:  return ui ? i18n("TCP")          : "tcp";
         case PROTO_UDP:  return ui ? i18n("UDP")          : "udp";
         case PROTO_BOTH: return ui ? i18n("Any protocol") : QString();
@@ -147,17 +145,23 @@ QString toString(Protocol proto, bool ui)
 
 Protocol toProtocol(const QString &str)
 {
-    for(int i=0; i<PROTO_COUNT; ++i)
-        if(toString((Protocol)i)==str)
+    for(int i=0; i<PROTO_COUNT; ++i) {
+        if(toString((Protocol)i)==str) {
             return (Protocol)i;
+        }
+    }
+
     return PROTO_BOTH;
 }
 
 Logging toLogging(const QString &str)
 {
-    for(int i=0; i<LOGGING_COUNT; ++i)
-        if(toString((Logging)i)==str)
+    for(int i=0; i<LOGGING_COUNT; ++i) {
+        if(toString((Logging)i)==str) {
             return (Logging)i;
+        }
+    }
+
     return LOGGING_OFF;
 }
 

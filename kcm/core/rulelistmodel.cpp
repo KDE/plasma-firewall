@@ -34,13 +34,13 @@ RuleListModel::RuleListModel(QObject *parent)
 
 void RuleListModel::move(int from, int to)
 {
-    if(to < 0 && to >= m_rules.count())
+    if(to < 0 && to >= m_rules.count()) {
         return;
+    }
 
     int newPos = to > from ? to + 1 : to;
     bool validMove = beginMoveRows(QModelIndex(), from, from, QModelIndex(), newPos);
-    if (validMove)
-    {
+    if (validMove) {
         m_rules.move(from, to);
         endMoveRows();
     }
