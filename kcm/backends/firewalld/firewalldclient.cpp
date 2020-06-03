@@ -312,17 +312,16 @@ void FirewalldClient::refreshProfiles()
 
 QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily) const
 {
-    QVariantMap args {{"priority", 0},
-                      {"destinationPort", r.getDestPort()},
-                      {"sourcePort", r.getSourcePort()},
-                      {"type", QString(r.protocolSuffix(r.getProtocol())).replace("/", "")}, // tcp or udp
-                      {"destinationAddress", r.getDestAddress()},
-                      {"sourceAddress", r.getSourceAddress()},
-                      {"interface_in", r.getInterfaceIn()},
-                      {"interface_out", r.getInterfaceOut()},
-                      {"table", "filter"},
-                      {}
-
+    QVariantMap args {
+        {"priority", 0},
+        {"destinationPort", r.getDestPort()},
+        {"sourcePort", r.getSourcePort()},
+        {"type", QString(r.protocolSuffix(r.getProtocol())).replace("/", "")}, // tcp or udp
+        {"destinationAddress", r.getDestAddress()},
+        {"sourceAddress", r.getSourceAddress()},
+        {"interface_in", r.getInterfaceIn()},
+        {"interface_out", r.getInterfaceOut()},
+        {"table", "filter"},
     };
 
     args.insert("chain", r.getIncoming() ? "INPUT" : "OUTPUT");
