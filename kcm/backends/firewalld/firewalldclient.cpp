@@ -142,7 +142,7 @@ RuleWrapper *FirewalldClient::getRule(int index)
     auto rules = m_currentProfile.getRules();
 
     if (index < 0 || index >= rules.count()) {
-        return NULL;
+        return nullptr;
     }
 
     auto rule = rules.at(index);
@@ -155,7 +155,7 @@ KJob *FirewalldClient::addRule(RuleWrapper *ruleWrapper)
 {
     if (ruleWrapper == nullptr) {
         qWarning() << "Invalid rule";
-        return;
+        return nullptr;
     }
 
     QVariantList dbusArgs = buildRule(ruleWrapper->getRule());
@@ -192,8 +192,9 @@ KJob *FirewalldClient::removeRule(int index)
 
 KJob *FirewalldClient::updateRule(RuleWrapper *ruleWrapper)
 {
-    if (ruleWrapper == NULL) {
+    if (ruleWrapper == nullptr) {
         qWarning() << "NULL rule";
+        return nullptr;
     }
     KJob *addJob = addRule(ruleWrapper);
     KJob *removeJob = removeRule(ruleWrapper->position());
