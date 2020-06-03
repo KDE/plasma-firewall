@@ -24,7 +24,8 @@
 /* Access to the Netstat Client thru the Connections Model */
 static NetstatClient *_self = nullptr;
 
-NetstatClient* NetstatClient::self() {
+NetstatClient *NetstatClient::self()
+{
     assert(_self);
     return _self;
 }
@@ -41,7 +42,7 @@ ConnectionsModel *NetstatClient::connectionsModel() const
     return m_connections;
 }
 
-void NetstatClient::setStatus(const QString& message)
+void NetstatClient::setStatus(const QString &message)
 {
     if (mStatus != message) {
         mStatus = message;

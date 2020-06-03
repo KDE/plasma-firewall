@@ -26,8 +26,8 @@
 #ifndef KCM_H
 #define KCM_H
 
-#include <KQuickAddons/ConfigModule>
 #include "core/firewallclient.h"
+#include <KQuickAddons/ConfigModule>
 
 class KCMFirewall : public KQuickAddons::ConfigModule
 {
@@ -40,7 +40,7 @@ public:
     ~KCMFirewall();
     void save() override;
     FirewallClient *client() const;
-    
+
 private:
     FirewallClient *m_client;
 };

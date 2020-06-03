@@ -24,16 +24,20 @@
  */
 
 #include "rulewrapper.h"
-#include "types.h"
 #include "firewallclient.h"
+#include "types.h"
 
 #include <QDebug>
 
-RuleWrapper::RuleWrapper(QObject *parent) : QObject(parent), m_interface(0)
+RuleWrapper::RuleWrapper(QObject *parent)
+    : QObject(parent)
+    , m_interface(0)
 {
 }
 
-RuleWrapper::RuleWrapper(Rule rule, QObject *parent) : QObject(parent), m_rule(rule)
+RuleWrapper::RuleWrapper(Rule rule, QObject *parent)
+    : QObject(parent)
+    , m_rule(rule)
 {
     int iface_index = FirewallClient::getKnownInterfaces().indexOf(m_rule.getInterfaceIn());
     m_interface = iface_index == -1 ? 0 : iface_index;
@@ -180,7 +184,7 @@ void RuleWrapper::setProtocol(int protocol)
         return;
     }
 
-    m_rule.setProtocol((Types::Protocol) protocol);
+    m_rule.setProtocol((Types::Protocol)protocol);
     emit protocolChanged(protocol);
 }
 
@@ -190,9 +194,7 @@ void RuleWrapper::setInterface(int interface)
         return;
     }
 
-    m_rule.setInterfaceIn( interface != 0
-        ? FirewallClient::getKnownInterfaces().at(interface)
-        : QString());
+    m_rule.setInterfaceIn(interface != 0 ? FirewallClient::getKnownInterfaces().at(interface) : QString());
 
     m_interface = interface;
     qDebug() << "new iface" << m_rule.getInterfaceIn();
@@ -219,5 +221,3 @@ void RuleWrapper::setPosition(int position)
     m_rule.setPosition(position);
     emit positionChanged(position);
 }
-
-

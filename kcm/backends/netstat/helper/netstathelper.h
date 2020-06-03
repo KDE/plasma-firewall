@@ -22,8 +22,8 @@
 #ifndef NETSTATHELPER_H
 #define NETSTATHELPER_H
 
-#include <QVariantMap>
 #include <KAuth>
+#include <QVariantMap>
 
 using namespace KAuth;
 class NetstatHelper : public QObject
@@ -40,15 +40,15 @@ private:
     QVariantList parseNetstatOutput(const QByteArray &netstatOutput);
     QVariantList parseSSOutput(const QByteArray &ss);
 
-    QString extractAndStrip(const QString &src,const int &index, const int  &size);
+    QString extractAndStrip(const QString &src, const int &index, const int &size);
 
     /* Netstat has been deprecated for more than 20 years,
-    * some distros such as arch linux use 'ss' as default.
-    */
+     * some distros such as arch linux use 'ss' as default.
+     */
     int mHasSS;
 
     /* Distros are not obliged to install this. let's query it before
-    * assuming that this actually exists */
+     * assuming that this actually exists */
     int mHasNetstat;
 };
 

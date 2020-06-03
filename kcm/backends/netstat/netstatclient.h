@@ -34,17 +34,17 @@ class NetstatClient : public QObject
 
 public:
     explicit NetstatClient(QObject *parent = nullptr);
-    static NetstatClient* self();
+    static NetstatClient *self();
 
     ConnectionsModel *connectionsModel() const;
 
-    Q_SLOT void setStatus(const QString& message);
+    Q_SLOT void setStatus(const QString &message);
     QString status() const;
-    Q_SIGNAL void statusChanged(const QString& output);
+    Q_SIGNAL void statusChanged(const QString &output);
 
 protected:
     QString mStatus;
-    ConnectionsModel * m_connections;
+    ConnectionsModel *m_connections;
 };
 
 #endif // NETSTATCLIENT_H

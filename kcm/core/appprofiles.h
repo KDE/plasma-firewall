@@ -30,14 +30,19 @@
 #include <QList>
 #include <QString>
 
-struct KCM_FIREWALL_CORE_EXPORT Entry
-{
-    Entry(const QString &n, const QString &p=QString());
-    bool operator<(const Entry &o) const  { return name.localeAwareCompare(o.name)<0; }
-    bool operator==(const Entry &o) const { return name==o.name; }
-    QString         name;
-    QString         ports;
-//     Types::Protocol protocol;
+struct KCM_FIREWALL_CORE_EXPORT Entry {
+    Entry(const QString &n, const QString &p = QString());
+    bool operator<(const Entry &o) const
+    {
+        return name.localeAwareCompare(o.name) < 0;
+    }
+    bool operator==(const Entry &o) const
+    {
+        return name == o.name;
+    }
+    QString name;
+    QString ports;
+    //     Types::Protocol protocol;
 };
 
 #endif

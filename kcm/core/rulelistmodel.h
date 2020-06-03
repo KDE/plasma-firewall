@@ -29,22 +29,15 @@
 
 #include <QAbstractListModel>
 
-#include "rulewrapper.h"
 #include "profile.h"
+#include "rulewrapper.h"
 
 class KCM_FIREWALL_CORE_EXPORT RuleListModel : public QAbstractListModel
 {
     Q_OBJECT
 
 public:
-    enum ProfileItemModelRoles
-    {
-        ActionRole = Qt::UserRole + 1,
-        FromRole,
-        ToRole,
-        Ipv6Role,
-        LoggingRole
-    };
+    enum ProfileItemModelRoles { ActionRole = Qt::UserRole + 1, FromRole, ToRole, Ipv6Role, LoggingRole };
 
     explicit RuleListModel(QObject *parent = nullptr);
 
@@ -54,6 +47,7 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
     void setProfile(Profile profile);
+
 protected:
     QHash<int, QByteArray> roleNames() const override;
 

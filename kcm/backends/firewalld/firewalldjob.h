@@ -29,12 +29,13 @@
 
 #include "dbustypes.h"
 
-class FirewalldJob : public KJob {
+class FirewalldJob : public KJob
+{
     Q_OBJECT
 
 public:
-    enum JobType { FIREWALLD, SAVEFIREWALLD, FAKEJOB};
-    FirewalldJob(const QByteArray &call, const QVariantList &args = {}, const JobType &type=FIREWALLD);
+    enum JobType { FIREWALLD, SAVEFIREWALLD, FAKEJOB };
+    FirewalldJob(const QByteArray &call, const QVariantList &args = {}, const JobType &type = FIREWALLD);
     FirewalldJob(const JobType &type);
     FirewalldJob();
     ~FirewalldJob();
@@ -45,11 +46,10 @@ public:
 private:
     void setFirewalldMessage(const QByteArray &call, const QVariantList &args = {});
     void saveFirewalld();
-    void firewalldAction(const QByteArray &method, const QVariantList &args = {} );
+    void firewalldAction(const QByteArray &method, const QVariantList &args = {});
     QList<firewalld_reply> m_firewalldreply;
     JobType m_type;
     QByteArray m_call;
     QVariantList m_args;
-
 };
 #endif

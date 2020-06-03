@@ -27,11 +27,13 @@
 #include <KJob>
 #include <types.h>
 
-namespace SYSTEMD {
-    enum actions {ERROR=-1, STOP, START};
+namespace SYSTEMD
+{
+enum actions { ERROR = -1, STOP, START };
 }
 
-class SystemdJob : public KJob {
+class SystemdJob : public KJob
+{
     Q_OBJECT
 
 public:
@@ -43,7 +45,6 @@ public:
 private:
     void systemdAction(const SYSTEMD::actions value);
     SYSTEMD::actions m_action;
-
 };
 
 #endif

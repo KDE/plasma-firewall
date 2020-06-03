@@ -27,8 +27,8 @@
 
 #include <kcm_firewall_core_export.h>
 
-#include <QObject>
 #include <QFlags>
+#include <QObject>
 #include <QTimer>
 
 class KJob;
@@ -45,7 +45,8 @@ class IFirewallClientBackend;
  * like firewalld and ufw, then bsd specifics, etc.
  */
 
-class KCM_FIREWALL_CORE_EXPORT FirewallClient : public QObject {
+class KCM_FIREWALL_CORE_EXPORT FirewallClient : public QObject
+{
     Q_OBJECT
     /**
      * Whether the firewall is enabled
@@ -61,9 +62,9 @@ class KCM_FIREWALL_CORE_EXPORT FirewallClient : public QObject {
     Q_PROPERTY(Capabilities capabilities READ capabilities NOTIFY capabilitiesChanged)
 
 public:
-    enum DefaultDataBehavior{DontReadDefaults, ReadDefaults};
-    enum ProfilesBehavior{DontListenProfiles, ListenProfiles};
-    enum Ipv {IPV4, IPV6};
+    enum DefaultDataBehavior { DontReadDefaults, ReadDefaults };
+    enum ProfilesBehavior { DontListenProfiles, ListenProfiles };
+    enum Ipv { IPV4, IPV6 };
 
     explicit FirewallClient(QObject *parent = nullptr);
 
@@ -71,11 +72,11 @@ public:
     Q_INVOKABLE static QStringList getKnownInterfaces();
 
     Q_INVOKABLE void refresh();
-    RuleListModel* rulesModel() const;
-    Q_INVOKABLE RuleWrapper* getRule(int index); // TODO move into the model?
-    Q_INVOKABLE KJob *addRule(RuleWrapper * rule);
+    RuleListModel *rulesModel() const;
+    Q_INVOKABLE RuleWrapper *getRule(int index); // TODO move into the model?
+    Q_INVOKABLE KJob *addRule(RuleWrapper *rule);
     Q_INVOKABLE KJob *removeRule(int index);
-    Q_INVOKABLE KJob *updateRule(RuleWrapper * rule);
+    Q_INVOKABLE KJob *updateRule(RuleWrapper *rule);
     Q_INVOKABLE KJob *moveRule(int from, int to);
 
     Q_INVOKABLE KJob *setEnabled(bool enabled);
@@ -83,19 +84,9 @@ public:
     Q_INVOKABLE KJob *setDefaultOutgoingPolicy(const QString &defaultOutgoingPolicy);
     Q_INVOKABLE KJob *save();
     /* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connecion Table. */
-    Q_INVOKABLE RuleWrapper* createRuleFromConnection(
-        const QString &protocol,
-        const QString &localAddress,
-        const QString &foreignAddres,
-        const QString &status);
+    Q_INVOKABLE RuleWrapper *createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status);
 
-    Q_INVOKABLE RuleWrapper* createRuleFromLog(
-        const QString &protocol,
-        const QString &sourceAddress,
-        const QString &sourcePort,
-        const QString &destinationAddress,
-        const QString &destinationPort,
-        const QString &inn);
+    Q_INVOKABLE RuleWrapper *createRuleFromLog(const QString &protocol, const QString &sourceAddress, const QString &sourcePort, const QString &destinationAddress, const QString &destinationPort, const QString &inn);
 
     bool enabled() const;
     bool hasExecutable() const;
@@ -103,18 +94,18 @@ public:
     QString defaultIncomingPolicy() const;
     QString defaultOutgoingPolicy() const;
     QString backend() const;
-    LogListModel* logsModel();
+    LogListModel *logsModel();
     bool logsAutoRefresh() const;
 
     enum Capability {
         None = 0x0,
         SaveCapability = 0x1,
-    } ;
+    };
 
     Q_ENUM(Capability)
     Q_DECLARE_FLAGS(Capabilities, Capability)
     Q_FLAG(Capabilities);
-    
+
     Capabilities capabilities() const;
 signals:
     void enabledChanged(const bool enabled);
@@ -134,8 +125,7 @@ signals:
 private:
     void setBackend(const QString &backend);
     void setLogsAutoRefresh(bool logsAutoRefresh);
-    void queryStatus(DefaultDataBehavior defaultDataBehavior = ReadDefaults,
-                     ProfilesBehavior ProfilesBehavior = ListenProfiles);
+    void queryStatus(DefaultDataBehavior defaultDataBehavior = ReadDefaults, ProfilesBehavior ProfilesBehavior = ListenProfiles);
 
     IFirewallClientBackend *m_currentBackend = nullptr;
 };

@@ -40,82 +40,116 @@ class QIODevice;
 
 class KCM_FIREWALL_CORE_EXPORT Profile
 {
-    public:
-
-    enum Fields
-    {
-        FIELD_RULES    = 0x01,
-        FIELD_DEFAULTS = 0x02,
-        FIELD_MODULES  = 0x04,
-        FIELD_STATUS   = 0x08
-    };
+public:
+    enum Fields { FIELD_RULES = 0x01, FIELD_DEFAULTS = 0x02, FIELD_MODULES = 0x04, FIELD_STATUS = 0x08 };
 
     Profile()
-        : fields(0), enabled(false), ipv6Enabled(false)
+        : fields(0)
+        , enabled(false)
+        , ipv6Enabled(false)
     {
     }
-    Profile(const QVector<Rule> &rules, const QVariantMap &args, bool isSys=false);
-    Profile(QByteArray &xml, bool isSys=false);
-    Profile(QFile &file, bool isSys=false);
+    Profile(const QVector<Rule> &rules, const QVariantMap &args, bool isSys = false);
+    Profile(QByteArray &xml, bool isSys = false);
+    Profile(QFile &file, bool isSys = false);
     Profile(bool ipv6, Types::LogLevel ll, Types::Policy dip, Types::Policy dop, const QVector<Rule> &r, const QSet<QString> &m)
-        : fields(0xFF), enabled(true), ipv6Enabled(ipv6), logLevel(ll), defaultIncomingPolicy(dip), defaultOutgoingPolicy(dop)
-        , rules(r), modules(m), isSystem(false)
+        : fields(0xFF)
+        , enabled(true)
+        , ipv6Enabled(ipv6)
+        , logLevel(ll)
+        , defaultIncomingPolicy(dip)
+        , defaultOutgoingPolicy(dop)
+        , rules(r)
+        , modules(m)
+        , isSystem(false)
     {
     }
 
     bool operator==(const Profile &o) const
     {
-        return ipv6Enabled==o.ipv6Enabled &&
-               logLevel==o.logLevel &&
-               defaultIncomingPolicy==o.defaultIncomingPolicy &&
-               defaultOutgoingPolicy==o.defaultOutgoingPolicy &&
-               rules==o.rules &&
-               modules==o.modules;
+        return ipv6Enabled == o.ipv6Enabled && logLevel == o.logLevel && defaultIncomingPolicy == o.defaultIncomingPolicy && defaultOutgoingPolicy == o.defaultOutgoingPolicy && rules == o.rules && modules == o.modules;
     }
 
-    QString               toXml() const;
-    QString               defaultsXml() const;
-    QString               modulesXml() const;
+    QString toXml() const;
+    QString defaultsXml() const;
+    QString modulesXml() const;
 
-    bool                  hasRules() const                 { return fields&FIELD_RULES; }
-    bool                  hasDefaults() const              { return fields&FIELD_DEFAULTS; }
-    bool                  hasModules() const               { return fields&FIELD_MODULES; }
-    bool                  hasStatus() const                { return fields&FIELD_STATUS; }
+    bool hasRules() const
+    {
+        return fields & FIELD_RULES;
+    }
+    bool hasDefaults() const
+    {
+        return fields & FIELD_DEFAULTS;
+    }
+    bool hasModules() const
+    {
+        return fields & FIELD_MODULES;
+    }
+    bool hasStatus() const
+    {
+        return fields & FIELD_STATUS;
+    }
 
-    int                   getFields() const                { return fields; }
-    bool                  getEnabled() const               { return enabled; }
-    bool                  getIpv6Enabled() const           { return ipv6Enabled; }
-    Types::LogLevel       getLogLevel() const              { return logLevel; }
-    Types::Policy         getDefaultIncomingPolicy() const { return defaultIncomingPolicy; }
-    Types::Policy         getDefaultOutgoingPolicy() const { return defaultOutgoingPolicy; }
-    const QVector<Rule> &   getRules() const                 { return rules; }
-    const QSet<QString> & getModules() const               { return modules; }
-    const QString &       getFileName() const              { return fileName; }
-    bool                  getIsSystem() const              { return isSystem; }
+    int getFields() const
+    {
+        return fields;
+    }
+    bool getEnabled() const
+    {
+        return enabled;
+    }
+    bool getIpv6Enabled() const
+    {
+        return ipv6Enabled;
+    }
+    Types::LogLevel getLogLevel() const
+    {
+        return logLevel;
+    }
+    Types::Policy getDefaultIncomingPolicy() const
+    {
+        return defaultIncomingPolicy;
+    }
+    Types::Policy getDefaultOutgoingPolicy() const
+    {
+        return defaultOutgoingPolicy;
+    }
+    const QVector<Rule> &getRules() const
+    {
+        return rules;
+    }
+    const QSet<QString> &getModules() const
+    {
+        return modules;
+    }
+    const QString &getFileName() const
+    {
+        return fileName;
+    }
+    bool getIsSystem() const
+    {
+        return isSystem;
+    }
 
-    void                  setRules(const QVector<Rule> &newrules);
-    void                  setArgs(const QVariantMap &args);
-    void                  setEnabled(const bool &value);
-    void                  setDefaultIncomingPolicy(const QString &policy);
-    void                  setDefaultOutgoingPolicy(const QString &policy);
-    private:
+    void setRules(const QVector<Rule> &newrules);
+    void setArgs(const QVariantMap &args);
+    void setEnabled(const bool &value);
+    void setDefaultIncomingPolicy(const QString &policy);
+    void setDefaultOutgoingPolicy(const QString &policy);
 
-
+private:
     void load(QIODevice *device);
 
-    private:
-
-    int             fields;
-    bool            enabled,
-                    ipv6Enabled;
+private:
+    int fields;
+    bool enabled, ipv6Enabled;
     Types::LogLevel logLevel;
-    Types::Policy   defaultIncomingPolicy,
-                    defaultOutgoingPolicy;
-    QVector<Rule>     rules;
-    QSet<QString>   modules;
-    QString         fileName;
-    bool            isSystem;
-
+    Types::Policy defaultIncomingPolicy, defaultOutgoingPolicy;
+    QVector<Rule> rules;
+    QSet<QString> modules;
+    QString fileName;
+    bool isSystem;
 };
 
 #endif

@@ -64,21 +64,26 @@ int ConnectionsModel::rowCount(const QModelIndex &parent) const
 
 QVariant ConnectionsModel::data(const QModelIndex &index, int role) const
 {
-    const auto checkIndexFlags = QAbstractItemModel::CheckIndexOption::IndexIsValid
-                               | QAbstractItemModel::CheckIndexOption::ParentIsInvalid;
+    const auto checkIndexFlags = QAbstractItemModel::CheckIndexOption::IndexIsValid | QAbstractItemModel::CheckIndexOption::ParentIsInvalid;
 
     if (!checkIndex(index, checkIndexFlags)) {
         return {};
     }
 
     ConnectionsData data = m_connectionsData.at(index.row());
-    switch(role) {
-        case ProtocolRole: return data.protocol;
-        case LocalAddressRole: return data.localAddress;
-        case ForeignAddressRole: return data.foreignAddress;
-        case StatusRole: return data.status;
-        case PidRole: return data.pid;
-        case ProgramRole: return data.program;
+    switch (role) {
+    case ProtocolRole:
+        return data.protocol;
+    case LocalAddressRole:
+        return data.localAddress;
+    case ForeignAddressRole:
+        return data.foreignAddress;
+    case StatusRole:
+        return data.status;
+    case PidRole:
+        return data.pid;
+    case ProgramRole:
+        return data.program;
     }
     return {};
 }
@@ -119,14 +124,12 @@ void ConnectionsModel::refreshConnections()
         m_connectionsData.clear();
         for (const auto connection : job->data().value("connections", QVariantList()).toList()) {
             const auto connList = connection.toList();
-            ConnectionsData conn {
-                .protocol = connList.at(0).toString(),
-                .localAddress = connList.at(1).toString(),
-                .foreignAddress = connList.at(2).toString(),
-                .status = connList.at(3).toString(),
-                .pid = connList.at(4).toString(),
-                .program = connList.at(5).toString()
-            };
+            ConnectionsData conn {.protocol = connList.at(0).toString(),
+                                  .localAddress = connList.at(1).toString(),
+                                  .foreignAddress = connList.at(2).toString(),
+                                  .status = connList.at(3).toString(),
+                                  .pid = connList.at(4).toString(),
+                                  .program = connList.at(5).toString()};
             newConnectionsData.append(conn);
         }
 
@@ -143,4 +146,3 @@ void ConnectionsModel::refreshConnections()
 
     job->start();
 }
-

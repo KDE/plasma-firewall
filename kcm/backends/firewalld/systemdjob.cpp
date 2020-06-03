@@ -21,65 +21,67 @@
  * Boston, MA 02110-1301, USA.
  */
 
+#include <QDebug>
 #include <QtDBus/QDBusConnection>
 #include <QtDBus/QDBusMessage>
 #include <QtDBus/QDBusPendingCall>
 #include <QtDBus/QDBusPendingReply>
-#include <QDebug>
 
 #include "systemdjob.h"
 
-namespace SYSTEMD {
-    const QString BUS = QStringLiteral("org.freedesktop.systemd1");
-    const QString PATH = QStringLiteral("/org/freedesktop/systemd1");
-    const QString INTERFACE = QStringLiteral("org.freedesktop.systemd1.Manager");
+namespace SYSTEMD
+{
+const QString BUS = QStringLiteral("org.freedesktop.systemd1");
+const QString PATH = QStringLiteral("/org/freedesktop/systemd1");
+const QString INTERFACE = QStringLiteral("org.freedesktop.systemd1.Manager");
 }
 
 enum {
     DBUSSYSTEMDERROR = KJob::UserDefinedError,
 };
-SystemdJob::SystemdJob(const SYSTEMD::actions &action): KJob(), m_action(action) {};
+SystemdJob::SystemdJob(const SYSTEMD::actions &action)
+    : KJob()
+    , m_action(action) {};
 
-void SystemdJob::systemdAction(const SYSTEMD::actions value) {
-
-
+void SystemdJob::systemdAction(const SYSTEMD::actions value)
+{
     QDBusMessage call;
-    switch(value) {
+    switch (value) {
+    case SYSTEMD::START:
+        call = QDBusMessage::createMethodCall(SYSTEMD::BUS, SYSTEMD::PATH, SYSTEMD::INTERFACE, "StartUnit");
+        call.setArguments({"firewalld.service", "fail"});
+        break;
+    case SYSTEMD::STOP:
+        call = QDBusMessage::createMethodCall(SYSTEMD::BUS, SYSTEMD::PATH, SYSTEMD::INTERFACE, "StopUnit");
+        call.setArguments({"firewalld.service", "fail"});
+        break;
 
-        case SYSTEMD::START:
-            call = QDBusMessage::createMethodCall(SYSTEMD::BUS,SYSTEMD::PATH,SYSTEMD::INTERFACE,"StartUnit");
-            call.setArguments({"firewalld.service", "fail"});
-            break;
-        case SYSTEMD::STOP:
-            call = QDBusMessage::createMethodCall(SYSTEMD::BUS,SYSTEMD::PATH,SYSTEMD::INTERFACE,"StopUnit");
-            call.setArguments({"firewalld.service", "fail"});
-            break;
-
-        default:
-            setErrorText("Invalid Call");
-            setError(DBUSSYSTEMDERROR);
-            emitResult();
+    default:
+        setErrorText("Invalid Call");
+        setError(DBUSSYSTEMDERROR);
+        emitResult();
     }
     QDBusPendingCall message = QDBusConnection::systemBus().asyncCall(call);
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(message, this);
 
     /* waiting for start/stop of firewalld */
     connect(watcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
-            QDBusPendingReply<> reply = *watcher;
-            watcher->deleteLater();
-            if (reply.isError()) {
-                setErrorText(reply.reply().errorMessage() + DBUSSYSTEMDERROR);
-                setError(DBUSSYSTEMDERROR);
-            }
-            emitResult();
-            return;
+        QDBusPendingReply<> reply = *watcher;
+        watcher->deleteLater();
+        if (reply.isError()) {
+            setErrorText(reply.reply().errorMessage() + DBUSSYSTEMDERROR);
+            setError(DBUSSYSTEMDERROR);
+        }
+        emitResult();
+        return;
     });
     return;
 }
 
 SystemdJob::~SystemdJob() = default;
 
-void SystemdJob::start() {
+void SystemdJob::start()
+{
     qDebug() << "systemd " << m_action;
     systemdAction(m_action);
 };

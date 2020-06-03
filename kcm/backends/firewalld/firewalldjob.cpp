@@ -21,63 +21,64 @@
  * Boston, MA 02110-1301, USA.
  */
 
+#include <QDebug>
 #include <QtDBus/QDBusConnection>
 #include <QtDBus/QDBusMessage>
 #include <QtDBus/QDBusPendingCall>
 #include <QtDBus/QDBusPendingReply>
-#include <QDebug>
 
-#include "firewalldjob.h"
 #include "dbustypes.h"
+#include "firewalldjob.h"
 
-namespace HELPER {
-    const QString KCM_FIREWALLD_DIR = QStringLiteral("/etc/kcm/firewalld");
-    const QString LOG_FILE = QStringLiteral("/var/log/firewalld.log");
-    const QString BUS = QStringLiteral("org.fedoraproject.FirewallD1");
-    const QString PATH = QStringLiteral("/org/fedoraproject/FirewallD1");
-    const QString INTERFACE = QStringLiteral("org.fedoraproject.FirewallD1.direct");
-
-}
-
-namespace SAVE {
-    const QString BUS = QStringLiteral("org.fedoraproject.FirewallD1");
-    const QString PATH = QStringLiteral("/org/fedoraproject/FirewallD1");
-    const QString INTERFACE = QStringLiteral("org.fedoraproject.FirewallD1");
-    const QString METHOD = QStringLiteral("runtimeToPermanent");
+namespace HELPER
+{
+const QString KCM_FIREWALLD_DIR = QStringLiteral("/etc/kcm/firewalld");
+const QString LOG_FILE = QStringLiteral("/var/log/firewalld.log");
+const QString BUS = QStringLiteral("org.fedoraproject.FirewallD1");
+const QString PATH = QStringLiteral("/org/fedoraproject/FirewallD1");
+const QString INTERFACE = QStringLiteral("org.fedoraproject.FirewallD1.direct");
 
 }
 
+namespace SAVE
+{
+const QString BUS = QStringLiteral("org.fedoraproject.FirewallD1");
+const QString PATH = QStringLiteral("/org/fedoraproject/FirewallD1");
+const QString INTERFACE = QStringLiteral("org.fedoraproject.FirewallD1");
+const QString METHOD = QStringLiteral("runtimeToPermanent");
 
+}
 
 enum {
-    DBUSFIREWALLDDERROR  = KJob::UserDefinedError,
+    DBUSFIREWALLDDERROR = KJob::UserDefinedError,
 };
 
-
-
 FirewalldJob::FirewalldJob() {};
-FirewalldJob::FirewalldJob(const QByteArray& call, const QVariantList &args, const FirewalldJob::JobType &type) 
-    : KJob(), m_type(type)
+FirewalldJob::FirewalldJob(const QByteArray &call, const QVariantList &args, const FirewalldJob::JobType &type)
+    : KJob()
+    , m_type(type)
 {
     setFirewalldMessage(call, args);
 };
-FirewalldJob::FirewalldJob(const FirewalldJob::JobType &type) : KJob(), m_type(type) {};
+FirewalldJob::FirewalldJob(const FirewalldJob::JobType &type)
+    : KJob()
+    , m_type(type) {};
 
-void FirewalldJob::setFirewalldMessage(const QByteArray &call, const QVariantList &args) {
+void FirewalldJob::setFirewalldMessage(const QByteArray &call, const QVariantList &args)
+{
     if (!m_type) {
         m_call = call;
         m_args = args;
     }
 }
 
-
-void FirewalldJob::firewalldAction(const QByteArray &method, const QVariantList &args ) 
-{    
-    QDBusMessage call = QDBusMessage::createMethodCall(HELPER::BUS,HELPER::PATH,HELPER::INTERFACE,method);
+void FirewalldJob::firewalldAction(const QByteArray &method, const QVariantList &args)
+{
+    QDBusMessage call = QDBusMessage::createMethodCall(HELPER::BUS, HELPER::PATH, HELPER::INTERFACE, method);
     call.setArguments(args);
     QDBusPendingCall message = QDBusConnection::systemBus().asyncCall(call);
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(message, this);
-    if (args.isEmpty()){
+    if (args.isEmpty()) {
         connect(watcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
             QDBusPendingReply<QList<firewalld_reply>> reply = *watcher;
             watcher->deleteLater();
@@ -115,55 +116,51 @@ void FirewalldJob::firewalldAction(const QByteArray &method, const QVariantList 
     }
 }
 
-
 QList<firewalld_reply> FirewalldJob::get_firewalldreply()
-{   
+{
     return m_firewalldreply;
 }
 
 FirewalldJob::~FirewalldJob() = default;
 
-void FirewalldJob::start() {
-
-    switch(m_type) {
-        case FirewalldJob::FIREWALLD:
-            qDebug() << "firewalld " << m_call << m_args;
-            firewalldAction(m_call, m_args);
-            break;
-        case FirewalldJob::SAVEFIREWALLD:
-            qDebug() << "firewalld saving (runtimetopermanent)";
-            saveFirewalld();
-            break;
-        default:
-            emitResult();
-            return;
+void FirewalldJob::start()
+{
+    switch (m_type) {
+    case FirewalldJob::FIREWALLD:
+        qDebug() << "firewalld " << m_call << m_args;
+        firewalldAction(m_call, m_args);
+        break;
+    case FirewalldJob::SAVEFIREWALLD:
+        qDebug() << "firewalld saving (runtimetopermanent)";
+        saveFirewalld();
+        break;
+    default:
+        emitResult();
+        return;
     }
 };
 
-QString FirewalldJob::name() {
-
-    return m_type == FirewalldJob::SAVEFIREWALLD ?
-        QString("firewalld saving") :
-        QString("firewalld %1").arg(QString(m_call));
-
+QString FirewalldJob::name()
+{
+    return m_type == FirewalldJob::SAVEFIREWALLD ? QString("firewalld saving") : QString("firewalld %1").arg(QString(m_call));
 }
 
-void FirewalldJob::saveFirewalld() {
-    QDBusPendingCall message = QDBusConnection::systemBus()
-        .asyncCall(QDBusMessage::createMethodCall(SAVE::BUS,SAVE::PATH,SAVE::INTERFACE,SAVE::METHOD));
+void FirewalldJob::saveFirewalld()
+{
+    QDBusPendingCall message = QDBusConnection::systemBus().asyncCall(QDBusMessage::createMethodCall(SAVE::BUS, SAVE::PATH, SAVE::INTERFACE, SAVE::METHOD));
 
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(message, this);
 
     connect(watcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
-            QDBusPendingReply<> reply = *watcher;
-            watcher->deleteLater();
+        QDBusPendingReply<> reply = *watcher;
+        watcher->deleteLater();
 
-            if (reply.isError()) {
-                setErrorText(reply.error().message());
-                setError(DBUSFIREWALLDDERROR);
-                qDebug() << errorString();
-                emitResult();
-            }
-            return;
+        if (reply.isError()) {
+            setErrorText(reply.error().message());
+            setError(DBUSFIREWALLDDERROR);
+            qDebug() << errorString();
+            emitResult();
+        }
+        return;
     });
 };

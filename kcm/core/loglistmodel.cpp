@@ -25,8 +25,8 @@
 
 #include "loglistmodel.h"
 
-#include <QDebug>
 #include <QDateTime>
+#include <QDebug>
 #include <QRegularExpression>
 
 LogListModel::LogListModel(QObject *parent)
@@ -58,24 +58,32 @@ int LogListModel::rowCount(const QModelIndex &parent) const
 
 QVariant LogListModel::data(const QModelIndex &index, int role) const
 {
-    const auto checkIndexFlags =  QAbstractItemModel::CheckIndexOption::IndexIsValid
-                               | QAbstractItemModel::CheckIndexOption::ParentIsInvalid;
+    const auto checkIndexFlags = QAbstractItemModel::CheckIndexOption::IndexIsValid | QAbstractItemModel::CheckIndexOption::ParentIsInvalid;
 
     if (!checkIndex(index, checkIndexFlags)) {
         return {};
     }
 
     LogData data = m_logsData.at(index.row());
-    switch(role) {
-        case SourceAddressRole: return data.sourceAddress;
-        case SourcePortRole: return data.sourcePort;
-        case DestinationAddressRole: return data.destinationAddress;
-        case DestinationPortRole: return data.destinationPort;
-        case ProtocolRole: return data.protocol;
-        case InterfaceRole: return data.interface;
-        case ActionRole: return data.action;
-        case TimeRole: return data.time;
-        case DateRole: return data.date;
+    switch (role) {
+    case SourceAddressRole:
+        return data.sourceAddress;
+    case SourcePortRole:
+        return data.sourcePort;
+    case DestinationAddressRole:
+        return data.destinationAddress;
+    case DestinationPortRole:
+        return data.destinationPort;
+    case ProtocolRole:
+        return data.protocol;
+    case InterfaceRole:
+        return data.interface;
+    case ActionRole:
+        return data.action;
+    case TimeRole:
+        return data.time;
+    case DateRole:
+        return data.date;
     };
 
     return {};
@@ -83,14 +91,12 @@ QVariant LogListModel::data(const QModelIndex &index, int role) const
 
 void LogListModel::addRawLogs(const QStringList &rawLogsList)
 {
-    static QRegularExpression regex(
-        R"((.*)\s(.*)\s(.*):\s\[(.*)\]\s\[(.*)\].*)"
-        R"(IN=([\w|\d]*).*)"
-        R"(SRC=([\w|\.|\:\d]*).*)"
-        R"(DST=([\w|\.|\:\d]*).*)"
-        R"(PROTO=([\w|\.|\d]*)\s)"
-        R"((SPT=(\d*)\sDPT=(\d*))?.*)"
-    );
+    static QRegularExpression regex(R"((.*)\s(.*)\s(.*):\s\[(.*)\]\s\[(.*)\].*)"
+                                    R"(IN=([\w|\d]*).*)"
+                                    R"(SRC=([\w|\.|\:\d]*).*)"
+                                    R"(DST=([\w|\.|\:\d]*).*)"
+                                    R"(PROTO=([\w|\.|\d]*)\s)"
+                                    R"((SPT=(\d*)\sDPT=(\d*))?.*)");
 
     QVector<LogData> newLogs;
     newLogs.reserve(rawLogsList.count());
@@ -110,17 +116,15 @@ void LogListModel::addRawLogs(const QStringList &rawLogsList)
             protocol = QStringLiteral("IGMP");
         }
 
-        LogData logDetails {
-            .sourceAddress = match.captured(7),
-            .sourcePort = match.captured(11),
-            .destinationAddress = match.captured(8),
-            .destinationPort = match.captured(12),
-            .protocol = protocol,
-            .interface = match.captured(6),
-            .action = match.captured(5),
-            .time = date.toString("HH:mm:ss"),
-            .date = date.toString("MMM dd")
-        };
+        LogData logDetails {.sourceAddress = match.captured(7),
+                            .sourcePort = match.captured(11),
+                            .destinationAddress = match.captured(8),
+                            .destinationPort = match.captured(12),
+                            .protocol = protocol,
+                            .interface = match.captured(6),
+                            .action = match.captured(5),
+                            .time = date.toString("HH:mm:ss"),
+                            .date = date.toString("MMM dd")};
         newLogs.append(logDetails);
     }
 

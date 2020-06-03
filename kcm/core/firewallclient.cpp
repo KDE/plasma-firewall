@@ -25,8 +25,8 @@
 
 #include "firewallclient.h"
 
-#include "rulelistmodel.h"
 #include "loglistmodel.h"
+#include "rulelistmodel.h"
 #include "rulewrapper.h"
 
 #include "ifirewallclientbackend.h"
@@ -36,9 +36,9 @@
 #include <KPluginLoader>
 #include <KPluginMetaData>
 
-#include <QStringList>
-#include <QNetworkInterface>
 #include <QList>
+#include <QNetworkInterface>
+#include <QStringList>
 #include <QtGlobal>
 
 FirewallClient::FirewallClient(QObject *parent)
@@ -48,7 +48,7 @@ FirewallClient::FirewallClient(QObject *parent)
 
 QStringList FirewallClient::getKnownProtocols()
 {
-    return { i18n("Any"), "TCP", "UDP" };
+    return {i18n("Any"), "TCP", "UDP"};
 }
 
 QStringList FirewallClient::getKnownInterfaces()
@@ -69,7 +69,7 @@ void FirewallClient::refresh()
     m_currentBackend->refresh();
 }
 
-RuleListModel* FirewallClient::rulesModel() const
+RuleListModel *FirewallClient::rulesModel() const
 {
     if (!m_currentBackend) {
         return nullptr;
@@ -77,7 +77,7 @@ RuleListModel* FirewallClient::rulesModel() const
     return m_currentBackend->rules();
 }
 
-RuleWrapper* FirewallClient::getRule(int index)
+RuleWrapper *FirewallClient::getRule(int index)
 {
     if (!m_currentBackend) {
         return nullptr;
@@ -85,7 +85,7 @@ RuleWrapper* FirewallClient::getRule(int index)
     return m_currentBackend->getRule(index);
 }
 
-KJob *FirewallClient::addRule(RuleWrapper * rule)
+KJob *FirewallClient::addRule(RuleWrapper *rule)
 {
     Q_ASSERT(m_currentBackend);
     return m_currentBackend->addRule(rule);
@@ -97,7 +97,7 @@ KJob *FirewallClient::removeRule(int index)
     return m_currentBackend->removeRule(index);
 }
 
-KJob *FirewallClient::updateRule(RuleWrapper * rule)
+KJob *FirewallClient::updateRule(RuleWrapper *rule)
 {
     Q_ASSERT(m_currentBackend);
     return m_currentBackend->updateRule(rule);
@@ -116,29 +116,20 @@ KJob *FirewallClient::save()
     return m_currentBackend->save();
 }
 
-FirewallClient::Capabilities FirewallClient::capabilities() const {
+FirewallClient::Capabilities FirewallClient::capabilities() const
+{
     Q_ASSERT(m_currentBackend);
     return m_currentBackend->capabilities();
 }
 
 /* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connecion Table. */
-RuleWrapper* FirewallClient::createRuleFromConnection(
-    const QString &protocol,
-    const QString &localAddress,
-    const QString &foreignAddres,
-    const QString &status)
+RuleWrapper *FirewallClient::createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status)
 {
     Q_ASSERT(m_currentBackend);
     return m_currentBackend->createRuleFromConnection(protocol, localAddress, foreignAddres, status);
 }
 
-RuleWrapper* FirewallClient::createRuleFromLog(
-    const QString &protocol,
-    const QString &sourceAddress,
-    const QString &sourcePort,
-    const QString &destinationAddress,
-    const QString &destinationPort,
-    const QString &inn)
+RuleWrapper *FirewallClient::createRuleFromLog(const QString &protocol, const QString &sourceAddress, const QString &sourcePort, const QString &destinationAddress, const QString &destinationPort, const QString &inn)
 {
     Q_ASSERT(m_currentBackend);
     return m_currentBackend->createRuleFromLog(protocol, sourceAddress, sourcePort, destinationAddress, destinationPort, inn);
@@ -168,7 +159,7 @@ QString FirewallClient::defaultOutgoingPolicy() const
     return m_currentBackend->defaultOutgoingPolicy();
 }
 
-LogListModel* FirewallClient::logsModel()
+LogListModel *FirewallClient::logsModel()
 {
     // TODO: Perhaps this function is uneeded.
     if (!m_currentBackend) {
@@ -234,7 +225,7 @@ bool FirewallClient::hasExecutable() const
     return m_currentBackend->hasExecutable();
 }
 
-void FirewallClient::setBackend(const QString& backend)
+void FirewallClient::setBackend(const QString &backend)
 {
     if (m_currentBackend) {
         enabledChanged(false);
@@ -245,7 +236,7 @@ void FirewallClient::setBackend(const QString& backend)
 
     for (const KPluginMetaData &metadata : plugins) {
         // FIXME FIXME add criteria for loading it (e.g. service registered) and some priority thing
-        
+
         if (metadata.pluginId() != backend + QLatin1String("backend")) {
             continue;
         }

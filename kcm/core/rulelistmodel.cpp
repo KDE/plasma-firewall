@@ -34,7 +34,7 @@ RuleListModel::RuleListModel(QObject *parent)
 
 void RuleListModel::move(int from, int to)
 {
-    if(to < 0 && to >= m_rules.count()) {
+    if (to < 0 && to >= m_rules.count()) {
         return;
     }
 
@@ -56,8 +56,7 @@ int RuleListModel::rowCount(const QModelIndex &parent) const
 
 QVariant RuleListModel::data(const QModelIndex &index, int role) const
 {
-    const auto checkIndexFlags = QAbstractItemModel::CheckIndexOption::IndexIsValid
-                               | QAbstractItemModel::CheckIndexOption::ParentIsInvalid;
+    const auto checkIndexFlags = QAbstractItemModel::CheckIndexOption::IndexIsValid | QAbstractItemModel::CheckIndexOption::ParentIsInvalid;
 
     if (!checkIndex(index, checkIndexFlags)) {
         return {};
@@ -65,12 +64,17 @@ QVariant RuleListModel::data(const QModelIndex &index, int role) const
 
     const Rule rule = m_rules.at(index.row());
 
-    switch(role) {
-        case ActionRole: return rule.actionStr();
-        case FromRole: return rule.fromStr();
-        case ToRole: return rule.toStr();
-        case Ipv6Role: return rule.getV6() ? "IPv6" : "IPv4";
-        case LoggingRole: return rule.loggingStr();
+    switch (role) {
+    case ActionRole:
+        return rule.actionStr();
+    case FromRole:
+        return rule.fromStr();
+    case ToRole:
+        return rule.toStr();
+    case Ipv6Role:
+        return rule.getV6() ? "IPv6" : "IPv4";
+    case LoggingRole:
+        return rule.loggingStr();
     }
     return {};
 }

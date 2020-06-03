@@ -37,5 +37,3 @@ const QDBusArgument &operator<<(QDBusArgument &argument, const firewalld_reply &
     argument.endStructure();
     return argument;
 }
-
-  

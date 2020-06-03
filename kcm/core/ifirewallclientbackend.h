@@ -26,8 +26,8 @@
 #ifndef IFIREWALLCLIENTBACKEND_H
 #define IFIREWALLCLIENTBACKEND_H
 
-#include "firewallclient.h"
 #include "appprofiles.h"
+#include "firewallclient.h"
 
 #include <QString>
 
@@ -46,12 +46,12 @@ public:
 
     virtual QString name() const = 0;
     virtual void refresh() = 0;
-    virtual RuleListModel* rules() const = 0;
-    virtual RuleWrapper* getRule(int index) = 0;
+    virtual RuleListModel *rules() const = 0;
+    virtual RuleWrapper *getRule(int index) = 0;
 
-    Q_INVOKABLE virtual KJob *addRule(RuleWrapper * rule) = 0;
+    Q_INVOKABLE virtual KJob *addRule(RuleWrapper *rule) = 0;
     Q_INVOKABLE virtual KJob *removeRule(int index) = 0;
-    Q_INVOKABLE virtual KJob *updateRule(RuleWrapper * rule) = 0;
+    Q_INVOKABLE virtual KJob *updateRule(RuleWrapper *rule) = 0;
     Q_INVOKABLE virtual KJob *moveRule(int from, int to) = 0;
 
     Q_INVOKABLE virtual KJob *setEnabled(bool enabled) = 0;
@@ -62,25 +62,15 @@ public:
     virtual void setLogsAutoRefresh(bool logsAutoRefresh) = 0;
 
     /* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connecion Table. */
-    virtual RuleWrapper* createRuleFromConnection(
-        const QString &protocol,
-        const QString &localAddress,
-        const QString &foreignAddres,
-        const QString &status) = 0;
+    virtual RuleWrapper *createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status) = 0;
 
-    virtual RuleWrapper* createRuleFromLog(
-        const QString &protocol,
-        const QString &sourceAddress,
-        const QString &sourcePort,
-        const QString &destinationAddress,
-        const QString &destinationPort,
-        const QString &inn) = 0;
+    virtual RuleWrapper *createRuleFromLog(const QString &protocol, const QString &sourceAddress, const QString &sourcePort, const QString &destinationAddress, const QString &destinationPort, const QString &inn) = 0;
 
     virtual bool enabled() const = 0;
     virtual QString defaultIncomingPolicy() const = 0;
     virtual QString defaultOutgoingPolicy() const = 0;
     virtual bool hasExecutable() const = 0;
-    virtual LogListModel* logs() = 0;
+    virtual LogListModel *logs() = 0;
     virtual bool logsAutoRefresh() const = 0;
 
     virtual void refreshProfiles() = 0;

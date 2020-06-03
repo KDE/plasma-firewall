@@ -23,14 +23,14 @@
  * Boston, MA 02110-1301, USA.
  */
 
-
 #include "appprofiles.h"
 #include <KConfig>
 #include <KConfigGroup>
 #include <QDir>
 
 Entry::Entry(const QString &n, const QString &p)
-     : name(n), ports(p)
+    : name(n)
+    , ports(p)
 {
     ports.replace('|', ' ');
 }

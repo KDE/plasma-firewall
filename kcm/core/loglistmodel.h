@@ -53,8 +53,7 @@ class KCM_FIREWALL_CORE_EXPORT LogListModel : public QAbstractListModel
 public:
     explicit LogListModel(QObject *parent = nullptr);
 
-    enum LogItemModelRoles
-    {
+    enum LogItemModelRoles {
         SourceAddressRole = Qt::UserRole + 1,
         SourcePortRole,
         DestinationAddressRole,

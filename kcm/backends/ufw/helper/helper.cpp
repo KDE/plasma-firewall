@@ -23,17 +23,16 @@
  * Boston, MA 02110-1301, USA.
  */
 
-
 #include "helper.h"
-#include <QDebug>
 #include <QByteArray>
+#include <QDebug>
+#include <QDir>
+#include <QFile>
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QString>
 #include <QStringList>
 #include <QTextCodec>
-#include <QDir>
-#include <QFile>
 #include <sys/stat.h>
 
 #include <KAuth>
@@ -42,7 +41,8 @@
 
 #include "ufw_helper_config.h"
 
-namespace {
+namespace
+{
 constexpr int FILE_PERMS = 0644;
 constexpr int DIR_PERMS = 0755;
 const QString KCM_UFW_DIR = QStringLiteral("/etc/kcm_ufw");
@@ -62,7 +62,7 @@ void checkFolder()
 {
     QDir d(KCM_UFW_DIR);
 
-    if(!d.exists()) {
+    if (!d.exists()) {
         d.mkpath(KCM_UFW_DIR);
         setPermissions(d.absolutePath(), DIR_PERMS);
     }
@@ -70,20 +70,19 @@ void checkFolder()
 
 } // namespace
 
-namespace UFW {
+namespace UFW
+{
 ActionReply Helper::query(const QVariantMap &args)
 {
     qDebug() << __FUNCTION__;
-    ActionReply reply=args["defaults"].toBool()
-                        ? run({"--status", "--defaults", "--list", "--modules"}, "query")
-                        : run({"--status", "--list"}, "query");
+    ActionReply reply = args["defaults"].toBool() ? run({"--status", "--defaults", "--list", "--modules"}, "query") : run({"--status", "--list"}, "query");
 
-    if(args["profiles"].toBool()) {
+    if (args["profiles"].toBool()) {
         QDir dir(KCM_UFW_DIR);
-        QStringList profiles=dir.entryList({"*" + PROFILE_EXTENSION });
+        QStringList profiles = dir.entryList({"*" + PROFILE_EXTENSION});
         QMap<QString, QVariant> data;
         for (const QString &profile : profiles) {
-            QFile f(dir.canonicalPath()+QChar('/')+profile);
+            QFile f(dir.canonicalPath() + QChar('/') + profile);
             if (f.open(QIODevice::ReadOnly)) {
                 data.insert(profile, f.readAll());
             }
@@ -98,9 +97,8 @@ ActionReply Helper::viewlog(const QVariantMap &args)
 {
     qDebug() << __FUNCTION__;
 
-    QString     lastLine=args["lastLine"].toString(),
-                logFile=args["logFile"].toString();
-    QFile       file(logFile.isEmpty() ? LOG_FILE : logFile);
+    QString lastLine = args["lastLine"].toString(), logFile = args["logFile"].toString();
+    QFile file(logFile.isEmpty() ? LOG_FILE : logFile);
     ActionReply reply;
 
     // There might be no logs if the firewall is disabled
@@ -108,12 +106,13 @@ ActionReply Helper::viewlog(const QVariantMap &args)
         return reply;
     }
 
-    if(!file.open(QIODevice::ReadOnly|QIODevice::Text)) {
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         reply.setErrorCode(KAuth::ActionReply::BackendError);
         reply.setError(STATUS_OPERATION_FAILED);
         reply.setErrorDescription(i18n("Could not open the log file for the ufw client. \n "
-            "Please verify that the following file exist \n "
-            "and you have read permissions. \n") + file.fileName());
+                                       "Please verify that the following file exist \n "
+                                       "and you have read permissions. \n") +
+                                  file.fileName());
         return reply;
     }
 
@@ -121,8 +120,8 @@ ActionReply Helper::viewlog(const QVariantMap &args)
     while (!file.atEnd()) {
         QString line(file.readLine());
 
-        if(line.contains(" [UFW ")) {
-            if(!lastLine.isEmpty() && line==lastLine) {
+        if (line.contains(" [UFW ")) {
+            if (!lastLine.isEmpty() && line == lastLine) {
                 lines.clear();
                 continue;
             }
@@ -137,30 +136,29 @@ ActionReply Helper::viewlog(const QVariantMap &args)
 ActionReply Helper::modify(const QVariantMap &args)
 {
     qDebug() << __FUNCTION__;
-    QString cmd=args["cmd"].toString();
+    QString cmd = args["cmd"].toString();
 
     // QProcess converts its args using QString().toLocal8Bit()!!!, so use UTF-8 codec.
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     return QStringLiteral("setStatus") == cmd ? setStatus(args, cmd)
-         : QStringLiteral("addRules") == cmd ? addRules(args, cmd)
-         : QStringLiteral("removeRule") == cmd ? removeRule(args, cmd)
-         : QStringLiteral("moveRule") == cmd ? moveRule(args, cmd)
-         : QStringLiteral("editRule") == cmd ? editRule(args, cmd)
-         : QStringLiteral("reset") == cmd ? reset(cmd)
-         : QStringLiteral("setDefaults") == cmd ? setDefaults(args, cmd)
-         : QStringLiteral("setModules") == cmd ? setModules(args, cmd)
-         : QStringLiteral("setProfile") == cmd ? setProfile(args, cmd)
-         : QStringLiteral("saveProfile") == cmd ? saveProfile(args, cmd)
-         : QStringLiteral("deleteProfile") == cmd ? deleteProfile(args, cmd)
-         : ActionReply::HelperErrorReply(STATUS_INVALID_CMD);
+                                              : QStringLiteral("addRules") == cmd ? addRules(args, cmd)
+                                                                                  : QStringLiteral("removeRule") == cmd
+                ? removeRule(args, cmd)
+                : QStringLiteral("moveRule") == cmd ? moveRule(args, cmd)
+                                                    : QStringLiteral("editRule") == cmd ? editRule(args, cmd)
+                                                                                        : QStringLiteral("reset") == cmd ? reset(cmd)
+                                                                                                                         : QStringLiteral("setDefaults") == cmd ? setDefaults(args, cmd)
+                                                                                                                                                                : QStringLiteral("setModules") == cmd ? setModules(args, cmd)
+                                                                                                                                                                                                      : QStringLiteral("setProfile") == cmd
+                                        ? setProfile(args, cmd)
+                                        : QStringLiteral("saveProfile") == cmd ? saveProfile(args, cmd) : QStringLiteral("deleteProfile") == cmd ? deleteProfile(args, cmd) : ActionReply::HelperErrorReply(STATUS_INVALID_CMD);
 }
 
 ActionReply Helper::setStatus(const QVariantMap &args, const QString &cmd)
 {
     const QString enabled = args["status"].toBool() ? "true" : "false";
 
-    return run({"--setEnabled=" + enabled},
-               {"--status"}, cmd);
+    return run({"--setEnabled=" + enabled}, {"--status"}, cmd);
 }
 
 ActionReply Helper::setDefaults(const QVariantMap &args, const QString &cmd)
@@ -172,39 +170,36 @@ ActionReply Helper::setDefaults(const QVariantMap &args, const QString &cmd)
 
     const QString defaults = args["xml"].toString();
 
-    return run({"--setDefaults="+defaults},
-               query, cmd);
+    return run({"--setDefaults=" + defaults}, query, cmd);
 }
 
 ActionReply Helper::setModules(const QVariantMap &args, const QString &cmd)
 {
-    return run({"--setModules="+args["xml"].toString()},
-               {"--modules"}, cmd);
+    return run({"--setModules=" + args["xml"].toString()}, {"--modules"}, cmd);
 }
 
 ActionReply Helper::setProfile(const QVariantMap &args, const QString &cmd)
 {
     QStringList cmdArgs;
 
-    if(args.contains("ruleCount"))
-    {
-        unsigned int count=args["ruleCount"].toUInt();
+    if (args.contains("ruleCount")) {
+        unsigned int count = args["ruleCount"].toUInt();
 
         cmdArgs.append("--clearRules");
-        for(unsigned int i=0; i < count; ++i) {
-            const QString argument = args["rule"+QString::number(i)].toString();
-            cmdArgs.append("--add="+argument);
+        for (unsigned int i = 0; i < count; ++i) {
+            const QString argument = args["rule" + QString::number(i)].toString();
+            cmdArgs.append("--add=" + argument);
         }
     }
 
-    if(args.contains("defaults")) {
-        cmdArgs << "--setDefaults="+args["defaults"].toString();
+    if (args.contains("defaults")) {
+        cmdArgs << "--setDefaults=" + args["defaults"].toString();
     }
-    if(args.contains("modules")) {
-        cmdArgs << "--setModules="+args["modules"].toString();
+    if (args.contains("modules")) {
+        cmdArgs << "--setModules=" + args["modules"].toString();
     }
 
-    if(cmdArgs.isEmpty()) {
+    if (cmdArgs.isEmpty()) {
         auto action = ActionReply::HelperErrorReply(STATUS_INVALID_ARGUMENTS);
         action.setErrorDescription(i18n("Invalid arguments passed to the profile"));
         return action;
@@ -218,24 +213,23 @@ ActionReply Helper::saveProfile(const QVariantMap &args, const QString &cmd)
 {
     qDebug() << __FUNCTION__ << args;
 
-    QString     name(args["name"].toString()),
-                xml(args["xml"].toString());
+    QString name(args["name"].toString()), xml(args["xml"].toString());
     ActionReply reply;
     auto prepareData = [&] {
         reply.addData("cmd", cmd);
         reply.addData("name", name);
-        reply.addData("profiles", QDir(KCM_UFW_DIR).entryList({"*" + PROFILE_EXTENSION }));
+        reply.addData("profiles", QDir(KCM_UFW_DIR).entryList({"*" + PROFILE_EXTENSION}));
     };
 
     if (name.isEmpty() || xml.isEmpty()) {
-        reply=ActionReply::HelperErrorReply(STATUS_INVALID_ARGUMENTS);
+        reply = ActionReply::HelperErrorReply(STATUS_INVALID_ARGUMENTS);
         prepareData();
         return reply;
     }
 
     checkFolder();
 
-    QFile f(QString(KCM_UFW_DIR)+"/"+name+PROFILE_EXTENSION);
+    QFile f(QString(KCM_UFW_DIR) + "/" + name + PROFILE_EXTENSION);
 
     if (!f.open(QIODevice::WriteOnly)) {
         reply = ActionReply::HelperErrorReply(STATUS_OPERATION_FAILED);
@@ -255,25 +249,23 @@ ActionReply Helper::deleteProfile(const QVariantMap &args, const QString &cmd)
 {
     qDebug() << __FUNCTION__ << args;
 
-    QString     name(args["name"].toString());
+    QString name(args["name"].toString());
     ActionReply reply;
     auto prepareData = [&] {
         reply.addData("cmd", cmd);
         reply.addData("name", name);
-        reply.addData("profiles", QDir(KCM_UFW_DIR).entryList({"*" +  PROFILE_EXTENSION }));
+        reply.addData("profiles", QDir(KCM_UFW_DIR).entryList({"*" + PROFILE_EXTENSION}));
     };
 
-    if(name.isEmpty())
-    {
-        reply=ActionReply::HelperErrorReply(STATUS_INVALID_ARGUMENTS);
+    if (name.isEmpty()) {
+        reply = ActionReply::HelperErrorReply(STATUS_INVALID_ARGUMENTS);
         reply.setErrorDescription(i18n("Invalid arguments passed to delete profile"));
         prepareData();
         return reply;
     }
 
-    if(!QFile::remove(QString(KCM_UFW_DIR)+"/"+name+PROFILE_EXTENSION))
-    {
-        reply=ActionReply::HelperErrorReply(STATUS_OPERATION_FAILED);
+    if (!QFile::remove(QString(KCM_UFW_DIR) + "/" + name + PROFILE_EXTENSION)) {
+        reply = ActionReply::HelperErrorReply(STATUS_OPERATION_FAILED);
         reply.setErrorDescription(i18n("Could not remove the profile from disk."));
         prepareData();
         return reply;
@@ -285,17 +277,17 @@ ActionReply Helper::deleteProfile(const QVariantMap &args, const QString &cmd)
 
 ActionReply Helper::addRules(const QVariantMap &args, const QString &cmd)
 {
-    unsigned int count=args["count"].toUInt();
+    unsigned int count = args["count"].toUInt();
 
     if (count <= 0) {
-        ActionReply reply=ActionReply::HelperErrorReply(STATUS_INVALID_ARGUMENTS);
+        ActionReply reply = ActionReply::HelperErrorReply(STATUS_INVALID_ARGUMENTS);
         reply.setErrorDescription(i18n("Invalid argument passed to add Rules"));
         return reply;
     }
     QStringList cmdArgs;
 
-    for(unsigned int i=0; i<count; ++i)
-        cmdArgs << "--add="+args["xml"+QString::number(i)].toString();
+    for (unsigned int i = 0; i < count; ++i)
+        cmdArgs << "--add=" + args["xml" + QString::number(i)].toString();
 
     checkFolder();
     return run(cmdArgs, {"--list"}, cmd);
@@ -304,8 +296,7 @@ ActionReply Helper::addRules(const QVariantMap &args, const QString &cmd)
 ActionReply Helper::removeRule(const QVariantMap &args, const QString &cmd)
 {
     checkFolder();
-    return run({"--remove="+args["index"].toString()},
-               {"--list"}, cmd);
+    return run({"--remove=" + args["index"].toString()}, {"--list"}, cmd);
 }
 
 ActionReply Helper::moveRule(const QVariantMap &args, const QString &cmd)
@@ -314,27 +305,24 @@ ActionReply Helper::moveRule(const QVariantMap &args, const QString &cmd)
     const QString from = QString::number(args["from"].toUInt());
     const QString to = QString::number(args["to"].toUInt());
 
-    return run({"--move="+ from + ':' + to },
-               {"--list"}, cmd);
+    return run({"--move=" + from + ':' + to}, {"--list"}, cmd);
 }
 
 ActionReply Helper::editRule(const QVariantMap &args, const QString &cmd)
 {
     checkFolder();
-    return run({"--update="+args["xml"].toString()},
-               {"--list"}, cmd);
+    return run({"--update=" + args["xml"].toString()}, {"--list"}, cmd);
 }
 
 ActionReply Helper::reset(const QString &cmd)
 {
-    return run({"--reset"},
-               {"--status", "--defaults", "--list", "--modules"}, cmd);
+    return run({"--reset"}, {"--status", "--defaults", "--list", "--modules"}, cmd);
 }
 
 ActionReply Helper::run(const QStringList &args, const QStringList &second, const QString &cmd)
 {
-    ActionReply reply=run(args, cmd);
-    if( reply.errorCode() == EXIT_SUCCESS ) {
+    ActionReply reply = run(args, cmd);
+    if (reply.errorCode() == EXIT_SUCCESS) {
         reply = run(second, cmd);
     }
     return reply;
@@ -342,7 +330,7 @@ ActionReply Helper::run(const QStringList &args, const QStringList &second, cons
 
 ActionReply Helper::run(const QStringList &args, const QString &cmd)
 {
-    QProcess    ufw;
+    QProcess ufw;
     ActionReply reply;
 
     qDebug() << __FUNCTION__ << args;
@@ -353,7 +341,7 @@ ActionReply Helper::run(const QStringList &args, const QString &cmd)
 
     int exitCode(ufw.exitCode());
 
-    if(exitCode != EXIT_SUCCESS) {
+    if (exitCode != EXIT_SUCCESS) {
         QString errorString = ufw.readAllStandardError().simplified();
 
         const QString errorPrefix = QStringLiteral("ERROR: ");
@@ -361,7 +349,7 @@ ActionReply Helper::run(const QStringList &args, const QString &cmd)
             errorString = errorString.mid(errorPrefix.length());
         }
 
-        reply=ActionReply::HelperErrorReply(exitCode);
+        reply = ActionReply::HelperErrorReply(exitCode);
         reply.setErrorDescription(i18n("An error occurred in command '%1': %2", cmd, errorString));
         reply.addData("cmd", cmd);
         return reply;

@@ -23,42 +23,55 @@
  * Boston, MA 02110-1301, USA.
  */
 
-
 #include "ufwclient.h"
 #include "rule.h"
 #include "types.h"
 
 #include <QDebug>
-#include <QTimer>
-#include <QVariantMap>
+#include <QDir>
 #include <QNetworkInterface>
 #include <QStandardPaths>
-#include <QDir>
+#include <QTimer>
+#include <QVariantMap>
 #include <QXmlStreamReader>
 
 #include <KConfig>
-#include <KLocalizedString>
 #include <KConfigGroup>
+#include <KLocalizedString>
 #include <KPluginFactory>
 
-#include <rulewrapper.h>
-#include <rulelistmodel.h>
 #include <loglistmodel.h>
+#include <rulelistmodel.h>
+#include <rulewrapper.h>
 
 K_PLUGIN_CLASS_WITH_JSON(UfwClient, "ufwbackend.json")
 
-namespace {
-    void debugState(KAuth::Action::AuthStatus status) {
-        using Status = KAuth::Action::AuthStatus;
-        switch(status) {
-            case Status::AuthorizedStatus: qDebug() << "Job Authorized"; break;
-            case Status::AuthRequiredStatus: qDebug() << "Job Requires authentication"; break;
-            case Status::UserCancelledStatus: qDebug() << "User cancelled!"; break;
-            case Status::DeniedStatus: qDebug() << "Password denied"; break;
-            case Status::InvalidStatus: qDebug() << "Invalid Status!"; break;
-            case Status::ErrorStatus: qDebug() << "Job is in an error state"; break;
-        }
+namespace
+{
+void debugState(KAuth::Action::AuthStatus status)
+{
+    using Status = KAuth::Action::AuthStatus;
+    switch (status) {
+    case Status::AuthorizedStatus:
+        qDebug() << "Job Authorized";
+        break;
+    case Status::AuthRequiredStatus:
+        qDebug() << "Job Requires authentication";
+        break;
+    case Status::UserCancelledStatus:
+        qDebug() << "User cancelled!";
+        break;
+    case Status::DeniedStatus:
+        qDebug() << "Password denied";
+        break;
+    case Status::InvalidStatus:
+        qDebug() << "Invalid Status!";
+        break;
+    case Status::ErrorStatus:
+        qDebug() << "Job is in an error state";
+        break;
     }
+}
 }
 
 UfwClient::UfwClient(QObject *parent, const QVariantList &args)
@@ -80,8 +93,7 @@ QString UfwClient::name() const
 
 void UfwClient::refresh()
 {
-    queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
-                FirewallClient::ProfilesBehavior::ListenProfiles);
+    queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::ListenProfiles);
 }
 
 bool UfwClient::enabled() const
@@ -105,8 +117,7 @@ KJob *UfwClient::setEnabled(bool value)
     KAuth::ExecuteJob *job = modifyAction.execute();
     connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
         if (!job->error()) {
-            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
-                        FirewallClient::ProfilesBehavior::DontListenProfiles);
+            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
         }
     });
 
@@ -140,10 +151,7 @@ KJob *UfwClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavio
         m_busy = false;
 
         if (job->error()) {
-            emit showErrorMessage(
-                i18n("There was an error in the backend! Please report it.\n%1 %2",
-                job->action().name(), job->errorString())
-            );
+            emit showErrorMessage(i18n("There was an error in the backend! Please report it.\n%1 %2", job->action().name(), job->errorString()));
             qWarning() << job->action().name() << job->errorString();
             return;
         }
@@ -164,7 +172,7 @@ KJob *UfwClient::setDefaultIncomingPolicy(QString policy)
     const QString xmlArg = QStringLiteral("<defaults incoming=\"%1\"/>").arg(policy);
 
     QVariantMap args {
-        {"cmd","setDefaults"},
+        {"cmd", "setDefaults"},
         {"xml", xmlArg},
     };
 
@@ -173,8 +181,7 @@ KJob *UfwClient::setDefaultIncomingPolicy(QString policy)
     KAuth::ExecuteJob *job = modifyAction.execute();
     connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
         if (!job->error()) {
-            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
-                        FirewallClient::ProfilesBehavior::DontListenProfiles);
+            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
         }
     });
 
@@ -200,8 +207,7 @@ KJob *UfwClient::setDefaultOutgoingPolicy(QString policy)
     KAuth::ExecuteJob *job = modifyAction.execute();
     connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
         if (!job->error()) {
-            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
-                        FirewallClient::ProfilesBehavior::DontListenProfiles);
+            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
         }
     });
 
@@ -315,7 +321,7 @@ RuleWrapper *UfwClient::getRule(int index)
 
     auto rule = rules.at(index);
     rule.setPosition(index);
-    RuleWrapper * wrapper = new RuleWrapper(rule, this);
+    RuleWrapper *wrapper = new RuleWrapper(rule, this);
 
     return wrapper;
 }
@@ -331,7 +337,7 @@ KJob *UfwClient::addRule(RuleWrapper *ruleWrapper)
 
     QVariantMap args {
         {"cmd", "addRules"},
-        {"count",1},
+        {"count", 1},
         {"xml0", rule.toXml()},
     };
 
@@ -340,8 +346,7 @@ KJob *UfwClient::addRule(RuleWrapper *ruleWrapper)
     KAuth::ExecuteJob *job = modifyAction.execute();
     connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
         if (!job->error()) {
-            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
-                        FirewallClient::ProfilesBehavior::ListenProfiles);
+            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::ListenProfiles);
         }
     });
 
@@ -366,14 +371,11 @@ KJob *UfwClient::removeRule(int index)
 
     KAuth::Action modifyAction = buildModifyAction(args);
     KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::statusChanged, this, [this] (KAuth::Action::AuthStatus status) {
-        debugState(status);
-    });
+    connect(job, &KAuth::ExecuteJob::statusChanged, this, [this](KAuth::Action::AuthStatus status) { debugState(status); });
 
     connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
         if (!job->error()) {
-            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
-                        FirewallClient::ProfilesBehavior::ListenProfiles);
+            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::ListenProfiles);
         }
     });
 
@@ -384,7 +386,7 @@ KJob *UfwClient::removeRule(int index)
 KJob *UfwClient::updateRule(RuleWrapper *ruleWrapper)
 {
     if (!ruleWrapper) {
-        qWarning() <<  "nullptr rule";
+        qWarning() << "nullptr rule";
         return nullptr;
     }
 
@@ -400,8 +402,7 @@ KJob *UfwClient::updateRule(RuleWrapper *ruleWrapper)
     KAuth::ExecuteJob *job = modifyAction.execute();
     connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
         if (!job->error()) {
-            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
-                        FirewallClient::ProfilesBehavior::ListenProfiles);
+            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::ListenProfiles);
         }
     });
 
@@ -436,8 +437,7 @@ KJob *UfwClient::moveRule(int from, int to)
     KAuth::ExecuteJob *job = modifyAction.execute();
     connect(job, &KAuth::ExecuteJob::finished, this, [this, job] {
         if (!job->error()) {
-            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults,
-                        FirewallClient::ProfilesBehavior::ListenProfiles);
+            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::ListenProfiles);
         }
     });
 
@@ -466,13 +466,12 @@ LogListModel *UfwClient::logs()
     return m_logs;
 }
 
-
 bool UfwClient::logsAutoRefresh() const
 {
     return m_logsAutoRefresh;
 }
 
-RuleWrapper* UfwClient::createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status)
+RuleWrapper *UfwClient::createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status)
 {
     // FIXME use a regexp for that and support ipv6!
     auto _localAddress = localAddress;
@@ -507,64 +506,58 @@ RuleWrapper* UfwClient::createRuleFromConnection(const QString &protocol, const 
     return rule;
 }
 
-RuleWrapper *UfwClient::createRuleFromLog(
-    const QString &protocol,
-    const QString &sourceAddress,
-    const QString &sourcePort,
-    const QString &destinationAddress,
-    const QString &destinationPort,
-    const QString &inn)
+RuleWrapper *UfwClient::createRuleFromLog(const QString &protocol, const QString &sourceAddress, const QString &sourcePort, const QString &destinationAddress, const QString &destinationPort, const QString &inn)
 {
-        // Transform to the ufw notation
-        auto rule = new RuleWrapper({});
+    // Transform to the ufw notation
+    auto rule = new RuleWrapper({});
 
-        auto _sourceAddress = sourceAddress;
-        _sourceAddress.replace("*", "");
-        _sourceAddress.replace("0.0.0.0", "");
+    auto _sourceAddress = sourceAddress;
+    _sourceAddress.replace("*", "");
+    _sourceAddress.replace("0.0.0.0", "");
 
-        auto _destinationAddress = destinationAddress;
-        _destinationAddress.replace("*", "");
-        _destinationAddress.replace("0.0.0.0", "");
+    auto _destinationAddress = destinationAddress;
+    _destinationAddress.replace("*", "");
+    _destinationAddress.replace("0.0.0.0", "");
 
-        // Heuristic to determine whether we should be ipv6
-        // TODO error when one is ipv6 and the other isn't?
-        if (sourceAddress.contains(QLatin1Char(':'))
-            && destinationAddress.contains(QLatin1Char(':'))) {
-            rule->setIpv6(true);
-        }
+    // Heuristic to determine whether we should be ipv6
+    // TODO error when one is ipv6 and the other isn't?
+    if (sourceAddress.contains(QLatin1Char(':')) && destinationAddress.contains(QLatin1Char(':'))) {
+        rule->setIpv6(true);
+    }
 
-        // Prepare rule draft
-        rule->setIncoming(inn.size());
-        rule->setPolicy("deny");
-        rule->setSourceAddress(_sourceAddress);
-        rule->setSourcePort(sourcePort);
+    // Prepare rule draft
+    rule->setIncoming(inn.size());
+    rule->setPolicy("deny");
+    rule->setSourceAddress(_sourceAddress);
+    rule->setSourcePort(sourcePort);
 
-        rule->setDestinationAddress(_destinationAddress);
-        rule->setDestinationPort(destinationPort);
+    rule->setDestinationAddress(_destinationAddress);
+    rule->setDestinationPort(destinationPort);
 
-        rule->setProtocol(FirewallClient::getKnownProtocols().indexOf(protocol.toUpper()));
-        return rule;
+    rule->setProtocol(FirewallClient::getKnownProtocols().indexOf(protocol.toUpper()));
+    return rule;
 }
 
-IFirewallClientBackend* UfwClient::createMethod(FirewallClient* parent)
+IFirewallClientBackend *UfwClient::createMethod(FirewallClient *parent)
 {
     IFirewallClientBackend *instance = new UfwClient(parent, {} /*args*/);
     return instance;
 }
 
-bool UfwClient::hasExecutable() const {
-     return !QStandardPaths::findExecutable("ufw").isEmpty();
+bool UfwClient::hasExecutable() const
+{
+    return !QStandardPaths::findExecutable("ufw").isEmpty();
 }
- 
+
 // FIXME is this even used?
-void UfwClient::setExecutable(const bool &hasExecutable){
+void UfwClient::setExecutable(const bool &hasExecutable)
+{
     emit hasExecutableChanged(hasExecutable);
 }
 
 void UfwClient::refreshProfiles()
 {
-
-    static const char * constProfileDir="/etc/ufw/applications.d/";
+    static const char *constProfileDir = "/etc/ufw/applications.d/";
 
     const QStringList files(QDir(constProfileDir).entryList(QDir::NoDotAndDotDot));
 
@@ -572,10 +565,10 @@ void UfwClient::refreshProfiles()
     for (const auto &file : files) {
         KConfig cfg(constProfileDir + file, KConfig::SimpleConfig);
 
-        for(const auto &group : cfg.groupList()) {
+        for (const auto &group : cfg.groupList()) {
             const QString ports(cfg.group(group).readEntry("ports", QString()));
 
-            if(!ports.isEmpty() && !profiles.contains(group))
+            if (!ports.isEmpty() && !profiles.contains(group))
                 profiles.append(Entry(group, ports));
         }
     }

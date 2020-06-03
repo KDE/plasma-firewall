@@ -26,7 +26,6 @@
  * Boston, MA 02110-1301, USA.
  */
 
-
 #include <QtCore/QObject>
 #include <QtCore/QVariantMap>
 #include <kauth.h>
@@ -38,31 +37,27 @@ using namespace KAuth;
 
 namespace UFW
 {
-
 class LogLister;
 
 class Helper : public QObject
 {
     Q_OBJECT
 
-    public:
-
-    enum Status
-    {
+public:
+    enum Status {
         STATUS_OK,
-        STATUS_INVALID_CMD       = -100,
+        STATUS_INVALID_CMD = -100,
         STATUS_INVALID_ARGUMENTS = -101,
-        STATUS_OPERATION_FAILED  = -102,
+        STATUS_OPERATION_FAILED = -102,
     };
 
-    public Q_SLOTS:
+public Q_SLOTS:
 
     ActionReply query(const QVariantMap &args);
     ActionReply viewlog(const QVariantMap &args);
     ActionReply modify(const QVariantMap &args);
 
-    private:
-
+private:
     ActionReply setStatus(const QVariantMap &args, const QString &cmd);
     ActionReply setDefaults(const QVariantMap &args, const QString &cmd);
     ActionReply setModules(const QVariantMap &args, const QString &cmd);
@@ -73,13 +68,12 @@ class Helper : public QObject
     ActionReply removeRule(const QVariantMap &args, const QString &cmd);
     ActionReply moveRule(const QVariantMap &args, const QString &cmd);
     ActionReply editRule(const QVariantMap &args, const QString &cmd);
-//     ActionReply editRuleDescr(const QVariantMap &args, const QString &cmd);
+    //     ActionReply editRuleDescr(const QVariantMap &args, const QString &cmd);
     ActionReply reset(const QString &cmd);
     ActionReply run(const QStringList &args, const QString &cmd);
     ActionReply run(const QStringList &args, const QStringList &second, const QString &cmd);
 
-    private:
-
+private:
     LogLister *lister;
 };
 

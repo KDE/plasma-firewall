@@ -23,8 +23,8 @@
 
 #include <QDebug>
 #include <QProcess>
-#include <QStringList>
 #include <QStandardPaths>
+#include <QStringList>
 
 NetstatHelper::NetstatHelper()
 {
@@ -35,12 +35,12 @@ NetstatHelper::NetstatHelper()
     }
 }
 
-KAuth::ActionReply NetstatHelper::query(const QVariantMap& map)
+KAuth::ActionReply NetstatHelper::query(const QVariantMap &map)
 {
     Q_UNUSED(map);
     KAuth::ActionReply reply;
 
-    QProcess    netstat;
+    QProcess netstat;
     /* parameters passed to ss
      *  -r, --resolve       resolve host names
      *  -a, --all           display all sockets
@@ -49,8 +49,7 @@ KAuth::ActionReply NetstatHelper::query(const QVariantMap& map)
      *  -t, --tcp           display only TCP sockets
      */
     QStringList netstatArgs({"-tuapr"});
-    QString executable = mHasSS ? QStringLiteral("ss")
-                      : QString();
+    QString executable = mHasSS ? QStringLiteral("ss") : QString();
 
     if (executable.isEmpty()) {
         qWarning() << "No iproute or net-tools installed, can't run.";
@@ -66,8 +65,8 @@ KAuth::ActionReply NetstatHelper::query(const QVariantMap& map)
     }
     int exitCode(netstat.exitCode());
 
-    if(0 != exitCode) {
-        reply=KAuth::ActionReply::HelperErrorReply(exitCode);
+    if (0 != exitCode) {
+        reply = KAuth::ActionReply::HelperErrorReply(exitCode);
         reply.addData("response", netstat.readAllStandardError());
     } else {
         QVariantList connections = parseOutput(netstat.readAllStandardOutput());
@@ -113,8 +112,7 @@ QVariantList NetstatHelper::parseSSOutput(const QByteArray &netstatOutput)
     };
 
     // Extract Information
-    for (auto line : outputLines)
-    {
+    for (auto line : outputLines) {
         QStringList values = line.split(" ", QString::SkipEmptyParts);
         if (values.isEmpty()) {
             continue;
@@ -153,7 +151,7 @@ QVariantList NetstatHelper::parseSSOutput(const QByteArray &netstatOutput)
             appName,
         };
 
-        connections.append((QVariant) connection);
+        connections.append((QVariant)connection);
     }
 
     return connections;
@@ -167,13 +165,10 @@ QVariantList NetstatHelper::parseNetstatOutput(const QByteArray &netstatOutput)
     QVariantList connections;
 
     int lineIdx = 0;
-    int protIndex = 0, protSize = 0,
-            localAddressIndex, localAddressSize,
-            foreingAddressIndex, foreingAddressSize,
-            stateIndex, stateSize, processIndex, processSize;
+    int protIndex = 0, protSize = 0, localAddressIndex, localAddressSize, foreingAddressIndex, foreingAddressSize, stateIndex, stateSize, processIndex, processSize;
 
     for (auto line : outputLines) {
-        lineIdx ++;
+        lineIdx++;
         if (line.isEmpty()) {
             continue;
         }
@@ -201,12 +196,8 @@ QVariantList NetstatHelper::parseNetstatOutput(const QByteArray &netstatOutput)
             continue;
         }
 
-        QVariantList connection ({
-            extractAndStrip(line, protIndex, protSize),
-            extractAndStrip(line, localAddressIndex, localAddressSize),
-            extractAndStrip(line, foreingAddressIndex, foreingAddressSize),
-            extractAndStrip(line, stateIndex, stateSize)
-        });
+        QVariantList connection(
+            {extractAndStrip(line, protIndex, protSize), extractAndStrip(line, localAddressIndex, localAddressSize), extractAndStrip(line, foreingAddressIndex, foreingAddressSize), extractAndStrip(line, stateIndex, stateSize)});
 
         QString pidAndProcess = extractAndStrip(line, processIndex, processSize);
 
@@ -214,19 +205,20 @@ QVariantList NetstatHelper::parseNetstatOutput(const QByteArray &netstatOutput)
         if (slashIndex != -1) {
             QString pidStr = pidAndProcess.left(slashIndex);
             QString program = pidAndProcess.right(pidAndProcess.size() - slashIndex - 1);
-            program = program.section(":",0,0);
+            program = program.section(":", 0, 0);
 
             connection << pidStr.toInt();
             connection << program;
         }
 
-        connections.append((QVariant) connection);
+        connections.append((QVariant)connection);
     }
 
     return connections;
 }
 
-QString NetstatHelper::extractAndStrip(const QString &src, const int &index, const int &size) {
+QString NetstatHelper::extractAndStrip(const QString &src, const int &index, const int &size)
+{
     QString str = src.mid(index, size);
     str.replace(" ", "");
     return str;

@@ -34,21 +34,19 @@
 namespace Types
 {
 KCM_FIREWALL_CORE_EXPORT Q_NAMESPACE
-    
-enum LogLevel
-{
-    LOG_OFF,
-    LOG_LOW,
-    LOG_MEDIUM,
-    LOG_HIGH,
-    LOG_FULL,
 
-    LOG_COUNT
-};
+    enum LogLevel {
+        LOG_OFF,
+        LOG_LOW,
+        LOG_MEDIUM,
+        LOG_HIGH,
+        LOG_FULL,
+
+        LOG_COUNT
+    };
 Q_ENUM_NS(LogLevel)
 
-enum Logging
-{
+enum Logging {
     LOGGING_OFF,
     LOGGING_NEW,
     LOGGING_ALL,
@@ -57,20 +55,18 @@ enum Logging
 };
 Q_ENUM_NS(Logging)
 
-enum Policy
-{
+enum Policy {
     POLICY_ALLOW,
     POLICY_DENY,
     POLICY_REJECT,
     POLICY_LIMIT,
 
     POLICY_COUNT,
-    POLICY_COUNT_DEFAULT=POLICY_COUNT-1 // No 'Limit' for defaults...
+    POLICY_COUNT_DEFAULT = POLICY_COUNT - 1 // No 'Limit' for defaults...
 };
 Q_ENUM_NS(Policy)
 
-enum PredefinedPort
-{
+enum PredefinedPort {
     PP_AMULE,
     PP_DELUGE,
     PP_KTORRENT,
@@ -103,8 +99,7 @@ enum PredefinedPort
 };
 Q_ENUM_NS(PredefinedPort)
 
-enum Protocol
-{
+enum Protocol {
     PROTO_BOTH,
     PROTO_TCP,
     PROTO_UDP,
@@ -113,16 +108,16 @@ enum Protocol
 };
 Q_ENUM_NS(Protocol)
 
-KCM_FIREWALL_CORE_EXPORT QString        toString(LogLevel level, bool ui=false);
-KCM_FIREWALL_CORE_EXPORT LogLevel       toLogLevel(const QString &str);
-KCM_FIREWALL_CORE_EXPORT QString        toString(Logging log, bool ui=false);
-KCM_FIREWALL_CORE_EXPORT Logging        toLogging(const QString &str);
-KCM_FIREWALL_CORE_EXPORT QString        toString(Policy policy, bool ui=false);
-KCM_FIREWALL_CORE_EXPORT Policy         toPolicy(const QString &str);
-KCM_FIREWALL_CORE_EXPORT QString        toString(PredefinedPort pp, bool ui=false);
+KCM_FIREWALL_CORE_EXPORT QString toString(LogLevel level, bool ui = false);
+KCM_FIREWALL_CORE_EXPORT LogLevel toLogLevel(const QString &str);
+KCM_FIREWALL_CORE_EXPORT QString toString(Logging log, bool ui = false);
+KCM_FIREWALL_CORE_EXPORT Logging toLogging(const QString &str);
+KCM_FIREWALL_CORE_EXPORT QString toString(Policy policy, bool ui = false);
+KCM_FIREWALL_CORE_EXPORT Policy toPolicy(const QString &str);
+KCM_FIREWALL_CORE_EXPORT QString toString(PredefinedPort pp, bool ui = false);
 KCM_FIREWALL_CORE_EXPORT PredefinedPort toPredefinedPort(const QString &str);
-KCM_FIREWALL_CORE_EXPORT QString        toString(Protocol proto, bool ui=false);
-KCM_FIREWALL_CORE_EXPORT Protocol       toProtocol(const QString &str);
+KCM_FIREWALL_CORE_EXPORT QString toString(Protocol proto, bool ui = false);
+KCM_FIREWALL_CORE_EXPORT Protocol toProtocol(const QString &str);
 
 }
 

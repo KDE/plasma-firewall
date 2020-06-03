@@ -35,13 +35,9 @@ struct ConnectionsData {
     QString pid;
     QString program;
 
-    bool operator==(const ConnectionsData &other) const {
-        return other.protocol == protocol
-                && other.localAddress == localAddress
-                && other.foreignAddress == foreignAddress
-                && other.status == status
-                && other.pid == pid
-                && other.program == program;
+    bool operator==(const ConnectionsData &other) const
+    {
+        return other.protocol == protocol && other.localAddress == localAddress && other.foreignAddress == foreignAddress && other.status == status && other.pid == pid && other.program == program;
     }
 };
 
@@ -53,15 +49,7 @@ class ConnectionsModel : public QAbstractListModel
     Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
 
 public:
-    enum ConnectionsModelRoles
-    {
-        ProtocolRole = Qt::UserRole + 1,
-        LocalAddressRole,
-        ForeignAddressRole,
-        StatusRole,
-        PidRole,
-        ProgramRole
-    };
+    enum ConnectionsModelRoles { ProtocolRole = Qt::UserRole + 1, LocalAddressRole, ForeignAddressRole, StatusRole, PidRole, ProgramRole };
     Q_ENUM(ConnectionsModelRoles)
 
     explicit ConnectionsModel(QObject *parent = nullptr);

@@ -364,7 +364,6 @@ QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily) c
         firewalld_direct_rule << "--sport=" + value;
     }
 
-
     value = args.value(args.value("chain") == "INPUT" ? "interface_in" : "interface_out").toString();
     if (!value.isEmpty() && !value.isNull()) {
         firewalld_direct_rule << "-i" << value;
@@ -373,13 +372,7 @@ QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily) c
     auto ipvf = ipvfamily == FirewallClient::IPV6 ? "ipv6" : "ipv4";
 
     qDebug() << firewalld_direct_rule;
-    return QVariantList({
-        ipvf,
-        args.value("table"),
-        args.value("chain"),
-        args.value("priority"),
-        firewalld_direct_rule}
-    );
+    return QVariantList({ipvf, args.value("table"), args.value("chain"), args.value("priority"), firewalld_direct_rule});
 }
 
 QString FirewalldClient::defaultIncomingPolicy() const
@@ -457,9 +450,7 @@ QVector<Rule> FirewalldClient::extractRulesFromResponse(const QList<firewalld_re
     }
 
     for (auto r : reply) {
-        const auto action = r.rules.at(r.rules.indexOf("-j") + 1) == "ACCEPT" ? Types::POLICY_ALLOW
-                          : r.rules.at(r.rules.indexOf("-j") + 1) == "REJECT" ? Types::POLICY_REJECT
-                          : Types::POLICY_DENY;
+        const auto action = r.rules.at(r.rules.indexOf("-j") + 1) == "ACCEPT" ? Types::POLICY_ALLOW : r.rules.at(r.rules.indexOf("-j") + 1) == "REJECT" ? Types::POLICY_REJECT : Types::POLICY_DENY;
 
         const auto sourceAddress = r.rules.indexOf("-s") > 0 ? r.rules.at(r.rules.indexOf("-s") + 1) : "";
         const auto destinationAddress = r.rules.indexOf("-d") >= 0 ? r.rules.at(r.rules.indexOf("-d") + 1) : "";
@@ -471,23 +462,20 @@ QVector<Rule> FirewalldClient::extractRulesFromResponse(const QList<firewalld_re
         const auto sourcePort = r.rules.at(r.rules.indexOf(QRegExp("^" + QRegExp::escape("--sport") + ".+"))).section("=", -1);
         const auto destPort = r.rules.at(r.rules.indexOf(QRegExp("^" + QRegExp::escape("--dport") + ".+"))).section("=", -1);
         qDebug() << r.ipv << r.chain << r.table << r.priority << r.rules;
-        message_rules.push_back(
-            Rule(action,
-                r.chain == "INPUT",
-                Types::LOGGING_OFF,
-                protocol,
-                sourceAddress,
-                sourcePort,
-                destinationAddress,
-                destPort,
-                r.chain == "INPUT" ? interface_in : "",
-                r.chain == "OUTPUT" ? interface_out : "",
-                "",
-                "",
-                r.priority,
-                r.ipv == "ipv6"
-            )
-        );
+        message_rules.push_back(Rule(action,
+                                     r.chain == "INPUT",
+                                     Types::LOGGING_OFF,
+                                     protocol,
+                                     sourceAddress,
+                                     sourcePort,
+                                     destinationAddress,
+                                     destPort,
+                                     r.chain == "INPUT" ? interface_in : "",
+                                     r.chain == "OUTPUT" ? interface_out : "",
+                                     "",
+                                     "",
+                                     r.priority,
+                                     r.ipv == "ipv6"));
     }
 
     return message_rules;
