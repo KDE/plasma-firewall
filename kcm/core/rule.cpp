@@ -42,7 +42,7 @@ static const char *ANY_PROTOCOL = "any";
 // Shorten an IPv6 address (if applicable)
 static QString shortenAddress(const QString &addr)
 {
-    if (addr.isEmpty() || !addr.contains(":")) {
+    if (!addr.contains(":")) {
         return addr;
     }
     QByteArray bytes(addr.toLatin1());
