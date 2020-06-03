@@ -229,6 +229,7 @@ void FirewallClient::setBackend(const QString &backend)
     if (m_currentBackend) {
         enabledChanged(false);
         delete m_currentBackend;
+        m_currentBackend = nullptr;
     }
 
     const auto plugins = KPluginLoader::findPlugins(QStringLiteral("kf5/plasma_firewall"));
