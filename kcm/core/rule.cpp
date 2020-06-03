@@ -68,18 +68,18 @@ static QString getServiceName(short port)
 {
     static QMap<int, QString> serviceMap;
 
-    if(serviceMap.contains(port))
+    if (serviceMap.contains(port)) {
         return serviceMap[port];
+    }
 
     struct servent *ent=getservbyport(htons(port), 0L);
 
-    if(ent && ent->s_name)
-    {
+    if (ent && ent->s_name) {
         serviceMap[port]=ent->s_name;
         return serviceMap[port];
     }
 
-    return QString();
+    return {};
 }
 
 static QString formatPort(const QString &port, Types::Protocol prot)
@@ -118,29 +118,34 @@ static QString modifyAddress(const QString &addr, const QString &port)
 
 static QString modifyPort(const QString &port, Types::Protocol prot, bool matchPortNoProto=false)
 {
-    if(port.isEmpty())
+    if (port.isEmpty()) {
         return port;
+    }
     // Does it match a pre-configured application?
-    Types::PredefinedPort pp=Types::toPredefinedPort(port+Rule::protocolSuffix(prot));
+    Types::PredefinedPort pp = Types::toPredefinedPort(port + Rule::protocolSuffix(prot));
 
     // When matchin glog lines, the protocol is *always* specified - but dont alwys want this when
     // matching names...
-    if(matchPortNoProto && Types::PP_COUNT==pp)
-         pp=Types::toPredefinedPort(port);
+    if (matchPortNoProto && Types::PP_COUNT == pp) {
+         pp = Types::toPredefinedPort(port);
+    }
 
-    if(Types::PP_COUNT!=pp)
+    if (Types::PP_COUNT != pp) {
         return i18nc("serice/application name (port numbers)", "%1 (%2)", Types::toString(pp, true), port+Rule::protocolSuffix(prot));
+    }
 
     // Is it a service known to /etc/services ???
     bool    ok(false);
     QString service;
     short   portNum=port.toShort(&ok);
 
-    if(ok)
+    if(ok) {
         service=getServiceName(portNum);
+    }
 
-    if(!service.isEmpty())
+    if(!service.isEmpty()) {
         return i18nc("serice/application name (port numbers)", "%1 (%2)", service, formatPort(port, prot));
+    }
 
     // Just return port/sericename and protocol
     return formatPort(port, prot);
@@ -148,8 +153,9 @@ static QString modifyPort(const QString &port, Types::Protocol prot, bool matchP
 
 static QString modifyApp(const QString &app, const QString &port, Types::Protocol prot)
 {
-    if(app.isEmpty())
+    if(app.isEmpty()) {
         return port;
+    }
 
     // TODO: Send the profile, not the app name.
     Entry profile ({});
@@ -162,14 +168,14 @@ int Rule::getServicePort(const QString &name)
 {
     static QMap<QString, int> serviceMap;
 
-    if(serviceMap.contains(name))
+    if(serviceMap.contains(name)) {
         return serviceMap[name];
+    }
 
     QByteArray l1=name.toLatin1();
     struct servent *ent=getservbyname(l1.constData(), 0L);
 
-    if(ent && ent->s_name)
-    {
+    if(ent && ent->s_name) {
         serviceMap[name]=ntohs(ent->s_port);
         return serviceMap[name];
     }
