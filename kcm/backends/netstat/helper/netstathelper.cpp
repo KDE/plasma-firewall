@@ -35,8 +35,9 @@ NetstatHelper::NetstatHelper()
     }
 }
 
-KAuth::ActionReply NetstatHelper::query(const QVariantMap)
+KAuth::ActionReply NetstatHelper::query(const QVariantMap& map)
 {
+    Q_UNUSED(map);
     KAuth::ActionReply reply;
 
     QProcess    netstat;
