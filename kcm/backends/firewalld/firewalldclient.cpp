@@ -228,8 +228,7 @@ KJob *FirewalldClient::moveRule(int from, int to)
         {"to", to},
     };
 
-    FirewalldJob *job = new FirewalldJob();
-    return job;
+    return new FirewalldJob();
 }
 
 bool FirewalldClient::logsAutoRefresh() const
