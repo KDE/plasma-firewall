@@ -55,8 +55,7 @@ QStringList FirewallClient::knownInterfaces()
 {
     QStringList interface_names({i18n("Any")});
 
-    QList<QNetworkInterface> interfaces = QNetworkInterface::allInterfaces();
-    for (QNetworkInterface iface : qAsConst(interfaces)) {
+    for (const QNetworkInterface &iface : QNetworkInterface::allInterfaces()) {
         interface_names << iface.name();
     }
 
