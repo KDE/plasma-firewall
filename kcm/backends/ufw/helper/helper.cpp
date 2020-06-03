@@ -141,34 +141,18 @@ ActionReply Helper::modify(const QVariantMap &args)
 
     // QProcess converts its args using QString().toLocal8Bit()!!!, so use UTF-8 codec.
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
-
-    if("setStatus"==cmd)
-        return setStatus(args, cmd);
-    else if("addRules"==cmd)
-        return addRules(args, cmd);
-    else if("removeRule"==cmd)
-        return removeRule(args, cmd);
-    else if("moveRule"==cmd)
-        return moveRule(args, cmd);
-    else if("editRule"==cmd)
-        return editRule(args, cmd);
-//     else if("editRuleDescr"==cmd)
-//         return editRuleDescr(args, cmd);
-    else if("reset"==cmd)
-        return reset(cmd);
-    else if("setDefaults"==cmd)
-        return setDefaults(args, cmd);
-    else if("setModules"==cmd)
-        return setModules(args, cmd);
-    else if("setProfile"==cmd)
-        return setProfile(args, cmd);
-    else if("saveProfile"==cmd)
-        return saveProfile(args, cmd);
-    else if("deleteProfile"==cmd)
-        return deleteProfile(args, cmd);
-
-    ActionReply reply=ActionReply::HelperErrorReply(STATUS_INVALID_CMD);
-    return reply;
+    return QStringLiteral("setStatus") == cmd ? setStatus(args, cmd)
+         : QStringLiteral("addRules") == cmd ? addRules(args, cmd)
+         : QStringLiteral("removeRule") == cmd ? removeRule(args, cmd)
+         : QStringLiteral("moveRule") == cmd ? moveRule(args, cmd)
+         : QStringLiteral("editRule") == cmd ? editRule(args, cmd)
+         : QStringLiteral("reset") == cmd ? reset(cmd)
+         : QStringLiteral("setDefaults") == cmd ? setDefaults(args, cmd)
+         : QStringLiteral("setModules") == cmd ? setModules(args, cmd)
+         : QStringLiteral("setProfile") == cmd ? setProfile(args, cmd)
+         : QStringLiteral("saveProfile") == cmd ? saveProfile(args, cmd)
+         : QStringLiteral("deleteProfile") == cmd ? deleteProfile(args, cmd)
+         : ActionReply::HelperErrorReply(STATUS_INVALID_CMD);
 }
 
 ActionReply Helper::setStatus(const QVariantMap &args, const QString &cmd)
