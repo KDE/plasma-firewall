@@ -61,13 +61,12 @@ KAuth::ActionReply NetstatHelper::query(const QVariantMap& map)
     qDebug() << "run" << executable << netstatArgs;
 
     netstat.start(executable, netstatArgs, QIODevice::ReadOnly);
-    if (netstat.waitForStarted())
+    if (netstat.waitForStarted()) {
         netstat.waitForFinished();
-
+    }
     int exitCode(netstat.exitCode());
 
-    if(0 != exitCode)
-    {
+    if(0 != exitCode) {
         reply=KAuth::ActionReply::HelperErrorReply(exitCode);
         reply.addData("response", netstat.readAllStandardError());
     } else {
@@ -173,14 +172,15 @@ QVariantList NetstatHelper::parseNetstatOutput(const QByteArray &netstatOutput)
             foreingAddressIndex, foreingAddressSize,
             stateIndex, stateSize, processIndex, processSize;
 
-    for (auto line : outputLines)
-    {
+    for (auto line : outputLines) {
         lineIdx ++;
-        if (line.isEmpty())
+        if (line.isEmpty()) {
             continue;
+        }
 
-        if (lineIdx == 1)
+        if (lineIdx == 1) {
             continue;
+        }
 
         if (lineIdx == 2) {
             protIndex = 0;
