@@ -321,9 +321,8 @@ RuleWrapper *UfwClient::ruleAt(int index)
 
     auto rule = rules.at(index);
     rule.setPosition(index);
-    RuleWrapper *wrapper = new RuleWrapper(rule, this);
 
-    return wrapper;
+    return new RuleWrapper(rule, this);
 }
 
 KJob *UfwClient::addRule(RuleWrapper *ruleWrapper)
