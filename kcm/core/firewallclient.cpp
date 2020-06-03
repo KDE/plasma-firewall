@@ -44,6 +44,7 @@
 FirewallClient::FirewallClient(QObject *parent)
     : QObject(parent)
 {
+    setBackend("ufw");
 }
 
 QStringList FirewallClient::knownProtocols()
