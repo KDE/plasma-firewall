@@ -220,7 +220,6 @@ QVariantList NetstatHelper::parseNetstatOutput(const QByteArray &netstatOutput)
             connection << program;
         }
 
-
         connections.append((QVariant) connection);
     }
 
