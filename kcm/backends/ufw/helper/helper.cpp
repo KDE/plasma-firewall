@@ -166,8 +166,9 @@ ActionReply Helper::setStatus(const QVariantMap &args, const QString &cmd)
 ActionReply Helper::setDefaults(const QVariantMap &args, const QString &cmd)
 {
     QStringList query({"--defaults"});
-    if (args["ipv6"].toBool())
+    if (args["ipv6"].toBool()) {
         query.append("--list");
+    }
 
     const QString defaults = args["xml"].toString();
 
@@ -339,8 +340,9 @@ ActionReply Helper::run(const QStringList &args, const QString &cmd)
 
     qDebug() << __FUNCTION__ << args;
     ufw.start(UFW_PLUGIN_HELPER_PATH, args, QIODevice::ReadOnly);
-    if (ufw.waitForStarted())
+    if (ufw.waitForStarted()) {
         ufw.waitForFinished();
+    }
 
     int exitCode(ufw.exitCode());
 
