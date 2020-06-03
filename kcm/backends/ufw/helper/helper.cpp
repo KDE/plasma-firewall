@@ -362,11 +362,12 @@ ActionReply Helper::run(const QStringList &args, const QString &cmd)
         }
 
         reply=ActionReply::HelperErrorReply(exitCode);
-
         reply.setErrorDescription(i18n("An error occurred in command '%1': %2", cmd, errorString));
-    } else {
-        reply.addData("response", ufw.readAllStandardOutput());
+        reply.addData("cmd", cmd);
+        return reply;
     }
+
+    reply.addData("response", ufw.readAllStandardOutput());
     reply.addData("cmd", cmd);
     return reply;
 }
