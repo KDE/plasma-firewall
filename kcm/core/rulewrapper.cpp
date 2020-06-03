@@ -39,49 +39,49 @@ RuleWrapper::RuleWrapper(Rule rule, QObject *parent)
     : QObject(parent)
     , m_rule(rule)
 {
-    int iface_index = FirewallClient::getKnownInterfaces().indexOf(m_rule.getInterfaceIn());
+    int iface_index = FirewallClient::knownInterfaces().indexOf(m_rule.interfaceIn());
     m_interface = iface_index == -1 ? 0 : iface_index;
 }
 
 QString RuleWrapper::policy() const
 {
-    auto policy = m_rule.getAction();
+    auto policy = m_rule.action();
     return Types::toString(policy);
 }
 
 bool RuleWrapper::incoming() const
 {
-    return m_rule.getIncoming();
+    return m_rule.incoming();
 }
 
 QString RuleWrapper::sourceAddress() const
 {
-    return m_rule.getSourceAddress();
+    return m_rule.sourceAddress();
 }
 
 QString RuleWrapper::sourcePort() const
 {
-    return m_rule.getSourcePort();
+    return m_rule.sourcePort();
 }
 
 QString RuleWrapper::destinationAddress() const
 {
-    return m_rule.getDestAddress();
+    return m_rule.destAddress();
 }
 
 QString RuleWrapper::destinationPort() const
 {
-    return m_rule.getDestPort();
+    return m_rule.destPort();
 }
 
 bool RuleWrapper::ipv6() const
 {
-    return m_rule.getV6();
+    return m_rule.ipv6();
 }
 
 int RuleWrapper::protocol() const
 {
-    auto protocol = m_rule.getProtocol();
+    auto protocol = m_rule.protocol();
     return protocol;
 }
 
@@ -92,25 +92,25 @@ int RuleWrapper::interface() const
 
 QString RuleWrapper::logging() const
 {
-    auto logging = m_rule.getLogging();
+    auto logging = m_rule.logging();
     return Types::toString(logging);
 }
 
-Rule RuleWrapper::getRule()
+Rule RuleWrapper::rule()
 {
     return m_rule;
 }
 
 int RuleWrapper::position() const
 {
-    return m_rule.getPosition();
+    return m_rule.position();
 }
 
 void RuleWrapper::setPolicy(const QString &policy)
 {
     auto policy_t = Types::toPolicy(policy);
 
-    if (policy_t == m_rule.getAction()) {
+    if (policy_t == m_rule.action()) {
         return;
     }
 
@@ -120,7 +120,7 @@ void RuleWrapper::setPolicy(const QString &policy)
 
 void RuleWrapper::setIncoming(bool incoming)
 {
-    if (m_rule.getIncoming() == incoming) {
+    if (m_rule.incoming() == incoming) {
         return;
     }
 
@@ -130,7 +130,7 @@ void RuleWrapper::setIncoming(bool incoming)
 
 void RuleWrapper::setSourceAddress(const QString &sourceAddress)
 {
-    if (m_rule.getSourceAddress() == sourceAddress) {
+    if (m_rule.sourceAddress() == sourceAddress) {
         return;
     }
 
@@ -140,7 +140,7 @@ void RuleWrapper::setSourceAddress(const QString &sourceAddress)
 
 void RuleWrapper::setSourcePort(const QString &sourcePort)
 {
-    if (m_rule.getSourcePort() == sourcePort) {
+    if (m_rule.sourcePort() == sourcePort) {
         return;
     }
 
@@ -150,7 +150,7 @@ void RuleWrapper::setSourcePort(const QString &sourcePort)
 
 void RuleWrapper::setDestinationAddress(const QString &destinationAddress)
 {
-    if (m_rule.getDestAddress() == destinationAddress) {
+    if (m_rule.destAddress() == destinationAddress) {
         return;
     }
 
@@ -160,7 +160,7 @@ void RuleWrapper::setDestinationAddress(const QString &destinationAddress)
 
 void RuleWrapper::setDestinationPort(const QString &destinationPort)
 {
-    if (m_rule.getDestPort() == destinationPort) {
+    if (m_rule.destPort() == destinationPort) {
         return;
     }
 
@@ -170,7 +170,7 @@ void RuleWrapper::setDestinationPort(const QString &destinationPort)
 
 void RuleWrapper::setIpv6(bool ipv6)
 {
-    if (m_rule.getV6() == ipv6) {
+    if (m_rule.ipv6() == ipv6) {
         return;
     }
 
@@ -180,7 +180,7 @@ void RuleWrapper::setIpv6(bool ipv6)
 
 void RuleWrapper::setProtocol(int protocol)
 {
-    if (m_rule.getProtocol() == protocol) {
+    if (m_rule.protocol() == protocol) {
         return;
     }
 
@@ -194,17 +194,17 @@ void RuleWrapper::setInterface(int interface)
         return;
     }
 
-    m_rule.setInterfaceIn(interface != 0 ? FirewallClient::getKnownInterfaces().at(interface) : QString());
+    m_rule.setInterfaceIn(interface != 0 ? FirewallClient::knownInterfaces().at(interface) : QString());
 
     m_interface = interface;
-    qDebug() << "new iface" << m_rule.getInterfaceIn();
+    qDebug() << "new iface" << m_rule.interfaceIn();
     emit interfaceChanged(interface);
 }
 
 void RuleWrapper::setLogging(const QString &logging)
 {
     auto logging_t = Types::toLogging(logging);
-    if (m_rule.getLogging() == logging_t) {
+    if (m_rule.logging() == logging_t) {
         return;
     }
 
@@ -214,7 +214,7 @@ void RuleWrapper::setLogging(const QString &logging)
 
 void RuleWrapper::setPosition(int position)
 {
-    if (m_rule.getPosition() == position) {
+    if (m_rule.position() == position) {
         return;
     }
 

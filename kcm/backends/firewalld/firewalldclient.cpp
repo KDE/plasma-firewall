@@ -73,8 +73,9 @@ void FirewalldClient::refresh()
 
 bool FirewalldClient::enabled() const
 {
-    return m_currentProfile.getEnabled();
+    return m_currentProfile.enabled();
 }
+
 KJob *FirewalldClient::setEnabled(const bool value)
 {
     SystemdJob *job = new SystemdJob(static_cast<SYSTEMD::actions>(value));
@@ -137,9 +138,9 @@ RuleListModel *FirewalldClient::rules() const
     return m_rulesModel;
 }
 
-RuleWrapper *FirewalldClient::getRule(int index)
+RuleWrapper *FirewalldClient::ruleAt(int index)
 {
-    auto rules = m_currentProfile.getRules();
+    auto rules = m_currentProfile.rules();
 
     if (index < 0 || index >= rules.count()) {
         return nullptr;
@@ -158,7 +159,7 @@ KJob *FirewalldClient::addRule(RuleWrapper *ruleWrapper)
         return nullptr;
     }
 
-    QVariantList dbusArgs = buildRule(ruleWrapper->getRule());
+    QVariantList dbusArgs = buildRule(ruleWrapper->rule());
     FirewalldJob *job = new FirewalldJob("addRule", dbusArgs);
 
     connect(job, &KJob::result, this, [this, job] {
@@ -175,7 +176,7 @@ KJob *FirewalldClient::addRule(RuleWrapper *ruleWrapper)
 
 KJob *FirewalldClient::removeRule(int index)
 {
-    QVariantList dbusArgs = buildRule(getRule(index)->getRule());
+    QVariantList dbusArgs = buildRule(ruleAt(index)->rule());
     FirewalldJob *job = new FirewalldJob("removeRule", dbusArgs);
 
     connect(job, &KJob::result, this, [this, job] {
@@ -211,7 +212,7 @@ KJob *FirewalldClient::updateRule(RuleWrapper *ruleWrapper)
 
 KJob *FirewalldClient::moveRule(int from, int to)
 {
-    QVector<Rule> rules = m_currentProfile.getRules();
+    QVector<Rule> rules = m_currentProfile.rules();
     if (from < 0 || from >= rules.count()) {
         qWarning() << "invalid from index";
     }
@@ -267,11 +268,17 @@ RuleWrapper *FirewalldClient::createRuleFromConnection(const QString &protocol, 
         rule->setDestinationPort(foreignAddresData[1]);
     }
 
-    rule->setProtocol(FirewallClient::getKnownProtocols().indexOf(protocol.toUpper()));
+    rule->setProtocol(FirewallClient::knownProtocols().indexOf(protocol.toUpper()));
     return rule;
 }
 
-RuleWrapper *FirewalldClient::createRuleFromLog(const QString &protocol, const QString &sourceAddress, const QString &sourcePort, const QString &destinationAddress, const QString &destinationPort, const QString &inn)
+RuleWrapper *FirewalldClient::createRuleFromLog(
+    const QString &protocol,
+    const QString &sourceAddress,
+    const QString &sourcePort,
+    const QString &destinationAddress,
+    const QString &destinationPort,
+    const QString &inn)
 {
     // Transform to the ufw notation
     auto rule = new RuleWrapper({});
@@ -293,7 +300,7 @@ RuleWrapper *FirewalldClient::createRuleFromLog(const QString &protocol, const Q
     rule->setDestinationAddress(_destinationAddress);
     rule->setDestinationPort(destinationPort);
 
-    rule->setProtocol(FirewallClient::getKnownProtocols().indexOf(protocol.toUpper()));
+    rule->setProtocol(FirewallClient::knownProtocols().indexOf(protocol.toUpper()));
     return rule;
 }
 
@@ -315,19 +322,19 @@ QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily) c
 {
     QVariantMap args {
         {"priority", 0},
-        {"destinationPort", r.getDestPort()},
-        {"sourcePort", r.getSourcePort()},
-        {"type", QString(r.protocolSuffix(r.getProtocol())).replace("/", "")}, // tcp or udp
-        {"destinationAddress", r.getDestAddress()},
-        {"sourceAddress", r.getSourceAddress()},
-        {"interface_in", r.getInterfaceIn()},
-        {"interface_out", r.getInterfaceOut()},
+        {"destinationPort", r.destPort()},
+        {"sourcePort", r.sourcePort()},
+        {"type", QString(r.protocolSuffix(r.protocol())).replace("/", "")}, // tcp or udp
+        {"destinationAddress", r.destAddress()},
+        {"sourceAddress", r.sourceAddress()},
+        {"interface_in", r.interfaceIn()},
+        {"interface_out", r.interfaceOut()},
         {"table", "filter"},
     };
 
-    args.insert("chain", r.getIncoming() ? "INPUT" : "OUTPUT");
+    args.insert("chain", r.incoming() ? "INPUT" : "OUTPUT");
 
-    switch (r.getAction()) {
+    switch (r.action()) {
     case Types::POLICY_ALLOW:
         args.insert("action", "ACCEPT");
         break;
@@ -377,13 +384,13 @@ QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily) c
 
 QString FirewalldClient::defaultIncomingPolicy() const
 {
-    auto policy_t = m_currentProfile.getDefaultIncomingPolicy();
+    auto policy_t = m_currentProfile.defaultIncomingPolicy();
     return Types::toString(policy_t);
 };
 
 QString FirewalldClient::defaultOutgoingPolicy() const
 {
-    auto policy_t = m_currentProfile.getDefaultOutgoingPolicy();
+    auto policy_t = m_currentProfile.defaultOutgoingPolicy();
     return Types::toString(policy_t);
 };
 
@@ -486,17 +493,17 @@ void FirewalldClient::setProfile(Profile profile)
     auto oldProfile = m_currentProfile;
     m_currentProfile = profile;
     m_rulesModel->setProfile(m_currentProfile);
-    if (m_currentProfile.getEnabled() != oldProfile.getEnabled()) {
-        emit enabledChanged(m_currentProfile.getEnabled());
+    if (m_currentProfile.enabled() != oldProfile.enabled()) {
+        emit enabledChanged(m_currentProfile.enabled());
     }
 
-    if (m_currentProfile.getDefaultIncomingPolicy() != oldProfile.getDefaultIncomingPolicy()) {
-        const QString policy = Types::toString(m_currentProfile.getDefaultIncomingPolicy());
+    if (m_currentProfile.defaultIncomingPolicy() != oldProfile.defaultIncomingPolicy()) {
+        const QString policy = Types::toString(m_currentProfile.defaultIncomingPolicy());
         emit defaultIncomingPolicyChanged(policy);
     }
 
-    if (m_currentProfile.getDefaultOutgoingPolicy() != oldProfile.getDefaultOutgoingPolicy()) {
-        const QString policy = Types::toString(m_currentProfile.getDefaultOutgoingPolicy());
+    if (m_currentProfile.defaultOutgoingPolicy() != oldProfile.defaultOutgoingPolicy()) {
+        const QString policy = Types::toString(m_currentProfile.defaultOutgoingPolicy());
         emit defaultOutgoingPolicyChanged(policy);
     }
 }

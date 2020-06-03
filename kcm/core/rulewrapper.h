@@ -61,7 +61,7 @@ public:
     int interface() const;
     QString logging() const;
 
-    Rule getRule();
+    Rule rule();
     int position() const;
 
 signals:

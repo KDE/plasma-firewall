@@ -255,7 +255,7 @@ KCM.ScrollViewKCM {
             frameVisible: false
 
             function editRule(row) {
-                ruleEdit.rule = kcm.client.getRule(row);
+                ruleEdit.rule = kcm.client.rule(row);
                 ruleEdit.newRule = false;
                 drawer.open();
             }

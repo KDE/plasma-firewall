@@ -68,12 +68,12 @@ public:
 
     explicit FirewallClient(QObject *parent = nullptr);
 
-    Q_INVOKABLE static QStringList getKnownProtocols();
-    Q_INVOKABLE static QStringList getKnownInterfaces();
+    Q_INVOKABLE static QStringList knownProtocols();
+    Q_INVOKABLE static QStringList knownInterfaces();
 
     Q_INVOKABLE void refresh();
     RuleListModel *rulesModel() const;
-    Q_INVOKABLE RuleWrapper *getRule(int index); // TODO move into the model?
+    Q_INVOKABLE RuleWrapper *ruleAt(int index); // TODO move into the model?
     Q_INVOKABLE KJob *addRule(RuleWrapper *rule);
     Q_INVOKABLE KJob *removeRule(int index);
     Q_INVOKABLE KJob *updateRule(RuleWrapper *rule);

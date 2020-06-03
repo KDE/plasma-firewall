@@ -154,7 +154,7 @@ FocusScope {
 
             id: protocolCb
 
-            model: ruleEdit.client.getKnownProtocols()
+            model: ruleEdit.client.knownProtocols()
 
             // TODO: Fix the protocol retrieval.
             currentIndex: rule.protocol
@@ -166,7 +166,7 @@ FocusScope {
             id: interfaceCb
 
 
-            model: ruleEdit.client.getKnownInterfaces()
+            model: ruleEdit.client.knownInterfaces()
             currentIndex: rule.interface
             onActivated: rule.interface = index
         }

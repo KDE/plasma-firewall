@@ -44,7 +44,7 @@ public:
 
     void refresh() override;
     RuleListModel *rules() const override;
-    RuleWrapper *getRule(int index) override;
+    RuleWrapper *ruleAt(int index) override;
     KJob *addRule(RuleWrapper *rule) override;
     KJob *removeRule(int index) override;
     KJob *updateRule(RuleWrapper *rule) override;

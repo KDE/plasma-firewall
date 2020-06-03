@@ -47,7 +47,7 @@ public:
     virtual QString name() const = 0;
     virtual void refresh() = 0;
     virtual RuleListModel *rules() const = 0;
-    virtual RuleWrapper *getRule(int index) = 0;
+    virtual RuleWrapper *ruleAt(int index) = 0;
 
     Q_INVOKABLE virtual KJob *addRule(RuleWrapper *rule) = 0;
     Q_INVOKABLE virtual KJob *removeRule(int index) = 0;

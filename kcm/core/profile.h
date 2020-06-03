@@ -44,30 +44,35 @@ public:
     enum Fields { FIELD_RULES = 0x01, FIELD_DEFAULTS = 0x02, FIELD_MODULES = 0x04, FIELD_STATUS = 0x08 };
 
     Profile()
-        : fields(0)
-        , enabled(false)
-        , ipv6Enabled(false)
+        : m_fields(0)
+        , m_enabled(false)
+        , m_ipv6Enabled(false)
     {
     }
     Profile(const QVector<Rule> &rules, const QVariantMap &args, bool isSys = false);
     Profile(QByteArray &xml, bool isSys = false);
     Profile(QFile &file, bool isSys = false);
     Profile(bool ipv6, Types::LogLevel ll, Types::Policy dip, Types::Policy dop, const QVector<Rule> &r, const QSet<QString> &m)
-        : fields(0xFF)
-        , enabled(true)
-        , ipv6Enabled(ipv6)
-        , logLevel(ll)
-        , defaultIncomingPolicy(dip)
-        , defaultOutgoingPolicy(dop)
-        , rules(r)
-        , modules(m)
-        , isSystem(false)
+        : m_fields(0xFF)
+        , m_enabled(true)
+        , m_ipv6Enabled(ipv6)
+        , m_logLevel(ll)
+        , m_defaultIncomingPolicy(dip)
+        , m_defaultOutgoingPolicy(dop)
+        , m_rules(r)
+        , m_modules(m)
+        , m_isSystem(false)
     {
     }
 
     bool operator==(const Profile &o) const
     {
-        return ipv6Enabled == o.ipv6Enabled && logLevel == o.logLevel && defaultIncomingPolicy == o.defaultIncomingPolicy && defaultOutgoingPolicy == o.defaultOutgoingPolicy && rules == o.rules && modules == o.modules;
+        return m_ipv6Enabled == o.m_ipv6Enabled
+            && m_logLevel == o.m_logLevel
+            && m_defaultIncomingPolicy == o.m_defaultIncomingPolicy
+            && m_defaultOutgoingPolicy == o.m_defaultOutgoingPolicy
+            && m_rules == o.m_rules
+            && m_modules == o.m_modules;
     }
 
     QString toXml() const;
@@ -76,60 +81,60 @@ public:
 
     bool hasRules() const
     {
-        return fields & FIELD_RULES;
+        return m_fields & FIELD_RULES;
     }
     bool hasDefaults() const
     {
-        return fields & FIELD_DEFAULTS;
+        return m_fields & FIELD_DEFAULTS;
     }
     bool hasModules() const
     {
-        return fields & FIELD_MODULES;
+        return m_fields & FIELD_MODULES;
     }
     bool hasStatus() const
     {
-        return fields & FIELD_STATUS;
+        return m_fields & FIELD_STATUS;
     }
 
-    int getFields() const
+    int fields() const
     {
-        return fields;
+        return m_fields;
     }
-    bool getEnabled() const
+    bool enabled() const
     {
-        return enabled;
+        return m_enabled;
     }
-    bool getIpv6Enabled() const
+    bool ipv6Enabled() const
     {
-        return ipv6Enabled;
+        return m_ipv6Enabled;
     }
-    Types::LogLevel getLogLevel() const
+    Types::LogLevel logLevel() const
     {
-        return logLevel;
+        return m_logLevel;
     }
-    Types::Policy getDefaultIncomingPolicy() const
+    Types::Policy defaultIncomingPolicy() const
     {
-        return defaultIncomingPolicy;
+        return m_defaultIncomingPolicy;
     }
-    Types::Policy getDefaultOutgoingPolicy() const
+    Types::Policy defaultOutgoingPolicy() const
     {
-        return defaultOutgoingPolicy;
+        return m_defaultOutgoingPolicy;
     }
-    const QVector<Rule> &getRules() const
+    const QVector<Rule> rules() const
     {
-        return rules;
+        return m_rules;
     }
-    const QSet<QString> &getModules() const
+    const QSet<QString> modules() const
     {
-        return modules;
+        return m_modules;
     }
-    const QString &getFileName() const
+    const QString fileName() const
     {
-        return fileName;
+        return m_fileName;
     }
-    bool getIsSystem() const
+    bool isSystem() const
     {
-        return isSystem;
+        return m_isSystem;
     }
 
     void setRules(const QVector<Rule> &newrules);
@@ -142,14 +147,14 @@ private:
     void load(QIODevice *device);
 
 private:
-    int fields;
-    bool enabled, ipv6Enabled;
-    Types::LogLevel logLevel;
-    Types::Policy defaultIncomingPolicy, defaultOutgoingPolicy;
-    QVector<Rule> rules;
-    QSet<QString> modules;
-    QString fileName;
-    bool isSystem;
+    int m_fields;
+    bool m_enabled, m_ipv6Enabled;
+    Types::LogLevel m_logLevel;
+    Types::Policy m_defaultIncomingPolicy, m_defaultOutgoingPolicy;
+    QVector<Rule> m_rules;
+    QSet<QString> m_modules;
+    QString m_fileName;
+    bool m_isSystem;
 };
 
 #endif

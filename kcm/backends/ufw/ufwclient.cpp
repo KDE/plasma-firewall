@@ -98,7 +98,7 @@ void UfwClient::refresh()
 
 bool UfwClient::enabled() const
 {
-    return m_currentProfile.getEnabled();
+    return m_currentProfile.enabled();
 }
 
 KJob *UfwClient::setEnabled(bool value)
@@ -274,16 +274,16 @@ void UfwClient::setProfile(Profile profile)
     auto oldProfile = m_currentProfile;
     m_currentProfile = profile;
     m_rulesModel->setProfile(m_currentProfile);
-    if (m_currentProfile.getEnabled() != oldProfile.getEnabled())
-        emit enabledChanged(m_currentProfile.getEnabled());
+    if (m_currentProfile.enabled() != oldProfile.enabled())
+        emit enabledChanged(m_currentProfile.enabled());
 
-    if (m_currentProfile.getDefaultIncomingPolicy() != oldProfile.getDefaultIncomingPolicy()) {
-        const QString policy = Types::toString(m_currentProfile.getDefaultIncomingPolicy());
+    if (m_currentProfile.defaultIncomingPolicy() != oldProfile.defaultIncomingPolicy()) {
+        const QString policy = Types::toString(m_currentProfile.defaultIncomingPolicy());
         emit defaultIncomingPolicyChanged(policy);
     }
 
-    if (m_currentProfile.getDefaultOutgoingPolicy() != oldProfile.getDefaultOutgoingPolicy()) {
-        const QString policy = Types::toString(m_currentProfile.getDefaultOutgoingPolicy());
+    if (m_currentProfile.defaultOutgoingPolicy() != oldProfile.defaultOutgoingPolicy()) {
+        const QString policy = Types::toString(m_currentProfile.defaultOutgoingPolicy());
         emit defaultOutgoingPolicyChanged(policy);
     }
 }
@@ -311,9 +311,9 @@ RuleListModel *UfwClient::rules() const
     return m_rulesModel;
 }
 
-RuleWrapper *UfwClient::getRule(int index)
+RuleWrapper *UfwClient::ruleAt(int index)
 {
-    auto rules = m_currentProfile.getRules();
+    auto rules = m_currentProfile.rules();
 
     if (index < 0 || index >= rules.count()) {
         return nullptr;
@@ -333,7 +333,7 @@ KJob *UfwClient::addRule(RuleWrapper *ruleWrapper)
         return nullptr;
     }
 
-    Rule rule = ruleWrapper->getRule();
+    Rule rule = ruleWrapper->rule();
 
     QVariantMap args {
         {"cmd", "addRules"},
@@ -356,7 +356,7 @@ KJob *UfwClient::addRule(RuleWrapper *ruleWrapper)
 
 KJob *UfwClient::removeRule(int index)
 {
-    if (index < 0 || index >= m_currentProfile.getRules().count()) {
+    if (index < 0 || index >= m_currentProfile.rules().count()) {
         qWarning() << __FUNCTION__ << "invalid rule index";
         return nullptr;
     }
@@ -390,9 +390,9 @@ KJob *UfwClient::updateRule(RuleWrapper *ruleWrapper)
         return nullptr;
     }
 
-    Rule rule = ruleWrapper->getRule();
+    Rule rule = ruleWrapper->rule();
 
-    rule.setPosition(rule.getPosition() + 1);
+    rule.setPosition(rule.position() + 1);
     QVariantMap args {
         {"cmd", "editRule"},
         {"xml", rule.toXml()},
@@ -412,7 +412,7 @@ KJob *UfwClient::updateRule(RuleWrapper *ruleWrapper)
 
 KJob *UfwClient::moveRule(int from, int to)
 {
-    const QVector<Rule> rules = m_currentProfile.getRules();
+    const QVector<Rule> rules = m_currentProfile.rules();
     if (from < 0 || from >= rules.count()) {
         qWarning() << "invalid from index";
         return nullptr;
@@ -447,13 +447,13 @@ KJob *UfwClient::moveRule(int from, int to)
 
 QString UfwClient::defaultIncomingPolicy() const
 {
-    auto policy_t = m_currentProfile.getDefaultIncomingPolicy();
+    auto policy_t = m_currentProfile.defaultIncomingPolicy();
     return Types::toString(policy_t);
 }
 
 QString UfwClient::defaultOutgoingPolicy() const
 {
-    auto policy_t = m_currentProfile.getDefaultOutgoingPolicy();
+    auto policy_t = m_currentProfile.defaultOutgoingPolicy();
     return Types::toString(policy_t);
 }
 
@@ -502,7 +502,7 @@ RuleWrapper *UfwClient::createRuleFromConnection(const QString &protocol, const 
         rule->setDestinationPort(foreignAddresData[1]);
     }
 
-    rule->setProtocol(FirewallClient::getKnownProtocols().indexOf(protocol.toUpper()));
+    rule->setProtocol(FirewallClient::knownProtocols().indexOf(protocol.toUpper()));
     return rule;
 }
 
@@ -534,7 +534,7 @@ RuleWrapper *UfwClient::createRuleFromLog(const QString &protocol, const QString
     rule->setDestinationAddress(_destinationAddress);
     rule->setDestinationPort(destinationPort);
 
-    rule->setProtocol(FirewallClient::getKnownProtocols().indexOf(protocol.toUpper()));
+    rule->setProtocol(FirewallClient::knownProtocols().indexOf(protocol.toUpper()));
     return rule;
 }
 
@@ -568,8 +568,9 @@ void UfwClient::refreshProfiles()
         for (const auto &group : cfg.groupList()) {
             const QString ports(cfg.group(group).readEntry("ports", QString()));
 
-            if (!ports.isEmpty() && !profiles.contains(group))
+            if (!ports.isEmpty() && !profiles.contains(group)) {
                 profiles.append(Entry(group, ports));
+            }
         }
     }
 

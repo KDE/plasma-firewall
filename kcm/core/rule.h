@@ -35,7 +35,7 @@
 class KCM_FIREWALL_CORE_EXPORT Rule
 {
 public:
-    static int getServicePort(const QString &name);
+    static int servicePort(const QString &name);
     static QString protocolSuffix(Types::Protocol prot, const QString &sep = QString("/"));
     static QString modify(const QString &address, const QString &port, const QString &application, const QString &iface, const Types::Protocol &protocol, bool matchPortNoProto = false);
 
@@ -55,20 +55,20 @@ public:
          const QString &destApp = QString(),
          unsigned int i = 0,
          bool ipv6 = false)
-        : position(i)
-        , action(pol)
-        , incoming(incomming)
-        , v6(ipv6)
-        , protocol(prot)
-        , logtype(log)
-        , destApplication(destApp)
-        , sourceApplication(srcApp)
-        , destAddress(destHost)
-        , sourceAddress(srcHost)
-        , destPort(destPort)
-        , sourcePort(srcPort)
-        , interfaceIn(ifaceIn)
-        , interfaceOut(ifaceOut) // , description(descr), hash(hsh)
+        : m_position(i)
+        , m_action(pol)
+        , m_incoming(incomming)
+        , m_ipv6(ipv6)
+        , m_protocol(prot)
+        , m_logtype(log)
+        , m_destApplication(destApp)
+        , m_sourceApplication(srcApp)
+        , m_destAddress(destHost)
+        , m_sourceAddress(srcHost)
+        , m_destPort(destPort)
+        , m_sourcePort(srcPort)
+        , m_interfaceIn(ifaceIn)
+        , m_interfaceOut(ifaceOut) // , description(descr), hash(hsh)
     {
     }
 
@@ -80,120 +80,117 @@ public:
     QString loggingStr() const;
     QString toXml() const;
 
-    int getPosition() const
+    int position() const
     {
-        return position;
+        return m_position;
     }
-    Types::Policy getAction() const
+    Types::Policy action() const
     {
-        return action;
+        return m_action;
     }
-    bool getIncoming() const
+    bool incoming() const
     {
-        return incoming;
+        return m_incoming;
     }
-    bool getV6() const
+    bool ipv6() const
     {
-        return v6;
+        return m_ipv6;
     }
-    const QString &getDestApplication() const
+    const QString destApplication() const
     {
-        return destApplication;
+        return m_destApplication;
     }
-    const QString &getSourceApplication() const
+    const QString sourceApplication() const
     {
-        return sourceApplication;
+        return m_sourceApplication;
     }
-    const QString &getDestAddress() const
+    const QString destAddress() const
     {
-        return destAddress;
+        return m_destAddress;
     }
-    const QString &getSourceAddress() const
+    const QString sourceAddress() const
     {
-        return sourceAddress;
+        return m_sourceAddress;
     }
-    const QString &getDestPort() const
+    const QString destPort() const
     {
-        return destPort;
+        return m_destPort;
     }
-    const QString &getSourcePort() const
+    const QString sourcePort() const
     {
-        return sourcePort;
+        return m_sourcePort;
     }
-    const QString &getInterfaceIn() const
+    const QString interfaceIn() const
     {
-        return interfaceIn;
+        return m_interfaceIn;
     }
-    const QString &getInterfaceOut() const
+    const QString interfaceOut() const
     {
-        return interfaceOut;
+        return m_interfaceOut;
     }
-    Types::Protocol getProtocol() const
+    Types::Protocol protocol() const
     {
-        return protocol;
+        return m_protocol;
     }
-    Types::Logging getLogging() const
+    Types::Logging logging() const
     {
-        return logtype;
+        return m_logtype;
     }
-    //     const QString & getDescription() const       { return description; }
-    //     const QString & getHash() const              { return hash; }
-
     void setPosition(unsigned int v)
     {
-        position = v;
+        m_position = v;
     }
     void setAction(Types::Policy v)
     {
-        action = v;
+        m_action = v;
     }
     void setIncoming(bool v)
     {
-        incoming = v;
+        m_incoming = v;
     }
     void setV6(bool v)
     {
-        v6 = v;
+        m_ipv6 = v;
     }
     void setDestApplication(const QString &v)
     {
-        destApplication = v;
+        m_destApplication = v;
     }
     void setSourceApplication(const QString &v)
     {
-        sourceApplication = v;
+        m_sourceApplication = v;
     }
     void setDestAddress(const QString &v)
     {
-        destAddress = v;
+        m_destAddress = v;
     }
     void setSourceAddress(const QString &v)
     {
-        sourceAddress = v;
+        m_sourceAddress = v;
     }
     void setDestPort(const QString &v)
     {
-        destPort = v;
+        m_destPort = v;
     }
     void setSourcePort(const QString &v)
     {
-        sourcePort = v;
+        m_sourcePort = v;
     }
     void setInterfaceIn(const QString &v)
     {
-        interfaceIn = v;
+        m_interfaceIn = v;
     }
     void setInterfaceOut(const QString &v)
     {
-        interfaceOut = v;
+        m_interfaceOut = v;
     }
     void setProtocol(Types::Protocol v)
     {
-        protocol = v;
+        m_protocol = v;
     }
     void setLogging(Types::Logging v)
     {
-        logtype = v;
+        m_logtype = v;
     }
     //     void setDescription(const QString &v)       { description=v; }
     //     void setHash(const QString &v)              { hash=v; }
@@ -201,7 +198,7 @@ public:
     // 'different' is used in the EditRule dialog to know whether the rule has actually changed...
     bool different(const Rule &o) const
     {
-        return logtype != o.logtype /*|| description!=o.description*/ || !(*this == o);
+        return m_logtype != o.m_logtype /*|| description!=o.description*/ || !(*this == o);
     }
 
     //     bool onlyDescrChanged(const Rule &o) const
@@ -211,22 +208,34 @@ public:
 
     bool operator==(const Rule &o) const
     {
-        return action == o.action && incoming == o.incoming && v6 == o.v6 && protocol == o.protocol &&
-            // logtype==o.logtype &&
-            destApplication == o.destApplication && sourceApplication == o.sourceApplication && destAddress == o.destAddress && sourceAddress == o.sourceAddress &&
-            (destApplication.isEmpty() && o.destApplication.isEmpty() ? destPort == o.destPort : true) && (sourceApplication.isEmpty() && o.sourceApplication.isEmpty() ? sourcePort == o.sourcePort : true) && interfaceIn == o.interfaceIn &&
-            interfaceOut == o.interfaceOut;
+            return m_action == o.m_action
+                && m_incoming == o.m_incoming
+                && m_ipv6 == o.m_ipv6
+                && m_protocol == o.m_protocol
+                && m_destApplication == o.m_destApplication
+                && m_sourceApplication == o.m_sourceApplication
+                && m_destAddress == o.m_destAddress
+                && m_sourceAddress == o.m_sourceAddress
+                && (m_destApplication.isEmpty() && o.m_destApplication.isEmpty() ? m_destPort == o.m_destPort : true)
+                && (m_sourceApplication.isEmpty() && o.m_sourceApplication.isEmpty() ? m_sourcePort == o.m_sourcePort : true)
+                && m_interfaceIn == o.m_interfaceIn
+                && m_interfaceOut == o.m_interfaceOut;
     }
 
 private:
-    int position;
-    Types::Policy action;
-    bool incoming, v6;
-    Types::Protocol protocol;
-    Types::Logging logtype;
-    QString destApplication, sourceApplication, destAddress, sourceAddress, destPort, sourcePort, interfaceIn, interfaceOut;
-    //                     description,
-    //                     hash;
+    int m_position;
+    Types::Policy m_action;
+    bool m_incoming, m_ipv6;
+    Types::Protocol m_protocol;
+    Types::Logging m_logtype;
+    QString m_destApplication;
+    QString m_sourceApplication;
+    QString m_destAddress;
+    QString m_sourceAddress;
+    QString m_destPort;
+    QString m_sourcePort;
+    QString m_interfaceIn;
+    QString m_interfaceOut;
 };
 
 #endif

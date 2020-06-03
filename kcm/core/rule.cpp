@@ -62,7 +62,7 @@ static QString addIface(const QString &orig, const QString &iface)
     return iface.isEmpty() ? orig : i18nc("address on interface", "%1 on %2", orig, iface);
 }
 
-static QString getServiceName(short port)
+static QString serviceName(short port)
 {
     static QMap<int, QString> serviceMap;
 
@@ -86,7 +86,7 @@ static QString formatPort(const QString &port, Types::Protocol prot)
 }
 
 // Try to convert 'port' into a port number, not a service name...
-static QString getPortNumber(const QString &port)
+static QString portNumber(const QString &port)
 {
     if (port.indexOf(':') != -1) {
         return port;
@@ -95,7 +95,7 @@ static QString getPortNumber(const QString &port)
     int num = port.toInt(&ok);
 
     if (!ok) {
-        num = Rule::getServicePort(port);
+        num = Rule::servicePort(port);
         if (num != 0) {
             return QString::number(num);
         }
@@ -137,7 +137,7 @@ static QString modifyPort(const QString &port, Types::Protocol prot, bool matchP
     short portNum = port.toShort(&ok);
 
     if (ok) {
-        service = getServiceName(portNum);
+        service = serviceName(portNum);
     }
 
     if (!service.isEmpty()) {
@@ -161,7 +161,7 @@ static QString modifyApp(const QString &app, const QString &port, Types::Protoco
     return i18nc("serice/application name (port numbers)", "%1 (%2)", app, profile.name.isEmpty() ? formatPort(port, prot) : profile.ports);
 }
 
-int Rule::getServicePort(const QString &name)
+int Rule::servicePort(const QString &name)
 {
     static QMap<QString, int> serviceMap;
 
@@ -197,38 +197,39 @@ QString Rule::modify(const QString &address, const QString &port, const QString 
 }
 
 Rule::Rule()
-    : position(0)
-    , action(Types::POLICY_REJECT)
-    , incoming(true)
-    , v6(false)
-    , protocol(Types::PROTO_BOTH)
-    , logtype(Types::LOGGING_OFF)
+    : m_position(0)
+    , m_action(Types::POLICY_REJECT)
+    , m_incoming(true)
+    , m_ipv6(false)
+    , m_protocol(Types::PROTO_BOTH)
+    , m_logtype(Types::LOGGING_OFF)
 {
 }
 
 QString Rule::fromStr() const
 {
-    return modify(sourceAddress, sourcePort, sourceApplication, interfaceIn, protocol);
+    return modify(m_sourceAddress, m_sourcePort, m_sourceApplication, m_interfaceIn, m_protocol);
 }
 
 QString Rule::toStr() const
 {
-    return modify(destAddress, destPort, destApplication, interfaceOut, protocol);
+    return modify(m_destAddress, m_destPort, m_destApplication, m_interfaceOut, m_protocol);
 }
 
 QString Rule::actionStr() const
 {
-    return incoming ? i18nc("firewallAction incomming", "%1 incoming", Types::toString(action, true)) : i18nc("firewallAction outgoing", "%1 outgoing", Types::toString(action, true));
+    return m_incoming ? i18nc("firewallAction incomming", "%1 incoming", Types::toString(m_action, true))
+                     : i18nc("firewallAction outgoing", "%1 outgoing", Types::toString(m_action, true));
 }
 
 QString Rule::ipV6Str() const
 {
-    return v6 ? i18n("Yes") : QString();
+    return m_ipv6 ? i18n("Yes") : QString();
 }
 
 QString Rule::loggingStr() const
 {
-    return Types::toString(logtype, true);
+    return Types::toString(m_logtype, true);
 }
 
 QString Rule::toXml() const
@@ -239,43 +240,43 @@ QString Rule::toXml() const
 
     xml.writeStartElement(QStringLiteral("rule"));
 
-    if (position != 0) {
-        xml.writeAttribute(QStringLiteral("position"), QString::number(position));
+    if (m_position != 0) {
+        xml.writeAttribute(QStringLiteral("position"), QString::number(m_position));
     }
 
-    xml.writeAttribute(QStringLiteral("action"), Types::toString(action));
-    xml.writeAttribute(QStringLiteral("direction"), incoming ? QStringLiteral("in") : QStringLiteral("out"));
+    xml.writeAttribute(QStringLiteral("action"), Types::toString(m_action));
+    xml.writeAttribute(QStringLiteral("direction"), m_incoming ? QStringLiteral("in") : QStringLiteral("out"));
 
-    if (!destApplication.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("dapp"), destApplication);
-    } else if (!destPort.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("dport"), destPort);
+    if (!m_destApplication.isEmpty()) {
+        xml.writeAttribute(QStringLiteral("dapp"), m_destApplication);
+    } else if (!m_destPort.isEmpty()) {
+        xml.writeAttribute(QStringLiteral("dport"), m_destPort);
     }
-    if (!sourceApplication.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("sapp"), sourceApplication);
-    } else if (!sourcePort.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("sport"), sourcePort);
-    }
-
-    if (protocol != Types::PROTO_BOTH) {
-        xml.writeAttribute(QStringLiteral("protocol"), Types::toString(protocol));
+    if (!m_sourceApplication.isEmpty()) {
+        xml.writeAttribute(QStringLiteral("sapp"), m_sourceApplication);
+    } else if (!m_sourcePort.isEmpty()) {
+        xml.writeAttribute(QStringLiteral("sport"), m_sourcePort);
     }
 
-    if (!destAddress.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("dst"), destAddress);
-    }
-    if (!sourceAddress.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("src"), sourceAddress);
+    if (m_protocol != Types::PROTO_BOTH) {
+        xml.writeAttribute(QStringLiteral("protocol"), Types::toString(m_protocol));
     }
 
-    if (!interfaceIn.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("interface_in"), interfaceIn);
+    if (!m_destAddress.isEmpty()) {
+        xml.writeAttribute(QStringLiteral("dst"), m_destAddress);
     }
-    if (!interfaceOut.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("interface_out"), interfaceOut);
+    if (!m_sourceAddress.isEmpty()) {
+        xml.writeAttribute(QStringLiteral("src"), m_sourceAddress);
     }
 
-    xml.writeAttribute(QStringLiteral("logtype"), Types::toString(logtype));
+    if (!m_interfaceIn.isEmpty()) {
+        xml.writeAttribute(QStringLiteral("interface_in"), m_interfaceIn);
+    }
+    if (!m_interfaceOut.isEmpty()) {
+        xml.writeAttribute(QStringLiteral("interface_out"), m_interfaceOut);
+    }
+
+    xml.writeAttribute(QStringLiteral("logtype"), Types::toString(m_logtype));
 
     /*if (!description.isEmpty()) {
         xml.writeAttribute(QStringLiteral("descr"), description);
@@ -284,7 +285,7 @@ QString Rule::toXml() const
         xml.writeAttribute(QStringLiteral("hash"), hash);
     }*/
 
-    xml.writeAttribute(QStringLiteral("v6"), v6 ? QStringLiteral("True") : QStringLiteral("False"));
+    xml.writeAttribute(QStringLiteral("v6"), m_ipv6 ? QStringLiteral("True") : QStringLiteral("False"));
 
     xml.writeEndElement();
 

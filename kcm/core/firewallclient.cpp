@@ -46,12 +46,12 @@ FirewallClient::FirewallClient(QObject *parent)
 {
 }
 
-QStringList FirewallClient::getKnownProtocols()
+QStringList FirewallClient::knownProtocols()
 {
     return {i18n("Any"), "TCP", "UDP"};
 }
 
-QStringList FirewallClient::getKnownInterfaces()
+QStringList FirewallClient::knownInterfaces()
 {
     QStringList interfaces_names({i18n("Any")});
 
@@ -77,12 +77,12 @@ RuleListModel *FirewallClient::rulesModel() const
     return m_currentBackend->rules();
 }
 
-RuleWrapper *FirewallClient::getRule(int index)
+RuleWrapper *FirewallClient::ruleAt(int index)
 {
     if (!m_currentBackend) {
         return nullptr;
     }
-    return m_currentBackend->getRule(index);
+    return m_currentBackend->ruleAt(index);
 }
 
 KJob *FirewallClient::addRule(RuleWrapper *rule)

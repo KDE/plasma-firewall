@@ -35,13 +35,13 @@
 #include <QXmlStreamReader>
 
 Profile::Profile(QByteArray &xml, bool isSys)
-    : fields(0)
-    , enabled(false)
-    , ipv6Enabled(false)
-    , logLevel(Types::LOG_OFF)
-    , defaultIncomingPolicy(Types::POLICY_ALLOW)
-    , defaultOutgoingPolicy(Types::POLICY_ALLOW)
-    , isSystem(isSys)
+    : m_fields(0)
+    , m_enabled(false)
+    , m_ipv6Enabled(false)
+    , m_logLevel(Types::LOG_OFF)
+    , m_defaultIncomingPolicy(Types::POLICY_ALLOW)
+    , m_defaultOutgoingPolicy(Types::POLICY_ALLOW)
+    , m_isSystem(isSys)
 {
     QBuffer buffer;
     buffer.setBuffer(&xml);
@@ -49,20 +49,20 @@ Profile::Profile(QByteArray &xml, bool isSys)
 }
 
 Profile::Profile(QFile &file, bool isSys)
-    : fields(0)
-    , enabled(false)
-    , ipv6Enabled(false)
-    , logLevel(Types::LOG_OFF)
-    , defaultIncomingPolicy(Types::POLICY_ALLOW)
-    , defaultOutgoingPolicy(Types::POLICY_ALLOW)
-    , fileName(file.fileName())
-    , isSystem(isSys)
+    : m_fields(0)
+    , m_enabled(false)
+    , m_ipv6Enabled(false)
+    , m_logLevel(Types::LOG_OFF)
+    , m_defaultIncomingPolicy(Types::POLICY_ALLOW)
+    , m_defaultOutgoingPolicy(Types::POLICY_ALLOW)
+    , m_fileName(file.fileName())
+    , m_isSystem(isSys)
 {
     load(&file);
 }
 
 Profile::Profile(const QVector<Rule> &rules, const QVariantMap &args, bool isSys)
-    : isSystem(isSys)
+    : m_isSystem(isSys)
 {
     setRules(rules);
     setArgs(args);
@@ -70,7 +70,7 @@ Profile::Profile(const QVector<Rule> &rules, const QVariantMap &args, bool isSys
 
 void Profile::setRules(const QVector<Rule> &newrules)
 {
-    rules = newrules;
+    m_rules = newrules;
 }
 
 void Profile::setArgs(const QVariantMap &args)
@@ -80,25 +80,25 @@ void Profile::setArgs(const QVariantMap &args)
     const QString new_loglevel = args.value(QStringLiteral("logLevel")).toString();
     const QStringList new_modules = args.value(QStringLiteral("modules")).toStringList();
 
-    defaultIncomingPolicy = new_defaultIncomingPolicy.isEmpty() ? Types::POLICY_ALLOW : Types::toPolicy(new_defaultIncomingPolicy);
-    defaultOutgoingPolicy = new_defaultOutgoingPolicy.isEmpty() ? Types::POLICY_ALLOW : Types::toPolicy(new_defaultOutgoingPolicy);
-    logLevel = new_loglevel.isEmpty() ? Types::LOG_OFF : Types::toLogLevel(new_loglevel);
-    enabled = args.value("status").toBool();
-    ipv6Enabled = args.value("ipv6Enabled").toBool();
+    m_defaultIncomingPolicy = new_defaultIncomingPolicy.isEmpty() ? Types::POLICY_ALLOW : Types::toPolicy(new_defaultIncomingPolicy);
+    m_defaultOutgoingPolicy = new_defaultOutgoingPolicy.isEmpty() ? Types::POLICY_ALLOW : Types::toPolicy(new_defaultOutgoingPolicy);
+    m_logLevel = new_loglevel.isEmpty() ? Types::LOG_OFF : Types::toLogLevel(new_loglevel);
+    m_enabled = args.value("status").toBool();
+    m_ipv6Enabled = args.value("ipv6Enabled").toBool();
 
     if (!new_modules.isEmpty()) {
-        modules = QSet<QString>(std::begin(new_modules), std::end(new_modules));
+        m_modules = QSet<QString>(std::begin(new_modules), std::end(new_modules));
     }
 }
 
 void Profile::setDefaultIncomingPolicy(const QString &policy)
 {
-    defaultIncomingPolicy = Types::toPolicy(policy);
+    m_defaultIncomingPolicy = Types::toPolicy(policy);
 }
 
 void Profile::setDefaultOutgoingPolicy(const QString &policy)
 {
-    defaultOutgoingPolicy = Types::toPolicy(policy);
+    m_defaultOutgoingPolicy = Types::toPolicy(policy);
 }
 
 QString Profile::toXml() const
@@ -108,7 +108,7 @@ QString Profile::toXml() const
 
     stream << "<ufw full=\"true\" >" << endl << ' ' << defaultsXml() << endl << " <rules>" << endl;
 
-    for (const auto &rule : rules) {
+    for (const auto &rule : m_rules) {
         stream << "  " << rule.toXml();
     }
 
@@ -121,12 +121,15 @@ QString Profile::defaultsXml() const
 {
     static const auto defaultString = QStringLiteral(R"(<defaults ipv6="%1" loglevel="%2" incoming="%3" outgoing="%4"/>)");
 
-    return defaultString.arg(ipv6Enabled ? "yes" : "no").arg(Types::toString(logLevel)).arg(Types::toString(defaultIncomingPolicy)).arg(Types::toString(defaultOutgoingPolicy));
+    return defaultString.arg(m_ipv6Enabled ? "yes" : "no")
+        .arg(Types::toString(m_logLevel))
+        .arg(Types::toString(m_defaultIncomingPolicy))
+        .arg(Types::toString(m_defaultOutgoingPolicy));
 }
 
 QString Profile::modulesXml() const
 {
-    return QString("<modules enabled=\"") + QStringList(modules.toList()).join(" ") + QString("\" />");
+    return QString("<modules enabled=\"") + QStringList(m_modules.toList()).join(" ") + QString("\" />");
 }
 
 void Profile::load(QIODevice *device)
@@ -148,11 +151,11 @@ void Profile::load(QIODevice *device)
             continue;
         }
         if (reader.name() == QStringLiteral("status")) {
-            enabled = reader.attributes().value("enabled") == QStringLiteral("true");
-            fields |= FIELD_STATUS;
+            m_enabled = reader.attributes().value("enabled") == QStringLiteral("true");
+            m_fields |= FIELD_STATUS;
         }
         if (reader.name() == QStringLiteral("rules")) {
-            fields |= FIELD_RULES;
+            m_fields |= FIELD_RULES;
             continue;
         }
         if (reader.name() == "rule") {
@@ -179,7 +182,7 @@ void Profile::load(QIODevice *device)
             const QString sourcePort = sport == ANY_PORT ? QString() : sport;
             const QString destPort = dport == ANY_PORT ? QString() : dport;
 
-            rules.append(Rule(action,
+            m_rules.append(Rule(action,
                               attr.value("direction") == QStringLiteral("in"),
                               logType,
                               protocol,
@@ -195,30 +198,30 @@ void Profile::load(QIODevice *device)
                               attr.value("v6") == QStringLiteral("True")));
         }
         if (reader.name() == "defaults") {
-            fields |= FIELD_DEFAULTS;
+            m_fields |= FIELD_DEFAULTS;
 
             const auto attr = reader.attributes();
 
-            logLevel = Types::toLogLevel(attr.value(QLatin1String("loglevel")).toString());
+            m_logLevel = Types::toLogLevel(attr.value(QLatin1String("loglevel")).toString());
 
-            defaultIncomingPolicy = Types::toPolicy(attr.value(QLatin1String("incoming")).toString());
-            defaultOutgoingPolicy = Types::toPolicy(attr.value(QLatin1String("outgoing")).toString());
+            m_defaultIncomingPolicy = Types::toPolicy(attr.value(QLatin1String("incoming")).toString());
+            m_defaultOutgoingPolicy = Types::toPolicy(attr.value(QLatin1String("outgoing")).toString());
 
-            ipv6Enabled = (attr.value("ipv6") == QLatin1String("yes"));
+            m_ipv6Enabled = (attr.value("ipv6") == QLatin1String("yes"));
         }
         if (reader.name() == "modules") {
-            fields |= FIELD_MODULES;
+            m_fields |= FIELD_MODULES;
             const auto attr = reader.attributes();
             const auto moduleList = attr.value("enabled").toString().split(" ", Qt::SkipEmptyParts);
-            modules = QSet<QString>(std::begin(moduleList), std::end(moduleList));
+            m_modules = QSet<QString>(std::begin(moduleList), std::end(moduleList));
         }
     }
-    if (isFullProfile && (!(fields & FIELD_RULES) || !(fields & FIELD_DEFAULTS) || !(fields & FIELD_MODULES))) {
-        fields = 0;
+    if (isFullProfile && (!(m_fields & FIELD_RULES) || !(m_fields & FIELD_DEFAULTS) || !(m_fields & FIELD_MODULES))) {
+        m_fields = 0;
     }
 }
 
 void Profile::setEnabled(const bool &value)
 {
-    enabled = value;
+    m_enabled = value;
 }

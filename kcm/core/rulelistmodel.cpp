@@ -72,7 +72,7 @@ QVariant RuleListModel::data(const QModelIndex &index, int role) const
     case ToRole:
         return rule.toStr();
     case Ipv6Role:
-        return rule.getV6() ? "IPv6" : "IPv4";
+        return rule.ipv6() ? "IPv6" : "IPv4";
     case LoggingRole:
         return rule.loggingStr();
     }
@@ -83,7 +83,7 @@ void RuleListModel::setProfile(Profile profile)
 {
     beginResetModel();
     m_profile = profile;
-    m_rules = m_profile.getRules();
+    m_rules = m_profile.rules();
     endResetModel();
 }
 
