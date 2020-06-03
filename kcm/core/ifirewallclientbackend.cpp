@@ -32,8 +32,8 @@ IFirewallClientBackend::IFirewallClientBackend(QObject *parent, const QVariantLi
 
 void IFirewallClientBackend::setProfiles(const QVector<Entry> &profiles)
 {
-    std::sort(std::begin(m_profiles), std::end(m_profiles));
     m_profiles = profiles;
+    std::sort(std::begin(m_profiles), std::end(m_profiles));
 }
 
 Entry IFirewallClientBackend::profileByName(const QString &name)
