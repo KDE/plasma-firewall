@@ -451,35 +451,44 @@ LogListModel *FirewalldClient::logs()
 QVector<Rule> FirewalldClient::extractRulesFromResponse(const QList<firewalld_reply> &reply) const
 {
     QVector<Rule> message_rules;
-    if (reply.size() > 0) {
-        for (auto r : reply) {
-            const auto action = r.rules.at(r.rules.indexOf("-j") + 1) == "ACCEPT" ? Types::POLICY_ALLOW : r.rules.at(r.rules.indexOf("-j") + 1) == "REJECT" ? Types::POLICY_REJECT : Types::POLICY_DENY;
-
-            const auto sourceAddress = r.rules.indexOf("-s") > 0 ? r.rules.at(r.rules.indexOf("-s") + 1) : "";
-            const auto destinationAddress = r.rules.indexOf("-d") >= 0 ? r.rules.at(r.rules.indexOf("-d") + 1) : "";
-            const auto protocol = r.rules.indexOf("-p") >= 0 ? Types::toProtocol(r.rules.at(r.rules.indexOf("-p") + 1)) : Types::PROTO_BOTH;
-            const auto interface_in = r.rules.indexOf("-i") >= 0 ? r.rules.at(r.rules.indexOf("-i") + 1) : "";
-            const auto interface_out = r.rules.indexOf("-i") >= 0 ? r.rules.at(r.rules.indexOf("-i") + 1) : "";
-
-            const auto sourcePort = r.rules.at(r.rules.indexOf(QRegExp("^" + QRegExp::escape("--sport") + ".+"))).section("=", -1);
-            const auto destPort = r.rules.at(r.rules.indexOf(QRegExp("^" + QRegExp::escape("--dport") + ".+"))).section("=", -1);
-            qDebug() << r.ipv << r.chain << r.table << r.priority << r.rules;
-            message_rules.push_back(Rule(action,
-                                         r.chain == "INPUT",
-                                         Types::LOGGING_OFF,
-                                         protocol,
-                                         sourceAddress,
-                                         sourcePort,
-                                         destinationAddress,
-                                         destPort,
-                                         r.chain == "INPUT" ? interface_in : "",
-                                         r.chain == "OUTPUT" ? interface_out : "",
-                                         "",
-                                         "",
-                                         r.priority,
-                                         r.ipv == "ipv6"));
-        }
+    if (reply.size() <= 0) {
+        return {};
     }
+
+    for (auto r : reply) {
+        const auto action = r.rules.at(r.rules.indexOf("-j") + 1) == "ACCEPT" ? Types::POLICY_ALLOW
+                          : r.rules.at(r.rules.indexOf("-j") + 1) == "REJECT" ? Types::POLICY_REJECT
+                          : Types::POLICY_DENY;
+
+        const auto sourceAddress = r.rules.indexOf("-s") > 0 ? r.rules.at(r.rules.indexOf("-s") + 1) : "";
+        const auto destinationAddress = r.rules.indexOf("-d") >= 0 ? r.rules.at(r.rules.indexOf("-d") + 1) : "";
+        const auto interface_in = r.rules.indexOf("-i") >= 0 ? r.rules.at(r.rules.indexOf("-i") + 1) : "";
+        const auto interface_out = r.rules.indexOf("-i") >= 0 ? r.rules.at(r.rules.indexOf("-i") + 1) : "";
+
+        const auto protocol = r.rules.indexOf("-p") >= 0 ? Types::toProtocol(r.rules.at(r.rules.indexOf("-p") + 1)) : Types::PROTO_BOTH;
+
+        const auto sourcePort = r.rules.at(r.rules.indexOf(QRegExp("^" + QRegExp::escape("--sport") + ".+"))).section("=", -1);
+        const auto destPort = r.rules.at(r.rules.indexOf(QRegExp("^" + QRegExp::escape("--dport") + ".+"))).section("=", -1);
+        qDebug() << r.ipv << r.chain << r.table << r.priority << r.rules;
+        message_rules.push_back(
+            Rule(action,
+                r.chain == "INPUT",
+                Types::LOGGING_OFF,
+                protocol,
+                sourceAddress,
+                sourcePort,
+                destinationAddress,
+                destPort,
+                r.chain == "INPUT" ? interface_in : "",
+                r.chain == "OUTPUT" ? interface_out : "",
+                "",
+                "",
+                r.priority,
+                r.ipv == "ipv6"
+            )
+        );
+    }
+
     return message_rules;
 }
 
