@@ -30,6 +30,7 @@
 #include "firewallclient.h"
 
 #include <QString>
+#include <QVector>
 
 class KJob;
 class LogListModel;
