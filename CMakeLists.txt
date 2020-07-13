@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.8)
 project(plasma-firewall)
 
 set(KF5_MIN_VERSION "5.30.0")
-set(QT_MIN_VERSION "5.12.0")
+set(QT_MIN_VERSION "5.14.0")
 
 set(CMAKE_AUTOMOC TRUE)
 set(CMAKE_AUTORCC TRUE)
