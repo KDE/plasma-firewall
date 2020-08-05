@@ -41,22 +41,26 @@
 #include <QStringList>
 #include <QtGlobal>
 
-FirewallClient::FirewallClient(QObject *parent)
+FirewallClient::FirewallClient(QObject* parent)
     : QObject(parent)
 {
+#if defined(FIREWALLD)
+    setBackend("firewalld");
+#else
     setBackend("ufw");
+#endif
 }
 
 QStringList FirewallClient::knownProtocols()
 {
-    return {i18n("Any"), "TCP", "UDP"};
+    return { i18n("Any"), "TCP", "UDP" };
 }
 
 QStringList FirewallClient::knownInterfaces()
 {
-    QStringList interface_names({i18n("Any")});
+    QStringList interface_names({ i18n("Any") });
 
-    for (const QNetworkInterface &iface : QNetworkInterface::allInterfaces()) {
+    for (const QNetworkInterface& iface : QNetworkInterface::allInterfaces()) {
         interface_names << iface.name();
     }
 
@@ -71,7 +75,7 @@ void FirewallClient::refresh()
     m_currentBackend->refresh();
 }
 
-RuleListModel *FirewallClient::rulesModel() const
+RuleListModel* FirewallClient::rulesModel() const
 {
     if (!m_currentBackend) {
         return nullptr;
@@ -79,7 +83,7 @@ RuleListModel *FirewallClient::rulesModel() const
     return m_currentBackend->rules();
 }
 
-RuleWrapper *FirewallClient::ruleAt(int index)
+RuleWrapper* FirewallClient::ruleAt(int index)
 {
     if (!m_currentBackend) {
         return nullptr;
@@ -87,7 +91,7 @@ RuleWrapper *FirewallClient::ruleAt(int index)
     return m_currentBackend->ruleAt(index);
 }
 
-KJob *FirewallClient::addRule(RuleWrapper *rule)
+KJob* FirewallClient::addRule(RuleWrapper* rule)
 {
     if (!m_currentBackend) {
         return nullptr;
@@ -95,7 +99,7 @@ KJob *FirewallClient::addRule(RuleWrapper *rule)
     return m_currentBackend->addRule(rule);
 }
 
-KJob *FirewallClient::removeRule(int index)
+KJob* FirewallClient::removeRule(int index)
 {
     if (!m_currentBackend) {
         return nullptr;
@@ -103,7 +107,7 @@ KJob *FirewallClient::removeRule(int index)
     return m_currentBackend->removeRule(index);
 }
 
-KJob *FirewallClient::updateRule(RuleWrapper *rule)
+KJob* FirewallClient::updateRule(RuleWrapper* rule)
 {
     if (!m_currentBackend) {
         return nullptr;
@@ -111,7 +115,7 @@ KJob *FirewallClient::updateRule(RuleWrapper *rule)
     return m_currentBackend->updateRule(rule);
 }
 
-KJob *FirewallClient::moveRule(int from, int to)
+KJob* FirewallClient::moveRule(int from, int to)
 {
     // TODO: Verify if this method is needed.
     if (!m_currentBackend) {
@@ -120,7 +124,7 @@ KJob *FirewallClient::moveRule(int from, int to)
     return m_currentBackend->moveRule(from, to);
 }
 
-KJob *FirewallClient::save()
+KJob* FirewallClient::save()
 {
     if (!m_currentBackend) {
         return nullptr;
@@ -136,27 +140,29 @@ FirewallClient::Capabilities FirewallClient::capabilities() const
     return m_currentBackend->capabilities();
 }
 
-/* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connecion Table. */
-RuleWrapper *FirewallClient::createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status)
+/* Creates a new Rule and returns it to the Qml side, passing arguments based
+ * on the Connecion Table. */
+RuleWrapper* FirewallClient::createRuleFromConnection(const QString& protocol,
+    const QString& localAddress, const QString& foreignAddres,
+    const QString& status)
 {
     if (!m_currentBackend) {
         return nullptr;
     }
-    return m_currentBackend->createRuleFromConnection(protocol, localAddress, foreignAddres, status);
+    return m_currentBackend->createRuleFromConnection(
+        protocol, localAddress, foreignAddres, status);
 }
 
-RuleWrapper *FirewallClient::createRuleFromLog(
-    const QString &protocol,
-    const QString &sourceAddress,
-    const QString &sourcePort,
-    const QString &destinationAddress,
-    const QString &destinationPort,
-    const QString &inn)
+RuleWrapper* FirewallClient::createRuleFromLog(const QString& protocol,
+    const QString& sourceAddress, const QString& sourcePort,
+    const QString& destinationAddress, const QString& destinationPort,
+    const QString& inn)
 {
     if (!m_currentBackend) {
         return nullptr;
     }
-    return m_currentBackend->createRuleFromLog(protocol, sourceAddress, sourcePort, destinationAddress, destinationPort, inn);
+    return m_currentBackend->createRuleFromLog(protocol, sourceAddress,
+        sourcePort, destinationAddress, destinationPort, inn);
 }
 
 bool FirewallClient::enabled() const
@@ -183,7 +189,7 @@ QString FirewallClient::defaultOutgoingPolicy() const
     return m_currentBackend->defaultOutgoingPolicy();
 }
 
-LogListModel *FirewallClient::logsModel()
+LogListModel* FirewallClient::logsModel()
 {
     // TODO: Perhaps this function is uneeded.
     if (!m_currentBackend) {
@@ -200,7 +206,7 @@ bool FirewallClient::logsAutoRefresh() const
     return m_currentBackend->logsAutoRefresh();
 }
 
-KJob *FirewallClient::setEnabled(bool enabled)
+KJob* FirewallClient::setEnabled(bool enabled)
 {
     if (!m_currentBackend) {
         return nullptr;
@@ -208,7 +214,8 @@ KJob *FirewallClient::setEnabled(bool enabled)
     return m_currentBackend->setEnabled(enabled);
 }
 
-void FirewallClient::queryStatus(DefaultDataBehavior defaultsBehavior, ProfilesBehavior profilesBehavior)
+void FirewallClient::queryStatus(
+    DefaultDataBehavior defaultsBehavior, ProfilesBehavior profilesBehavior)
 {
     if (!m_currentBackend) {
         return;
@@ -216,7 +223,8 @@ void FirewallClient::queryStatus(DefaultDataBehavior defaultsBehavior, ProfilesB
     m_currentBackend->queryStatus(defaultsBehavior, profilesBehavior);
 }
 
-KJob *FirewallClient::setDefaultIncomingPolicy(const QString &defaultIncomingPolicy)
+KJob* FirewallClient::setDefaultIncomingPolicy(
+    const QString& defaultIncomingPolicy)
 {
     if (!m_currentBackend) {
         return nullptr;
@@ -224,7 +232,8 @@ KJob *FirewallClient::setDefaultIncomingPolicy(const QString &defaultIncomingPol
     return m_currentBackend->setDefaultIncomingPolicy(defaultIncomingPolicy);
 }
 
-KJob *FirewallClient::setDefaultOutgoingPolicy(const QString &defaultOutgoingPolicy)
+KJob* FirewallClient::setDefaultOutgoingPolicy(
+    const QString& defaultOutgoingPolicy)
 {
     if (!m_currentBackend) {
         return nullptr;
@@ -249,7 +258,7 @@ bool FirewallClient::hasExecutable() const
     return m_currentBackend->hasExecutable();
 }
 
-void FirewallClient::setBackend(const QString &backend)
+void FirewallClient::setBackend(const QString& backend)
 {
     qDebug() << "Setting backend" << backend;
     if (m_currentBackend) {
@@ -258,32 +267,45 @@ void FirewallClient::setBackend(const QString &backend)
         m_currentBackend = nullptr;
     }
 
-    const auto plugins = KPluginLoader::findPlugins(QStringLiteral("kf5/plasma_firewall"));
+    const auto plugins
+        = KPluginLoader::findPlugins(QStringLiteral("kf5/plasma_firewall"));
 
-    for (const KPluginMetaData &metadata : plugins) {
-        // FIXME FIXME add criteria for loading it (e.g. service registered) and some priority thing
+    for (const KPluginMetaData& metadata : plugins) {
+        // FIXME FIXME add criteria for loading it (e.g. service registered)
+        // and some priority thing
 
         if (metadata.pluginId() != backend + QLatin1String("backend")) {
             continue;
         }
 
-        KPluginFactory *factory = KPluginLoader(metadata.fileName()).factory();
+        KPluginFactory* factory = KPluginLoader(metadata.fileName()).factory();
         if (!factory) {
             continue;
         }
 
         // FIXME not working
-        m_currentBackend = factory->create<IFirewallClientBackend>(this, QVariantList() /*args*/);
+        m_currentBackend = factory->create<IFirewallClientBackend>(
+            this, QVariantList() /*args*/);
         break;
     }
 
     if (m_currentBackend) {
-        connect(m_currentBackend, &IFirewallClientBackend::enabledChanged, this, &FirewallClient::enabledChanged);
-        connect(m_currentBackend, &IFirewallClientBackend::defaultIncomingPolicyChanged, this, &FirewallClient::defaultIncomingPolicyChanged);
-        connect(m_currentBackend, &IFirewallClientBackend::defaultOutgoingPolicyChanged, this, &FirewallClient::defaultOutgoingPolicyChanged);
-        connect(m_currentBackend, &IFirewallClientBackend::logsAutoRefreshChanged, this, &FirewallClient::logsAutoRefreshChanged);
-        connect(m_currentBackend, &IFirewallClientBackend::hasExecutableChanged, this, &FirewallClient::hasExecutableChanged);
-        connect(m_currentBackend, &IFirewallClientBackend::showErrorMessage, this, &FirewallClient::showErrorMessage);
+        connect(m_currentBackend, &IFirewallClientBackend::enabledChanged,
+            this, &FirewallClient::enabledChanged);
+        connect(m_currentBackend,
+            &IFirewallClientBackend::defaultIncomingPolicyChanged, this,
+            &FirewallClient::defaultIncomingPolicyChanged);
+        connect(m_currentBackend,
+            &IFirewallClientBackend::defaultOutgoingPolicyChanged, this,
+            &FirewallClient::defaultOutgoingPolicyChanged);
+        connect(m_currentBackend,
+            &IFirewallClientBackend::logsAutoRefreshChanged, this,
+            &FirewallClient::logsAutoRefreshChanged);
+        connect(m_currentBackend,
+            &IFirewallClientBackend::hasExecutableChanged, this,
+            &FirewallClient::hasExecutableChanged);
+        connect(m_currentBackend, &IFirewallClientBackend::showErrorMessage,
+            this, &FirewallClient::showErrorMessage);
     } else {
         qDebug() << "Could not find backend" << backend;
     }

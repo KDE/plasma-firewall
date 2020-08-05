@@ -3,7 +3,7 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}
     .
 )
-
+option(BUILD_FIREWALLD "Build Firewalld instead of ufw")
 add_subdirectory(core)
 add_subdirectory(backends)
 
