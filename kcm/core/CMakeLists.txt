@@ -1,3 +1,5 @@
+include(GenerateExportHeader)
+
 add_library(kcm_firewall_core
     firewallclient.cpp
     ifirewallclientbackend.cpp

@@ -21,6 +21,7 @@ find_package(Qt5 REQUIRED COMPONENTS
     Core
     Qml
     X11Extras
+    DBus
 )
 
 # KDE5
@@ -39,7 +40,6 @@ find_package(KF5 REQUIRED COMPONENTS
     I18n
     Plasma
     PlasmaQuick
-    KDELibs4Support
     Declarative
 )
 
