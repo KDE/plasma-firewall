@@ -4,9 +4,8 @@ This is the repository for the Plasma 5 Firewall KCM.
 - CoreAddons.
 - KCMUtils.
 - I18n.
-- Plasma 5.8.4+.
+- Plasma 5.18+.
 - PlasmaQuick.
-- KDELibs4Support.
 - Declarative.
 
 # Issues
