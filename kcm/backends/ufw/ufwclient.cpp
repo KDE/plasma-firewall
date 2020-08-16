@@ -78,7 +78,7 @@ UfwClient::UfwClient(QObject *parent, const QVariantList &args)
     : IFirewallClientBackend(parent, args)
     , m_rulesModel(new RuleListModel(this))
 {
-    // HACK: Quering the firewall status in this context
+    // HACK: Querring the firewall status in this context
     // creates a segmentation fault error in some situations
     // due to an usage of the rootObject before it's
     // initialization. So, it's delayed a little.

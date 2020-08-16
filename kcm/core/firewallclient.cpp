@@ -141,7 +141,7 @@ FirewallClient::Capabilities FirewallClient::capabilities() const
 }
 
 /* Creates a new Rule and returns it to the Qml side, passing arguments based
- * on the Connecion Table. */
+ * on the Connection Table. */
 RuleWrapper* FirewallClient::createRuleFromConnection(const QString& protocol,
     const QString& localAddress, const QString& foreignAddres,
     const QString& status)

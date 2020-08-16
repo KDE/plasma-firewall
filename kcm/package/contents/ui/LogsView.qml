@@ -39,7 +39,7 @@ ViewBase {
         {title: "", role: "destinationPort", width: Kirigami.Units.gridUnit * 3},
         {title: i18n("Interface"), role: "interface", width: Kirigami.Units.gridUnit * 3}
     ]
-    emptyListText: i18n("There are currently no firwall log entries.")
+    emptyListText: i18n("There are currently no firewall log entries.")
 
     blacklistRuleFactory: firewallClient.createRuleFromLog
     blacklistRuleRoleNames: [

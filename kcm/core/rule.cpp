@@ -121,14 +121,14 @@ static QString modifyPort(const QString &port, Types::Protocol prot, bool matchP
     // Does it match a pre-configured application?
     Types::PredefinedPort pp = Types::toPredefinedPort(port + Rule::protocolSuffix(prot));
 
-    // When matchin glog lines, the protocol is *always* specified - but dont alwys want this when
+    // When matching glog lines, the protocol is *always* specified - but don't always want this when
     // matching names...
     if (matchPortNoProto && Types::PP_COUNT == pp) {
         pp = Types::toPredefinedPort(port);
     }
 
     if (Types::PP_COUNT != pp) {
-        return i18nc("serice/application name (port numbers)", "%1 (%2)", Types::toString(pp, true), port + Rule::protocolSuffix(prot));
+        return i18nc("service/application name (port numbers)", "%1 (%2)", Types::toString(pp, true), port + Rule::protocolSuffix(prot));
     }
 
     // Is it a service known to /etc/services ???
@@ -141,10 +141,10 @@ static QString modifyPort(const QString &port, Types::Protocol prot, bool matchP
     }
 
     if (!service.isEmpty()) {
-        return i18nc("serice/application name (port numbers)", "%1 (%2)", service, formatPort(port, prot));
+        return i18nc("service/application name (port numbers)", "%1 (%2)", service, formatPort(port, prot));
     }
 
-    // Just return port/sericename and protocol
+    // Just return port/servicename and protocol
     return formatPort(port, prot);
 }
 
@@ -158,7 +158,7 @@ static QString modifyApp(const QString &app, const QString &port, Types::Protoco
     Entry profile({});
     //     Entry profile(get(app));
 
-    return i18nc("serice/application name (port numbers)", "%1 (%2)", app, profile.name.isEmpty() ? formatPort(port, prot) : profile.ports);
+    return i18nc("service/application name (port numbers)", "%1 (%2)", app, profile.name.isEmpty() ? formatPort(port, prot) : profile.ports);
 }
 
 int Rule::servicePort(const QString &name)
@@ -218,7 +218,7 @@ QString Rule::toStr() const
 
 QString Rule::actionStr() const
 {
-    return m_incoming ? i18nc("firewallAction incomming", "%1 incoming", Types::toString(m_action, true))
+    return m_incoming ? i18nc("firewallAction incoming", "%1 incoming", Types::toString(m_action, true))
                      : i18nc("firewallAction outgoing", "%1 outgoing", Types::toString(m_action, true));
 }
 

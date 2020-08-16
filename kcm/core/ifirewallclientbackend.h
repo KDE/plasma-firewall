@@ -62,7 +62,7 @@ public:
     Q_INVOKABLE virtual KJob *save();
     virtual void setLogsAutoRefresh(bool logsAutoRefresh) = 0;
 
-    /* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connecion Table. */
+    /* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connection Table. */
     virtual RuleWrapper *createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status) = 0;
 
     virtual RuleWrapper *createRuleFromLog(const QString &protocol, const QString &sourceAddress, const QString &sourcePort, const QString &destinationAddress, const QString &destinationPort, const QString &inn) = 0;
