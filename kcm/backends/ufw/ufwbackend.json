@@ -2,6 +2,12 @@
     "KPlugin": {
         "Icon": "ufw",
         "Name": "Backend for Uncomplicated Firewall",
+        "Name[ca@valencia]": "Dorsal per al tallafoc sense complicacions",
+        "Name[ca]": "Dorsal per al tallafoc sense complicacions",
+        "Name[es]": "Motor para cortafuegos sin complicaciones",
+        "Name[sv]": "Gränssnitt för okomplicerad brandvägg",
+        "Name[uk]": "Модуль для Uncomplicated Firewall",
+        "Name[x-test]": "xxBackend for Uncomplicated Firewallxx",
         "ServiceTypes": [
             "KFileItemAction/Plugin",
             "Plasma/FirewallBackend"

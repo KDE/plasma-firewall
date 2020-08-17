@@ -1,6 +1,20 @@
 [Desktop Entry]
 Name=Firewall
+Name[ca]=Tallafoc
+Name[ca@valencia]=Tallafoc
+Name[es]=Cortafuegos
+Name[nl]=Firewall
+Name[sv]=Brandvägg
+Name[uk]=Брандмауер
+Name[x-test]=xxFirewallxx
 Comment=Adjust your firewall settings
+Comment[ca]=Ajusta els ajustaments del tallafoc
+Comment[ca@valencia]=Ajusta els ajustaments del tallafoc
+Comment[es]=Ajustar las preferencias del cortafuegos
+Comment[nl]=Uw firewall-instellingen aanpassen
+Comment[sv]=Justera brandväggsinställningar
+Comment[uk]=Скоригувати параметри вашого брандмауера
+Comment[x-test]=xxAdjust your firewall settingsxx
 Encoding=UTF-8
 
 Icon=security-high

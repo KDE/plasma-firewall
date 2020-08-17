@@ -1,10 +1,31 @@
 [Domain]
 Name=KCM Firewall netstat utils
+Name[ca]=Utilitats de netstat per al Tallafoc del KCM
+Name[ca@valencia]=Utilitats de netstat per al Tallafoc del KCM
+Name[es]=Utilidades de netstat para el módulo de cortafuegos
+Name[nl]=KCM-firewall netstat-hulpmiddelen
+Name[sv]=IM brandvägg nättillståndsverktyg
+Name[uk]=Модуль керування для засобів статистики брандмауера
+Name[x-test]=xxKCM Firewall netstat utilsxx
 Icon=network-card
 URL=
 
 [org.kde.netstat.query]
 Name=Read connections
+Name[ca]=Llegeix les connexions
+Name[ca@valencia]=Llig les connexions
+Name[es]=Leer conexiones
+Name[nl]=Lees verbindingen
+Name[sv]=Läs anslutningar
+Name[uk]=Читання з'єднань
+Name[x-test]=xxRead connectionsxx
 Description=Get system open connections.
+Description[ca]=Obtén les connexions obertes del sistema.
+Description[ca@valencia]=Obtén les connexions obertes del sistema.
+Description[es]=Obtener las conexiones abiertas del sistema.
+Description[nl]=Open verbindingen van systeem ophalen.
+Description[sv]=Hämta systemets öppna anslutningar.
+Description[uk]=Отримання відкритих з'єднань системи.
+Description[x-test]=xxGet system open connections.xx
 Policy=yes
 Persistence=session

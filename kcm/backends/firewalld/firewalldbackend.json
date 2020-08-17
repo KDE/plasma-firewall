@@ -2,6 +2,12 @@
     "KPlugin": {
         "Icon": "firewalld",
         "Name": "Backend for Firewalld",
+        "Name[ca@valencia]": "Dorsal per al «firewalld»",
+        "Name[ca]": "Dorsal per al «firewalld»",
+        "Name[es]": "Motor para Firewalld",
+        "Name[sv]": "Gränssnitt för brandvägg",
+        "Name[uk]": "Модуль для Firewalld",
+        "Name[x-test]": "xxBackend for Firewalldxx",
         "ServiceTypes": [
             "KFileItemAction/Plugin",
             "Plasma/FirewallBackend"

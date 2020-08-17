@@ -12,6 +12,27 @@ X-DocPath=kcontrol/firewall/index.html
 
 
 Name=Firewall
+Name[ca]=Tallafoc
+Name[ca@valencia]=Tallafoc
+Name[es]=Cortafuegos
+Name[nl]=Firewall
+Name[sv]=Brandvägg
+Name[uk]=Брандмауер
+Name[x-test]=xxFirewallxx
 Comment=Control your network rules
+Comment[ca]=Controla les regles per a la xarxa
+Comment[ca@valencia]=Controla les regles per a la xarxa
+Comment[es]=Controlar las reglas de la red
+Comment[nl]=Uw netwerkregels besturen
+Comment[sv]=Styr nätverksregler
+Comment[uk]=Керування вашими правилами мережі
+Comment[x-test]=xxControl your network rulesxx
 X-KDE-Keywords=firewall, network, security
+X-KDE-Keywords[ca]=firewall, tallafoc, network, xarxa, security, seguretat
+X-KDE-Keywords[ca@valencia]=firewall, tallafoc, network, xarxa, security, seguretat
+X-KDE-Keywords[es]=cortafuegos, firewall, red, seguridad
+X-KDE-Keywords[nl]=firewall, netwerk, beveiliging
+X-KDE-Keywords[sv]=brandvägg,nätverk,säkerhet
+X-KDE-Keywords[uk]=брандмауер,мережа,безпека,захист,firewall, network, security
+X-KDE-Keywords[x-test]=xxfirewallxx,xx networkxx,xx securityxx
 Categories=Qt;KDE;X-KDE-settings-looknfeel;
