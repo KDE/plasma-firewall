@@ -106,13 +106,13 @@ QString Profile::toXml() const
     QString str;
     QTextStream stream(&str);
 
-    stream << "<ufw full=\"true\" >" << endl << ' ' << defaultsXml() << endl << " <rules>" << endl;
+    stream << "<ufw full=\"true\" >" << Qt::endl << ' ' << defaultsXml() << Qt::endl << " <rules>" << Qt::endl;
 
     for (const auto &rule : m_rules) {
         stream << "  " << rule.toXml();
     }
 
-    stream << " </rules>" << endl << ' ' << modulesXml() << endl << "</ufw>" << endl;
+    stream << " </rules>" << Qt::endl << ' ' << modulesXml() << Qt::endl << "</ufw>" << Qt::endl;
 
     return str;
 }
