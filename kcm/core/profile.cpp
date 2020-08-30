@@ -129,7 +129,7 @@ QString Profile::defaultsXml() const
 
 QString Profile::modulesXml() const
 {
-    return QString("<modules enabled=\"") + QStringList(m_modules.toList()).join(" ") + QString("\" />");
+    return QString("<modules enabled=\"") + QStringList(m_modules.values()).join(" ") + QString("\" />");
 }
 
 void Profile::load(QIODevice *device)
