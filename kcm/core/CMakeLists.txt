@@ -1,9 +1,5 @@
 include(GenerateExportHeader)
 
-if(BUILD_FIREWALLD)
-    add_compile_definitions(FIREWALLD)
-endif()
-
 add_library(kcm_firewall_core
     firewallclient.cpp
     ifirewallclientbackend.cpp

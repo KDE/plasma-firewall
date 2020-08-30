@@ -67,6 +67,9 @@ public:
 
     virtual RuleWrapper *createRuleFromLog(const QString &protocol, const QString &sourceAddress, const QString &sourcePort, const QString &destinationAddress, const QString &destinationPort, const QString &inn) = 0;
 
+    /* returns true if all of the dependnecies of the firewall are installed on the system */
+    virtual bool hasDependencies() const = 0;
+
     virtual bool enabled() const = 0;
     virtual QString defaultIncomingPolicy() const = 0;
     virtual QString defaultOutgoingPolicy() const = 0;

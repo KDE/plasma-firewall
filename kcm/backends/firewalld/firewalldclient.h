@@ -71,7 +71,7 @@ public:
     static IFirewallClientBackend *createMethod(FirewallClient *parent);
     bool hasExecutable() const override;
     void refreshProfiles() override;
-
+    bool hasDependencies() const override;
 protected slots:
     void refreshLogs();
 

@@ -76,6 +76,14 @@ bool FirewalldClient::enabled() const
     return m_currentProfile.enabled();
 }
 
+bool FirewalldClient::hasDependencies() const
+{
+    if (QStandardPaths::findExecutable(QStringLiteral("firewalld")).isEmpty()) {
+        return false;
+    }
+    return true;
+}
+
 KJob *FirewalldClient::setEnabled(const bool value)
 {
     SystemdJob *job = new SystemdJob(static_cast<SYSTEMD::actions>(value));

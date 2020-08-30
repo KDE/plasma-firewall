@@ -44,11 +44,12 @@
 FirewallClient::FirewallClient(QObject *parent)
     : QObject(parent)
 {
-#if defined(FIREWALLD)
-    setBackend("firewalld");
-#else
-    setBackend("ufw");
-#endif
+    if (!m_currentBackend) {
+        setBackend("ufw");
+    }
+    if (!m_currentBackend) {
+        setBackend("firewalld");
+    }
 }
 
 QStringList FirewallClient::knownProtocols()
@@ -275,9 +276,6 @@ void FirewallClient::setBackend(const QString &backend)
     const auto plugins = KPluginLoader::findPlugins(QStringLiteral("kf5/plasma_firewall"));
 
     for (const KPluginMetaData &metadata : plugins) {
-        // FIXME FIXME add criteria for loading it (e.g. service registered)
-        // and some priority thing
-
         if (metadata.pluginId() != backend + QLatin1String("backend")) {
             continue;
         }
@@ -287,31 +285,37 @@ void FirewallClient::setBackend(const QString &backend)
             continue;
         }
 
-        // FIXME not working
-        m_currentBackend = factory->create<IFirewallClientBackend>(this, QVariantList() /*args*/);
-        break;
+        auto perhaps = factory->create<IFirewallClientBackend>(this, QVariantList() /*args*/);
+        if (perhaps->hasDependencies()) {
+            qDebug() << "Backend " << backend << "Loaded";
+            m_currentBackend = perhaps;
+            break;
+        } else {
+            qDebug() << "Backend " << backend << "Failed to meet dependencies";
+        }
     }
 
-    if (m_currentBackend) {
-        connect(m_currentBackend, &IFirewallClientBackend::enabledChanged,
-            this, &FirewallClient::enabledChanged);
-        connect(m_currentBackend,
-            &IFirewallClientBackend::defaultIncomingPolicyChanged, this,
-            &FirewallClient::defaultIncomingPolicyChanged);
-        connect(m_currentBackend,
-            &IFirewallClientBackend::defaultOutgoingPolicyChanged, this,
-            &FirewallClient::defaultOutgoingPolicyChanged);
-        connect(m_currentBackend,
-            &IFirewallClientBackend::logsAutoRefreshChanged, this,
-            &FirewallClient::logsAutoRefreshChanged);
-        connect(m_currentBackend,
-            &IFirewallClientBackend::hasExecutableChanged, this,
-            &FirewallClient::hasExecutableChanged);
-        connect(m_currentBackend, &IFirewallClientBackend::showErrorMessage,
-            this, &FirewallClient::showErrorMessage);
-    } else {
+    if (!m_currentBackend) {
         qDebug() << "Could not find backend" << backend;
+        return;
     }
+
+    connect(m_currentBackend, &IFirewallClientBackend::enabledChanged,
+        this, &FirewallClient::enabledChanged);
+    connect(m_currentBackend,
+        &IFirewallClientBackend::defaultIncomingPolicyChanged, this,
+        &FirewallClient::defaultIncomingPolicyChanged);
+    connect(m_currentBackend,
+        &IFirewallClientBackend::defaultOutgoingPolicyChanged, this,
+        &FirewallClient::defaultOutgoingPolicyChanged);
+    connect(m_currentBackend,
+        &IFirewallClientBackend::logsAutoRefreshChanged, this,
+        &FirewallClient::logsAutoRefreshChanged);
+    connect(m_currentBackend,
+        &IFirewallClientBackend::hasExecutableChanged, this,
+        &FirewallClient::hasExecutableChanged);
+    connect(m_currentBackend, &IFirewallClientBackend::showErrorMessage,
+        this, &FirewallClient::showErrorMessage);
 }
 
 QString FirewallClient::backend() const

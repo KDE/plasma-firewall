@@ -101,16 +101,18 @@ bool UfwClient::enabled() const
     return m_currentProfile.enabled();
 }
 
+bool UfwClient::hasDependencies() const
+{
+    if (QStandardPaths::findExecutable(QStringLiteral("ufw")).isEmpty()) {
+        return false;
+    }
+    return true;
+}
+
 KJob *UfwClient::setEnabled(bool value)
 {
     if (enabled() == value) {
         return nullptr;
-    }
-
-    if (value == true) {
-        if (QStandardPaths::findExecutable(QStringLiteral("ufw")).isEmpty()) {
-            return nullptr;
-        }
     }
 
     QVariantMap args {
