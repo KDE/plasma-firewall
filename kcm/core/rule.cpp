@@ -37,7 +37,6 @@
 static const char *ANY_ADDR = "0.0.0.0/0";
 static const char *ANY_ADDR_V6 = "::/0";
 static const char *ANY_PORT = "any";
-static const char *ANY_PROTOCOL = "any";
 
 // Shorten an IPv6 address (if applicable)
 static QString shortenAddress(const QString &addr)
