@@ -291,6 +291,7 @@ void FirewallClient::setBackend(const QString &backend)
             break;
         } else {
             qDebug() << "Backend " << backend << "Failed to meet dependencies";
+            perhaps->deleteLater();
         }
     }
 
