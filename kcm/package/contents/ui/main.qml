@@ -162,15 +162,14 @@ KCM.ScrollViewKCM {
                             enabledCheckBox.activeJob = null; // need to explicitly unset since gc will clear it non-deterministic
                             bindCurrent();
 
-                            if (job.error && job.error !== 4) { // TODO magic number
-                                if (enable) {
-                                    firewallInlineErrorMessage.text = i18n("Error enabling firewall: %1", job.errorString)
-                                } else {
-                                    firewallInlineErrorMessage.text = i18n("Error disabling firewall: %1", job.errorString)
-                                }
+                            if (job.error && job.error !== 4) {
+                                firewallInlineErrorMessage.text = enabled
+                                    ? i18n("Error enabling firewall: %1", job.errorString)
+                                    : i18n("Error disabling firewall: %1", job.errorString)
                                 firewallInlineErrorMessage.visible = true;
                             }
                         });
+                        job.start();
                     }
                 }
 

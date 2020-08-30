@@ -121,7 +121,6 @@ KJob *UfwClient::setEnabled(bool value)
         }
     });
 
-    job->start();
     return job;
 }
 
