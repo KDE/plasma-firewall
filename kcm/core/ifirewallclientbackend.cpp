@@ -25,10 +25,10 @@
 
 #include "ifirewallclientbackend.h"
 
-IFirewallClientBackend::IFirewallClientBackend(QObject *parent, const QVariantList &args)
-    : QObject(parent) {
-
-      };
+IFirewallClientBackend::IFirewallClientBackend(QObject *parent, const QVariantList &)
+    : QObject(parent)
+{
+};
 
 void IFirewallClientBackend::setProfiles(const QVector<Entry> &profiles)
 {
