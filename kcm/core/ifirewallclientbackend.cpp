@@ -26,9 +26,7 @@
 #include "ifirewallclientbackend.h"
 
 IFirewallClientBackend::IFirewallClientBackend(QObject *parent, const QVariantList &)
-    : QObject(parent)
-{
-};
+    : QObject(parent) {};
 
 void IFirewallClientBackend::setProfiles(const QVector<Entry> &profiles)
 {
