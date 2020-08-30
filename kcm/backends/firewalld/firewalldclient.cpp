@@ -104,6 +104,9 @@ KJob *FirewalldClient::setEnabled(const bool value)
 
 KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior)
 {
+    Q_UNUSED(defaultsBehavior);
+    Q_UNUSED(profilesBehavior);
+
     FirewalldJob *job = new FirewalldJob("getAllRules");
 
     connect(job, &KJob::result, this, [this, job] {
@@ -113,7 +116,11 @@ KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsB
         }
         qDebug() << job->name();
         const QVector<Rule> rules = extractRulesFromResponse(job->get_firewalldreply());
-        const QVariantMap args = {{"defaultIncomingPolicy", defaultIncomingPolicy()}, {"defaultOutgoingPolicy", defaultOutgoingPolicy()}, {"status", true}, {"ipv6Enabled", true}};
+        const QVariantMap args = {
+            {"defaultIncomingPolicy", defaultIncomingPolicy()},
+            {"defaultOutgoingPolicy", defaultOutgoingPolicy()},
+            {"status", true}, {"ipv6Enabled", true}
+        };
         setProfile(Profile(rules, args));
     });
     job->start();
@@ -246,7 +253,11 @@ bool FirewalldClient::logsAutoRefresh() const
     return m_logsAutoRefresh;
 }
 
-RuleWrapper *FirewalldClient::createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status)
+RuleWrapper *FirewalldClient::createRuleFromConnection(
+    const QString &protocol,
+    const QString &localAddress,
+    const QString &foreignAddres,
+    const QString &status)
 {
     auto _localAddress = localAddress;
     _localAddress.replace("*", "");
@@ -465,7 +476,10 @@ QVector<Rule> FirewalldClient::extractRulesFromResponse(const QList<firewalld_re
     }
 
     for (auto r : reply) {
-        const auto action = r.rules.at(r.rules.indexOf("-j") + 1) == "ACCEPT" ? Types::POLICY_ALLOW : r.rules.at(r.rules.indexOf("-j") + 1) == "REJECT" ? Types::POLICY_REJECT : Types::POLICY_DENY;
+        const auto action = r.rules.at(
+            r.rules.indexOf("-j") + 1) == "ACCEPT" ? Types::POLICY_ALLOW :
+            r.rules.at(r.rules.indexOf("-j") + 1) == "REJECT" ? Types::POLICY_REJECT
+            : Types::POLICY_DENY;
 
         const auto sourceAddress = r.rules.indexOf("-s") > 0 ? r.rules.at(r.rules.indexOf("-s") + 1) : "";
         const auto destinationAddress = r.rules.indexOf("-d") >= 0 ? r.rules.at(r.rules.indexOf("-d") + 1) : "";
@@ -476,21 +490,26 @@ QVector<Rule> FirewalldClient::extractRulesFromResponse(const QList<firewalld_re
 
         const auto sourcePort = r.rules.at(r.rules.indexOf(QRegExp("^" + QRegExp::escape("--sport") + ".+"))).section("=", -1);
         const auto destPort = r.rules.at(r.rules.indexOf(QRegExp("^" + QRegExp::escape("--dport") + ".+"))).section("=", -1);
+
         qDebug() << r.ipv << r.chain << r.table << r.priority << r.rules;
-        message_rules.push_back(Rule(action,
-                                     r.chain == "INPUT",
-                                     Types::LOGGING_OFF,
-                                     protocol,
-                                     sourceAddress,
-                                     sourcePort,
-                                     destinationAddress,
-                                     destPort,
-                                     r.chain == "INPUT" ? interface_in : "",
-                                     r.chain == "OUTPUT" ? interface_out : "",
-                                     "",
-                                     "",
-                                     r.priority,
-                                     r.ipv == "ipv6"));
+
+        message_rules.push_back(
+            Rule(action,
+                r.chain == "INPUT",
+                Types::LOGGING_OFF,
+                protocol,
+                sourceAddress,
+                sourcePort,
+                destinationAddress,
+                destPort,
+                r.chain == "INPUT" ? interface_in : "",
+                r.chain == "OUTPUT" ? interface_out : "",
+                "",
+                "",
+                r.priority,
+                r.ipv == "ipv6"
+            )
+        );
     }
 
     return message_rules;
@@ -520,4 +539,5 @@ FirewallClient::Capabilities FirewalldClient::capabilities() const
 {
     return FirewallClient::SaveCapability;
 };
+
 #include "firewalldclient.moc"

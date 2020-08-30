@@ -266,7 +266,6 @@ bool FirewallClient::hasExecutable() const
 
 void FirewallClient::setBackend(const QString &backend)
 {
-    qDebug() << "Setting backend" << backend;
     if (m_currentBackend) {
         enabledChanged(false);
         delete m_currentBackend;
