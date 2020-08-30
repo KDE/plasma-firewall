@@ -85,25 +85,6 @@ static QString formatPort(const QString &port, Types::Protocol prot)
     return port.isEmpty() ? Rule::protocolSuffix(prot, QString()) : port + Rule::protocolSuffix(prot);
 }
 
-// Try to convert 'port' into a port number, not a service name...
-static QString portNumber(const QString &port)
-{
-    if (port.indexOf(':') != -1) {
-        return port;
-    }
-    bool ok;
-    int num = port.toInt(&ok);
-
-    if (!ok) {
-        num = Rule::servicePort(port);
-        if (num != 0) {
-            return QString::number(num);
-        }
-    }
-
-    return port;
-}
-
 static QString modifyAddress(const QString &addr, const QString &port)
 {
     if (addr.isEmpty() || ANY_ADDR == addr || ANY_ADDR_V6 == addr) {
