@@ -113,7 +113,7 @@ QVariantList NetstatHelper::parseSSOutput(const QByteArray &netstatOutput)
 
     // Extract Information
     for (auto line : outputLines) {
-        QStringList values = line.split(" ", QString::SkipEmptyParts);
+        QStringList values = line.split(QLatin1Char(' '), QString::SkipEmptyParts);
         if (values.isEmpty()) {
             continue;
         }
