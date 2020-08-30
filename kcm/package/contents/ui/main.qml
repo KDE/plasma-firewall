@@ -158,7 +158,7 @@ KCM.ScrollViewKCM {
 
                         const job = kcm.client.setEnabled(checked);
                         if (job === null) {
-                            firewallInlineErrorMessage.text = i18n("The fiewall application is not installed. \n you are using ") + kcm.client.name;
+                            firewallInlineErrorMessage.text = i18n("The fiewall application, please install ") + kcm.client.name;
                             firewallInlineErrorMessage.visible = true;
                             return;
                         }
