@@ -157,6 +157,11 @@ KCM.ScrollViewKCM {
                         const enable = checked; // store the state on job begin, not when it finished
 
                         const job = kcm.client.setEnabled(checked);
+                        if (job === null) {
+                            firewallInlineErrorMessage.text = i18n("The fiewall application is not installed. \n you are using ") + kcm.client.name;
+                            firewallInlineErrorMessage.visible = true;
+                            return;
+                        }
                         enabledCheckBox.activeJob = job;
                         job.result.connect(function () {
                             enabledCheckBox.activeJob = null; // need to explicitly unset since gc will clear it non-deterministic

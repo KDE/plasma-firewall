@@ -107,6 +107,12 @@ KJob *UfwClient::setEnabled(bool value)
         return nullptr;
     }
 
+    if (value == true) {
+        if (QStandardPaths::findExecutable(QStringLiteral("ufw")).isEmpty()) {
+            return nullptr;
+        }
+    }
+
     QVariantMap args {
         {"cmd", "setStatus"},
         {"status", value},

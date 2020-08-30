@@ -60,6 +60,7 @@ class KCM_FIREWALL_CORE_EXPORT FirewallClient : public QObject
     Q_PROPERTY(QString backend READ backend WRITE setBackend NOTIFY backendChanged)
     Q_PROPERTY(bool hasExecutable READ hasExecutable NOTIFY hasExecutableChanged)
     Q_PROPERTY(Capabilities capabilities READ capabilities NOTIFY capabilitiesChanged)
+    Q_PROPERTY(QString name READ name)
 
 public:
     enum DefaultDataBehavior { DontReadDefaults, ReadDefaults };
@@ -90,7 +91,7 @@ public:
 
     bool enabled() const;
     bool hasExecutable() const;
-
+    QString name() const;
     QString defaultIncomingPolicy() const;
     QString defaultOutgoingPolicy() const;
     QString backend() const;
