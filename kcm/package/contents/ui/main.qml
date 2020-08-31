@@ -158,7 +158,7 @@ KCM.ScrollViewKCM {
 
                         const job = kcm.client.setEnabled(checked);
                         if (job === null) {
-                            firewallInlineErrorMessage.text = i18n("The fiewall application, please install ") + kcm.client.name;
+                            firewallInlineErrorMessage.text = i18n("The firewall application, please install %1", kcm.client.name);
                             firewallInlineErrorMessage.visible = true;
                             return;
                         }
