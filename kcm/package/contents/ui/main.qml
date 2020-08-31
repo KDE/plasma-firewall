@@ -404,4 +404,13 @@ KCM.ScrollViewKCM {
             }
         }
     }
+
+    Component.onCompleted: {
+        console.log("CLIENTE", kcm.client)
+        if (kcm.client.name == "") {
+            firewallInlineErrorMessage.text = i18n("Please install a firewall, such as ufw or firewalld");
+            firewallInlineErrorMessage.visible = true;
+            enabledCheckBox.enabled = false;
+        }
+    }
 }

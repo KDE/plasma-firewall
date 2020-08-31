@@ -136,7 +136,7 @@ KJob *FirewallClient::save()
 QString FirewallClient::name() const
 {
     if (!m_currentBackend) {
-        return QStringLiteral("No firewall set.");
+        return {};
     }
     return m_currentBackend->name();
 }
