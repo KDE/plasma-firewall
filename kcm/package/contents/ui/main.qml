@@ -168,9 +168,15 @@ KCM.ScrollViewKCM {
                             bindCurrent();
 
                             if (job.error && job.error !== 4) {
-                                firewallInlineErrorMessage.text = enabled
-                                    ? i18n("Error enabling firewall: %1", job.errorString)
-                                    : i18n("Error disabling firewall: %1", job.errorString)
+                                console.log(job.errorString);
+
+                                if (job.errorString.indexOf("unable to initialize table") != -1) {
+                                    firewallInlineErrorMessage.text = "You recently updated your kernel. Iptables is failing to initialize, please reboot."
+                                } else {
+                                    firewallInlineErrorMessage.text = enabled
+                                        ? i18n("Error enabling firewall: %1", job.errorString)
+                                        : i18n("Error disabling firewall: %1", job.errorString)
+                                }
                                 firewallInlineErrorMessage.visible = true;
                             }
                         });

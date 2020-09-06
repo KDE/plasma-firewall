@@ -124,8 +124,11 @@ KJob *UfwClient::setEnabled(bool value)
 
     KAuth::ExecuteJob *job = modifyAction.execute();
     connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
+        qDebug() << "Execut resulted successfully";
         if (!job->error()) {
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
+        } else {
+            qDebug() << job->error();
         }
     });
 
