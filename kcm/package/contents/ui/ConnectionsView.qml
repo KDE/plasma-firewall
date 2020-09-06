@@ -41,7 +41,7 @@ ViewBase {
     defaultSortRole: "program"
     emptyListText: i18n("There are currently no open connections.")
 
-    blacklistRuleFactory: firewallClient.createRuleFromConnection
+    blacklistRuleFactory: kcm.client.createRuleFromConnection
     blacklistRuleRoleNames: [
         "Protocol",
         "LocalAddress",

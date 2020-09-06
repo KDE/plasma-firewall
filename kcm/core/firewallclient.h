@@ -74,6 +74,8 @@ public:
 
     Q_INVOKABLE void refresh();
     RuleListModel *rulesModel() const;
+    LogListModel *logsModel() const;
+
     Q_INVOKABLE RuleWrapper *ruleAt(int index); // TODO move into the model?
     Q_INVOKABLE KJob *addRule(RuleWrapper *rule);
     Q_INVOKABLE KJob *removeRule(int index);
@@ -95,7 +97,6 @@ public:
     QString defaultIncomingPolicy() const;
     QString defaultOutgoingPolicy() const;
     QString backend() const;
-    LogListModel *logsModel();
     bool logsAutoRefresh() const;
 
     enum Capability {

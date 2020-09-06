@@ -30,7 +30,7 @@ import org.kcm.firewall 1.0
 ViewBase {
     title: i18n("Firewall Logs")
 
-    model: firewallClient.logsModel
+    model: kcm.client.logsModel
     roles: [
         {title: i18n("Protocol"), role: "protocol", width: Kirigami.Units.gridUnit * 3},
         {title: i18n("From"), role: "sourceAddress", width: Kirigami.Units.gridUnit * 10},
@@ -41,7 +41,7 @@ ViewBase {
     ]
     emptyListText: i18n("There are currently no firewall log entries.")
 
-    blacklistRuleFactory: firewallClient.createRuleFromLog
+    blacklistRuleFactory: kcm.client.createRuleFromLog
     blacklistRuleRoleNames: [
         "Protocol",
         "SourceAddress",
