@@ -134,12 +134,14 @@ KCM.ScrollViewKCM {
             Layout.fillWidth: true
             type: Kirigami.MessageType.Error
         }
-
         Kirigami.FormLayout {
+            Item {
+                Kirigami.FormData.label: i18n("Using %1 as firewall backend", kcm.client.name)
+            }
+
             RowLayout {
                 Kirigami.FormData.label: i18n("Firewall Status:")
                 Kirigami.FormData.enabled: enabledCheckBox.enabled
-
                 QQC2.CheckBox {
                     id: enabledCheckBox
                     property QtObject activeJob: null
