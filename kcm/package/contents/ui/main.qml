@@ -324,7 +324,7 @@ KCM.ScrollViewKCM {
                 width: Kirigami.Units.gridUnit * 10
             }
             QQC1.TableViewColumn {
-                title: i18n("Ip")
+                title: i18n("IP")
                 role: "ipVersion"
                 width: Kirigami.Units.gridUnit * 4
             }
