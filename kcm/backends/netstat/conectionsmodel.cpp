@@ -135,6 +135,15 @@ void ConnectionsModel::refreshConnections()
                                   .status = connList.at(3).toString(),
                                   .pid = connList.at(4).toString(),
                                   .program = connList.at(5).toString()};
+
+            if (conn.status == "UNCONN") {
+                conn.status = i18n("Not Connected");
+            } else if (conn.status == "ESTAB") {
+                conn.status = i18n("Estabilished");
+            } else if (conn.status == "LISTEN") {
+                conn.status = i18n("Listening");
+            }
+
             newConnectionsData.append(conn);
         }
 
