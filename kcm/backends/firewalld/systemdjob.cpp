@@ -27,7 +27,11 @@
 #include <QtDBus/QDBusPendingCall>
 #include <QtDBus/QDBusPendingReply>
 
+#include <KLocalizedString>
+
 #include "systemdjob.h"
+
+Q_LOGGING_CATEGORY(SystemDJobDebug, "firewalld.client")
 
 namespace SYSTEMD
 {
@@ -82,6 +86,5 @@ SystemdJob::~SystemdJob() = default;
 
 void SystemdJob::start()
 {
-    qDebug() << "systemd " << m_action;
     systemdAction(m_action);
 };

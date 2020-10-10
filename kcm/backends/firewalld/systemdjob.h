@@ -27,6 +27,10 @@
 #include <KJob>
 #include <types.h>
 
+#include <QLoggingCategory>
+
+Q_DECLARE_LOGGING_CATEGORY(SystemDJobDebug)
+
 namespace SYSTEMD
 {
 enum actions { ERROR = -1, STOP, START };
