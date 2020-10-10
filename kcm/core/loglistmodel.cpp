@@ -26,7 +26,6 @@
 #include "loglistmodel.h"
 
 #include <QDateTime>
-#include <QDebug>
 #include <QRegularExpression>
 
 LogListModel::LogListModel(QObject *parent)
