@@ -25,8 +25,6 @@
 
 #include "rulelistmodel.h"
 
-#include <QDebug>
-
 RuleListModel::RuleListModel(QObject *parent)
     : QAbstractListModel(parent)
 {

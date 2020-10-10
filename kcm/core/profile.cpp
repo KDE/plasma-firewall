@@ -27,7 +27,6 @@
 #include "types.h"
 
 #include <QBuffer>
-#include <QDebug>
 #include <QFile>
 #include <QIODevice>
 #include <QStringList>

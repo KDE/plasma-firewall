@@ -27,7 +27,6 @@
 #include "firewallclient.h"
 #include "types.h"
 
-#include <QDebug>
 
 RuleWrapper::RuleWrapper(QObject *parent)
     : QObject(parent)
@@ -197,7 +196,6 @@ void RuleWrapper::setInterface(int interface)
     m_rule.setInterfaceIn(interface != 0 ? FirewallClient::knownInterfaces().at(interface) : QString());
 
     m_interface = interface;
-    qDebug() << "new iface" << m_rule.interfaceIn();
     emit interfaceChanged(interface);
 }
 
