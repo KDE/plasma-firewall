@@ -26,6 +26,10 @@
 
 #include "conectionsmodel.h"
 
+#include <QLoggingCategory>
+
+Q_DECLARE_LOGGING_CATEGORY(NetstatClientDebug)
+
 class NetstatClient : public QObject
 {
     Q_OBJECT

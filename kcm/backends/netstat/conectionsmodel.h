@@ -29,7 +29,7 @@
 
 #include <QLoggingCategory>
 
-Q_DECLARE_LOGGING_CATEGORY(NetstatConnectionsHelper)
+Q_DECLARE_LOGGING_CATEGORY(ConnectionsModelDebug)
 
 struct ConnectionsData {
     QString protocol;
