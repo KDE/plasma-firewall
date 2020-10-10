@@ -21,17 +21,21 @@
 
 #include "netstathelper.h"
 
+#include <KLocalizedString>
+
 #include <QDebug>
 #include <QProcess>
 #include <QStandardPaths>
 #include <QStringList>
+
+Q_LOGGING_CATEGORY(NetstatHelperDebug, "netstat.helper")
 
 NetstatHelper::NetstatHelper()
 {
     mHasSS = !QStandardPaths::findExecutable("ss").isEmpty();
 
     if (!mHasSS) { // could not execute file
-        qWarning() << "could not find iproute2 or net-tools packages installed.";
+        qCWarning(NetstatHelperDebug) << i18n("could not find iproute2 or net-tools packages installed.");
     }
 }
 
@@ -52,12 +56,10 @@ KAuth::ActionReply NetstatHelper::query(const QVariantMap &map)
     QString executable = mHasSS ? QStringLiteral("ss") : QString();
 
     if (executable.isEmpty()) {
-        qWarning() << "No iproute or net-tools installed, can't run.";
+        qCWarning(NetstatHelperDebug) << i18n("No iproute or net-tools installed, can't run.");
         KAuth::ActionReply::HelperErrorReply(-2);
         return {};
     }
-
-    qDebug() << "run" << executable << netstatArgs;
 
     netstat.start(executable, netstatArgs, QIODevice::ReadOnly);
     if (netstat.waitForStarted()) {

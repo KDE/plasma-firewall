@@ -25,6 +25,10 @@
 #include <KAuth>
 #include <QVariantMap>
 
+#include <QLoggingCategory>
+
+Q_DECLARE_LOGGING_CATEGORY(NetstatHelperDebug)
+
 using namespace KAuth;
 class NetstatHelper : public QObject
 {

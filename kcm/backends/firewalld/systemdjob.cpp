@@ -31,7 +31,7 @@
 
 #include "systemdjob.h"
 
-Q_LOGGING_CATEGORY(SystemDJobDebug, "firewalld.client")
+Q_LOGGING_CATEGORY(SystemDJobDebug, "systemd.job")
 
 namespace SYSTEMD
 {
