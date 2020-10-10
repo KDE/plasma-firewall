@@ -146,7 +146,9 @@ void FirewalldJob::start()
 
 QString FirewalldJob::name()
 {
-    return m_type == FirewalldJob::SAVEFIREWALLD ? QString("firewalld saving") : QString("firewalld %1").arg(QString(m_call));
+    return m_type == FirewalldJob::SAVEFIREWALLD
+        ? i18n("firewalld saving")
+        : i18n("firewalld %1").arg(QString(m_call));
 }
 
 void FirewalldJob::saveFirewalld()

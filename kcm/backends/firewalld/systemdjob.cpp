@@ -61,7 +61,7 @@ void SystemdJob::systemdAction(const SYSTEMD::actions value)
         break;
 
     default:
-        setErrorText("Invalid Call");
+        setErrorText(i18n("Invalid Call"));
         setError(DBUSSYSTEMDERROR);
         emitResult();
     }
