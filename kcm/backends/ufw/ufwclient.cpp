@@ -246,7 +246,8 @@ void UfwClient::setLogsAutoRefresh(bool logsAutoRefresh)
 void UfwClient::refreshLogs()
 {
     if (!m_logs) {
-        qWarning() << "Trying to refresh logs without logs model";
+        logs();
+        qWarning() << "Trying to refresh logs without logs model, creating the object.";
         return;
     }
 
