@@ -35,8 +35,6 @@ KCM.ScrollViewKCM {
 
     implicitHeight: Kirigami.Units.gridUnit * 25
     implicitWidth: Kirigami.Units.gridUnit * 44
-
-    KCM.ConfigModule.quickHelp: i18n("This module lets you configure firewall.")
     
     property var policyChoices : [
         {text: i18n("Allow"), data: "allow", tooltip: i18n("Allow all connections")},
