@@ -41,6 +41,8 @@
 #include <QStringList>
 #include <QtGlobal>
 
+Q_LOGGING_CATEGORY(FirewallClientDebug, "firewall.client")
+
 FirewallClient::FirewallClient(QObject *parent)
     : QObject(parent)
 {
@@ -286,17 +288,17 @@ void FirewallClient::setBackend(const QString &backend)
 
         auto perhaps = factory->create<IFirewallClientBackend>(this, QVariantList() /*args*/);
         if (perhaps->hasDependencies()) {
-            qDebug() << "Backend " << backend << "Loaded";
+            qCDebug(FirewallClientDebug) << "Backend " << backend << "Loaded";
             m_currentBackend = perhaps;
             break;
         } else {
-            qDebug() << "Backend " << backend << "Failed to meet dependencies";
+            qCDebug(FirewallClientDebug) << "Backend " << backend << "Failed to meet dependencies";
             perhaps->deleteLater();
         }
     }
 
     if (!m_currentBackend) {
-        qDebug() << "Could not find backend" << backend;
+        qCDebug(FirewallClientDebug) << "Could not find backend" << backend;
         return;
     }
 

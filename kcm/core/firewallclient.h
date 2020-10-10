@@ -31,6 +31,10 @@
 #include <QObject>
 #include <QTimer>
 
+#include <QLoggingCategory>
+
+Q_DECLARE_LOGGING_CATEGORY(FirewallClientDebug)
+
 class KJob;
 class RuleListModel;
 class RuleWrapper;
