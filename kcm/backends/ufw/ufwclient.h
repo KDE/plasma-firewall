@@ -57,9 +57,19 @@ public:
     KJob *setEnabled(bool enabled) override;
 
     /* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connection Table. */
-    RuleWrapper *createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status) override;
+    RuleWrapper *createRuleFromConnection(
+        const QString &protocol,
+        const QString &localAddress,
+        const QString &foreignAddres,
+        const QString &status) override;
 
-    RuleWrapper *createRuleFromLog(const QString &protocol, const QString &sourceAddress, const QString &sourcePort, const QString &destinationAddress, const QString &destinationPort, const QString &inn) override;
+    RuleWrapper *createRuleFromLog(
+        const QString &protocol,
+        const QString &sourceAddress,
+        const QString &sourcePort,
+        const QString &destinationAddress,
+        const QString &destinationPort,
+        const QString &inn) override;
 
     bool enabled() const override;
     QString defaultIncomingPolicy() const override;
