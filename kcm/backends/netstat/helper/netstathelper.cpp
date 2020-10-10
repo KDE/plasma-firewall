@@ -167,7 +167,16 @@ QVariantList NetstatHelper::parseNetstatOutput(const QByteArray &netstatOutput)
     QVariantList connections;
 
     int lineIdx = 0;
-    int protIndex = 0, protSize = 0, localAddressIndex, localAddressSize, foreingAddressIndex, foreingAddressSize, stateIndex, stateSize, processIndex, processSize = 0;
+    int protIndex = 0;
+    int protSize = 0;
+    int localAddressIndex = 0;
+    int localAddressSize = 0;
+    int foreingAddressIndex = 0;
+    int foreingAddressSize = 0;
+    int stateIndex = 0;
+    int stateSize = 0;
+    int processIndex = 0;
+    int processSize = 0;
 
     for (auto line : outputLines) {
         lineIdx++;

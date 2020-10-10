@@ -87,9 +87,19 @@ public:
     Q_INVOKABLE KJob *setDefaultOutgoingPolicy(const QString &defaultOutgoingPolicy);
     Q_INVOKABLE KJob *save();
     /* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connection Table. */
-    Q_INVOKABLE RuleWrapper *createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status);
+    Q_INVOKABLE RuleWrapper *createRuleFromConnection(
+        const QString &protocol,
+        const QString &localAddress,
+        const QString &foreignAddres,
+        const QString &status);
 
-    Q_INVOKABLE RuleWrapper *createRuleFromLog(const QString &protocol, const QString &sourceAddress, const QString &sourcePort, const QString &destinationAddress, const QString &destinationPort, const QString &inn);
+    Q_INVOKABLE RuleWrapper *createRuleFromLog(
+        const QString &protocol,
+        const QString &sourceAddress,
+        const QString &sourcePort,
+        const QString &destinationAddress,
+        const QString &destinationPort,
+        const QString &inn);
 
     bool enabled() const;
     bool hasExecutable() const;
