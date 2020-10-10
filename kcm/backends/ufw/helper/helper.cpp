@@ -74,8 +74,9 @@ namespace UFW
 {
 ActionReply Helper::query(const QVariantMap &args)
 {
-    qDebug() << __FUNCTION__;
-    ActionReply reply = args["defaults"].toBool() ? run({"--status", "--defaults", "--list", "--modules"}, "query") : run({"--status", "--list"}, "query");
+    ActionReply reply = args["defaults"].toBool()
+        ? run({"--status", "--defaults", "--list", "--modules"}, "query")
+        : run({"--status", "--list"}, "query");
 
     if (args["profiles"].toBool()) {
         QDir dir(KCM_UFW_DIR);
@@ -135,23 +136,22 @@ ActionReply Helper::viewlog(const QVariantMap &args)
 
 ActionReply Helper::modify(const QVariantMap &args)
 {
-    qDebug() << __FUNCTION__;
     QString cmd = args["cmd"].toString();
 
     // QProcess converts its args using QString().toLocal8Bit()!!!, so use UTF-8 codec.
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     return QStringLiteral("setStatus") == cmd ? setStatus(args, cmd)
-                                              : QStringLiteral("addRules") == cmd ? addRules(args, cmd)
-                                                                                  : QStringLiteral("removeRule") == cmd
-                ? removeRule(args, cmd)
-                : QStringLiteral("moveRule") == cmd ? moveRule(args, cmd)
-                                                    : QStringLiteral("editRule") == cmd ? editRule(args, cmd)
-                                                                                        : QStringLiteral("reset") == cmd ? reset(cmd)
-                                                                                                                         : QStringLiteral("setDefaults") == cmd ? setDefaults(args, cmd)
-                                                                                                                                                                : QStringLiteral("setModules") == cmd ? setModules(args, cmd)
-                                                                                                                                                                                                      : QStringLiteral("setProfile") == cmd
-                                        ? setProfile(args, cmd)
-                                        : QStringLiteral("saveProfile") == cmd ? saveProfile(args, cmd) : QStringLiteral("deleteProfile") == cmd ? deleteProfile(args, cmd) : ActionReply::HelperErrorReply(STATUS_INVALID_CMD);
+        : QStringLiteral("addRules") == cmd ? addRules(args, cmd)
+        : QStringLiteral("removeRule") == cmd ? removeRule(args, cmd)
+        : QStringLiteral("moveRule") == cmd ? moveRule(args, cmd)
+        : QStringLiteral("editRule") == cmd ? editRule(args, cmd)
+        : QStringLiteral("reset") == cmd ? reset(cmd)
+        : QStringLiteral("setDefaults") == cmd ? setDefaults(args, cmd)
+        : QStringLiteral("setModules") == cmd ? setModules(args, cmd)
+        : QStringLiteral("setProfile") == cmd ? setProfile(args, cmd)
+        : QStringLiteral("saveProfile") == cmd ? saveProfile(args, cmd)
+        : QStringLiteral("deleteProfile") == cmd ? deleteProfile(args, cmd)
+        : ActionReply::HelperErrorReply(STATUS_INVALID_CMD);
 }
 
 ActionReply Helper::setStatus(const QVariantMap &args, const QString &cmd)
