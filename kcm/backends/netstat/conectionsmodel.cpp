@@ -83,7 +83,12 @@ QVariant ConnectionsModel::data(const QModelIndex &index, int role) const
     case PidRole:
         return data.pid;
     case ProgramRole:
-        return data.program;
+        // HACK. Firefox reports as MainThread
+        if (data.program == "MainThread") {
+            return "Firefox";
+        } else {
+            return data.program;
+        }
     }
     return {};
 }
