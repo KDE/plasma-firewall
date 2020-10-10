@@ -41,7 +41,12 @@ struct ConnectionsData {
 
     bool operator==(const ConnectionsData &other) const
     {
-        return other.protocol == protocol && other.localAddress == localAddress && other.foreignAddress == foreignAddress && other.status == status && other.pid == pid && other.program == program;
+        return other.protocol == protocol
+            && other.localAddress == localAddress
+            && other.foreignAddress == foreignAddress
+            && other.status == status
+            && other.pid == pid
+            && other.program == program;
     }
 };
 
