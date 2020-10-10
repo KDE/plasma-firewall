@@ -93,6 +93,7 @@ KCM.ScrollViewKCM {
             return;
         }
 
+        console.log("Acessing blacklist row", row);
         const idx = proxyModel.index(row, 0);
         const roles = blacklistRuleRoleNames;
         const modelType = getModelType();
@@ -105,6 +106,7 @@ KCM.ScrollViewKCM {
 
         currentJob = job;
         ruleCreationErrorMessage.visible = false;
+        console.log(...args);
 
         job.result.connect(function() {
             currentJob = null;
