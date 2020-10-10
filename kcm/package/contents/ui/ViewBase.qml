@@ -139,7 +139,7 @@ KCM.ScrollViewKCM {
 
             Connections {
                 target: root.model
-                onShowErrorMessage: {
+                function onShowErrorMessage(message) {
                     modelErrorMessage.text = message;
                     modelErrorMessage.visible = true;
                 }
