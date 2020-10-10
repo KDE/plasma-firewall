@@ -199,7 +199,22 @@ QVariantList NetstatHelper::parseNetstatOutput(const QByteArray &netstatOutput)
         }
 
         QVariantList connection(
-            {extractAndStrip(line, protIndex, protSize), extractAndStrip(line, localAddressIndex, localAddressSize), extractAndStrip(line, foreingAddressIndex, foreingAddressSize), extractAndStrip(line, stateIndex, stateSize)});
+            {extractAndStrip(
+                line,
+                protIndex,
+                protSize),
+            extractAndStrip(
+                line,
+                localAddressIndex,
+                localAddressSize),
+            extractAndStrip(
+                line,
+                foreingAddressIndex,
+                foreingAddressSize),
+            extractAndStrip(
+                line,
+                stateIndex,
+                stateSize)});
 
         QString pidAndProcess = extractAndStrip(line, processIndex, processSize);
 
