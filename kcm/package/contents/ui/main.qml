@@ -385,16 +385,12 @@ KCM.ScrollViewKCM {
         QQC2.Button {
             text: i18n("Connections...")
             icon.name: "network-connect"
-            onClicked: kcm.push("ConnectionsView.qml", {
-                "kcm.client": kcm.client
-            });
+            onClicked: kcm.push("ConnectionsView.qml");
         }
         QQC2.Button {
             text: i18n("Logs...")
             icon.name: "viewlog"
-            onClicked: kcm.push("LogsView.qml", {
-                "kcm.client": kcm.client,
-            });
+            onClicked: kcm.push("LogsView.qml");
         }
         Item {
             Layout.fillWidth: true

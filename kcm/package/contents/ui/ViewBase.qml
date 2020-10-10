@@ -33,8 +33,6 @@ import org.kcm.firewall 1.0
 KCM.ScrollViewKCM {
     id: root
 
-    property QtObject firewallClient: null
-
     property QtObject model
     property var roles: []
     property alias emptyListText: emptyListLabel.text
@@ -92,25 +90,20 @@ KCM.ScrollViewKCM {
         // FIXME why does TableView does that? :(
         // Unfortunately it also casts to 0, so the resulting model index is deemed valid
         if (row === undefined) {
-            console.warn(i18n("Cannot blacklist invalid row"), row);
             return;
         }
 
         const idx = proxyModel.index(row, 0);
-
         const roles = blacklistRuleRoleNames;
-
         const modelType = getModelType();
-
         const args = roles.map((role) => {
             return proxyModel.data(idx, modelType[role + "Role"]);
         });
 
         const rule = blacklistRuleFactory(...args);
+        const job = kcm.client.addRule(rule);
 
-        const job = firewallClient.addRule(rule);
         currentJob = job;
-
         ruleCreationErrorMessage.visible = false;
 
         job.result.connect(function() {
