@@ -96,8 +96,6 @@ ActionReply Helper::query(const QVariantMap &args)
 
 ActionReply Helper::viewlog(const QVariantMap &args)
 {
-    qDebug() << __FUNCTION__;
-
     QString lastLine = args["lastLine"].toString(), logFile = args["logFile"].toString();
     QFile file(logFile.isEmpty() ? LOG_FILE : logFile);
     ActionReply reply;
@@ -211,8 +209,6 @@ ActionReply Helper::setProfile(const QVariantMap &args, const QString &cmd)
 
 ActionReply Helper::saveProfile(const QVariantMap &args, const QString &cmd)
 {
-    qDebug() << __FUNCTION__ << args;
-
     QString name(args["name"].toString()), xml(args["xml"].toString());
     ActionReply reply;
     auto prepareData = [&] {
@@ -247,8 +243,6 @@ ActionReply Helper::saveProfile(const QVariantMap &args, const QString &cmd)
 
 ActionReply Helper::deleteProfile(const QVariantMap &args, const QString &cmd)
 {
-    qDebug() << __FUNCTION__ << args;
-
     QString name(args["name"].toString());
     ActionReply reply;
     auto prepareData = [&] {
@@ -332,8 +326,6 @@ ActionReply Helper::run(const QStringList &args, const QString &cmd)
 {
     QProcess ufw;
     ActionReply reply;
-
-    qDebug() << __FUNCTION__ << args;
     ufw.start(UFW_PLUGIN_HELPER_PATH, args, QIODevice::ReadOnly);
     if (ufw.waitForStarted()) {
         ufw.waitForFinished();
