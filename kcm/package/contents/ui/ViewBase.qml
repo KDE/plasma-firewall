@@ -92,7 +92,7 @@ KCM.ScrollViewKCM {
         // FIXME why does TableView does that? :(
         // Unfortunately it also casts to 0, so the resulting model index is deemed valid
         if (row === undefined) {
-            console.warn("Cannot blacklist invalid row", row);
+            console.warn(i18n("Cannot blacklist invalid row"), row);
             return;
         }
 

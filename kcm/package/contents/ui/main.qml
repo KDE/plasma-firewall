@@ -173,7 +173,7 @@ KCM.ScrollViewKCM {
                                 console.log(job.errorString);
 
                                 if (job.errorString.indexOf("unable to initialize table") != -1) {
-                                    firewallInlineErrorMessage.text = "You recently updated your kernel. Iptables is failing to initialize, please reboot."
+                                    firewallInlineErrorMessage.text = i18n("You recently updated your kernel. Iptables is failing to initialize, please reboot.")
                                 } else {
                                     firewallInlineErrorMessage.text = enabled
                                         ? i18n("Error enabling firewall: %1", job.errorString)
