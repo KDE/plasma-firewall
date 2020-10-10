@@ -113,7 +113,11 @@ KCM.ScrollViewKCM {
 
             if (job.error) {
                 if (job.error !== 4) { // FIXME magic number
-                    ruleCreationErrorMessage.text = i18n("Error creating rule: %1", job.errorString);
+                    let indexError = job.errorString.indexOf("ERROR:");
+                    let errorStrings = job.errorString.substring(indexError);
+
+                    console.log(errorStrings);
+                    ruleCreationErrorMessage.text = i18n("Error creating rule: %1", errorStrings);
                     ruleCreationErrorMessage.visible = true;
                 }
                 return;
