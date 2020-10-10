@@ -27,8 +27,12 @@
 #include <QtDBus/QDBusPendingCall>
 #include <QtDBus/QDBusPendingReply>
 
+#include <KLocalizedString>
+
 #include "dbustypes.h"
 #include "firewalldjob.h"
+
+Q_LOGGING_CATEGORY(FirewallDJobDebug, "firewalld.job")
 
 namespace HELPER
 {
@@ -127,11 +131,11 @@ void FirewalldJob::start()
 {
     switch (m_type) {
     case FirewalldJob::FIREWALLD:
-        qDebug() << "firewalld " << m_call << m_args;
+        qCDebug(FirewallDJobDebug) << "firewalld " << m_call << m_args;
         firewalldAction(m_call, m_args);
         break;
     case FirewalldJob::SAVEFIREWALLD:
-        qDebug() << "firewalld saving (runtimetopermanent)";
+        qCDebug(FirewallDJobDebug) << i18n("firewalld saving (runtime to permanent)");
         saveFirewalld();
         break;
     default:

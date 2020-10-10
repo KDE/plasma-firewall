@@ -26,6 +26,7 @@
 
 #include <QString>
 #include <QTimer>
+#include <QLoggingCategory>
 
 #include <ifirewallclientbackend.h>
 #include <profile.h>
@@ -33,6 +34,8 @@
 class RuleListModel;
 class LogListModel;
 struct firewalld_reply;
+
+Q_DECLARE_LOGGING_CATEGORY(FirewallDClientDebug)
 
 class Q_DECL_EXPORT FirewalldClient : public IFirewallClientBackend
 {

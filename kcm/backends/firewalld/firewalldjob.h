@@ -27,7 +27,11 @@
 #include <KJob>
 #include <types.h>
 
+#include <QLoggingCategory>
+
 #include "dbustypes.h"
+
+Q_DECLARE_LOGGING_CATEGORY(FirewallDJobDebug)
 
 class FirewalldJob : public KJob
 {
