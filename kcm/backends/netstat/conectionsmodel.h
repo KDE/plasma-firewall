@@ -27,6 +27,10 @@
 
 #include <KAuth>
 
+#include <QLoggingCategory>
+
+Q_DECLARE_LOGGING_CATEGORY(NetstatConnectionsHelper)
+
 struct ConnectionsData {
     QString protocol;
     QString localAddress;
