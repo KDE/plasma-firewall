@@ -52,7 +52,7 @@ FirewalldClient::FirewalldClient(QObject *parent, const QVariantList &args)
     : IFirewallClientBackend(parent, args)
     , m_rulesModel(new RuleListModel(this))
 {
-    // HACK: Querring the firewall status in this context
+    // HACK: Querrying the firewall status in this context
     // creates a segmentation fault error in some situations
     // due to an usage of the rootObject before it's
     // initialization. So, it's delayed a little.

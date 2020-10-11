@@ -93,7 +93,7 @@ KCM.ScrollViewKCM {
             return;
         }
 
-        console.log("Acessing blacklist row", row);
+        console.log("Accessing blacklist row", row);
         const idx = proxyModel.index(row, 0);
         const roles = blacklistRuleRoleNames;
         const modelType = getModelType();

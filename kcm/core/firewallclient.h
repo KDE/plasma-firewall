@@ -132,7 +132,7 @@ signals:
     void hasExecutableChanged(bool changed);
     void capabilitiesChanged(const Capabilities &capabilities);
     /**
-     * Emitted when an error message should be displabed.
+     * Emitted when an error message should be displayed.
      *
      * This is typically shown as an inline message, e.g. "Failed to create action: Not authorized."
      */

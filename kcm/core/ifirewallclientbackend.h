@@ -77,7 +77,7 @@ public:
         const QString &destinationPort,
         const QString &inn) = 0;
 
-    /* returns true if all of the dependnecies of the firewall are installed on the system */
+    /* returns true if all of the dependencies of the firewall are installed on the system */
     virtual bool hasDependencies() const = 0;
 
     virtual bool enabled() const = 0;
