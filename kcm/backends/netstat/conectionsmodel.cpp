@@ -139,7 +139,7 @@ void ConnectionsModel::refreshConnections()
             if (conn.status == "UNCONN") {
                 conn.status = i18n("Not Connected");
             } else if (conn.status == "ESTAB") {
-                conn.status = i18n("Estabilished");
+                conn.status = i18n("Established");
             } else if (conn.status == "LISTEN") {
                 conn.status = i18n("Listening");
             }
