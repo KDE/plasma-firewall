@@ -26,6 +26,7 @@
     <category>System</category>
   </categories>
   <releases>
-	<release version="5.20.90"/>
+    <release version="" date="2020-10-15"/>
+    <release version="5.20.90"/>
   </releases>
 </component>
