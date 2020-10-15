@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SPDX-License-Identifier: FSFAP
+  SPDX-FileCopyrightText: 2020 Harald Sitter <sitter@kde.org>
+ -->
+<component type="addon">
+  <id>org.kde.plasma.firewall</id>
+  <extends>org.kde.kinfocenter</extends>
+  <metadata_license>FSFAP</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <name>Plasma Firewall</name>
+  <name xml:lang="x-test">xxPlasma Disksxx</name>
+  <summary>Firewall Interface for Plasma</summary>
+  <summary xml:lang="x-test">xxFirewall Interface for Plasmaxx</summary>
+  <description>
+    <p>Plasma Firewall is a multi-firewall frontend for ease of network configurations.</p>
+    <p xml:lang="x-test">xxPlasma Firewall is a multi-firewall frontend for ease of network configurations.xx</p>
+  </description>
+  <icon type="stock">preferences-smart-status</icon>
+  <screenshots>
+    <screenshot type="default">
+      <caption>The plasma firewall showing a default configuration page</caption>
+      <image>-- missing --</image>
+    </screenshot>
+  </screenshots>
+  <project_group>KDE</project_group>
+  <developer_name>Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
+  <developer_name xml:lang="x-test">xxTomaz Canabrava &lt;tcanabrava@kde.org&gt;xx</developer_name>
+  <categories>
+    <category>System</category>
+  </categories>
+  <releases>
+  </releases>
+</component>
