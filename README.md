@@ -1,3 +1,6 @@
+[//]: # SPDX-License-Identifier: BSD-3-Clause
+[//]: # SPDX-FileCopyrightText: 2020 Tomaz Canabrava <tcanabrava@kde.org>
+
 This is the repository for the Plasma 5 Firewall KCM.
 
 # Requirements

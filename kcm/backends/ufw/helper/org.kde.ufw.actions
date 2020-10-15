@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: CC0-1.0
+# SPDX-FileCopyrightText: 2020 Tomaz Canabrava <tcanabrava@kde.org>
 [Domain]
 Name=Uncomplicated Firewall
 Name[ca]=Tallafoc sense complicacions

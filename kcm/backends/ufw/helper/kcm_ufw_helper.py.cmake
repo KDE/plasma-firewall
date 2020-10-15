@@ -1,31 +1,10 @@
 #!@PYTHON_EXECUTABLE@
 
-#
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: 2010  Darwin M. Bautista <djclue917@gmail.com>
+# SPDX-FileCopyrightText: 2011 Craig Drummond <craig.p.drummond@gmail.com>
+
 # UFW KControl Module
-#
-# Copyright 2011 Craig Drummond <craig.p.drummond@gmail.com>
-#
-#-------------------------------------------------------------------
-# Some of the code here is taken/inspired from ufw-frontends,
-# Copyright notice for this follows...
-#-------------------------------------------------------------------
-#
-# frontend.py: Base frontend for ufw
-#
-# Copyright (C) 2010  Darwin M. Bautista <djclue917@gmail.com>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
 import sys

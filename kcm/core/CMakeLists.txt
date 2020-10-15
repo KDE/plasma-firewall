@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# SPDX-FileCopyrightText: 2020 Tomaz Canabrava <tcanabrava@kde.org>
+
 include(GenerateExportHeader)
 
 add_library(kcm_firewall_core

@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+# SPDX-FileCopyrightText: 2017 Alexis López Zubieta <azubieta90@gmail.com>
 /*
   Copyright (C) 2017 Alexis López Zubieta <azubieta90@gmail.com>
 

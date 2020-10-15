@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# SPDX-FileCopyrightText: 2020 Tomaz Canabrava <tcanabrava@kde.org>
+
 cmake_minimum_required(VERSION 3.8)
 #-----------------------------------------------------------------------------
 #                           GENERAL CONFIGURATION
