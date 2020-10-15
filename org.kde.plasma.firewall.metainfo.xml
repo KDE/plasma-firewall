@@ -16,11 +16,11 @@
     <p>Plasma Firewall is a multi-firewall frontend for ease of network configurations.</p>
     <p xml:lang="x-test">xxPlasma Firewall is a multi-firewall frontend for ease of network configurations.xx</p>
   </description>
-  <icon type="stock">preferences-smart-status</icon>
+  <icon type="stock">security-high</icon>
   <screenshots>
     <screenshot type="default">
       <caption>The plasma firewall showing a default configuration page</caption>
-      <image>-- missing --</image>
+      <image>https://cdn.kde.org/screenshots/plasma-firewall/plasma-firewall.png</image>
     </screenshot>
   </screenshots>
   <project_group>KDE</project_group>
