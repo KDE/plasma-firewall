@@ -13,6 +13,7 @@
   <name xml:lang="ca-valencia">Tallafoc del Plasma</name>
   <name xml:lang="en-GB">Plasma Firewall</name>
   <name xml:lang="es">Cortafuegos de Plasma</name>
+  <name xml:lang="fr">Pare-feu de Plasma</name>
   <name xml:lang="nl">Plasma-firewall</name>
   <name xml:lang="pt">'Firewall' do Plasma</name>
   <name xml:lang="sv">Plasma brandvägg</name>
@@ -23,6 +24,7 @@
   <summary xml:lang="ca-valencia">Interfície del tallafoc per al Plasma</summary>
   <summary xml:lang="en-GB">Firewall Interface for Plasma</summary>
   <summary xml:lang="es">Interfaz de cortafuegos para Plasma</summary>
+  <summary xml:lang="fr">Interface du pare-feu de Plasma</summary>
   <summary xml:lang="nl">Firewall-interface voor Plasma</summary>
   <summary xml:lang="pt">Interface de 'Firewall' para o Plasma</summary>
   <summary xml:lang="sv">Brandväggsgränssnitt för Plasma</summary>
@@ -34,6 +36,7 @@
     <p xml:lang="ca-valencia">El Tallafoc del Plasma és un frontal multi-tallafoc per a facilitar les configurations de la xarxa.</p>
     <p xml:lang="en-GB">Plasma Firewall is a multi-firewall frontend for ease of network configurations.</p>
     <p xml:lang="es">El cortafuegos de Plasma es una interfaz para varios cortafuegos que facilita la configuración de redes.</p>
+    <p xml:lang="fr">Le pare-feu de Plasma est une interface pour de multiples pare-feux, pour faciliter les configurations de réseaux.</p>
     <p xml:lang="nl">Plasma-firewall is een multi-firewall-frontend om netwerkconfiguratie gemakkelijker te maken.</p>
     <p xml:lang="pt">A 'Firewall' do Plasma é uma interface para várias 'firewalls' que simplifica as configurações de rede.</p>
     <p xml:lang="sv">Plasma brandvägg är ett gränssnitt för flera brandväggar för enkel nätverksinställning</p>
@@ -48,6 +51,7 @@
       <caption xml:lang="ca-valencia">El Tallafoc del Plasma mostra una pàgina de configuració predeterminada</caption>
       <caption xml:lang="en-GB">The plasma firewall showing a default configuration page</caption>
       <caption xml:lang="es">El cortafuegos de Plasma mostrando una página de configuración predeterminada</caption>
+      <caption xml:lang="fr">Le pare-feu de Plasma affichant une page par défaut de configuration</caption>
       <caption xml:lang="nl">De plasma-firewall toont een standaard configuratiepagina</caption>
       <caption xml:lang="pt">A 'firewall' do Plasma a mostrar uma página de configuração predefinida</caption>
       <caption xml:lang="sv">Plasma brandvägg som visar en standardinställningssida</caption>
@@ -62,6 +66,7 @@
   <developer_name xml:lang="ca-valencia">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="en-GB">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="es">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
+  <developer_name xml:lang="fr">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="nl">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="pt">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="sv">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
