@@ -13,20 +13,13 @@
 
 Q_LOGGING_CATEGORY(NetstatHelperDebug, "netstat.helper")
 
-NetstatHelper::NetstatHelper()
+NetstatHelper::NetstatHelper() : m_hasError(false)
 {
-    mHasSS = !QStandardPaths::findExecutable("ss").isEmpty();
-
-    if (!mHasSS) { // could not execute file
-        qCWarning(NetstatHelperDebug) << i18n("could not find iproute2 or net-tools packages installed.");
-    }
 }
 
-KAuth::ActionReply NetstatHelper::query(const QVariantMap &map)
+QVector<QStringList> NetstatHelper::query()
 {
-    Q_UNUSED(map);
-    KAuth::ActionReply reply;
-
+    m_hasError = false;
     QProcess netstat;
     /* parameters passed to ss
      *  -r, --resolve       resolve host names
@@ -36,45 +29,41 @@ KAuth::ActionReply NetstatHelper::query(const QVariantMap &map)
      *  -t, --tcp           display only TCP sockets
      */
     QStringList netstatArgs({"-tuapr"});
-    QString executable = mHasSS ? QStringLiteral("ss") : QString();
-
-    if (executable.isEmpty()) {
-        qCWarning(NetstatHelperDebug) << i18n("No iproute or net-tools installed, can't run.");
-        KAuth::ActionReply::HelperErrorReply(-2);
-        return {};
-    }
+    QString executable = QStringLiteral("ss");
 
     netstat.start(executable, netstatArgs, QIODevice::ReadOnly);
     if (netstat.waitForStarted()) {
         netstat.waitForFinished();
     }
-    int exitCode(netstat.exitCode());
+    int exitCode = netstat.exitCode();
 
+    QVector<QStringList> result;
     if (0 != exitCode) {
-        reply = KAuth::ActionReply::HelperErrorReply(exitCode);
-        reply.addData("response", netstat.readAllStandardError());
+        m_hasError = true;
+        m_errorString = netstat.readAllStandardError();
     } else {
-        QVariantList connections = parseOutput(netstat.readAllStandardOutput());
-        reply.addData("connections", connections);
+        result = parseSSOutput(netstat.readAllStandardOutput());
     }
 
-    return reply;
+    return result;
 }
 
-QVariantList NetstatHelper::parseOutput(const QByteArray &netstatOutput)
+bool NetstatHelper::hasError() const
 {
-    if (mHasSS) {
-        return parseSSOutput(netstatOutput);
-    }
-    return {};
+    return m_hasError;
 }
 
-QVariantList NetstatHelper::parseSSOutput(const QByteArray &netstatOutput)
+QString NetstatHelper::errorString() const
+{
+    return m_errorString;
+}
+
+QVector<QStringList> NetstatHelper::parseSSOutput(const QByteArray &netstatOutput)
 {
     QString rawOutput = netstatOutput;
     QStringList outputLines = rawOutput.split("\n");
 
-    QVariantList connections;
+    QVector<QStringList> connections;
 
     // discard lines.
     while (outputLines.size()) {
@@ -127,7 +116,7 @@ QVariantList NetstatHelper::parseSSOutput(const QByteArray &netstatOutput)
             PidRole,
             ProgramRole
         */
-        QVariantList connection {
+        QStringList connection {
             values[0], // NetId
             values[4], // Local Address
             values[5], // Peer Address,
@@ -136,91 +125,7 @@ QVariantList NetstatHelper::parseSSOutput(const QByteArray &netstatOutput)
             appName,
         };
 
-        connections.append((QVariant)connection);
-    }
-
-    return connections;
-}
-
-QVariantList NetstatHelper::parseNetstatOutput(const QByteArray &netstatOutput)
-{
-    QString rawOutput = netstatOutput;
-    QStringList outputLines = rawOutput.split("\n");
-
-    QVariantList connections;
-
-    int lineIdx = 0;
-    int protIndex = 0;
-    int protSize = 0;
-    int localAddressIndex = 0;
-    int localAddressSize = 0;
-    int foreingAddressIndex = 0;
-    int foreingAddressSize = 0;
-    int stateIndex = 0;
-    int stateSize = 0;
-    int processIndex = 0;
-    int processSize = 0;
-
-    for (auto line : outputLines) {
-        lineIdx++;
-        if (line.isEmpty()) {
-            continue;
-        }
-
-        if (lineIdx == 1) {
-            continue;
-        }
-
-        if (lineIdx == 2) {
-            protIndex = 0;
-            protSize = line.indexOf("Recv-Q");
-
-            localAddressIndex = line.indexOf("Local Address");
-            localAddressSize = line.indexOf("Foreign Address") - localAddressIndex;
-
-            foreingAddressIndex = line.indexOf("Foreign Address");
-            foreingAddressSize = line.indexOf("State") - foreingAddressIndex;
-
-            stateIndex = line.indexOf("State");
-            stateSize = line.indexOf("PID/Program name") - stateIndex;
-
-            processIndex = line.indexOf("PID/Program name");
-            processSize = line.size() - processSize;
-
-            continue;
-        }
-
-        QVariantList connection(
-            {extractAndStrip(
-                line,
-                protIndex,
-                protSize),
-            extractAndStrip(
-                line,
-                localAddressIndex,
-                localAddressSize),
-            extractAndStrip(
-                line,
-                foreingAddressIndex,
-                foreingAddressSize),
-            extractAndStrip(
-                line,
-                stateIndex,
-                stateSize)});
-
-        QString pidAndProcess = extractAndStrip(line, processIndex, processSize);
-
-        int slashIndex = pidAndProcess.indexOf("/");
-        if (slashIndex != -1) {
-            QString pidStr = pidAndProcess.left(slashIndex);
-            QString program = pidAndProcess.right(pidAndProcess.size() - slashIndex - 1);
-            program = program.section(":", 0, 0);
-
-            connection << pidStr.toInt();
-            connection << program;
-        }
-
-        connections.append((QVariant)connection);
+        connections.append(connection);
     }
 
     return connections;
@@ -232,5 +137,3 @@ QString NetstatHelper::extractAndStrip(const QString &src, const int &index, con
     str.replace(" ", "");
     return str;
 }
-
-KAUTH_HELPER_MAIN("org.kde.netstat", NetstatHelper)

@@ -5,14 +5,12 @@
 #ifndef NETSTATHELPER_H
 #define NETSTATHELPER_H
 
-#include <KAuth>
 #include <QVariantMap>
 
 #include <QLoggingCategory>
 
 Q_DECLARE_LOGGING_CATEGORY(NetstatHelperDebug)
 
-using namespace KAuth;
 class NetstatHelper : public QObject
 {
     Q_OBJECT
@@ -20,23 +18,16 @@ public:
     NetstatHelper();
 
 public Q_SLOTS:
-    ActionReply query(const QVariantMap &map);
+    QVector<QStringList> query();
+    QString errorString() const;
+    bool hasError() const;
 
 private:
-    QVariantList parseOutput(const QByteArray &netstatOutput);
-    QVariantList parseNetstatOutput(const QByteArray &netstatOutput);
-    QVariantList parseSSOutput(const QByteArray &ss);
+    QVector<QStringList> parseSSOutput(const QByteArray &ss);
 
     QString extractAndStrip(const QString &src, const int &index, const int &size);
-
-    /* Netstat has been deprecated for more than 20 years,
-     * some distros such as arch linux use 'ss' as default.
-     */
-    int mHasSS;
-
-    /* Distros are not obliged to install this. let's query it before
-     * assuming that this actually exists */
-    int mHasNetstat;
+    QString m_errorString;
+    bool m_hasError;
 };
 
 #endif // NETSTATHELPER_H

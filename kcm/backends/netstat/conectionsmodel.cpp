@@ -9,15 +9,17 @@
 #include <KLocalizedString>
 
 #include "netstatclient.h"
+#include "netstathelper.h"
 
 ConnectionsModel::ConnectionsModel(QObject *parent)
     : QAbstractListModel(parent)
-    , m_queryAction(KAuth::Action(QStringLiteral("org.kde.netstat.query")))
 {
-    m_queryAction.setHelperId("org.kde.netstat");
+}
 
+void ConnectionsModel::start()
+{
     connect(&timer, &QTimer::timeout, this, &ConnectionsModel::refreshConnections);
-    timer.setInterval(30000);
+    timer.setInterval(1000);
     timer.start();
 
     QTimer::singleShot(0, this, &ConnectionsModel::refreshConnections);
@@ -96,50 +98,44 @@ void ConnectionsModel::refreshConnections()
 
     setBusy(true);
 
-    KAuth::ExecuteJob *job = m_queryAction.execute();
-    connect(job, &KAuth::ExecuteJob::finished, this, [this, job] {
-        setBusy(false);
+    NetstatHelper helper;
+    QVector<QStringList> result = helper.query();
+    if (helper.hasError()) {
+        emit showErrorMessage(i18n("Failed to get connections: %1", helper.errorString()));
+        return;
+    }
 
-        if (job->error()) {
-            emit showErrorMessage(i18n("Failed to get connections: %1", job->errorString()));
-            return;
+    const auto oldConnectionsData = m_connectionsData;
+    QVector<ConnectionsData> newConnectionsData;
+
+    beginResetModel();
+    m_connectionsData.clear();
+    for (const auto connection : result) {
+        ConnectionsData conn {.protocol = connection.at(0),
+                                .localAddress = connection.at(1),
+                                .foreignAddress = connection.at(2),
+                                .status = connection.at(3),
+                                .pid = connection.at(4),
+                                .program = connection.at(5)};
+
+        if (conn.status == "UNCONN") {
+            conn.status = i18n("Not Connected");
+        } else if (conn.status == "ESTAB") {
+            conn.status = i18n("Established");
+        } else if (conn.status == "LISTEN") {
+            conn.status = i18n("Listening");
         }
 
-        const auto oldConnectionsData = m_connectionsData;
-        QVector<ConnectionsData> newConnectionsData;
+        newConnectionsData.append(conn);
+    }
 
+    if (newConnectionsData != oldConnectionsData) {
         beginResetModel();
-        m_connectionsData.clear();
-        for (const auto connection : job->data().value("connections", QVariantList()).toList()) {
-            const auto connList = connection.toList();
-            ConnectionsData conn {.protocol = connList.at(0).toString(),
-                                  .localAddress = connList.at(1).toString(),
-                                  .foreignAddress = connList.at(2).toString(),
-                                  .status = connList.at(3).toString(),
-                                  .pid = connList.at(4).toString(),
-                                  .program = connList.at(5).toString()};
+        m_connectionsData = newConnectionsData;
+        endResetModel();
+    }
 
-            if (conn.status == "UNCONN") {
-                conn.status = i18n("Not Connected");
-            } else if (conn.status == "ESTAB") {
-                conn.status = i18n("Established");
-            } else if (conn.status == "LISTEN") {
-                conn.status = i18n("Listening");
-            }
-
-            newConnectionsData.append(conn);
-        }
-
-        if (newConnectionsData != oldConnectionsData) {
-            beginResetModel();
-            m_connectionsData = newConnectionsData;
-            endResetModel();
-        }
-
-        if (newConnectionsData.count() != oldConnectionsData.count()) {
-            emit countChanged();
-        }
-    });
-
-    job->start();
+    if (newConnectionsData.count() != oldConnectionsData.count()) {
+        emit countChanged();
+    }
 }
