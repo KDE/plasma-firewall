@@ -1,8 +1,6 @@
 # SPDX-License-Identifier: BSD-3-Clause
 # SPDX-FileCopyrightText: 2020 Tomaz Canabrava <tcanabrava@kde.org>
 
-add_subdirectory(helper)
-
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Quick
     Xml
@@ -21,6 +19,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
 set(networkstatus_SRCS
     conectionsmodel.cpp
     netstatclient.cpp
+    netstathelper.cpp
 )
 
 add_library(networkstatus STATIC ${networkstatus_SRCS})
@@ -32,4 +31,5 @@ target_link_libraries(networkstatus
     KF5::CoreAddons
     KF5::ConfigCore
     KF5::Auth
-    KF5::I18n)
+    KF5::I18n
+)
