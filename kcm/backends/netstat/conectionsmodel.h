@@ -8,8 +8,6 @@
 #include <QAbstractListModel>
 #include <QTimer>
 
-#include <KAuth>
-
 #include <QLoggingCategory>
 
 Q_DECLARE_LOGGING_CATEGORY(ConnectionsModelDebug)
@@ -54,6 +52,8 @@ public:
 
     QHash<int, QByteArray> roleNames() const override;
 
+    Q_INVOKABLE void start();
+
 signals:
     void countChanged();
     void busyChanged();
@@ -67,7 +67,6 @@ private:
 
     bool m_busy = false;
     QVector<ConnectionsData> m_connectionsData;
-    KAuth::Action m_queryAction;
     QTimer timer;
 };
 

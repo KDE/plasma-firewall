@@ -4,6 +4,8 @@
 
 #include "netstatclient.h"
 
+#include <QStandardPaths>
+
 /* Access to the Netstat Client thru the Connections Model */
 static NetstatClient *_self = nullptr;
 
@@ -18,6 +20,12 @@ NetstatClient::NetstatClient(QObject *parent)
     , m_connections(new ConnectionsModel(this))
 {
     _self = this;
+    mHasSS = !QStandardPaths::findExecutable("ss").isEmpty();
+}
+
+bool NetstatClient::hasSS() const
+{
+    return mHasSS;
 }
 
 ConnectionsModel *NetstatClient::connectionsModel() const

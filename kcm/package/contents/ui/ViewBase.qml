@@ -31,6 +31,8 @@ KCM.ScrollViewKCM {
     property alias filterPlaceholderText: searchField.placeholderText
     property var filterRoleNames: []
 
+    property var errorMessage: modelErrorMessage
+
     KSortFilterProxyModel {
         id: proxyModel
         sourceModel: root.model

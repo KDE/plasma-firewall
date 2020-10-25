@@ -10,6 +10,7 @@ import org.kde.kirigami 2.10 as Kirigami
 import org.kcm.firewall 1.0
 
 ViewBase {
+    id: base
     title: i18n("Connections")
 
     model: netStatClient.connectionsModel
@@ -37,5 +38,16 @@ ViewBase {
 
     NetstatClient {
         id: netStatClient
+        Component.onCompleted : {
+            console.log("Netstat client completed.");
+            if (!netStatClient.hasSS) {
+                console.log("Netstat client without ss");
+                base.errorMessage.text = i18n("could not find iproute2 or net-tools packages installed.");
+                base.errorMessage.visible = true;
+            } else {
+                console.log("Starting netstat client");
+                netStatClient.connectionsModel.start();
+            }
+        }
     }
 }
