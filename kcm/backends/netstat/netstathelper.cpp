@@ -87,7 +87,7 @@ QVector<QStringList> NetstatHelper::parseSSOutput(const QByteArray &netstatOutpu
 
     // Extract Information
     for (auto line : outputLines) {
-        QStringList values = line.split(QLatin1Char(' '), QString::SkipEmptyParts);
+        QStringList values = line.split(QLatin1Char(' '), Qt::SkipEmptyParts);
         if (values.isEmpty()) {
             continue;
         }
