@@ -46,7 +46,7 @@ ViewBase {
                 base.errorMessage.visible = true;
             } else {
                 console.log("Starting netstat client");
-                netStatClient.connectionsModel.start();
+                base.model.start();
             }
         }
     }

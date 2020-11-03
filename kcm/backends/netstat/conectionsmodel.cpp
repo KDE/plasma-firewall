@@ -18,11 +18,8 @@ ConnectionsModel::ConnectionsModel(QObject *parent)
 
 void ConnectionsModel::start()
 {
-    connect(&timer, &QTimer::timeout, this, &ConnectionsModel::refreshConnections);
-    timer.setInterval(1000);
-    timer.start();
-
-    QTimer::singleShot(0, this, &ConnectionsModel::refreshConnections);
+    connect(&m_netstatHelper, &NetstatHelper::queryFinished, this, &ConnectionsModel::refreshConnections, Qt::QueuedConnection);
+    m_netstatHelper.start();
 }
 
 bool ConnectionsModel::busy() const
@@ -90,7 +87,7 @@ QHash<int, QByteArray> ConnectionsModel::roleNames() const
     };
 }
 
-void ConnectionsModel::refreshConnections()
+void ConnectionsModel::refreshConnections(const QVector<QStringList> &values)
 {
     if (m_busy) {
         return;
@@ -98,10 +95,8 @@ void ConnectionsModel::refreshConnections()
 
     setBusy(true);
 
-    NetstatHelper helper;
-    QVector<QStringList> result = helper.query();
-    if (helper.hasError()) {
-        emit showErrorMessage(i18n("Failed to get connections: %1", helper.errorString()));
+    if (m_netstatHelper.hasError()) {
+        emit showErrorMessage(i18n("Failed to get connections: %1", m_netstatHelper.errorString()));
         return;
     }
 
@@ -110,7 +105,7 @@ void ConnectionsModel::refreshConnections()
 
     beginResetModel();
     m_connectionsData.clear();
-    for (const auto connection : result) {
+    for (const auto connection : values) {
         ConnectionsData conn {.protocol = connection.at(0),
                                 .localAddress = connection.at(1),
                                 .foreignAddress = connection.at(2),

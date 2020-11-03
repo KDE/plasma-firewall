@@ -15,11 +15,26 @@ Q_LOGGING_CATEGORY(NetstatHelperDebug, "netstat.helper")
 
 NetstatHelper::NetstatHelper() : m_hasError(false)
 {
+    connect(&m_timer, &QTimer::timeout, this, &NetstatHelper::timeout, Qt::QueuedConnection);
+    setTerminationEnabled(true);
 }
 
-QVector<QStringList> NetstatHelper::query()
+void NetstatHelper::timeout() 
 {
+    if (m_elapsedTimer.elapsed() > 2000) // wait for at least 2s
+    {
+        qDebug() << "Force-Terminate the thread";
+        terminate();
+        start();
+    }
+}
+
+// This method runs in a different thread.
+void NetstatHelper::run() 
+{
+    m_elapsedTimer.restart();
     m_hasError = false;
+
     QProcess netstat;
     /* parameters passed to ss
      *  -r, --resolve       resolve host names
@@ -43,9 +58,9 @@ QVector<QStringList> NetstatHelper::query()
         m_errorString = netstat.readAllStandardError();
     } else {
         result = parseSSOutput(netstat.readAllStandardOutput());
+        emit queryFinished(result);
     }
 
-    return result;
 }
 
 bool NetstatHelper::hasError() const

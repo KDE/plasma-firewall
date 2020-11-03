@@ -10,6 +10,8 @@
 
 #include <QLoggingCategory>
 
+#include "netstathelper.h"
+
 Q_DECLARE_LOGGING_CATEGORY(ConnectionsModelDebug)
 
 struct ConnectionsData {
@@ -60,7 +62,7 @@ signals:
     void showErrorMessage(const QString &message);
 
 protected slots:
-    void refreshConnections();
+    void refreshConnections(const QVector<QStringList> &values);
 
 private:
     void setBusy(bool busy);
@@ -68,6 +70,7 @@ private:
     bool m_busy = false;
     QVector<ConnectionsData> m_connectionsData;
     QTimer timer;
+    NetstatHelper m_netstatHelper;
 };
 
 #endif // CONECTIONSMODEL_H
