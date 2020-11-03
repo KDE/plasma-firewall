@@ -11,6 +11,7 @@
   <name>Plasma Firewall</name>
   <name xml:lang="ca">Tallafoc del Plasma</name>
   <name xml:lang="ca-valencia">Tallafoc del Plasma</name>
+  <name xml:lang="da">Plasma Firewall</name>
   <name xml:lang="en-GB">Plasma Firewall</name>
   <name xml:lang="es">Cortafuegos de Plasma</name>
   <name xml:lang="et">Plasma tulemüür</name>
@@ -26,6 +27,7 @@
   <summary>Firewall Interface for Plasma</summary>
   <summary xml:lang="ca">Interfície del tallafoc per al Plasma</summary>
   <summary xml:lang="ca-valencia">Interfície del tallafoc per al Plasma</summary>
+  <summary xml:lang="da">Firewallbrugerflade til Plasma</summary>
   <summary xml:lang="en-GB">Firewall Interface for Plasma</summary>
   <summary xml:lang="es">Interfaz de cortafuegos para Plasma</summary>
   <summary xml:lang="et">Plasma tulemüüriliides</summary>
@@ -42,6 +44,7 @@
     <p>Plasma Firewall is a multi-firewall frontend for ease of network configurations.</p>
     <p xml:lang="ca">El Tallafoc del Plasma és un frontal multi-tallafoc per a facilitar les configurations de la xarxa.</p>
     <p xml:lang="ca-valencia">El Tallafoc del Plasma és un frontal multi-tallafoc per a facilitar les configurations de la xarxa.</p>
+    <p xml:lang="da">Plasma Firewall er en multi-firewallbrugerflade til at lette netværkskonfigurationer.</p>
     <p xml:lang="en-GB">Plasma Firewall is a multi-firewall frontend for ease of network configurations.</p>
     <p xml:lang="es">El cortafuegos de Plasma es una interfaz para varios cortafuegos que facilita la configuración de redes.</p>
     <p xml:lang="et">Plasma tulemüür on võrguseadistuse hõlbustamiseks loodud kasutajaliides mitmele tulemüürile.</p>
@@ -60,6 +63,7 @@
       <caption>The plasma firewall showing a default configuration page</caption>
       <caption xml:lang="ca">El Tallafoc del Plasma mostra una pàgina de configuració predeterminada</caption>
       <caption xml:lang="ca-valencia">El Tallafoc del Plasma mostra una pàgina de configuració predeterminada</caption>
+      <caption xml:lang="da">Plasma-firewallen der viser en standardkonfigurationsside</caption>
       <caption xml:lang="en-GB">The plasma firewall showing a default configuration page</caption>
       <caption xml:lang="es">El cortafuegos de Plasma mostrando una página de configuración predeterminada</caption>
       <caption xml:lang="et">Plasma tulemüüri vaikimisi seadistusleht</caption>
@@ -78,6 +82,7 @@
   <developer_name>Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="ca">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="ca-valencia">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
+  <developer_name xml:lang="da">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="en-GB">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="es">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="et">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
