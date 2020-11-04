@@ -10,6 +10,8 @@
 
 #include <QLoggingCategory>
 
+#include "netstathelper.h"
+
 Q_DECLARE_LOGGING_CATEGORY(ConnectionsModelDebug)
 
 struct ConnectionsData {
@@ -35,7 +37,6 @@ class ConnectionsModel : public QAbstractListModel
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool busy READ busy NOTIFY busyChanged)
     Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
 
 public:
@@ -43,8 +44,6 @@ public:
     Q_ENUM(ConnectionsModelRoles)
 
     explicit ConnectionsModel(QObject *parent = nullptr);
-
-    bool busy() const;
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
 
@@ -56,18 +55,15 @@ public:
 
 signals:
     void countChanged();
-    void busyChanged();
     void showErrorMessage(const QString &message);
 
 protected slots:
-    void refreshConnections();
+    void refreshConnections(const  QVector<QStringList>& results);
 
 private:
-    void setBusy(bool busy);
-
-    bool m_busy = false;
     QVector<ConnectionsData> m_connectionsData;
     QTimer timer;
+    NetstatHelper m_netstatHelper;
 };
 
 #endif // CONECTIONSMODEL_H

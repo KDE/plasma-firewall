@@ -14,28 +14,15 @@
 ConnectionsModel::ConnectionsModel(QObject *parent)
     : QAbstractListModel(parent)
 {
+    connect(&m_netstatHelper, &NetstatHelper::queryFinished, this, &ConnectionsModel::refreshConnections);
 }
 
 void ConnectionsModel::start()
 {
-    connect(&timer, &QTimer::timeout, this, &ConnectionsModel::refreshConnections);
-    timer.setInterval(1000);
+    connect(&timer, &QTimer::timeout, &m_netstatHelper, &NetstatHelper::query);
+    timer.setInterval(2500);
     timer.start();
-
-    QTimer::singleShot(0, this, &ConnectionsModel::refreshConnections);
-}
-
-bool ConnectionsModel::busy() const
-{
-    return m_busy;
-}
-
-void ConnectionsModel::setBusy(bool busy)
-{
-    if (m_busy != busy) {
-        m_busy = busy;
-        emit busyChanged();
-    }
+    QTimer::singleShot(0, &m_netstatHelper, &NetstatHelper::query);
 }
 
 int ConnectionsModel::rowCount(const QModelIndex &parent) const
@@ -90,18 +77,11 @@ QHash<int, QByteArray> ConnectionsModel::roleNames() const
     };
 }
 
-void ConnectionsModel::refreshConnections()
+void ConnectionsModel::refreshConnections(const  QVector<QStringList>& result)
 {
-    if (m_busy) {
-        return;
-    }
 
-    setBusy(true);
-
-    NetstatHelper helper;
-    QVector<QStringList> result = helper.query();
-    if (helper.hasError()) {
-        emit showErrorMessage(i18n("Failed to get connections: %1", helper.errorString()));
+    if (m_netstatHelper.hasError()) {
+        emit showErrorMessage(i18n("Failed to get connections: %1", m_netstatHelper.errorString()));
         return;
     }
 

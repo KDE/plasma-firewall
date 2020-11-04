@@ -10,17 +10,20 @@
 #include <QProcess>
 #include <QStandardPaths>
 #include <QStringList>
+#include <QTimer>
 
 Q_LOGGING_CATEGORY(NetstatHelperDebug, "netstat.helper")
 
-NetstatHelper::NetstatHelper() : m_hasError(false)
+NetstatHelper::NetstatHelper() : m_hasError(false), m_hasTimeoutError(false)
 {
 }
 
-QVector<QStringList> NetstatHelper::query()
+void NetstatHelper::query() 
 {
-    m_hasError = false;
-    QProcess netstat;
+    m_executableProcess = new QProcess();
+    m_processKillerTimer = new QTimer();
+    m_processKillerTimer->setSingleShot(true);
+
     /* parameters passed to ss
      *  -r, --resolve       resolve host names
      *  -a, --all           display all sockets
@@ -28,24 +31,57 @@ QVector<QStringList> NetstatHelper::query()
      *  -u, --udp           display only UDP sockets
      *  -t, --tcp           display only TCP sockets
      */
-    QStringList netstatArgs({"-tuapr"});
-    QString executable = QStringLiteral("ss");
 
-    netstat.start(executable, netstatArgs, QIODevice::ReadOnly);
-    if (netstat.waitForStarted()) {
-        netstat.waitForFinished();
-    }
-    int exitCode = netstat.exitCode();
+    const QStringList netstatArgs( m_hasTimeoutError ? QStringList({"-tuap"}) : QStringList({"-tuapr"}));
+    const QString executable = QStringLiteral("ss");
 
-    QVector<QStringList> result;
+    connect(
+        m_executableProcess,  QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
+        this, &NetstatHelper::stepExecuteFinished);
+    
+    connect(
+        m_processKillerTimer, &QTimer::timeout, 
+        this, &NetstatHelper::stopProcess);
+
+    m_executableProcess->start(executable, netstatArgs, QIODevice::ReadOnly);
+
+    // We wait 2 seconds before killing the process.
+    m_processKillerTimer->start(2000);
+    qDebug() << "Running process";
+}
+
+void NetstatHelper::stopProcess()
+{
+    m_hasTimeoutError = true;
+
+    m_processKillerTimer->stop();
+    m_processKillerTimer->deleteLater();
+    m_processKillerTimer = nullptr;
+
+    m_executableProcess->kill();
+    m_executableProcess->deleteLater();
+    m_executableProcess = nullptr;
+}
+
+void NetstatHelper::stepExecuteFinished(int exitCode, QProcess::ExitStatus exitStatus)
+{
+    // No need to kill anything - we had success executing the process.
+    m_processKillerTimer->stop();
+    m_processKillerTimer->deleteLater();
+    m_processKillerTimer = nullptr;
+
+    m_hasError = false;
+
     if (0 != exitCode) {
         m_hasError = true;
-        m_errorString = netstat.readAllStandardError();
+        m_errorString = m_executableProcess->readAllStandardError();
     } else {
-        result = parseSSOutput(netstat.readAllStandardOutput());
+        QVector<QStringList> result = parseSSOutput(m_executableProcess->readAllStandardOutput());
+        emit queryFinished(result);;
     }
 
-    return result;
+    m_executableProcess->deleteLater();
+    m_executableProcess = nullptr;
 }
 
 bool NetstatHelper::hasError() const
