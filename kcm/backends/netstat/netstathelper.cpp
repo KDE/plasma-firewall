@@ -52,12 +52,14 @@ void NetstatHelper::query()
 
 void NetstatHelper::stopProcess()
 {
+    qDebug() << "Timming out!";
     m_hasTimeoutError = true;
 
     m_processKillerTimer->stop();
     m_processKillerTimer->deleteLater();
     m_processKillerTimer = nullptr;
 
+    m_executableProcess->disconnect();
     m_executableProcess->kill();
     m_executableProcess->deleteLater();
     m_executableProcess = nullptr;
@@ -66,9 +68,15 @@ void NetstatHelper::stopProcess()
 void NetstatHelper::stepExecuteFinished(int exitCode, QProcess::ExitStatus exitStatus)
 {
     // No need to kill anything - we had success executing the process.
-    m_processKillerTimer->stop();
-    m_processKillerTimer->deleteLater();
-    m_processKillerTimer = nullptr;
+    if (!m_processKillerTimer) {
+        return;
+    }
+
+    if (m_processKillerTimer) {
+        m_processKillerTimer->stop();
+        m_processKillerTimer->deleteLater();
+        m_processKillerTimer = nullptr;
+    }
 
     m_hasError = false;
 
