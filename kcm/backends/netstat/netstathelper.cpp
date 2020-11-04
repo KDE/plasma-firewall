@@ -65,7 +65,7 @@ void NetstatHelper::stopProcess()
     m_executableProcess = nullptr;
 }
 
-void NetstatHelper::stepExecuteFinished(int exitCode, QProcess::ExitStatus exitStatus)
+void NetstatHelper::stepExecuteFinished(int exitCode)
 {
     // No need to kill anything - we had success executing the process.
     if (!m_processKillerTimer) {

@@ -27,7 +27,7 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     // called by the finished signal on the process.
-    void stepExecuteFinished(int exitCode, QProcess::ExitStatus exitStatus);
+    void stepExecuteFinished(int exitCode);
 
 Q_SIGNALS:
     void queryFinished(const QVector<QStringList>& query);
