@@ -19,6 +19,7 @@
   <name xml:lang="it">Plasma Firewall</name>
   <name xml:lang="nl">Plasma-firewall</name>
   <name xml:lang="pt">'Firewall' do Plasma</name>
+  <name xml:lang="pt-BR">Plasma Firewall</name>
   <name xml:lang="sk">Plasma Firewall</name>
   <name xml:lang="sl">Plasma Firewall</name>
   <name xml:lang="sv">Plasma brandvägg</name>
@@ -35,6 +36,7 @@
   <summary xml:lang="it">Interfaccia firewall per Plasma</summary>
   <summary xml:lang="nl">Firewall-interface voor Plasma</summary>
   <summary xml:lang="pt">Interface de 'Firewall' para o Plasma</summary>
+  <summary xml:lang="pt-BR">Interface de firewall para o Plasma</summary>
   <summary xml:lang="sk">Rozhranie firewallu pre Plasma</summary>
   <summary xml:lang="sl">Plasmin vmesnik za vdorobran</summary>
   <summary xml:lang="sv">Brandväggsgränssnitt för Plasma</summary>
@@ -52,6 +54,7 @@
     <p xml:lang="it">Plasma Firewall è un'interfaccia multi-firewall per facilitare le configurazioni di rete.</p>
     <p xml:lang="nl">Plasma-firewall is een multi-firewall-frontend om netwerkconfiguratie gemakkelijker te maken.</p>
     <p xml:lang="pt">A 'Firewall' do Plasma é uma interface para várias 'firewalls' que simplifica as configurações de rede.</p>
+    <p xml:lang="pt-BR">O Plasma Firewall é uma interface multi-firewall para facilitar as configurações de redes.</p>
     <p xml:lang="sl">Plasma Firewall je večkratni vdorobran za lažje nastavitve omrežja.</p>
     <p xml:lang="sv">Plasma brandvägg är ett gränssnitt för flera brandväggar för enkel nätverksinställning</p>
     <p xml:lang="uk">«Брандмауер Плазми» — оболонка доступу до декількох брандмауерів, яка спрощує налаштовування доступу до  мережі.</p>
@@ -71,6 +74,7 @@
       <caption xml:lang="it">Plasma Firewall che mostra una pagina di configurazione predefinita</caption>
       <caption xml:lang="nl">De plasma-firewall toont een standaard configuratiepagina</caption>
       <caption xml:lang="pt">A 'firewall' do Plasma a mostrar uma página de configuração predefinida</caption>
+      <caption xml:lang="pt-BR">O firewall do Plasma mostrando uma página de configuração padrão</caption>
       <caption xml:lang="sl">Plasma firewall prikazuje privzeto nastavitveno stran</caption>
       <caption xml:lang="sv">Plasma brandvägg som visar en standardinställningssida</caption>
       <caption xml:lang="uk">Сторінка типових налаштувань «Брандмауера Плазми»</caption>
@@ -90,6 +94,7 @@
   <developer_name xml:lang="it">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="nl">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="pt">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
+  <developer_name xml:lang="pt-BR">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="sk">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="sl">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="sv">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
