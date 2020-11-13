@@ -45,8 +45,8 @@ void NetstatHelper::query()
 
     m_executableProcess->start(executable, netstatArgs, QIODevice::ReadOnly);
 
-    // We wait 2 seconds before killing the process.
-    m_processKillerTimer->start(2000);
+    // We wait 10 seconds before killing the process.
+    m_processKillerTimer->start(10000);
     qDebug() << "Running process";
 }
 

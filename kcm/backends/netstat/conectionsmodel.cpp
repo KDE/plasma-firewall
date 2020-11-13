@@ -20,7 +20,7 @@ ConnectionsModel::ConnectionsModel(QObject *parent)
 void ConnectionsModel::start()
 {
     connect(&timer, &QTimer::timeout, &m_netstatHelper, &NetstatHelper::query);
-    timer.setInterval(2500);
+    timer.setInterval(10500);
     timer.start();
     QTimer::singleShot(0, &m_netstatHelper, &NetstatHelper::query);
 }
