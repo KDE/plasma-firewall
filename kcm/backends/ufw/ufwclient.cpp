@@ -464,6 +464,33 @@ bool UfwClient::logsAutoRefresh() const
     return m_logsAutoRefresh;
 }
 
+namespace {
+    bool isNumber(const QString& s) {
+        bool error = true;
+        s.toInt(&error);
+        return error;
+    }
+
+    QString portStrToInt(const QString& portStr) {
+        QFile file("/etc/services");
+        if (!file.open(QIODevice::ReadOnly)) {
+            qDebug() << "Could not open file, returning";
+            return portStr;
+        }
+        while (!file.atEnd()) {
+            QString line = file.readLine();
+            if (!line.startsWith(portStr.toLocal8Bit())) {
+                continue;
+            }
+
+            // http      80/tcp
+            auto list = line.split(QRegExp("\\s+"));
+            return list[1];
+        }
+        return "";
+    }
+}
+
 RuleWrapper *UfwClient::createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status)
 {
     // FIXME use a regexp for that and support ipv6!
@@ -477,6 +504,13 @@ RuleWrapper *UfwClient::createRuleFromConnection(const QString &protocol, const 
 
     auto localAddressData = _localAddress.split(":");
     auto foreignAddresData = _foreignAddres.split(":");
+
+    if (!isNumber(localAddressData[1])) {
+        localAddressData[1] = portStrToInt(localAddressData[1]);
+    }
+    if (!isNumber(foreignAddresData[1])) {
+        foreignAddresData[1] = portStrToInt(foreignAddresData[1]);
+    }
 
     auto rule = new RuleWrapper({});
     rule->setIncoming(status == QStringLiteral("LISTEN"));
