@@ -263,8 +263,10 @@ ActionReply Helper::addRules(const QVariantMap &args, const QString &cmd)
     }
     QStringList cmdArgs;
 
-    for (unsigned int i = 0; i < count; ++i)
+    for (unsigned int i = 0; i < count; ++i) {
         cmdArgs << "--add=" + args["xml" + QString::number(i)].toString();
+    }
+    qDebug() << "Cmd args passed to ufw:" << cmdArgs;
 
     checkFolder();
     return run(cmdArgs, {"--list"}, cmd);
