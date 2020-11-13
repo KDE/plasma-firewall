@@ -485,7 +485,13 @@ namespace {
 
             // http      80/tcp
             auto list = line.split(QRegExp("\\s+"));
-            return list[1];
+            if (list.size() > 1) {
+                if (list[1].contains('/')) {
+                    return list[1].split('/')[0];
+                } else {
+                    return list[1];
+                }
+            }
         }
         return "";
     }
@@ -515,6 +521,10 @@ RuleWrapper *UfwClient::createRuleFromConnection(const QString &protocol, const 
     auto rule = new RuleWrapper({});
     rule->setIncoming(status == QStringLiteral("LISTEN"));
     rule->setPolicy("deny");
+
+    qDebug() << "-----------------------";
+    qDebug() << foreignAddresData << localAddressData;
+    qDebug() << "------------------------";
 
     // Prepare rule draft
     if (status == QStringLiteral("LISTEN")) {
