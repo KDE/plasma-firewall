@@ -86,6 +86,11 @@ KCM.ScrollViewKCM {
             return proxyModel.data(idx, modelType[role + "Role"]);
         });
 
+        if (args[0] === undefined) {
+            console.log("Error, a model refresh happened when you tried to blacklist a connection.");
+            return;
+        }
+
         const rule = blacklistRuleFactory(...args);
         const job = kcm.client.addRule(rule);
 
