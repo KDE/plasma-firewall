@@ -72,8 +72,8 @@ private:
     QStringList m_rawLogs;
     bool m_isBusy;
     Profile m_currentProfile;
-    RuleListModel *m_rulesModel;
-    LogListModel *m_logs;
+    RuleListModel *m_rulesModel = nullptr;
+    LogListModel *m_logs = nullptr;
     QTimer m_logsRefreshTimer;
     bool m_logsAutoRefresh;
     bool m_serviceStatus;
