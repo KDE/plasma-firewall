@@ -73,6 +73,7 @@ public:
 
     virtual void refreshProfiles() = 0;
     virtual FirewallClient::Capabilities capabilities() const;
+    virtual QStringList knownProtocols() = 0;
     void setProfiles(const QVector<Entry> &profiles);
     QVector<Entry> profiles();
     Entry profileByName(const QString &profileName);

@@ -58,6 +58,8 @@ public:
     bool hasExecutable() const override;
     void refreshProfiles() override;
     bool hasDependencies() const override;
+    QStringList knownProtocols() override;
+
 protected slots:
     void refreshLogs();
 

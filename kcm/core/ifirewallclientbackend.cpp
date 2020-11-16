@@ -5,7 +5,7 @@
 /*
  * UFW KControl Module
  */
-
+#include <KLocalizedString>
 #include "ifirewallclientbackend.h"
 
 IFirewallClientBackend::IFirewallClientBackend(QObject *parent, const QVariantList &)
@@ -39,3 +39,4 @@ KJob *IFirewallClientBackend::save()
 {
     return nullptr;
 };
+

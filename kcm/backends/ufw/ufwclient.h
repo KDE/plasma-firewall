@@ -68,6 +68,7 @@ public:
     bool hasDependencies() const override;
 protected slots:
     void refreshLogs();
+    QStringList knownProtocols() override;
 
 protected:
     void setProfile(Profile profile);

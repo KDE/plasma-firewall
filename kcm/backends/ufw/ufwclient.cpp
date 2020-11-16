@@ -549,7 +549,7 @@ RuleWrapper *UfwClient::createRuleFromConnection(const QString &protocol, const 
         rule->setDestinationPort(foreignAddresData[1]);
     }
 
-    rule->setProtocol(FirewallClient::knownProtocols().indexOf(protocol.toUpper()));
+    rule->setProtocol(knownProtocols().indexOf(protocol.toUpper()));
     return rule;
 }
 
@@ -581,7 +581,7 @@ RuleWrapper *UfwClient::createRuleFromLog(const QString &protocol, const QString
     rule->setDestinationAddress(_destinationAddress);
     rule->setDestinationPort(destinationPort);
 
-    rule->setProtocol(FirewallClient::knownProtocols().indexOf(protocol.toUpper()));
+    rule->setProtocol(knownProtocols().indexOf(protocol.toUpper()));
     return rule;
 }
 
@@ -624,4 +624,7 @@ void UfwClient::refreshProfiles()
     setProfiles(profiles);
 }
 
+QStringList UfwClient::knownProtocols() {
+    return {i18n("Any"), "TCP", "UDP"};
+}
 #include "ufwclient.moc"

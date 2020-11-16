@@ -268,7 +268,7 @@ RuleWrapper *FirewalldClient::createRuleFromConnection(
         rule->setDestinationPort(foreignAddresData[1]);
     }
 
-    rule->setProtocol(FirewallClient::knownProtocols().indexOf(protocol.toUpper()));
+    rule->setProtocol(knownProtocols().indexOf(protocol.toUpper()));
     return rule;
 }
 
@@ -300,7 +300,7 @@ RuleWrapper *FirewalldClient::createRuleFromLog(
     rule->setDestinationAddress(_destinationAddress);
     rule->setDestinationPort(destinationPort);
 
-    rule->setProtocol(FirewallClient::knownProtocols().indexOf(protocol.toUpper()));
+    rule->setProtocol(knownProtocols().indexOf(protocol.toUpper()));
     return rule;
 }
 
@@ -519,4 +519,7 @@ FirewallClient::Capabilities FirewalldClient::capabilities() const
     return FirewallClient::SaveCapability;
 };
 
+QStringList FirewalldClient::knownProtocols() {
+    return {"TCP", "UDP"};
+}
 #include "firewalldclient.moc"

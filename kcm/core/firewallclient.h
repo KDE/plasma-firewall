@@ -56,10 +56,10 @@ public:
 
     explicit FirewallClient(QObject *parent = nullptr);
 
-    Q_INVOKABLE static QStringList knownProtocols();
+    Q_INVOKABLE QStringList knownProtocols();
     Q_INVOKABLE static QStringList knownInterfaces();
-
     Q_INVOKABLE void refresh();
+
     RuleListModel *rulesModel() const;
     LogListModel *logsModel() const;
 

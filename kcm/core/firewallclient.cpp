@@ -39,7 +39,7 @@ FirewallClient::FirewallClient(QObject *parent)
 
 QStringList FirewallClient::knownProtocols()
 {
-    return {i18n("Any"), "TCP", "UDP"};
+    return m_currentBackend->knownProtocols();
 }
 
 QStringList FirewallClient::knownInterfaces()
