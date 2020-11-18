@@ -89,7 +89,6 @@ KJob *FirewalldClient::setEnabled(const bool value)
         emit enabledChanged(value);
     });
 
-    job->start();
     return job;
 }
 
