@@ -29,6 +29,7 @@ KCMFirewall::KCMFirewall(QObject *parent, const QVariantList &args)
     KAboutData *about = new KAboutData("kcm_firewall", i18n("Configure Firewall"), "0.1", QString(), KAboutLicense::GPL_V3);
     about->addAuthor("Alexis López Zubieta", QString(), "azubieta90@gmail.com");
     about->addAuthor("Tomaz Canabrava", QString(), "tcanabrava@kde.org");
+    about->addAuthor("Lucas Januario", QString(), "lbjanuario@gmail.com");
 
     setAboutData(about);
 
