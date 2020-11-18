@@ -59,10 +59,20 @@ bool FirewalldClient::enabled() const
 
 bool FirewalldClient::hasDependencies() const
 {
-    if (QStandardPaths::findExecutable(QStringLiteral("firewalld")).isEmpty()) {
-        return false;
+    // sometimes ufw is not installed on a standard path - like on opensuse, that's installed on /usr/sbin
+    // so, look at there too.
+    static QStringList searchPaths = {
+        QStringLiteral("/bin"),
+        QStringLiteral("/usr/bin"),
+        QStringLiteral("/usr/sbin"),
+    };
+
+    if (!QStandardPaths::findExecutable(QStringLiteral("firewalld")).isEmpty()) {
+        return true;
+    } else if (!QStandardPaths::findExecutable(QStringLiteral("firewalld"), searchPaths).isEmpty()) {
+        return true;
     }
-    return true;
+    return false;
 }
 
 KJob *FirewalldClient::setEnabled(const bool value)
