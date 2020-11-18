@@ -56,7 +56,7 @@ void SystemdJob::systemdAction(const SYSTEMD::actions value)
         QDBusPendingReply<> reply = *watcher;
         watcher->deleteLater();
         if (reply.isError()) {
-            setErrorText(reply.reply().errorMessage() + DBUSSYSTEMDERROR);
+            setErrorText(reply.reply().errorMessage());
             setError(DBUSSYSTEMDERROR);
         }
         emitResult();

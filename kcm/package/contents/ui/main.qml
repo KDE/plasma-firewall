@@ -172,7 +172,7 @@ KCM.ScrollViewKCM {
                                 console.log(job.errorString);
                                 var errorString = job.errorString;
                                 // Firewalld is sending a typo to us.
-                                if (errorString.indexOf("deniedd") != -1) {
+                                if (errorString.indexOf("Permission denied") != -1) {
                                     errorString = i18n("Permission denied");
                                 }
 
