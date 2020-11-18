@@ -153,13 +153,18 @@ KCM.ScrollViewKCM {
 
                             if (job.error && job.error !== 4) {
                                 console.log(job.errorString);
+                                var errorString = job.errorString;
+                                // Firewalld is sending a typo to us.
+                                if (errorString.indexOf("deniedd") != -1) {
+                                    errorString = i18n("Permission denied");
+                                }
 
-                                if (job.errorString.indexOf("unable to initialize table") != -1) {
+                                if (errorString.indexOf("unable to initialize table") != -1) {
                                     firewallInlineErrorMessage.text = i18n("You recently updated your kernel. Iptables is failing to initialize, please reboot.")
                                 } else {
                                     firewallInlineErrorMessage.text = enabled
-                                        ? i18n("Error enabling firewall: %1", job.errorString)
-                                        : i18n("Error disabling firewall: %1", job.errorString)
+                                        ? i18n("Error enabling firewall: %1", errorString)
+                                        : i18n("Error disabling firewall: %1", errorString)
                                 }
                                 firewallInlineErrorMessage.visible = true;
                             }
