@@ -137,7 +137,24 @@ KCM.ScrollViewKCM {
                     }
                     Component.onCompleted: bindCurrent()
 
+                    // FirewallD has a delay after the request to disable, to accept
+                    // enable actions, but the delay does not return with the job result
+                    // this is an ugly hack.
+                    Timer {
+                        id: connectEnableTimer
+                        onTriggered: {
+                            enabledCheckBox.text = i18n("Enabled");
+                            enabledCheckBox.enabled = true
+                        }
+                        interval: 4000
+                        repeat: false
+                    }
+
                     onToggled: {
+                        if (!checked) {
+                            enabledCheckBox.text = i18n("Disabling...");
+                            enabledCheckBox.enabled = false;
+                        }
                         const enable = checked; // store the state on job begin, not when it finished
 
                         const job = kcm.client.setEnabled(checked);
@@ -167,6 +184,9 @@ KCM.ScrollViewKCM {
                                         : i18n("Error disabling firewall: %1", errorString)
                                 }
                                 firewallInlineErrorMessage.visible = true;
+                            }
+                            if (!checked) {
+                                connectEnableTimer.start();
                             }
                         });
                         job.start();
