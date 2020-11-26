@@ -52,6 +52,7 @@ public:
     QHash<int, QByteArray> roleNames() const override;
 
     Q_INVOKABLE void start();
+    Q_INVOKABLE void stop();
 
 signals:
     void countChanged();

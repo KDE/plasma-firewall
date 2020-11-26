@@ -15,14 +15,19 @@ ConnectionsModel::ConnectionsModel(QObject *parent)
     : QAbstractListModel(parent)
 {
     connect(&m_netstatHelper, &NetstatHelper::queryFinished, this, &ConnectionsModel::refreshConnections);
+    connect(&timer, &QTimer::timeout, &m_netstatHelper, &NetstatHelper::query);
+    timer.setInterval(10500);
 }
 
 void ConnectionsModel::start()
 {
-    connect(&timer, &QTimer::timeout, &m_netstatHelper, &NetstatHelper::query);
-    timer.setInterval(10500);
     timer.start();
     QTimer::singleShot(0, &m_netstatHelper, &NetstatHelper::query);
+}
+
+void ConnectionsModel::stop()
+{
+    timer.stop();
 }
 
 int ConnectionsModel::rowCount(const QModelIndex &parent) const
