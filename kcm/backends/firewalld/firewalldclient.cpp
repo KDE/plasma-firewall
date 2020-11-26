@@ -478,8 +478,10 @@ QVector<Rule> FirewalldClient::extractRulesFromResponse(const QList<firewalld_re
 
         const auto protocol = r.rules.indexOf("-p") >= 0 ? Types::toProtocol(r.rules.at(r.rules.indexOf("-p") + 1)) : Types::PROTO_BOTH;
 
-        const auto sourcePort = r.rules.at(r.rules.indexOf(QRegExp("^" + QRegExp::escape("--sport") + ".+"))).section("=", -1);
-        const auto destPort = r.rules.at(r.rules.indexOf(QRegExp("^" + QRegExp::escape("--dport") + ".+"))).section("=", -1);
+        const int sourcePortIdx = r.rules.indexOf(QRegExp("^" + QRegExp::escape("--sport") + ".+"));
+        const auto sourcePort = sourcePortIdx != -1 ? r.rules.at(sourcePortIdx).section("=", -1) : QStringLiteral("");
+        const int destPortIdx = r.rules.indexOf(QRegExp("^" + QRegExp::escape("--dport") + ".+"));
+        const auto destPort = destPortIdx != -1 ? r.rules.at(destPortIdx).section("=", -1) : QStringLiteral("");
 
         message_rules.push_back(
             Rule(action,
