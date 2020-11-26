@@ -166,7 +166,7 @@ QString toString(Protocol proto, bool ui)
 Protocol toProtocol(const QString &str)
 {
     for (int i = 0; i < PROTO_COUNT; ++i) {
-        if (toString((Protocol)i) == str) {
+        if (toString((Protocol)i).toLower() == str.toLower()) {
             return (Protocol)i;
         }
     }

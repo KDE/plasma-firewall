@@ -26,6 +26,8 @@
 
 Q_LOGGING_CATEGORY(FirewallClientDebug, "firewall.client")
 
+IFirewallClientBackend *FirewallClient::m_currentBackend = nullptr;
+
 FirewallClient::FirewallClient(QObject *parent)
     : QObject(parent)
 {

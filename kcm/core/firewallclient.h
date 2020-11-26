@@ -56,8 +56,9 @@ public:
 
     explicit FirewallClient(QObject *parent = nullptr);
 
-    Q_INVOKABLE QStringList knownProtocols();
+    Q_INVOKABLE static QStringList knownProtocols();
     Q_INVOKABLE static QStringList knownInterfaces();
+
     Q_INVOKABLE void refresh();
 
     RuleListModel *rulesModel() const;
@@ -126,7 +127,7 @@ private:
     void setLogsAutoRefresh(bool logsAutoRefresh);
     void queryStatus(DefaultDataBehavior defaultDataBehavior = ReadDefaults, ProfilesBehavior ProfilesBehavior = ListenProfiles);
 
-    IFirewallClientBackend *m_currentBackend = nullptr;
+    static IFirewallClientBackend *m_currentBackend;
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(FirewallClient::Capabilities)

@@ -166,7 +166,10 @@ void RuleWrapper::setProtocol(int protocol)
         return;
     }
 
-    m_rule.setProtocol((Types::Protocol)protocol);
+    const QString protocolName = FirewallClient::knownProtocols().at(protocol);
+    const Types::Protocol test = Types::toProtocol(protocolName);
+    qDebug() << "Protocol" << test;
+    m_rule.setProtocol(Types::toProtocol(protocolName));
     emit protocolChanged(protocol);
 }
 
