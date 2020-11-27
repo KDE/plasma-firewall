@@ -167,6 +167,7 @@ public:
     }
     void setProtocol(int v)
     {
+        Q_ASSERT(v != -1);
         m_protocol = v;
     }
     void setLogging(Types::Logging v)
