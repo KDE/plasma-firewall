@@ -10,6 +10,7 @@
 
 #include <QObject>
 #include <QString>
+#include <QDebug>
 
 #include "types.h"
 
