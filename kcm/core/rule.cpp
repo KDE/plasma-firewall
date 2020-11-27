@@ -150,6 +150,12 @@ QString Rule::protocolSuffix(int prot, const QString &sep)
     if (FirewallClient::isTcpAndUdp(prot)) {
         return {};
     }
+
+    if (prot == -1) {
+        qWarning() << "Invalid protocol -1, defaulting to" << FirewallClient::knownProtocols().at(0);
+        prot = 0;
+    }
+
     return sep + FirewallClient::knownProtocols().at(prot);
 }
 
