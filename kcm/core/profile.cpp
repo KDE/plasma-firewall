@@ -149,7 +149,8 @@ void Profile::load(QIODevice *device)
             const auto action = Types::toPolicy(attr.value(QLatin1String("action")).toString());
 
             // TODO: Check that this is ok.
-            const auto protocol = FirewallClient::knownProtocols().indexOf(attr.value(QLatin1String("protocol")));
+            const auto protocol = FirewallClient::indexOfProtocol(attr.value(QLatin1String("protocol")).toString());
+            qDebug() << "Reading protocol from profile:" << protocol << attr.value(QLatin1String("protocol"));
 
             const auto logType = Types::toLogging(attr.value(QLatin1String("logtype")).toString());
 
