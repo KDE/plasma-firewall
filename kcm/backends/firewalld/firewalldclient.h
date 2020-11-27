@@ -38,6 +38,7 @@ public:
     KJob *setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) override;
     KJob *setEnabled(const bool enabled) override;
     KJob *save() override;
+    bool isTcpAndUdp(int protocolIdx) override;
 
     /* Creates a new Rule and returns it to the Qml side, passing arguments based
      * on the Connection Table. */

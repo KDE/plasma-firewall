@@ -58,6 +58,7 @@ public:
 
     Q_INVOKABLE static QStringList knownProtocols();
     Q_INVOKABLE static QStringList knownInterfaces();
+    Q_INVOKABLE static bool isTcpAndUdp(int protocolIdx);
 
     Q_INVOKABLE void refresh();
 

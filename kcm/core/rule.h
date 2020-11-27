@@ -31,14 +31,14 @@ class KCM_FIREWALL_CORE_EXPORT Rule : public QObject
 public:
 
     static int servicePort(const QString &name);
-    static QString protocolSuffix(Types::Protocol prot, const QString &sep = QString("/"));
-    static QString modify(const QString &address, const QString &port, const QString &application, const QString &iface, const Types::Protocol &protocol, bool matchPortNoProto = false);
+    static QString protocolSuffix(int prot, const QString &sep = QString("/"));
+    static QString modify(const QString &address, const QString &port, const QString &application, const QString &iface, int protocol, bool matchPortNoProto = false);
 
     Rule();
     Rule(Types::Policy pol,
          bool incomming,
          Types::Logging log,
-         Types::Protocol prot,
+         int protocolIdx,
          const QString &srcHost = QString(),
          const QString &srcPort = QString(),
          const QString &destHost = QString(),
@@ -53,7 +53,7 @@ public:
         , m_action(pol)
         , m_incoming(incomming)
         , m_ipv6(ipv6)
-        , m_protocol(prot)
+        , m_protocol(protocolIdx)
         , m_logtype(log)
         , m_destApplication(destApp)
         , m_sourceApplication(srcApp)
@@ -134,7 +134,7 @@ public:
     {
         return m_interfaceOut;
     }
-    Types::Protocol protocol() const
+    int protocol() const
     {
         return m_protocol;
     }
@@ -142,7 +142,66 @@ public:
     {
         return m_logtype;
     }
-        // 'different' is used in the EditRule dialog to know whether the rule has actually changed...
+    void setPosition(unsigned int v)
+    {
+        m_position = v;
+    }
+    void setAction(Types::Policy v)
+    {
+        m_action = v;
+    }
+    void setIncoming(bool v)
+    {
+        m_incoming = v;
+    }
+    void setV6(bool v)
+    {
+        m_ipv6 = v;
+    }
+    void setDestApplication(const QString &v)
+    {
+        m_destApplication = v;
+    }
+    void setSourceApplication(const QString &v)
+    {
+        m_sourceApplication = v;
+    }
+    void setDestAddress(const QString &v)
+    {
+        m_destAddress = v;
+    }
+    void setSourceAddress(const QString &v)
+    {
+        m_sourceAddress = v;
+    }
+    void setDestPort(const QString &v)
+    {
+        m_destPort = v;
+    }
+    void setSourcePort(const QString &v)
+    {
+        m_sourcePort = v;
+    }
+    void setInterfaceIn(const QString &v)
+    {
+        m_interfaceIn = v;
+    }
+    void setInterfaceOut(const QString &v)
+    {
+        m_interfaceOut = v;
+    }
+    void setProtocol(int v)
+    {
+        m_protocol = v;
+    }
+    void setLogging(Types::Logging v)
+    {
+        m_logtype = v;
+    }
+    //     void setDescription(const QString &v)       { description=v; }
+    //     void setHash(const QString &v)              { hash=v; }
+
+    // 'different' is used in the EditRule dialog to know whether the rule has actually changed...
     bool different(const Rule &o) const
     {
         return m_logtype != o.m_logtype /*|| description!=o.description*/ || !(*this == o);
@@ -198,7 +257,7 @@ private:
     int m_position;
     Types::Policy m_action;
     bool m_incoming, m_ipv6;
-    Types::Protocol m_protocol;
+    int m_protocol;
     Types::Logging m_logtype;
     QString m_destApplication;
     QString m_sourceApplication;
