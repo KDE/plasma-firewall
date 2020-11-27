@@ -44,6 +44,11 @@ QStringList FirewallClient::knownProtocols()
     return m_currentBackend->knownProtocols();
 }
 
+bool FirewallClient::isTcpAndUdp(int protocolIdx)
+{
+    return m_currentBackend->isTcpAndUdp(protocolIdx);
+}
+
 QStringList FirewallClient::knownInterfaces()
 {
     QStringList interface_names({i18n("Any")});
