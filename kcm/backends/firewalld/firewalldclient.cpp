@@ -327,8 +327,16 @@ void FirewalldClient::refreshProfiles()
 {
 }
 
+bool FirewalldClient::isTcpAndUdp(int protocolIdx)
+{
+    Q_UNUSED(protocolIdx);
+    return false;
+}
+
 QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily) const
 {
+    qDebug() << "Rule tem qual protocol?"  << r.protocol();
+
     QVariantMap args {
         {"priority", 0},
         {"destinationPort", r.destPort()},
@@ -476,7 +484,12 @@ QVector<Rule> FirewalldClient::extractRulesFromResponse(const QList<firewalld_re
         const auto interface_in = r.rules.indexOf("-i") >= 0 ? r.rules.at(r.rules.indexOf("-i") + 1) : "";
         const auto interface_out = r.rules.indexOf("-i") >= 0 ? r.rules.at(r.rules.indexOf("-i") + 1) : "";
 
-        const auto protocol = r.rules.indexOf("-p") >= 0 ? Types::toProtocol(r.rules.at(r.rules.indexOf("-p") + 1)) : Types::PROTO_BOTH;
+        if (r.rules.indexOf("-p") < 0) {
+            qWarning() << "Error forming rule";
+        }
+
+        const QString protocolName = r.rules.at(r.rules.indexOf("-p") + 1);
+        const int protocolIdx = FirewallClient::knownProtocols().indexOf(protocolName);
 
         const int sourcePortIdx = r.rules.indexOf(QRegExp("^" + QRegExp::escape("--sport") + ".+"));
         const auto sourcePort = sourcePortIdx != -1 ? r.rules.at(sourcePortIdx).section("=", -1) : QStringLiteral("");
@@ -487,7 +500,7 @@ QVector<Rule> FirewalldClient::extractRulesFromResponse(const QList<firewalld_re
             Rule(action,
                 r.chain == "INPUT",
                 Types::LOGGING_OFF,
-                protocol,
+                protocolIdx,
                 sourceAddress,
                 sourcePort,
                 destinationAddress,

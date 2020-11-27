@@ -149,31 +149,6 @@ PredefinedPort toPredefinedPort(const QString &str)
     return PP_COUNT;
 }
 
-QString toString(Protocol proto, bool ui)
-{
-    switch (proto) {
-    case PROTO_TCP:
-        return ui ? i18n("TCP") : "tcp";
-    case PROTO_UDP:
-        return ui ? i18n("UDP") : "udp";
-    case PROTO_BOTH:
-        return ui ? i18n("Any protocol") : QString();
-    default:
-        return QString();
-    }
-}
-
-Protocol toProtocol(const QString &str)
-{
-    for (int i = 0; i < PROTO_COUNT; ++i) {
-        if (toString((Protocol)i).toLower() == str.toLower()) {
-            return (Protocol)i;
-        }
-    }
-
-    return PROTO_BOTH;
-}
-
 Logging toLogging(const QString &str)
 {
     for (int i = 0; i < LOGGING_COUNT; ++i) {

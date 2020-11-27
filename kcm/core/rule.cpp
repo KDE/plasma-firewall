@@ -16,6 +16,8 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 
+#include "firewallclient.h"
+
 // Keep in sync with kcm_ufw_helper.py
 static const char *ANY_ADDR = "0.0.0.0/0";
 static const char *ANY_ADDR_V6 = "::/0";
@@ -62,7 +64,7 @@ static QString serviceName(short port)
     return {};
 }
 
-static QString formatPort(const QString &port, Types::Protocol prot)
+static QString formatPort(const QString &port, int prot)
 {
     return port.isEmpty() ? Rule::protocolSuffix(prot, QString()) : port + Rule::protocolSuffix(prot);
 }
@@ -76,7 +78,7 @@ static QString modifyAddress(const QString &addr, const QString &port)
     return shortenAddress(addr);
 }
 
-static QString modifyPort(const QString &port, Types::Protocol prot, bool matchPortNoProto = false)
+static QString modifyPort(const QString &port, int prot, bool matchPortNoProto = false)
 {
     if (port.isEmpty()) {
         return port;
@@ -111,7 +113,7 @@ static QString modifyPort(const QString &port, Types::Protocol prot, bool matchP
     return formatPort(port, prot);
 }
 
-static QString modifyApp(const QString &app, const QString &port, Types::Protocol prot)
+static QString modifyApp(const QString &app, const QString &port, int prot)
 {
     if (app.isEmpty()) {
         return port;
@@ -143,12 +145,15 @@ int Rule::servicePort(const QString &name)
     return 0;
 }
 
-QString Rule::protocolSuffix(Types::Protocol prot, const QString &sep)
+QString Rule::protocolSuffix(int prot, const QString &sep)
 {
-    return Types::PROTO_BOTH == prot ? "" : (sep + Types::toString(prot));
+    if (FirewallClient::isTcpAndUdp(prot)) {
+        return {};
+    }
+    return sep + FirewallClient::knownProtocols().at(prot);
 }
 
-QString Rule::modify(const QString &address, const QString &port, const QString &application, const QString &iface, const Types::Protocol &protocol, bool matchPortNoProto)
+QString Rule::modify(const QString &address, const QString &port, const QString &application, const QString &iface, int protocol, bool matchPortNoProto)
 {
     if ((port == ANY_PORT || port.isEmpty()) && (address.isEmpty() || ANY_ADDR == address || ANY_ADDR_V6 == address))
         return addIface(i18n("Anywhere"), iface);
@@ -164,7 +169,7 @@ Rule::Rule()
     , m_action(Types::POLICY_REJECT)
     , m_incoming(true)
     , m_ipv6(false)
-    , m_protocol(Types::PROTO_BOTH)
+    , m_protocol(0)
     , m_logtype(Types::LOGGING_OFF)
 {
 }
@@ -221,8 +226,8 @@ QString Rule::toXml() const
         xml.writeAttribute(QStringLiteral("sport"), m_sourcePort);
     }
 
-    if (m_protocol != Types::PROTO_BOTH) {
-        xml.writeAttribute(QStringLiteral("protocol"), Types::toString(m_protocol));
+    if (!FirewallClient::isTcpAndUdp(m_protocol)) {
+        xml.writeAttribute(QStringLiteral("protocol"), FirewallClient::knownProtocols().at(m_protocol));
     }
 
     if (!m_destAddress.isEmpty()) {

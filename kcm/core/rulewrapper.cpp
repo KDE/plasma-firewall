@@ -15,8 +15,7 @@ RuleWrapper::RuleWrapper(QObject *parent)
     : QObject(parent)
     , m_interface(0)
 {
-    const QString protocolName = FirewallClient::knownProtocols().at(0);
-    m_rule.setProtocol(Types::toProtocol(protocolName));
+    m_rule.setProtocol(0);
 }
 
 RuleWrapper::RuleWrapper(Rule rule, QObject *parent)
@@ -26,8 +25,7 @@ RuleWrapper::RuleWrapper(Rule rule, QObject *parent)
     int iface_index = FirewallClient::knownInterfaces().indexOf(m_rule.interfaceIn());
     m_interface = iface_index == -1 ? 0 : iface_index;
 
-    const QString protocolName = FirewallClient::knownProtocols().at(0);
-    m_rule.setProtocol(Types::toProtocol(protocolName));
+    m_rule.setProtocol(0);
 }
 
 QString RuleWrapper::policy() const
@@ -68,15 +66,7 @@ bool RuleWrapper::ipv6() const
 
 int RuleWrapper::protocol() const
 {
-    const QString protName = Types::toString(m_rule.protocol());
-    const QStringList protocols = FirewallClient::knownProtocols();
-
-    for (int i = 0; i < protocols.size(); i++) {
-        if (protocols[i].toLower() == protName.toLower()) {
-            return i;
-        }
-    }
-    return 0;
+    return m_rule.protocol();
 }
 
 int RuleWrapper::interface() const
@@ -178,10 +168,7 @@ void RuleWrapper::setProtocol(int protocol)
         return;
     }
 
-    const QString protocolName = FirewallClient::knownProtocols().at(protocol);
-    const Types::Protocol test = Types::toProtocol(protocolName);
-    qDebug() << "Protocol" << test;
-    m_rule.setProtocol(Types::toProtocol(protocolName));
+    m_rule.setProtocol(protocol);
     emit protocolChanged(protocol);
 }
 

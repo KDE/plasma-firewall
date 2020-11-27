@@ -83,15 +83,6 @@ enum PredefinedPort {
 };
 Q_ENUM_NS(PredefinedPort)
 
-enum Protocol {
-    PROTO_BOTH,
-    PROTO_TCP,
-    PROTO_UDP,
-
-    PROTO_COUNT
-};
-Q_ENUM_NS(Protocol)
-
 KCM_FIREWALL_CORE_EXPORT QString toString(LogLevel level, bool ui = false);
 KCM_FIREWALL_CORE_EXPORT LogLevel toLogLevel(const QString &str);
 KCM_FIREWALL_CORE_EXPORT QString toString(Logging log, bool ui = false);
@@ -100,8 +91,6 @@ KCM_FIREWALL_CORE_EXPORT QString toString(Policy policy, bool ui = false);
 KCM_FIREWALL_CORE_EXPORT Policy toPolicy(const QString &str);
 KCM_FIREWALL_CORE_EXPORT QString toString(PredefinedPort pp, bool ui = false);
 KCM_FIREWALL_CORE_EXPORT PredefinedPort toPredefinedPort(const QString &str);
-KCM_FIREWALL_CORE_EXPORT QString toString(Protocol proto, bool ui = false);
-KCM_FIREWALL_CORE_EXPORT Protocol toProtocol(const QString &str);
 
 }
 

@@ -74,6 +74,11 @@ QString UfwClient::name() const
     return QStringLiteral("ufw");
 }
 
+bool UfwClient::isTcpAndUdp(int protocolIdx)
+{
+    return protocolIdx == 0;
+}
+
 void UfwClient::refresh()
 {
     queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::ListenProfiles);

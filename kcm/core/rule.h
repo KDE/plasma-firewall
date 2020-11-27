@@ -17,14 +17,14 @@ class KCM_FIREWALL_CORE_EXPORT Rule
 {
 public:
     static int servicePort(const QString &name);
-    static QString protocolSuffix(Types::Protocol prot, const QString &sep = QString("/"));
-    static QString modify(const QString &address, const QString &port, const QString &application, const QString &iface, const Types::Protocol &protocol, bool matchPortNoProto = false);
+    static QString protocolSuffix(int prot, const QString &sep = QString("/"));
+    static QString modify(const QString &address, const QString &port, const QString &application, const QString &iface, int protocol, bool matchPortNoProto = false);
 
     Rule();
     Rule(Types::Policy pol,
          bool incomming,
          Types::Logging log,
-         Types::Protocol prot,
+         int protocolIdx,
          //          const QString &descr=QString(), const QString &hsh=QString(),
          const QString &srcHost = QString(),
          const QString &srcPort = QString(),
@@ -40,7 +40,7 @@ public:
         , m_action(pol)
         , m_incoming(incomming)
         , m_ipv6(ipv6)
-        , m_protocol(prot)
+        , m_protocol(protocolIdx)
         , m_logtype(log)
         , m_destApplication(destApp)
         , m_sourceApplication(srcApp)
@@ -109,7 +109,7 @@ public:
     {
         return m_interfaceOut;
     }
-    Types::Protocol protocol() const
+    int protocol() const
     {
         return m_protocol;
     }
@@ -165,7 +165,7 @@ public:
     {
         m_interfaceOut = v;
     }
-    void setProtocol(Types::Protocol v)
+    void setProtocol(int v)
     {
         m_protocol = v;
     }
@@ -207,7 +207,7 @@ private:
     int m_position;
     Types::Policy m_action;
     bool m_incoming, m_ipv6;
-    Types::Protocol m_protocol;
+    int m_protocol;
     Types::Logging m_logtype;
     QString m_destApplication;
     QString m_sourceApplication;

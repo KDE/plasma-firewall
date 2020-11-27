@@ -32,6 +32,7 @@ public:
     KJob *removeRule(int index) override;
     KJob *updateRule(RuleWrapper *rule) override;
     KJob *moveRule(int from, int to) override;
+    bool isTcpAndUdp(int protocolIdx) override;
 
     KJob *queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior) override;
     KJob *setDefaultIncomingPolicy(QString defaultIncomingPolicy) override;

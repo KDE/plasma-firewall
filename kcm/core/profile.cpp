@@ -8,6 +8,7 @@
 
 #include "profile.h"
 #include "types.h"
+#include "firewallclient.h"
 
 #include <QBuffer>
 #include <QFile>
@@ -146,7 +147,10 @@ void Profile::load(QIODevice *device)
 
             // Handle Enums.
             const auto action = Types::toPolicy(attr.value(QLatin1String("action")).toString());
-            const auto protocol = Types::toProtocol(attr.value(QLatin1String("protocol")).toString());
+
+            // TODO: Check that this is ok.
+            const auto protocol = FirewallClient::knownProtocols().indexOf(attr.value(QLatin1String("protocol")));
+
             const auto logType = Types::toLogging(attr.value(QLatin1String("logtype")).toString());
 
             // Handle values that have weird defaults.
