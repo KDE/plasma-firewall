@@ -49,6 +49,17 @@ bool FirewallClient::isTcpAndUdp(int protocolIdx)
     return m_currentBackend->isTcpAndUdp(protocolIdx);
 }
 
+int FirewallClient::indexOfProtocol(const QString& protocol)
+{
+    const QStringList protocolList = m_currentBackend->knownProtocols();
+    for(int i = 0; i < m_currentBackend->knownProtocols().size(); i++) {
+        if (protocolList[i].toLower() == protocol.toLower()) {
+            return i;
+        }
+    }
+    return -1;
+}
+
 QStringList FirewallClient::knownInterfaces()
 {
     QStringList interface_names({i18n("Any")});

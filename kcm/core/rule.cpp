@@ -182,6 +182,7 @@ Rule::Rule()
 
 QString Rule::fromStr() const
 {
+    qDebug() << "Before Crashing" << m_protocol;
     return modify(m_sourceAddress, m_sourcePort, m_sourceApplication, m_interfaceIn, m_protocol);
 }
 
