@@ -27,6 +27,7 @@ FocusScope {
         policy: "deny"
         incoming: true
         logging: "none"
+        protocol: 0
     }
 
     property var ruleChoices : [

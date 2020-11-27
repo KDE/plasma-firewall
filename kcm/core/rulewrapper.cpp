@@ -15,6 +15,8 @@ RuleWrapper::RuleWrapper(QObject *parent)
     : QObject(parent)
     , m_interface(0)
 {
+    const QString protocolName = FirewallClient::knownProtocols().at(0);
+    m_rule.setProtocol(Types::toProtocol(protocolName));
 }
 
 RuleWrapper::RuleWrapper(Rule rule, QObject *parent)
@@ -23,6 +25,9 @@ RuleWrapper::RuleWrapper(Rule rule, QObject *parent)
 {
     int iface_index = FirewallClient::knownInterfaces().indexOf(m_rule.interfaceIn());
     m_interface = iface_index == -1 ? 0 : iface_index;
+
+    const QString protocolName = FirewallClient::knownProtocols().at(0);
+    m_rule.setProtocol(Types::toProtocol(protocolName));
 }
 
 QString RuleWrapper::policy() const
