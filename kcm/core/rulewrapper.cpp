@@ -63,8 +63,15 @@ bool RuleWrapper::ipv6() const
 
 int RuleWrapper::protocol() const
 {
-    auto protocol = m_rule.protocol();
-    return protocol;
+    const QString protName = Types::toString(m_rule.protocol());
+    const QStringList protocols = FirewallClient::knownProtocols();
+
+    for (int i = 0; i < protocols.size(); i++) {
+        if (protocols[i].toLower() == protName.toLower()) {
+            return i;
+        }
+    }
+    return 0;
 }
 
 int RuleWrapper::interface() const

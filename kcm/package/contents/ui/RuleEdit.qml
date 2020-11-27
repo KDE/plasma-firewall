@@ -138,8 +138,6 @@ FocusScope {
             id: protocolCb
 
             model: ruleEdit.client.knownProtocols()
-
-            // TODO: Fix the protocol retrieval.
             currentIndex: rule.protocol
             onActivated: rule.protocol = index
         }
