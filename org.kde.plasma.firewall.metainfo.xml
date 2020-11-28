@@ -55,6 +55,7 @@
     <p xml:lang="nl">Plasma-firewall is een multi-firewall-frontend om netwerkconfiguratie gemakkelijker te maken.</p>
     <p xml:lang="pt">A 'Firewall' do Plasma é uma interface para várias 'firewalls' que simplifica as configurações de rede.</p>
     <p xml:lang="pt-BR">O Plasma Firewall é uma interface multi-firewall para facilitar as configurações de redes.</p>
+    <p xml:lang="sk">Plasma Firewall je frontend s viacerými firewallmi, ktorý uľahčuje konfiguráciu siete.</p>
     <p xml:lang="sl">Plasma Firewall je večkratni vdorobran za lažje nastavitve omrežja.</p>
     <p xml:lang="sv">Plasma brandvägg är ett gränssnitt för flera brandväggar för enkel nätverksinställning</p>
     <p xml:lang="uk">«Брандмауер Плазми» — оболонка доступу до декількох брандмауерів, яка спрощує налаштовування доступу до  мережі.</p>
@@ -75,6 +76,7 @@
       <caption xml:lang="nl">De plasma-firewall toont een standaard configuratiepagina</caption>
       <caption xml:lang="pt">A 'firewall' do Plasma a mostrar uma página de configuração predefinida</caption>
       <caption xml:lang="pt-BR">O firewall do Plasma mostrando uma página de configuração padrão</caption>
+      <caption xml:lang="sk">Plasma Firewall zobrazujúci predvolenú konfiguračnú stránku</caption>
       <caption xml:lang="sl">Plasma firewall prikazuje privzeto nastavitveno stran</caption>
       <caption xml:lang="sv">Plasma brandvägg som visar en standardinställningssida</caption>
       <caption xml:lang="uk">Сторінка типових налаштувань «Брандмауера Плазми»</caption>
