@@ -18,7 +18,7 @@ KCM.ScrollViewKCM {
 
     implicitHeight: Kirigami.Units.gridUnit * 25
     implicitWidth: Kirigami.Units.gridUnit * 44
-    
+
     property var policyChoices : [
         {text: i18n("Allow"), data: "allow", tooltip: i18n("Allow all connections")},
         {text: i18n("Ignore"), data: "deny", tooltip: i18n("Keeps the program waiting until the connection attempt times out, some short time later.")},
@@ -30,7 +30,7 @@ KCM.ScrollViewKCM {
         property: "logsAutoRefresh"
         value: !isCurrentPage
     }
-    
+
     Kirigami.OverlaySheet {
         id: drawer
         parent: root.parent
@@ -94,14 +94,14 @@ KCM.ScrollViewKCM {
                                     ruleEditMessage.text = i18n("Error updating rule: %1", job.errorString);
                                 }
                                 ruleEditMessage.visible = true;
-                                
+
                             }
                             // ...but also don't close in this case!
                             return;
                         }
-                        
+
                         drawer.close();
-                        
+
                     });
                 }
             }
@@ -274,7 +274,7 @@ KCM.ScrollViewKCM {
             frameVisible: false
 
             function editRule(row) {
-                ruleEdit.rule = kcm.client.rule(row);
+                ruleEdit.rule = kcm.client.ruleAt(row);
                 ruleEdit.newRule = false;
                 drawer.open();
             }
@@ -378,7 +378,7 @@ KCM.ScrollViewKCM {
                                     firewallInlineErrorMessage.text = i18n("Error removing rule: %1", job.errorString);
                                     firewallInlineErrorMessage.visible = true;
                                 }
-                                
+
                             });
                         }
                         QQC2.ToolTip {
@@ -404,7 +404,7 @@ KCM.ScrollViewKCM {
         Item {
             Layout.fillWidth: true
         }
-        
+
         QQC2.Button {
             enabled: !kcm.client.busy && kcm.client.enabled
             icon.name: "list-add"
