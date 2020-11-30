@@ -315,7 +315,7 @@ RuleListModel *UfwClient::rules() const
     return m_rulesModel;
 }
 
-RuleWrapper *UfwClient::ruleAt(int index)
+Rule *UfwClient::ruleAt(int index)
 {
     auto rules = m_currentProfile.rules();
 
@@ -324,24 +324,23 @@ RuleWrapper *UfwClient::ruleAt(int index)
     }
 
     auto rule = rules.at(index);
-    rule.setPosition(index);
+    rule->setPosition(index);
 
-    return new RuleWrapper(rule, this);
+    return rule;
 }
 
-KJob *UfwClient::addRule(RuleWrapper *ruleWrapper)
+KJob *UfwClient::addRule(Rule *r)
 {
-    if (!ruleWrapper) {
+    if (!r) {
         qWarning() << "nullptr rule";
         return nullptr;
     }
 
-    Rule rule = ruleWrapper->rule();
 
     QVariantMap args {
         {"cmd", "addRules"},
         {"count", 1},
-        {"xml0", rule.toXml()},
+        {"xml0", r->toXml()},
     };
 
     KAuth::Action modifyAction = buildModifyAction(args);
@@ -386,19 +385,16 @@ KJob *UfwClient::removeRule(int index)
     return job;
 }
 
-KJob *UfwClient::updateRule(RuleWrapper *ruleWrapper)
+KJob *UfwClient::updateRule(Rule *r)
 {
-    if (!ruleWrapper) {
+    if (!r) {
         qWarning() << "nullptr rule";
         return nullptr;
     }
 
-    Rule rule = ruleWrapper->rule();
-
-    rule.setPosition(rule.position() + 1);
     QVariantMap args {
         {"cmd", "editRule"},
-        {"xml", rule.toXml()},
+        {"xml", r->toXml()},
     };
 
     KAuth::Action modifyAction = buildModifyAction(args);
@@ -415,7 +411,7 @@ KJob *UfwClient::updateRule(RuleWrapper *ruleWrapper)
 
 KJob *UfwClient::moveRule(int from, int to)
 {
-    const QVector<Rule> rules = m_currentProfile.rules();
+    const QVector<Rule*> rules = m_currentProfile.rules();
     if (from < 0 || from >= rules.count()) {
         qWarning() << "invalid from index";
         return nullptr;
@@ -507,7 +503,7 @@ namespace {
     }
 }
 
-RuleWrapper *UfwClient::createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status)
+Rule *UfwClient::createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status)
 {
     // FIXME use a regexp for that and support ipv6!
     auto _localAddress = localAddress;
@@ -528,7 +524,7 @@ RuleWrapper *UfwClient::createRuleFromConnection(const QString &protocol, const 
         foreignAddresData[1] = portStrToInt(foreignAddresData[1]);
     }
 
-    auto rule = new RuleWrapper({});
+    auto rule = new Rule();
     rule->setIncoming(status == QStringLiteral("LISTEN"));
     rule->setPolicy("deny");
 
@@ -553,10 +549,10 @@ RuleWrapper *UfwClient::createRuleFromConnection(const QString &protocol, const 
     return rule;
 }
 
-RuleWrapper *UfwClient::createRuleFromLog(const QString &protocol, const QString &sourceAddress, const QString &sourcePort, const QString &destinationAddress, const QString &destinationPort, const QString &inn)
+Rule *UfwClient::createRuleFromLog(const QString &protocol, const QString &sourceAddress, const QString &sourcePort, const QString &destinationAddress, const QString &destinationPort, const QString &inn)
 {
     // Transform to the ufw notation
-    auto rule = new RuleWrapper({});
+    auto rule = new Rule();
 
     auto _sourceAddress = sourceAddress;
     _sourceAddress.replace("*", "");

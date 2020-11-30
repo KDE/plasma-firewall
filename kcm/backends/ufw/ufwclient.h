@@ -27,10 +27,10 @@ public:
 
     void refresh() override;
     RuleListModel *rules() const override;
-    RuleWrapper *ruleAt(int index) override;
-    KJob *addRule(RuleWrapper *rule) override;
+    Rule *ruleAt(int index) override;
+    KJob *addRule(Rule *r) override;
     KJob *removeRule(int index) override;
-    KJob *updateRule(RuleWrapper *rule) override;
+    KJob *updateRule(Rule *r) override;
     KJob *moveRule(int from, int to) override;
 
     KJob *queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior) override;
@@ -40,13 +40,13 @@ public:
     KJob *setEnabled(bool enabled) override;
 
     /* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connection Table. */
-    RuleWrapper *createRuleFromConnection(
+    Rule *createRuleFromConnection(
         const QString &protocol,
         const QString &localAddress,
         const QString &foreignAddres,
         const QString &status) override;
 
-    RuleWrapper *createRuleFromLog(
+    Rule *createRuleFromLog(
         const QString &protocol,
         const QString &sourceAddress,
         const QString &sourcePort,
