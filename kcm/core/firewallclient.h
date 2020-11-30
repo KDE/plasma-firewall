@@ -20,9 +20,9 @@ Q_DECLARE_LOGGING_CATEGORY(FirewallClientDebug)
 
 class KJob;
 class RuleListModel;
-class RuleWrapper;
 class LogListModel;
 class IFirewallClientBackend;
+class Rule;
 
 /* This class is the entry point of the Firewall KCM
  * It uses internal FirewallImplementations defined in
@@ -64,10 +64,10 @@ public:
     RuleListModel *rulesModel() const;
     LogListModel *logsModel() const;
 
-    Q_INVOKABLE RuleWrapper *ruleAt(int index); // TODO move into the model?
-    Q_INVOKABLE KJob *addRule(RuleWrapper *rule);
+    Q_INVOKABLE Rule *ruleAt(int index); // TODO move into the model?
+    Q_INVOKABLE KJob *addRule(Rule *rule);
     Q_INVOKABLE KJob *removeRule(int index);
-    Q_INVOKABLE KJob *updateRule(RuleWrapper *rule);
+    Q_INVOKABLE KJob *updateRule(Rule *rule);
     Q_INVOKABLE KJob *moveRule(int from, int to);
 
     Q_INVOKABLE KJob *setEnabled(bool enabled);
@@ -75,13 +75,13 @@ public:
     Q_INVOKABLE KJob *setDefaultOutgoingPolicy(const QString &defaultOutgoingPolicy);
     Q_INVOKABLE KJob *save();
     /* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connection Table. */
-    Q_INVOKABLE RuleWrapper *createRuleFromConnection(
+    Q_INVOKABLE Rule *createRuleFromConnection(
         const QString &protocol,
         const QString &localAddress,
         const QString &foreignAddres,
         const QString &status);
 
-    Q_INVOKABLE RuleWrapper *createRuleFromLog(
+    Q_INVOKABLE Rule *createRuleFromLog(
         const QString &protocol,
         const QString &sourceAddress,
         const QString &sourcePort,

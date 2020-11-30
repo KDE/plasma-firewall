@@ -10,7 +10,6 @@
 
 #include "loglistmodel.h"
 #include "rulelistmodel.h"
-#include "rulewrapper.h"
 
 #include "ifirewallclientbackend.h"
 
@@ -71,7 +70,7 @@ RuleListModel *FirewallClient::rulesModel() const
     return m_currentBackend->rules();
 }
 
-RuleWrapper *FirewallClient::ruleAt(int index)
+Rule *FirewallClient::ruleAt(int index)
 {
     if (!m_currentBackend) {
         return nullptr;
@@ -79,7 +78,7 @@ RuleWrapper *FirewallClient::ruleAt(int index)
     return m_currentBackend->ruleAt(index);
 }
 
-KJob *FirewallClient::addRule(RuleWrapper *rule)
+KJob *FirewallClient::addRule(Rule *rule)
 {
     if (!m_currentBackend) {
         return nullptr;
@@ -95,7 +94,7 @@ KJob *FirewallClient::removeRule(int index)
     return m_currentBackend->removeRule(index);
 }
 
-KJob *FirewallClient::updateRule(RuleWrapper *rule)
+KJob *FirewallClient::updateRule(Rule *rule)
 {
     if (!m_currentBackend) {
         return nullptr;
@@ -137,7 +136,7 @@ FirewallClient::Capabilities FirewallClient::capabilities() const
 
 /* Creates a new Rule and returns it to the Qml side, passing arguments based
  * on the Connection Table. */
-RuleWrapper* FirewallClient::createRuleFromConnection(const QString& protocol,
+Rule *FirewallClient::createRuleFromConnection(const QString& protocol,
     const QString& localAddress, const QString& foreignAddres,
     const QString& status)
 {
@@ -148,7 +147,7 @@ RuleWrapper* FirewallClient::createRuleFromConnection(const QString& protocol,
         protocol, localAddress, foreignAddres, status);
 }
 
-RuleWrapper* FirewallClient::createRuleFromLog(const QString& protocol,
+Rule *FirewallClient::createRuleFromLog(const QString& protocol,
     const QString& sourceAddress, const QString& sourcePort,
     const QString& destinationAddress, const QString& destinationPort,
     const QString& inn)

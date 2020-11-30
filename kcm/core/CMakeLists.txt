@@ -7,7 +7,6 @@ add_library(kcm_firewall_core
     firewallclient.cpp
     ifirewallclientbackend.cpp
     rule.cpp
-    rulewrapper.cpp
     types.cpp
     loglistmodel.cpp
     rulelistmodel.cpp

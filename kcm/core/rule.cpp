@@ -15,6 +15,7 @@
 #include <QtCore/QTextStream>
 #include <arpa/inet.h>
 #include <netdb.h>
+#include "firewallclient.h"
 
 // Keep in sync with kcm_ufw_helper.py
 static const char *ANY_ADDR = "0.0.0.0/0";
@@ -253,4 +254,144 @@ QString Rule::toXml() const
     xml.writeEndElement();
 
     return xmlString;
+}
+
+void Rule::setPolicy(const QString &policy)
+{
+    auto policy_t = Types::toPolicy(policy);
+
+    if (policy_t == action()) {
+        return;
+    }
+
+    m_action = policy_t;
+    emit policyChanged(policy);
+}
+
+void Rule::setIncoming(bool incoming)
+{
+    if (m_incoming == incoming) {
+        return;
+    }
+
+    m_incoming = incoming;
+    emit incomingChanged(incoming);
+}
+
+void Rule::setSourceAddress(const QString &sourceAddress)
+{
+    if (m_sourceAddress == sourceAddress) {
+        return;
+    }
+    m_sourceAddress = sourceAddress;
+    emit sourceAddressChanged(sourceAddress);
+}
+
+void Rule::setSourcePort(const QString &sourcePort)
+{
+    if (m_sourcePort == sourcePort) {
+        return;
+    }
+
+    m_sourcePort = sourcePort ;
+    emit sourcePortChanged(sourcePort);
+}
+
+void Rule::setDestinationAddress(const QString &destinationAddress)
+{
+    if (m_destAddress == destinationAddress) {
+        return;
+    }
+    m_destAddress = destinationAddress;
+    emit destinationAddressChanged(destinationAddress);
+}
+
+void Rule::setDestinationPort(const QString &destinationPort)
+{
+    if (m_destPort == destinationPort) {
+        return;
+    }
+
+    m_destPort = destinationPort;
+    emit destinationPortChanged(destinationPort);
+}
+
+void Rule::setIpv6(bool ipv6)
+{
+    if (m_ipv6 == ipv6) {
+        return;
+    }
+
+    m_ipv6 = ipv6;
+    emit ipv6Changed(ipv6);
+}
+
+void Rule::setProtocol(int protocol)
+{
+    if (m_protocol == protocol) {
+        return;
+    }
+
+    const QString protocolName = FirewallClient::knownProtocols().at(protocol);
+    const Types::Protocol test = Types::toProtocol(protocolName);
+    qDebug() << "Protocol: " << test;
+    m_protocol = Types::toProtocol(protocolName);
+    emit protocolChanged(protocol);
+}
+
+void Rule::setInterface(int interface)
+{
+    if (m_interface == interface) {
+        return;
+    }
+
+    m_interfaceStr = interface != 0 ? FirewallClient::knownInterfaces().at(interface) : QString();
+    m_interface = interface;
+
+    emit interfaceChanged(interface);
+}
+
+void Rule::setLogging(const QString &logging)
+{
+    auto logging_t = Types::toLogging(logging);
+    if (m_logtype == logging_t) {
+        return;
+    }
+
+    m_logtype = logging_t;
+    emit loggingChanged(logging);
+}
+
+void Rule::setPosition(int position)
+{
+    if (m_position == position) {
+        return;
+    }
+
+    m_position = position;
+    emit positionChanged(position);
+}
+
+QString Rule::policy() const
+{
+    return Types::toString(action());
+}
+
+QString Rule::destinationAddress() const
+{
+    return m_destAddress;
+}
+
+QString Rule::interfaceStr() const
+{
+    return m_interfaceStr;
+}
+
+int Rule::interface() const
+{
+    return m_interface;
+}
+
+QString Rule::destinationPort() const {
+    return m_destPort;
 }

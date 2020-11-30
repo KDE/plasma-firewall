@@ -13,7 +13,6 @@
 #include <QAbstractListModel>
 
 #include "profile.h"
-#include "rulewrapper.h"
 
 class KCM_FIREWALL_CORE_EXPORT RuleListModel : public QAbstractListModel
 {
@@ -36,5 +35,5 @@ protected:
 
 private:
     Profile m_profile;
-    QVector<Rule> m_rules;
+    QVector<Rule*> m_rules;
 };

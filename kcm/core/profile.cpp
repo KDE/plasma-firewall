@@ -43,14 +43,14 @@ Profile::Profile(QFile &file, bool isSys)
     load(&file);
 }
 
-Profile::Profile(const QVector<Rule> &rules, const QVariantMap &args, bool isSys)
+Profile::Profile(const QVector<Rule*> &rules, const QVariantMap &args, bool isSys)
     : m_isSystem(isSys)
 {
     setRules(rules);
     setArgs(args);
 }
 
-void Profile::setRules(const QVector<Rule> &newrules)
+void Profile::setRules(const QVector<Rule*> &newrules)
 {
     m_rules = newrules;
 }
@@ -91,7 +91,7 @@ QString Profile::toXml() const
     stream << "<ufw full=\"true\" >" << Qt::endl << ' ' << defaultsXml() << Qt::endl << " <rules>" << Qt::endl;
 
     for (const auto &rule : m_rules) {
-        stream << "  " << rule.toXml();
+        stream << "  " << rule->toXml();
     }
 
     stream << " </rules>" << Qt::endl << ' ' << modulesXml() << Qt::endl << "</ufw>" << Qt::endl;
@@ -161,7 +161,7 @@ void Profile::load(QIODevice *device)
             const QString sourcePort = sport == ANY_PORT ? QString() : sport;
             const QString destPort = dport == ANY_PORT ? QString() : dport;
 
-            m_rules.append(Rule(action,
+            m_rules.append(new Rule(action,
                               attr.value("direction") == QStringLiteral("in"),
                               logType,
                               protocol,

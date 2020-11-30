@@ -43,19 +43,19 @@ QVariant RuleListModel::data(const QModelIndex &index, int role) const
         return {};
     }
 
-    const Rule rule = m_rules.at(index.row());
+    const Rule *rule = m_rules.at(index.row());
 
     switch (role) {
     case ActionRole:
-        return rule.actionStr();
+        return rule->actionStr();
     case FromRole:
-        return rule.fromStr();
+        return rule->fromStr();
     case ToRole:
-        return rule.toStr();
+        return rule->toStr();
     case Ipv6Role:
-        return rule.ipv6() ? "IPv6" : "IPv4";
+        return rule->ipv6() ? "IPv6" : "IPv4";
     case LoggingRole:
-        return rule.loggingStr();
+        return rule->loggingStr();
     }
     return {};
 }
