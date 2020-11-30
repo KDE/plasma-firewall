@@ -40,6 +40,7 @@ public:
          bool incomming,
          Types::Logging log,
          int protocolIdx,
+         Types::Protocol prot,
          const QString &srcHost = QString(),
          const QString &srcPort = QString(),
          const QString &destHost = QString(),
@@ -143,6 +144,7 @@ public:
     {
         return m_logtype;
     }
+<<<<<<< HEAD
     void setPosition(unsigned int v)
     {
         m_position = v;

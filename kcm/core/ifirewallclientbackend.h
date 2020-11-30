@@ -32,8 +32,8 @@ public:
     virtual QString name() const = 0;
     virtual void refresh() = 0;
     virtual RuleListModel *rules() const = 0;
-    virtual Rule *ruleAt(int index) = 0;
     virtual bool isTcpAndUdp(int protocolIdx) = 0;
+    virtual Rule *ruleAt(int index) = 0;
 
     Q_INVOKABLE virtual KJob *addRule(Rule *rule) = 0;
     Q_INVOKABLE virtual KJob *removeRule(int index) = 0;
