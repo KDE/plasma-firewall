@@ -105,7 +105,7 @@ KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsB
             return;
         }
         qCDebug(FirewallDClientDebug) << job->name();
-        const QVector<Rule> rules = extractRulesFromResponse(job->get_firewalldreply());
+        const QVector<Rule*> rules = extractRulesFromResponse(job->get_firewalldreply());
         const QVariantMap args = {
             {"defaultIncomingPolicy", defaultIncomingPolicy()},
             {"defaultOutgoingPolicy", defaultOutgoingPolicy()},
@@ -143,7 +143,7 @@ RuleListModel *FirewalldClient::rules() const
     return m_rulesModel;
 }
 
-RuleWrapper *FirewalldClient::ruleAt(int index)
+Rule *FirewalldClient::ruleAt(int index)
 {
     auto rules = m_currentProfile.rules();
 
@@ -152,19 +152,18 @@ RuleWrapper *FirewalldClient::ruleAt(int index)
     }
 
     auto rule = rules.at(index);
-    rule.setPosition(index);
-
-    return new RuleWrapper(rule, this);
+    rule->setPosition(index);
+    return rule;
 }
 
-KJob *FirewalldClient::addRule(RuleWrapper *ruleWrapper)
+KJob *FirewalldClient::addRule(Rule *rule)
 {
-    if (ruleWrapper == nullptr) {
+    if (rule == nullptr) {
         qWarning() << "Invalid rule";
         return nullptr;
     }
 
-    QVariantList dbusArgs = buildRule(ruleWrapper->rule());
+    QVariantList dbusArgs = buildRule(rule);
     FirewalldJob *job = new FirewalldJob("addRule", dbusArgs);
 
     connect(job, &KJob::result, this, [this, job] {
@@ -181,7 +180,7 @@ KJob *FirewalldClient::addRule(RuleWrapper *ruleWrapper)
 
 KJob *FirewalldClient::removeRule(int index)
 {
-    QVariantList dbusArgs = buildRule(ruleAt(index)->rule());
+    QVariantList dbusArgs = buildRule(ruleAt(index));
     FirewalldJob *job = new FirewalldJob("removeRule", dbusArgs);
 
     connect(job, &KJob::result, this, [this, job] {
@@ -196,7 +195,7 @@ KJob *FirewalldClient::removeRule(int index)
     return job;
 }
 
-KJob *FirewalldClient::updateRule(RuleWrapper *ruleWrapper)
+KJob *FirewalldClient::updateRule(Rule *ruleWrapper)
 {
     if (ruleWrapper == nullptr) {
         qWarning() << "NULL rule";
@@ -217,7 +216,7 @@ KJob *FirewalldClient::updateRule(RuleWrapper *ruleWrapper)
 
 KJob *FirewalldClient::moveRule(int from, int to)
 {
-    QVector<Rule> rules = m_currentProfile.rules();
+    QVector<Rule*> rules = m_currentProfile.rules();
     if (from < 0 || from >= rules.count()) {
         qWarning() << "invalid from index";
     }
@@ -243,7 +242,7 @@ bool FirewalldClient::logsAutoRefresh() const
     return m_logsAutoRefresh;
 }
 
-RuleWrapper *FirewalldClient::createRuleFromConnection(
+Rule *FirewalldClient::createRuleFromConnection(
     const QString &protocol,
     const QString &localAddress,
     const QString &foreignAddres,
@@ -260,7 +259,7 @@ RuleWrapper *FirewalldClient::createRuleFromConnection(
     auto localAddressData = _localAddress.split(":");
     auto foreignAddresData = _foreignAddres.split(":");
 
-    auto rule = new RuleWrapper({});
+    auto rule = new Rule();
     rule->setIncoming(status == QStringLiteral("LISTEN"));
     rule->setPolicy("deny");
 
@@ -281,7 +280,7 @@ RuleWrapper *FirewalldClient::createRuleFromConnection(
     return rule;
 }
 
-RuleWrapper *FirewalldClient::createRuleFromLog(
+Rule *FirewalldClient::createRuleFromLog(
     const QString &protocol,
     const QString &sourceAddress,
     const QString &sourcePort,
@@ -290,7 +289,7 @@ RuleWrapper *FirewalldClient::createRuleFromLog(
     const QString &inn)
 {
     // Transform to the ufw notation
-    auto rule = new RuleWrapper({});
+    auto rule = new Rule();
 
     auto _sourceAddress = sourceAddress;
     _sourceAddress.replace("*", "");
@@ -327,23 +326,23 @@ void FirewalldClient::refreshProfiles()
 {
 }
 
-QVariantList FirewalldClient::buildRule(Rule r, FirewallClient::Ipv ipvfamily) const
+QVariantList FirewalldClient::buildRule(const Rule *r, FirewallClient::Ipv ipvfamily) const
 {
     QVariantMap args {
         {"priority", 0},
-        {"destinationPort", r.destPort()},
-        {"sourcePort", r.sourcePort()},
-        {"type", QString(r.protocolSuffix(r.protocol())).replace("/", "")}, // tcp or udp
-        {"destinationAddress", r.destAddress()},
-        {"sourceAddress", r.sourceAddress()},
-        {"interface_in", r.interfaceIn()},
-        {"interface_out", r.interfaceOut()},
+        {"destinationPort", r->destinationPort()},
+        {"sourcePort", r->sourcePort()},
+        {"type", QString(r->protocolSuffix(r->protocol())).replace("/", "")}, // tcp or udp
+        {"destinationAddress", r->destinationAddress()},
+        {"sourceAddress", r->sourceAddress()},
+        {"interface_in", r->interfaceIn()},
+        {"interface_out", r->interfaceOut()},
         {"table", "filter"},
     };
 
-    args.insert("chain", r.incoming() ? "INPUT" : "OUTPUT");
+    args.insert("chain", r->incoming() ? "INPUT" : "OUTPUT");
 
-    switch (r.action()) {
+    switch (r->action()) {
     case Types::POLICY_ALLOW:
         args.insert("action", "ACCEPT");
         break;
@@ -458,9 +457,9 @@ LogListModel *FirewalldClient::logs()
     return m_logs;
 }
 
-QVector<Rule> FirewalldClient::extractRulesFromResponse(const QList<firewalld_reply> &reply) const
+QVector<Rule*> FirewalldClient::extractRulesFromResponse(const QList<firewalld_reply> &reply) const
 {
-    QVector<Rule> message_rules;
+    QVector<Rule*> message_rules;
     if (reply.size() <= 0) {
         return {};
     }
@@ -484,7 +483,7 @@ QVector<Rule> FirewalldClient::extractRulesFromResponse(const QList<firewalld_re
         const auto destPort = destPortIdx != -1 ? r.rules.at(destPortIdx).section("=", -1) : QStringLiteral("");
 
         message_rules.push_back(
-            Rule(action,
+            new Rule(action,
                 r.chain == "INPUT",
                 Types::LOGGING_OFF,
                 protocol,

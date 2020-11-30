@@ -28,10 +28,10 @@ public:
 
     void refresh() override;
     RuleListModel *rules() const override;
-    RuleWrapper *ruleAt(int index) override;
-    KJob *addRule(RuleWrapper *rule) override;
+    Rule *ruleAt(int index) override;
+    KJob *addRule(Rule *rule) override;
     KJob *removeRule(int index) override;
-    KJob *updateRule(RuleWrapper *rule) override;
+    KJob *updateRule(Rule *rule) override;
     KJob *moveRule(int from, int to) override;
     KJob *queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior) override;
     KJob *setDefaultIncomingPolicy(QString defaultIncomingPolicy) override;
@@ -41,9 +41,9 @@ public:
 
     /* Creates a new Rule and returns it to the Qml side, passing arguments based
      * on the Connection Table. */
-    RuleWrapper *createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status) override;
+    Rule *createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status) override;
 
-    RuleWrapper *createRuleFromLog(const QString &protocol, const QString &sourceAddress, const QString &sourcePort, const QString &destinationAddress, const QString &destinationPort, const QString &inn) override;
+    Rule *createRuleFromLog(const QString &protocol, const QString &sourceAddress, const QString &sourcePort, const QString &destinationAddress, const QString &destinationPort, const QString &inn) override;
 
     bool enabled() const override;
     QString defaultIncomingPolicy() const override;
@@ -65,8 +65,8 @@ protected slots:
 
 protected:
     void setExecutable(const bool &hasExecutable);
-    QVector<Rule> extractRulesFromResponse(const QList<firewalld_reply> &reply) const;
-    QVariantList buildRule(Rule r, FirewallClient::Ipv ipvfamily = FirewallClient::IPV4) const;
+    QVector<Rule*> extractRulesFromResponse(const QList<firewalld_reply> &reply) const;
+    QVariantList buildRule(const Rule *r, FirewallClient::Ipv ipvfamily = FirewallClient::IPV4) const;
     void setProfile(Profile profile);
 
 private:
