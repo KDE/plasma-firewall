@@ -151,8 +151,7 @@ Rule *FirewalldClient::ruleAt(int index)
         return nullptr;
     }
 
-    auto rule = rules.at(index);
-    rule->setPosition(index);
+    Rule *rule = rules.at(index);
     return rule;
 }
 
