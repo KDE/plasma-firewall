@@ -40,7 +40,6 @@ public:
          bool incomming,
          Types::Logging log,
          int protocolIdx,
-         Types::Protocol prot,
          const QString &srcHost = QString(),
          const QString &srcPort = QString(),
          const QString &destHost = QString(),
@@ -75,8 +74,6 @@ public:
     m_sourcePort(rhs.m_sourcePort), m_interfaceIn(rhs.m_interfaceIn),
     m_interfaceOut(rhs.m_interfaceIn){};
 
-    Rule& operator=(const Rule& rhs);
-
 
     QString toStr() const;
     QString fromStr() const;
@@ -88,122 +85,22 @@ public:
     QString policy() const;
     QString destinationAddress() const;
     QString destinationPort() const;
-    int interface() const;
     QString interfaceStr() const;
+    QString sourceApplication() const;
+    QString destAddress() const;
+    QString destPort() const;
+    QString sourceAddress() const;
+    QString sourcePort() const;
+    QString interfaceIn() const;
+    QString interfaceOut() const;
+    Types::Logging logging() const;
 
-    int position() const
-    {
-        return m_position;
-    }
-    Types::Policy action() const
-    {
-        return m_action;
-    }
-    bool incoming() const
-    {
-        return m_incoming;
-    }
-    bool ipv6() const
-    {
-        return m_ipv6;
-    }
-
-    const QString sourceApplication() const
-    {
-        return m_sourceApplication;
-    }
-    const QString destAddress() const
-    {
-        return m_destAddress;
-    }
-    const QString sourceAddress() const
-    {
-        return m_sourceAddress;
-    }
-    const QString destPort() const
-    {
-        return m_destPort;
-    }
-    const QString sourcePort() const
-    {
-        return m_sourcePort;
-    }
-    const QString interfaceIn() const
-    {
-        return m_interfaceIn;
-    }
-    const QString interfaceOut() const
-    {
-        return m_interfaceOut;
-    }
-    int protocol() const
-    {
-        return m_protocol;
-    }
-    Types::Logging logging() const
-    {
-        return m_logtype;
-    }
-<<<<<<< HEAD
-    void setPosition(unsigned int v)
-    {
-        m_position = v;
-    }
-    void setAction(Types::Policy v)
-    {
-        m_action = v;
-    }
-    void setIncoming(bool v)
-    {
-        m_incoming = v;
-    }
-    void setV6(bool v)
-    {
-        m_ipv6 = v;
-    }
-    void setDestApplication(const QString &v)
-    {
-        m_destApplication = v;
-    }
-    void setSourceApplication(const QString &v)
-    {
-        m_sourceApplication = v;
-    }
-    void setDestAddress(const QString &v)
-    {
-        m_destAddress = v;
-    }
-    void setSourceAddress(const QString &v)
-    {
-        m_sourceAddress = v;
-    }
-    void setDestPort(const QString &v)
-    {
-        m_destPort = v;
-    }
-    void setSourcePort(const QString &v)
-    {
-        m_sourcePort = v;
-    }
-    void setInterfaceIn(const QString &v)
-    {
-        m_interfaceIn = v;
-    }
-    void setInterfaceOut(const QString &v)
-    {
-        m_interfaceOut = v;
-    }
-    void setProtocol(int v)
-    {
-        Q_ASSERT(v != -1);
-        m_protocol = v;
-    }
-    void setLogging(Types::Logging v)
-    {
-        m_logtype = v;
-    }
-    //     void setDescription(const QString &v)       { description=v; }
-    //     void setHash(const QString &v)              { hash=v; }
+    bool incoming() const;
+    bool ipv6() const;
+    int interface() const;
+    int position() const;
+    int protocol() const;
+    Types::Policy action() const;
 
     // 'different' is used in the EditRule dialog to know whether the rule has actually changed...
     bool different(const Rule &o) const
@@ -238,7 +135,7 @@ public slots:
     void setProtocol(int protocol);
     void setInterface(int interface);
     void setLogging(const QString &logging);
-
+    void setV6(const bool v);
     void setPosition(int position);
 
 signals:
@@ -253,7 +150,6 @@ signals:
     void interfaceChanged(int interface);
     void loggingChanged(const QString &logging);
     void incomingChanged(bool incoming);
-
     void positionChanged(int position);
 
 

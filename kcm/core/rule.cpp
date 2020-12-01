@@ -177,7 +177,7 @@ Rule::Rule()
     , m_incoming(true)
     , m_ipv6(false)
     , m_protocol(0)
-    , m_logtype(Types::LOGGING_OFF)
+      , m_logtype(Types::LOGGING_OFF)
 {
 }
 
@@ -195,7 +195,7 @@ QString Rule::toStr() const
 QString Rule::actionStr() const
 {
     return m_incoming ? i18nc("firewallAction incoming", "%1 incoming", Types::toString(m_action, true))
-                     : i18nc("firewallAction outgoing", "%1 outgoing", Types::toString(m_action, true));
+        : i18nc("firewallAction outgoing", "%1 outgoing", Types::toString(m_action, true));
 }
 
 QString Rule::ipV6Str() const
@@ -255,11 +255,11 @@ QString Rule::toXml() const
     xml.writeAttribute(QStringLiteral("logtype"), Types::toString(m_logtype));
 
     /*if (!description.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("descr"), description);
-    }
-    if (!hash.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("hash"), hash);
-    }*/
+      xml.writeAttribute(QStringLiteral("descr"), description);
+      }
+      if (!hash.isEmpty()) {
+      xml.writeAttribute(QStringLiteral("hash"), hash);
+      }*/
 
     xml.writeAttribute(QStringLiteral("v6"), m_ipv6 ? QStringLiteral("True") : QStringLiteral("False"));
 
@@ -338,17 +338,10 @@ void Rule::setIpv6(bool ipv6)
     emit ipv6Changed(ipv6);
 }
 
-void Rule::setProtocol(int protocol)
+void Rule::setProtocol(int v)
 {
-    if (m_protocol == protocol) {
-        return;
-    }
-
-    const QString protocolName = FirewallClient::knownProtocols().at(protocol);
-    const Types::Protocol test = Types::toProtocol(protocolName);
-    qDebug() << "Protocol: " << test;
-    m_protocol = Types::toProtocol(protocolName);
-    emit protocolChanged(protocol);
+    Q_ASSERT(v != -1);
+    m_protocol = v;
 }
 
 void Rule::setInterface(int interface)
@@ -407,3 +400,68 @@ int Rule::interface() const
 QString Rule::destinationPort() const {
     return m_destPort;
 }
+
+
+int Rule::position() const
+{
+    return m_position;
+}
+Types::Policy Rule::action() const
+{
+    return m_action;
+}
+bool Rule::incoming() const
+{
+    return m_incoming;
+}
+bool Rule::ipv6() const
+{
+    return m_ipv6;
+}
+
+int Rule::protocol() const
+{
+    return m_protocol;
+}
+
+QString Rule::sourceApplication() const
+{
+    return m_sourceApplication;
+}
+
+QString Rule::destAddress() const
+{
+    return m_destAddress;
+}
+QString Rule::sourceAddress() const
+{
+    return m_sourceAddress;
+}
+QString Rule::destPort() const
+{
+    return m_destPort;
+}
+QString Rule::sourcePort() const
+{
+    return m_sourcePort;
+}
+QString Rule::interfaceIn() const
+{
+    return m_interfaceIn;
+}
+QString Rule::interfaceOut() const
+{
+    return m_interfaceOut;
+}
+
+Types::Logging Rule::logging() const
+{
+    return m_logtype;
+}
+
+void Rule::setV6(const bool v)
+{
+    m_ipv6 = v;
+}
+
+
