@@ -3,7 +3,7 @@
 
 # (0) Minimum Requirements (tested, but might be lower)
 - Qt               >= 5.14.0
-- Plasma Framework >= 5.30.0
+- KDE Frameworks   >= 5.30.0
 - KDE Workspace    >= 5.20.0
 
 cd /path/to/src-dir/
