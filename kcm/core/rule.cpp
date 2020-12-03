@@ -368,18 +368,10 @@ QString Rule::sourceApplication() const
     return m_sourceApplication;
 }
 
-/* QString Rule::destAddress() const */
-/* { */
-/*     return m_destAddress; */
-/* } */
 QString Rule::sourceAddress() const
 {
     return m_sourceAddress;
 }
-/* QString Rule::destPort() const */
-/* { */
-/*     return m_destPort; */
-/* } */
 QString Rule::sourcePort() const
 {
     return m_sourcePort;
