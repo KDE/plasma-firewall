@@ -9,7 +9,6 @@
 #include "rule.h"
 #include "appprofiles.h"
 #include <KLocalizedString>
-#include <QXmlStreamWriter>
 #include <QtCore/QByteArray>
 #include <QtCore/QMap>
 #include <QtCore/QTextStream>
@@ -208,66 +207,6 @@ QString Rule::loggingStr() const
     return Types::toString(m_logtype, true);
 }
 
-QString Rule::toXml() const
-{
-    QString xmlString;
-
-    QXmlStreamWriter xml(&xmlString);
-
-    xml.writeStartElement(QStringLiteral("rule"));
-
-    if (m_position != 0) {
-        xml.writeAttribute(QStringLiteral("position"), QString::number(m_position));
-    }
-
-    xml.writeAttribute(QStringLiteral("action"), Types::toString(m_action));
-    xml.writeAttribute(QStringLiteral("direction"), m_incoming ? QStringLiteral("in") : QStringLiteral("out"));
-
-    if (!m_destApplication.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("dapp"), m_destApplication);
-    } else if (!m_destPort.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("dport"), m_destPort);
-    }
-    if (!m_sourceApplication.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("sapp"), m_sourceApplication);
-    } else if (!m_sourcePort.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("sport"), m_sourcePort);
-    }
-
-    if (!FirewallClient::isTcpAndUdp(m_protocol)) {
-        xml.writeAttribute(QStringLiteral("protocol"), FirewallClient::knownProtocols().at(m_protocol));
-    }
-
-    if (!m_destAddress.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("dst"), m_destAddress);
-    }
-    if (!m_sourceAddress.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("src"), m_sourceAddress);
-    }
-
-    if (!m_interfaceIn.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("interface_in"), m_interfaceIn);
-    }
-    if (!m_interfaceOut.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("interface_out"), m_interfaceOut);
-    }
-
-    xml.writeAttribute(QStringLiteral("logtype"), Types::toString(m_logtype));
-
-    /*if (!description.isEmpty()) {
-      xml.writeAttribute(QStringLiteral("descr"), description);
-      }
-      if (!hash.isEmpty()) {
-      xml.writeAttribute(QStringLiteral("hash"), hash);
-      }*/
-
-    xml.writeAttribute(QStringLiteral("v6"), m_ipv6 ? QStringLiteral("True") : QStringLiteral("False"));
-
-    xml.writeEndElement();
-
-    return xmlString;
-}
-
 void Rule::setPolicy(const QString &policy)
 {
     auto policy_t = Types::toPolicy(policy);
@@ -429,18 +368,18 @@ QString Rule::sourceApplication() const
     return m_sourceApplication;
 }
 
-QString Rule::destAddress() const
-{
-    return m_destAddress;
-}
+/* QString Rule::destAddress() const */
+/* { */
+/*     return m_destAddress; */
+/* } */
 QString Rule::sourceAddress() const
 {
     return m_sourceAddress;
 }
-QString Rule::destPort() const
-{
-    return m_destPort;
-}
+/* QString Rule::destPort() const */
+/* { */
+/*     return m_destPort; */
+/* } */
 QString Rule::sourcePort() const
 {
     return m_sourcePort;
@@ -464,4 +403,7 @@ void Rule::setV6(const bool v)
     m_ipv6 = v;
 }
 
-
+QString Rule::destinationApplication() const
+{
+    return m_destApplication;
+}

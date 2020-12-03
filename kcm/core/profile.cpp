@@ -91,9 +91,9 @@ QString Profile::toXml() const
 
     stream << "<ufw full=\"true\" >" << Qt::endl << ' ' << defaultsXml() << Qt::endl << " <rules>" << Qt::endl;
 
-    for (const auto &rule : m_rules) {
-        stream << "  " << rule->toXml();
-    }
+    /* for (const auto &rule : m_rules) { */
+        /* stream << "  " << rule->toXml(); */
+    /* } */
 
     stream << " </rules>" << Qt::endl << ' ' << modulesXml() << Qt::endl << "</ufw>" << Qt::endl;
 

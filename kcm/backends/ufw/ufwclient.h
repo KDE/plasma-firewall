@@ -15,6 +15,7 @@
 
 #include <ifirewallclientbackend.h>
 #include <profile.h>
+#include <QXmlStreamWriter>
 
 class RuleListModel;
 class LogListModel;
@@ -78,6 +79,7 @@ protected:
     KAuth::Action buildModifyAction(const QVariantMap &arguments);
 
 private:
+    QString toXml(Rule *r) const;
     QStringList m_rawLogs;
     Profile m_currentProfile;
     RuleListModel *m_rulesModel;
@@ -87,3 +89,6 @@ private:
     KAuth::Action m_queryAction;
     bool m_busy = false;
 };
+
+
+

@@ -81,18 +81,19 @@ public:
     QString protocolStr() const;
     QString ipV6Str() const;
     QString loggingStr() const;
-    QString toXml() const;
+    /* QString toXml() const; */
     QString policy() const;
     QString destinationAddress() const;
     QString destinationPort() const;
     QString interfaceStr() const;
     QString sourceApplication() const;
-    QString destAddress() const;
-    QString destPort() const;
+    /* QString destAddress() const; */
+    /* QString destPort() const; */
     QString sourceAddress() const;
     QString sourcePort() const;
     QString interfaceIn() const;
     QString interfaceOut() const;
+    QString destinationApplication() const;
     Types::Logging logging() const;
 
     bool incoming() const;
