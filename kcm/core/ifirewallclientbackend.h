@@ -18,7 +18,7 @@
 
 class KJob;
 class LogListModel;
-class RuleWrapper;
+class Rule;
 class RuleListModel;
 class FirewallClient;
 
@@ -32,12 +32,12 @@ public:
     virtual QString name() const = 0;
     virtual void refresh() = 0;
     virtual RuleListModel *rules() const = 0;
-    virtual RuleWrapper *ruleAt(int index) = 0;
     virtual bool isTcpAndUdp(int protocolIdx) = 0;
+    virtual Rule *ruleAt(int index) = 0;
 
-    Q_INVOKABLE virtual KJob *addRule(RuleWrapper *rule) = 0;
+    Q_INVOKABLE virtual KJob *addRule(Rule *rule) = 0;
     Q_INVOKABLE virtual KJob *removeRule(int index) = 0;
-    Q_INVOKABLE virtual KJob *updateRule(RuleWrapper *rule) = 0;
+    Q_INVOKABLE virtual KJob *updateRule(Rule *rule) = 0;
     Q_INVOKABLE virtual KJob *moveRule(int from, int to) = 0;
 
     Q_INVOKABLE virtual KJob *setEnabled(bool enabled) = 0;
@@ -48,13 +48,13 @@ public:
     virtual void setLogsAutoRefresh(bool logsAutoRefresh) = 0;
 
     /* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connection Table. */
-    virtual RuleWrapper *createRuleFromConnection(
+    virtual Rule *createRuleFromConnection(
         const QString &protocol,
         const QString &localAddress,
         const QString &foreignAddres,
         const QString &status) = 0;
 
-    virtual RuleWrapper *createRuleFromLog(
+    virtual Rule *createRuleFromLog(
         const QString &protocol,
         const QString &sourceAddress,
         const QString &sourcePort,

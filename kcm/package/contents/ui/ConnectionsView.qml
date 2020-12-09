@@ -5,7 +5,7 @@
 
 import QtQuick 2.12
 
-import org.kde.kirigami 2.14 as Kirigami
+import org.kde.kirigami 2.10 as Kirigami
 
 import org.kcm.firewall 1.0
 
@@ -38,29 +38,16 @@ ViewBase {
 
     NetstatClient {
         id: netStatClient
-        property bool active: base.Kirigami.ColumnView.inViewport
-        
-        function updateRunning() {
-            if (active) {
-                if (!netStatClient.hasSS) {
-                    console.log("Netstat client without ss");
-                    base.errorMessage.text = i18n("could not find iproute2 or net-tools packages installed.");
-                    base.errorMessage.visible = true;
-                } else {
-                    netStatClient.connectionsModel.start();
-                }
-            } else {
-                netStatClient.connectionsModel.stop();
-            }
-        }
-        onActiveChanged: updateRunning()
-
         Component.onCompleted : {
             console.log("Netstat client completed.");
-            if (netStatClient.hasSS) {
+            if (!netStatClient.hasSS) {
+                console.log("Netstat client without ss");
+                base.errorMessage.text = i18n("could not find iproute2 or net-tools packages installed.");
+                base.errorMessage.visible = true;
+            } else {
                 console.log("Starting netstat client");
+                netStatClient.connectionsModel.start();
             }
-            netStatClient.updateRunning();
         }
     }
 }

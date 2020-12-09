@@ -9,12 +9,12 @@
 #include "rule.h"
 #include "appprofiles.h"
 #include <KLocalizedString>
-#include <QXmlStreamWriter>
 #include <QtCore/QByteArray>
 #include <QtCore/QMap>
 #include <QtCore/QTextStream>
 #include <arpa/inet.h>
 #include <netdb.h>
+#include "firewallclient.h"
 
 #include "firewallclient.h"
 
@@ -176,13 +176,13 @@ Rule::Rule()
     , m_incoming(true)
     , m_ipv6(false)
     , m_protocol(0)
-    , m_logtype(Types::LOGGING_OFF)
+      , m_logtype(Types::LOGGING_OFF)
 {
 }
 
 QString Rule::fromStr() const
 {
-    qDebug() << "Before Crashing" << m_protocol;
+    /* qDebug() << "Before Crashing" << m_protocol; */
     return modify(m_sourceAddress, m_sourcePort, m_sourceApplication, m_interfaceIn, m_protocol);
 }
 
@@ -194,7 +194,7 @@ QString Rule::toStr() const
 QString Rule::actionStr() const
 {
     return m_incoming ? i18nc("firewallAction incoming", "%1 incoming", Types::toString(m_action, true))
-                     : i18nc("firewallAction outgoing", "%1 outgoing", Types::toString(m_action, true));
+        : i18nc("firewallAction outgoing", "%1 outgoing", Types::toString(m_action, true));
 }
 
 QString Rule::ipV6Str() const
@@ -207,62 +207,195 @@ QString Rule::loggingStr() const
     return Types::toString(m_logtype, true);
 }
 
-QString Rule::toXml() const
+void Rule::setPolicy(const QString &policy)
 {
-    QString xmlString;
+    auto policy_t = Types::toPolicy(policy);
 
-    QXmlStreamWriter xml(&xmlString);
-
-    xml.writeStartElement(QStringLiteral("rule"));
-
-    if (m_position != 0) {
-        xml.writeAttribute(QStringLiteral("position"), QString::number(m_position));
+    if (policy_t == action()) {
+        return;
     }
 
-    xml.writeAttribute(QStringLiteral("action"), Types::toString(m_action));
-    xml.writeAttribute(QStringLiteral("direction"), m_incoming ? QStringLiteral("in") : QStringLiteral("out"));
+    m_action = policy_t;
+    emit policyChanged(policy);
+}
 
-    if (!m_destApplication.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("dapp"), m_destApplication);
-    } else if (!m_destPort.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("dport"), m_destPort);
-    }
-    if (!m_sourceApplication.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("sapp"), m_sourceApplication);
-    } else if (!m_sourcePort.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("sport"), m_sourcePort);
+void Rule::setIncoming(bool incoming)
+{
+    if (m_incoming == incoming) {
+        return;
     }
 
-    if (!FirewallClient::isTcpAndUdp(m_protocol)) {
-        xml.writeAttribute(QStringLiteral("protocol"), FirewallClient::knownProtocols().at(m_protocol));
+    m_incoming = incoming;
+    emit incomingChanged(incoming);
+}
+
+void Rule::setSourceAddress(const QString &sourceAddress)
+{
+    if (m_sourceAddress == sourceAddress) {
+        return;
+    }
+    m_sourceAddress = sourceAddress;
+    emit sourceAddressChanged(sourceAddress);
+}
+
+void Rule::setSourcePort(const QString &sourcePort)
+{
+    if (m_sourcePort == sourcePort) {
+        return;
     }
 
-    if (!m_destAddress.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("dst"), m_destAddress);
+    m_sourcePort = sourcePort ;
+    emit sourcePortChanged(sourcePort);
+}
+
+void Rule::setDestinationAddress(const QString &destinationAddress)
+{
+    if (m_destAddress == destinationAddress) {
+        return;
     }
-    if (!m_sourceAddress.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("src"), m_sourceAddress);
+    m_destAddress = destinationAddress;
+    emit destinationAddressChanged(destinationAddress);
+}
+
+void Rule::setDestinationPort(const QString &destinationPort)
+{
+    if (m_destPort == destinationPort) {
+        return;
     }
 
-    if (!m_interfaceIn.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("interface_in"), m_interfaceIn);
+    m_destPort = destinationPort;
+    emit destinationPortChanged(destinationPort);
+}
+
+void Rule::setIpv6(bool ipv6)
+{
+    if (m_ipv6 == ipv6) {
+        return;
     }
-    if (!m_interfaceOut.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("interface_out"), m_interfaceOut);
+
+    m_ipv6 = ipv6;
+    emit ipv6Changed(ipv6);
+}
+
+void Rule::setProtocol(int v)
+{
+    Q_ASSERT(v != -1);
+    m_protocol = v;
+}
+
+void Rule::setInterface(int interface)
+{
+    if (m_interface == interface) {
+        return;
     }
 
-    xml.writeAttribute(QStringLiteral("logtype"), Types::toString(m_logtype));
+    m_interfaceStr = interface != 0 ? FirewallClient::knownInterfaces().at(interface) : QString();
+    m_interface = interface;
 
-    /*if (!description.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("descr"), description);
+    emit interfaceChanged(interface);
+}
+
+void Rule::setLogging(const QString &logging)
+{
+    auto logging_t = Types::toLogging(logging);
+    if (m_logtype == logging_t) {
+        return;
     }
-    if (!hash.isEmpty()) {
-        xml.writeAttribute(QStringLiteral("hash"), hash);
-    }*/
 
-    xml.writeAttribute(QStringLiteral("v6"), m_ipv6 ? QStringLiteral("True") : QStringLiteral("False"));
+    m_logtype = logging_t;
+    emit loggingChanged(logging);
+}
 
-    xml.writeEndElement();
+void Rule::setPosition(int position)
+{
+    if (m_position == position) {
+        return;
+    }
 
-    return xmlString;
+    m_position = position;
+    emit positionChanged(position);
+}
+
+QString Rule::policy() const
+{
+    return Types::toString(action());
+}
+
+QString Rule::destinationAddress() const
+{
+    return m_destAddress;
+}
+
+QString Rule::interfaceStr() const
+{
+    return m_interfaceStr;
+}
+
+int Rule::interface() const
+{
+    return m_interface;
+}
+
+QString Rule::destinationPort() const {
+    return m_destPort;
+}
+
+
+int Rule::position() const
+{
+    return m_position;
+}
+Types::Policy Rule::action() const
+{
+    return m_action;
+}
+bool Rule::incoming() const
+{
+    return m_incoming;
+}
+bool Rule::ipv6() const
+{
+    return m_ipv6;
+}
+
+int Rule::protocol() const
+{
+    return m_protocol;
+}
+
+QString Rule::sourceApplication() const
+{
+    return m_sourceApplication;
+}
+
+QString Rule::sourceAddress() const
+{
+    return m_sourceAddress;
+}
+QString Rule::sourcePort() const
+{
+    return m_sourcePort;
+}
+QString Rule::interfaceIn() const
+{
+    return m_interfaceIn;
+}
+QString Rule::interfaceOut() const
+{
+    return m_interfaceOut;
+}
+
+Types::Logging Rule::logging() const
+{
+    return m_logtype;
+}
+
+void Rule::setV6(const bool v)
+{
+    m_ipv6 = v;
+}
+
+QString Rule::destinationApplication() const
+{
+    return m_destApplication;
 }

@@ -320,7 +320,7 @@ RuleListModel *UfwClient::rules() const
     return m_rulesModel;
 }
 
-RuleWrapper *UfwClient::ruleAt(int index)
+Rule *UfwClient::ruleAt(int index)
 {
     auto rules = m_currentProfile.rules();
 
@@ -328,25 +328,22 @@ RuleWrapper *UfwClient::ruleAt(int index)
         return nullptr;
     }
 
-    auto rule = rules.at(index);
-    rule.setPosition(index);
-
-    return new RuleWrapper(rule, this);
+    Rule *rule = rules.at(index);
+    return rule;
 }
 
-KJob *UfwClient::addRule(RuleWrapper *ruleWrapper)
+KJob *UfwClient::addRule(Rule *r)
 {
-    if (!ruleWrapper) {
+    if (!r) {
         qWarning() << "nullptr rule";
         return nullptr;
     }
 
-    Rule rule = ruleWrapper->rule();
 
     QVariantMap args {
         {"cmd", "addRules"},
         {"count", 1},
-        {"xml0", rule.toXml()},
+        {"xml0", toXml(r)},
     };
 
     KAuth::Action modifyAction = buildModifyAction(args);
@@ -391,19 +388,16 @@ KJob *UfwClient::removeRule(int index)
     return job;
 }
 
-KJob *UfwClient::updateRule(RuleWrapper *ruleWrapper)
+KJob *UfwClient::updateRule(Rule *r)
 {
-    if (!ruleWrapper) {
+    if (!r) {
         qWarning() << "nullptr rule";
         return nullptr;
     }
 
-    Rule rule = ruleWrapper->rule();
-
-    rule.setPosition(rule.position() + 1);
     QVariantMap args {
         {"cmd", "editRule"},
-        {"xml", rule.toXml()},
+        {"xml", toXml(r)},
     };
 
     KAuth::Action modifyAction = buildModifyAction(args);
@@ -420,7 +414,7 @@ KJob *UfwClient::updateRule(RuleWrapper *ruleWrapper)
 
 KJob *UfwClient::moveRule(int from, int to)
 {
-    const QVector<Rule> rules = m_currentProfile.rules();
+    const QVector<Rule*> rules = m_currentProfile.rules();
     if (from < 0 || from >= rules.count()) {
         qWarning() << "invalid from index";
         return nullptr;
@@ -512,7 +506,7 @@ namespace {
     }
 }
 
-RuleWrapper *UfwClient::createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status)
+Rule *UfwClient::createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status)
 {
     // FIXME use a regexp for that and support ipv6!
     auto _localAddress = localAddress;
@@ -533,7 +527,7 @@ RuleWrapper *UfwClient::createRuleFromConnection(const QString &protocol, const 
         foreignAddresData[1] = portStrToInt(foreignAddresData[1]);
     }
 
-    auto rule = new RuleWrapper({});
+    auto rule = new Rule();
     rule->setIncoming(status == QStringLiteral("LISTEN"));
     rule->setPolicy("deny");
 
@@ -558,10 +552,10 @@ RuleWrapper *UfwClient::createRuleFromConnection(const QString &protocol, const 
     return rule;
 }
 
-RuleWrapper *UfwClient::createRuleFromLog(const QString &protocol, const QString &sourceAddress, const QString &sourcePort, const QString &destinationAddress, const QString &destinationPort, const QString &inn)
+Rule *UfwClient::createRuleFromLog(const QString &protocol, const QString &sourceAddress, const QString &sourcePort, const QString &destinationAddress, const QString &destinationPort, const QString &inn)
 {
     // Transform to the ufw notation
-    auto rule = new RuleWrapper({});
+    auto rule = new Rule();
 
     auto _sourceAddress = sourceAddress;
     _sourceAddress.replace("*", "");
@@ -632,4 +626,58 @@ void UfwClient::refreshProfiles()
 QStringList UfwClient::knownProtocols() {
     return {i18n("Any"), "TCP", "UDP"};
 }
+QString UfwClient::toXml(Rule *r) const
+{
+    QString xmlString;
+
+    QXmlStreamWriter xml(&xmlString);
+
+    xml.writeStartElement(QStringLiteral("rule"));
+
+    if (r->position() != 0) {
+        xml.writeAttribute(QStringLiteral("position"), QString::number(r->position()));
+    }
+
+    xml.writeAttribute(QStringLiteral("action"), Types::toString(r->action()));
+    xml.writeAttribute(QStringLiteral("direction"), r->incoming() ? QStringLiteral("in") : QStringLiteral("out"));
+
+    if (!r->destinationApplication().isEmpty()) {
+        xml.writeAttribute(QStringLiteral("dapp"), r->destinationApplication());
+    } else if (!r->destinationPort().isEmpty()) {
+        xml.writeAttribute(QStringLiteral("dport"), r->destinationPort());
+    }
+    if (!r->sourceApplication().isEmpty()) {
+        xml.writeAttribute(QStringLiteral("sapp"), r->sourceApplication());
+    } else if (!r->sourcePort().isEmpty()) {
+        xml.writeAttribute(QStringLiteral("sport"), r->sourcePort());
+    }
+
+    if (!FirewallClient::isTcpAndUdp(r->protocol())) {
+        xml.writeAttribute(QStringLiteral("protocol"), FirewallClient::knownProtocols().at(r->protocol()));
+    }
+
+    if (!r->destinationAddress().isEmpty()) {
+        xml.writeAttribute(QStringLiteral("dst"), r->destinationAddress());
+    }
+    if (!r->sourceAddress().isEmpty()) {
+        xml.writeAttribute(QStringLiteral("src"), r->sourceAddress());
+    }
+
+    if (!r->interfaceIn().isEmpty()) {
+        xml.writeAttribute(QStringLiteral("interface_in"), r->interfaceIn());
+    }
+    if (!r->interfaceOut().isEmpty()) {
+        xml.writeAttribute(QStringLiteral("interface_out"), r->interfaceOut());
+    }
+
+    xml.writeAttribute(QStringLiteral("logtype"), Types::toString(r->logging()));
+
+
+    xml.writeAttribute(QStringLiteral("v6"), r->ipv6() ? QStringLiteral("True") : QStringLiteral("False"));
+
+    xml.writeEndElement();
+
+    return xmlString;
+}
 #include "ufwclient.moc"
+

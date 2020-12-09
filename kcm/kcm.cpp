@@ -41,7 +41,7 @@ KCMFirewall::KCMFirewall(QObject *parent, const QVariantList &args)
 
     qmlRegisterAnonymousType<KJob>("org.kcm.firewall", 1);
     qmlRegisterType<RuleListModel>("org.kcm.firewall", 1, 0, "RuleListModel");
-    qmlRegisterType<RuleWrapper>("org.kcm.firewall", 1, 0, "Rule");
+    qmlRegisterType<Rule>("org.kcm.firewall", 1, 0, "Rule");
     qmlRegisterUncreatableType<FirewallClient>("org.kcm.firewall", 1, 0, "FirewallClient", "FirewallClient is created by the KCM.");
     qmlRegisterUncreatableType<LogListModel>("org.kcm.firewall", 1, 0, "LogListModel", "Only created from the UfwClient.");
     qmlRegisterType<NetstatClient>("org.kcm.firewall", 1, 0, "NetstatClient");
