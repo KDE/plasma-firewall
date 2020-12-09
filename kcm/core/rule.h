@@ -26,7 +26,7 @@ class KCM_FIREWALL_CORE_EXPORT Rule : public QObject
     Q_PROPERTY(bool ipv6 READ ipv6 WRITE setIpv6 NOTIFY ipv6Changed)
     Q_PROPERTY(int protocol READ protocol WRITE setProtocol NOTIFY protocolChanged)
     Q_PROPERTY(int interface READ interface WRITE setInterface NOTIFY interfaceChanged)
-    Q_PROPERTY(QString logging READ logging WRITE setLogging NOTIFY loggingChanged)
+    Q_PROPERTY(QString logging READ loggingStr WRITE setLogging NOTIFY loggingChanged)
     Q_PROPERTY(int position READ position WRITE setPosition NOTIFY positionChanged)
 
 public:
