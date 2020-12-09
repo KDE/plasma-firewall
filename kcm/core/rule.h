@@ -73,7 +73,7 @@ public:
     m_sourceApplication(rhs.m_sourceApplication), m_destAddress(rhs.m_destAddress),
     m_sourceAddress(rhs.m_sourceAddress), m_destPort(rhs.m_destPort),
     m_sourcePort(rhs.m_sourcePort), m_interfaceIn(rhs.m_interfaceIn),
-    m_interfaceOut(rhs.m_interfaceIn){};
+    m_interfaceOut(rhs.m_interfaceIn), m_interface(rhs.m_interface){};
 
 
     QString toStr() const;
