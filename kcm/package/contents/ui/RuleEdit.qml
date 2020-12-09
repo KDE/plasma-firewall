@@ -134,20 +134,17 @@ FocusScope {
         }
 
         QQC2.ComboBox {
-            Kirigami.FormData.label: i18n("Protocol:")
-
             id: protocolCb
 
+            Kirigami.FormData.label: i18n("Protocol:")
             model: ruleEdit.client.knownProtocols()
             currentIndex: rule.protocol
             onActivated: rule.protocol = index
         }
         QQC2.ComboBox {
-            Kirigami.FormData.label: i18n("Interface:")
-
             id: interfaceCb
 
-
+            Kirigami.FormData.label: i18n("Interface:")
             model: ruleEdit.client.knownInterfaces()
             currentIndex: rule.interface
             onActivated: rule.interface = index
