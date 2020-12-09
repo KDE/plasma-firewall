@@ -59,6 +59,7 @@ void debugState(KAuth::Action::AuthStatus status)
 UfwClient::UfwClient(QObject *parent, const QVariantList &args)
     : IFirewallClientBackend(parent, args)
     , m_rulesModel(new RuleListModel(this))
+    , m_logs(nullptr)
 {
     // HACK: Querrying the firewall status in this context
     // creates a segmentation fault error in some situations
