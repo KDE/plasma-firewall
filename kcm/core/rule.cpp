@@ -211,7 +211,7 @@ QString Rule::ipV6Str() const
 
 QString Rule::loggingStr() const
 {
-    return Types::toString(m_logtype, true);
+    return Types::toString(m_logtype, false);
 }
 
 void Rule::setPolicy(const QString &policy)
