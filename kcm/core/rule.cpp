@@ -159,7 +159,13 @@ QString Rule::protocolSuffix(int prot, const QString &sep)
     return sep + FirewallClient::knownProtocols().at(prot);
 }
 
-QString Rule::modify(const QString &address, const QString &port, const QString &application, const QString &iface, int protocol, bool matchPortNoProto)
+QString Rule::modify(
+    const QString &address,
+    const QString &port,
+    const QString &application,
+    const QString &iface,
+    int protocol,
+    bool matchPortNoProto)
 {
     if ((port == ANY_PORT || port.isEmpty()) && (address.isEmpty() || ANY_ADDR == address || ANY_ADDR_V6 == address))
         return addIface(i18n("Anywhere"), iface);
