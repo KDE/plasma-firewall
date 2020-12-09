@@ -25,7 +25,6 @@
 
 #include <loglistmodel.h>
 #include <rulelistmodel.h>
-#include <rulewrapper.h>
 
 K_PLUGIN_CLASS_WITH_JSON(UfwClient, "ufwbackend.json")
 

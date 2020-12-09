@@ -17,7 +17,6 @@
 #include <loglistmodel.h>
 #include <profile.h>
 #include <rulelistmodel.h>
-#include <rulewrapper.h>
 
 #include "firewalldclient.h"
 #include "firewalldjob.h"
