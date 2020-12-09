@@ -37,17 +37,5 @@ ViewBase {
     blacklistRuleSuccessMessage: i18n("Created a blacklist rule from this log entry.");
 
     filterRoleNames: blacklistRuleRoleNames
-
-    function updateRunning() {
-        if (!active) {
-            console.log("Stopping Logs data fetch");
-            kcm.client.logsAutoRefresh = false;
-            return;
-        }
-
-        console.log("Start connections data fetch");
-        kcm.client.logsAutoRefresh = true;
-    }
-
-    onActiveChanged: updateRunning()
+    onActiveChanged: kcm.client.logsAutoRefresh = active
 }
