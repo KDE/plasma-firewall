@@ -30,7 +30,6 @@ constexpr int FILE_PERMS = 0644;
 constexpr int DIR_PERMS = 0755;
 const QString KCM_UFW_DIR = QStringLiteral("/etc/kcm_ufw");
 const QString PROFILE_EXTENSION = QStringLiteral(".ufw");
-const QString LOG_FILE = QStringLiteral("/var/log/ufw.log");
 
 void setPermissions(const QString &f, int perms)
 {
@@ -77,41 +76,41 @@ ActionReply Helper::query(const QVariantMap &args)
     return reply;
 }
 
+QStringList getLogFromSystemd(const QString &lastLine)
+{
+    QString program = "journalctl";
+    QStringList arguments {"-xb","-n", "100","-g", "UFW"};
+
+    QProcess myProcess;
+    myProcess.start(program, arguments);
+    myProcess.waitForFinished();
+
+    auto resultString = QString(myProcess.readAllStandardOutput());
+    auto resultList = resultString.split("\n");
+
+    // Example Line from Systemd:
+    // Dec 06 17:42:45 tomatoland kernel: [UFW BLOCK] IN=wlan0 OUT= MAC= SRC=192.168.50.181 DST=224.0.0.252 LEN=56 TOS=0x00
+    //     PREC=0x00 TTL=255 ID=52151 PROTO=UDP SPT=5355 DPT=5355 LEN=36
+    // We need to remove everything up to the space after ']'.
+
+    QStringList result;
+    for(const QString& line : resultList) {
+        if (!lastLine.isEmpty() && line == lastLine) {
+            result.clear();
+            continue;
+        }
+        result.append(line);
+    }
+    return result;
+}
+
 ActionReply Helper::viewlog(const QVariantMap &args)
 {
     QString lastLine = args["lastLine"].toString(), logFile = args["logFile"].toString();
-    QFile file(logFile.isEmpty() ? LOG_FILE : logFile);
     ActionReply reply;
 
-    // There might be no logs if the firewall is disabled
-    if (!file.exists()) {
-        return reply;
-    }
-
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        reply.setErrorCode(KAuth::ActionReply::BackendError);
-        reply.setError(STATUS_OPERATION_FAILED);
-        reply.setErrorDescription(i18n("Could not open the log file for the ufw client. \n "
-                                       "Please verify that the following file exist \n "
-                                       "and you have read permissions. \n") +
-                                  file.fileName());
-        return reply;
-    }
-
-    QStringList lines;
-    while (!file.atEnd()) {
-        QString line(file.readLine());
-
-        if (line.contains(" [UFW ")) {
-            if (!lastLine.isEmpty() && line == lastLine) {
-                lines.clear();
-                continue;
-            }
-            lines.append(line);
-        }
-    }
-
-    reply.addData("lines", lines);
+    QStringList result = getLogFromSystemd(lastLine);
+    reply.addData("lines", result);
     return reply;
 }
 
