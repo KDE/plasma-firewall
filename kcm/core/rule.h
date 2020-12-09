@@ -64,6 +64,7 @@ public:
         , m_sourcePort(srcPort)
         , m_interfaceIn(ifaceIn)
         , m_interfaceOut(ifaceOut)
+        , m_interface(0)
     {
     }
     Rule(const Rule& rhs, QObject *parent) : QObject(parent), m_position(rhs.m_position), m_action(rhs.m_action),

@@ -182,7 +182,8 @@ Rule::Rule()
     , m_incoming(true)
     , m_ipv6(false)
     , m_protocol(0)
-      , m_logtype(Types::LOGGING_OFF)
+    , m_logtype(Types::LOGGING_OFF)
+    , m_interface(0)
 {
 }
 
