@@ -10,8 +10,10 @@ import org.kde.kirigami 2.10 as Kirigami
 import org.kcm.firewall 1.0
 
 ViewBase {
-    title: i18n("Firewall Logs")
+    id: base
+    property bool active: base.Kirigami.ColumnView.inViewport
 
+    title: i18n("Firewall Logs")
     model: kcm.client.logsModel
     roles: [
         {title: i18n("Protocol"), role: "protocol", width: Kirigami.Units.gridUnit * 3},
@@ -35,4 +37,17 @@ ViewBase {
     blacklistRuleSuccessMessage: i18n("Created a blacklist rule from this log entry.");
 
     filterRoleNames: blacklistRuleRoleNames
+
+    function updateRunning() {
+        if (!active) {
+            console.log("Stopping Logs data fetch");
+            kcm.client.logsAutoRefresh = false;
+            return;
+        }
+
+        console.log("Start connections data fetch");
+        kcm.client.logsAutoRefresh = true;
+    }
+
+    onActiveChanged: updateRunning()
 }
