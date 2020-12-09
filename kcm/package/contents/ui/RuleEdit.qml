@@ -165,7 +165,7 @@ FocusScope {
             QQC2.Button {
                 text: ruleEdit.newRule ? i18n("Create") : i18n("Save")
                 icon.name: ruleEdit.newRule ? "document-new" : "document-save"
-                enabled: (!sourceAddress.length || sourceAddress.acceptableInput) && (!destinationAddress.length || destinationAddress.acceptableInput)
+                enabled: (!sourceAddress.length || sourceAddress.acceptableInput) && (!destinationAddress.length || destinationAddress.acceptableInput) && !(sourceAddress.text == destinationAddress.text && sourcePort.text == destinationPort.text)
                 onClicked: ruleEdit.accepted()
             }
 
