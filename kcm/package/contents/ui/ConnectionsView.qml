@@ -41,17 +41,21 @@ ViewBase {
         property bool active: base.Kirigami.ColumnView.inViewport
         
         function updateRunning() {
-            if (active) {
-                if (!netStatClient.hasSS) {
-                    console.log("Netstat client without ss");
-                    base.errorMessage.text = i18n("could not find iproute2 or net-tools packages installed.");
-                    base.errorMessage.visible = true;
-                } else {
-                    netStatClient.connectionsModel.start();
-                }
-            } else {
+            if (!active) {
+                console.log("Stopping Connections data fetch");
                 netStatClient.connectionsModel.stop();
+                return;
             }
+
+            if (!netStatClient.hasSS) {
+                console.log("Netstat client without ss");
+                base.errorMessage.text = i18n("could not find iproute2 or net-tools packages installed.");
+                base.errorMessage.visible = true;
+                return;
+            }
+
+            console.log("Start connections data fetch");
+            netStatClient.connectionsModel.start();
         }
         onActiveChanged: updateRunning()
 
