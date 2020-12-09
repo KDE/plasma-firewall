@@ -7,6 +7,8 @@
  */
 
 #include "ufwclient.h"
+#include "ufwlogmodel.h"
+
 #include "rule.h"
 #include "types.h"
 
@@ -462,7 +464,7 @@ QString UfwClient::defaultOutgoingPolicy() const
 LogListModel *UfwClient::logs()
 {
     if (!m_logs) {
-        m_logs = new LogListModel(this);
+        m_logs = new UfwLogModel(this);
         refreshLogs();
     }
     return m_logs;

@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: 2020 Lucas Biaggi <lbjanuario@gmail.com>
 set(firewalld_backend_SRCS
     firewalldclient.cpp
+    firewalldlogmodel.cpp
     firewalldjob.cpp
     systemdjob.cpp
     dbustypes.cpp

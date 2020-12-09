@@ -57,7 +57,9 @@ public:
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
-    void addRawLogs(const QStringList &rawLogsList);
+    virtual void addRawLogs(const QStringList &rawLogsList) = 0;
+
+    void appendLogData(const QVector<LogData> newData);
 
 signals:
     void countChanged();

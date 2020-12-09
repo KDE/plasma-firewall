@@ -3,6 +3,7 @@
 
 set(ufw_backend_SRCS
     ufwclient.cpp
+    ufwlogmodel.cpp
 )
 
 kcoreaddons_add_plugin(

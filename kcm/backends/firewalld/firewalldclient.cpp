@@ -20,6 +20,8 @@
 
 #include "firewalldclient.h"
 #include "firewalldjob.h"
+#include "firewalldlogmodel.h"
+
 #include "systemdjob.h"
 
 #include "dbustypes.h"
@@ -459,6 +461,9 @@ KJob *FirewalldClient::save()
 
 LogListModel *FirewalldClient::logs()
 {
+    if (!m_logs) {
+        m_logs = new FirewalldLogModel(this);
+    }
     return m_logs;
 }
 
