@@ -13,6 +13,7 @@
 #include <QTimer>
 #include <QVariantList>
 #include <QVariantMap>
+#include <QProcess>
 
 #include <loglistmodel.h>
 #include <profile.h>
@@ -547,4 +548,21 @@ FirewallClient::Capabilities FirewalldClient::capabilities() const
 QStringList FirewalldClient::knownProtocols() {
     return {"TCP", "UDP"};
 }
+
+bool FirewalldClient::isCurrentlyLoaded() const
+{
+    QProcess process;
+    const QString name = "systemctl";
+    const QStringList args = {"status", "firewalld"};
+
+    process.start(name, args);
+    process.waitForFinished();
+
+    // systemctl returns 0 for status if the app is loaded, and 3 otherwise.
+    // systemctl returns 0 for status if the app is loaded, and 3 otherwise.
+    qDebug() << "Firewalld is loaded?" << process.exitCode();
+
+    return process.exitCode() == EXIT_SUCCESS;
+}
+
 #include "firewalldclient.moc"

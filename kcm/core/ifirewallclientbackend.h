@@ -70,7 +70,15 @@ public:
     virtual QString defaultOutgoingPolicy() const = 0;
     virtual bool hasExecutable() const = 0;
     virtual LogListModel *logs() = 0;
+
+    /* TODO: Move it away from here. This asks the
+     * Logs model to refresh after a few seconds
+     */
     virtual bool logsAutoRefresh() const = 0;
+
+    /* Returns true if the firewall represented
+     * by this backend is running right now */
+    virtual bool isCurrentlyLoaded() const = 0;
 
     virtual void refreshProfiles() = 0;
     virtual FirewallClient::Capabilities capabilities() const;

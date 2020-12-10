@@ -19,6 +19,7 @@
 #include <QTimer>
 #include <QVariantMap>
 #include <QXmlStreamReader>
+#include <QProcess>
 
 #include <KConfig>
 #include <KConfigGroup>
@@ -681,5 +682,21 @@ QString UfwClient::toXml(Rule *r) const
 
     return xmlString;
 }
+
+bool UfwClient::isCurrentlyLoaded() const
+{
+    QProcess process;
+    const QString name = "systemctl";
+    const QStringList args = {"status", "ufw"};
+
+    process.start(name, args);
+    process.waitForFinished();
+
+    // systemctl returns 0 for status if the app is loaded, and 3 otherwise.
+    qDebug() << "Ufw is loaded?" << process.exitCode();
+
+    return process.exitCode() == EXIT_SUCCESS;
+}
+
 #include "ufwclient.moc"
 

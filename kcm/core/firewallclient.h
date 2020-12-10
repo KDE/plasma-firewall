@@ -44,7 +44,6 @@ class KCM_FIREWALL_CORE_EXPORT FirewallClient : public QObject
     Q_PROPERTY(RuleListModel *rulesModel READ rulesModel CONSTANT)
     Q_PROPERTY(LogListModel *logsModel READ logsModel CONSTANT)
     Q_PROPERTY(bool logsAutoRefresh READ logsAutoRefresh WRITE setLogsAutoRefresh NOTIFY logsAutoRefreshChanged)
-    Q_PROPERTY(QString backend READ backend WRITE setBackend NOTIFY backendChanged)
     Q_PROPERTY(bool hasExecutable READ hasExecutable NOTIFY hasExecutableChanged)
     Q_PROPERTY(Capabilities capabilities READ capabilities NOTIFY capabilitiesChanged)
     Q_PROPERTY(QString name READ name)
@@ -125,7 +124,7 @@ signals:
     void showErrorMessage(const QString &message);
 
 private:
-    void setBackend(const QString &backend);
+    void setBackend(const QStringList &backendList);
     void setLogsAutoRefresh(bool logsAutoRefresh);
     void queryStatus(DefaultDataBehavior defaultDataBehavior = ReadDefaults, ProfilesBehavior ProfilesBehavior = ListenProfiles);
 

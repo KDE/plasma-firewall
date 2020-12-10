@@ -60,6 +60,7 @@ public:
     void refreshProfiles() override;
     bool hasDependencies() const override;
     QStringList knownProtocols() override;
+    bool isCurrentlyLoaded() const override;
 
 protected slots:
     void refreshLogs();

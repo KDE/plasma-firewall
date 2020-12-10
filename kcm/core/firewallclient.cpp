@@ -30,12 +30,7 @@ IFirewallClientBackend *FirewallClient::m_currentBackend = nullptr;
 FirewallClient::FirewallClient(QObject *parent)
     : QObject(parent)
 {
-    if (!m_currentBackend) {
-        setBackend("ufw");
-    }
-    if (!m_currentBackend) {
-        setBackend("firewalld");
-    }
+    setBackend({"ufw", "firewalld"});
 }
 
 QStringList FirewallClient::knownProtocols()
@@ -266,7 +261,7 @@ bool FirewallClient::hasExecutable() const
     return m_currentBackend->hasExecutable();
 }
 
-void FirewallClient::setBackend(const QString &backend)
+void FirewallClient::setBackend(const QStringList &backendList)
 {
     if (m_currentBackend) {
         enabledChanged(false);
@@ -276,8 +271,10 @@ void FirewallClient::setBackend(const QString &backend)
 
     const auto plugins = KPluginLoader::findPlugins(QStringLiteral("kf5/plasma_firewall"));
 
+    QList<KPluginFactory*> factories;
     for (const KPluginMetaData &metadata : plugins) {
-        if (metadata.pluginId() != backend + QLatin1String("backend")) {
+        QString pluginName = metadata.pluginId().remove("backend");
+        if (!backendList.contains(pluginName)) {
             continue;
         }
 
@@ -285,20 +282,42 @@ void FirewallClient::setBackend(const QString &backend)
         if (!factory) {
             continue;
         }
+        factories.append(factory);
+    }
 
-        auto perhaps = factory->create<IFirewallClientBackend>(this, QVariantList() /*args*/);
-        if (perhaps->hasDependencies()) {
-            qCDebug(FirewallClientDebug) << "Backend " << backend << "Loaded";
-            m_currentBackend = perhaps;
-            break;
-        } else {
-            qCDebug(FirewallClientDebug) << "Backend " << backend << "Failed to meet dependencies";
+    // lambdas
+    auto systemCheck = [this] (const QList<KPluginFactory*> factories) -> IFirewallClientBackend* {
+        for (KPluginFactory *factory : factories) {
+            qDebug() << "Testing factory" << factory->objectName();
+            auto perhaps = factory->create<IFirewallClientBackend>(this, QVariantList());
+            if (perhaps->isCurrentlyLoaded()) {
+                qDebug() << "Is Loaded!";
+                return perhaps;
+            }
             perhaps->deleteLater();
         }
+        qDebug() << "Returning nullptr";
+        return nullptr;
+    };
+
+    auto loadFromBinary = [this] (const QList<KPluginFactory*> factories) -> IFirewallClientBackend* {
+        for (KPluginFactory *factory : factories) {
+            auto perhaps = factory->create<IFirewallClientBackend>(this, QVariantList() );
+            if (perhaps->hasDependencies()) {
+                return perhaps;
+            }
+            perhaps->deleteLater();
+        }
+        return nullptr;
+    };
+
+    m_currentBackend = systemCheck(factories);
+    if (!m_currentBackend) {
+        m_currentBackend = loadFromBinary(factories);
     }
 
     if (!m_currentBackend) {
-        qCDebug(FirewallClientDebug) << "Could not find backend" << backend;
+        qCDebug(FirewallClientDebug) << "Could not find any of the specified backends" << backendList;
         return;
     }
 
