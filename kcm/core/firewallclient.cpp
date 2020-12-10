@@ -303,7 +303,7 @@ void FirewallClient::setBackend(const QStringList &backendList)
     auto loadFromBinary = [this] (const QList<KPluginFactory*> factories) -> IFirewallClientBackend* {
         for (KPluginFactory *factory : factories) {
             auto perhaps = factory->create<IFirewallClientBackend>(this, QVariantList() );
-            if (perhaps->hasDependencies()) {
+            if (perhaps->hasExecutable()) {
                 return perhaps;
             }
             perhaps->deleteLater();
@@ -345,4 +345,12 @@ QString FirewallClient::backend() const
         return {};
     }
     return m_currentBackend->name();
+}
+
+QString FirewallClient::version() const
+{
+    if (!m_currentBackend) {
+        return {};
+    }
+    return m_currentBackend->version();
 }

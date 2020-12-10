@@ -45,6 +45,13 @@ public:
     Q_INVOKABLE virtual KJob *setDefaultIncomingPolicy(QString defaultIncomingPolicy) = 0;
     Q_INVOKABLE virtual KJob *setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) = 0;
     Q_INVOKABLE virtual KJob *save();
+
+    /* returns the --version of the software
+     * the base runs `firewallbackend --help`
+     * firewalld does not have --help. :|
+     */
+    virtual QString version() const;
+
     virtual void setLogsAutoRefresh(bool logsAutoRefresh) = 0;
 
     /* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connection Table. */
@@ -62,13 +69,9 @@ public:
         const QString &destinationPort,
         const QString &inn) = 0;
 
-    /* returns true if all of the dependencies of the firewall are installed on the system */
-    virtual bool hasDependencies() const = 0;
-
     virtual bool enabled() const = 0;
     virtual QString defaultIncomingPolicy() const = 0;
     virtual QString defaultOutgoingPolicy() const = 0;
-    virtual bool hasExecutable() const = 0;
     virtual LogListModel *logs() = 0;
 
     /* TODO: Move it away from here. This asks the
@@ -83,10 +86,14 @@ public:
     virtual void refreshProfiles() = 0;
     virtual FirewallClient::Capabilities capabilities() const;
     virtual QStringList knownProtocols() = 0;
+
     void setProfiles(const QVector<Entry> &profiles);
     QVector<Entry> profiles();
     Entry profileByName(const QString &profileName);
 
+    void queryExecutable(const QString& executableName);
+    bool hasExecutable() const;
+    QString executablePath() const;
 signals:
     void enabledChanged(bool enabled);
     void defaultIncomingPolicyChanged(const QString &defaultIncomingPolicy);
@@ -100,6 +107,7 @@ signals:
 
 private:
     QVector<Entry> m_profiles;
+    QString m_executablePath;
 };
 
 #endif

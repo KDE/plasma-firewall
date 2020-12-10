@@ -6,6 +6,10 @@
  * UFW KControl Module
  */
 #include <KLocalizedString>
+#include <QProcess>
+
+#include <QStandardPaths>
+
 #include "ifirewallclientbackend.h"
 
 IFirewallClientBackend::IFirewallClientBackend(QObject *parent, const QVariantList &)
@@ -40,3 +44,45 @@ KJob *IFirewallClientBackend::save()
     return nullptr;
 };
 
+void IFirewallClientBackend::queryExecutable(const QString& executableName)
+{
+    // sometimes ufw is not installed on a standard path - like on opensuse, that's installed on /usr/sbin
+    // so, look at there too.
+    static QStringList searchPaths = {
+        QStringLiteral("/bin"),
+        QStringLiteral("/usr/bin"),
+        QStringLiteral("/usr/sbin"),
+    };
+
+    m_executablePath = QStandardPaths::findExecutable(executableName);
+    if (!m_executablePath.isEmpty()) {
+        return;
+    }
+    m_executablePath = QStandardPaths::findExecutable(executableName, searchPaths);
+}
+
+bool IFirewallClientBackend::hasExecutable() const
+{
+    return m_executablePath.isEmpty();
+}
+
+QString IFirewallClientBackend::executablePath() const
+{
+    return m_executablePath;
+}
+
+
+QString IFirewallClientBackend::version() const
+{
+    QProcess process;
+    QStringList args = {"--version"};
+
+    process.start(m_executablePath, args);
+    process.waitForFinished();
+
+    if (process.exitCode() != EXIT_SUCCESS) {
+        return i18n("Error fetching information from the firewall.");
+    }
+
+    return process.readAllStandardOutput();
+}

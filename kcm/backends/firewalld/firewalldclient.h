@@ -56,17 +56,13 @@ public:
     bool logsAutoRefresh() const override;
     void setLogsAutoRefresh(bool logsAutoRefresh) override;
     static IFirewallClientBackend *createMethod(FirewallClient *parent);
-    bool hasExecutable() const override;
     void refreshProfiles() override;
-    bool hasDependencies() const override;
     QStringList knownProtocols() override;
     bool isCurrentlyLoaded() const override;
-
 protected slots:
     void refreshLogs();
 
 protected:
-    void setExecutable(const bool &hasExecutable);
     QVector<Rule*> extractRulesFromResponse(const QList<firewalld_reply> &reply) const;
     QVariantList buildRule(const Rule *r, FirewallClient::Ipv ipvfamily = FirewallClient::IPV4) const;
     void setProfile(Profile profile);

@@ -34,6 +34,7 @@ FirewalldClient::FirewalldClient(QObject *parent, const QVariantList &args)
     : IFirewallClientBackend(parent, args)
     , m_rulesModel(new RuleListModel(this))
 {
+    queryExecutable("firewalld");
     // HACK: Querrying the firewall status in this context
     // creates a segmentation fault error in some situations
     // due to an usage of the rootObject before it's
@@ -57,24 +58,6 @@ void FirewalldClient::refresh()
 bool FirewalldClient::enabled() const
 {
     return m_currentProfile.enabled();
-}
-
-bool FirewalldClient::hasDependencies() const
-{
-    // sometimes ufw is not installed on a standard path - like on opensuse, that's installed on /usr/sbin
-    // so, look at there too.
-    static QStringList searchPaths = {
-        QStringLiteral("/bin"),
-        QStringLiteral("/usr/bin"),
-        QStringLiteral("/usr/sbin"),
-    };
-
-    if (!QStandardPaths::findExecutable(QStringLiteral("firewalld")).isEmpty()) {
-        return true;
-    } else if (!QStandardPaths::findExecutable(QStringLiteral("firewalld"), searchPaths).isEmpty()) {
-        return true;
-    }
-    return false;
 }
 
 KJob *FirewalldClient::setEnabled(const bool value)
@@ -311,16 +294,6 @@ Rule *FirewalldClient::createRuleFromLog(
 
     rule->setProtocol(knownProtocols().indexOf(protocol.toUpper()));
     return rule;
-}
-
-bool FirewalldClient::hasExecutable() const
-{
-    return !QStandardPaths::findExecutable("firewalld").isEmpty();
-}
-
-void FirewalldClient::setExecutable(const bool &hasExecutable)
-{
-    emit hasExecutableChanged(hasExecutable);
 }
 
 void FirewalldClient::refreshProfiles()

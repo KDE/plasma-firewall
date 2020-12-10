@@ -65,9 +65,7 @@ public:
     bool logsAutoRefresh() const override;
     void setLogsAutoRefresh(bool logsAutoRefresh) override;
     static IFirewallClientBackend *createMethod(FirewallClient *parent);
-    bool hasExecutable() const override;
     void refreshProfiles() override;
-    bool hasDependencies() const override;
     bool isCurrentlyLoaded() const override;
 
 protected slots:
@@ -76,7 +74,6 @@ protected slots:
 
 protected:
     void setProfile(Profile profile);
-    void setExecutable(const bool &hasExecutable);
     KAuth::Action buildQueryAction(const QVariantMap &arguments);
     KAuth::Action buildModifyAction(const QVariantMap &arguments);
 

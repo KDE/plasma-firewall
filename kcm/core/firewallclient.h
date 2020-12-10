@@ -90,6 +90,8 @@ public:
         const QString &destinationPort,
         const QString &inn);
 
+    Q_INVOKABLE QString version() const;
+
     bool enabled() const;
     bool hasExecutable() const;
     QString name() const;
@@ -108,6 +110,7 @@ public:
     Q_FLAG(Capabilities);
 
     Capabilities capabilities() const;
+
 signals:
     void enabledChanged(const bool enabled);
     void defaultIncomingPolicyChanged(const QString &defaultIncomingPolicy);

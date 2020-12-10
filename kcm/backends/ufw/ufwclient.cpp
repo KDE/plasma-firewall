@@ -64,6 +64,7 @@ UfwClient::UfwClient(QObject *parent, const QVariantList &args)
     , m_rulesModel(new RuleListModel(this))
     , m_logs(nullptr)
 {
+    queryExecutable("ufw");
     // HACK: Querrying the firewall status in this context
     // creates a segmentation fault error in some situations
     // due to an usage of the rootObject before it's
@@ -90,24 +91,6 @@ void UfwClient::refresh()
 bool UfwClient::enabled() const
 {
     return m_currentProfile.enabled();
-}
-
-bool UfwClient::hasDependencies() const
-{
-    // sometimes ufw is not installed on a standard path - like on opensuse, that's installed on /usr/sbin
-    // so, look at there too.
-    static QStringList searchPaths = {
-        QStringLiteral("/bin"),
-        QStringLiteral("/usr/bin"),
-        QStringLiteral("/usr/sbin"),
-    };
-
-    if (!QStandardPaths::findExecutable(QStringLiteral("ufw")).isEmpty()) {
-        return true;
-    } else if (!QStandardPaths::findExecutable(QStringLiteral("ufw"), searchPaths).isEmpty()) {
-        return true;
-    }
-    return false;
 }
 
 KJob *UfwClient::setEnabled(bool value)
@@ -591,17 +574,6 @@ IFirewallClientBackend *UfwClient::createMethod(FirewallClient *parent)
 {
     IFirewallClientBackend *instance = new UfwClient(parent, {} /*args*/);
     return instance;
-}
-
-bool UfwClient::hasExecutable() const
-{
-    return !QStandardPaths::findExecutable("ufw").isEmpty();
-}
-
-// FIXME is this even used?
-void UfwClient::setExecutable(const bool &hasExecutable)
-{
-    emit hasExecutableChanged(hasExecutable);
 }
 
 void UfwClient::refreshProfiles()

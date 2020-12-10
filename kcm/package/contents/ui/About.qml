@@ -22,5 +22,9 @@ KCM.ScrollViewKCM {
             Kirigami.FormData.label: i18n("Firewall backend:")
             text: kcm.client.name
         }
+        QQC2.Label {
+           // Kirigami.FormData.Label: i18n("Backend Information:")
+            text: kcm.client.version()
+        }
     }
 }
