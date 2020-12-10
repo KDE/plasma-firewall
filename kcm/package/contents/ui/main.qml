@@ -111,10 +111,6 @@ KCM.ScrollViewKCM {
             type: Kirigami.MessageType.Error
         }
         Kirigami.FormLayout {
-            Item {
-                Kirigami.FormData.label: i18n("Using %1 as firewall backend", kcm.client.name)
-            }
-
             RowLayout {
                 Kirigami.FormData.label: i18n("Firewall Status:")
                 Kirigami.FormData.enabled: enabledCheckBox.enabled
@@ -408,6 +404,13 @@ KCM.ScrollViewKCM {
                 drawer.open()
             }
         }
+
+        QQC2.Button {
+            icon.name: "about"
+            text: i18n("About")
+            onClicked: kcm.push("About.qml")
+        }
+
     }
 
     Component.onCompleted: {
