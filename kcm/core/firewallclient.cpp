@@ -35,16 +35,27 @@ FirewallClient::FirewallClient(QObject *parent)
 
 QStringList FirewallClient::knownProtocols()
 {
+    if (!m_currentBackend) {
+        return {};
+    }
     return m_currentBackend->knownProtocols();
 }
 
 bool FirewallClient::isTcpAndUdp(int protocolIdx)
 {
+    if (!m_currentBackend) {
+        return false;
+    }
+
     return m_currentBackend->isTcpAndUdp(protocolIdx);
 }
 
 int FirewallClient::indexOfProtocol(const QString& protocol)
 {
+    if (!m_currentBackend) {
+        return -1;
+    }
+
     const QStringList protocolList = m_currentBackend->knownProtocols();
     for(int i = 0; i < m_currentBackend->knownProtocols().size(); i++) {
         if (protocolList[i].toLower() == protocol.toLower()) {
