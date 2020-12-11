@@ -299,15 +299,12 @@ void FirewallClient::setBackend(const QStringList &backendList)
     // lambdas
     auto systemCheck = [this] (const QList<KPluginFactory*> factories) -> IFirewallClientBackend* {
         for (KPluginFactory *factory : factories) {
-            qDebug() << "Testing factory" << factory->objectName();
             auto perhaps = factory->create<IFirewallClientBackend>(this, QVariantList());
             if (perhaps->isCurrentlyLoaded()) {
-                qDebug() << "Is Loaded!";
                 return perhaps;
             }
             perhaps->deleteLater();
         }
-        qDebug() << "Returning nullptr";
         return nullptr;
     };
 
