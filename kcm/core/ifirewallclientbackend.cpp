@@ -63,7 +63,7 @@ void IFirewallClientBackend::queryExecutable(const QString& executableName)
 
 bool IFirewallClientBackend::hasExecutable() const
 {
-    return m_executablePath.isEmpty();
+    return !m_executablePath.isEmpty();
 }
 
 QString IFirewallClientBackend::executablePath() const
