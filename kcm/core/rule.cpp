@@ -152,8 +152,8 @@ QString Rule::protocolSuffix(int prot, const QString &sep)
     }
 
     if (prot == -1) {
-        qWarning() << "Invalid protocol -1, defaulting to" << FirewallClient::knownProtocols().at(0);
         prot = 0;
+        qWarning() << "Invalid protocol -1, defaulting to" << FirewallClient::knownProtocols().at(prot);
     }
 
     return sep + FirewallClient::knownProtocols().at(prot);
