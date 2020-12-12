@@ -337,7 +337,7 @@ QVariantList FirewalldClient::buildRule(const Rule *r, FirewallClient::Ipv ipvfa
 
     auto value = args.value("type").toString();
     if (!value.isEmpty()) {
-        firewalld_direct_rule << "-p" << value;
+        firewalld_direct_rule << "-p" << value.toLower();
     }
 
     value = args.value("destinationAddress").toString();
@@ -365,7 +365,7 @@ QVariantList FirewalldClient::buildRule(const Rule *r, FirewallClient::Ipv ipvfa
         firewalld_direct_rule << "-i" << value;
     }
 
-    auto ipvf = ipvfamily == FirewallClient::IPV6 ? "ipv6" : "ipv4";
+    auto ipvf = ipvfamily == r->ipv6() ? "ipv6" : "ipv4";
 
     qCDebug(FirewallDClientDebug) << firewalld_direct_rule;
     return QVariantList({ipvf, args.value("table"), args.value("chain"), args.value("priority"), firewalld_direct_rule});
