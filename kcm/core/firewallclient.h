@@ -51,8 +51,6 @@ class KCM_FIREWALL_CORE_EXPORT FirewallClient : public QObject
 public:
     enum DefaultDataBehavior { DontReadDefaults, ReadDefaults };
     enum ProfilesBehavior { DontListenProfiles, ListenProfiles };
-    enum Ipv { IPV4, IPV6 };
-
     explicit FirewallClient(QObject *parent = nullptr);
 
     Q_INVOKABLE static QStringList knownProtocols();
