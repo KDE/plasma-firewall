@@ -90,8 +90,6 @@ void FirewalldJob::firewalldAction(const QByteArray &method, const QVariantList 
                 setErrorText(reply.reply().errorMessage());
                 setError(DBUSFIREWALLDDERROR);
                 qDebug() << errorString();
-                emitResult();
-                return;
             }
             /* Firewalld does not save directly, need to call the another dbus interface
              * namespace SAVE define the bus,path,interface and method.

@@ -366,7 +366,6 @@ QVariantList FirewalldClient::buildRule(const Rule *r) const
     }
 
     QString ipvf = r->ipv6() == true ? "ipv6" : "ipv4";
-
     qCDebug(FirewallDClientDebug) << firewalld_direct_rule;
     return QVariantList({ipvf, args.value("table"), args.value("chain"), args.value("priority"), firewalld_direct_rule});
 }
@@ -429,7 +428,7 @@ KJob *FirewalldClient::save()
         }
         queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
     });
-    job->exec();
+    job->start();
     return job;
 };
 
