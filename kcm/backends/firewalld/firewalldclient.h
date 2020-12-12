@@ -64,7 +64,7 @@ protected slots:
 
 protected:
     QVector<Rule*> extractRulesFromResponse(const QList<firewalld_reply> &reply) const;
-    QVariantList buildRule(const Rule *r, FirewallClient::Ipv ipvfamily = FirewallClient::IPV4) const;
+    QVariantList buildRule(const Rule *r) const;
     void setProfile(Profile profile);
 
 private:

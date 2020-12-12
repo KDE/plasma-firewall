@@ -306,7 +306,7 @@ bool FirewalldClient::isTcpAndUdp(int protocolIdx)
     return false;
 }
 
-QVariantList FirewalldClient::buildRule(const Rule *r, FirewallClient::Ipv ipvfamily) const
+QVariantList FirewalldClient::buildRule(const Rule *r) const
 {
     QVariantMap args {
         {"priority", 0},
@@ -365,7 +365,7 @@ QVariantList FirewalldClient::buildRule(const Rule *r, FirewallClient::Ipv ipvfa
         firewalld_direct_rule << "-i" << value;
     }
 
-    auto ipvf = ipvfamily == r->ipv6() ? "ipv6" : "ipv4";
+    QString ipvf = r->ipv6() == true ? "ipv6" : "ipv4";
 
     qCDebug(FirewallDClientDebug) << firewalld_direct_rule;
     return QVariantList({ipvf, args.value("table"), args.value("chain"), args.value("priority"), firewalld_direct_rule});
