@@ -23,7 +23,7 @@ ViewBase {
         {title: i18n("Program"), role: "program", width: Kirigami.Units.gridUnit * 7}
     ]
     defaultSortRole: "program"
-    emptyListText: i18n("There are currently no open connections.")
+    emptyListText: i18n("There are currently no open connections")
 
     blacklistRuleFactory: kcm.client.createRuleFromConnection
     blacklistRuleRoleNames: [

@@ -297,7 +297,7 @@ KCM.ScrollViewKCM {
             Kirigami.PlaceholderMessage {
                 anchors.centerIn: parent
                 width: parent.width - (Kirigami.Units.largeSpacing * 4)
-                text: i18n("No firewall rules have been added.")
+                text: i18n("No firewall rules have been added")
                 visible: tableView.rowCount === 0
             }
 
