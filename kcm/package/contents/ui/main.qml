@@ -11,7 +11,7 @@ import QtQuick.Controls 1.4 as QQC1 // for Table View.
 import org.kde.kcm 1.2 as KCM
 import org.kcm.firewall 1.0
 
-import org.kde.kirigami 2.10 as Kirigami
+import org.kde.kirigami 2.14 as Kirigami
 
 KCM.ScrollViewKCM {
     id: root
@@ -294,14 +294,10 @@ KCM.ScrollViewKCM {
                 }
             }
 
-            Kirigami.Heading {
-                anchors.fill: parent
+            Kirigami.PlaceholderMessage {
+                anchors.centerIn: parent
+                width: parent.width - (Kirigami.Units.largeSpacing * 4)
                 text: i18n("No firewall rules have been added.")
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                wrapMode: Text.WordWrap
-                enabled: false
-                level: 3
                 visible: tableView.rowCount === 0
             }
 
@@ -406,7 +402,7 @@ KCM.ScrollViewKCM {
         }
 
         QQC2.Button {
-            icon.name: "about"
+            icon.name: "help-about"
             text: i18n("About")
             onClicked: kcm.push("About.qml")
         }
