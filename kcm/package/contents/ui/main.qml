@@ -345,6 +345,7 @@ KCM.ScrollViewKCM {
                     QQC2.ToolButton {
                         Layout.fillHeight: true
                         icon.name: "edit-entry"
+                        visible: kcm.client.supportsRuleUpdate
                         onClicked: tableView.editRule(styleData.row)
                         QQC2.ToolTip {
                             text: i18nc("@info:tooltip", "Edit Rule")

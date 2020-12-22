@@ -670,5 +670,10 @@ bool UfwClient::isCurrentlyLoaded() const
     return process.exitCode() == EXIT_SUCCESS;
 }
 
+bool UfwClient::supportsRuleUpdate() const
+{
+    return true;
+}
+
 #include "ufwclient.moc"
 

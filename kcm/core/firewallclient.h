@@ -47,6 +47,7 @@ class KCM_FIREWALL_CORE_EXPORT FirewallClient : public QObject
     Q_PROPERTY(bool hasExecutable READ hasExecutable NOTIFY hasExecutableChanged)
     Q_PROPERTY(Capabilities capabilities READ capabilities NOTIFY capabilitiesChanged)
     Q_PROPERTY(QString name READ name)
+    Q_PROPERTY(bool supportsRuleUpdate READ supportsRuleUpdate CONSTANT)
 
 public:
     enum DefaultDataBehavior { DontReadDefaults, ReadDefaults };
@@ -97,7 +98,7 @@ public:
     QString defaultOutgoingPolicy() const;
     QString backend() const;
     bool logsAutoRefresh() const;
-
+    bool supportsRuleUpdate() const;
     enum Capability {
         None = 0x0,
         SaveCapability = 0x1,

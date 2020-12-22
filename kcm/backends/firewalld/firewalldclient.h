@@ -59,6 +59,8 @@ public:
     void refreshProfiles() override;
     QStringList knownProtocols() override;
     bool isCurrentlyLoaded() const override;
+    bool supportsRuleUpdate() const override;
+
 protected slots:
     void refreshLogs();
 

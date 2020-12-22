@@ -362,3 +362,11 @@ QString FirewallClient::version() const
     }
     return m_currentBackend->version();
 }
+
+bool FirewallClient::supportsRuleUpdate() const
+{
+    if (!m_currentBackend) {
+        return false;
+    }
+    return m_currentBackend->supportsRuleUpdate();
+}

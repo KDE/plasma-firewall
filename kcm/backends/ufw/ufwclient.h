@@ -67,6 +67,7 @@ public:
     static IFirewallClientBackend *createMethod(FirewallClient *parent);
     void refreshProfiles() override;
     bool isCurrentlyLoaded() const override;
+    bool supportsRuleUpdate() const override;
 
 protected slots:
     void refreshLogs();

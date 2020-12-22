@@ -46,6 +46,8 @@ public:
     Q_INVOKABLE virtual KJob *setDefaultOutgoingPolicy(QString defaultOutgoingPolicy) = 0;
     Q_INVOKABLE virtual KJob *save();
 
+    Q_INVOKABLE virtual bool supportsRuleUpdate() const = 0;
+
     /* returns the --version of the software
      * the base runs `firewallbackend --help`
      * firewalld does not have --help. :|

@@ -181,21 +181,13 @@ KJob *FirewalldClient::removeRule(int index)
 
 KJob *FirewalldClient::updateRule(Rule *ruleWrapper)
 {
-    if (ruleWrapper == nullptr) {
-        qWarning() << "NULL rule";
-        return nullptr;
-    }
-    KJob *addJob = addRule(ruleWrapper);
-    KJob *removeJob = removeRule(ruleWrapper->position());
-    connect(removeJob, &KJob::finished, this, [addJob, removeJob]() {
-        if (removeJob->error()) {
-            qCDebug(FirewallDClientDebug) << removeJob->errorString() << removeJob->error();
-            return;
-        }
-        addJob->start();
-    });
+    /* not supported by the backend */
+    return nullptr;
+}
 
-    return addJob;
+bool FirewalldClient::supportsRuleUpdate() const
+{
+    return false;
 }
 
 KJob *FirewalldClient::moveRule(int from, int to)
