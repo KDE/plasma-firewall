@@ -447,6 +447,7 @@ QVector<Rule*> FirewalldClient::extractRulesFromResponse(const QList<firewalld_r
         return {};
     }
 
+    int i = 0;
     for (auto r : reply) {
         const auto action = r.rules.at(
             r.rules.indexOf("-j") + 1) == "ACCEPT" ? Types::POLICY_ALLOW :
@@ -483,10 +484,11 @@ QVector<Rule*> FirewalldClient::extractRulesFromResponse(const QList<firewalld_r
                 r.chain == "OUTPUT" ? interface_out : "",
                 "",
                 "",
-                r.priority,
+                i,
                 r.ipv == "ipv6"
             )
         );
+        i += 1;
     }
 
     return message_rules;
