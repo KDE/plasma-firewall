@@ -92,7 +92,6 @@ public:
     Types::Logging logging() const;
 
     // TODO: are they really necessary?
-    QString protocolStr() const;
     QString ipV6Str() const;
     QString interfaceStr() const;
 
