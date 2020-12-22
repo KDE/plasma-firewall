@@ -376,26 +376,9 @@ KJob *UfwClient::removeRule(int index)
 
 KJob *UfwClient::updateRule(Rule *r)
 {
-    if (!r) {
-        qWarning() << "nullptr rule";
-        return nullptr;
-    }
-
-    QVariantMap args {
-        {"cmd", "editRule"},
-        {"xml", toXml(r)},
-    };
-
-    KAuth::Action modifyAction = buildModifyAction(args);
-    KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
-        if (!job->error()) {
-            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::ListenProfiles);
-        }
-    });
-
-    job->start();
-    return job;
+    /* UFW does not support update rules. the tests showed that remove / insert is flacky. */
+    Q_UNUSED(r);
+    return nullptr;
 }
 
 KJob *UfwClient::moveRule(int from, int to)
@@ -672,7 +655,7 @@ bool UfwClient::isCurrentlyLoaded() const
 
 bool UfwClient::supportsRuleUpdate() const
 {
-    return true;
+    return false;
 }
 
 #include "ufwclient.moc"
