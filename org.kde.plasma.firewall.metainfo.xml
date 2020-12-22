@@ -15,6 +15,7 @@
   <name xml:lang="en-GB">Plasma Firewall</name>
   <name xml:lang="es">Cortafuegos de Plasma</name>
   <name xml:lang="et">Plasma tulemüür</name>
+  <name xml:lang="eu">Plasma suhesia</name>
   <name xml:lang="fi">Plasma Firewall</name>
   <name xml:lang="fr">Pare-feu de Plasma</name>
   <name xml:lang="hu">Plasma Firewall</name>
@@ -34,6 +35,7 @@
   <summary xml:lang="en-GB">Firewall Interface for Plasma</summary>
   <summary xml:lang="es">Interfaz de cortafuegos para Plasma</summary>
   <summary xml:lang="et">Plasma tulemüüriliides</summary>
+  <summary xml:lang="eu">Plasmarako suhesi interfazea</summary>
   <summary xml:lang="fi">Plasman palomuurikäyttöliittymä</summary>
   <summary xml:lang="fr">Interface du pare-feu de Plasma</summary>
   <summary xml:lang="hu">Tűzfalbeállítú felület a Plasmához</summary>
@@ -54,6 +56,7 @@
     <p xml:lang="en-GB">Plasma Firewall is a multi-firewall frontend for ease of network configurations.</p>
     <p xml:lang="es">El cortafuegos de Plasma es una interfaz para varios cortafuegos que facilita la configuración de redes.</p>
     <p xml:lang="et">Plasma tulemüür on võrguseadistuse hõlbustamiseks loodud kasutajaliides mitmele tulemüürile.</p>
+    <p xml:lang="eu">Plasma Suhesia sare-konfigurazioak errazteko suhesi anitzerako aurrealdeko bat da.</p>
     <p xml:lang="fi">Plasma Firewall on verkkoasetuksia helpottava monen palomuurin käyttöliittymä.</p>
     <p xml:lang="fr">Le pare-feu de Plasma est une interface pour de multiples pare-feux, pour faciliter les configurations de réseaux.</p>
     <p xml:lang="hu">A Plasma Firewall egy többfajta tűzfalat kezelni képes előtétprogram a hálózati beállítások könnyebb módosításához.</p>
@@ -77,6 +80,7 @@
       <caption xml:lang="en-GB">The plasma firewall showing a default configuration page</caption>
       <caption xml:lang="es">El cortafuegos de Plasma mostrando una página de configuración predeterminada</caption>
       <caption xml:lang="et">Plasma tulemüüri vaikimisi seadistusleht</caption>
+      <caption xml:lang="eu">Plasma suhesia lehenetsitako konfigurazio-orri bat erakusten duela</caption>
       <caption xml:lang="fi">Plasma Firewallin oletusasetussivu</caption>
       <caption xml:lang="fr">Le pare-feu de Plasma affichant une page par défaut de configuration</caption>
       <caption xml:lang="hu">A Plasma Firewall alapértelmezett kezdőoldala</caption>
@@ -100,6 +104,7 @@
   <developer_name xml:lang="en-GB">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="es">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="et">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
+  <developer_name xml:lang="eu">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="fi">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="fr">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="hu">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
