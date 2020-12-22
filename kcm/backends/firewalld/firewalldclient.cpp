@@ -463,7 +463,7 @@ QVector<Rule*> FirewalldClient::extractRulesFromResponse(const QList<firewalld_r
         }
 
         const QString protocolName = r.rules.at(r.rules.indexOf("-p") + 1);
-        const int protocolIdx = FirewallClient::knownProtocols().indexOf(protocolName);
+        const int protocolIdx = FirewallClient::knownProtocols().indexOf(protocolName.toUpper());
 
         const int sourcePortIdx = r.rules.indexOf(QRegExp("^" + QRegExp::escape("--sport") + ".+"));
         const auto sourcePort = sourcePortIdx != -1 ? r.rules.at(sourcePortIdx).section("=", -1) : QStringLiteral("");
