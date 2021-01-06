@@ -130,7 +130,7 @@ private:
     void setLogsAutoRefresh(bool logsAutoRefresh);
     void queryStatus(DefaultDataBehavior defaultDataBehavior = ReadDefaults, ProfilesBehavior ProfilesBehavior = ListenProfiles);
 
-    static IFirewallClientBackend *m_currentBackend;
+    static IFirewallClientBackend *m_currentBackend = nullptr;
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(FirewallClient::Capabilities)
