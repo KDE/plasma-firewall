@@ -26,10 +26,10 @@ KCMFirewall::KCMFirewall(QObject *parent, const QVariantList &args)
     : KQuickAddons::ConfigModule(parent, args)
     , m_client(new FirewallClient(this))
 {
-    KAboutData *about = new KAboutData("kcm_firewall", i18n("Configure Firewall"), "0.1", QString(), KAboutLicense::GPL_V3);
-    about->addAuthor("Alexis López Zubieta", QString(), "azubieta90@gmail.com");
-    about->addAuthor("Tomaz Canabrava", QString(), "tcanabrava@kde.org");
-    about->addAuthor("Lucas Januario", QString(), "lbjanuario@gmail.com");
+    KAboutData *about = new KAboutData("kcm_firewall", i18nc("@title", "Configure Firewall"), "0.1", QString(), KAboutLicense::GPL_V3);
+    about->addAuthor(i18nc("@info:credit", "Alexis López Zubieta"), QString(), "azubieta90@gmail.com");
+    about->addAuthor(i18nc("@info:credit", "Tomaz Canabrava"), QString(), "tcanabrava@kde.org");
+    about->addAuthor(i18nc("@info:credit", "Lucas Januario"), QString(), "lbjanuario@gmail.com");
 
     setAboutData(about);
 
