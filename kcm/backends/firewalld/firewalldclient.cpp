@@ -62,6 +62,10 @@ bool FirewalldClient::enabled() const
 
 KJob *FirewalldClient::setEnabled(const bool value)
 {
+    if (enabled() == value) {
+        return nullptr;
+    }
+
     SystemdJob *job = new SystemdJob(static_cast<SYSTEMD::actions>(value));
 
     connect(job, &KJob::result, this, [this, job, value] {

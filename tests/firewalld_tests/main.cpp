@@ -50,6 +50,13 @@ int main(int argc, char *argv[]) {
 void testDisableClient(FirewallClient* client) {
     // From here on, We will jump thru the usage via connects.
     KJob *enableJob = client->setEnabled(false);
+
+    // Ignore, we are already disabled.
+    if (enableJob == nullptr) {
+        testEnableClient(client);
+        return;
+    }
+
     QObject::connect(enableJob, &KJob::result, [client, enableJob]{ testDisableClientResult(client, enableJob); });
     enableJob->start();
 }
@@ -68,6 +75,13 @@ void testDisableClientResult(FirewallClient *client, KJob *job) {
 void testEnableClient(FirewallClient* client) {
     // From here on, We will jump thru the usage via connects.
     KJob *enableJob = client->setEnabled(true);
+
+    // Ignore, we are already enabled.
+    if (enableJob == nullptr) {
+        testCurrentRulesEmpty(client);
+        return;
+    }
+
     QObject::connect(enableJob, &KJob::result, [client, enableJob]{ testEnableClientResult(client, enableJob); });
     enableJob->start();
 }
