@@ -584,6 +584,7 @@ void UfwClient::refreshProfiles()
 QStringList UfwClient::knownProtocols() {
     return {i18n("Any"), "TCP", "UDP"};
 }
+
 QString UfwClient::toXml(Rule *r) const
 {
     QString xmlString;
@@ -593,6 +594,7 @@ QString UfwClient::toXml(Rule *r) const
     xml.writeStartElement(QStringLiteral("rule"));
 
     if (r->position() != 0) {
+        qDebug() << "Getting the position" << r->position();
         xml.writeAttribute(QStringLiteral("position"), QString::number(r->position()));
     }
 

@@ -289,6 +289,9 @@ ActionReply Helper::moveRule(const QVariantMap &args, const QString &cmd)
 ActionReply Helper::editRule(const QVariantMap &args, const QString &cmd)
 {
     checkFolder();
+
+    qDebug() << args["xml"].toString();
+
     return run({"--update=" + args["xml"].toString()}, {"--list"}, cmd);
 }
 
