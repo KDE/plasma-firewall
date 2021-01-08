@@ -69,5 +69,11 @@ SystemdJob::~SystemdJob() = default;
 
 void SystemdJob::start()
 {
+    // Calling those too quickly can seriously break firewalld.
+    // Known Error, SystemD bug: https://github.com/systemd/systemd/issues/11305
+    // firewalld.client: Job Error:  100 "Transaction for firewalld.service/start is destructive
+    // (firewalld.service has 'stop' job queued, but 'start' is included in transaction)."
+    //
+    // Adding a timer of around 8 seconds fixes the issue on my computer, but that does not seems to be a good thing.
     systemdAction(m_action);
 };
