@@ -2,6 +2,8 @@
 #include <QCoreApplication>
 
 #include "firewallclient.h"
+#include "rulelistmodel.h"
+
 #include <KJob>
 
 // Start
@@ -13,6 +15,8 @@ void testEnableClient(FirewallClient* client);
 void testEnableClientResult(FirewallClient* client, KJob *job);
 
 // Third Method
+void testCurrentRulesEmpty(FirewallClient* client);
+void testCurrentRulesEmptyResult(FirewallClient* client, KJob *job);
 
 int main(int argc, char *argv[]) {
     QCoreApplication app(argc, argv);
@@ -67,4 +71,22 @@ void testEnableClientResult(FirewallClient *client, KJob *job) {
     }
 
     qDebug() << "Enable client, expected: True, got:" << client->enabled();
+    testCurrentRulesEmpty(client);
 }
+
+void testCurrentRulesEmpty(FirewallClient* client)
+{
+    if (client->rulesModel()->rowCount() != 0) {
+        qDebug() << "We need a clean firewall rules to do the testing, please backup your rules and try again.";
+        exit(1);
+    }
+
+    qDebug() << "Number of current rules, Expected: 0, got:" << client->rulesModel()->rowCount();
+}
+
+void testCurrentRulesEmptyResult(FirewallClient* client)
+{
+
+}
+
+
