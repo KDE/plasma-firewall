@@ -23,6 +23,10 @@ void testCurrentRulesEmptyResult(FirewallClient* client);
 void testAddRules(FirewallClient* client);
 void testAddRulesResult(FirewallClient* client, KJob *job);
 
+// Fifth Method
+// void testRemoveRules(FirewallClient* client);
+// void testRemoveRulesResult(FirewallClient* client, KJob *job);
+
 int main(int argc, char *argv[]) {
     QCoreApplication app(argc, argv);
 
@@ -103,17 +107,37 @@ void testAddRules(FirewallClient* client) {
 
     QString interface = client->knownInterfaces()[0];
 
+    // Expected output
+    // firewalld.client: ("-j", "DROP", "-p", "tcp", "-d", "127.0.0.1", "--dport=21", "-s", "127.0.0.1", "--sport=12")
+    // firewalld.job: firewalld  "addRule" (
+    //     QVariant(QString, "ipv4"),
+    //     QVariant(QString, "filter"),
+    //     QVariant(QString, "INPUT"),
+    //     QVariant(int, 0),
+    //     QVariant(QStringList, ("-j", "DROP", "-p", "tcp", "-d", "127.0.0.1", "--dport=21", "-s", "127.0.0.1", "--sport=12"))
+    //  )
+
+    // Current Output:
+    // firewalld.client: ("-j", "DROP", "-p", "tcp", "-d", "127.0.0.1", "--dport=21", "-s", "127.0.0.1", "--sport=12")
+    //
+    // firewalld.job: firewalld  "addRule" (
+    //     QVariant(QString, "ipv4"),
+    //     QVariant(QString, "filter"),
+    //     QVariant(QString, "INPUT"),
+    //     QVariant(int, 0),
+    //     QVariant(QStringList, ("-j", "DROP", "-p", "tcp", "-d", "127.0.0.1", "--dport=21", "-s", "127.0.0.1", "--sport=12")))
+
     auto *rule = new Rule(
-        Types::Policy::POLICY_ALLOW, // Policy
+        Types::Policy::POLICY_DENY, // Policy
         true,                        // Incomming?
-        Types::Logging::LOGGING_ALL, // Logging
+        Types::Logging::LOGGING_OFF, // Logging
         0,                           // Protocol Id on knownProtocols
         "127.0.0.1",                 // Source Host
         "12",                        // Source Port
         "127.0.0.1",                 // Destination Port
         "21",                        // Destination Port
-        interface,                   // Interface In
-        interface,                   // Interface Out
+        QString(),                   // Interface In
+        QString(),                   // Interface Out
         "source_app",                // Source App
         "destination_app",           // Destination App
         0,                           // Index (TODO: Remove This)
@@ -121,12 +145,16 @@ void testAddRules(FirewallClient* client) {
 
     KJob *job = client->addRule(rule);
     QObject::connect(job, &KJob::result, [client, job]{ testAddRulesResult(client, job); });
-    // This job is started inside of the addRule
+
+    // TODO:
+    // This job is started inside of the addRule, currently we have an inconsistency on what's
+    // started by default and what's started by Qml. We need to fix this.
     // job->start();
 }
 
 void testAddRulesResult(FirewallClient* client, KJob *job)
 {
+    qDebug() << "Getting the result of the Add Rule";
     if (job->error() != KJob::NoError) {
         qDebug() << "Add rules failed" << job->errorString();
         exit(1);

@@ -147,6 +147,8 @@ KJob *FirewalldClient::addRule(Rule *rule)
         return nullptr;
     }
 
+    qDebug() << rule->toStr();
+
     QVariantList dbusArgs = buildRule(rule);
     FirewalldJob *job = new FirewalldJob("addRule", dbusArgs);
 
