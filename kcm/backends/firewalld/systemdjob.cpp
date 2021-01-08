@@ -74,6 +74,7 @@ void SystemdJob::start()
     // firewalld.client: Job Error:  100 "Transaction for firewalld.service/start is destructive
     // (firewalld.service has 'stop' job queued, but 'start' is included in transaction)."
     //
-    // Adding a timer of around 8 seconds fixes the issue on my computer, but that does not seems to be a good thing.
+    // Adding a timer of around 8 seconds fixes the issue on my computer,
+    // but that does not seems to be a good thing.
     systemdAction(m_action);
 };
