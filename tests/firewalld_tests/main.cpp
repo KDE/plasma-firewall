@@ -49,4 +49,22 @@ void testDisableClientResult(FirewallClient *client, KJob *job) {
     }
 
     qDebug() << "Disable client, expected: False, got:" << client->enabled();
+    testEnableClient(client);
+}
+
+void testEnableClient(FirewallClient* client) {
+    // From here on, We will jump thru the usage via connects.
+    KJob *enableJob = client->setEnabled(true);
+    QObject::connect(enableJob, &KJob::result, [client, enableJob]{ testEnableClientResult(client, enableJob); });
+    enableJob->start();
+}
+
+void testEnableClientResult(FirewallClient *client, KJob *job) {
+    if (job->error() != KJob::NoError) {
+        qDebug() << "Error disabling the client, aborting." << client->enabled();
+        qDebug() << job->errorString();
+        exit(1);
+    }
+
+    qDebug() << "Enable client, expected: True, got:" << client->enabled();
 }
