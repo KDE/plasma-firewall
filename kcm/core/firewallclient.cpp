@@ -30,7 +30,6 @@ IFirewallClientBackend *FirewallClient::m_currentBackend = nullptr;
 FirewallClient::FirewallClient(QObject *parent)
     : QObject(parent)
 {
-    setBackend({"ufw", "firewalld"});
 }
 
 QStringList FirewallClient::knownProtocols()

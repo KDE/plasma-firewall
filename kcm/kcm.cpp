@@ -46,6 +46,9 @@ KCMFirewall::KCMFirewall(QObject *parent, const QVariantList &args)
     qmlRegisterUncreatableType<LogListModel>("org.kcm.firewall", 1, 0, "LogListModel", "Only created from the UfwClient.");
     qmlRegisterType<NetstatClient>("org.kcm.firewall", 1, 0, "NetstatClient");
     qmlRegisterUncreatableType<ConnectionsModel>("org.kcm.firewall", 1, 0, "ConnectionsModel", "Use the NetstatClient");
+
+    // TODO: Make this configurable.
+    m_client->setBackend({"ufw", "firewalld"});
 }
 
 KCMFirewall::~KCMFirewall()

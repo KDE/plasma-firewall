@@ -53,6 +53,7 @@ public:
     enum DefaultDataBehavior { DontReadDefaults, ReadDefaults };
     enum ProfilesBehavior { DontListenProfiles, ListenProfiles };
     explicit FirewallClient(QObject *parent = nullptr);
+    void setBackend(const QStringList &backendList);
 
     Q_INVOKABLE static QStringList knownProtocols();
     Q_INVOKABLE static QStringList knownInterfaces();
@@ -126,7 +127,6 @@ signals:
     void showErrorMessage(const QString &message);
 
 private:
-    void setBackend(const QStringList &backendList);
     void setLogsAutoRefresh(bool logsAutoRefresh);
     void queryStatus(DefaultDataBehavior defaultDataBehavior = ReadDefaults, ProfilesBehavior ProfilesBehavior = ListenProfiles);
 
