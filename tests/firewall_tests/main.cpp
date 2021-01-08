@@ -27,14 +27,36 @@ void testAddRulesResult(FirewallClient* client, KJob *job);
 // void testRemoveRules(FirewallClient* client);
 // void testRemoveRulesResult(FirewallClient* client, KJob *job);
 
+void printHelp() {
+    qDebug() << "Usage Information:";
+    qDebug() << "$" << "firewall_test backend_name";
+    qDebug() << "Where backend name is ether ufw or firewalld.";
+    qDebug() << "Make sure you have no firewall running";
+    qDebug() << "And make sure you have no profile configured on either firewall.";
+}
+
 int main(int argc, char *argv[]) {
     QCoreApplication app(argc, argv);
 
-    qDebug() << "UFW test called";
-    auto *client = new FirewallClient();
-    client->setBackend({"ufw"});
+    qDebug() << "argc" << argc;
+    if (argc != 2) {
+        qDebug() << "Invalid number of arguments, please use:";
+        printHelp();
+        exit(1);
+    }
 
-    qDebug() << "Backend Loaded" << client->backend() << "expected ufw";
+    QString firewallBackendName = argv[1];
+    if (firewallBackendName != "ufw" && firewallBackendName != "firewalld") {
+        printHelp();
+        exit(1);
+    }
+
+    qDebug() << firewallBackendName << "test called";
+
+    auto *client = new FirewallClient();
+    client->setBackend({firewallBackendName});
+
+    qDebug() << "Backend Loaded" << client->backend() << "expected" << firewallBackendName;
 
     // Initial backend state.
     qDebug() << "Client Enabled?" << client->enabled();
@@ -80,6 +102,7 @@ void testEnableClient(FirewallClient* client) {
         testCurrentRulesEmpty(client);
         return;
     }
+
     QObject::connect(enableJob, &KJob::result, [client, enableJob]{ testEnableClientResult(client, enableJob); });
     enableJob->start();
 }
@@ -119,7 +142,7 @@ void testAddRules(FirewallClient* client) {
 
     QString interface = client->knownInterfaces()[0];
 
-    // Expected output
+    // Expected output for firewalld
     // firewalld.client: ("-j", "DROP", "-p", "tcp", "-d", "127.0.0.1", "--dport=21", "-s", "127.0.0.1", "--sport=12")
     // firewalld.job: firewalld  "addRule" (
     //     QVariant(QString, "ipv4"),
@@ -129,7 +152,7 @@ void testAddRules(FirewallClient* client) {
     //     QVariant(QStringList, ("-j", "DROP", "-p", "tcp", "-d", "127.0.0.1", "--dport=21", "-s", "127.0.0.1", "--sport=12"))
     //  )
 
-    // Current Output:
+    // Current Output for firewalld:
     // firewalld.client: ("-j", "DROP", "-p", "tcp", "-d", "127.0.0.1", "--dport=21", "-s", "127.0.0.1", "--sport=12")
     //
     // firewalld.job: firewalld  "addRule" (

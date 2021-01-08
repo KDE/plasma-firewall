@@ -1,3 +1,2 @@
-add_subdirectory(firewalld_tests)
-add_subdirectory(ufw_tests)
+add_subdirectory(firewall_tests)
 add_subdirectory(ss_tests)
