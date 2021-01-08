@@ -162,6 +162,29 @@ void testAddRules(FirewallClient* client) {
     //     QVariant(int, 0),
     //     QVariant(QStringList, ("-j", "DROP", "-p", "tcp", "-d", "127.0.0.1", "--dport=21", "-s", "127.0.0.1", "--sport=12")))
 
+    // Expected output for ufw
+    // Debug message from helper: Cmd args passed to ufw: (
+    // "--add=<rule action=\"deny\"
+    //         direction=\"in\"
+    //         dport=\"21\"
+    //         sport=\"12\"
+    //         protocol=\"TCP\"
+    //         dst=\"127.0.0.1\"
+    //         src=\"127.0.0.1\"
+    //         logtype=\"\"
+    //         v6=\"False\"/>")
+
+    // Current Output for ufw
+    // Debug message from helper: Cmd args passed to ufw: (
+    // "--add=<rule action=\"deny\"
+    //    direction=\"in\"
+    //    dport=\"21\"
+    //    sport=\"12\"
+    //    dst=\"127.0.0.1\"
+    //    src=\"127.0.0.1\"
+    //    logtype=\"\"
+    //    v6=\"False\"/>")
+
     auto *rule = new Rule(
         Types::Policy::POLICY_DENY, // Policy
         true,                        // Incomming?
@@ -173,8 +196,8 @@ void testAddRules(FirewallClient* client) {
         "21",                        // Destination Port
         QString(),                   // Interface In
         QString(),                   // Interface Out
-        "source_app",                // Source App
-        "destination_app",           // Destination App
+        QString(),                   // Source App // Only used in UFW - Remove?
+        QString(),                   // Destination App // Only used in UFW - Remove?
         0,                           // Index (TODO: Remove This)
         false);                      // IPV6?
 
