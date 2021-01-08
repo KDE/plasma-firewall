@@ -3,6 +3,7 @@
 
 #include "firewallclient.h"
 #include "rulelistmodel.h"
+#include "rule.h"
 
 #include <KJob>
 
@@ -16,7 +17,11 @@ void testEnableClientResult(FirewallClient* client, KJob *job);
 
 // Third Method
 void testCurrentRulesEmpty(FirewallClient* client);
-void testCurrentRulesEmptyResult(FirewallClient* client, KJob *job);
+void testCurrentRulesEmptyResult(FirewallClient* client);
+
+// Fourth Method
+void testAddRules(FirewallClient* client);
+void testAddRulesResult(FirewallClient* client, KJob *job);
 
 int main(int argc, char *argv[]) {
     QCoreApplication app(argc, argv);
@@ -82,11 +87,51 @@ void testCurrentRulesEmpty(FirewallClient* client)
     }
 
     qDebug() << "Number of current rules, Expected: 0, got:" << client->rulesModel()->rowCount();
+    testCurrentRulesEmptyResult(client);
 }
 
 void testCurrentRulesEmptyResult(FirewallClient* client)
 {
-
+    testAddRules(client);
 }
 
+
+// Fourth Method
+void testAddRules(FirewallClient* client) {
+    qDebug() << "Known Protocols" << client->knownProtocols();
+    qDebug() << "Known Interfaces" << client->knownInterfaces();
+
+    QString interface = client->knownInterfaces()[0];
+
+    auto *rule = new Rule(
+        Types::Policy::POLICY_ALLOW, // Policy
+        true,                        // Incomming?
+        Types::Logging::LOGGING_ALL, // Logging
+        0,                           // Protocol Id on knownProtocols
+        "127.0.0.1",                 // Source Host
+        "12",                        // Source Port
+        "127.0.0.1",                 // Destination Port
+        "21",                        // Destination Port
+        interface,                   // Interface In
+        interface,                   // Interface Out
+        "source_app",                // Source App
+        "destination_app",           // Destination App
+        0,                           // Index (TODO: Remove This)
+        false);                      // IPV6?
+
+    KJob *job = client->addRule(rule);
+    QObject::connect(job, &KJob::result, [client, job]{ testAddRulesResult(client, job); });
+    // This job is started inside of the addRule
+    // job->start();
+}
+
+void testAddRulesResult(FirewallClient* client, KJob *job)
+{
+    if (job->error() != KJob::NoError) {
+        qDebug() << "Add rules failed" << job->errorString();
+        exit(1);
+    }
+
+    qDebug() << "Add Rules succeeded, number of rules:" << client->rulesModel()->rowCount();
+}
 
