@@ -105,8 +105,8 @@ KJob *UfwClient::setEnabled(bool value)
     };
 
     KAuth::Action modifyAction = buildModifyAction(args);
-
     KAuth::ExecuteJob *job = modifyAction.execute();
+
     connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
         qDebug() << "Execut resulted successfully";
         if (!job->error()) {
