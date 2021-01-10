@@ -21,7 +21,7 @@ void testCurrentRulesEmptyResult(FirewallClient* client);
 
 // Fourth Method
 void testAddRules(FirewallClient* client);
-void testAddRulesResult(FirewallClient* client, KJob *job);
+void testAddRulesResult(FirewallClient* client);
 
 // Fifth Method
 // void testRemoveRules(FirewallClient* client);
@@ -91,7 +91,7 @@ void testDisableClientResult(FirewallClient *client) {
 
 void testEnableClient(FirewallClient* client) {
     qDebug() << "Test Enable the Firewall";
-#if 0
+
     // From here on, We will jump thru the usage via connects.
     KJob *enableJob = client->setEnabled(true);
 
@@ -111,7 +111,6 @@ void testEnableClient(FirewallClient* client) {
     });
 
     enableJob->start();
-#endif
 }
 
 void testEnableClientResult(FirewallClient *client) {
@@ -127,7 +126,6 @@ void testCurrentRulesEmpty(FirewallClient* client)
     }
 
     Q_ASSERT(client->rulesModel()->rowCount() == 0);
-
     testCurrentRulesEmptyResult(client);
 }
 
@@ -200,8 +198,18 @@ void testAddRules(FirewallClient* client) {
         0,                           // Index (TODO: Remove This)
         false);                      // IPV6?
 
-    KJob *job = client->addRule(rule);
-    QObject::connect(job, &KJob::result, [client, job]{ testAddRulesResult(client, job); });
+    // This call should perhaps have an client::addRuleFinished(), but currently we need
+    // to rely on the model refresh
+    client->addRule(rule);
+
+    // Nice hack: One time connections.
+    QMetaObject::Connection * const connection = new QMetaObject::Connection;
+        *connection = QObject::connect(client->rulesModel(), &RuleListModel::modelReset, [client, connection]{
+            qDebug() << "Add rule finished.";
+            QObject::disconnect(*connection);
+            delete connection;
+            testAddRulesResult(client);
+    });
 
     // TODO:
     // This job is started inside of the addRule, currently we have an inconsistency on what's
@@ -209,13 +217,8 @@ void testAddRules(FirewallClient* client) {
     // job->start();
 }
 
-void testAddRulesResult(FirewallClient* client, KJob *job)
+void testAddRulesResult(FirewallClient* client)
 {
-    if (job->error() != KJob::NoError) {
-        qDebug() << "Add rules failed" << job->errorString();
-        exit(1);
-    }
-
-    qDebug() << client->rulesModel()->rowCount();
+    qDebug() << "Add Rules finished, Rules:" << client->rulesModel()->rowCount();
 }
 
