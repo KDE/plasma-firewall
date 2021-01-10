@@ -83,11 +83,11 @@ private:
     QStringList m_rawLogs;
     Profile m_currentProfile;
     RuleListModel *m_rulesModel;
-    LogListModel *m_logs = nullptr;
+    LogListModel *m_logs;
     QTimer m_logsRefreshTimer;
     bool m_logsAutoRefresh;
     KAuth::Action m_queryAction;
-    bool m_busy = false;
+    bool m_busy;
 };
 
 
