@@ -415,6 +415,10 @@ KCM.ScrollViewKCM {
             firewallInlineErrorMessage.text = i18n("Please install a firewall, such as ufw or firewalld");
             firewallInlineErrorMessage.visible = true;
             enabledCheckBox.enabled = false;
+        } else {
+            // Initialize the client's status.
+            kcm.client.refresh();
         }
     }
 }
+

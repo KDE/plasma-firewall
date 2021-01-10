@@ -63,14 +63,10 @@ UfwClient::UfwClient(QObject *parent, const QVariantList &args)
     : IFirewallClientBackend(parent, args)
     , m_rulesModel(new RuleListModel(this))
     , m_logs(nullptr)
+    , m_busy(false)
+
 {
     queryExecutable("ufw");
-    // HACK: Querrying the firewall status in this context
-    // creates a segmentation fault error in some situations
-    // due to an usage of the rootObject before it's
-    // initialization. So, it's delayed a little.
-    //    refresh();
-    QTimer::singleShot(100, this, &UfwClient::refresh);
 }
 
 QString UfwClient::name() const

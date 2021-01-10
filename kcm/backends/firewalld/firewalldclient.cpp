@@ -35,12 +35,7 @@ FirewalldClient::FirewalldClient(QObject *parent, const QVariantList &args)
     , m_rulesModel(new RuleListModel(this))
 {
     queryExecutable("firewalld");
-    // HACK: Querrying the firewall status in this context
-    // creates a segmentation fault error in some situations
-    // due to an usage of the rootObject before it's
-    // initialization. So, it's delayed a little.
-    //    refresh();
-    QTimer::singleShot(1, this, &FirewalldClient::refresh);
+
     qDBusRegisterMetaType<firewalld_reply>();
     qDBusRegisterMetaType<QList<firewalld_reply>>();
 }
@@ -530,7 +525,6 @@ bool FirewalldClient::isCurrentlyLoaded() const
     process.start(name, args);
     process.waitForFinished();
 
-    // systemctl returns 0 for status if the app is loaded, and 3 otherwise.
     // systemctl returns 0 for status if the app is loaded, and 3 otherwise.
     qDebug() << "Firewalld is loaded?" << process.exitCode();
 
