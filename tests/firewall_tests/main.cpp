@@ -24,8 +24,8 @@ void testAddRules(FirewallClient* client);
 void testAddRulesResult(FirewallClient* client);
 
 // Fifth Method
-// void testRemoveRules(FirewallClient* client);
-// void testRemoveRulesResult(FirewallClient* client, KJob *job);
+void testRemoveRules(FirewallClient* client);
+void testRemoveRulesResult(FirewallClient* client);
 
 void printHelp() {
     qDebug() << "Usage Information:";
@@ -219,6 +219,21 @@ void testAddRules(FirewallClient* client) {
 
 void testAddRulesResult(FirewallClient* client)
 {
-    qDebug() << "Add Rules finished, Rules:" << client->rulesModel()->rowCount();
+    Q_ASSERT(client->rulesModel()->rowCount() == 1);
+    client->removeRule(0);
+
+    // Nice hack: One time connections.
+    QMetaObject::Connection * const connection = new QMetaObject::Connection;
+        *connection = QObject::connect(client->rulesModel(), &RuleListModel::modelReset, [client, connection]{
+            qDebug() << "Remove Rule Finished.";
+            QObject::disconnect(*connection);
+            delete connection;
+            testRemoveRulesResult(client);
+    });
+
 }
 
+void testRemoveRulesResult(FirewallClient *client) {
+    Q_ASSERT(client->rulesModel()->rowCount() == 0);
+    qDebug() << "Test Finished";
+}
