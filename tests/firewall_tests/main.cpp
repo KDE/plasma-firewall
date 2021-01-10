@@ -9,11 +9,11 @@
 
 // Start
 void testDisableClient(FirewallClient* client);
-void testDisableClientResult(FirewallClient* client, KJob *job);
+void testDisableClientResult(FirewallClient* client);
 
 // Second Method.
 void testEnableClient(FirewallClient* client);
-void testEnableClientResult(FirewallClient* client, KJob *job);
+void testEnableClientResult(FirewallClient* client);
 
 // Third Method
 void testCurrentRulesEmpty(FirewallClient* client);
@@ -50,16 +50,11 @@ int main(int argc, char *argv[]) {
         printHelp();
         exit(1);
     }
-
-    qDebug() << firewallBackendName << "test called";
+    qDebug() << firewallBackendName << "test starting";
 
     auto *client = new FirewallClient();
     client->setBackend({firewallBackendName});
-
-    qDebug() << "Backend Loaded" << client->backend() << "expected" << firewallBackendName;
-
-    // Initial backend state.
-    qDebug() << "Client Enabled?" << client->enabled();
+    Q_ASSERT(client->backend() == firewallBackendName);
 
     // Start trying to disable, the order of calls is the same as the definition order.
     // Please don't change as this is really annoying to test.
@@ -69,7 +64,7 @@ int main(int argc, char *argv[]) {
 }
 
 void testDisableClient(FirewallClient* client) {
-    // From here on, We will jump thru the usage via connects.
+    qDebug() << "Test Disable the Firewall";
     KJob *enableJob = client->setEnabled(false);
 
     // Ignore, we are already disabled.
@@ -78,22 +73,25 @@ void testDisableClient(FirewallClient* client) {
         return;
     }
 
-    QObject::connect(enableJob, &KJob::result, [client, enableJob]{ testDisableClientResult(client, enableJob); });
+    // Nice hack: One time connections.
+    QMetaObject::Connection * const connection = new QMetaObject::Connection;
+        *connection = QObject::connect(client, &FirewallClient::enabledChanged, [client, connection]{
+            QObject::disconnect(*connection);
+            delete connection;
+            testDisableClientResult(client);
+    });
+
     enableJob->start();
 }
 
-void testDisableClientResult(FirewallClient *client, KJob *job) {
-    if (job->error() != KJob::NoError) {
-        qDebug() << "Error disabling the client, aborting." << client->enabled();
-        qDebug() << job->errorString();
-        exit(1);
-    }
-
-    qDebug() << "Disable client, expected: False, got:" << client->enabled();
+void testDisableClientResult(FirewallClient *client) {
+    Q_ASSERT(client->enabled() == false);
     testEnableClient(client);
 }
 
 void testEnableClient(FirewallClient* client) {
+    qDebug() << "Test Enable the Firewall";
+#if 0
     // From here on, We will jump thru the usage via connects.
     KJob *enableJob = client->setEnabled(true);
 
@@ -103,18 +101,21 @@ void testEnableClient(FirewallClient* client) {
         return;
     }
 
-    QObject::connect(enableJob, &KJob::result, [client, enableJob]{ testEnableClientResult(client, enableJob); });
+    // Nice hack: One time connections.
+    QMetaObject::Connection * const connection = new QMetaObject::Connection;
+        *connection = QObject::connect(client, &FirewallClient::enabledChanged, [client, connection]{
+            qDebug() << "Enabled Changed";
+            QObject::disconnect(*connection);
+            delete connection;
+            testEnableClientResult(client);
+    });
+
     enableJob->start();
+#endif
 }
 
-void testEnableClientResult(FirewallClient *client, KJob *job) {
-    if (job->error() != KJob::NoError) {
-        qDebug() << "Error disabling the client, aborting." << client->enabled();
-        qDebug() << job->errorString();
-        exit(1);
-    }
-
-    qDebug() << "Enable client, expected: True, got:" << client->enabled();
+void testEnableClientResult(FirewallClient *client) {
+    qDebug() << "Client Enabled" << client->enabled();
     testCurrentRulesEmpty(client);
 }
 
@@ -125,7 +126,8 @@ void testCurrentRulesEmpty(FirewallClient* client)
         exit(1);
     }
 
-    qDebug() << "Number of current rules, Expected: 0, got:" << client->rulesModel()->rowCount();
+    Q_ASSERT(client->rulesModel()->rowCount() == 0);
+
     testCurrentRulesEmptyResult(client);
 }
 
@@ -137,9 +139,6 @@ void testCurrentRulesEmptyResult(FirewallClient* client)
 
 // Fourth Method
 void testAddRules(FirewallClient* client) {
-    qDebug() << "Known Protocols" << client->knownProtocols();
-    qDebug() << "Known Interfaces" << client->knownInterfaces();
-
     QString interface = client->knownInterfaces()[0];
 
     // Expected output for firewalld
@@ -212,12 +211,11 @@ void testAddRules(FirewallClient* client) {
 
 void testAddRulesResult(FirewallClient* client, KJob *job)
 {
-    qDebug() << "Getting the result of the Add Rule";
     if (job->error() != KJob::NoError) {
         qDebug() << "Add rules failed" << job->errorString();
         exit(1);
     }
 
-    qDebug() << "Add Rules succeeded, number of rules:" << client->rulesModel()->rowCount();
+    qDebug() << client->rulesModel()->rowCount();
 }
 
