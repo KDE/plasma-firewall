@@ -62,6 +62,8 @@ QVariant RuleListModel::data(const QModelIndex &index, int role) const
 
 void RuleListModel::setProfile(Profile profile)
 {
+    qDebug() << "Profile on the model received. enabled? " << profile.enabled();
+
     beginResetModel();
     m_profile = profile;
     m_rules = m_profile.rules();

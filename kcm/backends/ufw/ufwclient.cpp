@@ -101,11 +101,12 @@ KJob *UfwClient::setEnabled(bool value)
     };
 
     KAuth::Action modifyAction = buildModifyAction(args);
+    qDebug() << "Starting the set Enabled job";
     KAuth::ExecuteJob *job = modifyAction.execute();
 
     connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
-        qDebug() << "Execut resulted successfully";
-        if (!job->error()) {
+        qDebug() << "Set Enabled job finished, triggering a status query.";
+        if (job->error() == KJob::NoError) {
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
         } else {
             qDebug() << job->error();
@@ -117,6 +118,7 @@ KJob *UfwClient::setEnabled(bool value)
 
 KJob *UfwClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior)
 {
+    qDebug() << "Status query starting";
     if (m_busy) {
         qWarning() << "Ufw client is busy";
         return nullptr;
@@ -138,9 +140,10 @@ KJob *UfwClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavio
 
     KAuth::ExecuteJob *job = m_queryAction.execute();
     connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
+        qDebug() << "Status Query finished, setting the profile";
         m_busy = false;
 
-        if (job->error()) {
+        if (job->error() != KJob::NoError) {
             emit showErrorMessage(i18n("There was an error in the backend! Please report it.\n%1 %2", job->action().name(), job->errorString()));
             qWarning() << job->action().name() << job->errorString();
             return;
@@ -149,6 +152,7 @@ KJob *UfwClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavio
         setProfile(Profile(response));
     });
 
+    qDebug() << "Starting the Status Query";
     job->start();
     return job;
 }
@@ -262,6 +266,7 @@ void UfwClient::refreshLogs()
 
 void UfwClient::setProfile(Profile profile)
 {
+    qDebug() << "Profile Received, Setting the profile on the model";
     auto oldProfile = m_currentProfile;
     m_currentProfile = profile;
     m_rulesModel->setProfile(m_currentProfile);
@@ -332,7 +337,7 @@ KJob *UfwClient::addRule(Rule *r)
 
     KAuth::ExecuteJob *job = modifyAction.execute();
     connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
-        if (!job->error()) {
+        if (job->error() == KJob::NoError) {
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::ListenProfiles);
         }
     });
@@ -646,7 +651,7 @@ bool UfwClient::isCurrentlyLoaded() const
     process.waitForFinished();
 
     // systemctl returns 0 for status if the app is loaded, and 3 otherwise.
-    qDebug() << "Ufw is loaded?" << process.exitCode();
+    qDebug() << "Ufw is loaded?" << (process.exitCode() == EXIT_SUCCESS);
 
     return process.exitCode() == EXIT_SUCCESS;
 }
