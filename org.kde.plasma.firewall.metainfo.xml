@@ -21,6 +21,7 @@
   <name xml:lang="hu">Plasma Firewall</name>
   <name xml:lang="it">Plasma Firewall</name>
   <name xml:lang="nl">Plasma-firewall</name>
+  <name xml:lang="pl">Zapora ogniowa Plazmy</name>
   <name xml:lang="pt">'Firewall' do Plasma</name>
   <name xml:lang="pt-BR">Plasma Firewall</name>
   <name xml:lang="sk">Plasma Firewall</name>
@@ -41,6 +42,7 @@
   <summary xml:lang="hu">Tűzfalbeállítú felület a Plasmához</summary>
   <summary xml:lang="it">Interfaccia firewall per Plasma</summary>
   <summary xml:lang="nl">Firewall-interface voor Plasma</summary>
+  <summary xml:lang="pl">Interfejs zapory ogniowej dla Plazmy</summary>
   <summary xml:lang="pt">Interface de 'Firewall' para o Plasma</summary>
   <summary xml:lang="pt-BR">Interface de firewall para o Plasma</summary>
   <summary xml:lang="sk">Rozhranie firewallu pre Plasma</summary>
@@ -62,6 +64,7 @@
     <p xml:lang="hu">A Plasma Firewall egy többfajta tűzfalat kezelni képes előtétprogram a hálózati beállítások könnyebb módosításához.</p>
     <p xml:lang="it">Plasma Firewall è un'interfaccia multi-firewall per facilitare le configurazioni di rete.</p>
     <p xml:lang="nl">Plasma-firewall is een multi-firewall-frontend om netwerkconfiguratie gemakkelijker te maken.</p>
+    <p xml:lang="pl">Zapora ogniowa Plazmy jest nakładką na wiele zapór ogniowych dla łatwego ustawiania sieci.</p>
     <p xml:lang="pt">A 'Firewall' do Plasma é uma interface para várias 'firewalls' que simplifica as configurações de rede.</p>
     <p xml:lang="pt-BR">O Plasma Firewall é uma interface multi-firewall para facilitar as configurações de redes.</p>
     <p xml:lang="sk">Plasma Firewall je frontend s viacerými firewallmi, ktorý uľahčuje konfiguráciu siete.</p>
@@ -86,6 +89,7 @@
       <caption xml:lang="hu">A Plasma Firewall alapértelmezett kezdőoldala</caption>
       <caption xml:lang="it">Plasma Firewall che mostra una pagina di configurazione predefinita</caption>
       <caption xml:lang="nl">De plasma-firewall toont een standaard configuratiepagina</caption>
+      <caption xml:lang="pl">Zapora ogniowa Plazmy pokazująca domyślną stronę ustawień</caption>
       <caption xml:lang="pt">A 'firewall' do Plasma a mostrar uma página de configuração predefinida</caption>
       <caption xml:lang="pt-BR">O firewall do Plasma mostrando uma página de configuração padrão</caption>
       <caption xml:lang="sk">Plasma Firewall zobrazujúci predvolenú konfiguračnú stránku</caption>
@@ -110,6 +114,7 @@
   <developer_name xml:lang="hu">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="it">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="nl">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
+  <developer_name xml:lang="pl">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="pt">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="pt-BR">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="sk">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
