@@ -60,6 +60,7 @@ public:
     QStringList knownProtocols() override;
     bool isCurrentlyLoaded() const override;
     bool supportsRuleUpdate() const override;
+    QString version() const override;
 
 protected slots:
     void refreshLogs();

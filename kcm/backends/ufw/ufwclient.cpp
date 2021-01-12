@@ -661,5 +661,21 @@ bool UfwClient::supportsRuleUpdate() const
     return false;
 }
 
+QString UfwClient::version() const
+{
+    QProcess process;
+    QStringList args = {"--version"};
+
+    process.start(executablePath(), args);
+    process.waitForFinished();
+
+    if (process.exitCode() != EXIT_SUCCESS) {
+        return i18n("Error fetching information from the firewall.");
+    }
+
+    return process.readAllStandardOutput();
+}
+
+
 #include "ufwclient.moc"
 

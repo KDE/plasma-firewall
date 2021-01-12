@@ -52,7 +52,7 @@ public:
      * the base runs `firewallbackend --help`
      * firewalld does not have --help. :|
      */
-    virtual QString version() const;
+    virtual QString version() const = 0;
 
     virtual void setLogsAutoRefresh(bool logsAutoRefresh) = 0;
 

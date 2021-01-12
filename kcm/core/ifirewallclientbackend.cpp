@@ -70,19 +70,3 @@ QString IFirewallClientBackend::executablePath() const
 {
     return m_executablePath;
 }
-
-
-QString IFirewallClientBackend::version() const
-{
-    QProcess process;
-    QStringList args = {"--version"};
-
-    process.start(m_executablePath, args);
-    process.waitForFinished();
-
-    if (process.exitCode() != EXIT_SUCCESS) {
-        return i18n("Error fetching information from the firewall.");
-    }
-
-    return process.readAllStandardOutput();
-}
