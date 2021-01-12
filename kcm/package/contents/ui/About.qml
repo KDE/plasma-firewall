@@ -27,4 +27,10 @@ KCM.ScrollViewKCM {
             text: kcm.client.version()
         }
     }
+
+    view: Flickable {
+        Image {
+            source: "plasma_firewall.png"
+        }
+    }
 }
