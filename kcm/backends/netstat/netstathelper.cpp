@@ -52,7 +52,7 @@ void NetstatHelper::query()
 
 void NetstatHelper::stopProcess()
 {
-    qDebug() << "Timming out!";
+    qDebug() << "Timing out!";
     m_hasTimeoutError = true;
 
     m_processKillerTimer->stop();
