@@ -6,6 +6,7 @@ include_directories(
     .
 )
 
+add_definitions(-DTRANSLATION_DOMAIN=\"kcm_firewall\")
 add_subdirectory(core)
 add_subdirectory(backends)
 
