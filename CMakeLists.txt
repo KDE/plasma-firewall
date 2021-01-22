@@ -15,6 +15,18 @@ set(CMAKE_AUTOMOC TRUE)
 set(CMAKE_AUTORCC TRUE)
 
 #-----------------------------------------------------------------------------
+#                                OPTIONS
+#-----------------------------------------------------------------------------
+
+include(FeatureSummary)
+
+option(BUILD_FIREWALLD_BACKEND "Build the firewalld backend" ON)
+add_feature_info(FIREWALLD_BACKEND ${BUILD_FIREWALLD_BACKEND} "Build the FirewallD backend")
+
+option(BUILD_UFW_BACKEND "Build the Uncomplicated Firewall (UFW) backend" ON)
+add_feature_info(UFW_BACKEND ${BUILD_UFW_BACKEND} "Build the Uncomplicated Firewall (UFW) backend")
+
+#-----------------------------------------------------------------------------
 #                              DEPENDENCIES
 #-----------------------------------------------------------------------------
 # Python3 (search for this first so that we will not get Python2 by accident)
@@ -35,8 +47,6 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 include(KDEInstallDirs)
 include(KDECompilerSettings)
 include(KDECMakeSettings)
-
-include(FeatureSummary)
 
 find_package(KF5 REQUIRED COMPONENTS 
     CoreAddons
