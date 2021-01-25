@@ -405,7 +405,7 @@ KCM.ScrollViewKCM {
         QQC2.Button {
             icon.name: "help-about"
             text: i18n("About")
-            onClicked: kcm.push("About.qml")
+            onClicked: about.sheetOpen = true
         }
 
     }
@@ -419,6 +419,10 @@ KCM.ScrollViewKCM {
             // Initialize the client's status.
             kcm.client.refresh();
         }
+    }
+
+    About {
+        id: about
     }
 }
 

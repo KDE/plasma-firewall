@@ -4,33 +4,27 @@
 
 import QtQml 2.12
 import QtQuick 2.12
-import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.12 as QQC2
-import QtQuick.Controls 1.4 as QQC1
 import org.kde.kirigami 2.12 as Kirigami
 
 import org.kde.kcm 1.2 as KCM
-import org.kde.kitemmodels 1.0
 import org.kcm.firewall 1.0
 
-KCM.ScrollViewKCM {
-    id: root
-    title: i18n("About")
+Kirigami.OverlaySheet {
+    id: sheet
+    header: Kirigami.Heading {
+        text: i18n("About Firewall")
+    }
 
-    header: Kirigami.FormLayout {
+    Kirigami.FormLayout {
         QQC2.Label {
-            Kirigami.FormData.label: i18n("Firewall backend:")
+            Kirigami.FormData.label: i18n("Backend:")
             text: kcm.client.name
         }
         QQC2.Label {
-           // Kirigami.FormData.Label: i18n("Backend Information:")
+            Kirigami.FormData.label: i18n("Version:")
             text: kcm.client.version()
         }
     }
-
-    view: Flickable {
-        Image {
-            source: "plasma_firewall.png"
-        }
-    }
 }
+
