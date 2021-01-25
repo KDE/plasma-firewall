@@ -74,6 +74,12 @@ KCM.ScrollViewKCM {
 
                 onAccepted:  {
                     var job = kcm.client[newRule ? "addRule" : "updateRule"](rule);
+                    if (!job) {
+                        ruleEditMessage.text = i18n("Please restart plasma firewall, the backend disconnected.");
+                        ruleEditMessage.visible = true;
+                        return;
+                    }
+
                     busy = true;
                     kcm.needsSave = true;
                     job.result.connect(function() {
@@ -229,6 +235,11 @@ KCM.ScrollViewKCM {
 
                         onActivated: {
                             const job = kcm.client["setDefault" + modelData.key + "Policy"](currentPolicy)
+                            if (!job) {
+                                firewallInlineErrorMessage.text = i18n("Please restart plasma firewall, the backend disconnected.");
+                                firewallInlineErrorMessage.visible = true;
+                                return;
+                           }
                             policyCombo.activeJob = job;
                             job.result.connect(function () {
                                 policyCombo.activeJob = null;
@@ -356,6 +367,12 @@ KCM.ScrollViewKCM {
                         icon.name: "edit-delete"
                         onClicked: {
                             const job = kcm.client.removeRule(styleData.row);
+                            if (!job) {
+                                firewallInlineErrorMessage.text = i18n("Please restart plasma firewall, the backend disconnected.");
+                                firewallInlineErrorMessage.visible = true;
+                                return;
+                            }
+
                             ruleActionsRow.activeJob = job;
                             kcm.needsSave = true;
                             job.result.connect(function () {
