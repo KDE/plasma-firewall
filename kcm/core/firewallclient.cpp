@@ -110,6 +110,11 @@ KJob *FirewallClient::addRule(Rule *rule)
     if (!m_currentBackend) {
         return nullptr;
     }
+
+    if (!m_currentBackend->isCurrentlyLoaded()) {
+        return nullptr;
+    }
+
     return m_currentBackend->addRule(rule);
 }
 
@@ -118,12 +123,18 @@ KJob *FirewallClient::removeRule(int index)
     if (!m_currentBackend) {
         return nullptr;
     }
+    if (!m_currentBackend->isCurrentlyLoaded()) {
+        return nullptr;
+    }
     return m_currentBackend->removeRule(index);
 }
 
 KJob *FirewallClient::updateRule(Rule *rule)
 {
     if (!m_currentBackend) {
+        return nullptr;
+    }
+    if (!m_currentBackend->isCurrentlyLoaded()) {
         return nullptr;
     }
     return m_currentBackend->updateRule(rule);
@@ -249,6 +260,9 @@ KJob *FirewallClient::setDefaultIncomingPolicy(const QString &defaultIncomingPol
     if (!m_currentBackend) {
         return nullptr;
     }
+    if (!m_currentBackend->isCurrentlyLoaded()) {
+        return nullptr;
+    }
     return m_currentBackend->setDefaultIncomingPolicy(defaultIncomingPolicy);
 }
 
@@ -257,7 +271,9 @@ KJob *FirewallClient::setDefaultOutgoingPolicy(const QString &defaultOutgoingPol
     if (!m_currentBackend) {
         return nullptr;
     }
-
+    if (!m_currentBackend->isCurrentlyLoaded()) {
+        return nullptr;
+    }
     return m_currentBackend->setDefaultOutgoingPolicy(defaultOutgoingPolicy);
 }
 
