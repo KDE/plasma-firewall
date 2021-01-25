@@ -9,6 +9,7 @@
   <metadata_license>FSFAP</metadata_license>
   <project_license>GPL-2.0+</project_license>
   <name>Plasma Firewall</name>
+  <name xml:lang="az">Plasma Təhlükəsizlik Divarı</name>
   <name xml:lang="ca">Tallafoc del Plasma</name>
   <name xml:lang="ca-valencia">Tallafoc del Plasma</name>
   <name xml:lang="da">Plasma Firewall</name>
@@ -32,6 +33,7 @@
   <name xml:lang="uk">Брандмауер Плазми</name>
   <name xml:lang="x-test">xxPlasma Firewallxx</name>
   <summary>Firewall Interface for Plasma</summary>
+  <summary xml:lang="az">Plasma üçün Təhlükəsizlik Divarı İnterfeysi</summary>
   <summary xml:lang="ca">Interfície del tallafoc per al Plasma</summary>
   <summary xml:lang="ca-valencia">Interfície del tallafoc per al Plasma</summary>
   <summary xml:lang="da">Firewallbrugerflade til Plasma</summary>
@@ -56,6 +58,7 @@
   <summary xml:lang="x-test">xxFirewall Interface for Plasmaxx</summary>
   <description>
     <p>Plasma Firewall is a multi-firewall frontend for ease of network configurations.</p>
+    <p xml:lang="az">Plasma Təhlükəsizlik divarı bir neçə təhlükəsizlik divarlarıı ilə şəbəkənin ayarlanmasını sadələşdirən xarici interfeysdir.</p>
     <p xml:lang="ca">El Tallafoc del Plasma és un frontal multi-tallafoc per a facilitar les configurations de la xarxa.</p>
     <p xml:lang="ca-valencia">El Tallafoc del Plasma és un frontal multi-tallafoc per a facilitar les configurations de la xarxa.</p>
     <p xml:lang="da">Plasma Firewall er en multi-firewallbrugerflade til at lette netværkskonfigurationer.</p>
@@ -82,6 +85,7 @@
   <screenshots>
     <screenshot type="default">
       <caption>The plasma firewall showing a default configuration page</caption>
+      <caption xml:lang="az">Standart tənzimləmə səhifəsini göstərən Plasma Təhlükəsizlik Divarı</caption>
       <caption xml:lang="ca">El Tallafoc del Plasma mostra una pàgina de configuració predeterminada</caption>
       <caption xml:lang="ca-valencia">El Tallafoc del Plasma mostra una pàgina de configuració predeterminada</caption>
       <caption xml:lang="da">Plasma-firewallen der viser en standardkonfigurationsside</caption>
@@ -108,6 +112,7 @@
   </screenshots>
   <project_group>KDE</project_group>
   <developer_name>Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
+  <developer_name xml:lang="az">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="ca">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="ca-valencia">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="da">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
