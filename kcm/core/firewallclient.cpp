@@ -32,6 +32,12 @@ FirewallClient::FirewallClient(QObject *parent)
 {
 }
 
+FirewallClient::~FirewallClient() noexcept
+{
+    m_currentBackend->deleteLater();
+    m_currentBackend = nullptr;
+}
+
 QStringList FirewallClient::knownProtocols()
 {
     if (!m_currentBackend) {
