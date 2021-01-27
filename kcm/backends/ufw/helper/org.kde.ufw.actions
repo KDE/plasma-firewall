@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: 2020 Tomaz Canabrava <tcanabrava@kde.org>
 [Domain]
 Name=Uncomplicated Firewall
+Name[az]=Sadə Təhlükəsizlik Divarı
 Name[ca]=Tallafoc sense complicacions
 Name[ca@valencia]=Tallafoc sense complicacions
 Name[cs]=Nekomplikovaný firewall
@@ -30,6 +31,7 @@ Name[x-test]=xxUncomplicated Firewallxx
 Icon=security-high
 [org.kde.ufw.query]
 Name=Query Firewall
+Name[az]=Təhlükəsizlik Divarı sorğusu
 Name[ca]=Consulta el tallafoc
 Name[ca@valencia]=Consulta el tallafoc
 Name[cs]=Dotázat se firewallu
@@ -56,6 +58,7 @@ Name[sv]=Fråga brandvägg
 Name[uk]=Опитати Firewall
 Name[x-test]=xxQuery Firewallxx
 Description=Query firewall status
+Description[az]=Təhlükəsizlik divarı vəziyəti sorğusu
 Description[ca]=Consulta l'estat del tallafoc
 Description[ca@valencia]=Consulta l'estat del tallafoc
 Description[cs]=Dotázat se na stav firewallu
@@ -85,6 +88,7 @@ Policy=yes
 Persistence=session
 [org.kde.ufw.viewlog]
 Name=View Firewall Logs
+Name[az]=Təhlükəsizlik divarı gündəliyinə baxış
 Name[ca]=Visualitza els registres del tallafoc
 Name[ca@valencia]=Visualitza els registres del tallafoc
 Name[cs]=Zobrazit záznamy firewallu
@@ -111,6 +115,7 @@ Name[sv]=Visa brandväggsloggar
 Name[uk]=Перегляд журналів брандмауера
 Name[x-test]=xxView Firewall Logsxx
 Description=View firewall logs
+Description[az]=Təhlükəsizlik divarı gündəliklərinə baxış
 Description[ca]=Visualitza els registres del tallafoc
 Description[ca@valencia]=Visualitza els registres del tallafoc
 Description[cs]=Zobrazit záznamy firewallu
@@ -140,6 +145,7 @@ Policy=yes
 Persistence=session
 [org.kde.ufw.modify]
 Name=Modify Firewall
+Name[az]=Təhlükəsizlik divarı parametrləri
 Name[ca]=Modifica el tallafoc
 Name[ca@valencia]=Modifica el tallafoc
 Name[cs]=Upravit firewall
@@ -166,6 +172,7 @@ Name[sv]=Ändra brandvägg
 Name[uk]=Зміна параметрів брандмауера
 Name[x-test]=xxModify Firewallxx
 Description=Modify firewall settings
+Description[az]=Təhlükəsizlik divarı parametrləri ayarları
 Description[ca]=Modifica la configuració del tallafoc
 Description[ca@valencia]=Modifica la configuració del tallafoc
 Description[cs]=Upravit nastavení firewallu

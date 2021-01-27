@@ -12,6 +12,7 @@ X-DocPath=kcontrol/firewall/index.html
 
 
 Name=Firewall
+Name[az]=Təhlükəsizlik divarı
 Name[ca]=Tallafoc
 Name[ca@valencia]=Tallafoc
 Name[cs]=Firewall
@@ -38,6 +39,7 @@ Name[sv]=Brandvägg
 Name[uk]=Брандмауер
 Name[x-test]=xxFirewallxx
 Comment=Control your network rules
+Comment[az]=Şəbəkə təhlükəsizliyi qaydalarını idarə etmək
 Comment[ca]=Controla les regles per a la xarxa
 Comment[ca@valencia]=Controla les regles per a la xarxa
 Comment[da]=Styr dine netværksregler
@@ -63,6 +65,7 @@ Comment[sv]=Styr nätverksregler
 Comment[uk]=Керування вашими правилами мережі
 Comment[x-test]=xxControl your network rulesxx
 X-KDE-Keywords=firewall, network, security
+X-KDE-Keywords[az]=firewall, network, security,şəbəkə,təhlükəsizlik divarı,təhlükəsizlik ekranı
 X-KDE-Keywords[ca]=firewall, tallafoc, network, xarxa, security, seguretat
 X-KDE-Keywords[ca@valencia]=firewall, tallafoc, network, xarxa, security, seguretat
 X-KDE-Keywords[da]=firewall, netværk, sikkerhed

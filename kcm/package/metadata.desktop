@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Firewall
+Name[az]=Təhlükəsizlik divarı
 Name[ca]=Tallafoc
 Name[ca@valencia]=Tallafoc
 Name[cs]=Firewall
@@ -26,6 +27,7 @@ Name[sv]=Brandvägg
 Name[uk]=Брандмауер
 Name[x-test]=xxFirewallxx
 Comment=Adjust your firewall settings
+Comment[az]=Təhlükəsizlik divarı ayarlarını tənzimləmək
 Comment[ca]=Ajusta la configuració del tallafoc
 Comment[ca@valencia]=Ajusta la configuració del tallafoc
 Comment[da]=Juster dine firewallindstillinger
