@@ -24,7 +24,7 @@ set(ufw_plugin_helper_SRCS helper.cpp )
 add_executable(kde_ufw_plugin_helper ${ufw_plugin_helper_SRCS})
 
 # set_target_properties(kcm_ufw_helper PROPERTIES OUTPUT_NAME kcm_ufw_helper)
-target_link_libraries(kde_ufw_plugin_helper Qt5::Core KF5::Auth KF5::I18n)
+target_link_libraries(kde_ufw_plugin_helper Qt::Core KF5::Auth KF5::I18n)
 
 if (IS_ABSOLUTE "${LIBEXEC_INSTALL_DIR}")
   set(UFW_PLUGIN_HELPER_PATH ${LIBEXEC_INSTALL_DIR}/kde_ufw_plugin_helper.py)

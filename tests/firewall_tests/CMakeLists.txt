@@ -3,6 +3,6 @@ add_executable(firewall_tests
 )
 
 target_link_libraries(firewall_tests
-    Qt5::Core
+    Qt::Core
     kcm_firewall_core
 )

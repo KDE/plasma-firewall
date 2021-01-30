@@ -25,9 +25,9 @@ set(networkstatus_SRCS
 add_library(networkstatus STATIC ${networkstatus_SRCS})
 target_link_libraries(networkstatus
     kcm_firewall_core
-    Qt5::Core
-    Qt5::Quick
-    Qt5::X11Extras
+    Qt::Core
+    Qt::Quick
+    Qt::X11Extras
     KF5::CoreAddons
     KF5::ConfigCore
     KF5::Auth

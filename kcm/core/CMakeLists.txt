@@ -19,7 +19,7 @@ generate_export_header(kcm_firewall_core)
 target_include_directories(kcm_firewall_core PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>")
 
 target_link_libraries(kcm_firewall_core
-    Qt5::Quick
+    Qt::Quick
     KF5::CoreAddons
     KF5::Declarative
     KF5::I18n
