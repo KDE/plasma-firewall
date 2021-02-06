@@ -27,7 +27,7 @@
   <name xml:lang="pl">Zapora ogniowa Plazmy</name>
   <name xml:lang="pt">'Firewall' do Plasma</name>
   <name xml:lang="pt-BR">Plasma Firewall</name>
-  <name xml:lang="ru">Брандмауэр Plasma</name>
+  <name xml:lang="ru">Управление брандмауэром в Plasma</name>
   <name xml:lang="sk">Plasma Firewall</name>
   <name xml:lang="sl">Plasma Firewall</name>
   <name xml:lang="sv">Plasma brandvägg</name>
@@ -52,7 +52,7 @@
   <summary xml:lang="pl">Interfejs zapory ogniowej dla Plazmy</summary>
   <summary xml:lang="pt">Interface de 'Firewall' para o Plasma</summary>
   <summary xml:lang="pt-BR">Interface de firewall para o Plasma</summary>
-  <summary xml:lang="ru">Интерфейс брандмауэра для Plasma</summary>
+  <summary xml:lang="ru">Интерфейс управления брандмауэром в Plasma</summary>
   <summary xml:lang="sk">Rozhranie firewallu pre Plasma</summary>
   <summary xml:lang="sl">Plasmin vmesnik za vdorobran</summary>
   <summary xml:lang="sv">Brandväggsgränssnitt för Plasma</summary>
@@ -78,6 +78,7 @@
     <p xml:lang="pl">Zapora ogniowa Plazmy jest nakładką na wiele zapór ogniowych dla łatwego ustawiania sieci.</p>
     <p xml:lang="pt">A 'Firewall' do Plasma é uma interface para várias 'firewalls' que simplifica as configurações de rede.</p>
     <p xml:lang="pt-BR">O Plasma Firewall é uma interface multi-firewall para facilitar as configurações de redes.</p>
+    <p xml:lang="ru">Управление брандмауэром для Plasma — приложение для упрощения настройки параметров сетевых подключений, поддерживающее работу с различными службами брандмауэров.</p>
     <p xml:lang="sk">Plasma Firewall je frontend s viacerými firewallmi, ktorý uľahčuje konfiguráciu siete.</p>
     <p xml:lang="sl">Plasma Firewall je večkratni vdorobran za lažje nastavitve omrežja.</p>
     <p xml:lang="sv">Plasma brandvägg är ett gränssnitt för flera brandväggar för enkel nätverksinställning</p>
@@ -106,6 +107,7 @@
       <caption xml:lang="pl">Zapora ogniowa Plazmy pokazująca domyślną stronę ustawień</caption>
       <caption xml:lang="pt">A 'firewall' do Plasma a mostrar uma página de configuração predefinida</caption>
       <caption xml:lang="pt-BR">O firewall do Plasma mostrando uma página de configuração padrão</caption>
+      <caption xml:lang="ru">Страница по умолчанию управления конфигурацией брандмауэра.</caption>
       <caption xml:lang="sk">Plasma Firewall zobrazujúci predvolenú konfiguračnú stránku</caption>
       <caption xml:lang="sl">Plasma firewall prikazuje privzeto nastavitveno stran</caption>
       <caption xml:lang="sv">Plasma brandvägg som visar en standardinställningssida</caption>
