@@ -6,7 +6,7 @@ cmake_minimum_required(VERSION 3.8)
 #                           GENERAL CONFIGURATION
 #-----------------------------------------------------------------------------
 project(plasma-firewall)
-set(PROJECT_VERSION "5.20.90")
+set(PROJECT_VERSION "5.21.0")
 
 set(KF5_MIN_VERSION "5.30.0")
 set(QT_MIN_VERSION "5.14.0")
