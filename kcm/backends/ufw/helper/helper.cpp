@@ -104,6 +104,24 @@ QStringList getLogFromSystemd(const QString &lastLine)
     return result;
 }
 
+ActionReply Helper::queryapps(const QVariantMap &args)
+{
+    QProcess ufw;
+    ActionReply reply;
+    ufw.start("ufw", {"app", "list"}, QIODevice::ReadOnly);
+    if (ufw.waitForStarted()) {
+        ufw.waitForFinished();
+    }
+
+    auto result = QString::fromLocal8Bit(ufw.readAllStandardOutput()).split(QRegExp("\n"), QString::SkipEmptyParts);
+    for (auto &value : result) {
+        value = value.trimmed();
+    }
+
+    reply.setData({{"response", result}});
+    return reply;
+}
+
 ActionReply Helper::viewlog(const QVariantMap &args)
 {
     QString lastLine = args["lastLine"].toString(), logFile = args["logFile"].toString();
