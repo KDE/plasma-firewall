@@ -137,6 +137,7 @@
     <category>System</category>
   </categories>
   <releases>
+    <release version="5.21.1" date="2021-02-23"/>
     <release version="5.21.0" date="2021-02-16"/>
     <release version="5.20.90" date="2020-10-15"/>
   </releases>
