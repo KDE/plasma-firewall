@@ -28,6 +28,7 @@
         "Name[sv]": "Gränssnitt för brandvägg",
         "Name[uk]": "Модуль для Firewalld",
         "Name[x-test]": "xxBackend for Firewalldxx",
+        "Name[zh_CN]": "Firewalld 后端程序",
         "ServiceTypes": [
             "KFileItemAction/Plugin",
             "Plasma/FirewallBackend"
