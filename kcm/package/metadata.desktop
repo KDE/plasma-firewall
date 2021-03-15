@@ -27,6 +27,7 @@ Name[sl]=Vdorobran
 Name[sv]=Brandvägg
 Name[uk]=Брандмауер
 Name[x-test]=xxFirewallxx
+Name[zh_CN]=防火墙
 Comment=Adjust your firewall settings
 Comment[az]=Təhlükəsizlik divarı ayarlarını tənzimləmək
 Comment[ca]=Ajusta la configuració del tallafoc
@@ -54,6 +55,7 @@ Comment[sl]=Prilagodi nastavitve vašega vdorobrana
 Comment[sv]=Justera brandväggsinställningar
 Comment[uk]=Скоригувати параметри вашого брандмауера
 Comment[x-test]=xxAdjust your firewall settingsxx
+Comment[zh_CN]=调整本机的防火墙设置
 Encoding=UTF-8
 
 Icon=security-high
