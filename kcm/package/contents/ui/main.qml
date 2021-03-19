@@ -396,12 +396,12 @@ KCM.ScrollViewKCM {
 
     footer: RowLayout {
         QQC2.Button {
-            text: i18n("Connections...")
+            text: i18nc("'view' is being used as a verb here", "View Connections")
             icon.name: "network-connect"
             onClicked: kcm.push("ConnectionsView.qml");
         }
         QQC2.Button {
-            text: i18n("Logs...")
+            text: i18nc("'view' is being used as a verb here", "View Logs")
             icon.name: "viewlog"
             onClicked: kcm.push("LogsView.qml");
         }
@@ -412,7 +412,7 @@ KCM.ScrollViewKCM {
         QQC2.Button {
             enabled: !kcm.client.busy && kcm.client.enabled
             icon.name: "list-add"
-            text: i18n("Add Rule")
+            text: i18n("Add Rule...")
             onClicked: {
                 ruleEdit.newRule = true
                 drawer.open()
