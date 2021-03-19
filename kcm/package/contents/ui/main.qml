@@ -309,6 +309,7 @@ KCM.ScrollViewKCM {
                 anchors.centerIn: parent
                 width: parent.width - (Kirigami.Units.largeSpacing * 4)
                 text: i18n("No firewall rules have been added")
+                explanation: xi18nc("@info", "Click the <interface>Add Rule...</interface> button below to add one")
                 visible: tableView.rowCount === 0
             }
 
