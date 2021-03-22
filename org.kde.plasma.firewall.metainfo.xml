@@ -21,6 +21,7 @@
   <name xml:lang="fi">Plasma Firewall</name>
   <name xml:lang="fr">Pare-feu de Plasma</name>
   <name xml:lang="hu">Plasma Firewall</name>
+  <name xml:lang="ia">Plasma Firewall</name>
   <name xml:lang="it">Plasma Firewall</name>
   <name xml:lang="lt">Plasma užkarda</name>
   <name xml:lang="nl">Plasma-firewall</name>
@@ -47,6 +48,7 @@
   <summary xml:lang="fi">Plasman palomuurikäyttöliittymä</summary>
   <summary xml:lang="fr">Interface du pare-feu de Plasma</summary>
   <summary xml:lang="hu">Tűzfalbeállítú felület a Plasmához</summary>
+  <summary xml:lang="ia">Interfacie de Taliafoco (Firewall) de Plasma</summary>
   <summary xml:lang="it">Interfaccia firewall per Plasma</summary>
   <summary xml:lang="lt">Užkardos sąsaja, skirta Plasma</summary>
   <summary xml:lang="nl">Firewall-interface voor Plasma</summary>
@@ -74,6 +76,7 @@
     <p xml:lang="fi">Plasma Firewall on verkkoasetuksia helpottava monen palomuurin käyttöliittymä.</p>
     <p xml:lang="fr">Le pare-feu de Plasma est une interface pour de multiples pare-feux, pour faciliter les configurations de réseaux.</p>
     <p xml:lang="hu">A Plasma Firewall egy többfajta tűzfalat kezelni képes előtétprogram a hálózati beállítások könnyebb módosításához.</p>
+    <p xml:lang="ia">Plasma Firewall (Taliafoco de Plasma) es un interfacie per multi-firewall per facilitar le configurationes de rete.</p>
     <p xml:lang="it">Plasma Firewall è un'interfaccia multi-firewall per facilitare le configurazioni di rete.</p>
     <p xml:lang="lt">Plasma užkarda yra kelių užkardų naudotojo sąsaja, skirta palengvinti tinklo konfigūracijas.</p>
     <p xml:lang="nl">Plasma-firewall is een multi-firewall-frontend om netwerkconfiguratie gemakkelijker te maken.</p>
@@ -104,6 +107,7 @@
       <caption xml:lang="fi">Plasma Firewallin oletusasetussivu</caption>
       <caption xml:lang="fr">Le pare-feu de Plasma affichant une page par défaut de configuration</caption>
       <caption xml:lang="hu">A Plasma Firewall alapértelmezett kezdőoldala</caption>
+      <caption xml:lang="ia">Le Plasma Firewall (Taliafoco de Plasma) monstrante un pagina de configuration predefinite</caption>
       <caption xml:lang="it">Plasma Firewall che mostra una pagina di configurazione predefinita</caption>
       <caption xml:lang="lt">Plasma užkarda atvaizduojanti numatytąjį konfigūracijos puslapį</caption>
       <caption xml:lang="nl">De plasma-firewall toont een standaard configuratiepagina</caption>
@@ -134,6 +138,7 @@
   <developer_name xml:lang="fi">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="fr">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="hu">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
+  <developer_name xml:lang="ia">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="it">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="lt">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="nl">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
