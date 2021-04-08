@@ -49,3 +49,7 @@ build
 
 #Kdevelop
 *.kdev4
+/compile_commands.json
+.clangd
+.idea
+/cmake-build*
