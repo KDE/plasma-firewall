@@ -7,7 +7,7 @@
 #define UFW_RULE_H
 
 #include <kcm_firewall_core_export.h>
-
+#include <sys/socket.h>
 #include <QObject>
 #include <QString>
 #include <QDebug>
