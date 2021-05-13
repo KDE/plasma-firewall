@@ -9,7 +9,7 @@ project(plasma-firewall)
 set(PROJECT_VERSION "5.20.90")
 
 set(KF5_MIN_VERSION "5.82")
-set(QT_MIN_VERSION "5.14.0")
+set(QT_MIN_VERSION "5.15.0")
 
 set(CMAKE_AUTOMOC TRUE)
 set(CMAKE_AUTORCC TRUE)
