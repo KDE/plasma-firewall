@@ -9,9 +9,9 @@
 #include "rule.h"
 #include "appprofiles.h"
 #include <KLocalizedString>
-#include <QtCore/QByteArray>
-#include <QtCore/QMap>
-#include <QtCore/QTextStream>
+#include <QByteArray>
+#include <QMap>
+#include <QTextStream>
 #include <arpa/inet.h>
 #include <netdb.h>
 #include "firewallclient.h"

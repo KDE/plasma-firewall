@@ -12,8 +12,8 @@
 
 #include <kcm_firewall_core_export.h>
 
-#include <QtCore/QString>
-#include <QtCore/QVariant>
+#include <QString>
+#include <QVariant>
 
 namespace Types
 {

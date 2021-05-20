@@ -8,7 +8,7 @@
 
 #include "types.h"
 #include <KLocalizedString>
-#include <QtCore/QVariantMap>
+#include <QVariantMap>
 
 namespace Types
 {

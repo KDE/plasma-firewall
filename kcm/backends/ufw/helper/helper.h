@@ -9,8 +9,8 @@
  * UFW KControl Module
  */
 
-#include <QtCore/QObject>
-#include <QtCore/QVariantMap>
+#include <QObject>
+#include <QVariantMap>
 #include <kauth.h>
 
 class QStringList;
