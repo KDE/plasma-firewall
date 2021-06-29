@@ -12,6 +12,7 @@ X-DocPath=kcontrol/firewall/index.html
 
 
 Name=Firewall
+Name[ar]=الجدار الناري
 Name[az]=Təhlükəsizlik divarı
 Name[ca]=Tallafoc
 Name[ca@valencia]=Tallafoc

@@ -2,6 +2,7 @@
     "KPlugin": {
         "Icon": "ufw",
         "Name": "Backend for Uncomplicated Firewall",
+        "Name[ar]": "خلفية لجدار ناري غير معقد",
         "Name[az]": "Sadə Təhlükəsizlik divarı üçün modul",
         "Name[ca@valencia]": "Dorsal per al tallafoc sense complicacions",
         "Name[ca]": "Dorsal per al tallafoc sense complicacions",

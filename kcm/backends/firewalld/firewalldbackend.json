@@ -2,6 +2,7 @@
     "KPlugin": {
         "Icon": "firewalld",
         "Name": "Backend for Firewalld",
+        "Name[ar]": "الخلفية لـFirewalld",
         "Name[az]": "Firewalld üçün Modul",
         "Name[ca@valencia]": "Dorsal per al «firewalld»",
         "Name[ca]": "Dorsal per al «firewalld»",

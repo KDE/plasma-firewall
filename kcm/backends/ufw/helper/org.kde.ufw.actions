@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: 2020 Tomaz Canabrava <tcanabrava@kde.org>
 [Domain]
 Name=Uncomplicated Firewall
+Name[ar]=جدار ناري غير معقد
 Name[az]=Sadə Təhlükəsizlik Divarı
 Name[ca]=Tallafoc sense complicacions
 Name[ca@valencia]=Tallafoc sense complicacions
