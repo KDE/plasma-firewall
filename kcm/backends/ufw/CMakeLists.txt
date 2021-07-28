@@ -9,7 +9,6 @@ set(ufw_backend_SRCS
 kcoreaddons_add_plugin(
     ufwbackend
     SOURCES ${ufw_backend_SRCS}
-    JSON ufwbackend.json
     INSTALL_NAMESPACE "kf5/plasma_firewall")
 
 target_link_libraries(ufwbackend
