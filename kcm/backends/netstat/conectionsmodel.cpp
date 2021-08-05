@@ -95,7 +95,7 @@ void ConnectionsModel::refreshConnections(const  QVector<QStringList>& result)
 
     beginResetModel();
     m_connectionsData.clear();
-    for (const auto connection : result) {
+    for (const auto &connection : result) {
         ConnectionsData conn {.protocol = connection.at(0),
                                 .localAddress = connection.at(1),
                                 .foreignAddress = connection.at(2),
