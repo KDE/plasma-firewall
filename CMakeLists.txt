@@ -9,6 +9,7 @@ project(plasma-firewall)
 set(PROJECT_VERSION "5.22.80")
 
 set(KF5_MIN_VERSION "5.82")
+set(KDE_COMPILERSETTINGS_LEVEL "5.82")
 set(QT_MIN_VERSION "5.15.0")
 
 set(CMAKE_AUTOMOC TRUE)
