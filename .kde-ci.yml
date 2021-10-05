@@ -1,0 +1,15 @@
+# SPDX-FileCopyrightText: None
+# SPDX-License-Identifier: CC0-1.0
+
+Dependencies:
+- 'on': ['@all']
+  'require':
+    'frameworks/extra-cmake-modules': '@latest'
+    'frameworks/kauth': '@latest'
+    'frameworks/kconfig': '@latest'
+    'frameworks/kcoreaddons': '@latest'
+    'frameworks/kdeclarative': '@latest'
+    'frameworks/ki18n': '@latest'
+    'frameworks/kpackage': '@latest'
+    'frameworks/kcmutils': '@latest'
+    'frameworks/plasma-framework': '@latest'
