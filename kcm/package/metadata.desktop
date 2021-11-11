@@ -69,7 +69,6 @@ Type=Service
 X-KDE-ServiceTypes=KCModule
 X-KDE-ServiceTypes=Plasma/Generic
 
-X-Plasma-API=declarativeappletscript
 X-Plasma-MainScript=ui/main.qml
 
 X-KDE-PluginInfo-Name=kcm_firewall
