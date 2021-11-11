@@ -12,13 +12,13 @@ add_subdirectory(backends)
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/version.h)
 
-set(kcm_SRCS
+
+
+add_library(kcm_firewall MODULE)
+target_sources(kcm_firewall PRIVATE
    kcm.cpp
    kcm.h
 )
-
-add_library(kcm_firewall MODULE ${kcm_SRCS})
-
 target_link_libraries(kcm_firewall
     Qt::Quick
     Qt::X11Extras

@@ -16,7 +16,9 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     Config
 )
 
-set(networkstatus_SRCS
+
+add_library(networkstatus STATIC)
+target_sources(networkstatus PRIVATE
     conectionsmodel.cpp
     conectionsmodel.h
     netstatclient.cpp
@@ -25,7 +27,6 @@ set(networkstatus_SRCS
     netstathelper.h
 )
 
-add_library(networkstatus STATIC ${networkstatus_SRCS})
 target_link_libraries(networkstatus
     kcm_firewall_core
     Qt::Core
