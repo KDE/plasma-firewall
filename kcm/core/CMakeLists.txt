@@ -4,14 +4,22 @@
 include(GenerateExportHeader)
 
 add_library(kcm_firewall_core
-    firewallclient.cpp
-    ifirewallclientbackend.cpp
-    rule.cpp
-    types.cpp
-    loglistmodel.cpp
-    rulelistmodel.cpp
-    profile.cpp
     appprofiles.cpp
+    appprofiles.h
+    firewallclient.cpp
+    firewallclient.h
+    ifirewallclientbackend.cpp
+    ifirewallclientbackend.h
+    loglistmodel.cpp
+    loglistmodel.h
+    profile.cpp
+    profile.h
+    rule.cpp
+    rule.h
+    rulelistmodel.cpp
+    rulelistmodel.h
+    types.cpp
+    types.h
 )
 
 generate_export_header(kcm_firewall_core)

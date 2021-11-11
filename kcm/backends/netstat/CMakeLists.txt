@@ -18,8 +18,11 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
 
 set(networkstatus_SRCS
     conectionsmodel.cpp
+    conectionsmodel.h
     netstatclient.cpp
+    netstatclient.h
     netstathelper.cpp
+    netstathelper.h
 )
 
 add_library(networkstatus STATIC ${networkstatus_SRCS})

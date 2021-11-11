@@ -20,7 +20,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
 )
 
 
-set(ufw_plugin_helper_SRCS helper.cpp )
+set(ufw_plugin_helper_SRCS helper.cpp helper.h)
 add_executable(kde_ufw_plugin_helper ${ufw_plugin_helper_SRCS})
 
 # set_target_properties(kcm_ufw_helper PROPERTIES OUTPUT_NAME kcm_ufw_helper)

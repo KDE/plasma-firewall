@@ -14,6 +14,7 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/version.h.cmake ${CMAKE_CURRENT_BINAR
 
 set(kcm_SRCS
    kcm.cpp
+   kcm.h
 )
 
 add_library(kcm_firewall MODULE ${kcm_SRCS})

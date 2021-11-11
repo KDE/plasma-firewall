@@ -1,11 +1,17 @@
 # SPDX-License-Identifier: BSD-3-Clause
 # SPDX-FileCopyrightText: 2020 Lucas Biaggi <lbjanuario@gmail.com>
 set(firewalld_backend_SRCS
-    firewalldclient.cpp
-    firewalldlogmodel.cpp
-    firewalldjob.cpp
-    systemdjob.cpp
     dbustypes.cpp
+    dbustypes.h
+    firewalldclient.cpp
+    firewalldclient.h
+    firewalldjob.cpp
+    firewalldjob.h
+    firewalldlogmodel.cpp
+    firewalldlogmodel.h
+    systemdjob.cpp
+    systemdjob.h
+
 )
 
 kcoreaddons_add_plugin(
