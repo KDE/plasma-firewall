@@ -20,7 +20,7 @@ NetstatClient::NetstatClient(QObject *parent)
     , m_connections(new ConnectionsModel(this))
 {
     _self = this;
-    mHasSS = !QStandardPaths::findExecutable("ss").isEmpty();
+    mHasSS = !QStandardPaths::findExecutable(QStringLiteral("ss")).isEmpty();
 }
 
 bool NetstatClient::hasSS() const

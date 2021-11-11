@@ -19,8 +19,8 @@ class FirewalldJob : public KJob
 
 public:
     enum JobType { FIREWALLD, SAVEFIREWALLD, FAKEJOB };
-    FirewalldJob(const QByteArray &call, const QVariantList &args = {}, const JobType &type = FIREWALLD);
-    FirewalldJob(const JobType &type);
+    FirewalldJob(const QByteArray &call, const QVariantList &args = {}, FirewalldJob::JobType type = FIREWALLD);
+    FirewalldJob(FirewalldJob::JobType type);
     FirewalldJob();
     ~FirewalldJob();
     void start() override;

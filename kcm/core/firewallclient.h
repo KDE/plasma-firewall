@@ -120,7 +120,7 @@ signals:
     void logsAutoRefreshChanged(bool logsAutoRefresh);
     void backendChanged(const QString &backend);
     void hasExecutableChanged(bool changed);
-    void capabilitiesChanged(const Capabilities &capabilities);
+    void capabilitiesChanged(const FirewallClient::Capabilities &capabilities);
     /**
      * Emitted when an error message should be displayed.
      *

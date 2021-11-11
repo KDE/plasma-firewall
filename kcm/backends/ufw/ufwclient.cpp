@@ -363,7 +363,7 @@ KJob *UfwClient::removeRule(int index)
 
     KAuth::Action modifyAction = buildModifyAction(args);
     KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::statusChanged, this, [this](KAuth::Action::AuthStatus status) { debugState(status); });
+    connect(job, &KAuth::ExecuteJob::statusChanged, this, [](KAuth::Action::AuthStatus status) { debugState(status); });
 
     connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
         if (!job->error()) {

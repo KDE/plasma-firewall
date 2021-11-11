@@ -26,7 +26,7 @@ const QString INTERFACE = QStringLiteral("org.freedesktop.systemd1.Manager");
 enum {
     DBUSSYSTEMDERROR = KJob::UserDefinedError,
 };
-SystemdJob::SystemdJob(const SYSTEMD::actions &action)
+SystemdJob::SystemdJob(SYSTEMD::actions action)
     : KJob()
     , m_action(action) {};
 
@@ -35,11 +35,11 @@ void SystemdJob::systemdAction(const SYSTEMD::actions value)
     QDBusMessage call;
     switch (value) {
     case SYSTEMD::START:
-        call = QDBusMessage::createMethodCall(SYSTEMD::BUS, SYSTEMD::PATH, SYSTEMD::INTERFACE, "StartUnit");
+        call = QDBusMessage::createMethodCall(SYSTEMD::BUS, SYSTEMD::PATH, SYSTEMD::INTERFACE, QStringLiteral("StartUnit"));
         call.setArguments({"firewalld.service", "fail"});
         break;
     case SYSTEMD::STOP:
-        call = QDBusMessage::createMethodCall(SYSTEMD::BUS, SYSTEMD::PATH, SYSTEMD::INTERFACE, "StopUnit");
+        call = QDBusMessage::createMethodCall(SYSTEMD::BUS, SYSTEMD::PATH, SYSTEMD::INTERFACE, QStringLiteral("StopUnit"));
         call.setArguments({"firewalld.service", "fail"});
         break;
 

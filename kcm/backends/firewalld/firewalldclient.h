@@ -75,7 +75,7 @@ private:
     QStringList m_rawLogs;
     bool m_isBusy;
     Profile m_currentProfile;
-    RuleListModel *m_rulesModel = nullptr;
+    RuleListModel *const m_rulesModel;
     LogListModel *m_logs = nullptr;
     QTimer m_logsRefreshTimer;
     bool m_logsAutoRefresh;

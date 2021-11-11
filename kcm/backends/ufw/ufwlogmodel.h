@@ -6,7 +6,7 @@
 class UfwLogModel : public LogListModel {
     Q_OBJECT
 public:
-    UfwLogModel(QObject *parent);
+    explicit UfwLogModel(QObject *parent);
     void addRawLogs(const QStringList &rawLogsList) override;
 };
 

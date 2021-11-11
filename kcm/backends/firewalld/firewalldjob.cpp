@@ -41,13 +41,13 @@ enum {
 };
 
 FirewalldJob::FirewalldJob() {};
-FirewalldJob::FirewalldJob(const QByteArray &call, const QVariantList &args, const FirewalldJob::JobType &type)
+FirewalldJob::FirewalldJob(const QByteArray &call, const QVariantList &args, FirewalldJob::JobType type)
     : KJob()
     , m_type(type)
 {
     setFirewalldMessage(call, args);
 };
-FirewalldJob::FirewalldJob(const FirewalldJob::JobType &type)
+FirewalldJob::FirewalldJob(FirewalldJob::JobType type)
     : KJob()
     , m_type(type) {};
 

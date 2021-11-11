@@ -24,7 +24,7 @@ class SystemdJob : public KJob
     Q_OBJECT
 
 public:
-    SystemdJob(const SYSTEMD::actions &action);
+    SystemdJob(SYSTEMD::actions action);
     ~SystemdJob();
     void start() override;
     QString name();

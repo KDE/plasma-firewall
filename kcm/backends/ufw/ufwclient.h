@@ -84,8 +84,8 @@ private:
     QString toXml(Rule *r) const;
     QStringList m_rawLogs;
     Profile m_currentProfile;
-    RuleListModel *m_rulesModel;
-    LogListModel *m_logs;
+    RuleListModel *const m_rulesModel;
+    LogListModel *m_logs = nullptr;
     QTimer m_logsRefreshTimer;
     bool m_logsAutoRefresh;
     KAuth::Action m_queryAction;

@@ -6,7 +6,7 @@
 class FirewalldLogModel : public LogListModel {
     Q_OBJECT
 public:
-    FirewalldLogModel(QObject *parent);
+    explicit FirewalldLogModel(QObject *parent);
     void addRawLogs(const QStringList &rawLogsList) override;
 };
 

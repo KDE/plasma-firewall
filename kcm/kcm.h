@@ -25,7 +25,7 @@ public:
     FirewallClient *client() const;
 
 private:
-    FirewallClient *m_client;
+    FirewallClient *const m_client;
 };
 
 #endif

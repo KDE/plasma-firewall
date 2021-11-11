@@ -12,7 +12,7 @@ std::map<QString, QString> parseString(const QString& line) {
 
     // We can find a line we are not interested.:
     // "-- Journal begins at Sun 2020-09-20 11:37:15 BST, ends at Wed 2020-12-09 18:45:16 GMT. --"
-    if (line.startsWith("-- Journal begins at ")) {
+    if (line.startsWith(QLatin1String("-- Journal begins at "))) {
         return {};
     }
 
@@ -28,13 +28,13 @@ std::map<QString, QString> parseString(const QString& line) {
         return {};
     }
 
-    results["date"] = splited[0] + " " + splited[1];
-    results["time"] = splited[3];
+    results[QStringLiteral("date")] = splited[0] + " " + splited[1];
+    results[QStringLiteral("time")] = splited[3];
 
     // We can drop now everything up to 7.
     splited.erase(std::begin(splited), std::begin(splited) + 7);
-    for (const QString& element : splited) {
-        for (const QString& key : {"IN", "SRC", "DST", "PROTO", "STP", "DPT"}) {
+    for (const QString& element : qAsConst(splited)) {
+        for (const QString& key : {QStringLiteral("IN"), QStringLiteral("SRC"), QStringLiteral("DST"), QStringLiteral("PROTO"), QStringLiteral("STP"), QStringLiteral("DPT")}) {
             if (element.startsWith(key)) {
                 results[key] = element.mid(element.indexOf('=')+1);
             }

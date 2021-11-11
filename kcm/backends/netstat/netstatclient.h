@@ -31,7 +31,7 @@ public:
 
 protected:
     QString mStatus;
-    ConnectionsModel *m_connections;
+    ConnectionsModel *const m_connections;
     NetstatHelper *m_netstatHelper;
 
     /* Netstat has been deprecated for more than 20 years,
