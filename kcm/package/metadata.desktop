@@ -64,7 +64,7 @@ Comment[x-test]=xxAdjust your firewall settingsxx
 Comment[zh_CN]=调整本机的防火墙设置
 Encoding=UTF-8
 
-Icon=security-high
+Icon=preferences-security-firewall
 Type=Service
 X-KDE-ServiceTypes=KCModule
 X-KDE-ServiceTypes=Plasma/Generic

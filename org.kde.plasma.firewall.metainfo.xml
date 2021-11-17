@@ -98,7 +98,7 @@
     <p xml:lang="x-test">xxPlasma Firewall is a multi-firewall frontend for ease of network configurations.xx</p>
     <p xml:lang="zh-CN">Plasma 防火墙是一款配置简便的防火墙前端程序，兼容多种防火墙后端程序。</p>
   </description>
-  <icon type="stock">security-high</icon>
+  <icon type="stock">preferences-security-firewall</icon>
   <screenshots>
     <screenshot type="default">
       <caption>The plasma firewall showing a default configuration page</caption>

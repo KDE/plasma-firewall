@@ -33,7 +33,7 @@ Name[sv]=Okomplicerad brandvägg
 Name[uk]=Uncomplicated Firewall
 Name[x-test]=xxUncomplicated Firewallxx
 Name[zh_CN]=UFW
-Icon=security-high
+Icon=preferences-security-firewall
 [org.kde.ufw.query]
 Name=Query Firewall
 Name[az]=Təhlükəsizlik Divarı sorğusu
