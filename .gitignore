@@ -49,8 +49,9 @@ build
 
 #Kdevelop
 *.kdev4
-/compile_commands.json
+compile_commands.json
 .clangd
 .clang-format
 .idea
 /cmake-build*
+.cache
