@@ -34,10 +34,6 @@ target_link_libraries(kcm_firewall
     networkstatus
 )
 
-kcoreaddons_desktop_to_json(kcm_firewall kcm_firewall.desktop SERVICE_TYPES kcmodule.desktop)
-
-#this desktop file is installed only for retrocompatibility with sycoca
-install(FILES kcm_firewall.desktop DESTINATION ${SERVICES_INSTALL_DIR})
-install(TARGETS kcm_firewall DESTINATION ${PLUGIN_INSTALL_DIR}/kcms)
+install(TARGETS kcm_firewall DESTINATION ${PLUGIN_INSTALL_DIR}/plasma/kcms/systemsettings)
 
 kpackage_install_package(package kcm_firewall kcms)
