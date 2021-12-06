@@ -1,8 +1,20 @@
 {
     "KPlugin": {
         "Description": "Control your network rules",
+        "Description[ca@valencia]": "Controla les regles de la xarxa",
+        "Description[ca]": "Controla les regles de la xarxa",
+        "Description[nl]": "Uw netwerkregels besturen",
+        "Description[sv]": "Bestäm dina nätverksregler",
+        "Description[uk]": "Керування вашими правилами мережі",
+        "Description[x-test]": "xxControl your network rulesxx",
         "Icon": "preferences-security-firewall",
         "Name": "Firewall",
+        "Name[ca@valencia]": "Tallafoc",
+        "Name[ca]": "Tallafoc",
+        "Name[nl]": "Firewall",
+        "Name[sv]": "Brandvägg",
+        "Name[uk]": "Брандмауер",
+        "Name[x-test]": "xxFirewallxx",
         "ServiceTypes": [
             "KCModule"
         ]
