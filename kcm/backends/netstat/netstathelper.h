@@ -40,10 +40,10 @@ private:
     void resetPointers();
 
     QString m_errorString;
-    bool m_hasError;
+    bool m_hasError = false;
     QProcess *m_executableProcess;
     QTimer *m_processKillerTimer;
-    bool m_hasTimeoutError;
+    bool m_hasTimeoutError = false;
 
 };
 

@@ -14,7 +14,7 @@
 
 Q_LOGGING_CATEGORY(NetstatHelperDebug, "netstat.helper")
 
-NetstatHelper::NetstatHelper() : m_hasError(false), m_hasTimeoutError(false)
+NetstatHelper::NetstatHelper()
 {
 }
 
@@ -105,13 +105,13 @@ QString NetstatHelper::errorString() const
 QVector<QStringList> NetstatHelper::parseSSOutput(const QByteArray &netstatOutput)
 {
     QString rawOutput = netstatOutput;
-    QStringList outputLines = rawOutput.split("\n");
+    QStringList outputLines = rawOutput.split(QStringLiteral("\n"));
 
     QVector<QStringList> connections;
 
     // discard lines.
     while (outputLines.size()) {
-        if (outputLines.first().indexOf("Recv-Q")) {
+        if (outputLines.first().indexOf(QLatin1String("Recv-Q"))) {
             outputLines.removeFirst();
             break;
         }
@@ -130,7 +130,7 @@ QVector<QStringList> NetstatHelper::parseSSOutput(const QByteArray &netstatOutpu
     };
 
     // Extract Information
-    for (auto line : outputLines) {
+    for (auto line : qAsConst(outputLines)) {
         QStringList values = line.split(QLatin1Char(' '), Qt::SkipEmptyParts);
         if (values.isEmpty()) {
             continue;
@@ -148,7 +148,7 @@ QVector<QStringList> NetstatHelper::parseSSOutput(const QByteArray &netstatOutpu
             values[6].chop(QStringLiteral("))").size());
 
             QStringList substrings = values[6].split(',');
-            appName = substrings[0].remove("\"");
+            appName = substrings[0].remove(QStringLiteral("\""));
             pid = substrings[1].split('=')[1];
         }
 
@@ -178,6 +178,6 @@ QVector<QStringList> NetstatHelper::parseSSOutput(const QByteArray &netstatOutpu
 QString NetstatHelper::extractAndStrip(const QString &src, const int &index, const int &size)
 {
     QString str = src.mid(index, size);
-    str.replace(" ", "");
+    str.replace(QLatin1String(" "), "");
     return str;
 }

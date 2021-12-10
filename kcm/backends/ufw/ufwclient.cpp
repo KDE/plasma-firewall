@@ -62,9 +62,6 @@ void debugState(KAuth::Action::AuthStatus status)
 UfwClient::UfwClient(QObject *parent, const QVariantList &args)
     : IFirewallClientBackend(parent, args)
     , m_rulesModel(new RuleListModel(this))
-    , m_logs(nullptr)
-    , m_busy(false)
-
 {
     queryExecutable("ufw");
 }

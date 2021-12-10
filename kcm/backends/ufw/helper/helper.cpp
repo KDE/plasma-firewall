@@ -56,7 +56,7 @@ namespace UFW
 {
 ActionReply Helper::query(const QVariantMap &args)
 {
-    ActionReply reply = args["defaults"].toBool()
+    ActionReply reply = args[QStringLiteral("defaults")].toBool()
         ? run({"--status", "--defaults", "--list", "--modules"}, "query")
         : run({"--status", "--list"}, "query");
 
@@ -70,7 +70,7 @@ ActionReply Helper::query(const QVariantMap &args)
                 data.insert(profile, f.readAll());
             }
         }
-        reply.addData("profiles", data);
+        reply.addData(QStringLiteral("profiles"), data);
     }
 
     return reply;
@@ -136,7 +136,7 @@ ActionReply Helper::modify(const QVariantMap &args)
 
 ActionReply Helper::setStatus(const QVariantMap &args, const QString &cmd)
 {
-    const QString enabled = args["status"].toBool() ? "true" : "false";
+    const QString enabled = args[QStringLiteral("status")].toBool() ? "true" : "false";
 
     return run({"--setEnabled=" + enabled}, {"--status"}, cmd);
 }
@@ -145,7 +145,7 @@ ActionReply Helper::setDefaults(const QVariantMap &args, const QString &cmd)
 {
     QStringList query({"--defaults"});
     if (args[QStringLiteral("ipv6")].toBool()) {
-        query.append("--list");
+        query.append(QStringLiteral("--list"));
     }
 
     const QString defaults = args[QStringLiteral("xml")].toString();
@@ -163,9 +163,9 @@ ActionReply Helper::setProfile(const QVariantMap &args, const QString &cmd)
     QStringList cmdArgs;
 
     if (args.contains(QStringLiteral("ruleCount"))) {
-        unsigned int count = args["ruleCount"].toUInt();
+        unsigned int count = args[QStringLiteral("ruleCount")].toUInt();
 
-        cmdArgs.append("--clearRules");
+        cmdArgs.append(QStringLiteral("--clearRules"));
         for (unsigned int i = 0; i < count; ++i) {
             const QString argument = args["rule" + QString::number(i)].toString();
             cmdArgs.append("--add=" + argument);
@@ -173,10 +173,10 @@ ActionReply Helper::setProfile(const QVariantMap &args, const QString &cmd)
     }
 
     if (args.contains(QStringLiteral("defaults"))) {
-        cmdArgs << "--setDefaults=" + args["defaults"].toString();
+        cmdArgs << "--setDefaults=" + args[QStringLiteral("defaults")].toString();
     }
     if (args.contains(QStringLiteral("modules"))) {
-        cmdArgs << "--setModules=" + args["modules"].toString();
+        cmdArgs << "--setModules=" + args[QStringLiteral("modules")].toString();
     }
 
     if (cmdArgs.isEmpty()) {
@@ -191,7 +191,7 @@ ActionReply Helper::setProfile(const QVariantMap &args, const QString &cmd)
 
 ActionReply Helper::saveProfile(const QVariantMap &args, const QString &cmd)
 {
-    QString name(args["name"].toString()), xml(args["xml"].toString());
+    QString name(args[QStringLiteral("name")].toString()), xml(args["xml"].toString());
     ActionReply reply;
     auto prepareData = [&] {
         reply.addData(QStringLiteral("cmd"), cmd);
@@ -228,9 +228,9 @@ ActionReply Helper::deleteProfile(const QVariantMap &args, const QString &cmd)
     QString name(args[QStringLiteral("name")].toString());
     ActionReply reply;
     auto prepareData = [&] {
-        reply.addData("cmd", cmd);
-        reply.addData("name", name);
-        reply.addData("profiles", QDir(KCM_UFW_DIR).entryList({"*" + PROFILE_EXTENSION}));
+        reply.addData(QStringLiteral("cmd"), cmd);
+        reply.addData(QStringLiteral("name"), name);
+        reply.addData(QStringLiteral("profiles"), QDir(KCM_UFW_DIR).entryList({"*" + PROFILE_EXTENSION}));
     };
 
     if (name.isEmpty()) {
@@ -334,8 +334,8 @@ ActionReply Helper::run(const QStringList &args, const QString &cmd)
         return reply;
     }
 
-    reply.addData("response", ufw.readAllStandardOutput());
-    reply.addData("cmd", cmd);
+    reply.addData(QStringLiteral("response"), ufw.readAllStandardOutput());
+    reply.addData(QStringLiteral("cmd"), cmd);
     return reply;
 }
 

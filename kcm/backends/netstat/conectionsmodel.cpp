@@ -61,7 +61,7 @@ QVariant ConnectionsModel::data(const QModelIndex &index, int role) const
         return data.pid;
     case ProgramRole:
         // HACK. Firefox reports as MainThread
-        if (data.program == "MainThread") {
+        if (data.program == QLatin1String("MainThread")) {
             return "Firefox";
         } else {
             return data.program;
@@ -103,11 +103,11 @@ void ConnectionsModel::refreshConnections(const  QVector<QStringList>& result)
                                 .pid = connection.at(4),
                                 .program = connection.at(5)};
 
-        if (conn.status == "UNCONN") {
+        if (conn.status == QLatin1String("UNCONN")) {
             conn.status = i18n("Not Connected");
-        } else if (conn.status == "ESTAB") {
+        } else if (conn.status == QLatin1String("ESTAB")) {
             conn.status = i18n("Established");
-        } else if (conn.status == "LISTEN") {
+        } else if (conn.status == QLatin1String("LISTEN")) {
             conn.status = i18n("Listening");
         }
 

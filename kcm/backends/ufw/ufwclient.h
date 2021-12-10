@@ -89,7 +89,7 @@ private:
     QTimer m_logsRefreshTimer;
     bool m_logsAutoRefresh;
     KAuth::Action m_queryAction;
-    bool m_busy;
+    bool m_busy = false;
 };
 
 

@@ -31,7 +31,7 @@ public:
 
 private:
     void systemdAction(const SYSTEMD::actions value);
-    SYSTEMD::actions m_action;
+    const SYSTEMD::actions m_action;
 };
 
 #endif
