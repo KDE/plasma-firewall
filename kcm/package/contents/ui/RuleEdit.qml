@@ -59,7 +59,7 @@ FocusScope {
             Kirigami.FormData.label: i18n("Policy:")
             model: policyChoices
             textRole: "text"
-            currentIndex: rule.policy == "" ? 0 : policyChoices.findIndex((policy) => policy.data == rule.policy)
+            currentIndex: rule.policy === "" ? 0 : policyChoices.findIndex((policy) => policy.data === rule.policy)
             onActivated: rule.policy = policyChoices[index].data
         }
 
@@ -154,7 +154,7 @@ FocusScope {
             Kirigami.FormData.label: i18n("Logging:")
             model: ruleChoices
             textRole: "text"
-            currentIndex: rule.logging == "" ? 0 : ruleChoices.findIndex((rules) => rules.data == rule.logging)
+            currentIndex: rule.logging === "" ? 0 : ruleChoices.findIndex((rules) => rules.data === rule.logging)
             onActivated: rule.logging = ruleChoices[index].data
         }
 

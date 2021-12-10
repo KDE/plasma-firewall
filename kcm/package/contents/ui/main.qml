@@ -168,11 +168,11 @@ KCM.ScrollViewKCM {
                                 console.log(job.errorString);
                                 var errorString = job.errorString;
                                 // Firewalld is sending a typo to us.
-                                if (errorString.indexOf("Permission denied") != -1) {
+                                if (errorString.indexOf("Permission denied") !== -1) {
                                     errorString = i18n("Permission denied");
                                 }
 
-                                if (errorString.indexOf("unable to initialize table") != -1) {
+                                if (errorString.indexOf("unable to initialize table") !== -1) {
                                     firewallInlineErrorMessage.text = i18n("You recently updated your kernel. Iptables is failing to initialize, please reboot.")
                                 } else {
                                     firewallInlineErrorMessage.text = enabled
@@ -431,7 +431,7 @@ KCM.ScrollViewKCM {
     }
 
     Component.onCompleted: {
-        if (kcm.client.name == "") {
+        if (kcm.client.name === "") {
             firewallInlineErrorMessage.text = i18n("Please install a firewall, such as ufw or firewalld");
             firewallInlineErrorMessage.visible = true;
             enabledCheckBox.enabled = false;
