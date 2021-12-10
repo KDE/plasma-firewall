@@ -296,7 +296,7 @@ bool FirewallClient::hasExecutable() const
 void FirewallClient::setBackend(const QStringList &backendList)
 {
     if (m_currentBackend) {
-        enabledChanged(false);
+        Q_EMIT enabledChanged(false);
         delete m_currentBackend;
         m_currentBackend = nullptr;
     }

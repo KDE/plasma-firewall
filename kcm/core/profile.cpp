@@ -66,7 +66,7 @@ void Profile::setArgs(const QVariantMap &args)
     m_defaultIncomingPolicy = new_defaultIncomingPolicy.isEmpty() ? Types::POLICY_ALLOW : Types::toPolicy(new_defaultIncomingPolicy);
     m_defaultOutgoingPolicy = new_defaultOutgoingPolicy.isEmpty() ? Types::POLICY_ALLOW : Types::toPolicy(new_defaultOutgoingPolicy);
     m_logLevel = new_loglevel.isEmpty() ? Types::LOG_OFF : Types::toLogLevel(new_loglevel);
-    m_enabled = args.value("status").toBool();
+    m_enabled = args.value(QStringLiteral("status")).toBool();
     m_ipv6Enabled = args.value("ipv6Enabled").toBool();
 
     if (!new_modules.isEmpty()) {
@@ -130,18 +130,18 @@ void Profile::load(QIODevice *device)
             continue;
         }
         if (reader.name() == QStringLiteral("ufw")) {
-            isFullProfile = reader.attributes().value("full") == QStringLiteral("true");
+            isFullProfile = reader.attributes().value(QStringLiteral("full")) == QStringLiteral("true");
             continue;
         } else if (reader.name() == QStringLiteral("status")) {
-            m_enabled = reader.attributes().value("enabled") == QStringLiteral("true");
+            m_enabled = reader.attributes().value(QStringLiteral("enabled")) == QStringLiteral("true");
             m_fields |= FIELD_STATUS;
         } else if (reader.name() == QStringLiteral("rules")) {
             m_fields |= FIELD_RULES;
             continue;
         } else if (reader.name() == "rule") {
-            static QString ANY_ADDR = "0.0.0.0/0";
-            static QString ANY_ADDR_V6 = "::/0";
-            static QString ANY_PORT = "any";
+            static QString ANY_ADDR = QStringLiteral("0.0.0.0/0");
+            static QString ANY_ADDR_V6 = QStringLiteral("::/0");
+            static QString ANY_PORT = QStringLiteral("any");
 
             const auto attr = reader.attributes();
 
@@ -203,7 +203,7 @@ void Profile::load(QIODevice *device)
     }
 }
 
-void Profile::setEnabled(const bool &value)
+void Profile::setEnabled(bool value)
 {
     m_enabled = value;
 }
