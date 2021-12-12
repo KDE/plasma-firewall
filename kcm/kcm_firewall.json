@@ -1,6 +1,7 @@
 {
     "KPlugin": {
         "Description": "Control your network rules",
+        "Description[ar]": "يتحكم بقواعد شبكتك",
         "Description[az]": "Şəbəkəyə giriş qaydalarına nəzarət edin",
         "Description[ca@valencia]": "Controla les regles de la xarxa",
         "Description[ca]": "Controla les regles de la xarxa",
@@ -12,11 +13,14 @@
         "Description[lt]": "Valdyti tinklo taisykles",
         "Description[nl]": "Uw netwerkregels besturen",
         "Description[pt_BR]": "Controle suas regras de rede",
+        "Description[sl]": "Kontrola vaših omrežnih pravil",
         "Description[sv]": "Bestäm dina nätverksregler",
         "Description[uk]": "Керування вашими правилами мережі",
         "Description[x-test]": "xxControl your network rulesxx",
+        "Description[zh_CN]": "控制本机的网络规则",
         "Icon": "preferences-security-firewall",
         "Name": "Firewall",
+        "Name[ar]": "الجدار الناري",
         "Name[az]": "Təhlükəsizlik divarı",
         "Name[ca@valencia]": "Tallafoc",
         "Name[ca]": "Tallafoc",
@@ -29,9 +33,11 @@
         "Name[nl]": "Firewall",
         "Name[pt]": "'Firewall'",
         "Name[pt_BR]": "Firewall",
+        "Name[sl]": "Vdorobran",
         "Name[sv]": "Brandvägg",
         "Name[uk]": "Брандмауер",
         "Name[x-test]": "xxFirewallxx",
+        "Name[zh_CN]": "防火墙",
         "ServiceTypes": [
             "KCModule"
         ]

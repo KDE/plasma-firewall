@@ -37,6 +37,7 @@ Name[uk]=Брандмауер
 Name[x-test]=xxFirewallxx
 Name[zh_CN]=防火墙
 Comment=Control your network rules
+Comment[ar]=يتحكم بقواعد شبكتك
 Comment[az]=Şəbəkə təhlükəsizliyi qaydalarını idarə etmək
 Comment[ca]=Controla les regles de la xarxa
 Comment[ca@valencia]=Controla les regles de la xarxa
