@@ -9,6 +9,7 @@
   <metadata_license>FSFAP</metadata_license>
   <project_license>GPL-2.0+</project_license>
   <name>Plasma Firewall</name>
+  <name xml:lang="ar">الجدار الناري لبلازما</name>
   <name xml:lang="az">Plasma Təhlükəsizlik Divarı</name>
   <name xml:lang="ca">Tallafoc del Plasma</name>
   <name xml:lang="ca-valencia">Tallafoc del Plasma</name>
@@ -39,6 +40,7 @@
   <name xml:lang="x-test">xxPlasma Firewallxx</name>
   <name xml:lang="zh-CN">Plasma 防火墙</name>
   <summary>Firewall Interface for Plasma</summary>
+  <summary xml:lang="ar">واجهة الجدار الناري لبلازما</summary>
   <summary xml:lang="az">Plasma üçün Təhlükəsizlik Divarı İnterfeysi</summary>
   <summary xml:lang="ca">Interfície del tallafoc per al Plasma</summary>
   <summary xml:lang="ca-valencia">Interfície del tallafoc per al Plasma</summary>
@@ -69,6 +71,7 @@
   <summary xml:lang="zh-CN">Plasma 的防火墙界面</summary>
   <description>
     <p>Plasma Firewall is a multi-firewall frontend for ease of network configurations.</p>
+    <p xml:lang="ar">الجدار الناري لبلازما هي واجهة لعدة جدران نارية لتسهل ضبط الشبكة.</p>
     <p xml:lang="az">Plasma Təhlükəsizlik divarı bir neçə təhlükəsizlik divarlarıı ilə şəbəkənin ayarlanmasını sadələşdirən xarici interfeysdir.</p>
     <p xml:lang="ca">El Tallafoc del Plasma és un frontal multitallafoc per a facilitar les configuracions de la xarxa.</p>
     <p xml:lang="ca-valencia">El Tallafoc del Plasma és un frontal multitallafoc per a facilitar les configuracions de la xarxa.</p>
@@ -102,6 +105,7 @@
   <screenshots>
     <screenshot type="default">
       <caption>The plasma firewall showing a default configuration page</caption>
+      <caption xml:lang="ar">الجدار الناري لبلازما يعرض صفحة الضبط المبدئية</caption>
       <caption xml:lang="az">Standart tənzimləmə səhifəsini göstərən Plasma Təhlükəsizlik Divarı</caption>
       <caption xml:lang="ca">El Tallafoc del Plasma mostra una pàgina de configuració predeterminada</caption>
       <caption xml:lang="ca-valencia">El Tallafoc del Plasma mostra una pàgina de configuració predeterminada</caption>
