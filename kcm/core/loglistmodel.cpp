@@ -25,7 +25,7 @@ void LogListModel::setBusy(bool busy)
 {
     if (m_busy != busy) {
         m_busy = busy;
-        emit busyChanged();
+        Q_EMIT busyChanged();
     }
 }
 
@@ -95,5 +95,5 @@ void LogListModel::appendLogData(const QVector<LogData> newData)
     beginResetModel();
     m_logsData = newData;
     endResetModel();
-    emit countChanged();
+    Q_EMIT countChanged();
 }

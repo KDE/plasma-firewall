@@ -32,7 +32,7 @@ public:
 protected:
     QString mStatus;
     ConnectionsModel *const m_connections;
-    NetstatHelper *m_netstatHelper;
+    NetstatHelper *m_netstatHelper = nullptr;
 
     /* Netstat has been deprecated for more than 20 years,
      * let's discourage distros using it as default.

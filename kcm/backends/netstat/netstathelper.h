@@ -35,14 +35,14 @@ Q_SIGNALS:
 private:
     QVector<QStringList> parseSSOutput(const QByteArray &ss);
 
-    QString extractAndStrip(const QString &src, const int &index, const int &size);
+    QString extractAndStrip(const QString &src, int index, int size);
 
     void resetPointers();
 
     QString m_errorString;
     bool m_hasError = false;
-    QProcess *m_executableProcess;
-    QTimer *m_processKillerTimer;
+    QProcess *m_executableProcess = nullptr;
+    QTimer *m_processKillerTimer = nullptr;
     bool m_hasTimeoutError = false;
 
 };

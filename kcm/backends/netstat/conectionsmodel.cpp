@@ -86,7 +86,7 @@ void ConnectionsModel::refreshConnections(const  QVector<QStringList>& result)
 {
 
     if (m_netstatHelper.hasError()) {
-        emit showErrorMessage(i18n("Failed to get connections: %1", m_netstatHelper.errorString()));
+        Q_EMIT showErrorMessage(i18n("Failed to get connections: %1", m_netstatHelper.errorString()));
         return;
     }
 
@@ -121,6 +121,6 @@ void ConnectionsModel::refreshConnections(const  QVector<QStringList>& result)
     }
 
     if (newConnectionsData.count() != oldConnectionsData.count()) {
-        emit countChanged();
+        Q_EMIT countChanged();
     }
 }

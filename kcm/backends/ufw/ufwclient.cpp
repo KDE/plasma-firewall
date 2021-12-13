@@ -141,7 +141,7 @@ KJob *UfwClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavio
         m_busy = false;
 
         if (job->error() != KJob::NoError) {
-            emit showErrorMessage(i18n("There was an error in the backend! Please report it.\n%1 %2", job->action().name(), job->errorString()));
+            Q_EMIT showErrorMessage(i18n("There was an error in the backend! Please report it.\n%1 %2", job->action().name(), job->errorString()));
             qWarning() << job->action().name() << job->errorString();
             return;
         }
@@ -221,7 +221,7 @@ void UfwClient::setLogsAutoRefresh(bool logsAutoRefresh)
     }
 
     m_logsAutoRefresh = logsAutoRefresh;
-    emit logsAutoRefreshChanged(m_logsAutoRefresh);
+    Q_EMIT logsAutoRefreshChanged(m_logsAutoRefresh);
 }
 
 void UfwClient::refreshLogs()
@@ -248,7 +248,7 @@ void UfwClient::refreshLogs()
         m_logs->setBusy(false);
 
         if (job->error()) {
-            emit m_logs->showErrorMessage(i18n("Error fetching firewall logs: %1", job->errorString()));
+            Q_EMIT m_logs->showErrorMessage(i18n("Error fetching firewall logs: %1", job->errorString()));
             return;
         }
 
@@ -268,16 +268,16 @@ void UfwClient::setProfile(Profile profile)
     m_currentProfile = profile;
     m_rulesModel->setProfile(m_currentProfile);
     if (m_currentProfile.enabled() != oldProfile.enabled())
-        emit enabledChanged(m_currentProfile.enabled());
+        Q_EMIT enabledChanged(m_currentProfile.enabled());
 
     if (m_currentProfile.defaultIncomingPolicy() != oldProfile.defaultIncomingPolicy()) {
         const QString policy = Types::toString(m_currentProfile.defaultIncomingPolicy());
-        emit defaultIncomingPolicyChanged(policy);
+        Q_EMIT defaultIncomingPolicyChanged(policy);
     }
 
     if (m_currentProfile.defaultOutgoingPolicy() != oldProfile.defaultOutgoingPolicy()) {
         const QString policy = Types::toString(m_currentProfile.defaultOutgoingPolicy());
-        emit defaultOutgoingPolicyChanged(policy);
+        Q_EMIT defaultOutgoingPolicyChanged(policy);
     }
 }
 

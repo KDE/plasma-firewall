@@ -85,7 +85,7 @@ void NetstatHelper::stepExecuteFinished(int exitCode)
         m_errorString = m_executableProcess->readAllStandardError();
     } else {
         QVector<QStringList> result = parseSSOutput(m_executableProcess->readAllStandardOutput());
-        emit queryFinished(result);;
+        Q_EMIT queryFinished(result);;
     }
 
     m_executableProcess->deleteLater();
@@ -130,7 +130,7 @@ QVector<QStringList> NetstatHelper::parseSSOutput(const QByteArray &netstatOutpu
     };
 
     // Extract Information
-    for (auto line : qAsConst(outputLines)) {
+    for (const auto &line : qAsConst(outputLines)) {
         QStringList values = line.split(QLatin1Char(' '), Qt::SkipEmptyParts);
         if (values.isEmpty()) {
             continue;
@@ -175,9 +175,9 @@ QVector<QStringList> NetstatHelper::parseSSOutput(const QByteArray &netstatOutpu
     return connections;
 }
 
-QString NetstatHelper::extractAndStrip(const QString &src, const int &index, const int &size)
+QString NetstatHelper::extractAndStrip(const QString &src, int index, int size)
 {
     QString str = src.mid(index, size);
-    str.replace(QLatin1String(" "), "");
+    str.remove(QLatin1String(" "));
     return str;
 }

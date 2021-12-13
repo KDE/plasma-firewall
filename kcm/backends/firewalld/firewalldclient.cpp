@@ -70,7 +70,7 @@ KJob *FirewalldClient::setEnabled(const bool value)
         }
         m_currentProfile.setEnabled(value);
         queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
-        emit enabledChanged(value);
+        Q_EMIT enabledChanged(value);
     });
 
     return job;
@@ -117,7 +117,7 @@ void FirewalldClient::setLogsAutoRefresh(bool logsAutoRefresh)
     }
 
     m_logsAutoRefresh = logsAutoRefresh;
-    emit logsAutoRefreshChanged(m_logsAutoRefresh);
+    Q_EMIT logsAutoRefreshChanged(m_logsAutoRefresh);
 }
 
 void FirewalldClient::refreshLogs() {};
@@ -493,17 +493,17 @@ void FirewalldClient::setProfile(Profile profile)
     m_currentProfile = profile;
     m_rulesModel->setProfile(m_currentProfile);
     if (m_currentProfile.enabled() != oldProfile.enabled()) {
-        emit enabledChanged(m_currentProfile.enabled());
+        Q_EMIT enabledChanged(m_currentProfile.enabled());
     }
 
     if (m_currentProfile.defaultIncomingPolicy() != oldProfile.defaultIncomingPolicy()) {
         const QString policy = Types::toString(m_currentProfile.defaultIncomingPolicy());
-        emit defaultIncomingPolicyChanged(policy);
+        Q_EMIT defaultIncomingPolicyChanged(policy);
     }
 
     if (m_currentProfile.defaultOutgoingPolicy() != oldProfile.defaultOutgoingPolicy()) {
         const QString policy = Types::toString(m_currentProfile.defaultOutgoingPolicy());
-        emit defaultOutgoingPolicyChanged(policy);
+        Q_EMIT defaultOutgoingPolicyChanged(policy);
     }
 }
 

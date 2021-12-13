@@ -1,6 +1,7 @@
 #include "firewalldlogmodel.h"
 
 FirewalldLogModel::FirewalldLogModel(QObject *parent)
+    : LogListModel(parent)
 {
 
 }

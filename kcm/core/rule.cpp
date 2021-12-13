@@ -223,7 +223,7 @@ void Rule::setPolicy(const QString &policy)
     }
 
     m_action = policy_t;
-    emit policyChanged(policy);
+    Q_EMIT policyChanged(policy);
 }
 
 void Rule::setIncoming(bool incoming)
@@ -233,7 +233,7 @@ void Rule::setIncoming(bool incoming)
     }
 
     m_incoming = incoming;
-    emit incomingChanged(incoming);
+    Q_EMIT incomingChanged(incoming);
 }
 
 void Rule::setSourceAddress(const QString &sourceAddress)
@@ -242,7 +242,7 @@ void Rule::setSourceAddress(const QString &sourceAddress)
         return;
     }
     m_sourceAddress = sourceAddress;
-    emit sourceAddressChanged(sourceAddress);
+    Q_EMIT sourceAddressChanged(sourceAddress);
 }
 
 void Rule::setSourcePort(const QString &sourcePort)
@@ -252,7 +252,7 @@ void Rule::setSourcePort(const QString &sourcePort)
     }
 
     m_sourcePort = sourcePort ;
-    emit sourcePortChanged(sourcePort);
+    Q_EMIT sourcePortChanged(sourcePort);
 }
 
 void Rule::setDestinationAddress(const QString &destinationAddress)
@@ -261,7 +261,7 @@ void Rule::setDestinationAddress(const QString &destinationAddress)
         return;
     }
     m_destAddress = destinationAddress;
-    emit destinationAddressChanged(destinationAddress);
+    Q_EMIT destinationAddressChanged(destinationAddress);
 }
 
 void Rule::setDestinationPort(const QString &destinationPort)
@@ -271,7 +271,7 @@ void Rule::setDestinationPort(const QString &destinationPort)
     }
 
     m_destPort = destinationPort;
-    emit destinationPortChanged(destinationPort);
+    Q_EMIT destinationPortChanged(destinationPort);
 }
 
 void Rule::setIpv6(bool ipv6)
@@ -281,7 +281,7 @@ void Rule::setIpv6(bool ipv6)
     }
 
     m_ipv6 = ipv6;
-    emit ipv6Changed(ipv6);
+    Q_EMIT ipv6Changed(ipv6);
 }
 
 void Rule::setProtocol(int v)
@@ -299,7 +299,7 @@ void Rule::setInterface(int interface)
     m_interfaceStr = interface != 0 ? FirewallClient::knownInterfaces().at(interface) : QString();
     m_interface = interface;
 
-    emit interfaceChanged(interface);
+    Q_EMIT interfaceChanged(interface);
 }
 
 void Rule::setLogging(const QString &logging)
@@ -310,7 +310,7 @@ void Rule::setLogging(const QString &logging)
     }
 
     m_logtype = logging_t;
-    emit loggingChanged(logging);
+    Q_EMIT loggingChanged(logging);
 }
 
 void Rule::setPosition(int position)
@@ -320,7 +320,7 @@ void Rule::setPosition(int position)
     }
 
     m_position = position;
-    emit positionChanged(position);
+    Q_EMIT positionChanged(position);
 }
 
 QString Rule::policy() const
