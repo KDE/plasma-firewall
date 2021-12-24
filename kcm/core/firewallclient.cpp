@@ -301,16 +301,15 @@ void FirewallClient::setBackend(const QStringList &backendList)
         m_currentBackend = nullptr;
     }
 
-    const auto plugins = KPluginLoader::findPlugins(QStringLiteral("kf5/plasma_firewall"));
+    const auto plugins = KPluginMetaData::findPlugins(QStringLiteral("kf5/plasma_firewall"));
 
     QList<KPluginFactory*> factories;
     for (const KPluginMetaData &metadata : plugins) {
-        QString pluginName = metadata.pluginId().remove("backend");
+        QString pluginName = metadata.pluginId().remove(QStringLiteral("backend"));
         if (!backendList.contains(pluginName)) {
             continue;
         }
-
-        KPluginFactory *factory = KPluginLoader(metadata.fileName()).factory();
+        KPluginFactory *factory = KPluginFactory::loadFactory(metadata).plugin;
         if (!factory) {
             continue;
         }
@@ -318,7 +317,7 @@ void FirewallClient::setBackend(const QStringList &backendList)
     }
 
     // lambdas
-    auto systemCheck = [this] (const QList<KPluginFactory*> factories) -> IFirewallClientBackend* {
+    auto systemCheck = [this] (const QList<KPluginFactory*> &factories) -> IFirewallClientBackend* {
         for (KPluginFactory *factory : factories) {
             auto perhaps = factory->create<IFirewallClientBackend>(this, QVariantList());
             if (perhaps->isCurrentlyLoaded()) {

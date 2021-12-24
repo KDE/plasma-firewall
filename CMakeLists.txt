@@ -44,6 +44,8 @@ find_package(Qt5 REQUIRED COMPONENTS
 # KDE5
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f00)
+add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055800)
 
 include(KDEInstallDirs)
 include(KDECompilerSettings)
