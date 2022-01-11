@@ -123,8 +123,10 @@ KCM.ScrollViewKCM {
                 QQC2.CheckBox {
                     id: enabledCheckBox
                     property QtObject activeJob: null
-                    text: i18n("Enabled")
-                    enabled: !activeJob
+                    text: !activeJob
+                        ? i18n("Enabled")
+                        : i18n("Enabled (%1)", kcm.client.enabled ? i18n("Disabling...") : i18n("Enabling..."))
+                    enabled: !activeJob && !connectEnableTimer.running ? true : false
 
                     function bindCurrent() {
                         checked = Qt.binding(function() {
@@ -138,19 +140,11 @@ KCM.ScrollViewKCM {
                     // this is an ugly hack.
                     Timer {
                         id: connectEnableTimer
-                        onTriggered: {
-                            enabledCheckBox.text = i18n("Enabled");
-                            enabledCheckBox.enabled = true
-                        }
                         interval: 4000
                         repeat: false
                     }
 
                     onToggled: {
-                        if (!checked) {
-                            enabledCheckBox.text = i18n("Disabling...");
-                            enabledCheckBox.enabled = false;
-                        }
                         const enable = checked; // store the state on job begin, not when it finished
 
                         const job = kcm.client.setEnabled(checked);
@@ -181,7 +175,7 @@ KCM.ScrollViewKCM {
                                 }
                                 firewallInlineErrorMessage.visible = true;
                             }
-                            if (!checked) {
+                            if (!enable) {
                                 connectEnableTimer.start();
                             }
                         });
