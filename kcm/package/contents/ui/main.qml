@@ -123,10 +123,14 @@ KCM.ScrollViewKCM {
                 QQC2.CheckBox {
                     id: enabledCheckBox
                     property QtObject activeJob: null
-                    text: !activeJob
-                        ? i18n("Enabled")
-                        : i18n("Enabled (%1)", kcm.client.enabled ? i18n("Disabling...") : i18n("Enabling..."))
-                    enabled: !activeJob && !connectEnableTimer.running ? true : false
+                    text: {
+                        if (kcm.client.enabled) {
+                            return activeJob ? i18n("Disabling...") : i18n("Enabled")
+                        } else {
+                            return activeJob ? i18n("Enabling...") : i18n("Disabled")
+                        }
+                    }
+                    enabled: !activeJob && !connectEnableTimer.running
 
                     function bindCurrent() {
                         checked = Qt.binding(function() {
