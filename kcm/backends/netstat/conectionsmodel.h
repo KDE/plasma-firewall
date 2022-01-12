@@ -38,6 +38,7 @@ class ConnectionsModel : public QAbstractListModel
     Q_OBJECT
 
     Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
+    Q_PROPERTY(bool busy READ busy NOTIFY busyChanged)
 
 public:
     enum ConnectionsModelRoles { ProtocolRole = Qt::UserRole + 1, LocalAddressRole, ForeignAddressRole, StatusRole, PidRole, ProgramRole };
@@ -46,6 +47,8 @@ public:
     explicit ConnectionsModel(QObject *parent = nullptr);
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+
+    bool busy() const;
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
@@ -56,6 +59,7 @@ public:
 
 signals:
     void countChanged();
+    void busyChanged();
     void showErrorMessage(const QString &message);
 
 protected slots:
@@ -64,6 +68,7 @@ protected slots:
 private:
     QVector<ConnectionsData> m_connectionsData;
     QTimer timer;
+    bool m_busy = false;
     NetstatHelper m_netstatHelper;
 };
 

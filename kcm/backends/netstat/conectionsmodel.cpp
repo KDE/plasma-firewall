@@ -21,6 +21,8 @@ ConnectionsModel::ConnectionsModel(QObject *parent)
 
 void ConnectionsModel::start()
 {
+    m_busy = true;
+    Q_EMIT busyChanged();
     timer.start();
     QTimer::singleShot(0, &m_netstatHelper, &NetstatHelper::query);
 }
@@ -37,6 +39,11 @@ int ConnectionsModel::rowCount(const QModelIndex &parent) const
     }
 
     return m_connectionsData.size();
+}
+
+bool ConnectionsModel::busy() const
+{
+    return m_busy;
 }
 
 QVariant ConnectionsModel::data(const QModelIndex &index, int role) const
@@ -122,5 +129,10 @@ void ConnectionsModel::refreshConnections(const  QVector<QStringList>& result)
 
     if (newConnectionsData.count() != oldConnectionsData.count()) {
         Q_EMIT countChanged();
+    }
+
+    if (m_busy) {
+        m_busy = false;
+        Q_EMIT busyChanged();
     }
 }
