@@ -175,7 +175,7 @@ KCM.ScrollViewKCM {
                                 }
                                 firewallInlineErrorMessage.visible = true;
                             }
-                            if (!enable) {
+                            if (!enable && !job.error) {
                                 connectEnableTimer.start();
                             }
                         });
