@@ -189,7 +189,7 @@ KCM.ScrollViewKCM {
 
                 InlineBusyIndicator {
                     Layout.fillHeight: true
-                    running: enabledCheckBox.activeJob !== null
+                    running: enabledCheckBox.activeJob !== null || connectEnableTimer.running
                 }
             }
 
