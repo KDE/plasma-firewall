@@ -71,7 +71,7 @@ FocusScope {
         CheckBox {
             id: advancedRules
             text:"Advanced"
-            onClicked: rule.setSimplified(!rule.simplified)
+            onClicked: rule.simplified = !rule.simplified
             checked: rule.simplified ? false : true // show advanced mode directly if isn't simple !
         }
 
@@ -90,9 +90,8 @@ FocusScope {
                 icon.name: ruleEdit.newRule ? "document-new" : "document-save"
                 enabled: (!sourceAddress.length || sourceAddress.acceptableInput) && (!destinationAddress.length || destinationAddress.acceptableInput) && !(sourceAddress.text == destinationAddress.text && sourcePort.text == destinationPort.text)
                 onClicked: {
-                    // console.log("WHAT I HAVE HERE -> ", simple.service);
-                    rule.setSourceApplication(simple.service[simple.index]);
-                    //
+                    // rule.setSourceApplication(simple.service[simple.index]);
+                    rule.sourceApplication = simple.service[simple.index]
                     ruleEdit.accepted()
                 }
 

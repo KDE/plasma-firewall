@@ -5,7 +5,7 @@
  */
 #include "queryrulesfirewalldjob.h"
 #include <KLocalizedString>
-
+#include <QTimer>
 QueryRulesFirewalldJob::QueryRulesFirewalldJob()
 {
     m_simple = new FirewalldJob("getServices", {""}, FirewalldJob::SIMPLELIST);
@@ -14,14 +14,14 @@ QueryRulesFirewalldJob::QueryRulesFirewalldJob()
     connect(m_direct, &KJob::result, this, [this](void) {
         m_directFinished = true;
         if (m_simpleFinished) {
-            emit finished();
+            emitResult();
         }
     });
 
     connect(m_simple, &KJob::result, this, [this](void) {
         m_simpleFinished = true;
         if (m_directFinished) {
-            emit finished();
+            emitResult();
         }
     });
 }

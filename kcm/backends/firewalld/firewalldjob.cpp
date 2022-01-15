@@ -65,24 +65,6 @@ FirewalldJob::FirewalldJob(const QByteArray &call, const QVariantList &args, con
 FirewalldJob::FirewalldJob(const FirewalldJob::JobType &type)
     : KJob()
     , m_type(type){};
-// FirewalldJob::FirewalldJob(){};
-// FirewalldJob::FirewalldJob(const QByteArray &call, const QVariantList &args, FirewalldJob::JobType type)
-//     : KJob()
-//     , m_type(type)
-// {
-//     setFirewalldMessage(call, args);
-// };
-// FirewalldJob::FirewalldJob(FirewalldJob::JobType type)
-//     : KJob()
-//     , m_type(type){};
-//
-// void FirewalldJob::setFirewalldMessage(const QByteArray &call, const QVariantList &args)
-// {
-//     if (!m_type) {
-//         m_call = call;
-//         m_args = args;
-//     }
-// }
 
 template<typename T>
 T FirewalldJob::connectCall(QDBusPendingCallWatcher *watcher)
@@ -103,6 +85,7 @@ void FirewalldJob::connectCall(QDBusPendingCallWatcher *watcher)
         setErrorText(reply.error().message());
         setError(DBUSFIREWALLDDERROR);
         qDebug() << errorString();
+        emitResult();
     }
 }
 
@@ -134,12 +117,19 @@ void FirewalldJob::firewalldAction(const QString &bus, const QString &path, cons
         });
 
     } else {
-        connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, interface](QDBusPendingCallWatcher *watcher) {
+        connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, interface, method](QDBusPendingCallWatcher *watcher) {
             watcher->deleteLater();
             if (interface == SIMPLE::INTERFACE) { // believe or not to get the data from active zone you need to send ""
-                QStringList reply = connectCall<QStringList>(watcher);
-                if (!reply.isEmpty()) {
-                    m_services = reply;
+                if (method.contains(QRegExp("^(add|remove)"))) {
+                    QString reply = connectCall<QString>(watcher);
+                    if (!reply.isEmpty())
+                        qCDebug(FirewallDJobDebug) << "manipulated zone: " << reply;
+
+                } else {
+                    QStringList reply = connectCall<QStringList>(watcher);
+                    if (!reply.isEmpty()) {
+                        m_services = reply;
+                    }
                 }
             } else {
                 connectCall(watcher);
@@ -198,6 +188,7 @@ FirewalldJob::~FirewalldJob() = default;
 void FirewalldJob::start()
 {
     switch (m_type) {
+    case FirewalldJob::SIMPLIFIEDRULE:
     case FirewalldJob::SIMPLELIST: {
         qCDebug(FirewallDJobDebug) << "firewalld simple interface: " << m_call << m_args;
         firewalldAction(FIREWALLD::BUS, FIREWALLD::PATH, SIMPLE::INTERFACE, m_call, m_args);
@@ -220,11 +211,7 @@ void FirewalldJob::start()
         firewalldAction(FIREWALLD::BUS, FIREWALLD::PATH, SERVICES::INTERFACE, SERVICES::METHOD);
         break;
     }
-    case FirewalldJob::SIMPLIFIEDRULE: {
 
-        break;
-
-   }
     default:
         emitResult();
         return;

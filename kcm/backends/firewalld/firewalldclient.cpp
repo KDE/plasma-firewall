@@ -83,7 +83,7 @@ KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsB
 
     QueryRulesFirewalldJob *job = new QueryRulesFirewalldJob();
 
-    connect(job, &QueryRulesFirewalldJob::finished, this, [this, job] {
+    connect(job, &QueryRulesFirewalldJob::result, this, [this, job] {
         if (job->error()) {
             qCDebug(FirewallDClientDebug) << job->errorString();
             return;
@@ -149,7 +149,8 @@ KJob *FirewalldClient::addRule(Rule *rule)
     qDebug() << rule->toStr();
 
     QVariantList dbusArgs = buildRule(rule);
-    qDebug() << "sending job ... rule type " << rule->simplified();
+    if(rule->simplified()) dbusArgs.push_back(QVariant(0));
+    qDebug() << "sending job ... rule simplified ? " << rule->simplified();
     qDebug() << "Dbus Args...." << dbusArgs;
     FirewalldJob *job = rule->simplified() ? new FirewalldJob("addService", dbusArgs, FirewalldJob::SIMPLIFIEDRULE) : new FirewalldJob("addRule", dbusArgs);
 
@@ -168,8 +169,11 @@ KJob *FirewalldClient::addRule(Rule *rule)
 KJob *FirewalldClient::removeRule(int index)
 {
     QVariantList dbusArgs = buildRule(ruleAt(index));
-    FirewalldJob *job = new FirewalldJob("removeRule", dbusArgs);
-
+    // FirewalldJob *job = new FirewalldJob("removeRule", dbusArgs);
+    FirewalldJob *job =
+        ruleAt(index)->simplified() ? 
+            new FirewalldJob("removeService", dbusArgs, FirewalldJob::SIMPLIFIEDRULE) :  // if true simplie interface
+            new FirewalldJob("removeRule", dbusArgs);
     connect(job, &KJob::result, this, [this, job] {
         if (job->error()) {
             qCDebug(FirewallDClientDebug) << job->errorString() << job->error();
@@ -304,7 +308,7 @@ QVariantList FirewalldClient::buildRule(const Rule *r) const
     if (r->simplified()) {
         qDebug() << r->toStr();
         if (!r->sourceApplication().isEmpty()) {
-            return QVariantList({r->sourceApplication()});
+            return QVariantList({"", r->sourceApplication()});
         }
     }
     QVariantMap args{

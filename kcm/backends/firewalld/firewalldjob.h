@@ -25,8 +25,10 @@ public:
     FirewalldJob();
     ~FirewalldJob();
     void start() override;
-    virtual QList<firewalld_reply> getFirewalldreply();
-    virtual QStringList getServices();
+    // virtual QList<firewalld_reply> getFirewalldreply();
+    // virtual QStringList getServices();
+    QList<firewalld_reply> getFirewalldreply();
+    QStringList getServices();
     QString name();
 
 private:
@@ -37,10 +39,10 @@ private:
     void saveFirewalld();
     void firewalldAction(const QByteArray &method, const QVariantList &args = {});
     void firewalldAction(const QString &bus, const QString &path, const QString &interface, const QString &method, const QVariantList &args = {});
-    QList<firewalld_reply> m_firewalldreply;
     JobType m_type;
     QByteArray m_call;
     QVariantList m_args;
-    QStringList m_services;
+    QStringList m_services = {};
+    QList<firewalld_reply> m_firewalldreply = {};
 };
 #endif

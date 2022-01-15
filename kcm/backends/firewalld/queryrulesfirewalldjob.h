@@ -17,8 +17,8 @@ public:
     ~QueryRulesFirewalldJob();
 
     void start() override;
-    QList<firewalld_reply> getFirewalldreply() override;
-    QStringList getServices() override;
+    QList<firewalld_reply> getFirewalldreply();
+    QStringList getServices();
     QString name();
     Q_SIGNAL void finished();
 

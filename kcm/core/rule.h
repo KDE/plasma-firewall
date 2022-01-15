@@ -29,6 +29,7 @@ class KCM_FIREWALL_CORE_EXPORT Rule : public QObject
     Q_PROPERTY(QString logging READ loggingStr WRITE setLogging NOTIFY loggingChanged)
     Q_PROPERTY(int position READ position WRITE setPosition NOTIFY positionChanged)
     Q_PROPERTY(bool simplified READ simplified WRITE setSimplified NOTIFY simplifiedChanged)
+    Q_PROPERTY(QString sourceApplication READ sourceApplication WRITE setSourceApplication NOTIFY sourceApplicationChanged)
 
 public:
 
