@@ -50,24 +50,40 @@ enum {
     DBUSFIREWALLDDERROR = KJob::UserDefinedError,
 };
 
+
 FirewalldJob::FirewalldJob(){};
-FirewalldJob::FirewalldJob(const QByteArray &call, const QVariantList &args, FirewalldJob::JobType type)
+
+FirewalldJob::FirewalldJob(const QByteArray &call, const QVariantList &args, const FirewalldJob::JobType &type)
     : KJob()
     , m_type(type)
+    , m_call(call)
+    , m_args(args)
 {
-    setFirewalldMessage(call, args);
+    /* setFirewalldMessage(call, args); */
+    m_firewalldreply = {};
 };
-FirewalldJob::FirewalldJob(FirewalldJob::JobType type)
+
+FirewalldJob::FirewalldJob(const FirewalldJob::JobType &type)
     : KJob()
     , m_type(type){};
-
-void FirewalldJob::setFirewalldMessage(const QByteArray &call, const QVariantList &args)
-{
-    if (!m_type) {
-        m_call = call;
-        m_args = args;
-    }
-}
+// FirewalldJob::FirewalldJob(){};
+// FirewalldJob::FirewalldJob(const QByteArray &call, const QVariantList &args, FirewalldJob::JobType type)
+//     : KJob()
+//     , m_type(type)
+// {
+//     setFirewalldMessage(call, args);
+// };
+// FirewalldJob::FirewalldJob(FirewalldJob::JobType type)
+//     : KJob()
+//     , m_type(type){};
+//
+// void FirewalldJob::setFirewalldMessage(const QByteArray &call, const QVariantList &args)
+// {
+//     if (!m_type) {
+//         m_call = call;
+//         m_args = args;
+//     }
+// }
 
 template<typename T>
 T FirewalldJob::connectCall(QDBusPendingCallWatcher *watcher)

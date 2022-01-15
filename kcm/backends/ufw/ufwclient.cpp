@@ -673,6 +673,29 @@ QString UfwClient::version() const
     return process.readAllStandardOutput();
 }
 
+QStringList UfwClient::knownApplications()
+{
+    return m_knownApplications;
+}
+
+void UfwClient::queryKnownApplications()
+{
+    auto action = KAuth::Action("org.kde.ufw.queryapps");
+    action.setHelperId("org.kde.ufw");
+
+    KAuth::ExecuteJob *job = action.execute();
+
+    connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
+        if (job->error() == KJob::NoError) {
+            m_knownApplications = job->data()["response"].toStringList();
+            qDebug() << "Setting the known applications to" << m_knownApplications;
+        } else {
+            qDebug() << job->error();
+        }
+    });
+    job->start();
+}
+
 
 #include "ufwclient.moc"
 

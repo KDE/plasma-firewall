@@ -76,7 +76,6 @@ KJob *FirewalldClient::setEnabled(const bool value)
 
     return job;
 }
-
 KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior)
 {
     Q_UNUSED(defaultsBehavior);
@@ -84,25 +83,19 @@ KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsB
 
     QueryRulesFirewalldJob *job = new QueryRulesFirewalldJob();
 
-    connect(job, &QueryRulesFirewalldJob::result, this, [this, job] {
+    connect(job, &QueryRulesFirewalldJob::finished, this, [this, job] {
         if (job->error()) {
             qCDebug(FirewallDClientDebug) << job->errorString();
             return;
         }
         qCDebug(FirewallDClientDebug) << job->name();
-
-        const QVector<Rule *> rules_direct = extractRulesFromResponse(job->getFirewalldreply());
-        const QVector<Rule *> rules_services = extractRulesFromResponse(job->getServices());
-        const QVector<Rule *> rules = rules_direct + rules_services;
+        QVector<Rule *> const rules_direct = extractRulesFromResponse(job->getFirewalldreply());
+        QVector<Rule *> const rules_services = extractRulesFromResponse(job->getServices());
+        QVector<Rule *> const rules = rules_direct + rules_services;
         const QVariantMap args = {{"defaultIncomingPolicy", defaultIncomingPolicy()},
                                   {"defaultOutgoingPolicy", defaultOutgoingPolicy()},
                                   {"status", true},
                                   {"ipv6Enabled", true}};
-        // const QVector<Rule *> rules = extractRulesFromResponse(job->getFirewalldreply());
-        // const QVariantMap args = {{"defaultIncomingPolicy", defaultIncomingPolicy()},
-        //                           {"defaultOutgoingPolicy", defaultOutgoingPolicy()},
-        //                           {"status", true},
-                                  // {"ipv6Enabled", true}};
         setProfile(Profile(rules, args));
     });
     job->start();
@@ -170,29 +163,6 @@ KJob *FirewalldClient::addRule(Rule *rule)
     job->start();
     return job;
 }
-// KJob *FirewalldClient::addRule(Rule *rule)
-// {
-//     if (rule == nullptr) {
-//         qWarning() << "Invalid rule";
-//         return nullptr;
-//     }
-//
-//     qDebug() << rule->toStr();
-//
-//     QVariantList dbusArgs = buildRule(rule);
-//     FirewalldJob *job = new FirewalldJob("addRule", dbusArgs);
-//
-//     connect(job, &KJob::result, this, [this, job] {
-//         if (job->error()) {
-//             qCDebug(FirewallDClientDebug) << job->errorString() << job->error();
-//             return;
-//         }
-//         queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
-//     });
-//
-//     job->start();
-//     return job;
-// }
 
 KJob *FirewalldClient::removeRule(int index)
 {
@@ -548,6 +518,7 @@ void FirewalldClient::setProfile(Profile profile)
     auto oldProfile = m_currentProfile;
     m_currentProfile = profile;
     m_rulesModel->setProfile(m_currentProfile);
+    queryKnownApplications();
     if (m_currentProfile.enabled() != oldProfile.enabled()) {
         Q_EMIT enabledChanged(m_currentProfile.enabled());
     }
@@ -561,6 +532,7 @@ void FirewalldClient::setProfile(Profile profile)
         const QString policy = Types::toString(m_currentProfile.defaultOutgoingPolicy());
         Q_EMIT defaultOutgoingPolicyChanged(policy);
     }
+    queryKnownApplications();
 }
 
 FirewallClient::Capabilities FirewalldClient::capabilities() const
@@ -603,4 +575,22 @@ QString FirewalldClient::version() const
     return process.readAllStandardOutput();
 }
 
+QStringList FirewalldClient::knownApplications()
+{
+    return m_knownApplications;
+}
+
+void FirewalldClient::queryKnownApplications()
+{
+    FirewalldJob *job = new FirewalldJob(FirewalldJob::LISTSERVICES);
+
+    connect(job, &KJob::result, this, [this, job] {
+        if (job->error()) {
+            qCDebug(FirewallDClientDebug) << job->name() << job->errorString() << job->error();
+            return;
+        }
+        m_knownApplications = job->getServices();
+    });
+    job->start();
+}
 #include "firewalldclient.moc"

@@ -390,3 +390,12 @@ bool FirewallClient::supportsRuleUpdate() const
     }
     return m_currentBackend->supportsRuleUpdate();
 }
+
+QStringList FirewallClient::knownApplications()
+{
+    if (!m_currentBackend) {
+        return {};
+    }
+
+    return m_currentBackend->knownApplications();
+}
