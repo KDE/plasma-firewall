@@ -142,6 +142,7 @@ public slots:
     void setV6(const bool v);
     void setPosition(int position);
     void setSimplified(bool value);
+    void setSourceApplication(const QString &app);
 
 signals:
     void policyChanged(const QString &policy);
@@ -157,6 +158,7 @@ signals:
     void incomingChanged(bool incoming);
     void positionChanged(int position);
     void simplifiedChanged(bool value);
+    void sourceApplicationChanged(const QString &app);
 
 
 private:

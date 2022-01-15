@@ -150,6 +150,7 @@ KJob *FirewalldClient::addRule(Rule *rule)
 
     QVariantList dbusArgs = buildRule(rule);
     qDebug() << "sending job ... rule type " << rule->simplified();
+    qDebug() << "Dbus Args...." << dbusArgs;
     FirewalldJob *job = rule->simplified() ? new FirewalldJob("addService", dbusArgs, FirewalldJob::SIMPLIFIEDRULE) : new FirewalldJob("addRule", dbusArgs);
 
     connect(job, &KJob::result, this, [this, job] {
@@ -301,6 +302,7 @@ QVariantList FirewalldClient::buildRule(const Rule *r) const
 {
     qDebug() << "rule simplified? -> " << r->simplified();
     if (r->simplified()) {
+        qDebug() << r->toStr();
         if (!r->sourceApplication().isEmpty()) {
             return QVariantList({r->sourceApplication()});
         }

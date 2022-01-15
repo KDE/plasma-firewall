@@ -17,6 +17,7 @@ FocusScope {
     signal accepted
 
     property bool busy: false
+    property alias simple: simpleRuleEdit
 
     property Firewall.FirewallClient client: null
 
@@ -45,7 +46,6 @@ FocusScope {
     Kirigami.FormLayout {
         id: formLayout
         width: parent.width
-
         Kirigami.InlineMessage {
             Layout.fillWidth: true
             type: Kirigami.MessageType.Information
@@ -89,7 +89,13 @@ FocusScope {
                 text: ruleEdit.newRule ? i18n("Create") : i18n("Save")
                 icon.name: ruleEdit.newRule ? "document-new" : "document-save"
                 enabled: (!sourceAddress.length || sourceAddress.acceptableInput) && (!destinationAddress.length || destinationAddress.acceptableInput) && !(sourceAddress.text == destinationAddress.text && sourcePort.text == destinationPort.text)
-                onClicked: ruleEdit.accepted()
+                onClicked: {
+                    // console.log("WHAT I HAVE HERE -> ", simple.service);
+                    rule.setSourceApplication(simple.service[simple.index]);
+                    //
+                    ruleEdit.accepted()
+                }
+
             }
 
             // Would be nice to not have this one "disabled"

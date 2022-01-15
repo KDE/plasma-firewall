@@ -12,6 +12,8 @@ import org.kde.kirigami 2.4 as Kirigami
 import org.kcm.firewall 1.0 as Firewall
 
 Kirigami.FormLayout {
+    property alias service : application.model
+    property alias index: application.currentIndex
     QQC2.ComboBox {
         id: policy
         Kirigami.FormData.label: i18n("Simple Rule Edit:")
@@ -27,7 +29,7 @@ Kirigami.FormLayout {
     }
 
     onVisibleChanged: {
-        console.log("Triggering", kcm.client.knownApplications());
+        console.log("Simple... apps... :", kcm.client.knownApplications());
         application.model = kcm.client.knownApplications();
     }
 }

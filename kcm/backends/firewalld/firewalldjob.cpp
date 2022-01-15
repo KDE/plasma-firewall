@@ -50,7 +50,6 @@ enum {
     DBUSFIREWALLDDERROR = KJob::UserDefinedError,
 };
 
-
 FirewalldJob::FirewalldJob(){};
 
 FirewalldJob::FirewalldJob(const QByteArray &call, const QVariantList &args, const FirewalldJob::JobType &type)
@@ -221,6 +220,11 @@ void FirewalldJob::start()
         firewalldAction(FIREWALLD::BUS, FIREWALLD::PATH, SERVICES::INTERFACE, SERVICES::METHOD);
         break;
     }
+    case FirewalldJob::SIMPLIFIEDRULE: {
+
+        break;
+
+   }
     default:
         emitResult();
         return;
