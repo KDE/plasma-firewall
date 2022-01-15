@@ -11,7 +11,8 @@ set(firewalld_backend_SRCS
     firewalldlogmodel.h
     systemdjob.cpp
     systemdjob.h
-
+    queryrulesfirewalldjob.cpp
+    queryrulesfirewalldjob.h
 )
 
 kcoreaddons_add_plugin(

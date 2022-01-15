@@ -28,6 +28,7 @@ class KCM_FIREWALL_CORE_EXPORT Rule : public QObject
     Q_PROPERTY(int interface READ interface WRITE setInterface NOTIFY interfaceChanged)
     Q_PROPERTY(QString logging READ loggingStr WRITE setLogging NOTIFY loggingChanged)
     Q_PROPERTY(int position READ position WRITE setPosition NOTIFY positionChanged)
+    Q_PROPERTY(bool simplified READ simplified WRITE setSimplified NOTIFY simplifiedChanged)
 
 public:
 
@@ -49,11 +50,13 @@ public:
          const QString &srcApp = QString(),
          const QString &destApp = QString(),
          unsigned int i = 0,
-         bool ipv6 = false)
+         bool ipv6 = false,
+         bool simplified = true)
         : m_position(i)
         , m_action(pol)
         , m_incoming(incomming)
         , m_ipv6(ipv6)
+        , m_simplified(simplified)
         , m_protocol(protocolIdx)
         , m_logtype(log)
         , m_destApplication(destApp)
@@ -97,6 +100,7 @@ public:
 
     bool incoming() const;
     bool ipv6() const;
+    bool simplified() const;
     int interface() const;
     int position() const;
     int protocol() const;
@@ -137,6 +141,7 @@ public slots:
     void setLogging(const QString &logging);
     void setV6(const bool v);
     void setPosition(int position);
+    void setSimplified(bool value);
 
 signals:
     void policyChanged(const QString &policy);
@@ -151,12 +156,13 @@ signals:
     void loggingChanged(const QString &logging);
     void incomingChanged(bool incoming);
     void positionChanged(int position);
+    void simplifiedChanged(bool value);
 
 
 private:
     int m_position;
     Types::Policy m_action;
-    bool m_incoming, m_ipv6;
+    bool m_incoming, m_ipv6, m_simplified;
     int m_protocol;
     Types::Logging m_logtype;
     QString m_destApplication;
