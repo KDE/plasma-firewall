@@ -34,6 +34,7 @@ target_link_libraries(kcm_firewall
     networkstatus
 )
 
+install(FILES kcm_firewall.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 install(TARGETS kcm_firewall DESTINATION ${PLUGIN_INSTALL_DIR}/plasma/kcms/systemsettings)
 
 kpackage_install_package(package kcm_firewall kcms)
