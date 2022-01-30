@@ -146,12 +146,12 @@ KJob *FirewalldClient::addRule(Rule *rule)
         return nullptr;
     }
 
-    qDebug() << rule->toStr();
+    qCDebug(FirewallDClientDebug) << rule->toStr();
 
     QVariantList dbusArgs = buildRule(rule);
     if(rule->simplified()) dbusArgs.push_back(QVariant(0));
-    qDebug() << "sending job ... rule simplified ? " << rule->simplified();
-    qDebug() << "Dbus Args...." << dbusArgs;
+    qCDebug(FirewallDClientDebug) << "sending job ... rule simplified ? " << rule->simplified();
+    qCDebug(FirewallDClientDebug) << "Dbus Args...." << dbusArgs;
     FirewalldJob *job = rule->simplified() ? new FirewalldJob("addService", dbusArgs, FirewalldJob::SIMPLIFIEDRULE) : new FirewalldJob("addRule", dbusArgs);
 
     connect(job, &KJob::result, this, [this, job] {
@@ -304,9 +304,9 @@ bool FirewalldClient::isTcpAndUdp(int protocolIdx)
 
 QVariantList FirewalldClient::buildRule(const Rule *r) const
 {
-    qDebug() << "rule simplified? -> " << r->simplified();
+    qCDebug(FirewallDClientDebug) << "rule simplified? -> " << r->simplified();
     if (r->simplified()) {
-        qDebug() << r->toStr();
+        qCDebug(FirewallDClientDebug) << "rule simplified content: " << r->toStr();
         if (!r->sourceApplication().isEmpty()) {
             return QVariantList({"", r->sourceApplication()});
         }
@@ -561,7 +561,7 @@ bool FirewalldClient::isCurrentlyLoaded() const
     process.waitForFinished();
 
     // systemctl returns 0 for status if the app is loaded, and 3 otherwise.
-    qDebug() << "Firewalld is loaded?" << process.exitCode();
+    qCDebug(FirewallDClientDebug) << "Firewalld is loaded?" << process.exitCode();
 
     return process.exitCode() == EXIT_SUCCESS;
 }
