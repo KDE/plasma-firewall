@@ -73,7 +73,7 @@ T FirewalldJob::connectCall(QDBusPendingCallWatcher *watcher)
     if (reply.isError()) {
         setErrorText(reply.error().message());
         setError(DBUSFIREWALLDDERROR);
-        qDebug() << errorString();
+        qCDebug(FirewallDJobDebug) << "job error message: "<< errorString();
     }
     return reply.value();
 }
@@ -84,7 +84,7 @@ void FirewalldJob::connectCall(QDBusPendingCallWatcher *watcher)
     if (reply.isError()) {
         setErrorText(reply.error().message());
         setError(DBUSFIREWALLDDERROR);
-        qDebug() << errorString();
+        qCDebug(FirewallDJobDebug) << "job error message: "<< errorString();
         emitResult();
     }
 }
@@ -153,7 +153,7 @@ void FirewalldJob::firewalldAction(const QByteArray &method, const QVariantList 
             if (reply.isError()) {
                 setErrorText(reply.error().message());
                 setError(DBUSFIREWALLDDERROR);
-                qDebug() << errorString();
+                qCDebug(FirewallDJobDebug) << "job error message: "<< errorString();
                 emitResult();
                 return;
             }
@@ -170,7 +170,7 @@ void FirewalldJob::firewalldAction(const QByteArray &method, const QVariantList 
             if (reply.isError()) {
                 setErrorText(reply.reply().errorMessage());
                 setError(DBUSFIREWALLDDERROR);
-                qDebug() << errorString();
+                qCDebug(FirewallDJobDebug) << "job error message: "<< errorString();
             }
             emitResult();
             return;
