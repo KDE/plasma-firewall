@@ -279,6 +279,8 @@ void UfwClient::setProfile(Profile profile)
         const QString policy = Types::toString(m_currentProfile.defaultOutgoingPolicy());
         Q_EMIT defaultOutgoingPolicyChanged(policy);
     }
+
+    queryKnownApplications();
 }
 
 KAuth::Action UfwClient::buildQueryAction(const QVariantMap &arguments)
