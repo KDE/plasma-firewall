@@ -105,6 +105,7 @@ QStringList getLogFromSystemd(const QString &lastLine)
 
 ActionReply Helper::queryapps(const QVariantMap &args)
 {
+    Q_UNUSED(args);
     QProcess ufw;
     ActionReply reply;
     ufw.start("ufw", {"app", "list"}, QIODevice::ReadOnly);
@@ -112,7 +113,7 @@ ActionReply Helper::queryapps(const QVariantMap &args)
         ufw.waitForFinished();
     }
 
-    auto result = QString::fromLocal8Bit(ufw.readAllStandardOutput()).split(QRegExp("\n"), QString::SkipEmptyParts);
+    auto result = QString::fromLocal8Bit(ufw.readAllStandardOutput()).split(QRegExp("\n"), Qt::SkipEmptyParts);
 
     // The first line of the array is "Available Applications:", remove that.
     if (result.count()) {
