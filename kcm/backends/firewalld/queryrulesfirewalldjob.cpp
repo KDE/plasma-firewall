@@ -6,6 +6,7 @@
 #include "queryrulesfirewalldjob.h"
 #include <KLocalizedString>
 #include <QTimer>
+
 QueryRulesFirewalldJob::QueryRulesFirewalldJob()
 {
     m_simple = new FirewalldJob("getServices", {""}, FirewalldJob::SIMPLELIST);
@@ -13,6 +14,7 @@ QueryRulesFirewalldJob::QueryRulesFirewalldJob()
 
     connect(m_direct, &KJob::result, this, [this](void) {
         m_directFinished = true;
+        m_replyDirect = m_direct->getFirewalldreply();
         if (m_simpleFinished) {
             emitResult();
         }
@@ -20,6 +22,7 @@ QueryRulesFirewalldJob::QueryRulesFirewalldJob()
 
     connect(m_simple, &KJob::result, this, [this](void) {
         m_simpleFinished = true;
+        m_replyServices = m_simple->getServices();
         if (m_directFinished) {
             emitResult();
         }
@@ -33,18 +36,12 @@ QString QueryRulesFirewalldJob::name()
 
 QList<firewalld_reply> QueryRulesFirewalldJob::getFirewalldreply()
 {
-    if (m_direct == nullptr) {
-        return {};
-    }
-    return m_direct->getFirewalldreply();
+    return m_replyDirect;
 }
 
 QStringList QueryRulesFirewalldJob::getServices()
 {
-    if (m_simple == nullptr) {
-        return {};
-    }
-    return m_simple->getServices();
+    return m_replyServices;
 }
 
 void QueryRulesFirewalldJob::start()

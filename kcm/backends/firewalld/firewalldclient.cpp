@@ -80,23 +80,20 @@ KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsB
 {
     Q_UNUSED(defaultsBehavior);
     Q_UNUSED(profilesBehavior);
-
     QueryRulesFirewalldJob *job = new QueryRulesFirewalldJob();
 
-    connect(job, &QueryRulesFirewalldJob::result, this, [this, job] {
+    connect(job, &KJob::finished, this, [this, job] {
         if (job->error()) {
             qCDebug(FirewallDClientDebug) << "Query rules job error: " << job->error() << job->errorString();
             return;
         }
         qCDebug(FirewallDClientDebug) << job->name();
-        QVector<Rule *> const rules_direct = extractRulesFromResponse(job->getFirewalldreply());
-        QVector<Rule *> const rules_services = extractRulesFromResponse(job->getServices());
-        // QVector<Rule *> const rules = extractRulesFromResponse(job->getFirewalldreply()) + extractRulesFromResponse(job->getServices());
-        QVector<Rule *> const rules = rules_direct + rules_services;
+        QVector<Rule *> const rules = extractRulesFromResponse(job->getFirewalldreply()) + extractRulesFromResponse(job->getServices());
         const QVariantMap args = {{"defaultIncomingPolicy", defaultIncomingPolicy()},
                                   {"defaultOutgoingPolicy", defaultOutgoingPolicy()},
                                   {"status", true},
                                   {"ipv6Enabled", true}};
+        qDebug() << "MEEEEEEEEEH MOP POP"
         setProfile(Profile(rules, args));
     });
     job->start();
@@ -150,7 +147,9 @@ KJob *FirewalldClient::addRule(Rule *rule)
     qCDebug(FirewallDClientDebug) << rule->toStr();
 
     QVariantList dbusArgs = buildRule(rule);
-    if(rule->simplified()) dbusArgs.push_back(QVariant(0));
+    if (rule->simplified()) {
+        dbusArgs.push_back(QVariant(0));
+    }
     qCDebug(FirewallDClientDebug) << "sending job ... rule simplified ? " << rule->simplified();
     qCDebug(FirewallDClientDebug) << "Dbus Args...." << dbusArgs;
     FirewalldJob *job = rule->simplified() ? new FirewalldJob("addService", dbusArgs, FirewalldJob::SIMPLIFIEDRULE) : new FirewalldJob("addRule", dbusArgs);
@@ -171,16 +170,15 @@ KJob *FirewalldClient::removeRule(int index)
 {
     QVariantList dbusArgs = buildRule(ruleAt(index));
     // FirewalldJob *job = new FirewalldJob("removeRule", dbusArgs);
-    FirewalldJob *job =
-        ruleAt(index)->simplified() ? 
-            new FirewalldJob("removeService", dbusArgs, FirewalldJob::SIMPLIFIEDRULE) :  // if true simplie interface
-            new FirewalldJob("removeRule", dbusArgs);
+    FirewalldJob *job = ruleAt(index)->simplified() ? new FirewalldJob("removeService", dbusArgs, FirewalldJob::SIMPLIFIEDRULE) : // if true simplie interface
+        new FirewalldJob("removeRule", dbusArgs);
     connect(job, &KJob::result, this, [this, job] {
         if (job->error()) {
             qCDebug(FirewallDClientDebug) << job->errorString() << job->error();
             return;
         }
-        queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
+        // queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
+        refresh();
     });
 
     job->start();
@@ -539,7 +537,9 @@ void FirewalldClient::setProfile(Profile profile)
         const QString policy = Types::toString(m_currentProfile.defaultOutgoingPolicy());
         Q_EMIT defaultOutgoingPolicyChanged(policy);
     }
-    queryKnownApplications();
+    if (enabled()) {
+        queryKnownApplications();
+    }
 }
 
 FirewallClient::Capabilities FirewalldClient::capabilities() const

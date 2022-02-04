@@ -6,9 +6,12 @@
 #ifndef QUERYRULESFIREWALLDJOB_H
 #define QUERYRULESFIREWALLDJOB_H
 
+#include "dbustypes.h"
 #include "firewalldjob.h"
+#include <KJob>
+#include <QList>
 
-class QueryRulesFirewalldJob : public FirewalldJob
+class QueryRulesFirewalldJob : public KJob
 {
     Q_OBJECT
 
@@ -20,13 +23,14 @@ public:
     QList<firewalld_reply> getFirewalldreply();
     QStringList getServices();
     QString name();
-    Q_SIGNAL void finished();
 
 private:
     FirewalldJob *m_direct;
     FirewalldJob *m_simple;
     bool m_directFinished = false;
     bool m_simpleFinished = false;
+    QList<firewalld_reply> m_replyDirect = {};
+    QStringList m_replyServices= {};
 };
 
 #endif
