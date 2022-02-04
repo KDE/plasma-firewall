@@ -56,11 +56,7 @@ FirewalldJob::FirewalldJob(const QByteArray &call, const QVariantList &args, con
     : KJob()
     , m_type(type)
     , m_call(call)
-    , m_args(args)
-{
-    /* setFirewalldMessage(call, args); */
-    m_firewalldreply = {};
-};
+    , m_args(args){};
 
 FirewalldJob::FirewalldJob(const FirewalldJob::JobType &type)
     : KJob()
@@ -73,7 +69,7 @@ T FirewalldJob::connectCall(QDBusPendingCallWatcher *watcher)
     if (reply.isError()) {
         setErrorText(reply.error().message());
         setError(DBUSFIREWALLDDERROR);
-        qCDebug(FirewallDJobDebug) << "job error message: "<< errorString();
+        qCDebug(FirewallDJobDebug) << "job error message: " << errorString();
     }
     return reply.value();
 }
@@ -84,7 +80,7 @@ void FirewalldJob::connectCall(QDBusPendingCallWatcher *watcher)
     if (reply.isError()) {
         setErrorText(reply.error().message());
         setError(DBUSFIREWALLDDERROR);
-        qCDebug(FirewallDJobDebug) << "job error message: "<< errorString();
+        qCDebug(FirewallDJobDebug) << "job error message: " << errorString();
         emitResult();
     }
 }
@@ -153,7 +149,7 @@ void FirewalldJob::firewalldAction(const QByteArray &method, const QVariantList 
             if (reply.isError()) {
                 setErrorText(reply.error().message());
                 setError(DBUSFIREWALLDDERROR);
-                qCDebug(FirewallDJobDebug) << "job error message: "<< errorString();
+                qCDebug(FirewallDJobDebug) << "job error message: " << errorString();
                 emitResult();
                 return;
             }
@@ -170,7 +166,7 @@ void FirewalldJob::firewalldAction(const QByteArray &method, const QVariantList 
             if (reply.isError()) {
                 setErrorText(reply.reply().errorMessage());
                 setError(DBUSFIREWALLDDERROR);
-                qCDebug(FirewallDJobDebug) << "job error message: "<< errorString();
+                qCDebug(FirewallDJobDebug) << "job error message: " << errorString();
             }
             emitResult();
             return;

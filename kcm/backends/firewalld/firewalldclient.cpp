@@ -85,12 +85,13 @@ KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsB
 
     connect(job, &QueryRulesFirewalldJob::result, this, [this, job] {
         if (job->error()) {
-            qCDebug(FirewallDClientDebug) << job->errorString();
+            qCDebug(FirewallDClientDebug) << "Query rules job error: " << job->error() << job->errorString();
             return;
         }
         qCDebug(FirewallDClientDebug) << job->name();
         QVector<Rule *> const rules_direct = extractRulesFromResponse(job->getFirewalldreply());
         QVector<Rule *> const rules_services = extractRulesFromResponse(job->getServices());
+        // QVector<Rule *> const rules = extractRulesFromResponse(job->getFirewalldreply()) + extractRulesFromResponse(job->getServices());
         QVector<Rule *> const rules = rules_direct + rules_services;
         const QVariantMap args = {{"defaultIncomingPolicy", defaultIncomingPolicy()},
                                   {"defaultOutgoingPolicy", defaultOutgoingPolicy()},
@@ -512,7 +513,8 @@ QVector<Rule *> FirewalldClient::extractRulesFromResponse(const QList<firewalld_
                                          "",
                                          "",
                                          i,
-                                         r.ipv == "ipv6"));
+                                         r.ipv == "ipv6",
+                                         false));
         i += 1;
     }
 
@@ -524,7 +526,6 @@ void FirewalldClient::setProfile(Profile profile)
     auto oldProfile = m_currentProfile;
     m_currentProfile = profile;
     m_rulesModel->setProfile(m_currentProfile);
-    queryKnownApplications();
     if (m_currentProfile.enabled() != oldProfile.enabled()) {
         Q_EMIT enabledChanged(m_currentProfile.enabled());
     }

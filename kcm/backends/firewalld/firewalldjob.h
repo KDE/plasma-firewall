@@ -25,8 +25,6 @@ public:
     FirewalldJob();
     ~FirewalldJob();
     void start() override;
-    // virtual QList<firewalld_reply> getFirewalldreply();
-    // virtual QStringList getServices();
     QList<firewalld_reply> getFirewalldreply();
     QStringList getServices();
     QString name();
@@ -35,7 +33,6 @@ private:
     template<typename T>
     T connectCall(QDBusPendingCallWatcher *watcher);
     void connectCall(QDBusPendingCallWatcher *watcher);
-    void setFirewalldMessage(const QByteArray &call, const QVariantList &args = {});
     void saveFirewalld();
     void firewalldAction(const QByteArray &method, const QVariantList &args = {});
     void firewalldAction(const QString &bus, const QString &path, const QString &interface, const QString &method, const QVariantList &args = {});
