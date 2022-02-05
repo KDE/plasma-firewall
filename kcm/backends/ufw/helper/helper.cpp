@@ -56,9 +56,8 @@ namespace UFW
 {
 ActionReply Helper::query(const QVariantMap &args)
 {
-    ActionReply reply = args[QStringLiteral("defaults")].toBool()
-        ? run({"--status", "--defaults", "--list", "--modules"}, "query")
-        : run({"--status", "--list"}, "query");
+    ActionReply reply =
+        args[QStringLiteral("defaults")].toBool() ? run({"--status", "--defaults", "--list", "--modules"}, "query") : run({"--status", "--list"}, "query");
 
     if (args[QStringLiteral("profiles")].toBool()) {
         QDir dir(KCM_UFW_DIR);
@@ -79,7 +78,7 @@ ActionReply Helper::query(const QVariantMap &args)
 QStringList getLogFromSystemd(const QString &lastLine)
 {
     QString program = QStringLiteral("journalctl");
-    QStringList arguments {"-xb","-n", "100","-g", "UFW"};
+    QStringList arguments{"-xb", "-n", "100", "-g", "UFW"};
 
     QProcess myProcess;
     myProcess.start(program, arguments);
@@ -94,7 +93,7 @@ QStringList getLogFromSystemd(const QString &lastLine)
     // We need to remove everything up to the space after ']'.
 
     QStringList result;
-    for(const QString& line : resultList) {
+    for (const QString &line : resultList) {
         if (!lastLine.isEmpty() && line == lastLine) {
             result.clear();
             continue;
@@ -102,6 +101,31 @@ QStringList getLogFromSystemd(const QString &lastLine)
         result.append(line);
     }
     return result;
+}
+
+ActionReply Helper::queryapps(const QVariantMap &args)
+{
+    Q_UNUSED(args);
+    QProcess ufw;
+    ActionReply reply;
+    ufw.start("ufw", {"app", "list"}, QIODevice::ReadOnly);
+    if (ufw.waitForStarted()) {
+        ufw.waitForFinished();
+    }
+
+    auto result = QString::fromLocal8Bit(ufw.readAllStandardOutput()).split(QRegExp("\n"), Qt::SkipEmptyParts);
+
+    // The first line of the array is "Available Applications:", remove that.
+    if (result.count()) {
+        result.removeAt(0);
+    }
+
+    for (auto &value : result) {
+        value = value.trimmed();
+    }
+
+    reply.setData({{"response", result}});
+    return reply;
 }
 
 ActionReply Helper::viewlog(const QVariantMap &args)
@@ -120,18 +144,18 @@ ActionReply Helper::modify(const QVariantMap &args)
 
     // QProcess converts its args using QString().toLocal8Bit()!!!, so use UTF-8 codec.
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
-    return QStringLiteral("setStatus") == cmd ? setStatus(args, cmd)
-        : QStringLiteral("addRules") == cmd ? addRules(args, cmd)
-        : QStringLiteral("removeRule") == cmd ? removeRule(args, cmd)
-        : QStringLiteral("moveRule") == cmd ? moveRule(args, cmd)
-        : QStringLiteral("editRule") == cmd ? editRule(args, cmd)
-        : QStringLiteral("reset") == cmd ? reset(cmd)
-        : QStringLiteral("setDefaults") == cmd ? setDefaults(args, cmd)
-        : QStringLiteral("setModules") == cmd ? setModules(args, cmd)
-        : QStringLiteral("setProfile") == cmd ? setProfile(args, cmd)
-        : QStringLiteral("saveProfile") == cmd ? saveProfile(args, cmd)
+    return QStringLiteral("setStatus") == cmd    ? setStatus(args, cmd)
+        : QStringLiteral("addRules") == cmd      ? addRules(args, cmd)
+        : QStringLiteral("removeRule") == cmd    ? removeRule(args, cmd)
+        : QStringLiteral("moveRule") == cmd      ? moveRule(args, cmd)
+        : QStringLiteral("editRule") == cmd      ? editRule(args, cmd)
+        : QStringLiteral("reset") == cmd         ? reset(cmd)
+        : QStringLiteral("setDefaults") == cmd   ? setDefaults(args, cmd)
+        : QStringLiteral("setModules") == cmd    ? setModules(args, cmd)
+        : QStringLiteral("setProfile") == cmd    ? setProfile(args, cmd)
+        : QStringLiteral("saveProfile") == cmd   ? saveProfile(args, cmd)
         : QStringLiteral("deleteProfile") == cmd ? deleteProfile(args, cmd)
-        : ActionReply::HelperErrorReply(STATUS_INVALID_CMD);
+                                                 : ActionReply::HelperErrorReply(STATUS_INVALID_CMD);
 }
 
 ActionReply Helper::setStatus(const QVariantMap &args, const QString &cmd)
@@ -334,7 +358,11 @@ ActionReply Helper::run(const QStringList &args, const QString &cmd)
         return reply;
     }
 
-    reply.addData(QStringLiteral("response"), ufw.readAllStandardOutput());
+    // reply.addData(QStringLiteral("response"), ufw.readAllStandardOutput());
+    QString output = ufw.readAllStandardOutput();
+    qDebug() << "Command" << UFW_PLUGIN_HELPER_PATH << args << output;
+
+    reply.addData("response", output);
     reply.addData(QStringLiteral("cmd"), cmd);
     return reply;
 }

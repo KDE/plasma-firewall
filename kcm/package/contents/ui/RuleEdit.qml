@@ -17,6 +17,7 @@ FocusScope {
     signal accepted
 
     property bool busy: false
+    property alias simple: simpleRuleEdit
 
     property Firewall.FirewallClient client: null
 
@@ -45,7 +46,6 @@ FocusScope {
     Kirigami.FormLayout {
         id: formLayout
         width: parent.width
-
         Kirigami.InlineMessage {
             Layout.fillWidth: true
             type: Kirigami.MessageType.Information
@@ -63,99 +63,22 @@ FocusScope {
             onActivated: rule.policy = policyChoices[index].data
         }
 
-        RowLayout {
-            Kirigami.FormData.label: i18n("Direction:")
-            QQC2.RadioButton {
-                id: incoming
-                text: i18n("Incoming")
-                icon.name: "arrow-down"
-                checked: rule.incoming
-                onClicked: rule.incoming = true
-            }
-            QQC2.RadioButton {
-                text: i18n("Outgoing")
-                icon.name: "arrow-up"
-                checked: !rule.incoming
-                onClicked: rule.incoming = false
-            }
+        SimpleRuleEdit {
+            id: simpleRuleEdit
+            visible: !advancedRules.checked
         }
 
-        RowLayout {
-            Kirigami.FormData.label: i18n("IP Version:")
-
-            QQC2.RadioButton {
-                text: i18n("IPv4")
-                checked: !rule.ipv6
-                onClicked: rule.ipv6 = false;
-            }
-            QQC2.RadioButton {
-                text: i18n("IPv6")
-                checked: rule.ipv6
-                onClicked: rule.ipv6 = true
-            }
+        CheckBox {
+            id: advancedRules
+            text:"Advanced"
+            onClicked: rule.simplified = !rule.simplified
+            checked: rule.simplified ? false : true // show advanced mode directly if isn't simple !
         }
 
-        RowLayout {
-            Kirigami.FormData.label: i18n("Source:")
-
-            IpTextField {
-                id: sourceAddress
-                ipv6: rule.ipv6
-                focus: true // default focus object
-                text: rule.sourceAddress
-                Layout.preferredWidth: policy.width * 0.6
-                // NOTE onEditingFinished doesn't fire with non-acceptable / empty input
-                onTextChanged: rule.sourceAddress = text
-            }
-            PortTextField{
-                id: sourcePort
-                Layout.preferredWidth: policy.width * 0.38
-                text: rule.sourcePort
-                onTextChanged: rule.sourcePort = text
-            }
-        }
-
-        RowLayout {
-            Kirigami.FormData.label: i18n("Destination:")
-
-            IpTextField {
-                id: destinationAddress
-                ipv6: rule.ipv6
-                text: rule.destinationAddress
-                Layout.preferredWidth: policy.width * 0.6
-                onTextChanged: rule.destinationAddress = text
-            }
-            PortTextField {
-                id: destinationPort
-                Layout.preferredWidth: policy.width * 0.38
-                text: rule.destinationPort
-                onTextChanged: rule.destinationPort = text
-            }
-        }
-
-        QQC2.ComboBox {
-            id: protocolCb
-
-            Kirigami.FormData.label: i18n("Protocol:")
-            model: ruleEdit.client.knownProtocols()
-            currentIndex: rule.protocol
-            onActivated: rule.protocol = index
-        }
-        QQC2.ComboBox {
-            id: interfaceCb
-
-            Kirigami.FormData.label: i18n("Interface:")
-            model: ruleEdit.client.knownInterfaces()
-            currentIndex: rule.interface
-            onActivated: rule.interface = index
-        }
-
-        QQC2.ComboBox {
-            Kirigami.FormData.label: i18n("Logging:")
-            model: ruleChoices
-            textRole: "text"
-            currentIndex: rule.logging === "" ? 0 : ruleChoices.findIndex((rules) => rules.data === rule.logging)
-            onActivated: rule.logging = ruleChoices[index].data
+        AdvancedRuleEdit {
+            id: advancedRuleEdit
+            rule: ruleEdit.rule
+            visible: advancedRules.checked
         }
 
         Item {
@@ -166,7 +89,12 @@ FocusScope {
                 text: ruleEdit.newRule ? i18n("Create") : i18n("Save")
                 icon.name: ruleEdit.newRule ? "document-new" : "document-save"
                 enabled: (!sourceAddress.length || sourceAddress.acceptableInput) && (!destinationAddress.length || destinationAddress.acceptableInput) && !(sourceAddress.text == destinationAddress.text && sourcePort.text == destinationPort.text)
-                onClicked: ruleEdit.accepted()
+                onClicked: {
+                    // rule.setSourceApplication(simple.service[simple.index]);
+                    rule.sourceApplication = simple.service[simple.index]
+                    ruleEdit.accepted()
+                }
+
             }
 
             // Would be nice to not have this one "disabled"
@@ -174,5 +102,6 @@ FocusScope {
                 running: ruleEdit.busy
             }
         }
+
     }
 }

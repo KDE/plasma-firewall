@@ -70,6 +70,7 @@ public:
     bool supportsRuleUpdate() const override;
 
     QString version() const override;
+    QStringList knownApplications() override;
 
 protected slots:
     void refreshLogs();
@@ -77,6 +78,7 @@ protected slots:
 
 protected:
     void setProfile(Profile profile);
+    void queryKnownApplications();
     KAuth::Action buildQueryAction(const QVariantMap &arguments);
     KAuth::Action buildModifyAction(const QVariantMap &arguments);
 
@@ -90,6 +92,7 @@ private:
     bool m_logsAutoRefresh;
     KAuth::Action m_queryAction;
     bool m_busy = false;
+    QStringList m_knownApplications;
 };
 
 

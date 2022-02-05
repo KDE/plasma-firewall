@@ -8,13 +8,13 @@
 
 #include "rule.h"
 #include "appprofiles.h"
+#include "firewallclient.h"
 #include <KLocalizedString>
 #include <QByteArray>
 #include <QMap>
 #include <QTextStream>
 #include <arpa/inet.h>
 #include <netdb.h>
-#include "firewallclient.h"
 
 #include "firewallclient.h"
 
@@ -159,19 +159,14 @@ QString Rule::protocolSuffix(int prot, const QString &sep)
     return sep + FirewallClient::knownProtocols().at(prot);
 }
 
-QString Rule::modify(
-    const QString &address,
-    const QString &port,
-    const QString &application,
-    const QString &iface,
-    int protocol,
-    bool matchPortNoProto)
+QString Rule::modify(const QString &address, const QString &port, const QString &application, const QString &iface, int protocol, bool matchPortNoProto)
 {
     if ((port == ANY_PORT || port.isEmpty()) && (address.isEmpty() || ANY_ADDR == address || ANY_ADDR_V6 == address))
         return addIface(i18n("Anywhere"), iface);
 
     bool isAnyAddress = address.isEmpty() || ANY_ADDR == address || ANY_ADDR_V6 == address, isAnyPort = port.isEmpty() || ANY_PORT == port;
-    QString bPort = application.isEmpty() ? modifyPort(port, protocol, matchPortNoProto) : modifyApp(application, port, protocol), bAddr = modifyAddress(address, port);
+    QString bPort = application.isEmpty() ? modifyPort(port, protocol, matchPortNoProto) : modifyApp(application, port, protocol),
+            bAddr = modifyAddress(address, port);
 
     return addIface(isAnyAddress ? isAnyPort ? i18n("Anywhere") : bPort : bAddr.isEmpty() ? bPort : bAddr + QChar(' ') + bPort, iface);
 }
@@ -181,6 +176,7 @@ Rule::Rule()
     , m_action(Types::POLICY_REJECT)
     , m_incoming(true)
     , m_ipv6(false)
+    , m_simplified(true)
     , m_protocol(0)
     , m_logtype(Types::LOGGING_OFF)
     , m_interface(0)
@@ -201,7 +197,7 @@ QString Rule::toStr() const
 QString Rule::actionStr() const
 {
     return m_incoming ? i18nc("firewallAction incoming", "%1 incoming", Types::toString(m_action, true))
-        : i18nc("firewallAction outgoing", "%1 outgoing", Types::toString(m_action, true));
+                      : i18nc("firewallAction outgoing", "%1 outgoing", Types::toString(m_action, true));
 }
 
 QString Rule::ipV6Str() const
@@ -251,7 +247,7 @@ void Rule::setSourcePort(const QString &sourcePort)
         return;
     }
 
-    m_sourcePort = sourcePort ;
+    m_sourcePort = sourcePort;
     Q_EMIT sourcePortChanged(sourcePort);
 }
 
@@ -343,10 +339,10 @@ int Rule::interface() const
     return m_interface;
 }
 
-QString Rule::destinationPort() const {
+QString Rule::destinationPort() const
+{
     return m_destPort;
 }
-
 
 int Rule::position() const
 {
@@ -405,4 +401,25 @@ void Rule::setV6(const bool v)
 QString Rule::destinationApplication() const
 {
     return m_destApplication;
+}
+
+void Rule::setSimplified(bool value)
+{
+    if (m_simplified == value) {
+        return;
+    }
+    m_simplified = value;
+    Q_EMIT simplifiedChanged(value);
+}
+
+void Rule::setSourceApplication(const QString &app) {
+    if (m_sourceApplication == app) {
+        return ;
+    }
+    m_sourceApplication = app;
+    Q_EMIT sourceApplicationChanged(app);
+}
+bool Rule::simplified() const
+{
+    return m_simplified;
 }

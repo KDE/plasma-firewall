@@ -30,6 +30,7 @@
 #include <rulelistmodel.h>
 
 K_PLUGIN_CLASS_WITH_JSON(UfwClient, "ufwbackend.json")
+Q_LOGGING_CATEGORY(UFWClientDebug, "ufw.client")
 
 namespace
 {
@@ -38,22 +39,22 @@ void debugState(KAuth::Action::AuthStatus status)
     using Status = KAuth::Action::AuthStatus;
     switch (status) {
     case Status::AuthorizedStatus:
-        qDebug() << "Job Authorized";
+        qCDebug(UFWClientDebug) << "Job Authorized";
         break;
     case Status::AuthRequiredStatus:
-        qDebug() << "Job Requires authentication";
+        qCDebug(UFWClientDebug) << "Job Requires authentication";
         break;
     case Status::UserCancelledStatus:
-        qDebug() << "User cancelled!";
+        qCDebug(UFWClientDebug) << "User cancelled!";
         break;
     case Status::DeniedStatus:
-        qDebug() << "Password denied";
+        qCDebug(UFWClientDebug) << "Password denied";
         break;
     case Status::InvalidStatus:
-        qDebug() << "Invalid Status!";
+        qCDebug(UFWClientDebug) << "Invalid Status!";
         break;
     case Status::ErrorStatus:
-        qDebug() << "Job is in an error state";
+        qCDebug(UFWClientDebug) << "Job is in an error state";
         break;
     }
 }
@@ -98,15 +99,15 @@ KJob *UfwClient::setEnabled(bool value)
     };
 
     KAuth::Action modifyAction = buildModifyAction(args);
-    qDebug() << "Starting the set Enabled job";
+    qCDebug(UFWClientDebug) << "Starting the set Enabled job";
     KAuth::ExecuteJob *job = modifyAction.execute();
 
     connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
-        qDebug() << "Set Enabled job finished, triggering a status query.";
+        qCDebug(UFWClientDebug) << "Set Enabled job finished, triggering a status query.";
         if (job->error() == KJob::NoError) {
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
         } else {
-            qDebug() << job->error();
+            qCDebug(UFWClientDebug) << "Job error: " << job->error();
         }
     });
 
@@ -115,7 +116,7 @@ KJob *UfwClient::setEnabled(bool value)
 
 KJob *UfwClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior)
 {
-    qDebug() << "Status query starting";
+    qCDebug(UFWClientDebug) << "Status query starting";
     if (m_busy) {
         qWarning() << "Ufw client is busy";
         return nullptr;
@@ -137,7 +138,7 @@ KJob *UfwClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavio
 
     KAuth::ExecuteJob *job = m_queryAction.execute();
     connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
-        qDebug() << "Status Query finished, setting the profile";
+        qCDebug(UFWClientDebug) << "Status Query finished, setting the profile";
         m_busy = false;
 
         if (job->error() != KJob::NoError) {
@@ -149,7 +150,7 @@ KJob *UfwClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavio
         setProfile(Profile(response));
     });
 
-    qDebug() << "Starting the Status Query";
+    qCDebug(UFWClientDebug) << "Starting the Status Query";
     job->start();
     return job;
 }
@@ -263,7 +264,7 @@ void UfwClient::refreshLogs()
 
 void UfwClient::setProfile(Profile profile)
 {
-    qDebug() << "Profile Received, Setting the profile on the model";
+    qCDebug(UFWClientDebug) << "Profile Received, Setting the profile on the model";
     auto oldProfile = m_currentProfile;
     m_currentProfile = profile;
     m_rulesModel->setProfile(m_currentProfile);
@@ -279,6 +280,8 @@ void UfwClient::setProfile(Profile profile)
         const QString policy = Types::toString(m_currentProfile.defaultOutgoingPolicy());
         Q_EMIT defaultOutgoingPolicyChanged(policy);
     }
+
+    queryKnownApplications();
 }
 
 KAuth::Action UfwClient::buildQueryAction(const QVariantMap &arguments)
@@ -450,7 +453,7 @@ namespace {
     QString portStrToInt(const QString& portStr) {
         QFile file("/etc/services");
         if (!file.open(QIODevice::ReadOnly)) {
-            qDebug() << "Could not open file, returning";
+            qCDebug(UFWClientDebug) << "Could not open file, returning";
             return portStr;
         }
         while (!file.atEnd()) {
@@ -498,9 +501,9 @@ Rule *UfwClient::createRuleFromConnection(const QString &protocol, const QString
     rule->setIncoming(status == QStringLiteral("LISTEN"));
     rule->setPolicy("deny");
 
-    qDebug() << "-----------------------";
-    qDebug() << foreignAddresData << localAddressData;
-    qDebug() << "------------------------";
+    qCDebug(UFWClientDebug) << "-----------------------";
+    qCDebug(UFWClientDebug) << foreignAddresData << localAddressData;
+    qCDebug(UFWClientDebug) << "------------------------";
 
     // Prepare rule draft
     if (status == QStringLiteral("LISTEN")) {
@@ -592,7 +595,7 @@ QString UfwClient::toXml(Rule *r) const
     xml.writeStartElement(QStringLiteral("rule"));
 
     if (r->position() != 0) {
-        qDebug() << "Getting the position" << r->position();
+        qCDebug(UFWClientDebug) << "Getting the position" << r->position();
         xml.writeAttribute(QStringLiteral("position"), QString::number(r->position()));
     }
 
@@ -648,7 +651,7 @@ bool UfwClient::isCurrentlyLoaded() const
     process.waitForFinished();
 
     // systemctl returns 0 for status if the app is loaded, and 3 otherwise.
-    qDebug() << "Ufw is loaded?" << (process.exitCode() == EXIT_SUCCESS);
+    qCDebug(UFWClientDebug) << "Ufw is loaded?" << (process.exitCode() == EXIT_SUCCESS);
 
     return process.exitCode() == EXIT_SUCCESS;
 }
@@ -671,6 +674,29 @@ QString UfwClient::version() const
     }
 
     return process.readAllStandardOutput();
+}
+
+QStringList UfwClient::knownApplications()
+{
+    return m_knownApplications;
+}
+
+void UfwClient::queryKnownApplications()
+{
+    auto action = KAuth::Action("org.kde.ufw.queryapps");
+    action.setHelperId("org.kde.ufw");
+
+    KAuth::ExecuteJob *job = action.execute();
+
+    connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
+        if (job->error() == KJob::NoError) {
+            m_knownApplications = job->data()["response"].toStringList();
+            qCDebug(UFWClientDebug) << "Setting the known applications to" << m_knownApplications;
+        } else {
+            qCDebug(UFWClientDebug) << "Job error: " << job->error();
+        }
+    });
+    job->start();
 }
 
 

@@ -9,11 +9,11 @@
 #include <QDebug>
 #include <QDir>
 #include <QNetworkInterface>
+#include <QProcess>
 #include <QStandardPaths>
 #include <QTimer>
 #include <QVariantList>
 #include <QVariantMap>
-#include <QProcess>
 
 #include <loglistmodel.h>
 #include <profile.h>
@@ -22,6 +22,7 @@
 #include "firewalldclient.h"
 #include "firewalldjob.h"
 #include "firewalldlogmodel.h"
+#include "queryrulesfirewalldjob.h"
 
 #include "systemdjob.h"
 
@@ -69,32 +70,31 @@ KJob *FirewalldClient::setEnabled(const bool value)
             return;
         }
         m_currentProfile.setEnabled(value);
-        queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
+        if (value) {
+            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
+        }
         Q_EMIT enabledChanged(value);
     });
 
     return job;
 }
-
 KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior)
 {
     Q_UNUSED(defaultsBehavior);
     Q_UNUSED(profilesBehavior);
+    QueryRulesFirewalldJob *job = new QueryRulesFirewalldJob();
 
-    FirewalldJob *job = new FirewalldJob("getAllRules");
-
-    connect(job, &KJob::result, this, [this, job] {
+    connect(job, &QueryRulesFirewalldJob::result, this, [this, job] {
         if (job->error()) {
-            qCDebug(FirewallDClientDebug) << job->errorString();
+            qCDebug(FirewallDClientDebug) << "Query rules job error: " << job->error() << job->errorString();
             return;
         }
         qCDebug(FirewallDClientDebug) << job->name();
-        const QVector<Rule*> rules = extractRulesFromResponse(job->get_firewalldreply());
-        const QVariantMap args = {
-            {"defaultIncomingPolicy", defaultIncomingPolicy()},
-            {"defaultOutgoingPolicy", defaultOutgoingPolicy()},
-            {"status", true}, {"ipv6Enabled", true}
-        };
+        QVector<Rule *> const rules = extractRulesFromResponse(job->getFirewalldreply()) + extractRulesFromResponse(job->getServices());
+        const QVariantMap args = {{"defaultIncomingPolicy", defaultIncomingPolicy()},
+                                  {"defaultOutgoingPolicy", defaultOutgoingPolicy()},
+                                  {"status", true},
+                                  {"ipv6Enabled", true}};
         setProfile(Profile(rules, args));
     });
     job->start();
@@ -120,7 +120,7 @@ void FirewalldClient::setLogsAutoRefresh(bool logsAutoRefresh)
     Q_EMIT logsAutoRefreshChanged(m_logsAutoRefresh);
 }
 
-void FirewalldClient::refreshLogs() {};
+void FirewalldClient::refreshLogs(){};
 
 RuleListModel *FirewalldClient::rules() const
 {
@@ -138,7 +138,6 @@ Rule *FirewalldClient::ruleAt(int index)
     Rule *rule = rules.at(index);
     return rule;
 }
-
 KJob *FirewalldClient::addRule(Rule *rule)
 {
     if (rule == nullptr) {
@@ -146,10 +145,15 @@ KJob *FirewalldClient::addRule(Rule *rule)
         return nullptr;
     }
 
-    qDebug() << rule->toStr();
+    qCDebug(FirewallDClientDebug) << rule->toStr();
 
     QVariantList dbusArgs = buildRule(rule);
-    FirewalldJob *job = new FirewalldJob("addRule", dbusArgs);
+    if (rule->simplified()) {
+        dbusArgs.push_back(QVariant(0));
+    }
+    qCDebug(FirewallDClientDebug) << "sending job ... rule simplified ? " << rule->simplified();
+    qCDebug(FirewallDClientDebug) << "Dbus Args...." << dbusArgs;
+    FirewalldJob *job = rule->simplified() ? new FirewalldJob("addService", dbusArgs, FirewalldJob::SIMPLIFIEDRULE) : new FirewalldJob("addRule", dbusArgs);
 
     connect(job, &KJob::result, this, [this, job] {
         if (job->error()) {
@@ -166,14 +170,16 @@ KJob *FirewalldClient::addRule(Rule *rule)
 KJob *FirewalldClient::removeRule(int index)
 {
     QVariantList dbusArgs = buildRule(ruleAt(index));
-    FirewalldJob *job = new FirewalldJob("removeRule", dbusArgs);
-
+    // FirewalldJob *job = new FirewalldJob("removeRule", dbusArgs);
+    FirewalldJob *job = ruleAt(index)->simplified() ? new FirewalldJob("removeService", dbusArgs, FirewalldJob::SIMPLIFIEDRULE) : // if true simplie interface
+        new FirewalldJob("removeRule", dbusArgs);
     connect(job, &KJob::result, this, [this, job] {
         if (job->error()) {
             qCDebug(FirewallDClientDebug) << job->errorString() << job->error();
             return;
         }
-        queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
+        // queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
+        refresh();
     });
 
     job->start();
@@ -183,6 +189,8 @@ KJob *FirewalldClient::removeRule(int index)
 KJob *FirewalldClient::updateRule(Rule *ruleWrapper)
 {
     /* not supported by the backend */
+    // TODO
+    Q_UNUSED(ruleWrapper)
     return nullptr;
 }
 
@@ -193,7 +201,7 @@ bool FirewalldClient::supportsRuleUpdate() const
 
 KJob *FirewalldClient::moveRule(int from, int to)
 {
-    QVector<Rule*> rules = m_currentProfile.rules();
+    QVector<Rule *> rules = m_currentProfile.rules();
     if (from < 0 || from >= rules.count()) {
         qWarning() << "invalid from index";
     }
@@ -205,7 +213,7 @@ KJob *FirewalldClient::moveRule(int from, int to)
     from += 1;
     to += 1;
 
-    QVariantMap args {
+    QVariantMap args{
         {"cmd", "moveRule"},
         {"from", from},
         {"to", to},
@@ -219,11 +227,7 @@ bool FirewalldClient::logsAutoRefresh() const
     return m_logsAutoRefresh;
 }
 
-Rule *FirewalldClient::createRuleFromConnection(
-    const QString &protocol,
-    const QString &localAddress,
-    const QString &foreignAddres,
-    const QString &status)
+Rule *FirewalldClient::createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status)
 {
     auto _localAddress = localAddress;
     _localAddress.replace("*", "");
@@ -257,13 +261,12 @@ Rule *FirewalldClient::createRuleFromConnection(
     return rule;
 }
 
-Rule *FirewalldClient::createRuleFromLog(
-    const QString &protocol,
-    const QString &sourceAddress,
-    const QString &sourcePort,
-    const QString &destinationAddress,
-    const QString &destinationPort,
-    const QString &inn)
+Rule *FirewalldClient::createRuleFromLog(const QString &protocol,
+                                         const QString &sourceAddress,
+                                         const QString &sourcePort,
+                                         const QString &destinationAddress,
+                                         const QString &destinationPort,
+                                         const QString &inn)
 {
     // Transform to the ufw notation
     auto rule = new Rule();
@@ -301,7 +304,14 @@ bool FirewalldClient::isTcpAndUdp(int protocolIdx)
 
 QVariantList FirewalldClient::buildRule(const Rule *r) const
 {
-    QVariantMap args {
+    qCDebug(FirewallDClientDebug) << "rule simplified? -> " << r->simplified();
+    if (r->simplified()) {
+        qCDebug(FirewallDClientDebug) << "rule simplified content: " << r->toStr();
+        if (!r->sourceApplication().isEmpty()) {
+            return QVariantList({"", r->sourceApplication()});
+        }
+    }
+    QVariantMap args{
         {"priority", 0},
         {"destinationPort", r->destinationPort()},
         {"sourcePort", r->sourcePort()},
@@ -433,19 +443,44 @@ LogListModel *FirewalldClient::logs()
     return m_logs;
 }
 
-QVector<Rule*> FirewalldClient::extractRulesFromResponse(const QList<firewalld_reply> &reply) const
+QVector<Rule *> FirewalldClient::extractRulesFromResponse(const QStringList &reply) const
 {
-    QVector<Rule*> message_rules;
+    QVector<Rule *> simple_rules;
+    if (reply.size() <= 0) {
+        return {};
+    }
+    for (auto r : reply) {
+        simple_rules.push_back(new Rule(Types::POLICY_ALLOW,
+                                        true,
+                                        Types::LOGGING_OFF,
+                                        -1,
+                                        "0.0.0.0", // passthrough any connection
+                                        "", // TODO how to find service port?
+                                        "0.0.0.0",
+                                        "",
+                                        "",
+                                        "",
+                                        r, // service name
+                                        r, // service name
+                                        0, // ignore position
+                                        false // ipv family type not relevant to firewalld zone "simple" interface
+                                        ));
+    }
+    return simple_rules;
+}
+
+QVector<Rule *> FirewalldClient::extractRulesFromResponse(const QList<firewalld_reply> &reply) const
+{
+    QVector<Rule *> message_rules;
     if (reply.size() <= 0) {
         return {};
     }
 
     int i = 0;
     for (auto r : reply) {
-        const auto action = r.rules.at(
-            r.rules.indexOf("-j") + 1) == "ACCEPT" ? Types::POLICY_ALLOW :
-            r.rules.at(r.rules.indexOf("-j") + 1) == "REJECT" ? Types::POLICY_REJECT
-            : Types::POLICY_DENY;
+        const auto action = r.rules.at(r.rules.indexOf("-j") + 1) == "ACCEPT" ? Types::POLICY_ALLOW
+            : r.rules.at(r.rules.indexOf("-j") + 1) == "REJECT"               ? Types::POLICY_REJECT
+                                                                              : Types::POLICY_DENY;
 
         const auto sourceAddress = r.rules.indexOf("-s") > 0 ? r.rules.at(r.rules.indexOf("-s") + 1) : "";
         const auto destinationAddress = r.rules.indexOf("-d") >= 0 ? r.rules.at(r.rules.indexOf("-d") + 1) : "";
@@ -464,23 +499,21 @@ QVector<Rule*> FirewalldClient::extractRulesFromResponse(const QList<firewalld_r
         const int destPortIdx = r.rules.indexOf(QRegExp("^" + QRegExp::escape("--dport") + ".+"));
         const auto destPort = destPortIdx != -1 ? r.rules.at(destPortIdx).section("=", -1) : QStringLiteral("");
 
-        message_rules.push_back(
-            new Rule(action,
-                r.chain == "INPUT",
-                Types::LOGGING_OFF,
-                protocolIdx,
-                sourceAddress,
-                sourcePort,
-                destinationAddress,
-                destPort,
-                r.chain == "INPUT" ? interface_in : "",
-                r.chain == "OUTPUT" ? interface_out : "",
-                "",
-                "",
-                i,
-                r.ipv == "ipv6"
-            )
-        );
+        message_rules.push_back(new Rule(action,
+                                         r.chain == "INPUT",
+                                         Types::LOGGING_OFF,
+                                         protocolIdx,
+                                         sourceAddress,
+                                         sourcePort,
+                                         destinationAddress,
+                                         destPort,
+                                         r.chain == "INPUT" ? interface_in : "",
+                                         r.chain == "OUTPUT" ? interface_out : "",
+                                         "",
+                                         "",
+                                         i,
+                                         r.ipv == "ipv6",
+                                         false));
         i += 1;
     }
 
@@ -505,6 +538,9 @@ void FirewalldClient::setProfile(Profile profile)
         const QString policy = Types::toString(m_currentProfile.defaultOutgoingPolicy());
         Q_EMIT defaultOutgoingPolicyChanged(policy);
     }
+    if (enabled()) {
+        queryKnownApplications();
+    }
 }
 
 FirewallClient::Capabilities FirewalldClient::capabilities() const
@@ -512,7 +548,8 @@ FirewallClient::Capabilities FirewalldClient::capabilities() const
     return FirewallClient::SaveCapability;
 };
 
-QStringList FirewalldClient::knownProtocols() {
+QStringList FirewalldClient::knownProtocols()
+{
     return {"TCP", "UDP"};
 }
 
@@ -526,7 +563,7 @@ bool FirewalldClient::isCurrentlyLoaded() const
     process.waitForFinished();
 
     // systemctl returns 0 for status if the app is loaded, and 3 otherwise.
-    qDebug() << "Firewalld is loaded?" << process.exitCode();
+    qCDebug(FirewallDClientDebug) << "Firewalld is loaded?" << process.exitCode();
 
     return process.exitCode() == EXIT_SUCCESS;
 }
@@ -546,4 +583,22 @@ QString FirewalldClient::version() const
     return process.readAllStandardOutput();
 }
 
+QStringList FirewalldClient::knownApplications()
+{
+    return m_knownApplications;
+}
+
+void FirewalldClient::queryKnownApplications()
+{
+    FirewalldJob *job = new FirewalldJob(FirewalldJob::LISTSERVICES);
+
+    connect(job, &KJob::result, this, [this, job] {
+        if (job->error()) {
+            qCDebug(FirewallDClientDebug) << job->name() << job->errorString() << job->error();
+            return;
+        }
+        m_knownApplications = job->getServices();
+    });
+    job->start();
+}
 #include "firewalldclient.moc"

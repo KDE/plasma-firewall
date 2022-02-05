@@ -40,6 +40,8 @@ public Q_SLOTS:
     ActionReply viewlog(const QVariantMap &args);
     ActionReply modify(const QVariantMap &args);
 
+    ActionReply queryapps(const QVariantMap &args);
+
 private:
     ActionReply setStatus(const QVariantMap &args, const QString &cmd);
     ActionReply setDefaults(const QVariantMap &args, const QString &cmd);

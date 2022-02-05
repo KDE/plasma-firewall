@@ -9,7 +9,7 @@
 #include <QDBusMessage>
 #include <QDBusPendingCall>
 #include <QDBusPendingReply>
-
+#include <QTimer>
 #include <KLocalizedString>
 
 #include "systemdjob.h"
@@ -59,10 +59,13 @@ void SystemdJob::systemdAction(const SYSTEMD::actions value)
             setErrorText(reply.reply().errorMessage());
             setError(DBUSSYSTEMDERROR);
         }
-        emitResult();
-        return;
+        QTimer *timer = new QTimer(this);
+        timer->setInterval(1500);
+        connect(timer, &QTimer::timeout, this, [this]() { emitResult(); });
+        timer->start();
+        // return;
     });
-    return;
+    // return;
 }
 
 SystemdJob::~SystemdJob() = default;

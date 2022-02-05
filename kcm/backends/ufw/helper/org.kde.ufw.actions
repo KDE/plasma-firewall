@@ -235,3 +235,9 @@ Description[x-test]=xxModify firewall settingsxx
 Description[zh_CN]=修改防火墙设置
 Policy=auth_admin
 Persistence=session
+
+[org.kde.ufw.queryapps]
+Name=Query Applications
+Description=Query the automatic application block list
+Policy=auth_admin
+Persistence=session

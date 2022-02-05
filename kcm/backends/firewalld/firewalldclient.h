@@ -61,14 +61,16 @@ public:
     bool isCurrentlyLoaded() const override;
     bool supportsRuleUpdate() const override;
     QString version() const override;
-
+    QStringList knownApplications() override;
 protected slots:
     void refreshLogs();
 
 protected:
     QVector<Rule*> extractRulesFromResponse(const QList<firewalld_reply> &reply) const;
+    QVector<Rule *> extractRulesFromResponse(const QStringList &reply) const;
     QVariantList buildRule(const Rule *r) const;
     void setProfile(Profile profile);
+    void queryKnownApplications();
 
 private:
     QString m_status;
@@ -80,6 +82,7 @@ private:
     QTimer m_logsRefreshTimer;
     bool m_logsAutoRefresh;
     bool m_serviceStatus;
+    QStringList m_knownApplications;
 };
 
 #endif // FIREWALLDCLIENT_H
