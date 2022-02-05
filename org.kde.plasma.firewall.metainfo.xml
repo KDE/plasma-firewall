@@ -32,6 +32,7 @@
   <name xml:lang="pl">Zapora ogniowa Plazmy</name>
   <name xml:lang="pt">'Firewall' do Plasma</name>
   <name xml:lang="pt-BR">Plasma Firewall</name>
+  <name xml:lang="ro">Firewall Plasma</name>
   <name xml:lang="ru">Управление брандмауэром в Plasma</name>
   <name xml:lang="sk">Plasma Firewall</name>
   <name xml:lang="sl">Plasma Firewall</name>
@@ -62,6 +63,7 @@
   <summary xml:lang="pl">Interfejs zapory ogniowej dla Plazmy</summary>
   <summary xml:lang="pt">Interface de 'Firewall' para o Plasma</summary>
   <summary xml:lang="pt-BR">Interface de firewall para o Plasma</summary>
+  <summary xml:lang="ro">Interfață Plasma pentru firewall</summary>
   <summary xml:lang="ru">Интерфейс управления брандмауэром в Plasma</summary>
   <summary xml:lang="sk">Rozhranie firewallu pre Plasma</summary>
   <summary xml:lang="sl">Plasmin vmesnik za vdorobran</summary>
@@ -161,6 +163,7 @@
   <developer_name xml:lang="pl">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="pt">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="pt-BR">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
+  <developer_name xml:lang="ro">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="ru">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="sk">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="sl">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
