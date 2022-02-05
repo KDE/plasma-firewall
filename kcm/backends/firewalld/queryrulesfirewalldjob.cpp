@@ -21,8 +21,7 @@ QueryRulesFirewalldJob::QueryRulesFirewalldJob()
         }
         m_replyDirect = m_direct->getFirewalldreply();
         if (m_simpleFinished) {
-            // emitResult();
-            emit queryFinish();
+            emitResult();
         }
     });
 
@@ -36,8 +35,7 @@ QueryRulesFirewalldJob::QueryRulesFirewalldJob()
 
         m_replyServices = m_simple->getServices();
         if (m_directFinished) {
-            // emitResult();
-            emit queryFinish();
+            emitResult();
         }
     });
 }

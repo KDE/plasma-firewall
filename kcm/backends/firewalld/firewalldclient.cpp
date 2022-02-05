@@ -70,7 +70,9 @@ KJob *FirewalldClient::setEnabled(const bool value)
             return;
         }
         m_currentProfile.setEnabled(value);
-        queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
+        if (value) {
+            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
+        }
         Q_EMIT enabledChanged(value);
     });
 
@@ -82,7 +84,7 @@ KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsB
     Q_UNUSED(profilesBehavior);
     QueryRulesFirewalldJob *job = new QueryRulesFirewalldJob();
 
-    connect(job, &QueryRulesFirewalldJob::queryFinish, this, [this, job] {
+    connect(job, &QueryRulesFirewalldJob::result, this, [this, job] {
         if (job->error()) {
             qCDebug(FirewallDClientDebug) << "Query rules job error: " << job->error() << job->errorString();
             return;
