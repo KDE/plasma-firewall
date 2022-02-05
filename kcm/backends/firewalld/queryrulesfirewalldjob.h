@@ -23,6 +23,7 @@ public:
     QList<firewalld_reply> getFirewalldreply();
     QStringList getServices();
     QString name();
+    Q_SIGNAL void queryFinish();
 
 private:
     FirewalldJob *m_direct;

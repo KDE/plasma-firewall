@@ -14,17 +14,30 @@ QueryRulesFirewalldJob::QueryRulesFirewalldJob()
 
     connect(m_direct, &KJob::result, this, [this](void) {
         m_directFinished = true;
+
+        if(m_direct->error()) {
+          qCDebug(FirewallDJobDebug) << "Query Job Failed: " << m_direct->error() << m_direct->errorString();
+          return;
+        }
         m_replyDirect = m_direct->getFirewalldreply();
         if (m_simpleFinished) {
-            emitResult();
+            // emitResult();
+            emit queryFinish();
         }
     });
 
     connect(m_simple, &KJob::result, this, [this](void) {
         m_simpleFinished = true;
+
+        if(m_direct->error()) {
+          qCDebug(FirewallDJobDebug) << "Query Job Failed: " << m_direct->error() << m_direct->errorString();
+          return;
+        }
+
         m_replyServices = m_simple->getServices();
         if (m_directFinished) {
-            emitResult();
+            // emitResult();
+            emit queryFinish();
         }
     });
 }

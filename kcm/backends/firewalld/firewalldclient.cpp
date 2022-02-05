@@ -82,7 +82,7 @@ KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsB
     Q_UNUSED(profilesBehavior);
     QueryRulesFirewalldJob *job = new QueryRulesFirewalldJob();
 
-    connect(job, &KJob::finished, this, [this, job] {
+    connect(job, &QueryRulesFirewalldJob::queryFinish, this, [this, job] {
         if (job->error()) {
             qCDebug(FirewallDClientDebug) << "Query rules job error: " << job->error() << job->errorString();
             return;
@@ -93,7 +93,6 @@ KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsB
                                   {"defaultOutgoingPolicy", defaultOutgoingPolicy()},
                                   {"status", true},
                                   {"ipv6Enabled", true}};
-        qDebug() << "MEEEEEEEEEH MOP POP"
         setProfile(Profile(rules, args));
     });
     job->start();
