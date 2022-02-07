@@ -238,6 +238,18 @@ Persistence=session
 
 [org.kde.ufw.queryapps]
 Name=Query Applications
+Name[ca]=Consulta d'aplicacions
+Name[ca@valencia]=Consulta d'aplicacions
+Name[es]=Consultar aplicaciones
+Name[nl]=Toepassingen afvragen
+Name[uk]=Опитування програм
+Name[x-test]=xxQuery Applicationsxx
 Description=Query the automatic application block list
+Description[ca]=Consulta la llista automàtica de bloqueig d'aplicacions
+Description[ca@valencia]=Consulta la llista automàtica de bloqueig d'aplicacions
+Description[es]=Consultar la lista de bloqueo automático de aplicaciones
+Description[nl]=De automatische blokkeringslijst van toepassing afvragen
+Description[uk]=Отримати список автоматичного блокування програм
+Description[x-test]=xxQuery the automatic application block listxx
 Policy=auth_admin
 Persistence=session
