@@ -137,44 +137,6 @@ void FirewalldJob::firewalldAction(const QString &bus, const QString &path, cons
     }
 }
 
-void FirewalldJob::firewalldAction(const QByteArray &method, const QVariantList &args)
-{
-    QDBusMessage call = QDBusMessage::createMethodCall(FIREWALLD::BUS, FIREWALLD::PATH, DIRECT::INTERFACE, method);
-    call.setArguments(args);
-    QDBusPendingCall message = QDBusConnection::systemBus().asyncCall(call);
-    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(message, this);
-    if (args.isEmpty()) {
-        connect(watcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
-            QDBusPendingReply<QList<firewalld_reply>> reply = *watcher;
-            watcher->deleteLater();
-            if (reply.isError()) {
-                setErrorText(reply.error().message());
-                setError(DBUSFIREWALLDDERROR);
-                qCDebug(FirewallDJobDebug) << "job error message: " << errorString();
-                emitResult();
-                return;
-            }
-
-            m_firewalldreply = reply.value();
-            emitResult();
-            return;
-        });
-    } else {
-        connect(watcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
-            QDBusPendingReply<> reply = *watcher;
-            watcher->deleteLater();
-
-            if (reply.isError()) {
-                setErrorText(reply.reply().errorMessage());
-                setError(DBUSFIREWALLDDERROR);
-                qCDebug(FirewallDJobDebug) << "job error message: " << errorString();
-            }
-            emitResult();
-            return;
-        });
-    }
-}
-
 QList<firewalld_reply> FirewalldJob::getFirewalldreply()
 {
     return m_firewalldreply;

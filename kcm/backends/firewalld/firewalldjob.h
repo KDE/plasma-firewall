@@ -34,7 +34,6 @@ private:
     T connectCall(QDBusPendingCallWatcher *watcher);
     void connectCall(QDBusPendingCallWatcher *watcher);
     void saveFirewalld();
-    void firewalldAction(const QByteArray &method, const QVariantList &args = {});
     void firewalldAction(const QString &bus, const QString &path, const QString &interface, const QString &method, const QVariantList &args = {});
     JobType m_type;
     QByteArray m_call;
