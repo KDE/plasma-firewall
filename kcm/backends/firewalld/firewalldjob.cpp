@@ -70,6 +70,7 @@ T FirewalldJob::connectCall(QDBusPendingCallWatcher *watcher)
         setErrorText(reply.error().message());
         setError(DBUSFIREWALLDDERROR);
         qCDebug(FirewallDJobDebug) << "job error message: " << errorString();
+        emitResult();
     }
     return reply.value();
 }
