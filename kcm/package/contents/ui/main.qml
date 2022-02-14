@@ -40,6 +40,7 @@ KCM.ScrollViewKCM {
         title: ruleEdit.newRule ? i18n("Create A New Firewall Rule") : i18n("Edit Firewall Rule")
 
         ColumnLayout {
+            spacing: Kirigami.Units.largeSpacing
 
             Kirigami.InlineMessage {
                 id: ruleEditMessage
