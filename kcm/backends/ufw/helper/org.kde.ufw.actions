@@ -239,6 +239,7 @@ Persistence=session
 [org.kde.ufw.queryapps]
 Name=Query Applications
 Name[ar]=استعلم عن التطبيقات
+Name[az]=Sorğu tətbiqləri
 Name[ca]=Consulta d'aplicacions
 Name[ca@valencia]=Consulta d'aplicacions
 Name[es]=Consultar aplicaciones
@@ -253,6 +254,7 @@ Name[x-test]=xxQuery Applicationsxx
 Name[zh_CN]=查询应用程序
 Description=Query the automatic application block list
 Description[ar]=يستعلم عن قائمة التطبيقات الممنوعة
+Description[az]=Avtomatik tətbiq əngəlləmə siyahısı sorğusu
 Description[ca]=Consulta la llista automàtica de bloqueig d'aplicacions
 Description[ca@valencia]=Consulta la llista automàtica de bloqueig d'aplicacions
 Description[es]=Consultar la lista de bloqueo automático de aplicaciones
