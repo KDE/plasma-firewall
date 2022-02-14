@@ -49,20 +49,17 @@ FocusScope {
         Kirigami.InlineMessage {
             Layout.fillWidth: true
             type: Kirigami.MessageType.Information
-            text: rule.incoming ? i18n("The default incoming policy is already '%1'.", policy.currentText)
-                                : i18n("The default outgoing policy is already '%1'.", policy.currentText)
-            visible: rule.policy === (incoming.checked ? defaultIncomingPolicyRule : defaultOutgoingPolicyRule)
+            text: rule.incoming ? i18n("The default incoming policy is already '%1'.", advancedRuleEdit.policy.currentText)
+                                : i18n("The default outgoing policy is already '%1'.", advancedRuleEdit.policy.currentText)
+            visible: rule.policy === (advancedRuleEdit.incoming.checked ? defaultIncomingPolicyRule : defaultOutgoingPolicyRule) && advancedRules.checked
         }
-
-        QQC2.ComboBox {
-            id: policy
-            Kirigami.FormData.label: i18n("Policy:")
-            model: policyChoices
-            textRole: "text"
-            currentIndex: rule.policy === "" ? 0 : policyChoices.findIndex((policy) => policy.data === rule.policy)
-            onActivated: rule.policy = policyChoices[index].data
+        Kirigami.InlineMessage {
+            Layout.fillWidth: true
+            type: Kirigami.MessageType.Information
+            text: rule.incoming ? i18n("The default incoming policy is already '%1'.", advancedRuleEdit.policy.currentText)
+                                : i18n("The default outgoing policy is already '%1'.", advancedRuleEdit.policy.currentText)
+            visible: rule.policy === (simple.incoming.checked ? defaultIncomingPolicyRule : defaultOutgoingPolicyRule) && !advancedRules.checked
         }
-
         SimpleRuleEdit {
             id: simpleRuleEdit
             visible: !advancedRules.checked
@@ -88,9 +85,12 @@ FocusScope {
             QQC2.Button {
                 text: ruleEdit.newRule ? i18n("Create") : i18n("Save")
                 icon.name: ruleEdit.newRule ? "document-new" : "document-save"
-                enabled: (!sourceAddress.length || sourceAddress.acceptableInput) && (!destinationAddress.length || destinationAddress.acceptableInput) && !(sourceAddress.text == destinationAddress.text && sourcePort.text == destinationPort.text)
+                enabled: ((!advancedRuleEdit.sourceAddress.length || advancedRuleEdit.sourceAddress.acceptableInput)
+                    && (!advancedRuleEdit.destinationAddress.length || advancedRuleEdit.destinationAddress.acceptableInput)
+                    && !(advancedRuleEdit.sourceAddress.text == advancedRuleEdit.destinationAddress.text
+                    && advancedRuleEdit.sourcePort.text == advancedRuleEdit.destinationPort.text)
+                    || !(simple.index == -1))
                 onClicked: {
-                    // rule.setSourceApplication(simple.service[simple.index]);
                     rule.sourceApplication = simple.service[simple.index]
                     ruleEdit.accepted()
                 }

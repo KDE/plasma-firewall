@@ -14,22 +14,47 @@ import org.kcm.firewall 1.0 as Firewall
 Kirigami.FormLayout {
     property alias service : application.model
     property alias index: application.currentIndex
+    property alias policy: policy
+    property alias incoming: incoming
+
+    QQC2.ComboBox {
+        id: application
+        Kirigami.FormData.label: kcm.client.name == "firewalld" ?
+i18n("Allow connections for:") : i18n("Application:")
+        model: kcm.client.knownApplications()
+    }
+
     QQC2.ComboBox {
         id: policy
-        Kirigami.FormData.label: i18n("Simple Rule Edit:")
+        Kirigami.FormData.label: i18n("Policy:")
         model: policyChoices
         textRole: "text"
         currentIndex: rule.policy == "" ? 0 : policyChoices.findIndex((policy) => policy.data == rule.policy)
         onActivated: rule.policy = policyChoices[index].data
+        visible: kcm.client.name != "firewalld"
     }
-    QQC2.ComboBox {
-        id: application
-        Kirigami.FormData.label: i18n("Application:")
-        model: kcm.client.knownApplications()
+
+    RowLayout {
+        Kirigami.FormData.label: i18n("Direction:")
+        visible: kcm.client.name != "firewalld"
+        QQC2.RadioButton {
+            id: incoming
+            text: i18n("Incoming")
+            icon.name: "arrow-down"
+            checked: rule.incoming
+            onClicked: rule.incoming = true
+        }
+        QQC2.RadioButton {
+            text: i18n("Outgoing")
+            icon.name: "arrow-up"
+            checked: !rule.incoming
+            onClicked: rule.incoming = false
+        }
     }
 
     onVisibleChanged: {
-        console.log("Simple... apps... :", kcm.client.knownApplications());
+        console.log("services available: ", kcm.client.knownApplications());
         application.model = kcm.client.knownApplications();
+        application.currentIndex = -1;
     }
 }

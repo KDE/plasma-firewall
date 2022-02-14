@@ -9,6 +9,12 @@ import org.kcm.firewall 1.0 as Firewall
 
 Kirigami.FormLayout {
     property var rule: null
+    property alias sourceAddress: sourceAddress
+    property alias destinationAddress: destinationAddress
+    property alias destinationPort: destinationPort
+    property alias sourcePort: sourcePort
+    property alias policy: policy
+    property alias incoming: incoming
 
     QQC2.ComboBox {
         id: policy

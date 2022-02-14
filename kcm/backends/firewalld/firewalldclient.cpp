@@ -450,14 +450,31 @@ QVector<Rule *> FirewalldClient::extractRulesFromResponse(const QStringList &rep
         return {};
     }
     for (auto r : reply) {
+        // ipv4
         simple_rules.push_back(new Rule(Types::POLICY_ALLOW,
                                         true,
                                         Types::LOGGING_OFF,
-                                        -1,
+                                        -1, // TODO retrieve protocol service from firewalld
                                         "0.0.0.0", // passthrough any connection
-                                        "", // TODO how to find service port?
+                                        "0", // TODO retrieve port service from firewalld
                                         "0.0.0.0",
+                                        "0",
                                         "",
+                                        "",
+                                        r, // service name
+                                        r, // service name
+                                        0, // ignore position
+                                        false // ipv family type not relevant to firewalld zone "simple" interface
+                                        ));
+        // ipv6
+        simple_rules.push_back(new Rule(Types::POLICY_ALLOW,
+                                        true,
+                                        Types::LOGGING_OFF,
+                                        -1, // TODO retrieve protocol service from firewalld
+                                        "::", // passthrough any connection
+                                        "0", // TODO retrieve port service from firewalld
+                                        "::",
+                                        "0",
                                         "",
                                         "",
                                         r, // service name
