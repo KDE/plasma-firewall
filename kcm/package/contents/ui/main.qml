@@ -37,10 +37,7 @@ KCM.ScrollViewKCM {
             }
         }
 
-        header: Kirigami.Heading {
-            Layout.fillWidth: true
-            text: ruleEdit.newRule ? i18n("Create A New Firewall Rule") : i18n("Edit Firewall Rule")
-        }
+        title: ruleEdit.newRule ? i18n("Create A New Firewall Rule") : i18n("Edit Firewall Rule")
 
         ColumnLayout {
 
