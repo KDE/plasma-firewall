@@ -103,6 +103,34 @@ KCM.ScrollViewKCM {
                     });
                 }
             }
+
+            InlineBusyIndicator {
+                Layout.alignment: Qt.AlignHCenter
+                running: ruleEdit.busy
+                visible: running
+            }
+
+            QQC2.DialogButtonBox {
+                Layout.fillWidth: true
+
+                leftPadding: 0
+                rightPadding: 0
+                bottomPadding: 0
+                topPadding: 0
+
+                enabled: ruleEdit.ready
+
+                QQC2.Button {
+                    text: ruleEdit.newRule ? i18n("Create") : i18n("Save")
+                    icon.name: ruleEdit.newRule ? "document-new" : "document-save"
+                    QQC2.DialogButtonBox.buttonRole: QQC2.DialogButtonBox.AcceptRole
+                }
+
+                onAccepted: {
+                    ruleEdit.rule.sourceApplication = ruleEdit.simple.service[ruleEdit.simple.index]
+                    ruleEdit.accepted()
+                }
+            }
         }
     }
 

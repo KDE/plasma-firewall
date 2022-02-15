@@ -17,6 +17,11 @@ FocusScope {
     signal accepted
 
     property bool busy: false
+    property bool ready: (!advancedRuleEdit.sourceAddress.length || advancedRuleEdit.sourceAddress.acceptableInput)
+                          && (!advancedRuleEdit.destinationAddress.length || advancedRuleEdit.destinationAddress.acceptableInput)
+                          && !(advancedRuleEdit.sourceAddress.text == advancedRuleEdit.destinationAddress.text
+                               && advancedRuleEdit.sourcePort.text == advancedRuleEdit.destinationPort.text)
+                          || simple.index != -1
     property alias simple: simpleRuleEdit
 
     property Firewall.FirewallClient client: null
@@ -77,31 +82,5 @@ FocusScope {
             rule: ruleEdit.rule
             visible: advancedRules.checked
         }
-
-        Item {
-            Layout.fillHeight: true
-        }
-        RowLayout {
-            QQC2.Button {
-                text: ruleEdit.newRule ? i18n("Create") : i18n("Save")
-                icon.name: ruleEdit.newRule ? "document-new" : "document-save"
-                enabled: ((!advancedRuleEdit.sourceAddress.length || advancedRuleEdit.sourceAddress.acceptableInput)
-                    && (!advancedRuleEdit.destinationAddress.length || advancedRuleEdit.destinationAddress.acceptableInput)
-                    && !(advancedRuleEdit.sourceAddress.text == advancedRuleEdit.destinationAddress.text
-                    && advancedRuleEdit.sourcePort.text == advancedRuleEdit.destinationPort.text)
-                    || !(simple.index == -1))
-                onClicked: {
-                    rule.sourceApplication = simple.service[simple.index]
-                    ruleEdit.accepted()
-                }
-
-            }
-
-            // Would be nice to not have this one "disabled"
-            InlineBusyIndicator {
-                running: ruleEdit.busy
-            }
-        }
-
     }
 }
