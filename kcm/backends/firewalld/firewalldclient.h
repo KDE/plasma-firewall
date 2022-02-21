@@ -7,9 +7,9 @@
 #ifndef FIREWALLDCLIENT_H
 #define FIREWALLDCLIENT_H
 
+#include <QLoggingCategory>
 #include <QString>
 #include <QTimer>
-#include <QLoggingCategory>
 
 #include <ifirewallclientbackend.h>
 #include <profile.h>
@@ -66,11 +66,12 @@ protected slots:
     void refreshLogs();
 
 protected:
-    QVector<Rule*> extractRulesFromResponse(const QList<firewalld_reply> &reply) const;
+    QVector<Rule *> extractRulesFromResponse(const QList<firewalld_reply> &reply) const;
     QVector<Rule *> extractRulesFromResponse(const QStringList &reply) const;
     QVariantList buildRule(const Rule *r) const;
     void setProfile(Profile profile);
     void queryKnownApplications();
+    void getDefaultIncomingPolicyFromDbus();
 
 private:
     QString m_status;

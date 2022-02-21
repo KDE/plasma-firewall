@@ -8,6 +8,7 @@
 #include <QDBusMetaType>
 #include <QDebug>
 #include <QDir>
+#include <QLoggingCategory>
 #include <QNetworkInterface>
 #include <QProcess>
 #include <QStandardPaths>
@@ -78,6 +79,7 @@ KJob *FirewalldClient::setEnabled(const bool value)
 
     return job;
 }
+
 KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavior, FirewallClient::ProfilesBehavior profilesBehavior)
 {
     Q_UNUSED(defaultsBehavior);
@@ -178,7 +180,6 @@ KJob *FirewalldClient::removeRule(int index)
             qCDebug(FirewallDClientDebug) << job->errorString() << job->error();
             return;
         }
-        // queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
         refresh();
     });
 
@@ -387,14 +388,12 @@ QString FirewalldClient::defaultOutgoingPolicy() const
 
 KJob *FirewalldClient::setDefaultIncomingPolicy(QString defaultIncomingPolicy)
 {
-    // fake job just to change default policy
     FirewalldJob *job = new FirewalldJob();
     connect(job, &KJob::result, this, [this, job, defaultIncomingPolicy] {
         if (job->error()) {
             qCDebug(FirewallDClientDebug) << job->errorString() << job->error();
             return;
         }
-        queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
         m_currentProfile.setDefaultIncomingPolicy(defaultIncomingPolicy);
     });
 
@@ -404,15 +403,13 @@ KJob *FirewalldClient::setDefaultIncomingPolicy(QString defaultIncomingPolicy)
 
 KJob *FirewalldClient::setDefaultOutgoingPolicy(QString defaultOutgoingPolicy)
 {
-    // fake job just to change default policy
     FirewalldJob *job = new FirewalldJob();
     connect(job, &KJob::result, this, [this, job, defaultOutgoingPolicy] {
         if (job->error()) {
             qCDebug(FirewallDClientDebug) << job->errorString() << job->error();
             return;
         }
-        queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
-        m_currentProfile.setDefaultIncomingPolicy(defaultOutgoingPolicy);
+        m_currentProfile.setDefaultOutgoingPolicy(defaultOutgoingPolicy);
     });
 
     job->start();
@@ -421,7 +418,6 @@ KJob *FirewalldClient::setDefaultOutgoingPolicy(QString defaultOutgoingPolicy)
 
 KJob *FirewalldClient::save()
 {
-    // fake job just to change default policy
     FirewalldJob *job = new FirewalldJob(FirewalldJob::SAVEFIREWALLD);
 
     connect(job, &KJob::result, this, [this, job] {
@@ -542,20 +538,22 @@ void FirewalldClient::setProfile(Profile profile)
     auto oldProfile = m_currentProfile;
     m_currentProfile = profile;
     m_rulesModel->setProfile(m_currentProfile);
+    qCDebug(FirewallDClientDebug) << "Profile incoming policy: " << m_currentProfile.defaultIncomingPolicy()
+                                  << "Old profile policy: " << oldProfile.defaultIncomingPolicy();
     if (m_currentProfile.enabled() != oldProfile.enabled()) {
+        getDefaultIncomingPolicyFromDbus();
         Q_EMIT enabledChanged(m_currentProfile.enabled());
     }
 
-    if (m_currentProfile.defaultIncomingPolicy() != oldProfile.defaultIncomingPolicy()) {
-        const QString policy = Types::toString(m_currentProfile.defaultIncomingPolicy());
-        Q_EMIT defaultIncomingPolicyChanged(policy);
-    }
-
-    if (m_currentProfile.defaultOutgoingPolicy() != oldProfile.defaultOutgoingPolicy()) {
-        const QString policy = Types::toString(m_currentProfile.defaultOutgoingPolicy());
-        Q_EMIT defaultOutgoingPolicyChanged(policy);
-    }
     if (enabled()) {
+        if (m_currentProfile.defaultIncomingPolicy() != oldProfile.defaultIncomingPolicy()) {
+            const QString policy = Types::toString(m_currentProfile.defaultIncomingPolicy());
+            Q_EMIT defaultIncomingPolicyChanged(policy);
+        }
+        if (m_currentProfile.defaultOutgoingPolicy() != oldProfile.defaultOutgoingPolicy()) {
+            const QString policy = Types::toString(m_currentProfile.defaultOutgoingPolicy());
+            Q_EMIT defaultOutgoingPolicyChanged(policy);
+        }
         queryKnownApplications();
     }
 }
@@ -618,4 +616,28 @@ void FirewalldClient::queryKnownApplications()
     });
     job->start();
 }
+void FirewalldClient::getDefaultIncomingPolicyFromDbus()
+{
+    FirewalldJob *job = new FirewalldJob("getZoneSettings2", {""}, FirewalldJob::SIMPLELIST);
+    connect(job, &KJob::result, this, [this, job] {
+        if (job->error()) {
+            qCDebug(FirewallDClientDebug) << job->name() << job->errorString() << job->error();
+            return;
+        }
+        QString policy = job->getDefaultIncomingPolicy();
+        qCDebug(FirewallDClientDebug) << "Incoming Policy (firewalld definition): " << policy;
+        if (policy == "default" || policy == "reject") {
+            qCDebug(FirewallDClientDebug) << "Setting incoming Policy: rejected";
+            m_currentProfile.setDefaultIncomingPolicy("reject");
+        } else if (policy == "allow") {
+            qCDebug(FirewallDClientDebug) << "Setting incoming Policy: allowed";
+            m_currentProfile.setDefaultIncomingPolicy("allow");
+        } else {
+            qCDebug(FirewallDClientDebug) << "Setting incoming Policy: denied";
+            m_currentProfile.setDefaultIncomingPolicy("deny");
+        }
+    });
+    job->exec();
+}
+
 #include "firewalldclient.moc"

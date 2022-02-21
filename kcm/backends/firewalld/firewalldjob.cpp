@@ -106,6 +106,7 @@ void FirewalldJob::firewalldAction(const QString &bus, const QString &path, cons
                 if (!reply.isEmpty()) {
                     m_services = reply;
                 }
+
             } else {
                 connectCall(watcher); // save executed here
             }
@@ -122,6 +123,10 @@ void FirewalldJob::firewalldAction(const QString &bus, const QString &path, cons
                     if (!reply.isEmpty())
                         qCDebug(FirewallDJobDebug) << "manipulated zone: " << reply;
 
+                } else if (method == "getZoneSettings2") {
+                    QMap<QString, QVariant> settings;
+                    settings = connectCall<QMap<QString, QVariant>>(watcher);
+                    m_target = settings["target"].toString();
                 } else {
                     QStringList reply = connectCall<QStringList>(watcher);
                     if (!reply.isEmpty()) {
@@ -149,7 +154,7 @@ void FirewalldJob::start()
     switch (m_type) {
     case FirewalldJob::SIMPLIFIEDRULE:
     case FirewalldJob::SIMPLELIST: {
-        qCDebug(FirewallDJobDebug) << "firewalld simple interface: " << m_call << m_args;
+        qCDebug(FirewallDJobDebug) << "firewalld zone interface: " << m_call << m_args;
         firewalldAction(FIREWALLD::BUS, FIREWALLD::PATH, SIMPLE::INTERFACE, m_call, m_args);
         break;
     }
@@ -186,4 +191,9 @@ QString FirewalldJob::name()
 QStringList FirewalldJob::getServices()
 {
     return m_services;
+}
+
+QString FirewalldJob::getDefaultIncomingPolicy()
+{
+    return m_target;
 }

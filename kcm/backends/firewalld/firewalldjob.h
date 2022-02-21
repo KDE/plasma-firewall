@@ -28,6 +28,7 @@ public:
     QList<firewalld_reply> getFirewalldreply();
     QStringList getServices();
     QString name();
+    QString getDefaultIncomingPolicy();
 
 private:
     template<typename T>
@@ -40,5 +41,7 @@ private:
     QVariantList m_args;
     QStringList m_services = {};
     QList<firewalld_reply> m_firewalldreply = {};
+    QString m_target;
+
 };
 #endif
