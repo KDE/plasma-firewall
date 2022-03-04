@@ -4,7 +4,6 @@
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Quick
     Xml
-    X11Extras
 )
 
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
@@ -31,7 +30,6 @@ target_link_libraries(networkstatus
     kcm_firewall_core
     Qt::Core
     Qt::Quick
-    Qt::X11Extras
     KF5::CoreAddons
     KF5::ConfigCore
     KF5::Auth

@@ -21,7 +21,6 @@ target_sources(kcm_firewall PRIVATE
 )
 target_link_libraries(kcm_firewall
     Qt::Quick
-    Qt::X11Extras
     Qt::DBus
 
     KF5::CoreAddons
