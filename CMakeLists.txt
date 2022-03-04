@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION 3.16)
 project(plasma-firewall)
 set(PROJECT_VERSION "5.24.80")
 
-set(KF5_MIN_VERSION "5.86")
+set(KF5_MIN_VERSION "5.90")
 set(KDE_COMPILERSETTINGS_LEVEL "5.82")
 set(QT_MIN_VERSION "5.15.0")
 
@@ -32,24 +32,24 @@ add_feature_info(UFW_BACKEND ${BUILD_UFW_BACKEND} "Build the Uncomplicated Firew
 #-----------------------------------------------------------------------------
 # Python3 (search for this first so that we will not get Python2 by accident)
 find_package(PythonInterp 3 REQUIRED)
-
-# Qt5
-find_package(Qt5 REQUIRED COMPONENTS
-    Core
-    Qml
-    X11Extras
-    DBus
-)
-
 # KDE5
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f00)
-add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055800)
-
 include(KDEInstallDirs)
 include(KDECompilerSettings)
 include(KDECMakeSettings)
+
+# Qt5
+find_package(Qt${QT_MAJOR_VERSION} REQUIRED COMPONENTS
+    Core
+    Qml
+    DBus
+)
+
+
+add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f00)
+add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055800)
+
 
 find_package(KF5 REQUIRED COMPONENTS 
     CoreAddons
