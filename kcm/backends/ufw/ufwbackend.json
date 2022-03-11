@@ -30,6 +30,7 @@
         "Name[sk]": "Backend pre nekomplikovaný Firewall",
         "Name[sl]": "Ozadje za nezapleteni",
         "Name[sv]": "Gränssnitt för okomplicerad brandvägg",
+        "Name[tr]": "Yalın Güvenlik Duvarı için Arka Uç",
         "Name[uk]": "Модуль для Uncomplicated Firewall",
         "Name[x-test]": "xxBackend for Uncomplicated Firewallxx",
         "Name[zh_CN]": "UFW 后端程序",

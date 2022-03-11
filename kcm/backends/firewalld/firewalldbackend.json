@@ -30,6 +30,7 @@
         "Name[sk]": "Backend pre Firewalld",
         "Name[sl]": "Ozadje vdorobrana",
         "Name[sv]": "Gränssnitt för brandvägg",
+        "Name[tr]": "Firewalld için Arka Uç",
         "Name[uk]": "Модуль для Firewalld",
         "Name[x-test]": "xxBackend for Firewalldxx",
         "Name[zh_CN]": "Firewalld 后端程序",
