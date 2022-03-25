@@ -12,4 +12,3 @@ Dependencies:
     'frameworks/ki18n': '@latest'
     'frameworks/kpackage': '@latest'
     'frameworks/kcmutils': '@latest'
-    'frameworks/plasma-framework': '@latest'

@@ -55,8 +55,6 @@ find_package(KF5 REQUIRED COMPONENTS
     CoreAddons
     KCMUtils
     I18n
-    Plasma
-    PlasmaQuick
     Declarative
 )
 
