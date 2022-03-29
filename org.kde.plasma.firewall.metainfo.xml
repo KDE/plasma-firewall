@@ -12,7 +12,7 @@
   <name xml:lang="ar">الجدار الناري لبلازما</name>
   <name xml:lang="az">Plasma Təhlükəsizlik Divarı</name>
   <name xml:lang="ca">Tallafoc del Plasma</name>
-  <name xml:lang="ca-valencia">Tallafoc del Plasma</name>
+  <name xml:lang="ca-valencia">Tallafoc de Plasma</name>
   <name xml:lang="cs">Firewall Plasma</name>
   <name xml:lang="da">Plasma Firewall</name>
   <name xml:lang="de">Plasma-Firewall</name>
@@ -45,7 +45,7 @@
   <summary xml:lang="ar">واجهة الجدار الناري لبلازما</summary>
   <summary xml:lang="az">Plasma üçün Təhlükəsizlik Divarı İnterfeysi</summary>
   <summary xml:lang="ca">Interfície del tallafoc per al Plasma</summary>
-  <summary xml:lang="ca-valencia">Interfície del tallafoc per al Plasma</summary>
+  <summary xml:lang="ca-valencia">Interfície del tallafoc per a Plasma</summary>
   <summary xml:lang="da">Firewallbrugerflade til Plasma</summary>
   <summary xml:lang="de">Firewall-Schnittstelle für Plasma</summary>
   <summary xml:lang="en-GB">Firewall Interface for Plasma</summary>
@@ -78,7 +78,7 @@
     <p xml:lang="ar">الجدار الناري لبلازما هي واجهة لعدة جدران نارية لتسهل ضبط الشبكة.</p>
     <p xml:lang="az">Plasma Təhlükəsizlik divarı bir neçə təhlükəsizlik divarlarıı ilə şəbəkənin ayarlanmasını sadələşdirən xarici interfeysdir.</p>
     <p xml:lang="ca">El Tallafoc del Plasma és un frontal multitallafoc per a facilitar les configuracions de la xarxa.</p>
-    <p xml:lang="ca-valencia">El Tallafoc del Plasma és un frontal multitallafoc per a facilitar les configuracions de la xarxa.</p>
+    <p xml:lang="ca-valencia">El Tallafoc de Plasma és un frontal multitallafoc per a facilitar les configuracions de la xarxa.</p>
     <p xml:lang="da">Plasma Firewall er en multi-firewallbrugerflade til at lette netværkskonfigurationer.</p>
     <p xml:lang="de">Plasma-Firewall ist eine Benutzerschnittstelle für mehrere Firewalls, um das Einrichten von Netzwerken zu erleichtern.</p>
     <p xml:lang="en-GB">Plasma Firewall is a multi-firewall frontend for ease of network configurations.</p>
@@ -113,7 +113,7 @@
       <caption xml:lang="ar">الجدار الناري لبلازما يعرض صفحة الضبط المبدئية</caption>
       <caption xml:lang="az">Standart tənzimləmə səhifəsini göstərən Plasma Təhlükəsizlik Divarı</caption>
       <caption xml:lang="ca">El Tallafoc del Plasma mostra una pàgina de configuració predeterminada</caption>
-      <caption xml:lang="ca-valencia">El Tallafoc del Plasma mostra una pàgina de configuració predeterminada</caption>
+      <caption xml:lang="ca-valencia">El Tallafoc de Plasma mostra una pàgina de configuració predeterminada</caption>
       <caption xml:lang="da">Plasma-firewallen der viser en standardkonfigurationsside</caption>
       <caption xml:lang="de">Die Plasma-Firewall mit der Anzeige der Standard-Einrichtungsseite</caption>
       <caption xml:lang="en-GB">The plasma firewall showing a default configuration page</caption>
