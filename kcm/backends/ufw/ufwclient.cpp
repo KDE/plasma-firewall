@@ -15,11 +15,12 @@
 #include <QDebug>
 #include <QDir>
 #include <QNetworkInterface>
+#include <QProcess>
+#include <QRegularExpression>
 #include <QStandardPaths>
 #include <QTimer>
 #include <QVariantMap>
 #include <QXmlStreamReader>
-#include <QProcess>
 
 #include <KConfig>
 #include <KConfigGroup>
@@ -463,7 +464,7 @@ namespace {
             }
 
             // http      80/tcp
-            auto list = line.split(QRegExp("\\s+"));
+            auto list = line.split(QRegularExpression("\\s+"));
             if (list.size() > 1) {
                 if (list[1].contains('/')) {
                     return list[1].split('/')[0];

@@ -15,7 +15,9 @@
 #include <QProcessEnvironment>
 #include <QString>
 #include <QStringList>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QTextCodec>
+#endif
 #include <sys/stat.h>
 
 #include <KAuth>
@@ -113,7 +115,7 @@ ActionReply Helper::queryapps(const QVariantMap &args)
         ufw.waitForFinished();
     }
 
-    auto result = QString::fromLocal8Bit(ufw.readAllStandardOutput()).split(QRegExp("\n"), Qt::SkipEmptyParts);
+    auto result = QString::fromLocal8Bit(ufw.readAllStandardOutput()).split(QLatin1Char('\n'), Qt::SkipEmptyParts);
 
     // The first line of the array is "Available Applications:", remove that.
     if (result.count()) {
@@ -142,8 +144,10 @@ ActionReply Helper::modify(const QVariantMap &args)
 {
     QString cmd = args[QStringLiteral("cmd")].toString();
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     // QProcess converts its args using QString().toLocal8Bit()!!!, so use UTF-8 codec.
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
+#endif
     return QStringLiteral("setStatus") == cmd    ? setStatus(args, cmd)
         : QStringLiteral("addRules") == cmd      ? addRules(args, cmd)
         : QStringLiteral("removeRule") == cmd    ? removeRule(args, cmd)

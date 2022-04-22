@@ -10,10 +10,10 @@
  */
 
 #include <QObject>
+#include <QtContainerFwd>
 #include <QVariantMap>
 #include <kauth.h>
 
-class QStringList;
 class QByteArray;
 
 using namespace KAuth;

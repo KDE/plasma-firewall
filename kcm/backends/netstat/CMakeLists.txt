@@ -15,6 +15,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
 
 
 add_library(networkstatus STATIC)
+set_property(TARGET networkstatus PROPERTY POSITION_INDEPENDENT_CODE ON)
 target_sources(networkstatus PRIVATE
     conectionsmodel.cpp
     conectionsmodel.h
@@ -30,6 +31,6 @@ target_link_libraries(networkstatus
     Qt::Quick
     KF5::CoreAddons
     KF5::ConfigCore
-    KF5::Auth
+    KF5::AuthCore
     KF5::I18n
 )

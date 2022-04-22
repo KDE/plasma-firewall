@@ -507,9 +507,9 @@ QVector<Rule *> FirewalldClient::extractRulesFromResponse(const QList<firewalld_
         const QString protocolName = r.rules.at(r.rules.indexOf("-p") + 1);
         const int protocolIdx = FirewallClient::knownProtocols().indexOf(protocolName.toUpper());
 
-        const int sourcePortIdx = r.rules.indexOf(QRegExp("^" + QRegExp::escape("--sport") + ".+"));
+        const int sourcePortIdx = r.rules.indexOf(QRegularExpression("^" + QRegularExpression::escape("--sport") + ".+"));
         const auto sourcePort = sourcePortIdx != -1 ? r.rules.at(sourcePortIdx).section("=", -1) : QStringLiteral("");
-        const int destPortIdx = r.rules.indexOf(QRegExp("^" + QRegExp::escape("--dport") + ".+"));
+        const int destPortIdx = r.rules.indexOf(QRegularExpression("^" + QRegularExpression::escape("--dport") + ".+"));
         const auto destPort = destPortIdx != -1 ? r.rules.at(destPortIdx).section("=", -1) : QStringLiteral("");
 
         message_rules.push_back(new Rule(action,

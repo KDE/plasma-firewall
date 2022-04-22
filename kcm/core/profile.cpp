@@ -138,7 +138,7 @@ void Profile::load(QIODevice *device)
         } else if (reader.name() == QStringLiteral("rules")) {
             m_fields |= FIELD_RULES;
             continue;
-        } else if (reader.name() == "rule") {
+        } else if (reader.name() == QLatin1String("rule")) {
             static QString ANY_ADDR = QStringLiteral("0.0.0.0/0");
             static QString ANY_ADDR_V6 = QStringLiteral("::/0");
             static QString ANY_PORT = QStringLiteral("any");
@@ -180,7 +180,7 @@ void Profile::load(QIODevice *device)
                               attr.value("dapp").toString(),
                               attr.value("position").toInt(),
                               attr.value("v6") == QStringLiteral("True")));
-        } else if (reader.name() == "defaults") {
+        } else if (reader.name() == QLatin1String("defaults")) {
             m_fields |= FIELD_DEFAULTS;
 
             const auto attr = reader.attributes();
@@ -191,7 +191,7 @@ void Profile::load(QIODevice *device)
             m_defaultOutgoingPolicy = Types::toPolicy(attr.value(QLatin1String("outgoing")).toString());
 
             m_ipv6Enabled = (attr.value("ipv6") == QLatin1String("yes"));
-        } else if (reader.name() == "modules") {
+        } else if (reader.name() == QLatin1String("modules")) {
             m_fields |= FIELD_MODULES;
             const auto attr = reader.attributes();
             const auto moduleList = attr.value("enabled").toString().split(" ", Qt::SkipEmptyParts);

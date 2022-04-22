@@ -32,7 +32,7 @@ target_link_libraries(kcm_firewall_core
     KF5::Declarative
     KF5::I18n
     KF5::QuickAddons
-    KF5::Auth
+    KF5::AuthCore
 )
 
 install(TARGETS kcm_firewall_core ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

@@ -9,6 +9,7 @@
 #include <QDBusPendingCall>
 #include <QDBusPendingReply>
 #include <QDebug>
+#include <QRegularExpression>
 
 #include <KLocalizedString>
 
@@ -118,7 +119,7 @@ void FirewalldJob::firewalldAction(const QString &bus, const QString &path, cons
         connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, interface, method](QDBusPendingCallWatcher *watcher) {
             watcher->deleteLater();
             if (interface == SIMPLE::INTERFACE) { // believe or not to get the data from active zone you need to send ""
-                if (method.contains(QRegExp("^(add|remove)"))) {
+                if (method.contains(QRegularExpression("^(add|remove)"))) {
                     QString reply = connectCall<QString>(watcher);
                     if (!reply.isEmpty())
                         qCDebug(FirewallDJobDebug) << "manipulated zone: " << reply;

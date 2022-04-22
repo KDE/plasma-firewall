@@ -399,3 +399,5 @@ QStringList FirewallClient::knownApplications()
 
     return m_currentBackend->knownApplications();
 }
+
+#include "moc_firewallclient.cpp"
