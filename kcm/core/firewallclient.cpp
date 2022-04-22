@@ -301,7 +301,7 @@ void FirewallClient::setBackend(const QStringList &backendList)
         m_currentBackend = nullptr;
     }
 
-    const auto plugins = KPluginMetaData::findPlugins(QStringLiteral("kf5/plasma_firewall"));
+    const auto plugins = KPluginMetaData::findPlugins(QStringLiteral("kf" QT_STRINGIFY(QT_VERSION_MAJOR) "/plasma_firewall"));
 
     QList<KPluginFactory*> factories;
     for (const KPluginMetaData &metadata : plugins) {

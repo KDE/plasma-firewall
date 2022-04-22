@@ -18,7 +18,7 @@ set(firewalld_backend_SRCS
 kcoreaddons_add_plugin(
     firewalldbackend
     SOURCES ${firewalld_backend_SRCS}
-    INSTALL_NAMESPACE "kf5/plasma_firewall")
+    INSTALL_NAMESPACE "kf${QT_MAJOR_VERSION}/plasma_firewall")
 
 target_link_libraries(firewalldbackend
     Qt::DBus
