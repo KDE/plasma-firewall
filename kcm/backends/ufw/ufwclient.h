@@ -11,7 +11,7 @@
 #include <QString>
 #include <QTimer>
 
-#include <KAuth>
+#include <KAuth/Action>
 
 #include <ifirewallclientbackend.h>
 #include <profile.h>

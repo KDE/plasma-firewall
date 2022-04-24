@@ -12,7 +12,7 @@
 #include <QObject>
 #include <QtContainerFwd>
 #include <QVariantMap>
-#include <kauth.h>
+#include <KAuth/ActionReply>
 
 class QByteArray;
 

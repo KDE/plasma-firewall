@@ -22,6 +22,9 @@
 #include <QVariantMap>
 #include <QXmlStreamReader>
 
+#include <KAuth/Action>
+#include <KAuth/ExecuteJob>
+
 #include <KConfig>
 #include <KConfigGroup>
 #include <KLocalizedString>

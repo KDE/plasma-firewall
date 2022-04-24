@@ -20,8 +20,7 @@
 #endif
 #include <sys/stat.h>
 
-#include <KAuth>
-#include <KAuthHelperSupport>
+#include <KAuth/HelperSupport>
 #include <KLocalizedString>
 
 #include "ufw_helper_config.h"
