@@ -27,7 +27,6 @@ public:
     SystemdJob(SYSTEMD::actions action);
     ~SystemdJob();
     void start() override;
-    QString name();
 
 private:
     void systemdAction(const SYSTEMD::actions value);
