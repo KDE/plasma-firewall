@@ -25,10 +25,10 @@ public:
     FirewalldJob();
     ~FirewalldJob();
     void start() override;
-    QList<firewalld_reply> getFirewalldreply();
-    QStringList getServices();
-    QString name();
-    QString getDefaultIncomingPolicy();
+    QList<firewalld_reply> getFirewalldreply() const;
+    QStringList getServices() const;
+    QString name() const;
+    QString getDefaultIncomingPolicy() const;
 
 private:
     template<typename T>

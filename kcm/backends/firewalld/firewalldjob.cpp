@@ -143,7 +143,7 @@ void FirewalldJob::firewalldAction(const QString &bus, const QString &path, cons
     }
 }
 
-QList<firewalld_reply> FirewalldJob::getFirewalldreply()
+QList<firewalld_reply> FirewalldJob::getFirewalldreply() const
 {
     return m_firewalldreply;
 }
@@ -184,17 +184,17 @@ void FirewalldJob::start()
     return;
 };
 
-QString FirewalldJob::name()
+QString FirewalldJob::name() const
 {
     return m_type == FirewalldJob::SAVEFIREWALLD ? i18n("firewalld saving") : i18n("firewalld %1").arg(QString(m_call));
 }
 
-QStringList FirewalldJob::getServices()
+QStringList FirewalldJob::getServices() const
 {
     return m_services;
 }
 
-QString FirewalldJob::getDefaultIncomingPolicy()
+QString FirewalldJob::getDefaultIncomingPolicy() const
 {
     return m_target;
 }

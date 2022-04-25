@@ -20,9 +20,9 @@ public:
     ~QueryRulesFirewalldJob();
 
     void start() override;
-    QList<firewalld_reply> getFirewalldreply();
-    QStringList getServices();
-    QString name();
+    QList<firewalld_reply> getFirewalldreply() const;
+    QStringList getServices() const;
+    QString name() const;
     // Q_SIGNAL void queryFinish();
 
 private:

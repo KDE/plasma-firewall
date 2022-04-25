@@ -45,17 +45,17 @@ QueryRulesFirewalldJob::QueryRulesFirewalldJob()
     });
 }
 
-QString QueryRulesFirewalldJob::name()
+QString QueryRulesFirewalldJob::name() const
 {
     return i18n("firewalld listing rules and services");
 }
 
-QList<firewalld_reply> QueryRulesFirewalldJob::getFirewalldreply()
+QList<firewalld_reply> QueryRulesFirewalldJob::getFirewalldreply() const
 {
     return m_replyDirect;
 }
 
-QStringList QueryRulesFirewalldJob::getServices()
+QStringList QueryRulesFirewalldJob::getServices() const
 {
     return m_replyServices;
 }
