@@ -145,7 +145,7 @@ public slots:
     void setSimplified(bool value);
     void setSourceApplication(const QString &app);
 
-signals:
+Q_SIGNALS:
     void policyChanged(const QString &policy);
     void directionChanged(const QString &direction);
     void sourceAddressChanged(const QString &sourceAddress);

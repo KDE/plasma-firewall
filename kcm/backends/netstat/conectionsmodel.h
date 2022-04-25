@@ -57,7 +57,7 @@ public:
     Q_INVOKABLE void start();
     Q_INVOKABLE void stop();
 
-signals:
+Q_SIGNALS:
     void countChanged();
     void busyChanged();
     void showErrorMessage(const QString &message);

@@ -114,7 +114,7 @@ public:
 
     Capabilities capabilities() const;
 
-signals:
+Q_SIGNALS:
     void enabledChanged(const bool enabled);
     void defaultIncomingPolicyChanged(const QString &defaultIncomingPolicy);
     void defaultOutgoingPolicyChanged(const QString &defaultOutgoingPolicy);

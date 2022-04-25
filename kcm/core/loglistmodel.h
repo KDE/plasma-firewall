@@ -61,7 +61,7 @@ public:
 
     void appendLogData(const QVector<LogData> newData);
 
-signals:
+Q_SIGNALS:
     void countChanged();
 
     void showErrorMessage(const QString &message);

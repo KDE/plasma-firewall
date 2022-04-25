@@ -97,7 +97,7 @@ public:
     void queryExecutable(const QString& executableName);
     bool hasExecutable() const;
     QString executablePath() const;
-signals:
+Q_SIGNALS:
     void enabledChanged(bool enabled);
     void defaultIncomingPolicyChanged(const QString &defaultIncomingPolicy);
     void defaultOutgoingPolicyChanged(const QString &defaultOutgoingPolicy);
