@@ -7,7 +7,6 @@
 #include <KLocalizedString>
 
 #include <QDebug>
-#include <QProcess>
 #include <QStandardPaths>
 #include <QStringList>
 #include <QTimer>

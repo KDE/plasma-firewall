@@ -9,7 +9,6 @@
 #include <KLocalizedString>
 
 #include "netstatclient.h"
-#include "netstathelper.h"
 
 ConnectionsModel::ConnectionsModel(QObject *parent)
     : QAbstractListModel(parent)

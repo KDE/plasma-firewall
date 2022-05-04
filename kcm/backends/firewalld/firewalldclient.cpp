@@ -8,16 +8,13 @@
 #include <QDBusMetaType>
 #include <QDebug>
 #include <QDir>
-#include <QLoggingCategory>
 #include <QNetworkInterface>
 #include <QProcess>
 #include <QStandardPaths>
-#include <QTimer>
 #include <QVariantList>
 #include <QVariantMap>
 
 #include <loglistmodel.h>
-#include <profile.h>
 #include <rulelistmodel.h>
 
 #include "firewalldclient.h"

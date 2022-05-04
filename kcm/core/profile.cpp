@@ -7,7 +7,6 @@
  */
 
 #include "profile.h"
-#include "types.h"
 #include "firewallclient.h"
 
 #include <QBuffer>

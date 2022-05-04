@@ -13,7 +13,6 @@
 
 #include <KLocalizedString>
 
-#include "dbustypes.h"
 #include "firewalldjob.h"
 
 Q_LOGGING_CATEGORY(FirewallDJobDebug, "firewalld.job")

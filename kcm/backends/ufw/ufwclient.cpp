@@ -18,11 +18,9 @@
 #include <QProcess>
 #include <QRegularExpression>
 #include <QStandardPaths>
-#include <QTimer>
 #include <QVariantMap>
 #include <QXmlStreamReader>
 
-#include <KAuth/Action>
 #include <KAuth/ExecuteJob>
 
 #include <KConfig>
