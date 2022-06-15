@@ -12,3 +12,5 @@ Dependencies:
     'frameworks/ki18n': '@latest'
     'frameworks/kpackage': '@latest'
     'frameworks/kcmutils': '@latest'
+Options:
+  require-passing-tests-on: [ 'Linux', 'FreeBSD']
