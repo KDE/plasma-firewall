@@ -15,6 +15,7 @@
 
 #include "core/loglistmodel.h"
 #include "core/rulelistmodel.h"
+#include "core/ipvalidator.h"
 #include "version.h"
 
 #include "backends/netstat/conectionsmodel.h"
@@ -39,6 +40,7 @@ KCMFirewall::KCMFirewall(QObject *parent, const KPluginMetaData &metaData, const
     qmlRegisterUncreatableType<LogListModel>("org.kcm.firewall", 1, 0, "LogListModel", "Only created from the UfwClient.");
     qmlRegisterType<NetstatClient>("org.kcm.firewall", 1, 0, "NetstatClient");
     qmlRegisterUncreatableType<ConnectionsModel>("org.kcm.firewall", 1, 0, "ConnectionsModel", "Use the NetstatClient");
+    qmlRegisterType<IPValidator>("org.kcm.firewall", 1, 0, "IPValidator");
 
     // TODO: Make this configurable.
     m_client->setBackend({"ufw", "firewalld"});

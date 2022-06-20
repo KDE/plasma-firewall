@@ -44,6 +44,7 @@ find_package(Qt${QT_MAJOR_VERSION} REQUIRED COMPONENTS
     Core
     Qml
     DBus
+    Test
 )
 
 
@@ -65,6 +66,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
 add_subdirectory(kcm)
 
 enable_testing(true)
+add_subdirectory(autotests)
 add_subdirectory(tests)
 
 #-----------------------------------------------------------------------------

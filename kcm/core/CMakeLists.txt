@@ -10,6 +10,8 @@ add_library(kcm_firewall_core
     firewallclient.h
     ifirewallclientbackend.cpp
     ifirewallclientbackend.h
+    ipvalidator.cpp
+    ipvalidator.h
     loglistmodel.cpp
     loglistmodel.h
     profile.cpp
