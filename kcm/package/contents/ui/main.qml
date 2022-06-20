@@ -127,7 +127,9 @@ KCM.ScrollViewKCM {
                 }
 
                 onAccepted: {
-                    ruleEdit.rule.sourceApplication = ruleEdit.simple.service[ruleEdit.simple.index]
+                    if (ruleEdit.simple.index > -1) {
+                        ruleEdit.rule.sourceApplication = ruleEdit.simple.service[ruleEdit.simple.index]
+                    }
                     ruleEdit.accepted()
                 }
             }
