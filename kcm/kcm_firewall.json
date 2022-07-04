@@ -33,6 +33,7 @@
         "Description[uk]": "Керування вашими правилами мережі",
         "Description[x-test]": "xxControl your network rulesxx",
         "Description[zh_CN]": "控制本机的网络规则",
+        "Description[zh_TW]": "控制您的網路規則",
         "Icon": "preferences-security-firewall",
         "Name": "Firewall",
         "Name[ar]": "الجدار الناري",
@@ -67,6 +68,7 @@
         "Name[uk]": "Брандмауер",
         "Name[x-test]": "xxFirewallxx",
         "Name[zh_CN]": "防火墙",
+        "Name[zh_TW]": "防火牆",
         "ServiceTypes": [
             "KCModule"
         ]
