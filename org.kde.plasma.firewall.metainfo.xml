@@ -44,6 +44,7 @@
   <name xml:lang="uk">Брандмауер Плазми</name>
   <name xml:lang="x-test">xxPlasma Firewallxx</name>
   <name xml:lang="zh-CN">Plasma 防火墙</name>
+  <name xml:lang="zh-TW">Plasma 防火牆</name>
   <summary>Firewall Interface for Plasma</summary>
   <summary xml:lang="ar">واجهة الجدار الناري لبلازما</summary>
   <summary xml:lang="az">Plasma üçün Təhlükəsizlik Divarı İnterfeysi</summary>
@@ -79,6 +80,7 @@
   <summary xml:lang="uk">Інтерфейс до брандмауера для Плазми</summary>
   <summary xml:lang="x-test">xxFirewall Interface for Plasmaxx</summary>
   <summary xml:lang="zh-CN">Plasma 的防火墙界面</summary>
+  <summary xml:lang="zh-TW">Plasma 設定防火牆的介面</summary>
   <description>
     <p>Plasma Firewall is a multi-firewall frontend for ease of network configurations.</p>
     <p xml:lang="ar">الجدار الناري لبلازما هي واجهة لعدة جدران نارية لتسهل ضبط الشبكة.</p>
@@ -114,6 +116,7 @@
     <p xml:lang="uk">«Брандмауер Плазми» — оболонка доступу до декількох брандмауерів, яка спрощує налаштовування доступу до  мережі.</p>
     <p xml:lang="x-test">xxPlasma Firewall is a multi-firewall frontend for ease of network configurations.xx</p>
     <p xml:lang="zh-CN">Plasma 防火墙是一款配置简便的防火墙前端程序，兼容多种防火墙后端程序。</p>
+    <p xml:lang="zh-TW">Plasma 防火牆作為多個防火牆軟體的前端設定界面，降低設定網際網路的專業門檻。</p>
   </description>
   <icon type="stock">preferences-security-firewall</icon>
   <screenshots>
@@ -152,6 +155,7 @@
       <caption xml:lang="uk">Сторінка типових налаштувань «Брандмауера Плазми»</caption>
       <caption xml:lang="x-test">xxThe plasma firewall showing a default configuration pagexx</caption>
       <caption xml:lang="zh-CN">Plasma 防火墙前端正在显示默认配置页面</caption>
+      <caption xml:lang="zh-TW">預設的 Plasma 防火牆設定頁面</caption>
       <image>https://cdn.kde.org/screenshots/plasma-firewall/plasma-firewall.png</image>
     </screenshot>
   </screenshots>
@@ -191,6 +195,7 @@
   <developer_name xml:lang="uk">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="x-test">xxTomaz Canabrava &lt;tcanabrava@kde.org&gt;xx</developer_name>
   <developer_name xml:lang="zh-CN">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
+  <developer_name xml:lang="zh-TW">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <categories>
     <category>System</category>
   </categories>
