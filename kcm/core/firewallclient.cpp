@@ -15,7 +15,6 @@
 
 #include <KLocalizedString>
 #include <KPluginFactory>
-#include <KPluginLoader>
 #include <KPluginMetaData>
 
 #include <QList>
