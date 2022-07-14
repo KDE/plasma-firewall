@@ -8,6 +8,7 @@ import org.kde.kirigami 2.4 as Kirigami
 import org.kcm.firewall 1.0 as Firewall
 
 Kirigami.FormLayout {
+    id: root
     property var rule: null
     property alias sourceAddress: sourceAddress
     property alias destinationAddress: destinationAddress
@@ -16,9 +17,16 @@ Kirigami.FormLayout {
     property alias policy: policy
     property alias incoming: incoming
 
+    readonly property int maxComboboxWidth: Math.max(
+                                                policy.implicitWidth,
+                                                protocolCb.implicitWidth,
+                                                interfaceCb.implicitWidth,
+                                                loggingCb.implicitWidth)
+
     QQC2.ComboBox {
         id: policy
         Kirigami.FormData.label: i18n("Policy:")
+        Layout.preferredWidth: root.maxComboboxWidth
         model: policyChoices
         textRole: "text"
         currentIndex: rule == null ? 0 : rule.policy == "" ? 0 : policyChoices.findIndex((policy) => policy.data == rule.policy)
@@ -65,13 +73,13 @@ Kirigami.FormLayout {
             ipv6: rule.ipv6
             focus: true // default focus object
             text: rule.sourceAddress
-            Layout.preferredWidth: policy.width * 0.6
+            Layout.preferredWidth: root.maxComboboxWidth
             // NOTE onEditingFinished doesn't fire with non-acceptable / empty input
             onTextChanged: rule.sourceAddress = text
         }
         PortTextField{
             id: sourcePort
-            Layout.preferredWidth: policy.width * 0.38
+            Layout.preferredWidth: Math.round(root.maxComboboxWidth * 0.75)
             text: rule.sourcePort
             onTextChanged: rule.sourcePort = text
         }
@@ -84,12 +92,12 @@ Kirigami.FormLayout {
             id: destinationAddress
             ipv6: rule.ipv6
             text: rule.destinationAddress
-            Layout.preferredWidth: policy.width * 0.6
+            Layout.preferredWidth: root.maxComboboxWidth
             onTextChanged: rule.destinationAddress = text
         }
         PortTextField {
             id: destinationPort
-            Layout.preferredWidth: policy.width * 0.38
+            Layout.preferredWidth: Math.round(root.maxComboboxWidth * 0.75)
             text: rule.destinationPort
             onTextChanged: rule.destinationPort = text
         }
@@ -99,6 +107,7 @@ Kirigami.FormLayout {
         id: protocolCb
 
         Kirigami.FormData.label: i18n("Protocol:")
+        Layout.preferredWidth: root.maxComboboxWidth
         model: ruleEdit.client.knownProtocols()
         currentIndex: rule.protocol
         onActivated: rule.protocol = index
@@ -107,13 +116,17 @@ Kirigami.FormLayout {
         id: interfaceCb
 
         Kirigami.FormData.label: i18n("Interface:")
+        Layout.preferredWidth: root.maxComboboxWidth
         model: ruleEdit.client.knownInterfaces()
         currentIndex: rule.interface
         onActivated: rule.interface = index
     }
 
     QQC2.ComboBox {
+        id: loggingCb
+
         Kirigami.FormData.label: i18n("Logging:")
+        Layout.preferredWidth: root.maxComboboxWidth
         model: ruleChoices
         textRole: "text"
         currentIndex: rule.logging == "" ? 0 : ruleChoices.findIndex((rules) => rules.data == rule.logging)
