@@ -15,6 +15,7 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/version.h.cmake ${CMAKE_CURRENT_BINAR
 
 
 add_library(kcm_firewall MODULE)
+kcmutils_generate_desktop_file(kcm_firewall)
 target_sources(kcm_firewall PRIVATE
    kcm.cpp
    kcm.h
@@ -33,7 +34,6 @@ target_link_libraries(kcm_firewall
     networkstatus
 )
 
-install(FILES kcm_firewall.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 install(TARGETS kcm_firewall DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/kcms/systemsettings)
 
 kpackage_install_package(package kcm_firewall kcms)
