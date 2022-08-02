@@ -2,7 +2,7 @@
 // SPDX-FileCopyrightText: 2018 Alexis Lopes Zubeta <contact@azubieta.net>
 // SPDX-FileCopyrightText: 2020 Tomaz Canabrava <tcanabrava@kde.org>
 
-import QtQuick 2.9
+import QtQuick 2.15
 import QtQuick.Controls 2.9 as QQC2
 
 QQC2.TextField {
@@ -17,7 +17,7 @@ QQC2.TextField {
 
     placeholderText: i18n("Any IP address")
 
-    validator: RegExpValidator {
-        regExp: ipField.ipv6 ? ipField.ipv6RegExp : ipField.ipv4RegExp
+    validator: RegularExpressionValidator {
+        regularExpression: ipField.ipv6 ? ipField.ipv6RegExp : ipField.ipv4RegExp
     }
 }

@@ -3,13 +3,13 @@
 // SPDX-FileCopyrightText: 2020 Tomaz Canabrava <tcanabrava@kde.org>
 
 
-import QtQuick 2.9
+import QtQuick 2.15
 import QtQuick.Controls 2.9 as QQC2
 
 QQC2.TextField {
     id: root
     placeholderText: i18n("Any Port")
-    validator: RegExpValidator {
-        regExp:/^([0-9]{1,4}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])$/
+    validator: RegularExpressionValidator {
+        regularExpression:/^([0-9]{1,4}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])$/
     }
 }
