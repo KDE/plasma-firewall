@@ -11,6 +11,7 @@
   <name>Plasma Firewall</name>
   <name xml:lang="ar">الجدار الناري لبلازما</name>
   <name xml:lang="az">Plasma Təhlükəsizlik Divarı</name>
+  <name xml:lang="bg">Защитна стена на Plasma</name>
   <name xml:lang="ca">Tallafoc del Plasma</name>
   <name xml:lang="ca-valencia">Tallafoc de Plasma</name>
   <name xml:lang="cs">Firewall Plasma</name>
@@ -44,6 +45,7 @@
   <summary>Firewall Interface for Plasma</summary>
   <summary xml:lang="ar">واجهة الجدار الناري لبلازما</summary>
   <summary xml:lang="az">Plasma üçün Təhlükəsizlik Divarı İnterfeysi</summary>
+  <summary xml:lang="bg">Интерфейс за защитна стена на Plasma</summary>
   <summary xml:lang="ca">Interfície del tallafoc per al Plasma</summary>
   <summary xml:lang="ca-valencia">Interfície del tallafoc per a Plasma</summary>
   <summary xml:lang="da">Firewallbrugerflade til Plasma</summary>
@@ -77,6 +79,7 @@
     <p>Plasma Firewall is a multi-firewall frontend for ease of network configurations.</p>
     <p xml:lang="ar">الجدار الناري لبلازما هي واجهة لعدة جدران نارية لتسهل ضبط الشبكة.</p>
     <p xml:lang="az">Plasma Təhlükəsizlik divarı bir neçə təhlükəsizlik divarlarıı ilə şəbəkənin ayarlanmasını sadələşdirən xarici interfeysdir.</p>
+    <p xml:lang="bg">Програма за мулти-защитна стена с улеснена мрежова конфигурация.</p>
     <p xml:lang="ca">El Tallafoc del Plasma és un frontal multitallafoc per a facilitar les configuracions de la xarxa.</p>
     <p xml:lang="ca-valencia">El Tallafoc de Plasma és un frontal multitallafoc per a facilitar les configuracions de la xarxa.</p>
     <p xml:lang="da">Plasma Firewall er en multi-firewallbrugerflade til at lette netværkskonfigurationer.</p>
@@ -112,6 +115,7 @@
       <caption>The plasma firewall showing a default configuration page</caption>
       <caption xml:lang="ar">الجدار الناري لبلازما يعرض صفحة الضبط المبدئية</caption>
       <caption xml:lang="az">Standart tənzimləmə səhifəsini göstərən Plasma Təhlükəsizlik Divarı</caption>
+      <caption xml:lang="bg">Plasma защитна стена, показваща конфигурационна страница по подразбиране</caption>
       <caption xml:lang="ca">El Tallafoc del Plasma mostra una pàgina de configuració predeterminada</caption>
       <caption xml:lang="ca-valencia">El Tallafoc de Plasma mostra una pàgina de configuració predeterminada</caption>
       <caption xml:lang="da">Plasma-firewallen der viser en standardkonfigurationsside</caption>
@@ -147,6 +151,7 @@
   <developer_name>Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="ar">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="az">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
+  <developer_name xml:lang="bg">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="ca">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="ca-valencia">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="da">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
