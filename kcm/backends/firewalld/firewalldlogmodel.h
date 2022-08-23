@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+// SPDX-FileCopyrightText: 2020 Tomaz Canabrava <tcanabrava@kde.org>
+
 #ifndef FIREWALLDLOGMODEL_H
 #define FIREWALLDLOGMODEL_H
 
