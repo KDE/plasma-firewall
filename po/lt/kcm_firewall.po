@@ -1,0 +1,806 @@
+# Lithuanian translations for plasma-firewall package.
+# Copyright (C) 2020 This file is copyright:
+# This file is distributed under the same license as the plasma-firewall package.
+# Automatically generated, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: plasma-firewall\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-07-19 00:46+0000\n"
+"PO-Revision-Date: 2022-09-19 13:27+0300\n"
+"Last-Translator: Moo <<>>\n"
+"Language-Team: none\n"
+"Language: lt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
+"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
+"X-Generator: Poedit 3.1.1\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Moo"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "<>"
+
+#: backends/firewalld/firewalldclient.cpp:592 backends/ufw/ufwclient.cpp:675
+#, kde-format
+msgid "Error fetching information from the firewall."
+msgstr "Klaida gaunant informaciją iš užkardos."
+
+#: backends/firewalld/firewalldjob.cpp:168
+#, kde-format
+msgid "firewalld saving (runtime to permanent)"
+msgstr "firewalld įrašymas (iš paleidimo laiku į nuolatinį)"
+
+#: backends/firewalld/firewalldjob.cpp:188
+#, kde-format
+msgid "firewalld saving"
+msgstr "firewalld įrašymas"
+
+#: backends/firewalld/firewalldjob.cpp:188
+#, kde-format
+msgid "firewalld %1"
+msgstr "firewalld %1"
+
+#: backends/firewalld/queryrulesfirewalldjob.cpp:50
+#, kde-format
+msgid "firewalld listing rules and services"
+msgstr "firewalld sąrašo taisyklės ir tarnybos"
+
+#: backends/firewalld/systemdjob.cpp:47
+#, kde-format
+msgid "Invalid Call"
+msgstr "Neteisinga iškvieta"
+
+#: backends/netstat/conectionsmodel.cpp:95
+#, kde-format
+msgid "Failed to get connections: %1"
+msgstr "Nepavyko gauti ryšių: %1"
+
+#: backends/netstat/conectionsmodel.cpp:113
+#, kde-format
+msgid "Not Connected"
+msgstr "Neprisijungta"
+
+#: backends/netstat/conectionsmodel.cpp:115
+#, kde-format
+msgid "Established"
+msgstr "Nustatyta"
+
+#: backends/netstat/conectionsmodel.cpp:117
+#, kde-format
+msgid "Listening"
+msgstr "Klausomasi"
+
+#: backends/ufw/helper/helper.cpp:211
+#, kde-format
+msgid "Invalid arguments passed to the profile"
+msgstr "Į profilį perduoti neteisingi argumentai"
+
+#: backends/ufw/helper/helper.cpp:241
+#, kde-format
+msgid "Error saving the profile."
+msgstr "Klaida įrašant profilį."
+
+#: backends/ufw/helper/helper.cpp:265
+#, kde-format
+msgid "Invalid arguments passed to delete profile"
+msgstr "Į taisyklių ištrynimą perduoti neteisingi argumentai"
+
+#: backends/ufw/helper/helper.cpp:272
+#, kde-format
+msgid "Could not remove the profile from disk."
+msgstr "Nepavyko pašalinti profilio iš disko."
+
+#: backends/ufw/helper/helper.cpp:287
+#, kde-format
+msgid "Invalid argument passed to add Rules"
+msgstr "Į taisyklių pridėjimą perduotas neteisingas argumentas"
+
+#: backends/ufw/helper/helper.cpp:359
+#, kde-format
+msgid "An error occurred in command '%1': %2"
+msgstr "Komandoje „%1“ atsirado klaida: %2"
+
+#: backends/ufw/ufwclient.cpp:147
+#, kde-format
+msgid ""
+"There was an error in the backend! Please report it.\n"
+"%1 %2"
+msgstr ""
+"Vidinėje pusėje buvo klaida! Prašome apie ją pranešti.\n"
+"%1 %2"
+
+#: backends/ufw/ufwclient.cpp:254
+#, kde-format
+msgid "Error fetching firewall logs: %1"
+msgstr "Klaida gaunant užkardos žurnalus: %1"
+
+#: backends/ufw/ufwclient.cpp:588 core/firewallclient.cpp:74
+#, kde-format
+msgid "Any"
+msgstr "Bet kokia"
+
+#: core/rule.cpp:46
+#, kde-format
+msgctxt "address on interface"
+msgid "%1 on %2"
+msgstr "%1 ties %2"
+
+#: core/rule.cpp:75 core/rule.cpp:165 core/rule.cpp:171
+#, kde-format
+msgid "Anywhere"
+msgstr "Bet kur"
+
+#: core/rule.cpp:96 core/rule.cpp:109 core/rule.cpp:126
+#, kde-format
+msgctxt "service/application name (port numbers)"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: core/rule.cpp:199
+#, kde-format
+msgctxt "firewallAction incoming"
+msgid "%1 incoming"
+msgstr "%1 gaunami"
+
+#: core/rule.cpp:200
+#, kde-format
+msgctxt "firewallAction outgoing"
+msgid "%1 outgoing"
+msgstr "%1 išsiunčiami"
+
+#: core/rule.cpp:205
+#, kde-format
+msgid "Yes"
+msgstr "Taip"
+
+#: core/types.cpp:19
+#, kde-format
+msgid "Off"
+msgstr "Išjungta"
+
+#: core/types.cpp:22
+#, kde-format
+msgid "Low"
+msgstr "Žemas"
+
+#: core/types.cpp:24
+#, kde-format
+msgid "Medium"
+msgstr "Vidutinis"
+
+#: core/types.cpp:26
+#, kde-format
+msgid "High"
+msgstr "Aukštas"
+
+#: core/types.cpp:28
+#, kde-format
+msgid "Full"
+msgstr "Pilnas"
+
+#: core/types.cpp:45 package/contents/ui/RuleEdit.qml:40
+#, kde-format
+msgid "None"
+msgstr "Nėra"
+
+#: core/types.cpp:47
+#, kde-format
+msgid "New connections"
+msgstr "Nauji ryšiai"
+
+#: core/types.cpp:49
+#, kde-format
+msgid "All packets"
+msgstr "Visi paketai"
+
+#: core/types.cpp:58 package/contents/ui/main.qml:23
+#, kde-format
+msgid "Allow"
+msgstr "Leisti"
+
+#: core/types.cpp:60
+#, kde-format
+msgid "Deny"
+msgstr "Drausti"
+
+#: core/types.cpp:62 package/contents/ui/main.qml:25
+#, kde-format
+msgid "Reject"
+msgstr "Atmesti"
+
+#: core/types.cpp:64
+#, kde-format
+msgid "Limit"
+msgstr "Apriboti"
+
+#: core/types.cpp:80
+#, kde-format
+msgid "Amule"
+msgstr "Amule"
+
+#: core/types.cpp:82
+#, kde-format
+msgid "Deluge"
+msgstr "Deluge"
+
+#: core/types.cpp:84
+#, kde-format
+msgid "KTorrent"
+msgstr "KTorrent"
+
+#: core/types.cpp:86
+#, kde-format
+msgid "Nicotine"
+msgstr "Nicotine"
+
+#: core/types.cpp:88
+#, kde-format
+msgid "qBittorrent"
+msgstr "qBittorrent"
+
+#: core/types.cpp:90
+#, kde-format
+msgid "Transmission"
+msgstr "Transmission"
+
+#: core/types.cpp:92
+#, kde-format
+msgid "ICQ"
+msgstr "ICQ"
+
+#: core/types.cpp:94
+#, kde-format
+msgid "Jabber"
+msgstr "Jabber"
+
+#: core/types.cpp:96
+#, kde-format
+msgid "Windows Live Messenger"
+msgstr "Windows Live Messenger"
+
+#: core/types.cpp:98
+#, kde-format
+msgid "Yahoo! Messenger"
+msgstr "Yahoo! Messenger"
+
+#: core/types.cpp:100
+#, kde-format
+msgid "FTP"
+msgstr "FTP"
+
+#: core/types.cpp:102
+#, kde-format
+msgid "HTTP"
+msgstr "HTTP"
+
+#: core/types.cpp:104
+#, kde-format
+msgid "Secure HTTP"
+msgstr "Saugus HTTP"
+
+#: core/types.cpp:106
+#, kde-format
+msgid "IMAP"
+msgstr "IMAP"
+
+#: core/types.cpp:108
+#, kde-format
+msgid "Secure IMAP"
+msgstr "Saugus IMAP"
+
+#: core/types.cpp:110
+#, kde-format
+msgid "POP3"
+msgstr "POP3"
+
+#: core/types.cpp:112
+#, kde-format
+msgid "Secure POP3"
+msgstr "Saugus POP3"
+
+#: core/types.cpp:114
+#, kde-format
+msgid "SMTP"
+msgstr "SMTP"
+
+#: core/types.cpp:116
+#, kde-format
+msgid "NFS"
+msgstr "NFS"
+
+#: core/types.cpp:118
+#, kde-format
+msgid "Samba"
+msgstr "Samba"
+
+#: core/types.cpp:120
+#, kde-format
+msgid "Secure Shell"
+msgstr "Secure Shell"
+
+#: core/types.cpp:122
+#, kde-format
+msgid "VNC"
+msgstr "VNC"
+
+#: core/types.cpp:124
+#, kde-format
+msgid "Zeroconf"
+msgstr "Zeroconf"
+
+#: core/types.cpp:126
+#, kde-format
+msgid "Telnet"
+msgstr "Telnet"
+
+#: core/types.cpp:128
+#, kde-format
+msgid "NTP"
+msgstr "NTP"
+
+#: core/types.cpp:130
+#, kde-format
+msgid "CUPS"
+msgstr "CUPS"
+
+#: kcm.cpp:29
+#, kde-format
+msgctxt "@title"
+msgid "Configure Firewall"
+msgstr "Konfigūruoti užkardą"
+
+#: kcm.cpp:30
+#, kde-format
+msgctxt "@info:credit"
+msgid "Alexis López Zubieta"
+msgstr "Alexis López Zubieta"
+
+#: kcm.cpp:31
+#, kde-format
+msgctxt "@info:credit"
+msgid "Tomaz Canabrava"
+msgstr "Tomaz Canabrava"
+
+#: kcm.cpp:32
+#, kde-format
+msgctxt "@info:credit"
+msgid "Lucas Januario"
+msgstr "Lucas Januario"
+
+#: package/contents/ui/About.qml:16
+#, kde-format
+msgid "About Firewall"
+msgstr "Apie užkardą"
+
+#: package/contents/ui/About.qml:21
+#, kde-format
+msgid "Backend:"
+msgstr "Vidinė pusė:"
+
+#: package/contents/ui/About.qml:25
+#, kde-format
+msgid "Version:"
+msgstr "Versija:"
+
+#: package/contents/ui/AdvancedRuleEdit.qml:28
+#: package/contents/ui/SimpleRuleEdit.qml:29
+#, kde-format
+msgid "Policy:"
+msgstr "Politika:"
+
+#: package/contents/ui/AdvancedRuleEdit.qml:37
+#: package/contents/ui/SimpleRuleEdit.qml:38
+#, kde-format
+msgid "Direction:"
+msgstr "Kryptis:"
+
+#: package/contents/ui/AdvancedRuleEdit.qml:40
+#: package/contents/ui/SimpleRuleEdit.qml:42
+#, kde-format
+msgid "Incoming"
+msgstr "Gaunami"
+
+#: package/contents/ui/AdvancedRuleEdit.qml:46
+#: package/contents/ui/SimpleRuleEdit.qml:48
+#, kde-format
+msgid "Outgoing"
+msgstr "Išsiunčiami"
+
+#: package/contents/ui/AdvancedRuleEdit.qml:54
+#, kde-format
+msgid "IP Version:"
+msgstr "IP versija:"
+
+#: package/contents/ui/AdvancedRuleEdit.qml:57
+#, kde-format
+msgid "IPv4"
+msgstr "IPv4"
+
+#: package/contents/ui/AdvancedRuleEdit.qml:62
+#, kde-format
+msgid "IPv6"
+msgstr "IPv6"
+
+#: package/contents/ui/AdvancedRuleEdit.qml:69
+#, kde-format
+msgid "Source:"
+msgstr "Šaltinis:"
+
+#: package/contents/ui/AdvancedRuleEdit.qml:89
+#, kde-format
+msgid "Destination:"
+msgstr "Paskirtis:"
+
+#: package/contents/ui/AdvancedRuleEdit.qml:109
+#, kde-format
+msgid "Protocol:"
+msgstr "Protokolas:"
+
+#: package/contents/ui/AdvancedRuleEdit.qml:118
+#, kde-format
+msgid "Interface:"
+msgstr "Sąsaja:"
+
+#: package/contents/ui/AdvancedRuleEdit.qml:128
+#, kde-format
+msgid "Logging:"
+msgstr "Registravimas:"
+
+#: package/contents/ui/ConnectionsView.qml:14
+#, kde-format
+msgid "Connections"
+msgstr "Ryšiai"
+
+#: package/contents/ui/ConnectionsView.qml:18
+#: package/contents/ui/LogsView.qml:19
+#, kde-format
+msgid "Protocol"
+msgstr "Protokolas"
+
+#: package/contents/ui/ConnectionsView.qml:19
+#, kde-format
+msgid "Local Address"
+msgstr "Vietinis adresas"
+
+#: package/contents/ui/ConnectionsView.qml:20
+#, kde-format
+msgid "Foreign Address"
+msgstr "Išorinis adresas"
+
+#: package/contents/ui/ConnectionsView.qml:21
+#, kde-format
+msgid "Status"
+msgstr "Būsena"
+
+#: package/contents/ui/ConnectionsView.qml:22
+#, kde-format
+msgid "PID"
+msgstr "PID"
+
+#: package/contents/ui/ConnectionsView.qml:23
+#, kde-format
+msgid "Program"
+msgstr "Programa"
+
+#: package/contents/ui/ConnectionsView.qml:26
+#, kde-format
+msgid "There are currently no open connections"
+msgstr "Šiuo metu nėra atidarytų ryšių"
+
+#: package/contents/ui/ConnectionsView.qml:35
+#, kde-format
+msgid "Created a blacklist rule from this connection."
+msgstr "Iš šio ryšio sukurta juodojo sąrašo taisyklė."
+
+#: package/contents/ui/ConnectionsView.qml:52
+#, kde-format
+msgid "could not find iproute2 or net-tools packages installed."
+msgstr "nepavyko rasti įdiegtų paketų iproute2 ar net-tools."
+
+#: package/contents/ui/IpTextField.qml:18
+#, kde-format
+msgid "Any IP address"
+msgstr "Bet koks IP adresas"
+
+#: package/contents/ui/LogsView.qml:16
+#, kde-format
+msgid "Firewall Logs"
+msgstr "Užkardos žurnalai"
+
+#: package/contents/ui/LogsView.qml:20 package/contents/ui/main.qml:350
+#, kde-format
+msgid "From"
+msgstr "Iš"
+
+#: package/contents/ui/LogsView.qml:22 package/contents/ui/main.qml:355
+#, kde-format
+msgid "To"
+msgstr "Į"
+
+#: package/contents/ui/LogsView.qml:24
+#, kde-format
+msgid "Interface"
+msgstr "Sąsaja"
+
+#: package/contents/ui/LogsView.qml:26
+#, kde-format
+msgid "There are currently no firewall log entries"
+msgstr "Šiuo metu nėra užkardos žurnalo įrašų"
+
+#: package/contents/ui/LogsView.qml:37
+#, kde-format
+msgid "Created a blacklist rule from this log entry."
+msgstr "Iš šio žurnalo įrašo sukurta juodojo sąrašo taisyklė."
+
+#: package/contents/ui/main.qml:23
+#, kde-format
+msgid "Allow all connections"
+msgstr "Leisti visus ryšius"
+
+#: package/contents/ui/main.qml:24
+#, kde-format
+msgid "Ignore"
+msgstr "Nepaisyti"
+
+#: package/contents/ui/main.qml:24
+#, kde-format
+msgid ""
+"Keeps the program waiting until the connection attempt times out, some short "
+"time later."
+msgstr ""
+"Priverčia programą laukti, kol nepasibaigs ryšiui skirtas laikas, šiek tiek "
+"vėliau."
+
+#: package/contents/ui/main.qml:25
+#, kde-format
+msgid "Produces an immediate and very informative 'Connection refused' message"
+msgstr "Sukuria skubų ir labai informatyvų „Ryšys atmestas“ pranešimą"
+
+#: package/contents/ui/main.qml:40
+#, kde-format
+msgid "Create A New Firewall Rule"
+msgstr "Sukurti naują užkardos taisyklę"
+
+#: package/contents/ui/main.qml:40
+#, kde-format
+msgid "Edit Firewall Rule"
+msgstr "Taisyti užkardos taisyklę"
+
+#: package/contents/ui/main.qml:76 package/contents/ui/main.qml:265
+#: package/contents/ui/main.qml:400
+#, kde-format
+msgid "Please restart plasma firewall, the backend disconnected."
+msgstr "Paleiskite Plasma užkardą iš naujo, vidinė pusė atsijungė."
+
+#: package/contents/ui/main.qml:90 package/contents/ui/ViewBase.qml:110
+#, kde-format
+msgid "Error creating rule: %1"
+msgstr "Klaida sukuriant taisyklę: %1"
+
+#: package/contents/ui/main.qml:92
+#, kde-format
+msgid "Error updating rule: %1"
+msgstr "Klaida atnaujinant taisyklę: %1"
+
+#: package/contents/ui/main.qml:124
+#, kde-format
+msgid "Create"
+msgstr "Sukurti"
+
+#: package/contents/ui/main.qml:124
+#, kde-format
+msgid "Save"
+msgstr "Įrašyti"
+
+#: package/contents/ui/main.qml:149
+#, kde-format
+msgid "Firewall Status:"
+msgstr "Užkardos būsena:"
+
+#: package/contents/ui/main.qml:156
+#, kde-format
+msgid "Disabling..."
+msgstr "Išjungiama..."
+
+#: package/contents/ui/main.qml:156
+#, kde-format
+msgid "Enabled"
+msgstr "Įjungta"
+
+#: package/contents/ui/main.qml:158
+#, kde-format
+msgid "Enabling..."
+msgstr "Įjungiama..."
+
+#: package/contents/ui/main.qml:158
+#, kde-format
+msgid "Disabled"
+msgstr "Išjungta"
+
+#: package/contents/ui/main.qml:184
+#, kde-format
+msgid "The firewall application, please install %1"
+msgstr "Užkardos programa, įsidiekite %1"
+
+#: package/contents/ui/main.qml:198
+#, kde-format
+msgid "Permission denied"
+msgstr "Leidimas atmestas"
+
+#: package/contents/ui/main.qml:202
+#, kde-format
+msgid ""
+"You recently updated your kernel. Iptables is failing to initialize, please "
+"reboot."
+msgstr ""
+"Jūs neseniai atnaujinote branduolį. Iptables nepavyksta inicijuotis, "
+"paleiskite kompiuterį iš naujo."
+
+#: package/contents/ui/main.qml:205
+#, kde-format
+msgid "Error enabling firewall: %1"
+msgstr "Klaida įjungiant užkardą: %1"
+
+#: package/contents/ui/main.qml:206
+#, kde-format
+msgid "Error disabling firewall: %1"
+msgstr "Klaida išjungiant užkardą: %1"
+
+#: package/contents/ui/main.qml:226
+#, kde-format
+msgid "Default Incoming Policy:"
+msgstr "Numatytoji gaunamų politika:"
+
+#: package/contents/ui/main.qml:227
+#, kde-format
+msgid "Default Outgoing Policy:"
+msgstr "Numatytoji išsiunčiamų politika:"
+
+#: package/contents/ui/main.qml:275
+#, kde-format
+msgid "Error changing policy: %1"
+msgstr "Klaida keičiant politiką: %1"
+
+#: package/contents/ui/main.qml:338
+#, kde-format
+msgid "Firewall is disabled"
+msgstr "Užkarda yra išjungta"
+
+#: package/contents/ui/main.qml:338
+#, kde-format
+msgid "No firewall rules have been added"
+msgstr "Nebuvo pridėta jokių užkardos taisyklių"
+
+#: package/contents/ui/main.qml:340
+#, kde-kuit-format
+msgctxt "@info"
+msgid "Click the <interface>Add Rule...</interface> button below to add one"
+msgstr ""
+"Norėdami pridėti taisyklę, spustelėkite žemiau mygtuką <interface>Pridėti "
+"taisyklę...</interface>"
+
+#: package/contents/ui/main.qml:341
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Enable the firewall with the <interface>Firewall Status</interface> checkbox "
+"above, and then click the <interface>Add Rule...</interface> button below to "
+"add one"
+msgstr ""
+"Įjunkite užkardą aukščiau naudodami <interface>Užkardos būsenos</interface> "
+"žymimąjį langelį, o tuomet, norėdami pridėti taisyklę, spustelėkite "
+"<interface>Pridėti taisyklę...</interface>"
+
+#: package/contents/ui/main.qml:345
+#, kde-format
+msgid "Action"
+msgstr "Veiksmas"
+
+#: package/contents/ui/main.qml:360
+#, kde-format
+msgid "IP"
+msgstr "IP"
+
+#: package/contents/ui/main.qml:365
+#, kde-format
+msgid "Logging"
+msgstr "Registravimas"
+
+#: package/contents/ui/main.qml:391
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Edit Rule"
+msgstr "Taisyti taisyklę"
+
+#: package/contents/ui/main.qml:411
+#, kde-format
+msgid "Error removing rule: %1"
+msgstr "Klaida šalinant taisyklę: %1"
+
+#: package/contents/ui/main.qml:418
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Remove Rule"
+msgstr "Šalinti taisyklę"
+
+#: package/contents/ui/main.qml:428
+#, kde-format
+msgctxt "'view' is being used as a verb here"
+msgid "View Connections"
+msgstr "Rodyti ryšius"
+
+#: package/contents/ui/main.qml:433
+#, kde-format
+msgctxt "'view' is being used as a verb here"
+msgid "View Logs"
+msgstr "Rodyti žurnalus"
+
+#: package/contents/ui/main.qml:444
+#, kde-format
+msgid "Add Rule..."
+msgstr "Pridėti taisyklę…"
+
+#: package/contents/ui/main.qml:453
+#, kde-format
+msgid "About"
+msgstr "Apie"
+
+#: package/contents/ui/main.qml:461
+#, kde-format
+msgid "Please install a firewall, such as ufw or firewalld"
+msgstr "Įsidiekite užkardą, kaip, pavyzdžiui, ufw arba firewalld"
+
+#: package/contents/ui/PortTextField.qml:11
+#, kde-format
+msgid "Any Port"
+msgstr "Bet koks prievadas"
+
+#: package/contents/ui/RuleEdit.qml:41
+#, kde-format
+msgid "New Connections"
+msgstr "Nauji ryšiai"
+
+#: package/contents/ui/RuleEdit.qml:42
+#, kde-format
+msgid "All Packets"
+msgstr "Visi paketai"
+
+#: package/contents/ui/RuleEdit.qml:57 package/contents/ui/RuleEdit.qml:64
+#, kde-format
+msgid "The default incoming policy is already '%1'."
+msgstr "Numatytoji gaunamų politika jau yra „%1“."
+
+#: package/contents/ui/RuleEdit.qml:58 package/contents/ui/RuleEdit.qml:65
+#, kde-format
+msgid "The default outgoing policy is already '%1'."
+msgstr "Numatytoji išsiunčiamų politika jau yra „%1“."
+
+#: package/contents/ui/SimpleRuleEdit.qml:23
+#, kde-format
+msgid "Allow connections for:"
+msgstr "Leisti ryšius:"
+
+#: package/contents/ui/SimpleRuleEdit.qml:23
+#, kde-format
+msgid "Application:"
+msgstr "Programa:"
+
+#: package/contents/ui/ViewBase.qml:222
+#, kde-format
+msgid "Blacklist Connection"
+msgstr "Įtraukti ryšį į juodąjį sąrašą"
+
+#~ msgid "Connections..."
+#~ msgstr "Ryšiai..."
+
+#~ msgid "Logs..."
+#~ msgstr "Žurnalai..."
