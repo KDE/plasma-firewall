@@ -77,6 +77,11 @@ kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 install(FILES org.kde.plasma.firewall.metainfo.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 
 #-----------------------------------------------------------------------------
+#                                Translations
+#-----------------------------------------------------------------------------
+ki18n_install(po)
+
+#-----------------------------------------------------------------------------
 #                               BUILD SUMMARY
 #-----------------------------------------------------------------------------
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
