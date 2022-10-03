@@ -18,7 +18,7 @@ class KCMFirewall : public KQuickAddons::ConfigModule
     Q_PROPERTY(FirewallClient *client READ client CONSTANT)
 
 public:
-    explicit KCMFirewall(QObject *parent, const QVariantList &args);
+    explicit KCMFirewall(QObject *parent, const KPluginMetaData &metaData, const QVariantList &args);
 
     ~KCMFirewall();
     void save() override;
