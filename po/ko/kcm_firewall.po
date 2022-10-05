@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-07-19 00:46+0000\n"
+"POT-Creation-Date: 2022-10-05 00:47+0000\n"
 "PO-Revision-Date: 2022-02-20 21:25+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -349,30 +349,6 @@ msgstr "NTP"
 #, kde-format
 msgid "CUPS"
 msgstr "CUPS"
-
-#: kcm.cpp:29
-#, kde-format
-msgctxt "@title"
-msgid "Configure Firewall"
-msgstr "방화벽 설정"
-
-#: kcm.cpp:30
-#, kde-format
-msgctxt "@info:credit"
-msgid "Alexis López Zubieta"
-msgstr "Alexis López Zubieta"
-
-#: kcm.cpp:31
-#, kde-format
-msgctxt "@info:credit"
-msgid "Tomaz Canabrava"
-msgstr "Tomaz Canabrava"
-
-#: kcm.cpp:32
-#, kde-format
-msgctxt "@info:credit"
-msgid "Lucas Januario"
-msgstr "Lucas Januario"
 
 #: package/contents/ui/About.qml:16
 #, kde-format
@@ -794,6 +770,22 @@ msgstr "프로그램:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "연결 차단 목록"
+
+#~ msgctxt "@title"
+#~ msgid "Configure Firewall"
+#~ msgstr "방화벽 설정"
+
+#~ msgctxt "@info:credit"
+#~ msgid "Alexis López Zubieta"
+#~ msgstr "Alexis López Zubieta"
+
+#~ msgctxt "@info:credit"
+#~ msgid "Tomaz Canabrava"
+#~ msgstr "Tomaz Canabrava"
+
+#~ msgctxt "@info:credit"
+#~ msgid "Lucas Januario"
+#~ msgstr "Lucas Januario"
 
 #~ msgid "Connections..."
 #~ msgstr "연결..."

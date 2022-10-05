@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-07-19 00:46+0000\n"
+"POT-Creation-Date: 2022-10-05 00:47+0000\n"
 "PO-Revision-Date: 2020-08-19 19:41-0700\n"
 "Last-Translator: Japanese KDE translation team <kde-jp@kde.org>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -343,30 +343,6 @@ msgstr ""
 #: core/types.cpp:130
 #, kde-format
 msgid "CUPS"
-msgstr ""
-
-#: kcm.cpp:29
-#, kde-format
-msgctxt "@title"
-msgid "Configure Firewall"
-msgstr ""
-
-#: kcm.cpp:30
-#, kde-format
-msgctxt "@info:credit"
-msgid "Alexis López Zubieta"
-msgstr ""
-
-#: kcm.cpp:31
-#, kde-format
-msgctxt "@info:credit"
-msgid "Tomaz Canabrava"
-msgstr ""
-
-#: kcm.cpp:32
-#, kde-format
-msgctxt "@info:credit"
-msgid "Lucas Januario"
 msgstr ""
 
 #: package/contents/ui/About.qml:16

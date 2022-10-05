@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-07-19 00:46+0000\n"
+"POT-Creation-Date: 2022-10-05 00:47+0000\n"
 "PO-Revision-Date: 2022-03-18 23:07+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -349,30 +349,6 @@ msgstr "NTP"
 #, kde-format
 msgid "CUPS"
 msgstr "CUPS"
-
-#: kcm.cpp:29
-#, kde-format
-msgctxt "@title"
-msgid "Configure Firewall"
-msgstr "Palomuurin asetukset"
-
-#: kcm.cpp:30
-#, kde-format
-msgctxt "@info:credit"
-msgid "Alexis López Zubieta"
-msgstr "Alexis López Zubieta"
-
-#: kcm.cpp:31
-#, kde-format
-msgctxt "@info:credit"
-msgid "Tomaz Canabrava"
-msgstr "Tomaz Canabrava"
-
-#: kcm.cpp:32
-#, kde-format
-msgctxt "@info:credit"
-msgid "Lucas Januario"
-msgstr "Lucas Januario"
 
 #: package/contents/ui/About.qml:16
 #, kde-format
@@ -794,6 +770,22 @@ msgstr "Sovellus:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Torju yhteys"
+
+#~ msgctxt "@title"
+#~ msgid "Configure Firewall"
+#~ msgstr "Palomuurin asetukset"
+
+#~ msgctxt "@info:credit"
+#~ msgid "Alexis López Zubieta"
+#~ msgstr "Alexis López Zubieta"
+
+#~ msgctxt "@info:credit"
+#~ msgid "Tomaz Canabrava"
+#~ msgstr "Tomaz Canabrava"
+
+#~ msgctxt "@info:credit"
+#~ msgid "Lucas Januario"
+#~ msgstr "Lucas Januario"
 
 #~ msgid "Simple Rule Edit:"
 #~ msgstr "Yksinkertainen säännön muokkaus:"
