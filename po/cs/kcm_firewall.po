@@ -763,15 +763,3 @@ msgstr "Aplikace:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Zakázat spojení"
-
-#~ msgctxt "@title"
-#~ msgid "Configure Firewall"
-#~ msgstr "Nastavit firewall"
-
-#~ msgctxt "@info:credit"
-#~ msgid "Tomaz Canabrava"
-#~ msgstr "Tomaz Canabrava"
-
-#~ msgctxt "@info:credit"
-#~ msgid "Lucas Januario"
-#~ msgstr "Lucas Januario"
