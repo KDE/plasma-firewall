@@ -775,19 +775,3 @@ msgstr "Приложение:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Поставяне на връзка в черен списък"
-
-#~ msgctxt "@title"
-#~ msgid "Configure Firewall"
-#~ msgstr "Конфигуриране на защитна стена"
-
-#~ msgctxt "@info:credit"
-#~ msgid "Alexis López Zubieta"
-#~ msgstr "Alexis López Zubieta"
-
-#~ msgctxt "@info:credit"
-#~ msgid "Tomaz Canabrava"
-#~ msgstr "Tomaz Canabrava"
-
-#~ msgctxt "@info:credit"
-#~ msgid "Lucas Januario"
-#~ msgstr "Lucas Januario"
