@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-05 00:47+0000\n"
+"POT-Creation-Date: 2022-10-20 00:51+0000\n"
 "PO-Revision-Date: 2022-02-18 18:02+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -366,66 +366,66 @@ msgstr "Silnik:"
 msgid "Version:"
 msgstr "Wersja:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:28
+#: package/contents/ui/AdvancedRuleEdit.qml:31
 #: package/contents/ui/SimpleRuleEdit.qml:29
 #, kde-format
 msgid "Policy:"
 msgstr "Zasada:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:37
+#: package/contents/ui/AdvancedRuleEdit.qml:40
 #: package/contents/ui/SimpleRuleEdit.qml:38
 #, kde-format
 msgid "Direction:"
 msgstr "Kierunek:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:40
+#: package/contents/ui/AdvancedRuleEdit.qml:43
 #: package/contents/ui/SimpleRuleEdit.qml:42
 #, kde-format
 msgid "Incoming"
 msgstr "Przychodzące"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:46
+#: package/contents/ui/AdvancedRuleEdit.qml:49
 #: package/contents/ui/SimpleRuleEdit.qml:48
 #, kde-format
 msgid "Outgoing"
 msgstr "Wychodzące"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:54
+#: package/contents/ui/AdvancedRuleEdit.qml:57
 #, kde-format
 msgid "IP Version:"
 msgstr "Wersja IP:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:57
+#: package/contents/ui/AdvancedRuleEdit.qml:60
 #, kde-format
 msgid "IPv4"
 msgstr "IPv4"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:62
+#: package/contents/ui/AdvancedRuleEdit.qml:65
 #, kde-format
 msgid "IPv6"
 msgstr "IPv6"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:69
+#: package/contents/ui/AdvancedRuleEdit.qml:72
 #, kde-format
 msgid "Source:"
 msgstr "Źródło:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:89
+#: package/contents/ui/AdvancedRuleEdit.qml:92
 #, kde-format
 msgid "Destination:"
 msgstr "Cel:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:109
+#: package/contents/ui/AdvancedRuleEdit.qml:112
 #, kde-format
 msgid "Protocol:"
 msgstr "Protokół:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:118
+#: package/contents/ui/AdvancedRuleEdit.qml:121
 #, kde-format
 msgid "Interface:"
 msgstr "Interfejs:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:128
+#: package/contents/ui/AdvancedRuleEdit.qml:131
 #, kde-format
 msgid "Logging:"
 msgstr "Rejestracja:"
@@ -481,7 +481,7 @@ msgstr "Utwórz zasadę czarnej listy z tego połączenia."
 msgid "could not find iproute2 or net-tools packages installed."
 msgstr "nie można znaleźć ani pakietu iproute2 ani net-tools."
 
-#: package/contents/ui/IpTextField.qml:18
+#: package/contents/ui/IpTextField.qml:14
 #, kde-format
 msgid "Any IP address"
 msgstr "Dowolny adres IP"
