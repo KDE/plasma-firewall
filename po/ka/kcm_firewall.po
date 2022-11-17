@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-20 00:51+0000\n"
-"PO-Revision-Date: 2022-05-09 06:54+0200\n"
+"PO-Revision-Date: 2022-11-16 08:40+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -532,11 +532,14 @@ msgid ""
 "Keeps the program waiting until the connection attempt times out, some short "
 "time later."
 msgstr ""
+"პროგრამა დაელოდება შეერთების მცდელობების ვადის გასვლას და ცოტა ხნის შემდეგ."
 
 #: package/contents/ui/main.qml:25
 #, kde-format
 msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr ""
+"გამოიტანს დაუყოვნებლივ და ძალიან ინფორმატიულ შეტყობინებას 'კავშირი "
+"უარყოფილია'"
 
 #: package/contents/ui/main.qml:40
 #, kde-format
@@ -615,6 +618,8 @@ msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
 "reboot."
 msgstr ""
+"ბირთვი ახლახანს განაახლეთ. iptables-ის ინიციალიზაციის შეცდომა. გთხოვთ, "
+"გადატვირთოთ კომპიუტერი."
 
 #: package/contents/ui/main.qml:205
 #, kde-format
@@ -667,6 +672,9 @@ msgid ""
 "above, and then click the <interface>Add Rule...</interface> button below to "
 "add one"
 msgstr ""
+"ჩართეთ ბრანდმაუერი <interface>ბრანდმაუერის სტატუსის</interface> თოლიით, და "
+"შემდეგ დააწკაპუნეთ <interface>წესის დამატების...</interface> ღილაკს, მის "
+"დასამატებლად"
 
 #: package/contents/ui/main.qml:345
 #, kde-format
