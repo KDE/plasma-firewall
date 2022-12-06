@@ -9,8 +9,9 @@
 #include "ufwclient.h"
 #include "ufwlogmodel.h"
 
-#include "rule.h"
-#include "types.h"
+#include <rule.h>
+#include <systemdjob.h>
+#include <types.h>
 
 #include <QDebug>
 #include <QDir>
@@ -84,7 +85,18 @@ void UfwClient::refresh()
 {
     queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::ListenProfiles);
 }
+void UfwClient::enableService(bool value)
+{
+    SystemdJob *job = new SystemdJob(static_cast<SYSTEMD::actions>(value), QStringLiteral("ufw.service"), true);
 
+    connect(job, &SystemdJob::result, this, [job] {
+        if (job->error()) {
+            qCDebug(UFWClientDebug) << "SystemdJob Error: " << job->error() << job->errorString();
+            return;
+        }
+    });
+    job->start();
+}
 bool UfwClient::enabled() const
 {
     return m_currentProfile.enabled();
@@ -105,9 +117,10 @@ KJob *UfwClient::setEnabled(bool value)
     qCDebug(UFWClientDebug) << "Starting the set Enabled job";
     KAuth::ExecuteJob *job = modifyAction.execute();
 
-    connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
+    connect(job, &KAuth::ExecuteJob::result, this, [this, job, value] {
         qCDebug(UFWClientDebug) << "Set Enabled job finished, triggering a status query.";
         if (job->error() == KJob::NoError) {
+            enableService(value);
             queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
         } else {
             qCDebug(UFWClientDebug) << "Job error: " << job->error();

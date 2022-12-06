@@ -9,8 +9,6 @@ set(firewalld_backend_SRCS
     firewalldjob.h
     firewalldlogmodel.cpp
     firewalldlogmodel.h
-    systemdjob.cpp
-    systemdjob.h
     queryrulesfirewalldjob.cpp
     queryrulesfirewalldjob.h
 )
@@ -21,6 +19,6 @@ kcoreaddons_add_plugin(
     INSTALL_NAMESPACE "kf${QT_MAJOR_VERSION}/plasma_firewall")
 
 target_link_libraries(firewalldbackend
-    Qt::DBus
     kcm_firewall_core
+    Qt::DBus
 )

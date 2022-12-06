@@ -3,7 +3,7 @@
 
 include(GenerateExportHeader)
 
-add_library(kcm_firewall_core
+set(core_files
     appprofiles.cpp
     appprofiles.h
     firewallclient.cpp
@@ -24,11 +24,7 @@ add_library(kcm_firewall_core
     types.h
 )
 
-generate_export_header(kcm_firewall_core)
-
-target_include_directories(kcm_firewall_core PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>")
-
-target_link_libraries(kcm_firewall_core
+set(core_link_libraries
     Qt::Quick
     KF5::CoreAddons
     KF5::Declarative
@@ -36,5 +32,19 @@ target_link_libraries(kcm_firewall_core
     KF5::QuickAddons
     KF5::AuthCore
 )
+
+# insert additional linux specific systemdjob files
+if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
+    set (core_files ${core_files} systemdjob.h systemdjob.cpp)
+    set (core_link_libraries ${core_link_libraries} Qt::DBus)
+endif()
+
+add_library(kcm_firewall_core ${core_files})
+target_link_libraries(kcm_firewall_core ${core_link_libraries})
+
+generate_export_header(kcm_firewall_core)
+
+target_include_directories(kcm_firewall_core PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>")
+
 
 install(TARGETS kcm_firewall_core ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

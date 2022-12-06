@@ -16,13 +16,12 @@
 
 #include <loglistmodel.h>
 #include <rulelistmodel.h>
+#include <systemdjob.h>
 
 #include "firewalldclient.h"
 #include "firewalldjob.h"
 #include "firewalldlogmodel.h"
 #include "queryrulesfirewalldjob.h"
-
-#include "systemdjob.h"
 
 #include "dbustypes.h"
 
@@ -61,7 +60,7 @@ KJob *FirewalldClient::setEnabled(const bool value)
         return nullptr;
     }
 
-    SystemdJob *job = new SystemdJob(static_cast<SYSTEMD::actions>(value));
+    SystemdJob *job = new SystemdJob(static_cast<SYSTEMD::actions>(value), QStringLiteral("firewalld.service"));
 
     connect(job, &KJob::result, this, [this, job, value] {
         if (job->error()) {

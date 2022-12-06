@@ -13,9 +13,9 @@
 
 #include <KAuth/Action>
 
+#include <QXmlStreamWriter>
 #include <ifirewallclientbackend.h>
 #include <profile.h>
-#include <QXmlStreamWriter>
 
 class RuleListModel;
 class LogListModel;
@@ -42,19 +42,14 @@ public:
     KJob *setEnabled(bool enabled) override;
 
     /* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connection Table. */
-    Rule *createRuleFromConnection(
-        const QString &protocol,
-        const QString &localAddress,
-        const QString &foreignAddres,
-        const QString &status) override;
+    Rule *createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status) override;
 
-    Rule *createRuleFromLog(
-        const QString &protocol,
-        const QString &sourceAddress,
-        const QString &sourcePort,
-        const QString &destinationAddress,
-        const QString &destinationPort,
-        const QString &inn) override;
+    Rule *createRuleFromLog(const QString &protocol,
+                            const QString &sourceAddress,
+                            const QString &sourcePort,
+                            const QString &destinationAddress,
+                            const QString &destinationPort,
+                            const QString &inn) override;
 
     bool enabled() const override;
     QString defaultIncomingPolicy() const override;
@@ -83,6 +78,7 @@ protected:
     KAuth::Action buildModifyAction(const QVariantMap &arguments);
 
 private:
+    void enableService(bool value);
     QString toXml(Rule *r) const;
     QStringList m_rawLogs;
     Profile m_currentProfile;
@@ -94,6 +90,3 @@ private:
     bool m_busy = false;
     QStringList m_knownApplications;
 };
-
-
-
