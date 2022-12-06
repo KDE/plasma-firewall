@@ -19,9 +19,9 @@ class FirewalldJob : public KJob
     Q_OBJECT
 
 public:
-    enum JobType { SIMPLELIST, FIREWALLD, SAVEFIREWALLD, LISTSERVICES, SIMPLIFIEDRULE };
-    FirewalldJob(const QByteArray &call, const QVariantList &args = {}, const FirewalldJob::JobType &type = FIREWALLD);
-    FirewalldJob(const FirewalldJob::JobType &type);
+    enum JobType { ALL = -100, SIMPLELIST = 0, FIREWALLD, SAVEFIREWALLD, LISTSERVICES, SIMPLIFIEDRULE };
+    explicit FirewalldJob(const QByteArray &call, const QVariantList &args = {}, const FirewalldJob::JobType &type = FIREWALLD);
+    explicit FirewalldJob(const FirewalldJob::JobType &type);
     FirewalldJob();
     ~FirewalldJob();
     void start() override;
@@ -42,6 +42,5 @@ private:
     QStringList m_services = {};
     QList<firewalld_reply> m_firewalldreply = {};
     QString m_target;
-
 };
 #endif

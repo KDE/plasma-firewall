@@ -5,9 +5,9 @@
 #ifndef NETSTATHELPER_H
 #define NETSTATHELPER_H
 
-#include <QVariantMap>
 #include <QLoggingCategory>
 #include <QProcess>
+#include <QVariantMap>
 
 Q_DECLARE_LOGGING_CATEGORY(NetstatHelperDebug)
 
@@ -30,7 +30,7 @@ private Q_SLOTS:
     void stepExecuteFinished(int exitCode);
 
 Q_SIGNALS:
-    void queryFinished(const QVector<QStringList>& query);
+    void queryFinished(const QVector<QStringList> &query);
 
 private:
     QVector<QStringList> parseSSOutput(const QByteArray &ss);
@@ -44,7 +44,6 @@ private:
     QProcess *m_executableProcess = nullptr;
     QTimer *m_processKillerTimer = nullptr;
     bool m_hasTimeoutError = false;
-
 };
 
 #endif // NETSTATHELPER_H

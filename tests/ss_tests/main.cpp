@@ -5,6 +5,7 @@
 
 #include "firewallclient.h"
 
-int main() {
+int main()
+{
     qDebug() << "SS test called";
 }

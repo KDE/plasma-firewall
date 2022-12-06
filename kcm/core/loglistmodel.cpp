@@ -86,8 +86,7 @@ QHash<int, QByteArray> LogListModel::roleNames() const
     };
 }
 
-
-void LogListModel::appendLogData(const QVector<LogData> newData)
+void LogListModel::appendLogData(const QVector<LogData> &newData)
 {
     if (newData.isEmpty()) {
         return;

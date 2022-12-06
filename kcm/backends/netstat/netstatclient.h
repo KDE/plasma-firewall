@@ -5,8 +5,8 @@
 #ifndef NETSTATCLIENT_H
 #define NETSTATCLIENT_H
 
-#include <QObject>
 #include <QLoggingCategory>
+#include <QObject>
 
 #include "conectionsmodel.h"
 #include "netstathelper.h"

@@ -61,7 +61,7 @@ public:
     Q_INVOKABLE static QStringList knownInterfaces();
     Q_INVOKABLE QStringList knownApplications();
     Q_INVOKABLE static bool isTcpAndUdp(int protocolIdx);
-    static int indexOfProtocol(const QString& protocol);
+    static int indexOfProtocol(const QString &protocol);
 
     Q_INVOKABLE void refresh();
 
@@ -79,19 +79,14 @@ public:
     Q_INVOKABLE KJob *setDefaultOutgoingPolicy(const QString &defaultOutgoingPolicy);
     Q_INVOKABLE KJob *save();
     /* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connection Table. */
-    Q_INVOKABLE Rule *createRuleFromConnection(
-        const QString &protocol,
-        const QString &localAddress,
-        const QString &foreignAddres,
-        const QString &status);
+    Q_INVOKABLE Rule *createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status);
 
-    Q_INVOKABLE Rule *createRuleFromLog(
-        const QString &protocol,
-        const QString &sourceAddress,
-        const QString &sourcePort,
-        const QString &destinationAddress,
-        const QString &destinationPort,
-        const QString &inn);
+    Q_INVOKABLE Rule *createRuleFromLog(const QString &protocol,
+                                        const QString &sourceAddress,
+                                        const QString &sourcePort,
+                                        const QString &destinationAddress,
+                                        const QString &destinationPort,
+                                        const QString &inn);
 
     Q_INVOKABLE QString version() const;
 

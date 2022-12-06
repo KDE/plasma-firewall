@@ -28,12 +28,12 @@ public:
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
-    void setProfile(Profile profile);
+    void setProfile(const Profile &profile);
 
 protected:
     QHash<int, QByteArray> roleNames() const override;
 
 private:
     Profile m_profile;
-    QVector<Rule*> m_rules;
+    QVector<Rule *> m_rules;
 };

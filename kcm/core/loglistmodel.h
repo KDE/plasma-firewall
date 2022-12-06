@@ -59,7 +59,7 @@ public:
 
     virtual void addRawLogs(const QStringList &rawLogsList) = 0;
 
-    void appendLogData(const QVector<LogData> newData);
+    void appendLogData(const QVector<LogData> &newData);
 
 Q_SIGNALS:
     void countChanged();

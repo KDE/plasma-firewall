@@ -6,11 +6,11 @@
 #ifndef UFW_RULE_H
 #define UFW_RULE_H
 
-#include <kcm_firewall_core_export.h>
-#include <sys/socket.h>
+#include <QDebug>
 #include <QObject>
 #include <QString>
-#include <QDebug>
+#include <kcm_firewall_core_export.h>
+#include <sys/socket.h>
 
 #include "types.h"
 
@@ -32,10 +32,10 @@ class KCM_FIREWALL_CORE_EXPORT Rule : public QObject
     Q_PROPERTY(QString sourceApplication READ sourceApplication WRITE setSourceApplication NOTIFY sourceApplicationChanged)
 
 public:
-
     static int servicePort(const QString &name);
     static QString protocolSuffix(int prot, const QString &sep = QString("/"));
-    static QString modify(const QString &address, const QString &port, const QString &application, const QString &iface, int protocol, bool matchPortNoProto = false);
+    static QString
+    modify(const QString &address, const QString &port, const QString &application, const QString &iface, int protocol, bool matchPortNoProto = false);
 
     Rule();
     Rule(Types::Policy pol,
@@ -71,14 +71,24 @@ public:
         , m_interface(0)
     {
     }
-    Rule(const Rule& rhs, QObject *parent) : QObject(parent), m_position(rhs.m_position), m_action(rhs.m_action),
-    m_incoming(rhs.m_incoming), m_ipv6(rhs.m_ipv6), m_protocol(rhs.m_protocol),
-    m_logtype(rhs.m_logtype), m_destApplication(rhs.m_destApplication),
-    m_sourceApplication(rhs.m_sourceApplication), m_destAddress(rhs.m_destAddress),
-    m_sourceAddress(rhs.m_sourceAddress), m_destPort(rhs.m_destPort),
-    m_sourcePort(rhs.m_sourcePort), m_interfaceIn(rhs.m_interfaceIn),
-    m_interfaceOut(rhs.m_interfaceIn), m_interface(rhs.m_interface){};
-
+    Rule(const Rule &rhs, QObject *parent)
+        : QObject(parent)
+        , m_position(rhs.m_position)
+        , m_action(rhs.m_action)
+        , m_incoming(rhs.m_incoming)
+        , m_ipv6(rhs.m_ipv6)
+        , m_simplified(true)
+        , m_protocol(rhs.m_protocol)
+        , m_logtype(rhs.m_logtype)
+        , m_destApplication(rhs.m_destApplication)
+        , m_sourceApplication(rhs.m_sourceApplication)
+        , m_destAddress(rhs.m_destAddress)
+        , m_sourceAddress(rhs.m_sourceAddress)
+        , m_destPort(rhs.m_destPort)
+        , m_sourcePort(rhs.m_sourcePort)
+        , m_interfaceIn(rhs.m_interfaceIn)
+        , m_interfaceOut(rhs.m_interfaceIn)
+        , m_interface(rhs.m_interface){};
 
     QString toStr() const;
     QString fromStr() const;
@@ -115,18 +125,11 @@ public:
 
     bool operator==(const Rule &o) const
     {
-            return m_action == o.m_action
-                && m_incoming == o.m_incoming
-                && m_ipv6 == o.m_ipv6
-                && m_protocol == o.m_protocol
-                && m_destApplication == o.m_destApplication
-                && m_sourceApplication == o.m_sourceApplication
-                && m_destAddress == o.m_destAddress
-                && m_sourceAddress == o.m_sourceAddress
-                && (m_destApplication.isEmpty() && o.m_destApplication.isEmpty() ? m_destPort == o.m_destPort : true)
-                && (m_sourceApplication.isEmpty() && o.m_sourceApplication.isEmpty() ? m_sourcePort == o.m_sourcePort : true)
-                && m_interfaceIn == o.m_interfaceIn
-                && m_interfaceOut == o.m_interfaceOut;
+        return m_action == o.m_action && m_incoming == o.m_incoming && m_ipv6 == o.m_ipv6 && m_protocol == o.m_protocol
+            && m_destApplication == o.m_destApplication && m_sourceApplication == o.m_sourceApplication && m_destAddress == o.m_destAddress
+            && m_sourceAddress == o.m_sourceAddress && (m_destApplication.isEmpty() && o.m_destApplication.isEmpty() ? m_destPort == o.m_destPort : true)
+            && (m_sourceApplication.isEmpty() && o.m_sourceApplication.isEmpty() ? m_sourcePort == o.m_sourcePort : true) && m_interfaceIn == o.m_interfaceIn
+            && m_interfaceOut == o.m_interfaceOut;
     }
 
 public slots:
@@ -160,7 +163,6 @@ Q_SIGNALS:
     void positionChanged(int position);
     void simplifiedChanged(bool value);
     void sourceApplicationChanged(const QString &app);
-
 
 private:
     int m_position;

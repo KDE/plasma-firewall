@@ -131,8 +131,8 @@ ActionReply Helper::queryapps(const QVariantMap &args)
 
 ActionReply Helper::viewlog(const QVariantMap &args)
 {
-    QString lastLine = args["lastLine"].toString(), logFile = args["logFile"].toString();
     ActionReply reply;
+    QString lastLine = args["lastLine"].toString();
 
     QStringList result = getLogFromSystemd(lastLine);
     reply.addData(QStringLiteral("lines"), result);
@@ -170,14 +170,14 @@ ActionReply Helper::setStatus(const QVariantMap &args, const QString &cmd)
 
 ActionReply Helper::setDefaults(const QVariantMap &args, const QString &cmd)
 {
-    QStringList query({"--defaults"});
+    QStringList pquery({"--defaults"});
     if (args[QStringLiteral("ipv6")].toBool()) {
-        query.append(QStringLiteral("--list"));
+        pquery.append(QStringLiteral("--list"));
     }
 
     const QString defaults = args[QStringLiteral("xml")].toString();
 
-    return run({"--setDefaults=" + defaults}, query, cmd);
+    return run({"--setDefaults=" + defaults}, pquery, cmd);
 }
 
 ActionReply Helper::setModules(const QVariantMap &args, const QString &cmd)
@@ -280,7 +280,7 @@ ActionReply Helper::deleteProfile(const QVariantMap &args, const QString &cmd)
 
 ActionReply Helper::addRules(const QVariantMap &args, const QString &cmd)
 {
-    unsigned int count = args[QStringLiteral("count")].toUInt();
+    int count = args[QStringLiteral("count")].toInt();
 
     if (count <= 0) {
         ActionReply reply = ActionReply::HelperErrorReply(STATUS_INVALID_ARGUMENTS);
@@ -289,7 +289,7 @@ ActionReply Helper::addRules(const QVariantMap &args, const QString &cmd)
     }
     QStringList cmdArgs;
 
-    for (unsigned int i = 0; i < count; ++i) {
+    for (int i = 0; i < count; ++i) {
         cmdArgs << "--add=" + args["xml" + QString::number(i)].toString();
     }
     qDebug() << "Cmd args passed to ufw:" << cmdArgs;

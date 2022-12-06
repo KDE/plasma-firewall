@@ -24,12 +24,8 @@ struct ConnectionsData {
 
     bool operator==(const ConnectionsData &other) const
     {
-        return other.protocol == protocol
-            && other.localAddress == localAddress
-            && other.foreignAddress == foreignAddress
-            && other.status == status
-            && other.pid == pid
-            && other.program == program;
+        return other.protocol == protocol && other.localAddress == localAddress && other.foreignAddress == foreignAddress && other.status == status
+            && other.pid == pid && other.program == program;
     }
 };
 
@@ -63,7 +59,7 @@ Q_SIGNALS:
     void showErrorMessage(const QString &message);
 
 protected slots:
-    void refreshConnections(const  QVector<QStringList>& results);
+    void refreshConnections(const QVector<QStringList> &results);
 
 private:
     QVector<ConnectionsData> m_connectionsData;

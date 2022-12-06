@@ -6,7 +6,8 @@
 
 #include "loglistmodel.h"
 
-class FirewalldLogModel : public LogListModel {
+class FirewalldLogModel : public LogListModel
+{
     Q_OBJECT
 public:
     explicit FirewalldLogModel(QObject *parent);

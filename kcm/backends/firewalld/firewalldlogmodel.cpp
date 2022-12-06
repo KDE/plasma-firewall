@@ -6,7 +6,6 @@
 FirewalldLogModel::FirewalldLogModel(QObject *parent)
     : LogListModel(parent)
 {
-
 }
 
 void FirewalldLogModel::addRawLogs(const QStringList &rawLogsList)

@@ -4,13 +4,13 @@
  * Firewalld backend for plasma firewall
  */
 
-#include <QDebug>
+#include <KLocalizedString>
 #include <QDBusConnection>
 #include <QDBusMessage>
 #include <QDBusPendingCall>
 #include <QDBusPendingReply>
+#include <QDebug>
 #include <QTimer>
-#include <KLocalizedString>
 
 #include "systemdjob.h"
 
@@ -28,7 +28,7 @@ enum {
 };
 SystemdJob::SystemdJob(SYSTEMD::actions action)
     : KJob()
-    , m_action(action) {};
+    , m_action(action){};
 
 void SystemdJob::systemdAction(const SYSTEMD::actions value)
 {
@@ -61,7 +61,9 @@ void SystemdJob::systemdAction(const SYSTEMD::actions value)
         }
         QTimer *timer = new QTimer(this);
         timer->setInterval(1500);
-        connect(timer, &QTimer::timeout, this, [this]() { emitResult(); });
+        connect(timer, &QTimer::timeout, this, [this]() {
+            emitResult();
+        });
         timer->start();
         // return;
     });
@@ -72,12 +74,5 @@ SystemdJob::~SystemdJob() = default;
 
 void SystemdJob::start()
 {
-    // Calling those too quickly can seriously break firewalld.
-    // Known Error, SystemD bug: https://github.com/systemd/systemd/issues/11305
-    // firewalld.client: Job Error:  100 "Transaction for firewalld.service/start is destructive
-    // (firewalld.service has 'stop' job queued, but 'start' is included in transaction)."
-    //
-    // Adding a timer of around 8 seconds fixes the issue on my computer,
-    // but that does not seems to be a good thing.
     systemdAction(m_action);
 };

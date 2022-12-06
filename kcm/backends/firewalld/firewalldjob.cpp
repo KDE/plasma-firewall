@@ -46,6 +46,11 @@ namespace SIMPLE
 const QString INTERFACE = QStringLiteral("org.fedoraproject.FirewallD1.zone");
 }
 
+namespace AUTH
+{
+const QString METHOD = QStringLiteral("authorizeAll");
+}
+
 enum {
     DBUSFIREWALLDDERROR = KJob::UserDefinedError,
 };
@@ -100,8 +105,8 @@ void FirewalldJob::firewalldAction(const QString &bus, const QString &path, cons
                 if (!reply.isEmpty()) {
                     m_firewalldreply = reply;
                 }
-            } else if (interface == SERVICES::INTERFACE
-                       && method != SAVE::METHOD) { // list services available or enabled services AND don't execute runtimeToPermanent HERE
+            } else if (interface == SERVICES::INTERFACE && method != SAVE::METHOD
+                       && method != AUTH::METHOD) { // list services available or enabled services AND don't execute runtimeToPermanent HERE
                 QStringList reply = connectCall<QStringList>(watcher);
                 if (!reply.isEmpty()) {
                     m_services = reply;
@@ -173,6 +178,10 @@ void FirewalldJob::start()
     case FirewalldJob::LISTSERVICES: {
         /* listServices(); */
         firewalldAction(FIREWALLD::BUS, FIREWALLD::PATH, SERVICES::INTERFACE, SERVICES::METHOD);
+        break;
+    }
+    case FirewalldJob::ALL: {
+        firewalldAction(FIREWALLD::BUS, FIREWALLD::PATH, SERVICES::INTERFACE, AUTH::METHOD);
         break;
     }
 

@@ -13,7 +13,7 @@
 #include "ifirewallclientbackend.h"
 
 IFirewallClientBackend::IFirewallClientBackend(QObject *parent, const QVariantList &)
-    : QObject(parent) {};
+    : QObject(parent){};
 
 void IFirewallClientBackend::setProfiles(const QVector<Entry> &profiles)
 {
@@ -23,8 +23,9 @@ void IFirewallClientBackend::setProfiles(const QVector<Entry> &profiles)
 
 Entry IFirewallClientBackend::profileByName(const QString &name)
 {
-    auto it = std::find_if(std::begin(m_profiles), std::end(m_profiles),
-                [&name](const Entry &entry) { return entry.name == name; });
+    auto it = std::find_if(std::begin(m_profiles), std::end(m_profiles), [&name](const Entry &entry) {
+        return entry.name == name;
+    });
 
     if (it != std::end(m_profiles)) {
         return *it;
@@ -44,7 +45,7 @@ KJob *IFirewallClientBackend::save()
     return nullptr;
 }
 
-void IFirewallClientBackend::queryExecutable(const QString& executableName)
+void IFirewallClientBackend::queryExecutable(const QString &executableName)
 {
     // sometimes ufw is not installed on a standard path - like on opensuse, that's installed on /usr/sbin
     // so, look at there too.

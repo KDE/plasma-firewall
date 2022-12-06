@@ -9,7 +9,8 @@ class IPValidatorTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
-    void testIPv4Validation_data() {
+    void testIPv4Validation_data()
+    {
         QTest::addColumn<QString>("input");
         QTest::addColumn<QValidator::State>("state");
 
@@ -28,7 +29,8 @@ private Q_SLOTS:
         QTest::newRow("fe80::39fe:37cd:6d9d:9850/64") << QStringLiteral("fe80::39fe:37cd:6d9d:9850/64") << QValidator::Invalid;
     }
 
-    void testIPv4Validation() {
+    void testIPv4Validation()
+    {
         QFETCH(QString, input);
         QFETCH(QValidator::State, state);
 
@@ -38,7 +40,8 @@ private Q_SLOTS:
         QCOMPARE(validator.validate(input, pos), state);
     }
 
-    void testIPv6Validation_data() {
+    void testIPv6Validation_data()
+    {
         QTest::addColumn<QString>("input");
         QTest::addColumn<QValidator::State>("state");
 
@@ -56,7 +59,8 @@ private Q_SLOTS:
         QTest::newRow("::FFFF:1.2.0.0/112") << QStringLiteral("::FFFF:1.2.0.0/112") << QValidator::Acceptable;
     }
 
-    void testIPv6Validation() {
+    void testIPv6Validation()
+    {
         QFETCH(QString, input);
         QFETCH(QValidator::State, state);
 

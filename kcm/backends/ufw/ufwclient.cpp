@@ -65,6 +65,7 @@ void debugState(KAuth::Action::AuthStatus status)
 UfwClient::UfwClient(QObject *parent, const QVariantList &args)
     : IFirewallClientBackend(parent, args)
     , m_rulesModel(new RuleListModel(this))
+    , m_logsAutoRefresh(true)
 {
     queryExecutable("ufw");
 }
@@ -95,7 +96,7 @@ KJob *UfwClient::setEnabled(bool value)
         return nullptr;
     }
 
-    QVariantMap args {
+    QVariantMap args{
         {"cmd", "setStatus"},
         {"status", value},
     };
@@ -129,7 +130,7 @@ KJob *UfwClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsBehavio
     const bool readDefaults = defaultsBehavior == FirewallClient::DefaultDataBehavior::ReadDefaults;
     const bool listProfiles = profilesBehavior == FirewallClient::ProfilesBehavior::ListenProfiles;
 
-    QVariantMap args {
+    QVariantMap args{
         {"defaults", readDefaults},
         {"profiles", listProfiles},
     };
@@ -165,7 +166,7 @@ KJob *UfwClient::setDefaultIncomingPolicy(QString policy)
 
     const QString xmlArg = QStringLiteral("<defaults incoming=\"%1\"/>").arg(policy);
 
-    QVariantMap args {
+    QVariantMap args{
         {"cmd", "setDefaults"},
         {"xml", xmlArg},
     };
@@ -191,7 +192,7 @@ KJob *UfwClient::setDefaultOutgoingPolicy(QString policy)
 
     const QString xmlArg = QStringLiteral("<defaults outgoing=\"%1\"/>").arg(policy);
 
-    QVariantMap args {
+    QVariantMap args{
         {"cmd", "setDefaults"},
         {"xml", xmlArg},
     };
@@ -311,13 +312,13 @@ RuleListModel *UfwClient::rules() const
 
 Rule *UfwClient::ruleAt(int index)
 {
-    auto rules = m_currentProfile.rules();
+    auto cRules = m_currentProfile.rules();
 
-    if (index < 0 || index >= rules.count()) {
+    if (index < 0 || index >= cRules.count()) {
         return nullptr;
     }
 
-    Rule *rule = rules.at(index);
+    Rule *rule = cRules.at(index);
     return rule;
 }
 
@@ -328,8 +329,7 @@ KJob *UfwClient::addRule(Rule *r)
         return nullptr;
     }
 
-
-    QVariantMap args {
+    QVariantMap args{
         {"cmd", "addRules"},
         {"count", 1},
         {"xml0", toXml(r)},
@@ -358,14 +358,16 @@ KJob *UfwClient::removeRule(int index)
     // Correct index
     index += 1;
 
-    QVariantMap args {
+    QVariantMap args{
         {"cmd", "removeRule"},
         {"index", QString::number(index)},
     };
 
     KAuth::Action modifyAction = buildModifyAction(args);
     KAuth::ExecuteJob *job = modifyAction.execute();
-    connect(job, &KAuth::ExecuteJob::statusChanged, this, [](KAuth::Action::AuthStatus status) { debugState(status); });
+    connect(job, &KAuth::ExecuteJob::statusChanged, this, [](KAuth::Action::AuthStatus status) {
+        debugState(status);
+    });
 
     connect(job, &KAuth::ExecuteJob::result, this, [this, job] {
         if (!job->error()) {
@@ -386,14 +388,9 @@ KJob *UfwClient::updateRule(Rule *r)
 
 KJob *UfwClient::moveRule(int from, int to)
 {
-    const QVector<Rule*> rules = m_currentProfile.rules();
-    if (from < 0 || from >= rules.count()) {
+    const QVector<Rule *> cRules = m_currentProfile.rules();
+    if (from < 0 || from >= cRules.count()) {
         qWarning() << "invalid from index";
-        return nullptr;
-    }
-
-    if (to < 0 || to >= rules.count()) {
-        qWarning() << "invalid to index";
         return nullptr;
     }
 
@@ -401,7 +398,7 @@ KJob *UfwClient::moveRule(int from, int to)
     from += 1;
     to += 1;
 
-    QVariantMap args {
+    QVariantMap args{
         {"cmd", "moveRule"},
         {"from", from},
         {"to", to},
@@ -445,37 +442,41 @@ bool UfwClient::logsAutoRefresh() const
     return m_logsAutoRefresh;
 }
 
-namespace {
-    bool isNumber(const QString& s) {
-        bool error = true;
-        s.toInt(&error);
-        return error;
-    }
+namespace
+{
+bool isNumber(const QString &s)
+{
+    bool error = true;
+    int dummy = s.toInt(&error);
+    Q_UNUSED(dummy)
+    return error;
+}
 
-    QString portStrToInt(const QString& portStr) {
-        QFile file("/etc/services");
-        if (!file.open(QIODevice::ReadOnly)) {
-            qCDebug(UFWClientDebug) << "Could not open file, returning";
-            return portStr;
-        }
-        while (!file.atEnd()) {
-            QString line = file.readLine();
-            if (!line.startsWith(portStr.toLocal8Bit())) {
-                continue;
-            }
-
-            // http      80/tcp
-            auto list = line.split(QRegularExpression("\\s+"));
-            if (list.size() > 1) {
-                if (list[1].contains('/')) {
-                    return list[1].split('/')[0];
-                } else {
-                    return list[1];
-                }
-            }
-        }
-        return "";
+QString portStrToInt(const QString &portStr)
+{
+    QFile file("/etc/services");
+    if (!file.open(QIODevice::ReadOnly)) {
+        qCDebug(UFWClientDebug) << "Could not open file, returning";
+        return portStr;
     }
+    while (!file.atEnd()) {
+        QString line = file.readLine();
+        if (!line.startsWith(portStr.toLocal8Bit())) {
+            continue;
+        }
+
+        // http      80/tcp
+        auto list = line.split(QRegularExpression("\\s+"));
+        if (list.size() > 1) {
+            if (list[1].contains('/')) {
+                return list[1].split('/')[0];
+            } else {
+                return list[1];
+            }
+        }
+    }
+    return "";
+}
 }
 
 Rule *UfwClient::createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status)
@@ -524,7 +525,12 @@ Rule *UfwClient::createRuleFromConnection(const QString &protocol, const QString
     return rule;
 }
 
-Rule *UfwClient::createRuleFromLog(const QString &protocol, const QString &sourceAddress, const QString &sourcePort, const QString &destinationAddress, const QString &destinationPort, const QString &inn)
+Rule *UfwClient::createRuleFromLog(const QString &protocol,
+                                   const QString &sourceAddress,
+                                   const QString &sourcePort,
+                                   const QString &destinationAddress,
+                                   const QString &destinationPort,
+                                   const QString &inn)
 {
     // Transform to the ufw notation
     auto rule = new Rule();
@@ -584,7 +590,8 @@ void UfwClient::refreshProfiles()
     setProfiles(profiles);
 }
 
-QStringList UfwClient::knownProtocols() {
+QStringList UfwClient::knownProtocols()
+{
     return {i18n("Any"), "TCP", "UDP"};
 }
 
@@ -635,7 +642,6 @@ QString UfwClient::toXml(Rule *r) const
 
     xml.writeAttribute(QStringLiteral("logtype"), Types::toString(r->logging()));
 
-
     xml.writeAttribute(QStringLiteral("v6"), r->ipv6() ? QStringLiteral("True") : QStringLiteral("False"));
 
     xml.writeEndElement();
@@ -646,10 +652,10 @@ QString UfwClient::toXml(Rule *r) const
 bool UfwClient::isCurrentlyLoaded() const
 {
     QProcess process;
-    const QString name = "systemctl";
+    const QString pname = "systemctl";
     const QStringList args = {"status", "ufw"};
 
-    process.start(name, args);
+    process.start(pname, args);
     process.waitForFinished();
 
     // systemctl returns 0 for status if the app is loaded, and 3 otherwise.
@@ -701,6 +707,4 @@ void UfwClient::queryKnownApplications()
     job->start();
 }
 
-
 #include "ufwclient.moc"
-

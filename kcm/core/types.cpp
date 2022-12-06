@@ -139,11 +139,18 @@ PredefinedPort toPredefinedPort(const QString &str)
         const auto enumPort = static_cast<Types::PredefinedPort>(i);
         const auto typesAtIndex = Types::toString(enumPort).split(" ");
 
-        for (const auto &port : typesAtIndex) {
-            if (port == str) {
-                return enumPort;
-            }
+        if (std::any_of(typesAtIndex.cbegin(), typesAtIndex.cend(), [str](QString port) {
+                return port == str;
+            })) {
+            return enumPort;
         }
+        // for (const auto &port : typesAtIndex)
+        //
+        // {
+        //     if (port == str) {
+        //         return enumPort;
+        //     }
+        // }
     }
 
     return PP_COUNT;

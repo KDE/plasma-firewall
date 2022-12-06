@@ -6,7 +6,8 @@
 
 #include "loglistmodel.h"
 
-class UfwLogModel : public LogListModel {
+class UfwLogModel : public LogListModel
+{
     Q_OBJECT
 public:
     explicit UfwLogModel(QObject *parent);

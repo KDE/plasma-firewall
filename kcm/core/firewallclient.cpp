@@ -54,14 +54,14 @@ bool FirewallClient::isTcpAndUdp(int protocolIdx)
     return m_currentBackend->isTcpAndUdp(protocolIdx);
 }
 
-int FirewallClient::indexOfProtocol(const QString& protocol)
+int FirewallClient::indexOfProtocol(const QString &protocol)
 {
     if (!m_currentBackend) {
         return -1;
     }
 
     const QStringList protocolList = m_currentBackend->knownProtocols();
-    for(int i = 0; i < m_currentBackend->knownProtocols().size(); i++) {
+    for (int i = 0; i < m_currentBackend->knownProtocols().size(); i++) {
         if (protocolList[i].toLower() == protocol.toLower()) {
             return i;
         }
@@ -173,27 +173,25 @@ FirewallClient::Capabilities FirewallClient::capabilities() const
 
 /* Creates a new Rule and returns it to the Qml side, passing arguments based
  * on the Connection Table. */
-Rule *FirewallClient::createRuleFromConnection(const QString& protocol,
-    const QString& localAddress, const QString& foreignAddres,
-    const QString& status)
+Rule *FirewallClient::createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status)
 {
     if (!m_currentBackend) {
         return nullptr;
     }
-    return m_currentBackend->createRuleFromConnection(
-        protocol, localAddress, foreignAddres, status);
+    return m_currentBackend->createRuleFromConnection(protocol, localAddress, foreignAddres, status);
 }
 
-Rule *FirewallClient::createRuleFromLog(const QString& protocol,
-    const QString& sourceAddress, const QString& sourcePort,
-    const QString& destinationAddress, const QString& destinationPort,
-    const QString& inn)
+Rule *FirewallClient::createRuleFromLog(const QString &protocol,
+                                        const QString &sourceAddress,
+                                        const QString &sourcePort,
+                                        const QString &destinationAddress,
+                                        const QString &destinationPort,
+                                        const QString &inn)
 {
     if (!m_currentBackend) {
         return nullptr;
     }
-    return m_currentBackend->createRuleFromLog(protocol, sourceAddress,
-        sourcePort, destinationAddress, destinationPort, inn);
+    return m_currentBackend->createRuleFromLog(protocol, sourceAddress, sourcePort, destinationAddress, destinationPort, inn);
 }
 
 bool FirewallClient::enabled() const
@@ -245,8 +243,7 @@ KJob *FirewallClient::setEnabled(bool enabled)
     return m_currentBackend->setEnabled(enabled);
 }
 
-void FirewallClient::queryStatus(
-    DefaultDataBehavior defaultsBehavior, ProfilesBehavior profilesBehavior)
+void FirewallClient::queryStatus(DefaultDataBehavior defaultsBehavior, ProfilesBehavior profilesBehavior)
 {
     if (!m_currentBackend) {
         return;
@@ -299,10 +296,10 @@ void FirewallClient::setBackend(const QStringList &backendList)
         delete m_currentBackend;
         m_currentBackend = nullptr;
     }
-
+    // cppcheck-suppress unknownMacro
     const auto plugins = KPluginMetaData::findPlugins(QStringLiteral("kf" QT_STRINGIFY(QT_VERSION_MAJOR) "/plasma_firewall"));
 
-    QList<KPluginFactory*> factories;
+    QList<KPluginFactory *> factories;
     for (const KPluginMetaData &metadata : plugins) {
         QString pluginName = metadata.pluginId().remove(QStringLiteral("backend"));
         if (!backendList.contains(pluginName)) {
@@ -316,7 +313,7 @@ void FirewallClient::setBackend(const QStringList &backendList)
     }
 
     // lambdas
-    auto systemCheck = [this] (const QList<KPluginFactory*> &factories) -> IFirewallClientBackend* {
+    auto systemCheck = [this](const QList<KPluginFactory *> &factories) -> IFirewallClientBackend * {
         for (KPluginFactory *factory : factories) {
             auto perhaps = factory->create<IFirewallClientBackend>(this, QVariantList());
             if (perhaps->isCurrentlyLoaded()) {
@@ -327,9 +324,9 @@ void FirewallClient::setBackend(const QStringList &backendList)
         return nullptr;
     };
 
-    auto loadFromBinary = [this] (const QList<KPluginFactory*> factories) -> IFirewallClientBackend* {
+    auto loadFromBinary = [this](const QList<KPluginFactory *> factories) -> IFirewallClientBackend * {
         for (KPluginFactory *factory : factories) {
-            auto perhaps = factory->create<IFirewallClientBackend>(this, QVariantList() );
+            auto perhaps = factory->create<IFirewallClientBackend>(this, QVariantList());
             if (perhaps->hasExecutable()) {
                 return perhaps;
             }
@@ -348,22 +345,12 @@ void FirewallClient::setBackend(const QStringList &backendList)
         return;
     }
 
-    connect(m_currentBackend, &IFirewallClientBackend::enabledChanged,
-        this, &FirewallClient::enabledChanged);
-    connect(m_currentBackend,
-        &IFirewallClientBackend::defaultIncomingPolicyChanged, this,
-        &FirewallClient::defaultIncomingPolicyChanged);
-    connect(m_currentBackend,
-        &IFirewallClientBackend::defaultOutgoingPolicyChanged, this,
-        &FirewallClient::defaultOutgoingPolicyChanged);
-    connect(m_currentBackend,
-        &IFirewallClientBackend::logsAutoRefreshChanged, this,
-        &FirewallClient::logsAutoRefreshChanged);
-    connect(m_currentBackend,
-        &IFirewallClientBackend::hasExecutableChanged, this,
-        &FirewallClient::hasExecutableChanged);
-    connect(m_currentBackend, &IFirewallClientBackend::showErrorMessage,
-        this, &FirewallClient::showErrorMessage);
+    connect(m_currentBackend, &IFirewallClientBackend::enabledChanged, this, &FirewallClient::enabledChanged);
+    connect(m_currentBackend, &IFirewallClientBackend::defaultIncomingPolicyChanged, this, &FirewallClient::defaultIncomingPolicyChanged);
+    connect(m_currentBackend, &IFirewallClientBackend::defaultOutgoingPolicyChanged, this, &FirewallClient::defaultOutgoingPolicyChanged);
+    connect(m_currentBackend, &IFirewallClientBackend::logsAutoRefreshChanged, this, &FirewallClient::logsAutoRefreshChanged);
+    connect(m_currentBackend, &IFirewallClientBackend::hasExecutableChanged, this, &FirewallClient::hasExecutableChanged);
+    connect(m_currentBackend, &IFirewallClientBackend::showErrorMessage, this, &FirewallClient::showErrorMessage);
 }
 
 QString FirewallClient::backend() const

@@ -57,19 +57,14 @@ public:
     virtual void setLogsAutoRefresh(bool logsAutoRefresh) = 0;
 
     /* Creates a new Rule and returns it to the Qml side, passing arguments based on the Connection Table. */
-    virtual Rule *createRuleFromConnection(
-        const QString &protocol,
-        const QString &localAddress,
-        const QString &foreignAddres,
-        const QString &status) = 0;
+    virtual Rule *createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status) = 0;
 
-    virtual Rule *createRuleFromLog(
-        const QString &protocol,
-        const QString &sourceAddress,
-        const QString &sourcePort,
-        const QString &destinationAddress,
-        const QString &destinationPort,
-        const QString &inn) = 0;
+    virtual Rule *createRuleFromLog(const QString &protocol,
+                                    const QString &sourceAddress,
+                                    const QString &sourcePort,
+                                    const QString &destinationAddress,
+                                    const QString &destinationPort,
+                                    const QString &inn) = 0;
 
     virtual bool enabled() const = 0;
     virtual QString defaultIncomingPolicy() const = 0;
@@ -94,7 +89,7 @@ public:
     QVector<Entry> profiles();
     Entry profileByName(const QString &profileName);
 
-    void queryExecutable(const QString& executableName);
+    void queryExecutable(const QString &executableName);
     bool hasExecutable() const;
     QString executablePath() const;
 Q_SIGNALS:

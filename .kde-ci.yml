@@ -13,4 +13,5 @@ Dependencies:
     'frameworks/kpackage': '@latest'
     'frameworks/kcmutils': '@latest'
 Options:
+  cppcheck-arguments: '--inline-suppr'
   require-passing-tests-on: [ 'Linux', 'FreeBSD']

@@ -88,9 +88,8 @@ QHash<int, QByteArray> ConnectionsModel::roleNames() const
     };
 }
 
-void ConnectionsModel::refreshConnections(const  QVector<QStringList>& result)
+void ConnectionsModel::refreshConnections(const QVector<QStringList> &result)
 {
-
     if (m_netstatHelper.hasError()) {
         Q_EMIT showErrorMessage(i18n("Failed to get connections: %1", m_netstatHelper.errorString()));
         return;
@@ -102,12 +101,12 @@ void ConnectionsModel::refreshConnections(const  QVector<QStringList>& result)
     beginResetModel();
     m_connectionsData.clear();
     for (const auto &connection : result) {
-        ConnectionsData conn {.protocol = connection.at(0),
-                                .localAddress = connection.at(1),
-                                .foreignAddress = connection.at(2),
-                                .status = connection.at(3),
-                                .pid = connection.at(4),
-                                .program = connection.at(5)};
+        ConnectionsData conn{.protocol = connection.at(0),
+                             .localAddress = connection.at(1),
+                             .foreignAddress = connection.at(2),
+                             .status = connection.at(3),
+                             .pid = connection.at(4),
+                             .program = connection.at(5)};
 
         if (conn.status == QLatin1String("UNCONN")) {
             conn.status = i18n("Not Connected");

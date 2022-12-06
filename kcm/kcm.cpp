@@ -13,9 +13,9 @@
 #include <KLocalizedString>
 #include <KPluginFactory>
 
+#include "core/ipvalidator.h"
 #include "core/loglistmodel.h"
 #include "core/rulelistmodel.h"
-#include "core/ipvalidator.h"
 #include "version.h"
 
 #include "backends/netstat/conectionsmodel.h"
@@ -27,12 +27,6 @@ KCMFirewall::KCMFirewall(QObject *parent, const KPluginMetaData &metaData, const
     : KQuickAddons::ConfigModule(parent, metaData, args)
     , m_client(new FirewallClient(this))
 {
-    if (m_client->capabilities() & FirewallClient::SaveCapability) {
-        setButtons(Help | Apply);
-    } else {
-        setButtons(Help);
-    }
-
     qmlRegisterAnonymousType<KJob>("org.kcm.firewall", 1);
     qmlRegisterType<RuleListModel>("org.kcm.firewall", 1, 0, "RuleListModel");
     qmlRegisterType<Rule>("org.kcm.firewall", 1, 0, "Rule");
@@ -44,6 +38,12 @@ KCMFirewall::KCMFirewall(QObject *parent, const KPluginMetaData &metaData, const
 
     // TODO: Make this configurable.
     m_client->setBackend({"ufw", "firewalld"});
+
+    if (m_client->capabilities() & FirewallClient::SaveCapability) {
+        setButtons(Help | Apply);
+    } else {
+        setButtons(Help);
+    }
 }
 
 KCMFirewall::~KCMFirewall()

@@ -31,7 +31,7 @@ private:
     bool m_directFinished = false;
     bool m_simpleFinished = false;
     QList<firewalld_reply> m_replyDirect = {};
-    QStringList m_replyServices= {};
+    QStringList m_replyServices = {};
 };
 
 #endif

@@ -5,15 +5,13 @@
 
 #include <QValidator>
 
-class KCM_FIREWALL_CORE_EXPORT IPValidator : public QValidator {
+class KCM_FIREWALL_CORE_EXPORT IPValidator : public QValidator
+{
     Q_OBJECT
 
     Q_PROPERTY(IPVersion ipVersion READ ipVersion WRITE setIPVersion NOTIFY ipVersionChanged)
 public:
-    enum class IPVersion {
-        IPv4,
-        IPv6
-    };
+    enum class IPVersion { IPv4, IPv6 };
     Q_ENUM(IPVersion)
 
     explicit IPValidator(QObject *parent = nullptr);

@@ -9,10 +9,10 @@
  * UFW KControl Module
  */
 
-#include <QObject>
-#include <QtContainerFwd>
-#include <QVariantMap>
 #include <KAuth/ActionReply>
+#include <QObject>
+#include <QVariantMap>
+#include <QtContainerFwd>
 
 class QByteArray;
 
@@ -20,7 +20,6 @@ using namespace KAuth;
 
 namespace UFW
 {
-class LogLister;
 
 class Helper : public QObject
 {
@@ -59,7 +58,6 @@ private:
     ActionReply run(const QStringList &args, const QStringList &second, const QString &cmd);
 
 private:
-    LogLister *lister;
 };
 
 }

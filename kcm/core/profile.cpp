@@ -43,14 +43,20 @@ Profile::Profile(QFile &file, bool isSys)
     load(&file);
 }
 
-Profile::Profile(const QVector<Rule*> &rules, const QVariantMap &args, bool isSys)
-    : m_isSystem(isSys)
+Profile::Profile(const QVector<Rule *> &rules, const QVariantMap &args, bool isSys)
+    : m_fields(0)
+    , m_enabled(false)
+    , m_ipv6Enabled(false)
+    , m_logLevel(Types::LOG_OFF)
+    , m_defaultIncomingPolicy(Types::POLICY_ALLOW)
+    , m_defaultOutgoingPolicy(Types::POLICY_ALLOW)
+    , m_isSystem(isSys)
 {
     setRules(rules);
     setArgs(args);
 }
 
-void Profile::setRules(const QVector<Rule*> &newrules)
+void Profile::setRules(const QVector<Rule *> &newrules)
 {
     m_rules = newrules;
 }
@@ -91,7 +97,7 @@ QString Profile::toXml() const
     stream << "<ufw full=\"true\" >" << Qt::endl << ' ' << defaultsXml() << Qt::endl << " <rules>" << Qt::endl;
 
     /* for (const auto &rule : m_rules) { */
-        /* stream << "  " << rule->toXml(); */
+    /* stream << "  " << rule->toXml(); */
     /* } */
 
     stream << " </rules>" << Qt::endl << ' ' << modulesXml() << Qt::endl << "</ufw>" << Qt::endl;
@@ -166,19 +172,19 @@ void Profile::load(QIODevice *device)
             const QString destPort = dport == ANY_PORT ? QString() : dport;
 
             m_rules.append(new Rule(action,
-                              attr.value("direction") == QStringLiteral("in"),
-                              logType,
-                              protocol,
-                              sourceAddress,
-                              sourcePort,
-                              destAddress,
-                              destPort,
-                              attr.value("interface_in").toString(),
-                              attr.value("interface_out").toString(),
-                              attr.value("sapp").toString(),
-                              attr.value("dapp").toString(),
-                              attr.value("position").toInt(),
-                              attr.value("v6") == QStringLiteral("True")));
+                                    attr.value("direction") == QStringLiteral("in"),
+                                    logType,
+                                    protocol,
+                                    sourceAddress,
+                                    sourcePort,
+                                    destAddress,
+                                    destPort,
+                                    attr.value("interface_in").toString(),
+                                    attr.value("interface_out").toString(),
+                                    attr.value("sapp").toString(),
+                                    attr.value("dapp").toString(),
+                                    attr.value("position").toInt(),
+                                    attr.value("v6") == QStringLiteral("True")));
         } else if (reader.name() == QLatin1String("defaults")) {
             m_fields |= FIELD_DEFAULTS;
 

@@ -17,7 +17,7 @@ NetstatHelper::NetstatHelper()
 {
 }
 
-void NetstatHelper::query() 
+void NetstatHelper::query()
 {
     m_executableProcess = new QProcess();
     m_processKillerTimer = new QTimer();
@@ -31,16 +31,12 @@ void NetstatHelper::query()
      *  -t, --tcp           display only TCP sockets
      */
 
-    const QStringList netstatArgs( m_hasTimeoutError ? QStringList({"-tuap"}) : QStringList({"-tuapr"}));
+    const QStringList netstatArgs(m_hasTimeoutError ? QStringList({"-tuap"}) : QStringList({"-tuapr"}));
     const QString executable = QStringLiteral("ss");
 
-    connect(
-        m_executableProcess,  QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
-        this, &NetstatHelper::stepExecuteFinished);
-    
-    connect(
-        m_processKillerTimer, &QTimer::timeout, 
-        this, &NetstatHelper::stopProcess);
+    connect(m_executableProcess, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &NetstatHelper::stepExecuteFinished);
+
+    connect(m_processKillerTimer, &QTimer::timeout, this, &NetstatHelper::stopProcess);
 
     m_executableProcess->start(executable, netstatArgs, QIODevice::ReadOnly);
 
@@ -71,7 +67,7 @@ void NetstatHelper::stepExecuteFinished(int exitCode)
         return;
     }
 
-    if (m_processKillerTimer) {
+    if (m_processKillerTimer != nullptr) {
         m_processKillerTimer->stop();
         m_processKillerTimer->deleteLater();
         m_processKillerTimer = nullptr;
@@ -84,7 +80,8 @@ void NetstatHelper::stepExecuteFinished(int exitCode)
         m_errorString = m_executableProcess->readAllStandardError();
     } else {
         QVector<QStringList> result = parseSSOutput(m_executableProcess->readAllStandardOutput());
-        Q_EMIT queryFinished(result);;
+        Q_EMIT queryFinished(result);
+        ;
     }
 
     m_executableProcess->deleteLater();
@@ -159,7 +156,7 @@ QVector<QStringList> NetstatHelper::parseSSOutput(const QByteArray &netstatOutpu
             PidRole,
             ProgramRole
         */
-        QStringList connection {
+        QStringList connection{
             values[0], // NetId
             values[4], // Local Address
             values[5], // Peer Address,

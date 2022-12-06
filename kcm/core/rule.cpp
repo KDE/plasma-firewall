@@ -412,9 +412,10 @@ void Rule::setSimplified(bool value)
     Q_EMIT simplifiedChanged(value);
 }
 
-void Rule::setSourceApplication(const QString &app) {
+void Rule::setSourceApplication(const QString &app)
+{
     if (m_sourceApplication == app) {
-        return ;
+        return;
     }
     m_sourceApplication = app;
     Q_EMIT sourceApplicationChanged(app);

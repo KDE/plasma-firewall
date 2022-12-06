@@ -32,6 +32,7 @@ Q_LOGGING_CATEGORY(FirewallDClientDebug, "firewalld.client")
 FirewalldClient::FirewalldClient(QObject *parent, const QVariantList &args)
     : IFirewallClientBackend(parent, args)
     , m_rulesModel(new RuleListModel(this))
+    , m_logsAutoRefresh(false)
 {
     queryExecutable("firewalld");
 
@@ -69,7 +70,15 @@ KJob *FirewalldClient::setEnabled(const bool value)
         }
         m_currentProfile.setEnabled(value);
         if (value) {
-            queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
+            FirewalldJob *authjob = new FirewalldJob(FirewalldJob::ALL);
+            connect(authjob, &KJob::result, this, [this, authjob] {
+                if (authjob->error()) {
+                    qCDebug(FirewallDClientDebug) << "Job AuthError: " << authjob->error() << authjob->errorString();
+                    return;
+                }
+                queryStatus(FirewallClient::DefaultDataBehavior::ReadDefaults, FirewallClient::ProfilesBehavior::DontListenProfiles);
+            });
+            authjob->start();
         }
         Q_EMIT enabledChanged(value);
     });
@@ -128,13 +137,13 @@ RuleListModel *FirewalldClient::rules() const
 
 Rule *FirewalldClient::ruleAt(int index)
 {
-    auto rules = m_currentProfile.rules();
+    auto cRules = m_currentProfile.rules();
 
-    if (index < 0 || index >= rules.count()) {
+    if (index < 0 || index >= cRules.count()) {
         return nullptr;
     }
 
-    Rule *rule = rules.at(index);
+    Rule *rule = cRules.at(index);
     return rule;
 }
 KJob *FirewalldClient::addRule(Rule *rule)
@@ -199,12 +208,12 @@ bool FirewalldClient::supportsRuleUpdate() const
 
 KJob *FirewalldClient::moveRule(int from, int to)
 {
-    QVector<Rule *> rules = m_currentProfile.rules();
-    if (from < 0 || from >= rules.count()) {
+    QVector<Rule *> cRules = m_currentProfile.rules();
+    if (from < 0 || from >= cRules.count()) {
         qWarning() << "invalid from index";
     }
 
-    if (to < 0 || to >= rules.count()) {
+    if (to < 0 || to >= cRules.count()) {
         qWarning() << "invalid to index";
     }
     // Correct indices
@@ -568,10 +577,10 @@ QStringList FirewalldClient::knownProtocols()
 bool FirewalldClient::isCurrentlyLoaded() const
 {
     QProcess process;
-    const QString name = "systemctl";
+    const QString pname = "systemctl";
     const QStringList args = {"status", "firewalld"};
 
-    process.start(name, args);
+    process.start(pname, args);
     process.waitForFinished();
 
     // systemctl returns 0 for status if the app is loaded, and 3 otherwise.

@@ -44,7 +44,12 @@ public:
      * on the Connection Table. */
     Rule *createRuleFromConnection(const QString &protocol, const QString &localAddress, const QString &foreignAddres, const QString &status) override;
 
-    Rule *createRuleFromLog(const QString &protocol, const QString &sourceAddress, const QString &sourcePort, const QString &destinationAddress, const QString &destinationPort, const QString &inn) override;
+    Rule *createRuleFromLog(const QString &protocol,
+                            const QString &sourceAddress,
+                            const QString &sourcePort,
+                            const QString &destinationAddress,
+                            const QString &destinationPort,
+                            const QString &inn) override;
 
     bool enabled() const override;
     QString defaultIncomingPolicy() const override;
@@ -76,13 +81,11 @@ protected:
 private:
     QString m_status;
     QStringList m_rawLogs;
-    bool m_isBusy;
     Profile m_currentProfile;
     RuleListModel *const m_rulesModel;
     LogListModel *m_logs = nullptr;
     QTimer m_logsRefreshTimer;
     bool m_logsAutoRefresh;
-    bool m_serviceStatus;
     QStringList m_knownApplications;
 };
 
