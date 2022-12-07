@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-20 00:51+0000\n"
+"POT-Creation-Date: 2022-12-07 00:48+0000\n"
 "PO-Revision-Date: 2022-02-20 21:25+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -27,22 +27,22 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde@peremen.name"
 
-#: backends/firewalld/firewalldclient.cpp:592 backends/ufw/ufwclient.cpp:675
+#: backends/firewalld/firewalldclient.cpp:600 backends/ufw/ufwclient.cpp:694
 #, kde-format
 msgid "Error fetching information from the firewall."
 msgstr "방화벽에서 정보를 가져올 수 없습니다."
 
-#: backends/firewalld/firewalldjob.cpp:168
+#: backends/firewalld/firewalldjob.cpp:173
 #, kde-format
 msgid "firewalld saving (runtime to permanent)"
 msgstr "firewalld 저장(런타임에서 영구 설정으로)"
 
-#: backends/firewalld/firewalldjob.cpp:188
+#: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
 msgid "firewalld saving"
 msgstr "firewalld 저장"
 
-#: backends/firewalld/firewalldjob.cpp:188
+#: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
 msgid "firewalld %1"
 msgstr "firewalld %1"
@@ -52,27 +52,22 @@ msgstr "firewalld %1"
 msgid "firewalld listing rules and services"
 msgstr "firewalld 목록과 서비스 표시"
 
-#: backends/firewalld/systemdjob.cpp:47
-#, kde-format
-msgid "Invalid Call"
-msgstr "잘못된 호출"
-
-#: backends/netstat/conectionsmodel.cpp:95
+#: backends/netstat/conectionsmodel.cpp:94
 #, kde-format
 msgid "Failed to get connections: %1"
 msgstr "연결을 가져올 수 없음: %1"
 
-#: backends/netstat/conectionsmodel.cpp:113
+#: backends/netstat/conectionsmodel.cpp:112
 #, kde-format
 msgid "Not Connected"
 msgstr "연결되지 않음"
 
-#: backends/netstat/conectionsmodel.cpp:115
+#: backends/netstat/conectionsmodel.cpp:114
 #, kde-format
 msgid "Established"
 msgstr "수립됨"
 
-#: backends/netstat/conectionsmodel.cpp:117
+#: backends/netstat/conectionsmodel.cpp:116
 #, kde-format
 msgid "Listening"
 msgstr "듣는 중"
@@ -107,7 +102,7 @@ msgstr "규칙 추가에 잘못된 인자가 전달됨"
 msgid "An error occurred in command '%1': %2"
 msgstr "명령 '%1'에서 오류 발생: %2"
 
-#: backends/ufw/ufwclient.cpp:147
+#: backends/ufw/ufwclient.cpp:161
 #, kde-format
 msgid ""
 "There was an error in the backend! Please report it.\n"
@@ -116,12 +111,12 @@ msgstr ""
 "백엔드에서 오류가 발생했습니다! 보고해 주십시오.\n"
 "%1 %2"
 
-#: backends/ufw/ufwclient.cpp:254
+#: backends/ufw/ufwclient.cpp:268
 #, kde-format
 msgid "Error fetching firewall logs: %1"
 msgstr "방화벽 로그를 가져오는 중 오류 발생: %1"
 
-#: backends/ufw/ufwclient.cpp:588 core/firewallclient.cpp:74
+#: backends/ufw/ufwclient.cpp:608 core/firewallclient.cpp:74
 #, kde-format
 msgid "Any"
 msgstr "임의"
@@ -159,6 +154,11 @@ msgstr "%1 발신"
 #, kde-format
 msgid "Yes"
 msgstr "예"
+
+#: core/systemdjob.cpp:52
+#, kde-format
+msgid "Invalid Call"
+msgstr "잘못된 호출"
 
 #: core/types.cpp:19
 #, kde-format

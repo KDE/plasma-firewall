@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-20 00:51+0000\n"
+"POT-Creation-Date: 2022-12-07 00:48+0000\n"
 "PO-Revision-Date: 2022-08-26 14:32+0200\n"
 "Last-Translator: Antoni Bella Pérez <antonibella5@yahoo.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -31,22 +31,22 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "txemaq@gmail.com"
 
-#: backends/firewalld/firewalldclient.cpp:592 backends/ufw/ufwclient.cpp:675
+#: backends/firewalld/firewalldclient.cpp:600 backends/ufw/ufwclient.cpp:694
 #, kde-format
 msgid "Error fetching information from the firewall."
 msgstr "S'ha produït un error en recuperar informació del tallafoc."
 
-#: backends/firewalld/firewalldjob.cpp:168
+#: backends/firewalld/firewalldjob.cpp:173
 #, kde-format
 msgid "firewalld saving (runtime to permanent)"
 msgstr "S'està guardant «firewalld» (des d'execució a permanent)"
 
-#: backends/firewalld/firewalldjob.cpp:188
+#: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
 msgid "firewalld saving"
 msgstr "S'està guardant «firewalld»"
 
-#: backends/firewalld/firewalldjob.cpp:188
+#: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
 msgid "firewalld %1"
 msgstr "%1 de «firewalld»"
@@ -56,27 +56,22 @@ msgstr "%1 de «firewalld»"
 msgid "firewalld listing rules and services"
 msgstr "Llistat de regles i servix de «firewalld»"
 
-#: backends/firewalld/systemdjob.cpp:47
-#, kde-format
-msgid "Invalid Call"
-msgstr "Crida no vàlida"
-
-#: backends/netstat/conectionsmodel.cpp:95
+#: backends/netstat/conectionsmodel.cpp:94
 #, kde-format
 msgid "Failed to get connections: %1"
 msgstr "No s'han pogut obtindre les connexions: %1"
 
-#: backends/netstat/conectionsmodel.cpp:113
+#: backends/netstat/conectionsmodel.cpp:112
 #, kde-format
 msgid "Not Connected"
 msgstr "No connectat"
 
-#: backends/netstat/conectionsmodel.cpp:115
+#: backends/netstat/conectionsmodel.cpp:114
 #, kde-format
 msgid "Established"
 msgstr "Establit"
 
-#: backends/netstat/conectionsmodel.cpp:117
+#: backends/netstat/conectionsmodel.cpp:116
 #, kde-format
 msgid "Listening"
 msgstr "Escoltant"
@@ -111,7 +106,7 @@ msgstr "Argument no vàlid passat per a afegir regles"
 msgid "An error occurred in command '%1': %2"
 msgstr "S'ha produït un error en l'ordre «%1»: %2"
 
-#: backends/ufw/ufwclient.cpp:147
+#: backends/ufw/ufwclient.cpp:161
 #, kde-format
 msgid ""
 "There was an error in the backend! Please report it.\n"
@@ -120,12 +115,12 @@ msgstr ""
 "S'ha produït un error en el dorsal. Informeu-lo.\n"
 "%1 %2"
 
-#: backends/ufw/ufwclient.cpp:254
+#: backends/ufw/ufwclient.cpp:268
 #, kde-format
 msgid "Error fetching firewall logs: %1"
 msgstr "S'ha produït un error en recuperar els registres del tallafoc: %1"
 
-#: backends/ufw/ufwclient.cpp:588 core/firewallclient.cpp:74
+#: backends/ufw/ufwclient.cpp:608 core/firewallclient.cpp:74
 #, kde-format
 msgid "Any"
 msgstr "Qualsevol"
@@ -163,6 +158,11 @@ msgstr "%1 eixint"
 #, kde-format
 msgid "Yes"
 msgstr "Sí"
+
+#: core/systemdjob.cpp:52
+#, kde-format
+msgid "Invalid Call"
+msgstr "Crida no vàlida"
 
 #: core/types.cpp:19
 #, kde-format

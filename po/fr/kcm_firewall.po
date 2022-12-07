@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-20 00:51+0000\n"
+"POT-Creation-Date: 2022-12-07 00:48+0000\n"
 "PO-Revision-Date: 2022-02-15 20:17+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
@@ -24,22 +24,22 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "xavier.besnard@neuf.fr"
 
-#: backends/firewalld/firewalldclient.cpp:592 backends/ufw/ufwclient.cpp:675
+#: backends/firewalld/firewalldclient.cpp:600 backends/ufw/ufwclient.cpp:694
 #, kde-format
 msgid "Error fetching information from the firewall."
 msgstr "Erreur durant la recherche des journaux du pare-feu."
 
-#: backends/firewalld/firewalldjob.cpp:168
+#: backends/firewalld/firewalldjob.cpp:173
 #, kde-format
 msgid "firewalld saving (runtime to permanent)"
 msgstr "Enregistrement de « firewalld » (de temps réel à permanent)"
 
-#: backends/firewalld/firewalldjob.cpp:188
+#: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
 msgid "firewalld saving"
 msgstr "Enregistrement de « firewalld »"
 
-#: backends/firewalld/firewalldjob.cpp:188
+#: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
 msgid "firewalld %1"
 msgstr "firewalld %1"
@@ -49,27 +49,22 @@ msgstr "firewalld %1"
 msgid "firewalld listing rules and services"
 msgstr "Règles et services de listage de « firewalld »"
 
-#: backends/firewalld/systemdjob.cpp:47
-#, kde-format
-msgid "Invalid Call"
-msgstr "Appel non valable"
-
-#: backends/netstat/conectionsmodel.cpp:95
+#: backends/netstat/conectionsmodel.cpp:94
 #, kde-format
 msgid "Failed to get connections: %1"
 msgstr "Impossible d'obtenir les connexions : %1"
 
-#: backends/netstat/conectionsmodel.cpp:113
+#: backends/netstat/conectionsmodel.cpp:112
 #, kde-format
 msgid "Not Connected"
 msgstr "Non connecté"
 
-#: backends/netstat/conectionsmodel.cpp:115
+#: backends/netstat/conectionsmodel.cpp:114
 #, kde-format
 msgid "Established"
 msgstr "Établi"
 
-#: backends/netstat/conectionsmodel.cpp:117
+#: backends/netstat/conectionsmodel.cpp:116
 #, kde-format
 msgid "Listening"
 msgstr "En écoute"
@@ -104,7 +99,7 @@ msgstr "Argument non valable passé pour ajouter des règles"
 msgid "An error occurred in command '%1': %2"
 msgstr "Une erreur s'est produite dans la commande « %1 » : %2"
 
-#: backends/ufw/ufwclient.cpp:147
+#: backends/ufw/ufwclient.cpp:161
 #, kde-format
 msgid ""
 "There was an error in the backend! Please report it.\n"
@@ -113,12 +108,12 @@ msgstr ""
 "Une erreur est survenue dans le moteur ! Veuillez la signaler. \n"
 "%1 %2"
 
-#: backends/ufw/ufwclient.cpp:254
+#: backends/ufw/ufwclient.cpp:268
 #, kde-format
 msgid "Error fetching firewall logs: %1"
 msgstr "Erreur durant la recherche des journaux du pare-feu : %1"
 
-#: backends/ufw/ufwclient.cpp:588 core/firewallclient.cpp:74
+#: backends/ufw/ufwclient.cpp:608 core/firewallclient.cpp:74
 #, kde-format
 msgid "Any"
 msgstr "Tout"
@@ -156,6 +151,11 @@ msgstr "%1 sortante"
 #, kde-format
 msgid "Yes"
 msgstr "Oui"
+
+#: core/systemdjob.cpp:52
+#, kde-format
+msgid "Invalid Call"
+msgstr "Appel non valable"
 
 #: core/types.cpp:19
 #, kde-format

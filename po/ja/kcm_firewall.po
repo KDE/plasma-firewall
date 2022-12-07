@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-20 00:51+0000\n"
+"POT-Creation-Date: 2022-12-07 00:48+0000\n"
 "PO-Revision-Date: 2020-08-19 19:41-0700\n"
 "Last-Translator: Japanese KDE translation team <kde-jp@kde.org>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -24,22 +24,22 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 
-#: backends/firewalld/firewalldclient.cpp:592 backends/ufw/ufwclient.cpp:675
+#: backends/firewalld/firewalldclient.cpp:600 backends/ufw/ufwclient.cpp:694
 #, kde-format
 msgid "Error fetching information from the firewall."
 msgstr ""
 
-#: backends/firewalld/firewalldjob.cpp:168
+#: backends/firewalld/firewalldjob.cpp:173
 #, kde-format
 msgid "firewalld saving (runtime to permanent)"
 msgstr ""
 
-#: backends/firewalld/firewalldjob.cpp:188
+#: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
 msgid "firewalld saving"
 msgstr ""
 
-#: backends/firewalld/firewalldjob.cpp:188
+#: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
 msgid "firewalld %1"
 msgstr ""
@@ -49,27 +49,22 @@ msgstr ""
 msgid "firewalld listing rules and services"
 msgstr ""
 
-#: backends/firewalld/systemdjob.cpp:47
-#, kde-format
-msgid "Invalid Call"
-msgstr ""
-
-#: backends/netstat/conectionsmodel.cpp:95
+#: backends/netstat/conectionsmodel.cpp:94
 #, kde-format
 msgid "Failed to get connections: %1"
 msgstr ""
 
-#: backends/netstat/conectionsmodel.cpp:113
+#: backends/netstat/conectionsmodel.cpp:112
 #, kde-format
 msgid "Not Connected"
 msgstr ""
 
-#: backends/netstat/conectionsmodel.cpp:115
+#: backends/netstat/conectionsmodel.cpp:114
 #, kde-format
 msgid "Established"
 msgstr ""
 
-#: backends/netstat/conectionsmodel.cpp:117
+#: backends/netstat/conectionsmodel.cpp:116
 #, kde-format
 msgid "Listening"
 msgstr ""
@@ -104,19 +99,19 @@ msgstr ""
 msgid "An error occurred in command '%1': %2"
 msgstr ""
 
-#: backends/ufw/ufwclient.cpp:147
+#: backends/ufw/ufwclient.cpp:161
 #, kde-format
 msgid ""
 "There was an error in the backend! Please report it.\n"
 "%1 %2"
 msgstr ""
 
-#: backends/ufw/ufwclient.cpp:254
+#: backends/ufw/ufwclient.cpp:268
 #, kde-format
 msgid "Error fetching firewall logs: %1"
 msgstr ""
 
-#: backends/ufw/ufwclient.cpp:588 core/firewallclient.cpp:74
+#: backends/ufw/ufwclient.cpp:608 core/firewallclient.cpp:74
 #, kde-format
 msgid "Any"
 msgstr ""
@@ -153,6 +148,11 @@ msgstr ""
 #: core/rule.cpp:205
 #, kde-format
 msgid "Yes"
+msgstr ""
+
+#: core/systemdjob.cpp:52
+#, kde-format
+msgid "Invalid Call"
 msgstr ""
 
 #: core/types.cpp:19

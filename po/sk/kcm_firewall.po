@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-20 00:51+0000\n"
+"POT-Creation-Date: 2022-12-07 00:48+0000\n"
 "PO-Revision-Date: 2022-04-15 19:13+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -26,22 +26,22 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "wizzardsk@gmail.com"
 
-#: backends/firewalld/firewalldclient.cpp:592 backends/ufw/ufwclient.cpp:675
+#: backends/firewalld/firewalldclient.cpp:600 backends/ufw/ufwclient.cpp:694
 #, kde-format
 msgid "Error fetching information from the firewall."
 msgstr "Chyba pri načítaní informácií z brány firewall."
 
-#: backends/firewalld/firewalldjob.cpp:168
+#: backends/firewalld/firewalldjob.cpp:173
 #, kde-format
 msgid "firewalld saving (runtime to permanent)"
 msgstr "ukladanie firewalld (spustené do trvalých)"
 
-#: backends/firewalld/firewalldjob.cpp:188
+#: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
 msgid "firewalld saving"
 msgstr "firewalld ukladanie"
 
-#: backends/firewalld/firewalldjob.cpp:188
+#: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
 msgid "firewalld %1"
 msgstr "firewalld %1"
@@ -51,27 +51,22 @@ msgstr "firewalld %1"
 msgid "firewalld listing rules and services"
 msgstr "vypís služieb a pravidiel firewalld"
 
-#: backends/firewalld/systemdjob.cpp:47
-#, kde-format
-msgid "Invalid Call"
-msgstr "Neplatné volanie"
-
-#: backends/netstat/conectionsmodel.cpp:95
+#: backends/netstat/conectionsmodel.cpp:94
 #, kde-format
 msgid "Failed to get connections: %1"
 msgstr "Nepodarilo sa získať pripojenia: %1"
 
-#: backends/netstat/conectionsmodel.cpp:113
+#: backends/netstat/conectionsmodel.cpp:112
 #, kde-format
 msgid "Not Connected"
 msgstr "Nepripojené"
 
-#: backends/netstat/conectionsmodel.cpp:115
+#: backends/netstat/conectionsmodel.cpp:114
 #, kde-format
 msgid "Established"
 msgstr "Nadviazané"
 
-#: backends/netstat/conectionsmodel.cpp:117
+#: backends/netstat/conectionsmodel.cpp:116
 #, kde-format
 msgid "Listening"
 msgstr "Počúva sa"
@@ -106,7 +101,7 @@ msgstr "Na pridanie pravidiel bol odoslaný neplatný parameter"
 msgid "An error occurred in command '%1': %2"
 msgstr "V príkaze '%1' sa vyskytla chyba: %2"
 
-#: backends/ufw/ufwclient.cpp:147
+#: backends/ufw/ufwclient.cpp:161
 #, kde-format
 msgid ""
 "There was an error in the backend! Please report it.\n"
@@ -115,12 +110,12 @@ msgstr ""
 "V backende sa vyskytla chyba! Prosím nahláste to.\n"
 "%1 %2"
 
-#: backends/ufw/ufwclient.cpp:254
+#: backends/ufw/ufwclient.cpp:268
 #, kde-format
 msgid "Error fetching firewall logs: %1"
 msgstr "Chyba pri načítaní protokolov brány firewall: %1"
 
-#: backends/ufw/ufwclient.cpp:588 core/firewallclient.cpp:74
+#: backends/ufw/ufwclient.cpp:608 core/firewallclient.cpp:74
 #, kde-format
 msgid "Any"
 msgstr "Hocičo"
@@ -158,6 +153,11 @@ msgstr "Odchádzajúci %1"
 #, kde-format
 msgid "Yes"
 msgstr "Áno"
+
+#: core/systemdjob.cpp:52
+#, kde-format
+msgid "Invalid Call"
+msgstr "Neplatné volanie"
 
 #: core/types.cpp:19
 #, kde-format

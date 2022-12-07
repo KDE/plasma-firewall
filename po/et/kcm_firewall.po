@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-20 00:51+0000\n"
+"POT-Creation-Date: 2022-12-07 00:48+0000\n"
 "PO-Revision-Date: 2020-10-25 21:58+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -27,23 +27,23 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "mihhkel@gmail.com"
 
-#: backends/firewalld/firewalldclient.cpp:592 backends/ufw/ufwclient.cpp:675
+#: backends/firewalld/firewalldclient.cpp:600 backends/ufw/ufwclient.cpp:694
 #, kde-format
 msgid "Error fetching information from the firewall."
 msgstr ""
 
-#: backends/firewalld/firewalldjob.cpp:168
+#: backends/firewalld/firewalldjob.cpp:173
 #, fuzzy, kde-format
 msgid "firewalld saving (runtime to permanent)"
 msgstr "Firewalld salvestamine (käitusajast püsivaks)"
 
-#: backends/firewalld/firewalldjob.cpp:188
+#: backends/firewalld/firewalldjob.cpp:197
 #, fuzzy, kde-format
 #| msgid "Firewall Logs"
 msgid "firewalld saving"
 msgstr "Firewalld salvestamine"
 
-#: backends/firewalld/firewalldjob.cpp:188
+#: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
 msgid "firewalld %1"
 msgstr "Firewalld %1"
@@ -53,27 +53,22 @@ msgstr "Firewalld %1"
 msgid "firewalld listing rules and services"
 msgstr "Firewalld salvestamine (käitusajast püsivaks)"
 
-#: backends/firewalld/systemdjob.cpp:47
-#, kde-format
-msgid "Invalid Call"
-msgstr "Vigane väljakutse"
-
-#: backends/netstat/conectionsmodel.cpp:95
+#: backends/netstat/conectionsmodel.cpp:94
 #, kde-format
 msgid "Failed to get connections: %1"
 msgstr "Ühenduste hankimine nurjus: %1"
 
-#: backends/netstat/conectionsmodel.cpp:113
+#: backends/netstat/conectionsmodel.cpp:112
 #, kde-format
 msgid "Not Connected"
 msgstr "Pole ühendatud"
 
-#: backends/netstat/conectionsmodel.cpp:115
+#: backends/netstat/conectionsmodel.cpp:114
 #, fuzzy, kde-format
 msgid "Established"
 msgstr "Loodud"
 
-#: backends/netstat/conectionsmodel.cpp:117
+#: backends/netstat/conectionsmodel.cpp:116
 #, fuzzy, kde-format
 msgid "Listening"
 msgstr "Jälgib"
@@ -108,7 +103,7 @@ msgstr "Reeglite lisamiseks anti sobimatu argument"
 msgid "An error occurred in command '%1': %2"
 msgstr "Käsu \"%1\" täitmisel ilmnes tõrge: %2"
 
-#: backends/ufw/ufwclient.cpp:147
+#: backends/ufw/ufwclient.cpp:161
 #, kde-format
 msgid ""
 "There was an error in the backend! Please report it.\n"
@@ -117,12 +112,12 @@ msgstr ""
 "Taustaprogrammis ilmnes tõrge. Palun anna sellest teada.\n"
 "%1 %2"
 
-#: backends/ufw/ufwclient.cpp:254
+#: backends/ufw/ufwclient.cpp:268
 #, kde-format
 msgid "Error fetching firewall logs: %1"
 msgstr "Tõrge tulemüüri logide hankimisel: %1"
 
-#: backends/ufw/ufwclient.cpp:588 core/firewallclient.cpp:74
+#: backends/ufw/ufwclient.cpp:608 core/firewallclient.cpp:74
 #, kde-format
 msgid "Any"
 msgstr "Suvaline"
@@ -160,6 +155,11 @@ msgstr "%1 väljuv"
 #, kde-format
 msgid "Yes"
 msgstr "Jah"
+
+#: core/systemdjob.cpp:52
+#, kde-format
+msgid "Invalid Call"
+msgstr "Vigane väljakutse"
 
 #: core/types.cpp:19
 #, kde-format
