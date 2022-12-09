@@ -39,7 +39,7 @@ sudo make install
 The Plasma5 Firewall is open to any contribution and feedback. If you find problems with the contents of this repository please create an issue.
 
 ## Contributing and Getting Involved
-Development can be followed on [Plasma Firewall tasks board](https://invent.kde.org/network/plasma-firewall/-/boards). Code contributions have to be submitted via [GitLab](https://invent.kde.org/network/plasma-firewall). You can follow generic user instructions for [GitLab and a merge request workflow](https://community.kde.org/Infrastructure/GitLab).
+Development can be followed on [Plasma Firewall tasks board](https://invent.kde.org/plasma/plasma-firewall/-/boards). Code contributions have to be submitted via [GitLab](https://invent.kde.org/plasma/plasma-firewall). You can follow generic user instructions for [GitLab and a merge request workflow](https://community.kde.org/Infrastructure/GitLab).
 
 ## License
 SPDX-License-Identifier: BSD-3-Clause

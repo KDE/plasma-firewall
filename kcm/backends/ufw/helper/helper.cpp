@@ -15,6 +15,7 @@
 #include <QProcessEnvironment>
 #include <QString>
 #include <QStringList>
+#include <QStandardPaths>
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QTextCodec>
 #endif
@@ -109,7 +110,10 @@ ActionReply Helper::queryapps(const QVariantMap &args)
     Q_UNUSED(args);
     QProcess ufw;
     ActionReply reply;
-    ufw.start("ufw", {"app", "list"}, QIODevice::ReadOnly);
+
+    const QString ufwexe = QStandardPaths::findExecutable("ufw", {"/usr/sbin", "/usr/bin", "/sbin", "/bin"});
+
+    ufw.start(ufwexe, {"app", "list"}, QIODevice::ReadOnly);
     if (ufw.waitForStarted()) {
         ufw.waitForFinished();
     }
