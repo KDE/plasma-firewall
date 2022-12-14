@@ -113,6 +113,11 @@ ActionReply Helper::queryapps(const QVariantMap &args)
 
     const QString ufwexe = QStandardPaths::findExecutable("ufw", {"/usr/sbin", "/usr/bin", "/sbin", "/bin"});
 
+    if (ufwexe.isEmpty()) {
+        qDebug() << "Executable not found: ufw";
+        return reply;
+    }
+
     ufw.start(ufwexe, {"app", "list"}, QIODevice::ReadOnly);
     if (ufw.waitForStarted()) {
         ufw.waitForFinished();
