@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-07 00:48+0000\n"
+"POT-Creation-Date: 2022-12-15 00:49+0000\n"
 "PO-Revision-Date: 2020-10-29 21:56+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -72,32 +72,32 @@ msgstr "Tilsluttet"
 msgid "Listening"
 msgstr "Lytter"
 
-#: backends/ufw/helper/helper.cpp:211
+#: backends/ufw/helper/helper.cpp:220
 #, kde-format
 msgid "Invalid arguments passed to the profile"
 msgstr "Ugyldige argumenter videregivet til profilen"
 
-#: backends/ufw/helper/helper.cpp:241
+#: backends/ufw/helper/helper.cpp:250
 #, kde-format
 msgid "Error saving the profile."
 msgstr "Fejl da profilen skulle gemmes."
 
-#: backends/ufw/helper/helper.cpp:265
+#: backends/ufw/helper/helper.cpp:274
 #, kde-format
 msgid "Invalid arguments passed to delete profile"
 msgstr "Ugyldige argumenter videregivet til slet profil"
 
-#: backends/ufw/helper/helper.cpp:272
+#: backends/ufw/helper/helper.cpp:281
 #, kde-format
 msgid "Could not remove the profile from disk."
 msgstr "Kunne ikke fjerne profilen fra disken."
 
-#: backends/ufw/helper/helper.cpp:287
+#: backends/ufw/helper/helper.cpp:296
 #, kde-format
 msgid "Invalid argument passed to add Rules"
 msgstr "Ugyldigt argument videregivet til tilføj regler"
 
-#: backends/ufw/helper/helper.cpp:359
+#: backends/ufw/helper/helper.cpp:368
 #, kde-format
 msgid "An error occurred in command '%1': %2"
 msgstr "Der opstod en fejl i kommandoen '%1': %2"

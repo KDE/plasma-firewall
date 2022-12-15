@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-07 00:48+0000\n"
+"POT-Creation-Date: 2022-12-15 00:49+0000\n"
 "PO-Revision-Date: 2022-06-28 09:54+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -72,32 +72,32 @@ msgstr "Осъществена"
 msgid "Listening"
 msgstr "Слушане"
 
-#: backends/ufw/helper/helper.cpp:211
+#: backends/ufw/helper/helper.cpp:220
 #, kde-format
 msgid "Invalid arguments passed to the profile"
 msgstr "Невалидни аргументи, предадени на профила"
 
-#: backends/ufw/helper/helper.cpp:241
+#: backends/ufw/helper/helper.cpp:250
 #, kde-format
 msgid "Error saving the profile."
 msgstr "Грешка при запазването на профила."
 
-#: backends/ufw/helper/helper.cpp:265
+#: backends/ufw/helper/helper.cpp:274
 #, kde-format
 msgid "Invalid arguments passed to delete profile"
 msgstr "Невалидни аргументи, предадени за изтриване на профил"
 
-#: backends/ufw/helper/helper.cpp:272
+#: backends/ufw/helper/helper.cpp:281
 #, kde-format
 msgid "Could not remove the profile from disk."
 msgstr "Не можа да се премахне профила от диска."
 
-#: backends/ufw/helper/helper.cpp:287
+#: backends/ufw/helper/helper.cpp:296
 #, kde-format
 msgid "Invalid argument passed to add Rules"
 msgstr "Невалиден аргумент, предаден за добавяне на правила"
 
-#: backends/ufw/helper/helper.cpp:359
+#: backends/ufw/helper/helper.cpp:368
 #, kde-format
 msgid "An error occurred in command '%1': %2"
 msgstr "Възникна грешка в команда \"%1\" : %2"

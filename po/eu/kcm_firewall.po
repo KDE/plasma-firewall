@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-07 00:48+0000\n"
+"POT-Creation-Date: 2022-12-15 00:49+0000\n"
 "PO-Revision-Date: 2022-02-20 22:44+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -75,32 +75,32 @@ msgstr "Ezarrita"
 msgid "Listening"
 msgstr "Entzuten"
 
-#: backends/ufw/helper/helper.cpp:211
+#: backends/ufw/helper/helper.cpp:220
 #, kde-format
 msgid "Invalid arguments passed to the profile"
 msgstr "Profilari argumentu baliogabeak pasatu zaizkio"
 
-#: backends/ufw/helper/helper.cpp:241
+#: backends/ufw/helper/helper.cpp:250
 #, kde-format
 msgid "Error saving the profile."
 msgstr "Errorea profila gordetzean."
 
-#: backends/ufw/helper/helper.cpp:265
+#: backends/ufw/helper/helper.cpp:274
 #, kde-format
 msgid "Invalid arguments passed to delete profile"
 msgstr "Profila ezabatzeko argumentu baliogabeak pasatu dira"
 
-#: backends/ufw/helper/helper.cpp:272
+#: backends/ufw/helper/helper.cpp:281
 #, kde-format
 msgid "Could not remove the profile from disk."
 msgstr "Ezin izan da profila diskotik ezabatu."
 
-#: backends/ufw/helper/helper.cpp:287
+#: backends/ufw/helper/helper.cpp:296
 #, kde-format
 msgid "Invalid argument passed to add Rules"
 msgstr "arauak gehitzeko argumentu baliogabea pasatu zaio"
 
-#: backends/ufw/helper/helper.cpp:359
+#: backends/ufw/helper/helper.cpp:368
 #, kde-format
 msgid "An error occurred in command '%1': %2"
 msgstr "Errore bat gertatu da «%1» komandoan: %2"

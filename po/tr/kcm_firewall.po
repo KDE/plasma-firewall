@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-07 00:48+0000\n"
+"POT-Creation-Date: 2022-12-15 00:49+0000\n"
 "PO-Revision-Date: 2022-02-27 13:55+0100\n"
 "Last-Translator: Volkan Gezer <volkangezer@gmail.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -72,32 +72,32 @@ msgstr "Kurulu"
 msgid "Listening"
 msgstr "Dinliyor"
 
-#: backends/ufw/helper/helper.cpp:211
+#: backends/ufw/helper/helper.cpp:220
 #, kde-format
 msgid "Invalid arguments passed to the profile"
 msgstr "Profile geçersiz argümanlar geçirildi"
 
-#: backends/ufw/helper/helper.cpp:241
+#: backends/ufw/helper/helper.cpp:250
 #, kde-format
 msgid "Error saving the profile."
 msgstr "Profil kaydedilirken hata."
 
-#: backends/ufw/helper/helper.cpp:265
+#: backends/ufw/helper/helper.cpp:274
 #, kde-format
 msgid "Invalid arguments passed to delete profile"
 msgstr "Profil silmek için geçersiz argümanlar geçirildi"
 
-#: backends/ufw/helper/helper.cpp:272
+#: backends/ufw/helper/helper.cpp:281
 #, kde-format
 msgid "Could not remove the profile from disk."
 msgstr "Profil diskten kaldırılamadı."
 
-#: backends/ufw/helper/helper.cpp:287
+#: backends/ufw/helper/helper.cpp:296
 #, kde-format
 msgid "Invalid argument passed to add Rules"
 msgstr "Kural eklemek için geçersiz argümanlar geçirildi"
 
-#: backends/ufw/helper/helper.cpp:359
+#: backends/ufw/helper/helper.cpp:368
 #, kde-format
 msgid "An error occurred in command '%1': %2"
 msgstr "'%1' komutunda bir hata oluştu: %2"
