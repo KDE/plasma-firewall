@@ -6,7 +6,6 @@
 
 #include <KLocalizedString>
 #include <QDBusConnection>
-#include <QDBusMessage>
 #include <QDBusPendingCall>
 #include <QDBusPendingReply>
 #include <QDebug>
