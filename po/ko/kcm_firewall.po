@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-15 00:49+0000\n"
+"POT-Creation-Date: 2022-12-19 00:48+0000\n"
 "PO-Revision-Date: 2022-02-20 21:25+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -155,7 +155,7 @@ msgstr "%1 발신"
 msgid "Yes"
 msgstr "예"
 
-#: core/systemdjob.cpp:52
+#: core/systemdjob.cpp:51
 #, kde-format
 msgid "Invalid Call"
 msgstr "잘못된 호출"

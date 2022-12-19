@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-15 00:49+0000\n"
+"POT-Creation-Date: 2022-12-19 00:48+0000\n"
 "PO-Revision-Date: 2022-12-13 12:22\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -155,7 +155,7 @@ msgstr "%1 传出操作"
 msgid "Yes"
 msgstr "是"
 
-#: core/systemdjob.cpp:52
+#: core/systemdjob.cpp:51
 #, kde-format
 msgid "Invalid Call"
 msgstr "无效的调用"

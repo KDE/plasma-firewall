@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-15 00:49+0000\n"
+"POT-Creation-Date: 2022-12-19 00:48+0000\n"
 "PO-Revision-Date: 2022-03-29 19:11+0200\n"
 "Last-Translator: Paolo Zamponi <zapaolo@email.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -155,7 +155,7 @@ msgstr "%1 in uscita"
 msgid "Yes"
 msgstr "Sì"
 
-#: core/systemdjob.cpp:52
+#: core/systemdjob.cpp:51
 #, kde-format
 msgid "Invalid Call"
 msgstr "Chiamata non valida"

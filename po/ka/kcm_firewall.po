@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-15 00:49+0000\n"
+"POT-Creation-Date: 2022-12-19 00:48+0000\n"
 "PO-Revision-Date: 2022-11-16 08:40+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -156,7 +156,7 @@ msgstr "%1 გამავალი"
 msgid "Yes"
 msgstr "დიახ"
 
-#: core/systemdjob.cpp:52
+#: core/systemdjob.cpp:51
 #, kde-format
 msgid "Invalid Call"
 msgstr "არასწორი გამოძახება"
