@@ -38,6 +38,7 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 include(KDEInstallDirs)
 include(KDECompilerSettings)
 include(KDECMakeSettings)
+include(ECMDeprecationSettings)
 
 # Qt5
 find_package(Qt${QT_MAJOR_VERSION} REQUIRED COMPONENTS
@@ -47,10 +48,9 @@ find_package(Qt${QT_MAJOR_VERSION} REQUIRED COMPONENTS
     Test
 )
 
-
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f00)
-add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055800)
-
+ecm_set_disabled_deprecation_versions(QT 5.15.2
+    KF 5.101
+)
 
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS 
     CoreAddons
