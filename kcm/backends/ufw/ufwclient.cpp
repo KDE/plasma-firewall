@@ -623,6 +623,9 @@ QString UfwClient::toXml(Rule *r) const
 
     xml.writeAttribute(QStringLiteral("action"), Types::toString(r->action()));
     xml.writeAttribute(QStringLiteral("direction"), r->incoming() ? QStringLiteral("in") : QStringLiteral("out"));
+    // ufw doesn't know when to treat a service (simplified rule) as in or out by itself, so we have to hint it the correct
+    // direction.
+    bool hintUFW = r->incoming() && r->simplified();
 
     if (!r->destinationApplication().isEmpty()) {
         xml.writeAttribute(QStringLiteral("dapp"), r->destinationApplication());
@@ -630,9 +633,9 @@ QString UfwClient::toXml(Rule *r) const
         xml.writeAttribute(QStringLiteral("dport"), r->destinationPort());
     }
     if (!r->sourceApplication().isEmpty()) {
-        xml.writeAttribute(QStringLiteral("sapp"), r->sourceApplication());
+        hintUFW ? xml.writeAttribute(QStringLiteral("dapp"), r->sourceApplication()) : xml.writeAttribute(QStringLiteral("sapp"), r->sourceApplication());
     } else if (!r->sourcePort().isEmpty()) {
-        xml.writeAttribute(QStringLiteral("sport"), r->sourcePort());
+        hintUFW ? xml.writeAttribute(QStringLiteral("dport"), r->sourcePort()) : xml.writeAttribute(QStringLiteral("sport"), r->sourcePort());
     }
 
     if (!FirewallClient::isTcpAndUdp(r->protocol())) {
