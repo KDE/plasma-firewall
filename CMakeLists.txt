@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION 3.16)
 project(plasma-firewall)
 set(PROJECT_VERSION "5.26.90")
 
-set(KF5_MIN_VERSION "5.98.0")
+set(KF5_MIN_VERSION "5.102.0")
 set(KDE_COMPILERSETTINGS_LEVEL "5.82")
 set(QT_MIN_VERSION "5.15.2")
 
