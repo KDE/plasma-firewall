@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-19 00:48+0000\n"
+"POT-Creation-Date: 2023-01-20 02:45+0000\n"
 "PO-Revision-Date: 2022-04-10 17:33+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -30,7 +30,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "karl@huftis.org"
 
-#: backends/firewalld/firewalldclient.cpp:600 backends/ufw/ufwclient.cpp:694
+#: backends/firewalld/firewalldclient.cpp:600 backends/ufw/ufwclient.cpp:697
 #, kde-format
 msgid "Error fetching information from the firewall."
 msgstr "Feil ved henting av informasjon frå brannmur."
