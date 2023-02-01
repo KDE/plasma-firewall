@@ -2,20 +2,21 @@
 # This file is distributed under the same license as the plasma-firewall package.
 #
 # Volkan Gezer <volkangezer@gmail.com>, 2022.
+# Emir SARI <emir_sari@icloud.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-20 02:45+0000\n"
-"PO-Revision-Date: 2022-02-27 13:55+0100\n"
-"Last-Translator: Volkan Gezer <volkangezer@gmail.com>\n"
+"PO-Revision-Date: 2023-02-01 00:17+0300\n"
+"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 20.12.3\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -478,7 +479,7 @@ msgstr "Bu bağlantıdan bir kara liste kuralı oluşturuldu."
 #: package/contents/ui/ConnectionsView.qml:52
 #, kde-format
 msgid "could not find iproute2 or net-tools packages installed."
-msgstr "iproute2 veya net-tools paketi yüklü bulunamadı."
+msgstr "iproute2 veya net-tools paketi kurulu bulunamadı."
 
 #: package/contents/ui/IpTextField.qml:14
 #, kde-format
@@ -604,7 +605,7 @@ msgstr "Devre dışı"
 #: package/contents/ui/main.qml:184
 #, kde-format
 msgid "The firewall application, please install %1"
-msgstr "Güvenlik duvarı uygulaması, lütfen %1 yükleyin"
+msgstr "Güvenlik duvarı uygulaması, lütfen %1 kurun"
 
 #: package/contents/ui/main.qml:198
 #, kde-format
@@ -732,7 +733,7 @@ msgstr "Hakkında"
 #: package/contents/ui/main.qml:461
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
-msgstr "Lütfen, ufw veya firewalld gibi bir güvenlik duvarı yükleyin"
+msgstr "Lütfen, ufw veya firewalld gibi bir güvenlik duvarı kurun"
 
 #: package/contents/ui/PortTextField.qml:11
 #, kde-format
