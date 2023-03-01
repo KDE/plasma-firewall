@@ -6,7 +6,7 @@ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Xml
 )
 
-find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     I18n
     Declarative
     Auth
@@ -29,8 +29,8 @@ target_link_libraries(networkstatus
     kcm_firewall_core
     Qt::Core
     Qt::Quick
-    KF5::CoreAddons
-    KF5::ConfigCore
-    KF5::AuthCore
-    KF5::I18n
+    KF6::CoreAddons
+    KF6::ConfigCore
+    KF6::AuthCore
+    KF6::I18n
 )

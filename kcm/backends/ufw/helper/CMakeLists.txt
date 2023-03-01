@@ -13,7 +13,7 @@ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
 )
 
 
-find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     I18n
     Auth
 )
@@ -23,7 +23,7 @@ set(ufw_plugin_helper_SRCS helper.cpp helper.h)
 add_executable(kde_ufw_plugin_helper ${ufw_plugin_helper_SRCS})
 
 # set_target_properties(kcm_ufw_helper PROPERTIES OUTPUT_NAME kcm_ufw_helper)
-target_link_libraries(kde_ufw_plugin_helper Qt::Core KF5::AuthCore KF5::I18n)
+target_link_libraries(kde_ufw_plugin_helper Qt::Core KF6::AuthCore KF6::I18n)
 
 if (IS_ABSOLUTE "${KDE_INSTALL_LIBEXECDIR}")
   set(UFW_PLUGIN_HELPER_PATH ${KDE_INSTALL_LIBEXECDIR}/kde_ufw_plugin_helper.py)

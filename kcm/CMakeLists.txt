@@ -24,11 +24,11 @@ target_link_libraries(kcm_firewall
     Qt::Quick
     Qt::DBus
 
-    KF5::CoreAddons
-    KF5::Declarative
-    KF5::I18n
-    KF5::QuickAddons
-    KF5::AuthCore
+    KF6::CoreAddons
+    KF6::Declarative
+    KF6::I18n
+    KF6::QuickAddons
+    KF6::AuthCore
 
     kcm_firewall_core
     networkstatus

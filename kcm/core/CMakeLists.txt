@@ -26,11 +26,11 @@ set(core_files
 
 set(core_link_libraries
     Qt::Quick
-    KF5::CoreAddons
-    KF5::Declarative
-    KF5::I18n
-    KF5::QuickAddons
-    KF5::AuthCore
+    KF6::CoreAddons
+    KF6::Declarative
+    KF6::I18n
+    KF6::QuickAddons
+    KF6::AuthCore
 )
 
 # insert additional linux specific systemdjob files
