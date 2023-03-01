@@ -53,12 +53,12 @@ ecm_set_disabled_deprecation_versions(QT 5.15.2
 )
 
 find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS 
+    Config
     CoreAddons
     KCMUtils
     I18n
     Declarative
     Package
-    Config
 )
 
 

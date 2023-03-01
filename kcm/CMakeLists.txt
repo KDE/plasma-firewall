@@ -12,8 +12,6 @@ add_subdirectory(backends)
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/version.h)
 
-
-
 add_library(kcm_firewall MODULE)
 kcmutils_generate_desktop_file(kcm_firewall)
 target_sources(kcm_firewall PRIVATE

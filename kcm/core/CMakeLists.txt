@@ -27,6 +27,7 @@ set(core_files
 set(core_link_libraries
     Qt::Quick
     KF6::CoreAddons
+    KF6::ConfigCore
     KF6::Declarative
     KF6::I18n
     KF6::QuickAddons
