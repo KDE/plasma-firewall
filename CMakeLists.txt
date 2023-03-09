@@ -32,7 +32,7 @@ add_feature_info(UFW_BACKEND ${BUILD_UFW_BACKEND} "Build the Uncomplicated Firew
 #-----------------------------------------------------------------------------
 # Python3 (search for this first so that we will not get Python2 by accident)
 find_package(PythonInterp 3 REQUIRED)
-# KDE5
+# KF6
 find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 include(KDEInstallDirs)
@@ -40,16 +40,16 @@ include(KDECompilerSettings)
 include(KDECMakeSettings)
 include(ECMDeprecationSettings)
 
-# Qt5
-find_package(Qt${QT_MAJOR_VERSION} REQUIRED COMPONENTS
+# Qt6
+find_package(Qt6 REQUIRED COMPONENTS
     Core
     Qml
     DBus
     Test
 )
 
-ecm_set_disabled_deprecation_versions(QT 5.15.2
-    KF 5.101
+ecm_set_disabled_deprecation_versions(QT 6.4
+    KF 5.240
 )
 
 find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS 
