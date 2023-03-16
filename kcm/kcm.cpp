@@ -21,7 +21,7 @@
 #include "backends/netstat/conectionsmodel.h"
 #include "backends/netstat/netstatclient.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(KCMFirewallFactory, "kcm_firewall.json", registerPlugin<KCMFirewall>();)
+K_PLUGIN_CLASS_WITH_JSON(KCMFirewall, "kcm_firewall.json")
 
 KCMFirewall::KCMFirewall(QObject *parent, const KPluginMetaData &metaData, const QVariantList &args)
     : KQuickConfigModule(parent, metaData, args)
