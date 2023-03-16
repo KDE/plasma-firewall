@@ -8,7 +8,6 @@ Dependencies:
     'frameworks/kauth': '@latest-kf6'
     'frameworks/kconfig': '@latest-kf6'
     'frameworks/kcoreaddons': '@latest-kf6'
-    'frameworks/kdeclarative': '@latest-kf6'
     'frameworks/ki18n': '@latest-kf6'
     'frameworks/kpackage': '@latest-kf6'
     'frameworks/kcmutils': '@latest-kf6'

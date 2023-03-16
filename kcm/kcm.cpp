@@ -24,7 +24,7 @@
 K_PLUGIN_FACTORY_WITH_JSON(KCMFirewallFactory, "kcm_firewall.json", registerPlugin<KCMFirewall>();)
 
 KCMFirewall::KCMFirewall(QObject *parent, const KPluginMetaData &metaData, const QVariantList &args)
-    : KQuickAddons::ConfigModule(parent, metaData, args)
+    : KQuickConfigModule(parent, metaData, args)
     , m_client(new FirewallClient(this))
 {
     qmlRegisterAnonymousType<KJob>("org.kcm.firewall", 1);

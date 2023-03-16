@@ -23,9 +23,8 @@ target_link_libraries(kcm_firewall
     Qt::DBus
 
     KF6::CoreAddons
-    KF6::Declarative
+    KF6::KCMUtils
     KF6::I18n
-    KF6::QuickAddons
     KF6::AuthCore
 
     kcm_firewall_core

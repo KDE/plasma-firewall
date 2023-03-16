@@ -10,9 +10,9 @@
 #define KCM_H
 
 #include "core/firewallclient.h"
-#include <KQuickAddons/ConfigModule>
+#include <KQuickConfigModule>
 
-class KCMFirewall : public KQuickAddons::ConfigModule
+class KCMFirewall : public KQuickConfigModule
 {
     Q_OBJECT
     Q_PROPERTY(FirewallClient *client READ client CONSTANT)

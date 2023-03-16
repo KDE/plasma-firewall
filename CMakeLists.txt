@@ -44,6 +44,7 @@ include(ECMDeprecationSettings)
 find_package(Qt6 REQUIRED COMPONENTS
     Core
     Qml
+    Quick
     DBus
     Test
 )
@@ -57,7 +58,6 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     CoreAddons
     KCMUtils
     I18n
-    Declarative
     Package
 )
 
