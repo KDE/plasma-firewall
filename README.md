@@ -13,7 +13,6 @@ Currently the list of Dependencies include :
 -  KF5KCMUtils (required version >= 5.60.0), KF5 Utilities for KDE System Settings modules library.
 - KF5I18n (required version >= 5.60.0), KF5 text internationalization library.
 - KF5 Plasma Framework >= 5.32
--  KF5Declarative (required version >= 5.60.0), Integration of QML and KDE work spaces.
 - UFW or Firewalld
 
 **To setup the environment first time for any project in KDE you can have a look at [here](https://community.kde.org/Get_Involved/development)**
