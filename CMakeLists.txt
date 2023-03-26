@@ -59,6 +59,7 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     KCMUtils
     I18n
     Package
+    Auth
 )
 
 
