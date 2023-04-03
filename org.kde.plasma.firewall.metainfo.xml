@@ -32,6 +32,7 @@
   <name xml:lang="lt">Plasma užkarda</name>
   <name xml:lang="nl">Plasma-firewall</name>
   <name xml:lang="nn">Plasma-brannmur</name>
+  <name xml:lang="pa">ਪਲਾਜ਼ਮਾ ਫ਼ਾਇਰਵਾਲ</name>
   <name xml:lang="pl">Zapora ogniowa Plazmy</name>
   <name xml:lang="pt">'Firewall' do Plasma</name>
   <name xml:lang="pt-BR">Plasma Firewall</name>
@@ -68,6 +69,7 @@
   <summary xml:lang="lt">Užkardos sąsaja, skirta Plasma</summary>
   <summary xml:lang="nl">Firewall-interface voor Plasma</summary>
   <summary xml:lang="nn">Plasma-brukarflate for brannmur</summary>
+  <summary xml:lang="pa">ਪਲਾਜ਼ਮਾ ਲਈ ਫ਼ਾਇਰਵਾਲ ਇੰਟਰਫ਼ੇਸ</summary>
   <summary xml:lang="pl">Interfejs zapory ogniowej dla Plazmy</summary>
   <summary xml:lang="pt">Interface de 'Firewall' para o Plasma</summary>
   <summary xml:lang="pt-BR">Interface de firewall para o Plasma</summary>
