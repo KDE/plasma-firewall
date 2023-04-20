@@ -15,6 +15,9 @@ set(QT_MIN_VERSION "6.4.0")
 set(CMAKE_AUTOMOC TRUE)
 set(CMAKE_AUTORCC TRUE)
 
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 #-----------------------------------------------------------------------------
 #                                OPTIONS
 #-----------------------------------------------------------------------------
