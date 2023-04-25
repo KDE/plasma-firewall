@@ -84,7 +84,7 @@ KCM.ScrollViewKCM {
                         busy = false;
 
                         if (job.error) {
-                            // don't show an error when user canceled...
+                            // don't show an error when user canceled…
                             if (job.error !== 4) { // FIXME magic number
                                 if (newRule) {
                                     ruleEditMessage.text = i18n("Error creating rule: %1", job.errorString);
@@ -94,7 +94,7 @@ KCM.ScrollViewKCM {
                                 ruleEditMessage.visible = true;
 
                             }
-                            // ...but also don't close in this case!
+                            // …but also don't close in this case!
                             return;
                         }
 
@@ -152,9 +152,9 @@ KCM.ScrollViewKCM {
                     property QtObject activeJob: null
                     text: {
                         if (kcm.client.enabled) {
-                            return activeJob ? i18n("Disabling...") : i18n("Enabled")
+                            return activeJob ? i18n("Disabling…") : i18n("Enabled")
                         } else {
-                            return activeJob ? i18n("Enabling...") : i18n("Disabled")
+                            return activeJob ? i18n("Enabling…") : i18n("Disabled")
                         }
                     }
                     enabled: !activeJob && !connectEnableTimer.running
@@ -319,7 +319,7 @@ KCM.ScrollViewKCM {
                 acceptedButtons: Qt.NoButton
                 onEntered: tableView.currentHoveredRow = styleData.row
 
-                // Restore upstream TableView background...
+                // Restore upstream TableView background…
                 BorderImage {
                     visible: styleData.selected || styleData.alternate
                     source: "image://__tablerow/" + (styleData.alternate ? "alternate_" : "")
@@ -335,8 +335,8 @@ KCM.ScrollViewKCM {
                 visible: tableView.rowCount === 0
                 text: !kcm.client.enabled ? i18n("Firewall is disabled") : i18n("No firewall rules have been added")
                 explanation: kcm.client.enabled ?
-                    xi18nc("@info", "Click the <interface>Add Rule...</interface> button below to add one") :
-                    xi18nc("@info", "Enable the firewall with the <interface>Firewall Status</interface> checkbox above, and then click the <interface>Add Rule...</interface> button below to add one")
+                    xi18nc("@info", "Click the <interface>Add Rule…</interface> button below to add one") :
+                    xi18nc("@info", "Enable the firewall with the <interface>Firewall Status</interface> checkbox above, and then click the <interface>Add Rule…</interface> button below to add one")
             }
 
             QQC1.TableViewColumn {
@@ -439,7 +439,7 @@ KCM.ScrollViewKCM {
         QQC2.Button {
             enabled: !kcm.client.busy && kcm.client.enabled
             icon.name: "list-add"
-            text: i18n("Add Rule...")
+            text: i18n("Add Rule…")
             onClicked: {
                 ruleEdit.newRule = true
                 drawer.open()
@@ -469,4 +469,3 @@ KCM.ScrollViewKCM {
         id: about
     }
 }
-
