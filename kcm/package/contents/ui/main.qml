@@ -147,7 +147,6 @@ KCM.ScrollViewKCM {
         Kirigami.FormLayout {
             RowLayout {
                 Kirigami.FormData.label: i18n("Firewall Status:")
-                Kirigami.FormData.enabled: enabledCheckBox.enabled
                 QQC2.CheckBox {
                     id: enabledCheckBox
                     property QtObject activeJob: null
@@ -229,7 +228,6 @@ KCM.ScrollViewKCM {
 
                 RowLayout {
                     Kirigami.FormData.label: modelData.label
-                    Kirigami.FormData.enabled: policyCombo.enabled
 
                     QQC2.ComboBox {
                         id: policyCombo
