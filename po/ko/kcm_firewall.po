@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-20 00:59+0000\n"
+"POT-Creation-Date: 2023-04-26 02:16+0000\n"
 "PO-Revision-Date: 2022-02-20 21:25+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -490,12 +490,12 @@ msgstr "임의 IP 주소"
 msgid "Firewall Logs"
 msgstr "방화벽 로그"
 
-#: package/contents/ui/LogsView.qml:20 package/contents/ui/main.qml:350
+#: package/contents/ui/LogsView.qml:20 package/contents/ui/main.qml:348
 #, kde-format
 msgid "From"
 msgstr "발신"
 
-#: package/contents/ui/LogsView.qml:22 package/contents/ui/main.qml:355
+#: package/contents/ui/LogsView.qml:22 package/contents/ui/main.qml:353
 #, kde-format
 msgid "To"
 msgstr "수신"
@@ -547,8 +547,8 @@ msgstr "새 방화벽 규칙 만들기"
 msgid "Edit Firewall Rule"
 msgstr "방화벽 규칙 편집"
 
-#: package/contents/ui/main.qml:76 package/contents/ui/main.qml:265
-#: package/contents/ui/main.qml:400
+#: package/contents/ui/main.qml:76 package/contents/ui/main.qml:263
+#: package/contents/ui/main.qml:398
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr "백엔드가 연결 해제되었습니다. Plasma 방화벽을 다시 시작하십시오."
@@ -578,37 +578,39 @@ msgstr "저장"
 msgid "Firewall Status:"
 msgstr "방화벽 상태:"
 
-#: package/contents/ui/main.qml:156
-#, kde-format
-msgid "Disabling..."
+#: package/contents/ui/main.qml:155
+#, fuzzy, kde-format
+#| msgid "Disabling..."
+msgid "Disabling…"
 msgstr "비활성화 중..."
 
-#: package/contents/ui/main.qml:156
+#: package/contents/ui/main.qml:155
 #, kde-format
 msgid "Enabled"
 msgstr "사용함"
 
-#: package/contents/ui/main.qml:158
-#, kde-format
-msgid "Enabling..."
+#: package/contents/ui/main.qml:157
+#, fuzzy, kde-format
+#| msgid "Enabling..."
+msgid "Enabling…"
 msgstr "활성화 중..."
 
-#: package/contents/ui/main.qml:158
+#: package/contents/ui/main.qml:157
 #, kde-format
 msgid "Disabled"
 msgstr "사용 안 함"
 
-#: package/contents/ui/main.qml:184
+#: package/contents/ui/main.qml:183
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr "방화벽 프로그램, %1을(를) 설치하십시오"
 
-#: package/contents/ui/main.qml:198
+#: package/contents/ui/main.qml:197
 #, kde-format
 msgid "Permission denied"
 msgstr "권한 거부됨"
 
-#: package/contents/ui/main.qml:202
+#: package/contents/ui/main.qml:201
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
@@ -617,116 +619,124 @@ msgstr ""
 "최근에 커널을 업데이트한 것 같습니다. Iptables를 초기화할 수 없습니다. 다시 "
 "시동하십시오."
 
-#: package/contents/ui/main.qml:205
+#: package/contents/ui/main.qml:204
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr "방화벽 활성화 오류: %1"
 
-#: package/contents/ui/main.qml:206
+#: package/contents/ui/main.qml:205
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr "방화벽 비활성화 오류: %1"
 
-#: package/contents/ui/main.qml:226
+#: package/contents/ui/main.qml:225
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "기본 들어오는 연결 정책:"
 
-#: package/contents/ui/main.qml:227
+#: package/contents/ui/main.qml:226
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "기본 나가는 연결 정책:"
 
-#: package/contents/ui/main.qml:275
+#: package/contents/ui/main.qml:273
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "정책 변경 오류: %1"
 
-#: package/contents/ui/main.qml:338
+#: package/contents/ui/main.qml:336
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "방화벽이 비활성화됨"
 
-#: package/contents/ui/main.qml:338
+#: package/contents/ui/main.qml:336
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "방화벽 규칙을 추가하지 않았음"
 
-#: package/contents/ui/main.qml:340
-#, kde-kuit-format
+#: package/contents/ui/main.qml:338
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "Click the <interface>Add Rule...</interface> button below to add one"
 msgctxt "@info"
-msgid "Click the <interface>Add Rule...</interface> button below to add one"
+msgid "Click the <interface>Add Rule…</interface> button below to add one"
 msgstr ""
 "아래의 <interface>규칙 추가...</interface> 단추를 클릭해서 규칙을 추가하십시"
 "오"
 
-#: package/contents/ui/main.qml:341
-#, kde-kuit-format
+#: package/contents/ui/main.qml:339
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Enable the firewall with the <interface>Firewall Status</interface> "
+#| "checkbox above, and then click the <interface>Add Rule...</interface> "
+#| "button below to add one"
 msgctxt "@info"
 msgid ""
 "Enable the firewall with the <interface>Firewall Status</interface> checkbox "
-"above, and then click the <interface>Add Rule...</interface> button below to "
+"above, and then click the <interface>Add Rule…</interface> button below to "
 "add one"
 msgstr ""
 "위쪽의 <interface>방화벽 상태</interface> 체크 상자를 통해서 방화벽을 활성화"
 "하고, 아래쪽의 <interface>규칙 추가</interface> 단추를 클릭해서 규칙을 추가하"
 "십시오"
 
-#: package/contents/ui/main.qml:345
+#: package/contents/ui/main.qml:343
 #, kde-format
 msgid "Action"
 msgstr "동작"
 
-#: package/contents/ui/main.qml:360
+#: package/contents/ui/main.qml:358
 #, kde-format
 msgid "IP"
 msgstr "IP"
 
-#: package/contents/ui/main.qml:365
+#: package/contents/ui/main.qml:363
 #, kde-format
 msgid "Logging"
 msgstr "로그 작성"
 
-#: package/contents/ui/main.qml:391
+#: package/contents/ui/main.qml:389
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "규칙 편집"
 
-#: package/contents/ui/main.qml:411
+#: package/contents/ui/main.qml:409
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "규칙 삭제 오류: %1"
 
-#: package/contents/ui/main.qml:418
+#: package/contents/ui/main.qml:416
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "규칙 삭제"
 
-#: package/contents/ui/main.qml:428
+#: package/contents/ui/main.qml:426
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
 msgstr "연결 보기"
 
-#: package/contents/ui/main.qml:433
+#: package/contents/ui/main.qml:431
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
 msgstr "로그 보기"
 
-#: package/contents/ui/main.qml:444
-#, kde-format
-msgid "Add Rule..."
+#: package/contents/ui/main.qml:442
+#, fuzzy, kde-format
+#| msgid "Add Rule..."
+msgid "Add Rule…"
 msgstr "규칙 추가..."
 
-#: package/contents/ui/main.qml:453
+#: package/contents/ui/main.qml:451
 #, kde-format
 msgid "About"
 msgstr "정보"
 
-#: package/contents/ui/main.qml:461
+#: package/contents/ui/main.qml:459
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "ufw나 firewalld와 같은 방화벽을 설치하십시오"

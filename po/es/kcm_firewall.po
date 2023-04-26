@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-20 00:59+0000\n"
+"POT-Creation-Date: 2023-04-26 02:16+0000\n"
 "PO-Revision-Date: 2022-02-15 05:06+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -494,12 +494,12 @@ msgstr "Cualquier dirección IP"
 msgid "Firewall Logs"
 msgstr "Registros del cortafuegos"
 
-#: package/contents/ui/LogsView.qml:20 package/contents/ui/main.qml:350
+#: package/contents/ui/LogsView.qml:20 package/contents/ui/main.qml:348
 #, kde-format
 msgid "From"
 msgstr "Desde"
 
-#: package/contents/ui/LogsView.qml:22 package/contents/ui/main.qml:355
+#: package/contents/ui/LogsView.qml:22 package/contents/ui/main.qml:353
 #, kde-format
 msgid "To"
 msgstr "Hasta"
@@ -554,8 +554,8 @@ msgstr "Crear una nueva regla del cortafuegos"
 msgid "Edit Firewall Rule"
 msgstr "Editar regla del cortafuegos"
 
-#: package/contents/ui/main.qml:76 package/contents/ui/main.qml:265
-#: package/contents/ui/main.qml:400
+#: package/contents/ui/main.qml:76 package/contents/ui/main.qml:263
+#: package/contents/ui/main.qml:398
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr "Reinicie el cortafuegos de Plasma; el motor está desconectado."
@@ -585,37 +585,39 @@ msgstr "Guardar"
 msgid "Firewall Status:"
 msgstr "Estado del cortafuegos:"
 
-#: package/contents/ui/main.qml:156
-#, kde-format
-msgid "Disabling..."
+#: package/contents/ui/main.qml:155
+#, fuzzy, kde-format
+#| msgid "Disabling..."
+msgid "Disabling…"
 msgstr "Desactivando..."
 
-#: package/contents/ui/main.qml:156
+#: package/contents/ui/main.qml:155
 #, kde-format
 msgid "Enabled"
 msgstr "Activado"
 
-#: package/contents/ui/main.qml:158
-#, kde-format
-msgid "Enabling..."
+#: package/contents/ui/main.qml:157
+#, fuzzy, kde-format
+#| msgid "Enabling..."
+msgid "Enabling…"
 msgstr "Activando..."
 
-#: package/contents/ui/main.qml:158
+#: package/contents/ui/main.qml:157
 #, kde-format
 msgid "Disabled"
 msgstr "Desactivado"
 
-#: package/contents/ui/main.qml:184
+#: package/contents/ui/main.qml:183
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr "La aplicación de cortafuegos, instale %1"
 
-#: package/contents/ui/main.qml:198
+#: package/contents/ui/main.qml:197
 #, kde-format
 msgid "Permission denied"
 msgstr "Permiso denegado"
 
-#: package/contents/ui/main.qml:202
+#: package/contents/ui/main.qml:201
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
@@ -624,116 +626,124 @@ msgstr ""
 "Ha actualizado el kernel recientemente. La inicialización de Iptables está "
 "fallando. Por favor, reinicie el equipo."
 
-#: package/contents/ui/main.qml:205
+#: package/contents/ui/main.qml:204
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr "Ha ocurrido un error al activar el cortafuegos: %1"
 
-#: package/contents/ui/main.qml:206
+#: package/contents/ui/main.qml:205
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr "Ha ocurrido un error al desactivar el cortafuegos: %1"
 
-#: package/contents/ui/main.qml:226
+#: package/contents/ui/main.qml:225
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "Política entrante predeterminada:"
 
-#: package/contents/ui/main.qml:227
+#: package/contents/ui/main.qml:226
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "Política saliente predeterminada:"
 
-#: package/contents/ui/main.qml:275
+#: package/contents/ui/main.qml:273
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Ha ocurrido un error al cambiar la política: %1"
 
-#: package/contents/ui/main.qml:338
+#: package/contents/ui/main.qml:336
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "El cortafuegos está desactivado"
 
-#: package/contents/ui/main.qml:338
+#: package/contents/ui/main.qml:336
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "No se han añadido reglas al cortafuegos"
 
-#: package/contents/ui/main.qml:340
-#, kde-kuit-format
+#: package/contents/ui/main.qml:338
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "Click the <interface>Add Rule...</interface> button below to add one"
 msgctxt "@info"
-msgid "Click the <interface>Add Rule...</interface> button below to add one"
+msgid "Click the <interface>Add Rule…</interface> button below to add one"
 msgstr ""
 "Pulse el botón <interface>Añadir regla...</interface> inferior para añadir "
 "alguna"
 
-#: package/contents/ui/main.qml:341
-#, kde-kuit-format
+#: package/contents/ui/main.qml:339
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Enable the firewall with the <interface>Firewall Status</interface> "
+#| "checkbox above, and then click the <interface>Add Rule...</interface> "
+#| "button below to add one"
 msgctxt "@info"
 msgid ""
 "Enable the firewall with the <interface>Firewall Status</interface> checkbox "
-"above, and then click the <interface>Add Rule...</interface> button below to "
+"above, and then click the <interface>Add Rule…</interface> button below to "
 "add one"
 msgstr ""
 "Active el cortafuegos con la casilla <interface>Estado del cortafuegos</"
 "interface> superior y pulse el botón <interface>Añadir regla...</interface> "
 "inferior para añadir alguna."
 
-#: package/contents/ui/main.qml:345
+#: package/contents/ui/main.qml:343
 #, kde-format
 msgid "Action"
 msgstr "Acción"
 
-#: package/contents/ui/main.qml:360
+#: package/contents/ui/main.qml:358
 #, kde-format
 msgid "IP"
 msgstr "IP"
 
-#: package/contents/ui/main.qml:365
+#: package/contents/ui/main.qml:363
 #, kde-format
 msgid "Logging"
 msgstr "Registro"
 
-#: package/contents/ui/main.qml:391
+#: package/contents/ui/main.qml:389
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Editar regla"
 
-#: package/contents/ui/main.qml:411
+#: package/contents/ui/main.qml:409
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Ha ocurrido un error al eliminar la regla: %1"
 
-#: package/contents/ui/main.qml:418
+#: package/contents/ui/main.qml:416
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Eliminar regla"
 
-#: package/contents/ui/main.qml:428
+#: package/contents/ui/main.qml:426
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
 msgstr "Ver conexiones"
 
-#: package/contents/ui/main.qml:433
+#: package/contents/ui/main.qml:431
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
 msgstr "Ver registros"
 
-#: package/contents/ui/main.qml:444
-#, kde-format
-msgid "Add Rule..."
+#: package/contents/ui/main.qml:442
+#, fuzzy, kde-format
+#| msgid "Add Rule..."
+msgid "Add Rule…"
 msgstr "Añadir regla..."
 
-#: package/contents/ui/main.qml:453
+#: package/contents/ui/main.qml:451
 #, kde-format
 msgid "About"
 msgstr "Acerca de"
 
-#: package/contents/ui/main.qml:461
+#: package/contents/ui/main.qml:459
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Instale un cortafuegos, como «ufw» o «firewalld»"
