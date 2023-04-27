@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-26 02:16+0000\n"
-"PO-Revision-Date: 2022-02-16 09:04+0100\n"
+"PO-Revision-Date: 2023-04-26 07:34+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.12.2\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -580,10 +580,9 @@ msgid "Firewall Status:"
 msgstr "Stanje vdorobrana:"
 
 #: package/contents/ui/main.qml:155
-#, fuzzy, kde-format
-#| msgid "Disabling..."
+#, kde-format
 msgid "Disabling…"
-msgstr "Onemogočam..."
+msgstr "Onemogočam…"
 
 #: package/contents/ui/main.qml:155
 #, kde-format
@@ -591,10 +590,9 @@ msgid "Enabled"
 msgstr "Omogočeno"
 
 #: package/contents/ui/main.qml:157
-#, fuzzy, kde-format
-#| msgid "Enabling..."
+#, kde-format
 msgid "Enabling…"
-msgstr "Omogočam..."
+msgstr "Omogočam…"
 
 #: package/contents/ui/main.qml:157
 #, kde-format
@@ -656,20 +654,13 @@ msgid "No firewall rules have been added"
 msgstr "Ni bilo dodanega nobenega pravila vdorobrana"
 
 #: package/contents/ui/main.qml:338
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click the <interface>Add Rule...</interface> button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button below to add one"
-msgstr "Kliknite gumb <interface>Dodaj pravilo...</interface> za dodajanje"
+msgstr "Kliknite gumb <interface>Dodaj pravilo…</interface> za dodajanje"
 
 #: package/contents/ui/main.qml:339
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule...</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Enable the firewall with the <interface>Firewall Status</interface> checkbox "
@@ -677,7 +668,7 @@ msgid ""
 "add one"
 msgstr ""
 "Omogočite vdorobran z rubriko <interface>Stanje vdorobrana</interface> "
-"zgoraj nato pa kliknite gumb <interface>Dodaj pravilo...</interface> da "
+"zgoraj nato pa kliknite gumb <interface>Dodaj pravilo…</interface>, da "
 "pravilo dodate"
 
 #: package/contents/ui/main.qml:343
@@ -725,10 +716,9 @@ msgid "View Logs"
 msgstr "Poglej dnevnike"
 
 #: package/contents/ui/main.qml:442
-#, fuzzy, kde-format
-#| msgid "Add Rule..."
+#, kde-format
 msgid "Add Rule…"
-msgstr "Dodaj pravilo..."
+msgstr "Dodaj pravilo…"
 
 #: package/contents/ui/main.qml:451
 #, kde-format

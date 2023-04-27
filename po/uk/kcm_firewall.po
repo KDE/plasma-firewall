@@ -3,13 +3,13 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-26 02:16+0000\n"
-"PO-Revision-Date: 2022-02-15 08:34+0200\n"
+"PO-Revision-Date: 2023-04-26 21:57+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -587,8 +587,7 @@ msgid "Firewall Status:"
 msgstr "Стан брандмауера:"
 
 #: package/contents/ui/main.qml:155
-#, fuzzy, kde-format
-#| msgid "Disabling..."
+#, kde-format
 msgid "Disabling…"
 msgstr "Вимикання…"
 
@@ -598,8 +597,7 @@ msgid "Enabled"
 msgstr "Увімкнено"
 
 #: package/contents/ui/main.qml:157
-#, fuzzy, kde-format
-#| msgid "Enabling..."
+#, kde-format
 msgid "Enabling…"
 msgstr "Вмикання…"
 
@@ -663,9 +661,7 @@ msgid "No firewall rules have been added"
 msgstr "Не було додано жодного правила брандмауера"
 
 #: package/contents/ui/main.qml:338
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click the <interface>Add Rule...</interface> button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button below to add one"
 msgstr ""
@@ -673,12 +669,7 @@ msgstr ""
 "щоб додати правило"
 
 #: package/contents/ui/main.qml:339
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule...</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Enable the firewall with the <interface>Firewall Status</interface> checkbox "
@@ -734,8 +725,7 @@ msgid "View Logs"
 msgstr "Переглянути журнал"
 
 #: package/contents/ui/main.qml:442
-#, fuzzy, kde-format
-#| msgid "Add Rule..."
+#, kde-format
 msgid "Add Rule…"
 msgstr "Додати правило…"
 

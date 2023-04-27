@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
 #
-# Freek de Kruijf <freekdekruijf@kde.nl>, 2020, 2021, 2022.
+# Freek de Kruijf <freekdekruijf@kde.nl>, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-26 02:16+0000\n"
-"PO-Revision-Date: 2022-02-15 10:37+0100\n"
+"PO-Revision-Date: 2023-04-26 10:45+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,12 +15,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.2\n"
+"X-Generator: Lokalize 23.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Freek de Kruijf - 2020 t/m 2022"
+msgstr "Freek de Kruijf - 2020 t/m 2023"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
@@ -583,10 +583,9 @@ msgid "Firewall Status:"
 msgstr "Firewall-status:"
 
 #: package/contents/ui/main.qml:155
-#, fuzzy, kde-format
-#| msgid "Disabling..."
+#, kde-format
 msgid "Disabling…"
-msgstr "Uitschakelen..."
+msgstr "Uitschakelen…"
 
 #: package/contents/ui/main.qml:155
 #, kde-format
@@ -594,10 +593,9 @@ msgid "Enabled"
 msgstr "Ingeschakeld"
 
 #: package/contents/ui/main.qml:157
-#, fuzzy, kde-format
-#| msgid "Enabling..."
+#, kde-format
 msgid "Enabling…"
-msgstr "Activeren..."
+msgstr "Inschakelen…"
 
 #: package/contents/ui/main.qml:157
 #, kde-format
@@ -659,22 +657,15 @@ msgid "No firewall rules have been added"
 msgstr "Er zijn geen firewall-regels toegevoegd"
 
 #: package/contents/ui/main.qml:338
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click the <interface>Add Rule...</interface> button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button below to add one"
 msgstr ""
-"Op de onderstaande knop <interface>Regel toevoegen...</interface> klikken om "
+"Op de onderstaande knop <interface>Regel toevoegen…</interface> klikken om "
 "er een toe te voegen"
 
 #: package/contents/ui/main.qml:339
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule...</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Enable the firewall with the <interface>Firewall Status</interface> checkbox "
@@ -683,7 +674,7 @@ msgid ""
 msgstr ""
 "De firewall inschakelen met het bovenstaande keuzevak "
 "<interface>Firewallstatus</interface> en klik daarna op de knop "
-"<interface>Regel toevoegen...</interface> eronder om er een toe te voegen"
+"<interface>Regel toevoegen…</interface> eronder om er een toe te voegen"
 
 #: package/contents/ui/main.qml:343
 #, kde-format
@@ -730,10 +721,9 @@ msgid "View Logs"
 msgstr "Logs bekijken"
 
 #: package/contents/ui/main.qml:442
-#, fuzzy, kde-format
-#| msgid "Add Rule..."
+#, kde-format
 msgid "Add Rule…"
-msgstr "Regel toevoegen..."
+msgstr "Regel toevoegen…"
 
 #: package/contents/ui/main.qml:451
 #, kde-format

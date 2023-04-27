@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-26 02:16+0000\n"
-"PO-Revision-Date: 2023-04-04 00:53+0300\n"
+"PO-Revision-Date: 2023-04-26 12:52+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.03.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -583,10 +583,9 @@ msgid "Firewall Status:"
 msgstr "Güvenlik Duvarı Durumu:"
 
 #: package/contents/ui/main.qml:155
-#, fuzzy, kde-format
-#| msgid "Disabling..."
+#, kde-format
 msgid "Disabling…"
-msgstr "Devre dışı bırakılıyor..."
+msgstr "Devre dışı bırakılıyor…"
 
 #: package/contents/ui/main.qml:155
 #, kde-format
@@ -594,10 +593,9 @@ msgid "Enabled"
 msgstr "Etkin"
 
 #: package/contents/ui/main.qml:157
-#, fuzzy, kde-format
-#| msgid "Enabling..."
+#, kde-format
 msgid "Enabling…"
-msgstr "Etkinleştiriliyor..."
+msgstr "Etkinleştiriliyor…"
 
 #: package/contents/ui/main.qml:157
 #, kde-format
@@ -659,22 +657,14 @@ msgid "No firewall rules have been added"
 msgstr "Bir güvenlik duvarı kuralı eklenmedi"
 
 #: package/contents/ui/main.qml:338
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click the <interface>Add Rule...</interface> button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button below to add one"
 msgstr ""
-"Eklemek için aşağıdaki <interface>Kural Ekle...</interface> düğmesine "
-"tıklayın"
+"Eklemek için aşağıdaki <interface>Kural Ekle…</interface> düğmesine tıklayın"
 
 #: package/contents/ui/main.qml:339
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule...</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Enable the firewall with the <interface>Firewall Status</interface> checkbox "
@@ -683,7 +673,7 @@ msgid ""
 msgstr ""
 "Yukarıdaki <interface>Güvenlik Duvarı Durumu</interface> onay kutusuyla "
 "güvenlik duvarını etkinleştirin ve ardından bir tane eklemek için aşağıdaki "
-"<interface>Kural Ekle...</interface> düğmesini tıklayın."
+"<interface>Kural Ekle…</interface> düğmesine tıklayın."
 
 #: package/contents/ui/main.qml:343
 #, kde-format
@@ -730,10 +720,9 @@ msgid "View Logs"
 msgstr "Günlükleri Görüntüle"
 
 #: package/contents/ui/main.qml:442
-#, fuzzy, kde-format
-#| msgid "Add Rule..."
+#, kde-format
 msgid "Add Rule…"
-msgstr "Kural Ekle..."
+msgstr "Kural Ekle…"
 
 #: package/contents/ui/main.qml:451
 #, kde-format

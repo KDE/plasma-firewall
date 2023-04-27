@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
 #
-# giovanni <g.sora@tiscali.it>, 2021, 2022.
+# giovanni <g.sora@tiscali.it>, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-26 02:16+0000\n"
-"PO-Revision-Date: 2022-02-16 22:46+0100\n"
+"PO-Revision-Date: 2023-04-26 11:47+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.2\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -585,10 +585,9 @@ msgid "Firewall Status:"
 msgstr "Stato de Talia Foco (Firewall):"
 
 #: package/contents/ui/main.qml:155
-#, fuzzy, kde-format
-#| msgid "Disabling..."
+#, kde-format
 msgid "Disabling…"
-msgstr "Dishabilitante..."
+msgstr "Dishabilitante…"
 
 #: package/contents/ui/main.qml:155
 #, kde-format
@@ -596,10 +595,9 @@ msgid "Enabled"
 msgstr "Habilitate"
 
 #: package/contents/ui/main.qml:157
-#, fuzzy, kde-format
-#| msgid "Enabling..."
+#, kde-format
 msgid "Enabling…"
-msgstr "Habilitante..."
+msgstr "Habilitante…"
 
 #: package/contents/ui/main.qml:157
 #, kde-format
@@ -661,21 +659,14 @@ msgid "No firewall rules have been added"
 msgstr "Necun regulas de talia foco ha essite addite"
 
 #: package/contents/ui/main.qml:338
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click the <interface>Add Rule...</interface> button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button below to add one"
 msgstr ""
 "Clicca le button <interface>Adde regula...</interface> a basso per adder un"
 
 #: package/contents/ui/main.qml:339
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule...</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Enable the firewall with the <interface>Firewall Status</interface> checkbox "
@@ -731,10 +722,9 @@ msgid "View Logs"
 msgstr "Vide registros"
 
 #: package/contents/ui/main.qml:442
-#, fuzzy, kde-format
-#| msgid "Add Rule..."
+#, kde-format
 msgid "Add Rule…"
-msgstr "Adde regula"
+msgstr "Adde regula…"
 
 #: package/contents/ui/main.qml:451
 #, kde-format
