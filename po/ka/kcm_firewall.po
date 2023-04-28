@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-26 02:16+0000\n"
-"PO-Revision-Date: 2022-11-16 08:40+0100\n"
+"PO-Revision-Date: 2023-04-27 06:44+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -583,10 +583,9 @@ msgid "Firewall Status:"
 msgstr "ბრანდმაუერის სტატუსი:"
 
 #: package/contents/ui/main.qml:155
-#, fuzzy, kde-format
-#| msgid "Disabling..."
+#, kde-format
 msgid "Disabling…"
-msgstr "გათიშვა..."
+msgstr "გათიშვა"
 
 #: package/contents/ui/main.qml:155
 #, kde-format
@@ -594,10 +593,9 @@ msgid "Enabled"
 msgstr "ჩართულია"
 
 #: package/contents/ui/main.qml:157
-#, fuzzy, kde-format
-#| msgid "Enabling..."
+#, kde-format
 msgid "Enabling…"
-msgstr "ჩართვა..."
+msgstr "ჩართვა"
 
 #: package/contents/ui/main.qml:157
 #, kde-format
@@ -659,22 +657,15 @@ msgid "No firewall rules have been added"
 msgstr "ბრანდმაუერის წესები დამატებული არაა"
 
 #: package/contents/ui/main.qml:338
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click the <interface>Add Rule...</interface> button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button below to add one"
 msgstr ""
-"ახალი წესის დასამატებლად დააწკაპუნეთ <interface>წესის დამატების...</"
-"interface> ღილაკზე"
+"ახალი წესის დასამატებლად <interface>წესის დამატების...</interface> ღილაკზე "
+"დააწკაპუნეთ"
 
 #: package/contents/ui/main.qml:339
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule...</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Enable the firewall with the <interface>Firewall Status</interface> checkbox "
@@ -730,10 +721,9 @@ msgid "View Logs"
 msgstr "ჟურნალის ნახვა"
 
 #: package/contents/ui/main.qml:442
-#, fuzzy, kde-format
-#| msgid "Add Rule..."
+#, kde-format
 msgid "Add Rule…"
-msgstr "წესის დამატება..."
+msgstr "წესის დამატება…"
 
 #: package/contents/ui/main.qml:451
 #, kde-format
