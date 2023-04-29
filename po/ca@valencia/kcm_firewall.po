@@ -1,17 +1,17 @@
 # Translation of kcm_firewall.po to Catalan (Valencian)
-# Copyright (C) 2020-2022 This_file_is_part_of_KDE
+# Copyright (C) 2020-2023 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2020, 2021, 2022.
+# Josep M. Ferrer <txemaq@gmail.com>, 2020, 2021, 2022, 2023.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2020, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-26 02:16+0000\n"
-"PO-Revision-Date: 2022-08-26 14:32+0200\n"
-"Last-Translator: Antoni Bella Pérez <antonibella5@yahoo.com>\n"
+"PO-Revision-Date: 2023-04-26 09:23+0200\n"
+"Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 22.08.0\n"
+"X-Generator: Lokalize 20.12.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -587,10 +587,9 @@ msgid "Firewall Status:"
 msgstr "Estat del tallafoc:"
 
 #: package/contents/ui/main.qml:155
-#, fuzzy, kde-format
-#| msgid "Disabling..."
+#, kde-format
 msgid "Disabling…"
-msgstr "S'està desactivant..."
+msgstr "S'està desactivant…"
 
 #: package/contents/ui/main.qml:155
 #, kde-format
@@ -598,10 +597,9 @@ msgid "Enabled"
 msgstr "Activat"
 
 #: package/contents/ui/main.qml:157
-#, fuzzy, kde-format
-#| msgid "Enabling..."
+#, kde-format
 msgid "Enabling…"
-msgstr "S'està activant..."
+msgstr "S'està activant…"
 
 #: package/contents/ui/main.qml:157
 #, kde-format
@@ -663,22 +661,15 @@ msgid "No firewall rules have been added"
 msgstr "No s'ha afegit cap regla del tallafoc"
 
 #: package/contents/ui/main.qml:338
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click the <interface>Add Rule...</interface> button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button below to add one"
 msgstr ""
-"Feu clic en el botó <interface>Afig una regla...</interface> de davall per a "
+"Feu clic en el botó <interface>Afig una regla…</interface> de davall per a "
 "afegir-ne una"
 
 #: package/contents/ui/main.qml:339
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule...</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Enable the firewall with the <interface>Firewall Status</interface> checkbox "
@@ -687,7 +678,7 @@ msgid ""
 msgstr ""
 "Habiliteu el tallafoc amb la casella de selecció <interface>Estat del "
 "tallafoc</interface> de dalt, i després feu clic en el botó <interface>Afig "
-"una regla...</interface> de davall per a afegir-ne una"
+"una regla…</interface> de davall per a afegir-ne una"
 
 #: package/contents/ui/main.qml:343
 #, kde-format
@@ -734,10 +725,9 @@ msgid "View Logs"
 msgstr "Visualitza els registres"
 
 #: package/contents/ui/main.qml:442
-#, fuzzy, kde-format
-#| msgid "Add Rule..."
+#, kde-format
 msgid "Add Rule…"
-msgstr "Afig una regla..."
+msgstr "Afig una regla…"
 
 #: package/contents/ui/main.qml:451
 #, kde-format
