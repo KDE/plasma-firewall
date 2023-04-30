@@ -1,107 +1,107 @@
-# Copyright (C) YEAR This file is copyright:
+# translation of kcm_firewall.pot to Esperanto
+# Copyright (C) 2020 Free Software Foundation, Inc.
 # This file is distributed under the same license as the plasma-firewall package.
+# Oliver Kellogg <okellogg@users.sourceforge.net>, 2023.
 #
-# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-26 02:16+0000\n"
-"PO-Revision-Date: 2023-04-29 10:32+0200\n"
-"Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
-"Language-Team: Polish <kde-i18n-doc@kde.org>\n"
-"Language: pl\n"
+"PO-Revision-Date: 2023-04-29 12:29+0100\n"
+"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
+"Language-Team: Esperanto <kde-i18n-doc@kde.org>\n"
+"Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: translate-po (https://github.com/zcribe/translate-po)\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Łukasz Wojniłowicz"
+msgstr "Oliver Kellogg"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "lukasz.wojnilowicz@gmail.com"
+msgstr "okellogg@users.sourceforge.net"
 
 #: backends/firewalld/firewalldclient.cpp:600 backends/ufw/ufwclient.cpp:697
 #, kde-format
 msgid "Error fetching information from the firewall."
-msgstr "Błąd pobierania szczegółów zapory ogniowej."
+msgstr "Eraro alportante informojn de la fajroŝirmilo."
 
 #: backends/firewalld/firewalldjob.cpp:173
 #, kde-format
 msgid "firewalld saving (runtime to permanent)"
-msgstr "firewalld zapisuje (z na-czas-uruchomienia na trwałe)"
+msgstr "ŝparado de fajroŝirmilo (rultempo al konstanta)"
 
 #: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
 msgid "firewalld saving"
-msgstr "firewalld zapisuje"
+msgstr "ŝparado de fajroŝirmilo"
 
 #: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
 msgid "firewalld %1"
-msgstr "firewalld %1"
+msgstr "fajroŝirmilo %1"
 
 #: backends/firewalld/queryrulesfirewalldjob.cpp:50
 #, kde-format
 msgid "firewalld listing rules and services"
-msgstr "firewalld wypisuje zasady i usługi"
+msgstr "firewalld listiganta regulojn kaj servojn"
 
 #: backends/netstat/conectionsmodel.cpp:94
 #, kde-format
 msgid "Failed to get connections: %1"
-msgstr "Nie udało się pobrać połączeń: %1"
+msgstr "Malsukcesis akiri konektojn: %1"
 
 #: backends/netstat/conectionsmodel.cpp:112
 #, kde-format
 msgid "Not Connected"
-msgstr "Niepołączony"
+msgstr "Ne Konektita"
 
 #: backends/netstat/conectionsmodel.cpp:114
 #, kde-format
 msgid "Established"
-msgstr "Nawiązano"
+msgstr "Establita"
 
 #: backends/netstat/conectionsmodel.cpp:116
 #, kde-format
 msgid "Listening"
-msgstr "Słuchanie"
+msgstr "Aŭskultanta"
 
 #: backends/ufw/helper/helper.cpp:220
 #, kde-format
 msgid "Invalid arguments passed to the profile"
-msgstr "Podano nieprawidłowe argumenty do profilu"
+msgstr "Nevalidaj argumentoj pasis al la profilo"
 
 #: backends/ufw/helper/helper.cpp:250
 #, kde-format
 msgid "Error saving the profile."
-msgstr "Błąd zapisywania profilu."
+msgstr "Eraro dum konservado de la profilo."
 
 #: backends/ufw/helper/helper.cpp:274
 #, kde-format
 msgid "Invalid arguments passed to delete profile"
-msgstr "Podano nieprawidłowe argumenty do usunięcia profilu"
+msgstr "Nevalidaj argumentoj pasis por forigi profilon"
 
 #: backends/ufw/helper/helper.cpp:281
 #, kde-format
 msgid "Could not remove the profile from disk."
-msgstr "Nie można usunąć profilu z dysku."
+msgstr "Ne eblis forigi la profilon de disko."
 
 #: backends/ufw/helper/helper.cpp:296
 #, kde-format
 msgid "Invalid argument passed to add Rules"
-msgstr "Podano nieprawidłowy argument przy dodawaniu zasad"
+msgstr "Nevalida argumento pasis por aldoni Regulojn"
 
 #: backends/ufw/helper/helper.cpp:368
 #, kde-format
 msgid "An error occurred in command '%1': %2"
-msgstr "Wystąpił błąd w poleceniu '%1': %2"
+msgstr "Eraro okazis en la komando '%1': %2"
 
 #: backends/ufw/ufwclient.cpp:161
 #, kde-format
@@ -109,29 +109,29 @@ msgid ""
 "There was an error in the backend! Please report it.\n"
 "%1 %2"
 msgstr ""
-"Wystąpił błąd w silniku! Zgłoś to.\n"
+"Estis eraro en la backend! Bonvolu raporti ĝin.\n"
 "%1 %2"
 
 #: backends/ufw/ufwclient.cpp:268
 #, kde-format
 msgid "Error fetching firewall logs: %1"
-msgstr "Błąd pobierania dzienników zapory ogniowej: %1"
+msgstr "Eraro alportante fajroŝirmilojn: %1"
 
 #: backends/ufw/ufwclient.cpp:608 core/firewallclient.cpp:74
 #, kde-format
 msgid "Any"
-msgstr "Dowolny"
+msgstr "Ajna"
 
 #: core/rule.cpp:46
 #, kde-format
 msgctxt "address on interface"
 msgid "%1 on %2"
-msgstr "%1 na %2"
+msgstr "%1 sur %2"
 
 #: core/rule.cpp:75 core/rule.cpp:165 core/rule.cpp:171
 #, kde-format
 msgid "Anywhere"
-msgstr "Gdziekolwiek"
+msgstr "Ien ajn"
 
 #: core/rule.cpp:96 core/rule.cpp:109 core/rule.cpp:126
 #, kde-format
@@ -143,103 +143,103 @@ msgstr "%1 (%2)"
 #, kde-format
 msgctxt "firewallAction incoming"
 msgid "%1 incoming"
-msgstr "Przychodzące %1"
+msgstr "%1 alvenanta"
 
 #: core/rule.cpp:200
 #, kde-format
 msgctxt "firewallAction outgoing"
 msgid "%1 outgoing"
-msgstr "Wychodzące %1"
+msgstr "%1 eksiĝinta"
 
 #: core/rule.cpp:205
 #, kde-format
 msgid "Yes"
-msgstr "Tak"
+msgstr "Jes"
 
 #: core/systemdjob.cpp:51
 #, kde-format
 msgid "Invalid Call"
-msgstr "Nieprawidłowe wywołanie"
+msgstr "Nevalida Voko"
 
 #: core/types.cpp:19
 #, kde-format
 msgid "Off"
-msgstr "Wył."
+msgstr "Malŝaltita"
 
 #: core/types.cpp:22
 #, kde-format
 msgid "Low"
-msgstr "Niska"
+msgstr "Malalta"
 
 #: core/types.cpp:24
 #, kde-format
 msgid "Medium"
-msgstr "Średnia"
+msgstr "Meza"
 
 #: core/types.cpp:26
 #, kde-format
 msgid "High"
-msgstr "Wysoka"
+msgstr "Alta"
 
 #: core/types.cpp:28
 #, kde-format
 msgid "Full"
-msgstr "Pełna"
+msgstr "Plena"
 
 #: core/types.cpp:45 package/contents/ui/RuleEdit.qml:40
 #, kde-format
 msgid "None"
-msgstr "Brak"
+msgstr "Neniu"
 
 #: core/types.cpp:47
 #, kde-format
 msgid "New connections"
-msgstr "Nowe połączenia"
+msgstr "Novaj rilatoj"
 
 #: core/types.cpp:49
 #, kde-format
 msgid "All packets"
-msgstr "Wszystkie pakiety"
+msgstr "Ĉiuj pakoj"
 
 #: core/types.cpp:58 package/contents/ui/main.qml:23
 #, kde-format
 msgid "Allow"
-msgstr "Zezwól"
+msgstr "Permesi"
 
 #: core/types.cpp:60
 #, kde-format
 msgid "Deny"
-msgstr "Odmów"
+msgstr "Nei"
 
 #: core/types.cpp:62 package/contents/ui/main.qml:25
 #, kde-format
 msgid "Reject"
-msgstr "Odrzuć"
+msgstr "Malakcepti"
 
 #: core/types.cpp:64
 #, kde-format
 msgid "Limit"
-msgstr "Ogranicz"
+msgstr "Limo"
 
 #: core/types.cpp:80
 #, kde-format
 msgid "Amule"
-msgstr "Amule"
+msgstr "Amulo"
 
 #: core/types.cpp:82
 #, kde-format
 msgid "Deluge"
-msgstr "Deluge"
+msgstr "Diluvo"
 
 #: core/types.cpp:84
 #, kde-format
 msgid "KTorrent"
-msgstr "KTorrent"
+msgstr "KTorento"
 
 #: core/types.cpp:86
 #, kde-format
 msgid "Nicotine"
-msgstr "Nikotyna"
+msgstr "Nikotino"
 
 #: core/types.cpp:88
 #, kde-format
@@ -249,7 +249,7 @@ msgstr "qBittorrent"
 #: core/types.cpp:90
 #, kde-format
 msgid "Transmission"
-msgstr "Przesyłanie"
+msgstr "Transdono"
 
 #: core/types.cpp:92
 #, kde-format
@@ -269,7 +269,7 @@ msgstr "Windows Live Messenger"
 #: core/types.cpp:98
 #, kde-format
 msgid "Yahoo! Messenger"
-msgstr "Yahoo! Messenger"
+msgstr "Yahoo! Mesaĝisto"
 
 #: core/types.cpp:100
 #, kde-format
@@ -284,7 +284,7 @@ msgstr "HTTP"
 #: core/types.cpp:104
 #, kde-format
 msgid "Secure HTTP"
-msgstr "Bezpieczne HTTP"
+msgstr "Sekura HTTP"
 
 #: core/types.cpp:106
 #, kde-format
@@ -294,7 +294,7 @@ msgstr "IMAP"
 #: core/types.cpp:108
 #, kde-format
 msgid "Secure IMAP"
-msgstr "Bezpieczne IMAP"
+msgstr "Sekurigi IMAP"
 
 #: core/types.cpp:110
 #, kde-format
@@ -304,7 +304,7 @@ msgstr "POP3"
 #: core/types.cpp:112
 #, kde-format
 msgid "Secure POP3"
-msgstr "Bezpieczne POP3"
+msgstr "Sekurigi POP3"
 
 #: core/types.cpp:114
 #, kde-format
@@ -319,12 +319,12 @@ msgstr "NFS"
 #: core/types.cpp:118
 #, kde-format
 msgid "Samba"
-msgstr "Samba"
+msgstr "sambo"
 
 #: core/types.cpp:120
 #, kde-format
 msgid "Secure Shell"
-msgstr "Bezpieczna powłoka"
+msgstr "Sekura Ŝelo"
 
 #: core/types.cpp:122
 #, kde-format
@@ -349,51 +349,51 @@ msgstr "NTP"
 #: core/types.cpp:130
 #, kde-format
 msgid "CUPS"
-msgstr "CUPS"
+msgstr "TASOJ"
 
 #: package/contents/ui/About.qml:16
 #, kde-format
 msgid "About Firewall"
-msgstr "O zaporze ogniowej"
+msgstr "Pri Fajromuro"
 
 #: package/contents/ui/About.qml:21
 #, kde-format
 msgid "Backend:"
-msgstr "Silnik:"
+msgstr "Backend:"
 
 #: package/contents/ui/About.qml:25
 #, kde-format
 msgid "Version:"
-msgstr "Wersja:"
+msgstr "Versio:"
 
 #: package/contents/ui/AdvancedRuleEdit.qml:31
 #: package/contents/ui/SimpleRuleEdit.qml:29
 #, kde-format
 msgid "Policy:"
-msgstr "Zasada:"
+msgstr "Politiko:"
 
 #: package/contents/ui/AdvancedRuleEdit.qml:40
 #: package/contents/ui/SimpleRuleEdit.qml:38
 #, kde-format
 msgid "Direction:"
-msgstr "Kierunek:"
+msgstr "Direkto:"
 
 #: package/contents/ui/AdvancedRuleEdit.qml:43
 #: package/contents/ui/SimpleRuleEdit.qml:42
 #, kde-format
 msgid "Incoming"
-msgstr "Przychodzące"
+msgstr "Alvenanta"
 
 #: package/contents/ui/AdvancedRuleEdit.qml:49
 #: package/contents/ui/SimpleRuleEdit.qml:48
 #, kde-format
 msgid "Outgoing"
-msgstr "Wychodzące"
+msgstr "Eksiĝinta"
 
 #: package/contents/ui/AdvancedRuleEdit.qml:57
 #, kde-format
 msgid "IP Version:"
-msgstr "Wersja IP:"
+msgstr "IP-Versio:"
 
 #: package/contents/ui/AdvancedRuleEdit.qml:60
 #, kde-format
@@ -408,53 +408,53 @@ msgstr "IPv6"
 #: package/contents/ui/AdvancedRuleEdit.qml:72
 #, kde-format
 msgid "Source:"
-msgstr "Źródło:"
+msgstr "Fonto:"
 
 #: package/contents/ui/AdvancedRuleEdit.qml:92
 #, kde-format
 msgid "Destination:"
-msgstr "Cel:"
+msgstr "Celo:"
 
 #: package/contents/ui/AdvancedRuleEdit.qml:112
 #, kde-format
 msgid "Protocol:"
-msgstr "Protokół:"
+msgstr "Protokolo:"
 
 #: package/contents/ui/AdvancedRuleEdit.qml:121
 #, kde-format
 msgid "Interface:"
-msgstr "Interfejs:"
+msgstr "Interfaco:"
 
 #: package/contents/ui/AdvancedRuleEdit.qml:131
 #, kde-format
 msgid "Logging:"
-msgstr "Rejestracja:"
+msgstr "Registrado:"
 
 #: package/contents/ui/ConnectionsView.qml:14
 #, kde-format
 msgid "Connections"
-msgstr "Połączenia"
+msgstr "Konektoj"
 
 #: package/contents/ui/ConnectionsView.qml:18
 #: package/contents/ui/LogsView.qml:19
 #, kde-format
 msgid "Protocol"
-msgstr "Protokół"
+msgstr "Protokolo"
 
 #: package/contents/ui/ConnectionsView.qml:19
 #, kde-format
 msgid "Local Address"
-msgstr "Adres lokalny"
+msgstr "Loka Adreso"
 
 #: package/contents/ui/ConnectionsView.qml:20
 #, kde-format
 msgid "Foreign Address"
-msgstr "Obce adresy"
+msgstr "Eksterlanda Adreso"
 
 #: package/contents/ui/ConnectionsView.qml:21
 #, kde-format
 msgid "Status"
-msgstr "Stan"
+msgstr "Statuso"
 
 #: package/contents/ui/ConnectionsView.qml:22
 #, kde-format
@@ -464,150 +464,152 @@ msgstr "PID"
 #: package/contents/ui/ConnectionsView.qml:23
 #, kde-format
 msgid "Program"
-msgstr "Program"
+msgstr "Programo"
 
 #: package/contents/ui/ConnectionsView.qml:26
 #, kde-format
 msgid "There are currently no open connections"
-msgstr "Obecnie nie ma żadnych otwartych połączeń"
+msgstr "Nuntempe ne estas malfermitaj konektoj"
 
 #: package/contents/ui/ConnectionsView.qml:35
 #, kde-format
 msgid "Created a blacklist rule from this connection."
-msgstr "Utwórz zasadę czarnej listy z tego połączenia."
+msgstr "Kreis regulon de nigra listo de ĉi tiu konekto."
 
 #: package/contents/ui/ConnectionsView.qml:52
 #, kde-format
 msgid "could not find iproute2 or net-tools packages installed."
-msgstr "nie można znaleźć ani pakietu iproute2 ani net-tools."
+msgstr "ne povis trovi instalitajn pakaĵojn iproute2 aŭ net-tools."
 
 #: package/contents/ui/IpTextField.qml:14
 #, kde-format
 msgid "Any IP address"
-msgstr "Dowolny adres IP"
+msgstr "Ajna IP-adreso"
 
 #: package/contents/ui/LogsView.qml:16
 #, kde-format
 msgid "Firewall Logs"
-msgstr "Dzienniki zapory ogniowej"
+msgstr "Fajroŝirmilo Registroj"
 
 #: package/contents/ui/LogsView.qml:20 package/contents/ui/main.qml:348
 #, kde-format
 msgid "From"
-msgstr "Od"
+msgstr "De"
 
 #: package/contents/ui/LogsView.qml:22 package/contents/ui/main.qml:353
 #, kde-format
 msgid "To"
-msgstr "Do"
+msgstr "Al"
 
 #: package/contents/ui/LogsView.qml:24
 #, kde-format
 msgid "Interface"
-msgstr "Interfejs"
+msgstr "Interfaco"
 
 #: package/contents/ui/LogsView.qml:26
 #, kde-format
 msgid "There are currently no firewall log entries"
-msgstr "Obecnie nie ma żadnych wpisów zapory ogniowej w dzienniku"
+msgstr "Nuntempe ne ekzistas fajroŝirmilaj protokoloj"
 
 #: package/contents/ui/LogsView.qml:37
 #, kde-format
 msgid "Created a blacklist rule from this log entry."
-msgstr "Utworzono zasadę czarnej listy z tego połączenia."
+msgstr "Kreis regulon de nigra listo el ĉi tiu protokolo."
 
 #: package/contents/ui/main.qml:23
 #, kde-format
 msgid "Allow all connections"
-msgstr "Zezwól na wszystkie połączenia"
+msgstr "Permesi ĉiujn konektojn"
 
 #: package/contents/ui/main.qml:24
 #, kde-format
 msgid "Ignore"
-msgstr "Pomiń"
+msgstr "Ignori"
 
 #: package/contents/ui/main.qml:24
 #, kde-format
 msgid ""
 "Keeps the program waiting until the connection attempt times out, some short "
 "time later."
-msgstr "Każe programowi czekać, aż czas na nawiązanie połączenia upłynie."
+msgstr ""
+"Tenas la programon atendanta ĝis la konektoprovo elĉerpas, iom da tempo "
+"poste."
 
 #: package/contents/ui/main.qml:25
 #, kde-format
 msgid "Produces an immediate and very informative 'Connection refused' message"
-msgstr "Tworzy natychmiastową i wiele mówiącą wiadomość 'Odrzucono połączenie'"
+msgstr "Produktas tujan kaj tre informan mesaĝon \"Konekto rifuzita\"."
 
 #: package/contents/ui/main.qml:40
 #, kde-format
 msgid "Create A New Firewall Rule"
-msgstr "Utwórz nową zasadę zapory ogniowej"
+msgstr "Krei Novan Fajroŝirmilan Regulon"
 
 #: package/contents/ui/main.qml:40
 #, kde-format
 msgid "Edit Firewall Rule"
-msgstr "Zmień zasadę zapory ogniowej"
+msgstr "Redakti Firewall Regulon"
 
 #: package/contents/ui/main.qml:76 package/contents/ui/main.qml:263
 #: package/contents/ui/main.qml:398
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
-msgstr "Uruchom zaporę ogniową Plazmy ponownie, silnik został rozłączony."
+msgstr "Bonvolu rekomenci plasman fajroŝirmilon, la backend malkonektita."
 
 #: package/contents/ui/main.qml:90 package/contents/ui/ViewBase.qml:110
 #, kde-format
 msgid "Error creating rule: %1"
-msgstr "Błąd tworzenia zasady: %1"
+msgstr "Eraro dum kreado de regulo: %1"
 
 #: package/contents/ui/main.qml:92
 #, kde-format
 msgid "Error updating rule: %1"
-msgstr "Błąd uaktualniania zasady: %1"
+msgstr "Eraro dum ĝisdatigo de regulo: %1"
 
 #: package/contents/ui/main.qml:124
 #, kde-format
 msgid "Create"
-msgstr "Utwórz"
+msgstr "Krei"
 
 #: package/contents/ui/main.qml:124
 #, kde-format
 msgid "Save"
-msgstr "Zapisz"
+msgstr "Savi"
 
 #: package/contents/ui/main.qml:149
 #, kde-format
 msgid "Firewall Status:"
-msgstr "Stan zapory ogniowej:"
+msgstr "Statuso de fajroŝirmilo:"
 
 #: package/contents/ui/main.qml:155
 #, kde-format
 msgid "Disabling…"
-msgstr "Wyłączanie..."
+msgstr "Malebligante…"
 
 #: package/contents/ui/main.qml:155
 #, kde-format
 msgid "Enabled"
-msgstr "Włączona"
+msgstr "Ebligita"
 
 #: package/contents/ui/main.qml:157
 #, kde-format
 msgid "Enabling…"
-msgstr "Włączanie…"
+msgstr "Ebligante..."
 
 #: package/contents/ui/main.qml:157
 #, kde-format
 msgid "Disabled"
-msgstr "Wyłączona"
+msgstr "Malebligita"
 
 #: package/contents/ui/main.qml:183
 #, kde-format
 msgid "The firewall application, please install %1"
-msgstr "Program zapory ogniowej, wgraj %1"
+msgstr "La fajroŝirmila aplikaĵo, bonvolu instali %1"
 
 #: package/contents/ui/main.qml:197
 #, kde-format
 msgid "Permission denied"
-msgstr "Odmówiono uprawnień"
+msgstr "Permeso Rifuzita"
 
 #: package/contents/ui/main.qml:201
 #, kde-format
@@ -615,51 +617,51 @@ msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
 "reboot."
 msgstr ""
-"Niedawno uaktualniłeś swoje jądro. Iptables ma kłopot z uruchomieniem "
-"siebie, więc uruchom komputer ponownie."
+"Vi lastatempe ĝisdatigis vian kernon. Iptables malsukcesas pravalorigi, "
+"bonvolu rekomenci."
 
 #: package/contents/ui/main.qml:204
 #, kde-format
 msgid "Error enabling firewall: %1"
-msgstr "Błąd włączania zapory ogniowej: %1"
+msgstr "Eraro ebligante fajroŝirmilon: %1"
 
 #: package/contents/ui/main.qml:205
 #, kde-format
 msgid "Error disabling firewall: %1"
-msgstr "Błąd wyłączania zapory ogniowej: %1"
+msgstr "Eraro malŝaltante fajroŝirmilon: %1"
 
 #: package/contents/ui/main.qml:225
 #, kde-format
 msgid "Default Incoming Policy:"
-msgstr "Domyślna zasada przychodzących:"
+msgstr "Defaŭlta Envena Politiko:"
 
 #: package/contents/ui/main.qml:226
 #, kde-format
 msgid "Default Outgoing Policy:"
-msgstr "Domyślna zasada wychodzących:"
+msgstr "Defaŭlta Elira Politiko:"
 
 #: package/contents/ui/main.qml:273
 #, kde-format
 msgid "Error changing policy: %1"
-msgstr "Błąd zmiany zasad: %1"
+msgstr "Eraro ŝanĝante politikon: %1"
 
 #: package/contents/ui/main.qml:336
 #, kde-format
 msgid "Firewall is disabled"
-msgstr "Zapory ogniowa jest wyłączona"
+msgstr "Fajroŝirmilo estas malŝaltita"
 
 #: package/contents/ui/main.qml:336
 #, kde-format
 msgid "No firewall rules have been added"
-msgstr "Nie dodano żadnych zasad zapory ogniowej"
+msgstr "Neniuj fajroŝirmilaj reguloj estis aldonitaj"
 
 #: package/contents/ui/main.qml:338
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button below to add one"
 msgstr ""
-"Naciśnij poniższy przycisk <interface>Dodaj zasadę…</interface>, aby dodać "
-"zasadę"
+"Alklaku la suban butonon <interface>Aldoni Regulon...</interface> por aldoni "
+"unu"
 
 #: package/contents/ui/main.qml:339
 #, kde-kuit-format
@@ -669,14 +671,14 @@ msgid ""
 "above, and then click the <interface>Add Rule…</interface> button below to "
 "add one"
 msgstr ""
-"Włącz zaporę ogniową, zaznaczając pole obok <interface>Stanu zapory "
-"ogniowej</interface> powyżej, a następnie naciśnij przycisk <interface>Dodaj "
-"zasadę…</interface>, aby dodać zasadę"
+"Ebligu la fajroŝirmilon per la markobutono <interface>Firewall Status</"
+"interface> supre, kaj poste alklaku la butonon <interface>Aldoni Regulon...</"
+"interface> sube por aldoni unu."
 
 #: package/contents/ui/main.qml:343
 #, kde-format
 msgid "Action"
-msgstr "Działanie"
+msgstr "Ago"
 
 #: package/contents/ui/main.qml:358
 #, kde-format
@@ -686,110 +688,88 @@ msgstr "IP"
 #: package/contents/ui/main.qml:363
 #, kde-format
 msgid "Logging"
-msgstr "Rejestracja"
+msgstr "Enhavo"
 
 #: package/contents/ui/main.qml:389
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
-msgstr "Zmień zasadę"
+msgstr "Redakti Regulon"
 
 #: package/contents/ui/main.qml:409
 #, kde-format
 msgid "Error removing rule: %1"
-msgstr "Błąd usuwania zasady: %1"
+msgstr "Eraro dum forigo de regulo: %1"
 
 #: package/contents/ui/main.qml:416
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
-msgstr "Usuń zasadę"
+msgstr "Forigi Regulon"
 
 #: package/contents/ui/main.qml:426
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
-msgstr "Zobacz połączenia"
+msgstr "Vidi Konektoj"
 
 #: package/contents/ui/main.qml:431
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
-msgstr "Obejrzyj dzienniki"
+msgstr "Vidi Protokolojn"
 
 #: package/contents/ui/main.qml:442
 #, kde-format
 msgid "Add Rule…"
-msgstr "Dodaj zasadę…"
+msgstr "Aldoni regulon…"
 
 #: package/contents/ui/main.qml:451
 #, kde-format
 msgid "About"
-msgstr "O programie"
+msgstr "Pri"
 
 #: package/contents/ui/main.qml:459
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
-msgstr "Wgraj zaporę ogniową taką jak ufw lub firewalld"
+msgstr "Bonvolu instali fajroŝirmilon, kiel ufw aŭ firewalld"
 
 #: package/contents/ui/PortTextField.qml:11
 #, kde-format
 msgid "Any Port"
-msgstr "Dowolny port"
+msgstr "Ajna Haveno"
 
 #: package/contents/ui/RuleEdit.qml:41
 #, kde-format
 msgid "New Connections"
-msgstr "Nowe połączenia"
+msgstr "Novaj Konektoj"
 
 #: package/contents/ui/RuleEdit.qml:42
 #, kde-format
 msgid "All Packets"
-msgstr "Wszystkie pakiety"
+msgstr "Ĉiuj Pakoj"
 
 #: package/contents/ui/RuleEdit.qml:57 package/contents/ui/RuleEdit.qml:64
 #, kde-format
 msgid "The default incoming policy is already '%1'."
-msgstr "Domyślną zasadą połączeń przychodzących jest już '%1'."
+msgstr "La defaŭlta envenanta politiko jam estas '%1'."
 
 #: package/contents/ui/RuleEdit.qml:58 package/contents/ui/RuleEdit.qml:65
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
-msgstr "Domyślną zasadą połączeń wychodzących jest już '%1'."
+msgstr "La defaŭlta elira politiko jam estas '%1'."
 
 #: package/contents/ui/SimpleRuleEdit.qml:23
 #, kde-format
 msgid "Allow connections for:"
-msgstr "Zezwól na połączenia dla:"
+msgstr "Permesi konektojn por:"
 
 #: package/contents/ui/SimpleRuleEdit.qml:23
 #, kde-format
 msgid "Application:"
-msgstr "Aplikacja:"
+msgstr "Apliko:"
 
 #: package/contents/ui/ViewBase.qml:222
 #, kde-format
 msgid "Blacklist Connection"
-msgstr "Dodaj połączenie na czarną listę"
-
-#~ msgctxt "@title"
-#~ msgid "Configure Firewall"
-#~ msgstr "Ustawienia zapory ogniowej"
-
-#~ msgctxt "@info:credit"
-#~ msgid "Alexis López Zubieta"
-#~ msgstr "Alexis López Zubieta"
-
-#~ msgctxt "@info:credit"
-#~ msgid "Tomaz Canabrava"
-#~ msgstr "Tomaz Canabrava"
-
-#~ msgctxt "@info:credit"
-#~ msgid "Lucas Januario"
-#~ msgstr "Lucas Januario"
-
-#~ msgid "Connections..."
-#~ msgstr "Połączenia..."
-
-#~ msgid "Logs..."
-#~ msgstr "Dzienniki..."
+msgstr "Nigra Listo Konekto"
