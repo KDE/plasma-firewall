@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-26 02:16+0000\n"
-"PO-Revision-Date: 2023-02-24 12:44\n"
+"PO-Revision-Date: 2023-05-22 13:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -14,8 +14,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf5-trunk/messages/plasma-firewall/kcm_firewall.pot\n"
-"X-Crowdin-File-ID: 24482\n"
+"X-Crowdin-File: /kf6-trunk/messages/plasma-firewall/kcm_firewall.pot\n"
+"X-Crowdin-File-ID: 43603\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -579,10 +579,9 @@ msgid "Firewall Status:"
 msgstr "防火墙状态："
 
 #: package/contents/ui/main.qml:155
-#, fuzzy, kde-format
-#| msgid "Disabling..."
+#, kde-format
 msgid "Disabling…"
-msgstr "正在停用…"
+msgstr "正在禁用…"
 
 #: package/contents/ui/main.qml:155
 #, kde-format
@@ -590,10 +589,9 @@ msgid "Enabled"
 msgstr "已启用"
 
 #: package/contents/ui/main.qml:157
-#, fuzzy, kde-format
-#| msgid "Enabling..."
+#, kde-format
 msgid "Enabling…"
-msgstr "正在启用..."
+msgstr "正在启用…"
 
 #: package/contents/ui/main.qml:157
 #, kde-format
@@ -653,20 +651,13 @@ msgid "No firewall rules have been added"
 msgstr "尚未建立任何防火墙规则"
 
 #: package/contents/ui/main.qml:338
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click the <interface>Add Rule...</interface> button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button below to add one"
-msgstr "点击下方的 <interface>新建规则...</interface> 按钮来新建一条规则"
+msgstr "点击下方的 <interface>新建规则…</interface> 按钮来新建一条规则"
 
 #: package/contents/ui/main.qml:339
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule...</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Enable the firewall with the <interface>Firewall Status</interface> checkbox "
@@ -674,7 +665,7 @@ msgid ""
 "add one"
 msgstr ""
 "勾选上方的<interface>防火墙状态</interface>选框以启用防火墙，然后点击"
-"<interface>新建规则...</interface>按钮以新增防火墙规则。"
+"<interface>新建规则…</interface>按钮以新增防火墙规则。"
 
 #: package/contents/ui/main.qml:343
 #, kde-format
@@ -721,10 +712,9 @@ msgid "View Logs"
 msgstr "查看日志"
 
 #: package/contents/ui/main.qml:442
-#, fuzzy, kde-format
-#| msgid "Add Rule..."
+#, kde-format
 msgid "Add Rule…"
-msgstr "新建规则..."
+msgstr "新建规则…"
 
 #: package/contents/ui/main.qml:451
 #, kde-format
