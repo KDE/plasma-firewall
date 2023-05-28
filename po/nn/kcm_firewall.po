@@ -1,13 +1,13 @@
 # Translation of kcm_firewall to Norwegian Nynorsk
 #
-# Karl Ove Hufthammer <karl@huftis.org>, 2021, 2022.
+# Karl Ove Hufthammer <karl@huftis.org>, 2021, 2022, 2023.
 # Øystein Steffensen-Alværvik <oysteins.omsetting@protonmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-26 02:16+0000\n"
-"PO-Revision-Date: 2022-04-10 17:33+0200\n"
+"PO-Revision-Date: 2023-05-27 14:12+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 23.04.1\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -583,10 +583,9 @@ msgid "Firewall Status:"
 msgstr "Brannmur­status:"
 
 #: package/contents/ui/main.qml:155
-#, fuzzy, kde-format
-#| msgid "Disabling..."
+#, kde-format
 msgid "Disabling…"
-msgstr "Slår av …"
+msgstr "Tek ut av bruk …"
 
 #: package/contents/ui/main.qml:155
 #, kde-format
@@ -594,8 +593,7 @@ msgid "Enabled"
 msgstr "På"
 
 #: package/contents/ui/main.qml:157
-#, fuzzy, kde-format
-#| msgid "Enabling..."
+#, kde-format
 msgid "Enabling…"
 msgstr "Tek i bruk …"
 
@@ -659,21 +657,14 @@ msgid "No firewall rules have been added"
 msgstr "Ingen brannmur­reglar er lagde til"
 
 #: package/contents/ui/main.qml:338
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click the <interface>Add Rule...</interface> button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button below to add one"
 msgstr ""
 "Trykk <interface>Legg til regel</interface> for å leggja til ein ny regel"
 
 #: package/contents/ui/main.qml:339
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule...</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Enable the firewall with the <interface>Firewall Status</interface> checkbox "
@@ -681,7 +672,7 @@ msgid ""
 "add one"
 msgstr ""
 "Slå på brannmuren ved å huka av for <interface>Brannmurstatus</interface> i "
-"avkryssingsboksen ovanfor, og trykk deretter <interface>Legg til regel …</"
+"avkryssingsboksen ovanfor, og trykk deretter <interface>Legg til regel</"
 "interface> for å leggja til ein ny regel"
 
 #: package/contents/ui/main.qml:343
@@ -729,8 +720,7 @@ msgid "View Logs"
 msgstr "Vis loggar"
 
 #: package/contents/ui/main.qml:442
-#, fuzzy, kde-format
-#| msgid "Add Rule..."
+#, kde-format
 msgid "Add Rule…"
 msgstr "Legg til regel …"
 
