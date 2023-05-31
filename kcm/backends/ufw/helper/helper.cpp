@@ -16,9 +16,6 @@
 #include <QString>
 #include <QStringList>
 #include <QStandardPaths>
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#include <QTextCodec>
-#endif
 #include <sys/stat.h>
 
 #include <KAuth/HelperSupport>
@@ -152,10 +149,6 @@ ActionReply Helper::modify(const QVariantMap &args)
 {
     QString cmd = args[QStringLiteral("cmd")].toString();
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    // QProcess converts its args using QString().toLocal8Bit()!!!, so use UTF-8 codec.
-    QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
-#endif
     return QStringLiteral("setStatus") == cmd    ? setStatus(args, cmd)
         : QStringLiteral("addRules") == cmd      ? addRules(args, cmd)
         : QStringLiteral("removeRule") == cmd    ? removeRule(args, cmd)
