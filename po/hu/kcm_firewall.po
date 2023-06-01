@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-26 02:16+0000\n"
+"POT-Creation-Date: 2023-06-01 02:11+0000\n"
 "PO-Revision-Date: 2022-02-15 10:02+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -73,32 +73,32 @@ msgstr "Létrejött"
 msgid "Listening"
 msgstr "Figyelés"
 
-#: backends/ufw/helper/helper.cpp:220
+#: backends/ufw/helper/helper.cpp:213
 #, kde-format
 msgid "Invalid arguments passed to the profile"
 msgstr "Érvénytelen argumentumok lettek átadva a profilnak"
 
-#: backends/ufw/helper/helper.cpp:250
+#: backends/ufw/helper/helper.cpp:243
 #, kde-format
 msgid "Error saving the profile."
 msgstr "Hiba a profil mentésekor."
 
-#: backends/ufw/helper/helper.cpp:274
+#: backends/ufw/helper/helper.cpp:267
 #, kde-format
 msgid "Invalid arguments passed to delete profile"
 msgstr "Érvénytelen argumentumok lettek átadva a profil törléséhez"
 
-#: backends/ufw/helper/helper.cpp:281
+#: backends/ufw/helper/helper.cpp:274
 #, kde-format
 msgid "Could not remove the profile from disk."
 msgstr "Nem lehet törölni a profilt a lemezről."
 
-#: backends/ufw/helper/helper.cpp:296
+#: backends/ufw/helper/helper.cpp:289
 #, kde-format
 msgid "Invalid argument passed to add Rules"
 msgstr "Érvénytelen argumentumok lettek átadva a szabály létrehozásához"
 
-#: backends/ufw/helper/helper.cpp:368
+#: backends/ufw/helper/helper.cpp:361
 #, kde-format
 msgid "An error occurred in command '%1': %2"
 msgstr "Hiba történt a(z) „%1” parancsban: %2"

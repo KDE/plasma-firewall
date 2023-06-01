@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-26 02:16+0000\n"
+"POT-Creation-Date: 2023-06-01 02:11+0000\n"
 "PO-Revision-Date: 2023-04-29 10:32+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -73,32 +73,32 @@ msgstr "Nawiązano"
 msgid "Listening"
 msgstr "Słuchanie"
 
-#: backends/ufw/helper/helper.cpp:220
+#: backends/ufw/helper/helper.cpp:213
 #, kde-format
 msgid "Invalid arguments passed to the profile"
 msgstr "Podano nieprawidłowe argumenty do profilu"
 
-#: backends/ufw/helper/helper.cpp:250
+#: backends/ufw/helper/helper.cpp:243
 #, kde-format
 msgid "Error saving the profile."
 msgstr "Błąd zapisywania profilu."
 
-#: backends/ufw/helper/helper.cpp:274
+#: backends/ufw/helper/helper.cpp:267
 #, kde-format
 msgid "Invalid arguments passed to delete profile"
 msgstr "Podano nieprawidłowe argumenty do usunięcia profilu"
 
-#: backends/ufw/helper/helper.cpp:281
+#: backends/ufw/helper/helper.cpp:274
 #, kde-format
 msgid "Could not remove the profile from disk."
 msgstr "Nie można usunąć profilu z dysku."
 
-#: backends/ufw/helper/helper.cpp:296
+#: backends/ufw/helper/helper.cpp:289
 #, kde-format
 msgid "Invalid argument passed to add Rules"
 msgstr "Podano nieprawidłowy argument przy dodawaniu zasad"
 
-#: backends/ufw/helper/helper.cpp:368
+#: backends/ufw/helper/helper.cpp:361
 #, kde-format
 msgid "An error occurred in command '%1': %2"
 msgstr "Wystąpił błąd w poleceniu '%1': %2"

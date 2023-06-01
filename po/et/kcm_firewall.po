@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-26 02:16+0000\n"
+"POT-Creation-Date: 2023-06-01 02:11+0000\n"
 "PO-Revision-Date: 2020-10-25 21:58+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -73,32 +73,32 @@ msgstr "Loodud"
 msgid "Listening"
 msgstr "Jälgib"
 
-#: backends/ufw/helper/helper.cpp:220
+#: backends/ufw/helper/helper.cpp:213
 #, kde-format
 msgid "Invalid arguments passed to the profile"
 msgstr "Profiilile anti sobimatud argumendid"
 
-#: backends/ufw/helper/helper.cpp:250
+#: backends/ufw/helper/helper.cpp:243
 #, kde-format
 msgid "Error saving the profile."
 msgstr "Tõrge profiili salvestamisel."
 
-#: backends/ufw/helper/helper.cpp:274
+#: backends/ufw/helper/helper.cpp:267
 #, kde-format
 msgid "Invalid arguments passed to delete profile"
 msgstr "Profiili kustutamiseks anti sobimatud argumendid"
 
-#: backends/ufw/helper/helper.cpp:281
+#: backends/ufw/helper/helper.cpp:274
 #, kde-format
 msgid "Could not remove the profile from disk."
 msgstr "Profiili kettalt eemaldamine nurjus."
 
-#: backends/ufw/helper/helper.cpp:296
+#: backends/ufw/helper/helper.cpp:289
 #, kde-format
 msgid "Invalid argument passed to add Rules"
 msgstr "Reeglite lisamiseks anti sobimatu argument"
 
-#: backends/ufw/helper/helper.cpp:368
+#: backends/ufw/helper/helper.cpp:361
 #, kde-format
 msgid "An error occurred in command '%1': %2"
 msgstr "Käsu \"%1\" täitmisel ilmnes tõrge: %2"

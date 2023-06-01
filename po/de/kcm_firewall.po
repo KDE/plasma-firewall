@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-26 02:16+0000\n"
+"POT-Creation-Date: 2023-06-01 02:11+0000\n"
 "PO-Revision-Date: 2023-04-26 20:30+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -74,32 +74,32 @@ msgstr "Hergestellt"
 msgid "Listening"
 msgstr "Horchend"
 
-#: backends/ufw/helper/helper.cpp:220
+#: backends/ufw/helper/helper.cpp:213
 #, kde-format
 msgid "Invalid arguments passed to the profile"
 msgstr ""
 
-#: backends/ufw/helper/helper.cpp:250
+#: backends/ufw/helper/helper.cpp:243
 #, kde-format
 msgid "Error saving the profile."
 msgstr "Fehler beim Speichern des Profils."
 
-#: backends/ufw/helper/helper.cpp:274
+#: backends/ufw/helper/helper.cpp:267
 #, kde-format
 msgid "Invalid arguments passed to delete profile"
 msgstr ""
 
-#: backends/ufw/helper/helper.cpp:281
+#: backends/ufw/helper/helper.cpp:274
 #, kde-format
 msgid "Could not remove the profile from disk."
 msgstr ""
 
-#: backends/ufw/helper/helper.cpp:296
+#: backends/ufw/helper/helper.cpp:289
 #, kde-format
 msgid "Invalid argument passed to add Rules"
 msgstr ""
 
-#: backends/ufw/helper/helper.cpp:368
+#: backends/ufw/helper/helper.cpp:361
 #, kde-format
 msgid "An error occurred in command '%1': %2"
 msgstr "Beim Befehl „%1“ ist ein Fehler aufgetreten: %2"

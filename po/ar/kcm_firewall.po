@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-26 02:16+0000\n"
+"POT-Creation-Date: 2023-06-01 02:11+0000\n"
 "PO-Revision-Date: 2023-04-27 12:18+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -73,32 +73,32 @@ msgstr "أنشئت"
 msgid "Listening"
 msgstr "يستمع"
 
-#: backends/ufw/helper/helper.cpp:220
+#: backends/ufw/helper/helper.cpp:213
 #, kde-format
 msgid "Invalid arguments passed to the profile"
 msgstr "معاملات غير صحيحة مررت إلى التشكيلة"
 
-#: backends/ufw/helper/helper.cpp:250
+#: backends/ufw/helper/helper.cpp:243
 #, kde-format
 msgid "Error saving the profile."
 msgstr "خطأ في حفظ التشكيلة."
 
-#: backends/ufw/helper/helper.cpp:274
+#: backends/ufw/helper/helper.cpp:267
 #, kde-format
 msgid "Invalid arguments passed to delete profile"
 msgstr "معاملات غير صحيحة مررت لحذف التشكيلة"
 
-#: backends/ufw/helper/helper.cpp:281
+#: backends/ufw/helper/helper.cpp:274
 #, kde-format
 msgid "Could not remove the profile from disk."
 msgstr "لا يمكن إزالة التشكيلة من القرص."
 
-#: backends/ufw/helper/helper.cpp:296
+#: backends/ufw/helper/helper.cpp:289
 #, kde-format
 msgid "Invalid argument passed to add Rules"
 msgstr "معامل غير صحيح مرر لإضافة قواعد"
 
-#: backends/ufw/helper/helper.cpp:368
+#: backends/ufw/helper/helper.cpp:361
 #, kde-format
 msgid "An error occurred in command '%1': %2"
 msgstr "حدث خطأ في الأمر '%1':‏ %2"
