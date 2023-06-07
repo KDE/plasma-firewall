@@ -1,21 +1,21 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
-# Vit Pelcak <vit@pelcak.org>, 2020, 2021, 2022.
+# Vit Pelcak <vit@pelcak.org>, 2020, 2021, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-01 02:11+0000\n"
-"PO-Revision-Date: 2022-02-16 09:40+0100\n"
-"Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
+"PO-Revision-Date: 2023-05-02 15:23+0200\n"
+"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 21.12.2\n"
+"X-Generator: Lokalize 23.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -577,10 +577,9 @@ msgid "Firewall Status:"
 msgstr "Stav firewallu:"
 
 #: package/contents/ui/main.qml:155
-#, fuzzy, kde-format
-#| msgid "Disabling..."
+#, kde-format
 msgid "Disabling…"
-msgstr "Zakazuji..."
+msgstr "Zakazuji…"
 
 #: package/contents/ui/main.qml:155
 #, kde-format
@@ -588,10 +587,9 @@ msgid "Enabled"
 msgstr "Povoleno"
 
 #: package/contents/ui/main.qml:157
-#, fuzzy, kde-format
-#| msgid "Enabling..."
+#, kde-format
 msgid "Enabling…"
-msgstr "Povoluji..."
+msgstr "Povoluji…"
 
 #: package/contents/ui/main.qml:157
 #, kde-format
@@ -651,9 +649,7 @@ msgid "No firewall rules have been added"
 msgstr "Nebyla přidána žádná pravidla firewallu"
 
 #: package/contents/ui/main.qml:338
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click the <interface>Add Rule...</interface> button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button below to add one"
 msgstr ""
@@ -714,10 +710,9 @@ msgid "View Logs"
 msgstr "Zobrazit záznamy"
 
 #: package/contents/ui/main.qml:442
-#, fuzzy, kde-format
-#| msgid "Add Rule..."
+#, kde-format
 msgid "Add Rule…"
-msgstr "Přidat pravidlo..."
+msgstr "Přidat pravidlo…"
 
 #: package/contents/ui/main.qml:451
 #, kde-format
