@@ -76,10 +76,7 @@
         "Name[uk]": "Брандмауер",
         "Name[x-test]": "xxFirewallxx",
         "Name[zh_CN]": "防火墙",
-        "Name[zh_TW]": "防火牆",
-        "ServiceTypes": [
-            "KCModule"
-        ]
+        "Name[zh_TW]": "防火牆"
     },
     "X-DocPath": "kcontrol/firewall/index.html",
     "X-KDE-Keywords": "firewall,network,security,block,allow,internet,web,websites,whitelist,blacklist,allowlist,blocklist,ports,rules,connections,udp,tcp,ip,address,ipv4,ipv6,protection,privacy,local address,remote address,gateway,localhost,ufw,firewalld,firewall rules,firewall exception,firewall exceptions,origin,destination,protocol,interface",
@@ -108,7 +105,6 @@
     "X-KDE-Keywords[uk]": "firewall,network,security,block,allow,internet,web,websites,whitelist,blacklist,allowlist,blocklist,ports,rules,connections,udp,tcp,ip,address,ipv4,ipv6,protection,privacy,local address,remote address,gateway,localhost,ufw,firewalld,firewall rules,firewall exception,firewall exceptions,origin,destination,protocol,interface,брандмауер,файрвол,екран,мережа,безпека,блокування,блокувати,дозволити,інтернет,веб,сайти,білий список,чорний список,дозволений список,список блокування,порти,правила,з'єднання,удп,тісіпі,тсп,іп,айпі,адреса,захист,конфіденційність,локальна адреса,віддалена адреса,шлюз,локальний вузол,локалхост,уфв,файрволд,правила брандмауера,виключення брандмауера,походження,призначення,протокол,інтерфейс",
     "X-KDE-Keywords[x-test]": "xxfirewallxx,xxnetworkxx,xxsecurityxx,xxblockxx,xxallowxx,xxinternetxx,xxwebxx,xxwebsitesxx,xxwhitelistxx,xxblacklistxx,xxallowlistxx,xxblocklistxx,xxportsxx,xxrulesxx,xxconnectionsxx,xxudpxx,xxtcpxx,xxipxx,xxaddressxx,xxipv4xx,xxipv6xx,xxprotectionxx,xxprivacyxx,xxlocal addressxx,xxremote addressxx,xxgatewayxx,xxlocalhostxx,xxufwxx,xxfirewalldxx,xxfirewall rulesxx,xxfirewall exceptionxx,xxfirewall exceptionsxx,xxoriginxx,xxdestinationxx,xxprotocolxx,xxinterfacexx",
     "X-KDE-Keywords[zh_CN]": "firewall,network,security,block,allow,internet,web,websites,whitelist,blacklist,allowlist,blocklist,ports,rules,connections,udp,tcp,ip,address,ipv4,ipv6,protection,privacy,local address,remote address,gateway,localhost,ufw,firewalld,firewall rules,firewall exception,firewall exceptions,origin,destination,protocol,interface,防火墙,网络,安全,屏蔽,允许,互联网,网络,网站,白名单,黑名单,允许名单,屏蔽名单,端口,规则,连接,地址,保护,隐私,本地地址,远程地址,网关,本地主机,防火墙规则,防火墙例外,源,目标,协议,接口",
-    "X-KDE-ParentApp": "kcontrol",
     "X-KDE-System-Settings-Parent-Category": "network",
     "X-KDE-Weight": 80
 }

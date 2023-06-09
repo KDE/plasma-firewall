@@ -23,8 +23,8 @@
 
 K_PLUGIN_CLASS_WITH_JSON(KCMFirewall, "kcm_firewall.json")
 
-KCMFirewall::KCMFirewall(QObject *parent, const KPluginMetaData &metaData, const QVariantList &args)
-    : KQuickConfigModule(parent, metaData, args)
+KCMFirewall::KCMFirewall(QObject *parent, const KPluginMetaData &metaData)
+    : KQuickConfigModule(parent, metaData)
     , m_client(new FirewallClient(this))
 {
     qmlRegisterAnonymousType<KJob>("org.kcm.firewall", 1);
