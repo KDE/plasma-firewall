@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-01 02:11+0000\n"
+"POT-Creation-Date: 2023-06-10 02:09+0000\n"
 "PO-Revision-Date: 2023-04-26 10:45+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -185,7 +185,7 @@ msgstr "Hoog"
 msgid "Full"
 msgstr "Volledig"
 
-#: core/types.cpp:45 package/contents/ui/RuleEdit.qml:40
+#: core/types.cpp:45 ui/RuleEdit.qml:40
 #, kde-format
 msgid "None"
 msgstr "Geen"
@@ -200,7 +200,7 @@ msgstr "Nieuwe verbindingen"
 msgid "All packets"
 msgstr "Alle pakketten"
 
-#: core/types.cpp:58 package/contents/ui/main.qml:23
+#: core/types.cpp:58 ui/main.qml:23
 #, kde-format
 msgid "Allow"
 msgstr "Toestaan"
@@ -210,7 +210,7 @@ msgstr "Toestaan"
 msgid "Deny"
 msgstr "Weigeren"
 
-#: core/types.cpp:62 package/contents/ui/main.qml:25
+#: core/types.cpp:62 ui/main.qml:25
 #, kde-format
 msgid "Reject"
 msgstr "Afwijzen"
@@ -350,182 +350,177 @@ msgstr "NTP"
 msgid "CUPS"
 msgstr "CUPS"
 
-#: package/contents/ui/About.qml:16
+#: ui/About.qml:16
 #, kde-format
 msgid "About Firewall"
 msgstr "Info over Firewall"
 
-#: package/contents/ui/About.qml:21
+#: ui/About.qml:21
 #, kde-format
 msgid "Backend:"
 msgstr "Backend:"
 
-#: package/contents/ui/About.qml:25
+#: ui/About.qml:25
 #, kde-format
 msgid "Version:"
 msgstr "Versie:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:31
-#: package/contents/ui/SimpleRuleEdit.qml:29
+#: ui/AdvancedRuleEdit.qml:31 ui/SimpleRuleEdit.qml:29
 #, kde-format
 msgid "Policy:"
 msgstr "Beleid:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:40
-#: package/contents/ui/SimpleRuleEdit.qml:38
+#: ui/AdvancedRuleEdit.qml:40 ui/SimpleRuleEdit.qml:38
 #, kde-format
 msgid "Direction:"
 msgstr "Richting:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:43
-#: package/contents/ui/SimpleRuleEdit.qml:42
+#: ui/AdvancedRuleEdit.qml:43 ui/SimpleRuleEdit.qml:42
 #, kde-format
 msgid "Incoming"
 msgstr "Inkomend"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:49
-#: package/contents/ui/SimpleRuleEdit.qml:48
+#: ui/AdvancedRuleEdit.qml:49 ui/SimpleRuleEdit.qml:48
 #, kde-format
 msgid "Outgoing"
 msgstr "Uitgaand"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:57
+#: ui/AdvancedRuleEdit.qml:57
 #, kde-format
 msgid "IP Version:"
 msgstr "IP-versie:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:60
+#: ui/AdvancedRuleEdit.qml:60
 #, kde-format
 msgid "IPv4"
 msgstr "IPv4"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:65
+#: ui/AdvancedRuleEdit.qml:65
 #, kde-format
 msgid "IPv6"
 msgstr "IPv6"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:72
+#: ui/AdvancedRuleEdit.qml:72
 #, kde-format
 msgid "Source:"
 msgstr "Bron:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:92
+#: ui/AdvancedRuleEdit.qml:92
 #, kde-format
 msgid "Destination:"
 msgstr "Bestemming:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:112
+#: ui/AdvancedRuleEdit.qml:112
 #, kde-format
 msgid "Protocol:"
 msgstr "Protocol:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:121
+#: ui/AdvancedRuleEdit.qml:121
 #, kde-format
 msgid "Interface:"
 msgstr "Interface:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:131
+#: ui/AdvancedRuleEdit.qml:131
 #, kde-format
 msgid "Logging:"
 msgstr "Loggen:"
 
-#: package/contents/ui/ConnectionsView.qml:14
+#: ui/ConnectionsView.qml:14
 #, kde-format
 msgid "Connections"
 msgstr "Verbindingen"
 
-#: package/contents/ui/ConnectionsView.qml:18
-#: package/contents/ui/LogsView.qml:19
+#: ui/ConnectionsView.qml:18 ui/LogsView.qml:19
 #, kde-format
 msgid "Protocol"
 msgstr "Protocol"
 
-#: package/contents/ui/ConnectionsView.qml:19
+#: ui/ConnectionsView.qml:19
 #, kde-format
 msgid "Local Address"
 msgstr "Lokaal adres"
 
-#: package/contents/ui/ConnectionsView.qml:20
+#: ui/ConnectionsView.qml:20
 #, kde-format
 msgid "Foreign Address"
 msgstr "Niet-lokaal adres"
 
-#: package/contents/ui/ConnectionsView.qml:21
+#: ui/ConnectionsView.qml:21
 #, kde-format
 msgid "Status"
 msgstr "Status"
 
-#: package/contents/ui/ConnectionsView.qml:22
+#: ui/ConnectionsView.qml:22
 #, kde-format
 msgid "PID"
 msgstr "PID"
 
-#: package/contents/ui/ConnectionsView.qml:23
+#: ui/ConnectionsView.qml:23
 #, kde-format
 msgid "Program"
 msgstr "Programma"
 
-#: package/contents/ui/ConnectionsView.qml:26
+#: ui/ConnectionsView.qml:26
 #, kde-format
 msgid "There are currently no open connections"
 msgstr "Er zijn nu geen open verbindingen"
 
-#: package/contents/ui/ConnectionsView.qml:35
+#: ui/ConnectionsView.qml:35
 #, kde-format
 msgid "Created a blacklist rule from this connection."
 msgstr "Een regel op de zwarte lijst aangemaakt voor deze verbinding."
 
-#: package/contents/ui/ConnectionsView.qml:52
+#: ui/ConnectionsView.qml:52
 #, kde-format
 msgid "could not find iproute2 or net-tools packages installed."
 msgstr "kon iproute2 niet vinden of pakketten net-tools geïnstalleerd."
 
-#: package/contents/ui/IpTextField.qml:14
+#: ui/IpTextField.qml:14
 #, kde-format
 msgid "Any IP address"
 msgstr "Een IP-adres"
 
-#: package/contents/ui/LogsView.qml:16
+#: ui/LogsView.qml:16
 #, kde-format
 msgid "Firewall Logs"
 msgstr "Firewall-logs"
 
-#: package/contents/ui/LogsView.qml:20 package/contents/ui/main.qml:348
+#: ui/LogsView.qml:20 ui/main.qml:348
 #, kde-format
 msgid "From"
 msgstr "Van"
 
-#: package/contents/ui/LogsView.qml:22 package/contents/ui/main.qml:353
+#: ui/LogsView.qml:22 ui/main.qml:353
 #, kde-format
 msgid "To"
 msgstr "Aan"
 
-#: package/contents/ui/LogsView.qml:24
+#: ui/LogsView.qml:24
 #, kde-format
 msgid "Interface"
 msgstr "Interface"
 
-#: package/contents/ui/LogsView.qml:26
+#: ui/LogsView.qml:26
 #, kde-format
 msgid "There are currently no firewall log entries"
 msgstr "Er zijn nu geen items in de firewall-log"
 
-#: package/contents/ui/LogsView.qml:37
+#: ui/LogsView.qml:37
 #, kde-format
 msgid "Created a blacklist rule from this log entry."
 msgstr "Een regel op de zwarte lijst aangemaakt voor dit log-item."
 
-#: package/contents/ui/main.qml:23
+#: ui/main.qml:23
 #, kde-format
 msgid "Allow all connections"
 msgstr "Alle verbindingen toestaan"
 
-#: package/contents/ui/main.qml:24
+#: ui/main.qml:24
 #, kde-format
 msgid "Ignore"
 msgstr "Negeren"
 
-#: package/contents/ui/main.qml:24
+#: ui/main.qml:24
 #, kde-format
 msgid ""
 "Keeps the program waiting until the connection attempt times out, some short "
@@ -534,85 +529,84 @@ msgstr ""
 "Laat het programma wachten totdat de tijd van de verbindingspoging verloopt, "
 "een korte tijd later."
 
-#: package/contents/ui/main.qml:25
+#: ui/main.qml:25
 #, kde-format
 msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr ""
 "Produceert een onmiddellijk en erg informatief bericht 'Verbinding geweigerd'"
 
-#: package/contents/ui/main.qml:40
+#: ui/main.qml:40
 #, kde-format
 msgid "Create A New Firewall Rule"
 msgstr "Een nieuwe firewall-regel aanmaken"
 
-#: package/contents/ui/main.qml:40
+#: ui/main.qml:40
 #, kde-format
 msgid "Edit Firewall Rule"
 msgstr "Firewall-regel bewerken"
 
-#: package/contents/ui/main.qml:76 package/contents/ui/main.qml:263
-#: package/contents/ui/main.qml:398
+#: ui/main.qml:76 ui/main.qml:263 ui/main.qml:398
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr ""
 "Herstart de plasma firewall, de verbinding met de backend is verbroken."
 
-#: package/contents/ui/main.qml:90 package/contents/ui/ViewBase.qml:110
+#: ui/main.qml:90 ui/ViewBase.qml:110
 #, kde-format
 msgid "Error creating rule: %1"
 msgstr "Fout bij het aanmaken van regel: %1"
 
-#: package/contents/ui/main.qml:92
+#: ui/main.qml:92
 #, kde-format
 msgid "Error updating rule: %1"
 msgstr "Fout bij het bijwerken van regel; %1"
 
-#: package/contents/ui/main.qml:124
+#: ui/main.qml:124
 #, kde-format
 msgid "Create"
 msgstr "Aanmaken"
 
-#: package/contents/ui/main.qml:124
+#: ui/main.qml:124
 #, kde-format
 msgid "Save"
 msgstr "Opslaan"
 
-#: package/contents/ui/main.qml:149
+#: ui/main.qml:149
 #, kde-format
 msgid "Firewall Status:"
 msgstr "Firewall-status:"
 
-#: package/contents/ui/main.qml:155
+#: ui/main.qml:155
 #, kde-format
 msgid "Disabling…"
 msgstr "Uitschakelen…"
 
-#: package/contents/ui/main.qml:155
+#: ui/main.qml:155
 #, kde-format
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
-#: package/contents/ui/main.qml:157
+#: ui/main.qml:157
 #, kde-format
 msgid "Enabling…"
 msgstr "Inschakelen…"
 
-#: package/contents/ui/main.qml:157
+#: ui/main.qml:157
 #, kde-format
 msgid "Disabled"
 msgstr "Uitgeschakeld"
 
-#: package/contents/ui/main.qml:183
+#: ui/main.qml:183
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr "De firewall-toepassing, gaarne %1 installeren "
 
-#: package/contents/ui/main.qml:197
+#: ui/main.qml:197
 #, kde-format
 msgid "Permission denied"
 msgstr "Toestemming afgewezen"
 
-#: package/contents/ui/main.qml:201
+#: ui/main.qml:201
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
@@ -621,42 +615,42 @@ msgstr ""
 "U hebt recent uw kernel bijgewerkt. Iptables mislukt bij initialiseren, "
 "start opnieuw."
 
-#: package/contents/ui/main.qml:204
+#: ui/main.qml:204
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr "Fout bij inschakelen van firewall: %1"
 
-#: package/contents/ui/main.qml:205
+#: ui/main.qml:205
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr "Fout bij uitschakelen van firewall: %1"
 
-#: package/contents/ui/main.qml:225
+#: ui/main.qml:225
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "Standaardbeleid voor inkomend:"
 
-#: package/contents/ui/main.qml:226
+#: ui/main.qml:226
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "Standaardbeleid voor uitgaand:"
 
-#: package/contents/ui/main.qml:273
+#: ui/main.qml:273
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Fout bij het wijzigen van beleid: %1"
 
-#: package/contents/ui/main.qml:336
+#: ui/main.qml:336
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "Firewall is uitgeschakeld"
 
-#: package/contents/ui/main.qml:336
+#: ui/main.qml:336
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Er zijn geen firewall-regels toegevoegd"
 
-#: package/contents/ui/main.qml:338
+#: ui/main.qml:338
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button below to add one"
@@ -664,7 +658,7 @@ msgstr ""
 "Op de onderstaande knop <interface>Regel toevoegen…</interface> klikken om "
 "er een toe te voegen"
 
-#: package/contents/ui/main.qml:339
+#: ui/main.qml:339
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -676,101 +670,101 @@ msgstr ""
 "<interface>Firewallstatus</interface> en klik daarna op de knop "
 "<interface>Regel toevoegen…</interface> eronder om er een toe te voegen"
 
-#: package/contents/ui/main.qml:343
+#: ui/main.qml:343
 #, kde-format
 msgid "Action"
 msgstr "Actie"
 
-#: package/contents/ui/main.qml:358
+#: ui/main.qml:358
 #, kde-format
 msgid "IP"
 msgstr "IP"
 
-#: package/contents/ui/main.qml:363
+#: ui/main.qml:363
 #, kde-format
 msgid "Logging"
 msgstr "Loggen"
 
-#: package/contents/ui/main.qml:389
+#: ui/main.qml:389
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Regel bewerken"
 
-#: package/contents/ui/main.qml:409
+#: ui/main.qml:409
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Fout bij verwijderen van regel: %1"
 
-#: package/contents/ui/main.qml:416
+#: ui/main.qml:416
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Regel verwijderen"
 
-#: package/contents/ui/main.qml:426
+#: ui/main.qml:426
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
 msgstr "Verbindingen bekijken"
 
-#: package/contents/ui/main.qml:431
+#: ui/main.qml:431
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
 msgstr "Logs bekijken"
 
-#: package/contents/ui/main.qml:442
+#: ui/main.qml:442
 #, kde-format
 msgid "Add Rule…"
 msgstr "Regel toevoegen…"
 
-#: package/contents/ui/main.qml:451
+#: ui/main.qml:451
 #, kde-format
 msgid "About"
 msgstr "Info over"
 
-#: package/contents/ui/main.qml:459
+#: ui/main.qml:459
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Installeer en firewall, zoals ufw of firewalld"
 
-#: package/contents/ui/PortTextField.qml:11
+#: ui/PortTextField.qml:11
 #, kde-format
 msgid "Any Port"
 msgstr "Een poort"
 
-#: package/contents/ui/RuleEdit.qml:41
+#: ui/RuleEdit.qml:41
 #, kde-format
 msgid "New Connections"
 msgstr "Nieuwe verbindingen"
 
-#: package/contents/ui/RuleEdit.qml:42
+#: ui/RuleEdit.qml:42
 #, kde-format
 msgid "All Packets"
 msgstr "Alle pakketten"
 
-#: package/contents/ui/RuleEdit.qml:57 package/contents/ui/RuleEdit.qml:64
+#: ui/RuleEdit.qml:57 ui/RuleEdit.qml:64
 #, kde-format
 msgid "The default incoming policy is already '%1'."
 msgstr "Het standaardbeleid voor inkomend is al '%1'."
 
-#: package/contents/ui/RuleEdit.qml:58 package/contents/ui/RuleEdit.qml:65
+#: ui/RuleEdit.qml:58 ui/RuleEdit.qml:65
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
 msgstr "Het standaardbeleid voor uitgaand is al '%1'."
 
-#: package/contents/ui/SimpleRuleEdit.qml:23
+#: ui/SimpleRuleEdit.qml:23
 #, kde-format
 msgid "Allow connections for:"
 msgstr "Verbindingen toestaan voor:"
 
-#: package/contents/ui/SimpleRuleEdit.qml:23
+#: ui/SimpleRuleEdit.qml:23
 #, kde-format
 msgid "Application:"
 msgstr "Toepassing:"
 
-#: package/contents/ui/ViewBase.qml:222
+#: ui/ViewBase.qml:222
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Verbinding op de zwarte lijst"

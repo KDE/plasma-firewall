@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-01 02:11+0000\n"
+"POT-Creation-Date: 2023-06-10 02:09+0000\n"
 "PO-Revision-Date: 2023-04-26 21:57+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -189,7 +189,7 @@ msgstr "Високий"
 msgid "Full"
 msgstr "Повний"
 
-#: core/types.cpp:45 package/contents/ui/RuleEdit.qml:40
+#: core/types.cpp:45 ui/RuleEdit.qml:40
 #, kde-format
 msgid "None"
 msgstr "Немає"
@@ -204,7 +204,7 @@ msgstr "Нові з'єднання"
 msgid "All packets"
 msgstr "Усі пакети"
 
-#: core/types.cpp:58 package/contents/ui/main.qml:23
+#: core/types.cpp:58 ui/main.qml:23
 #, kde-format
 msgid "Allow"
 msgstr "Дозволити"
@@ -214,7 +214,7 @@ msgstr "Дозволити"
 msgid "Deny"
 msgstr "Заборонити"
 
-#: core/types.cpp:62 package/contents/ui/main.qml:25
+#: core/types.cpp:62 ui/main.qml:25
 #, kde-format
 msgid "Reject"
 msgstr "Відмовити"
@@ -354,182 +354,177 @@ msgstr "NTP"
 msgid "CUPS"
 msgstr "CUPS"
 
-#: package/contents/ui/About.qml:16
+#: ui/About.qml:16
 #, kde-format
 msgid "About Firewall"
 msgstr "Про брандмауер"
 
-#: package/contents/ui/About.qml:21
+#: ui/About.qml:21
 #, kde-format
 msgid "Backend:"
 msgstr "Модуль:"
 
-#: package/contents/ui/About.qml:25
+#: ui/About.qml:25
 #, kde-format
 msgid "Version:"
 msgstr "Версія:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:31
-#: package/contents/ui/SimpleRuleEdit.qml:29
+#: ui/AdvancedRuleEdit.qml:31 ui/SimpleRuleEdit.qml:29
 #, kde-format
 msgid "Policy:"
 msgstr "Правила:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:40
-#: package/contents/ui/SimpleRuleEdit.qml:38
+#: ui/AdvancedRuleEdit.qml:40 ui/SimpleRuleEdit.qml:38
 #, kde-format
 msgid "Direction:"
 msgstr "Напрямок:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:43
-#: package/contents/ui/SimpleRuleEdit.qml:42
+#: ui/AdvancedRuleEdit.qml:43 ui/SimpleRuleEdit.qml:42
 #, kde-format
 msgid "Incoming"
 msgstr "Вхідні"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:49
-#: package/contents/ui/SimpleRuleEdit.qml:48
+#: ui/AdvancedRuleEdit.qml:49 ui/SimpleRuleEdit.qml:48
 #, kde-format
 msgid "Outgoing"
 msgstr "Вихідні"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:57
+#: ui/AdvancedRuleEdit.qml:57
 #, kde-format
 msgid "IP Version:"
 msgstr "Версія IP:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:60
+#: ui/AdvancedRuleEdit.qml:60
 #, kde-format
 msgid "IPv4"
 msgstr "IPv4"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:65
+#: ui/AdvancedRuleEdit.qml:65
 #, kde-format
 msgid "IPv6"
 msgstr "IPv6"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:72
+#: ui/AdvancedRuleEdit.qml:72
 #, kde-format
 msgid "Source:"
 msgstr "Джерело:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:92
+#: ui/AdvancedRuleEdit.qml:92
 #, kde-format
 msgid "Destination:"
 msgstr "Призначення:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:112
+#: ui/AdvancedRuleEdit.qml:112
 #, kde-format
 msgid "Protocol:"
 msgstr "Протокол:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:121
+#: ui/AdvancedRuleEdit.qml:121
 #, kde-format
 msgid "Interface:"
 msgstr "Інтерфейс:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:131
+#: ui/AdvancedRuleEdit.qml:131
 #, kde-format
 msgid "Logging:"
 msgstr "Журналювання:"
 
-#: package/contents/ui/ConnectionsView.qml:14
+#: ui/ConnectionsView.qml:14
 #, kde-format
 msgid "Connections"
 msgstr "З'єднання"
 
-#: package/contents/ui/ConnectionsView.qml:18
-#: package/contents/ui/LogsView.qml:19
+#: ui/ConnectionsView.qml:18 ui/LogsView.qml:19
 #, kde-format
 msgid "Protocol"
 msgstr "Протокол"
 
-#: package/contents/ui/ConnectionsView.qml:19
+#: ui/ConnectionsView.qml:19
 #, kde-format
 msgid "Local Address"
 msgstr "Локальна адреса"
 
-#: package/contents/ui/ConnectionsView.qml:20
+#: ui/ConnectionsView.qml:20
 #, kde-format
 msgid "Foreign Address"
 msgstr "Стороння адреса"
 
-#: package/contents/ui/ConnectionsView.qml:21
+#: ui/ConnectionsView.qml:21
 #, kde-format
 msgid "Status"
 msgstr "Стан"
 
-#: package/contents/ui/ConnectionsView.qml:22
+#: ui/ConnectionsView.qml:22
 #, kde-format
 msgid "PID"
 msgstr "PID"
 
-#: package/contents/ui/ConnectionsView.qml:23
+#: ui/ConnectionsView.qml:23
 #, kde-format
 msgid "Program"
 msgstr "Програма"
 
-#: package/contents/ui/ConnectionsView.qml:26
+#: ui/ConnectionsView.qml:26
 #, kde-format
 msgid "There are currently no open connections"
 msgstr "Зараз відкритих з'єднань немає"
 
-#: package/contents/ui/ConnectionsView.qml:35
+#: ui/ConnectionsView.qml:35
 #, kde-format
 msgid "Created a blacklist rule from this connection."
 msgstr "Створено правило «чорного» списку на основі цього з'єднання."
 
-#: package/contents/ui/ConnectionsView.qml:52
+#: ui/ConnectionsView.qml:52
 #, kde-format
 msgid "could not find iproute2 or net-tools packages installed."
 msgstr "Не вдалося знайти встановлені пакунки iproute2 або net-tools."
 
-#: package/contents/ui/IpTextField.qml:14
+#: ui/IpTextField.qml:14
 #, kde-format
 msgid "Any IP address"
 msgstr "Будь-яка IP-адреса"
 
-#: package/contents/ui/LogsView.qml:16
+#: ui/LogsView.qml:16
 #, kde-format
 msgid "Firewall Logs"
 msgstr "Журнал брандмауера"
 
-#: package/contents/ui/LogsView.qml:20 package/contents/ui/main.qml:348
+#: ui/LogsView.qml:20 ui/main.qml:348
 #, kde-format
 msgid "From"
 msgstr "З"
 
-#: package/contents/ui/LogsView.qml:22 package/contents/ui/main.qml:353
+#: ui/LogsView.qml:22 ui/main.qml:353
 #, kde-format
 msgid "To"
 msgstr "До"
 
-#: package/contents/ui/LogsView.qml:24
+#: ui/LogsView.qml:24
 #, kde-format
 msgid "Interface"
 msgstr "Інтерфейс"
 
-#: package/contents/ui/LogsView.qml:26
+#: ui/LogsView.qml:26
 #, kde-format
 msgid "There are currently no firewall log entries"
 msgstr "У журналі брандмауера поки немає записів"
 
-#: package/contents/ui/LogsView.qml:37
+#: ui/LogsView.qml:37
 #, kde-format
 msgid "Created a blacklist rule from this log entry."
 msgstr "Створено правило «чорного» списку на основі цього запису журналу."
 
-#: package/contents/ui/main.qml:23
+#: ui/main.qml:23
 #, kde-format
 msgid "Allow all connections"
 msgstr "Дозволити усі з'єднання"
 
-#: package/contents/ui/main.qml:24
+#: ui/main.qml:24
 #, kde-format
 msgid "Ignore"
 msgstr "Ігнорувати"
 
-#: package/contents/ui/main.qml:24
+#: ui/main.qml:24
 #, kde-format
 msgid ""
 "Keeps the program waiting until the connection attempt times out, some short "
@@ -538,85 +533,84 @@ msgstr ""
 "Зберігає для програми стан очікування, аж доки, невдовзі, не буде перевищено "
 "час очікування на з'єднання."
 
-#: package/contents/ui/main.qml:25
+#: ui/main.qml:25
 #, kde-format
 msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr ""
 "Створює негайне і дуже інформативне повідомлення «У з'єднанні відмовлено»"
 
-#: package/contents/ui/main.qml:40
+#: ui/main.qml:40
 #, kde-format
 msgid "Create A New Firewall Rule"
 msgstr "Створення правила брандмауера"
 
-#: package/contents/ui/main.qml:40
+#: ui/main.qml:40
 #, kde-format
 msgid "Edit Firewall Rule"
 msgstr "Редагування правила брандмауера"
 
-#: package/contents/ui/main.qml:76 package/contents/ui/main.qml:263
-#: package/contents/ui/main.qml:398
+#: ui/main.qml:76 ui/main.qml:263 ui/main.qml:398
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr ""
 "Будь ласка, перезапустіть брандмауер Плазми — модуль обробки від'єднано."
 
-#: package/contents/ui/main.qml:90 package/contents/ui/ViewBase.qml:110
+#: ui/main.qml:90 ui/ViewBase.qml:110
 #, kde-format
 msgid "Error creating rule: %1"
 msgstr "Помилка під час спроби створити правило: %1"
 
-#: package/contents/ui/main.qml:92
+#: ui/main.qml:92
 #, kde-format
 msgid "Error updating rule: %1"
 msgstr "Помилка під час спроби оновити правило: %1"
 
-#: package/contents/ui/main.qml:124
+#: ui/main.qml:124
 #, kde-format
 msgid "Create"
 msgstr "Створити"
 
-#: package/contents/ui/main.qml:124
+#: ui/main.qml:124
 #, kde-format
 msgid "Save"
 msgstr "Зберегти"
 
-#: package/contents/ui/main.qml:149
+#: ui/main.qml:149
 #, kde-format
 msgid "Firewall Status:"
 msgstr "Стан брандмауера:"
 
-#: package/contents/ui/main.qml:155
+#: ui/main.qml:155
 #, kde-format
 msgid "Disabling…"
 msgstr "Вимикання…"
 
-#: package/contents/ui/main.qml:155
+#: ui/main.qml:155
 #, kde-format
 msgid "Enabled"
 msgstr "Увімкнено"
 
-#: package/contents/ui/main.qml:157
+#: ui/main.qml:157
 #, kde-format
 msgid "Enabling…"
 msgstr "Вмикання…"
 
-#: package/contents/ui/main.qml:157
+#: ui/main.qml:157
 #, kde-format
 msgid "Disabled"
 msgstr "Вимкнено"
 
-#: package/contents/ui/main.qml:183
+#: ui/main.qml:183
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr "Програма-брандмауер. Будь ласка, встановіть %1"
 
-#: package/contents/ui/main.qml:197
+#: ui/main.qml:197
 #, kde-format
 msgid "Permission denied"
 msgstr "Відмовлено у доступі"
 
-#: package/contents/ui/main.qml:201
+#: ui/main.qml:201
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
@@ -625,42 +619,42 @@ msgstr ""
 "Вами нещодавно оновлено ядро системи. У результаті не вдається "
 "ініціалізувати iptables. Будь ласка, перезавантажте систему."
 
-#: package/contents/ui/main.qml:204
+#: ui/main.qml:204
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr "Помилка під час спроби увімкнути брандмауер: %1"
 
-#: package/contents/ui/main.qml:205
+#: ui/main.qml:205
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr "Помилка під час спроби вимкнути брандмауер: %1"
 
-#: package/contents/ui/main.qml:225
+#: ui/main.qml:225
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "Типові правила для вхідних:"
 
-#: package/contents/ui/main.qml:226
+#: ui/main.qml:226
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "Типові правила для вихідних:"
 
-#: package/contents/ui/main.qml:273
+#: ui/main.qml:273
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Помилка під час спроби змінити правила: %1"
 
-#: package/contents/ui/main.qml:336
+#: ui/main.qml:336
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "Брандмауер вимкнено"
 
-#: package/contents/ui/main.qml:336
+#: ui/main.qml:336
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Не було додано жодного правила брандмауера"
 
-#: package/contents/ui/main.qml:338
+#: ui/main.qml:338
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button below to add one"
@@ -668,7 +662,7 @@ msgstr ""
 "Натисніть розташовану нижче кнопку <interface>Додати правило…</interface>, "
 "щоб додати правило"
 
-#: package/contents/ui/main.qml:339
+#: ui/main.qml:339
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -680,101 +674,101 @@ msgstr ""
 "брандмауера</interface>, потім натисніть розташовану нижче кнопку "
 "<interface>Додати правило...</interface>, щоб додати правило"
 
-#: package/contents/ui/main.qml:343
+#: ui/main.qml:343
 #, kde-format
 msgid "Action"
 msgstr "Дія"
 
-#: package/contents/ui/main.qml:358
+#: ui/main.qml:358
 #, kde-format
 msgid "IP"
 msgstr "IP"
 
-#: package/contents/ui/main.qml:363
+#: ui/main.qml:363
 #, kde-format
 msgid "Logging"
 msgstr "Журналювання"
 
-#: package/contents/ui/main.qml:389
+#: ui/main.qml:389
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Змінити правило"
 
-#: package/contents/ui/main.qml:409
+#: ui/main.qml:409
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Помилка під час спроби вилучення правила: %1"
 
-#: package/contents/ui/main.qml:416
+#: ui/main.qml:416
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Вилучити правило"
 
-#: package/contents/ui/main.qml:426
+#: ui/main.qml:426
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
 msgstr "Переглянути з'єднання"
 
-#: package/contents/ui/main.qml:431
+#: ui/main.qml:431
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
 msgstr "Переглянути журнал"
 
-#: package/contents/ui/main.qml:442
+#: ui/main.qml:442
 #, kde-format
 msgid "Add Rule…"
 msgstr "Додати правило…"
 
-#: package/contents/ui/main.qml:451
+#: ui/main.qml:451
 #, kde-format
 msgid "About"
 msgstr "Про програму"
 
-#: package/contents/ui/main.qml:459
+#: ui/main.qml:459
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Будь ласка, встановіть брандмауер, наприклад ufw або firewalld"
 
-#: package/contents/ui/PortTextField.qml:11
+#: ui/PortTextField.qml:11
 #, kde-format
 msgid "Any Port"
 msgstr "Будь-який порт"
 
-#: package/contents/ui/RuleEdit.qml:41
+#: ui/RuleEdit.qml:41
 #, kde-format
 msgid "New Connections"
 msgstr "Нові з'єднання"
 
-#: package/contents/ui/RuleEdit.qml:42
+#: ui/RuleEdit.qml:42
 #, kde-format
 msgid "All Packets"
 msgstr "Усі пакети"
 
-#: package/contents/ui/RuleEdit.qml:57 package/contents/ui/RuleEdit.qml:64
+#: ui/RuleEdit.qml:57 ui/RuleEdit.qml:64
 #, kde-format
 msgid "The default incoming policy is already '%1'."
 msgstr "Типовими правилам щодо вхідних вже є «%1»."
 
-#: package/contents/ui/RuleEdit.qml:58 package/contents/ui/RuleEdit.qml:65
+#: ui/RuleEdit.qml:58 ui/RuleEdit.qml:65
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
 msgstr "Типовими правилам щодо вихідних вже є «%1»."
 
-#: package/contents/ui/SimpleRuleEdit.qml:23
+#: ui/SimpleRuleEdit.qml:23
 #, kde-format
 msgid "Allow connections for:"
 msgstr "Дозволити з'єднання для:"
 
-#: package/contents/ui/SimpleRuleEdit.qml:23
+#: ui/SimpleRuleEdit.qml:23
 #, kde-format
 msgid "Application:"
 msgstr "Програма:"
 
-#: package/contents/ui/ViewBase.qml:222
+#: ui/ViewBase.qml:222
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Додати з'єднання до «чорного» списку"

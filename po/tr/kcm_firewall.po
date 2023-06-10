@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-01 02:11+0000\n"
+"POT-Creation-Date: 2023-06-10 02:09+0000\n"
 "PO-Revision-Date: 2023-05-08 11:27+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -186,7 +186,7 @@ msgstr "Yüksek"
 msgid "Full"
 msgstr "Tam"
 
-#: core/types.cpp:45 package/contents/ui/RuleEdit.qml:40
+#: core/types.cpp:45 ui/RuleEdit.qml:40
 #, kde-format
 msgid "None"
 msgstr "Yok"
@@ -201,7 +201,7 @@ msgstr "Yeni bağlantılar"
 msgid "All packets"
 msgstr "Tüm paketler"
 
-#: core/types.cpp:58 package/contents/ui/main.qml:23
+#: core/types.cpp:58 ui/main.qml:23
 #, kde-format
 msgid "Allow"
 msgstr "İzin ver"
@@ -211,7 +211,7 @@ msgstr "İzin ver"
 msgid "Deny"
 msgstr "Reddet"
 
-#: core/types.cpp:62 package/contents/ui/main.qml:25
+#: core/types.cpp:62 ui/main.qml:25
 #, kde-format
 msgid "Reject"
 msgstr "Geri çevir"
@@ -351,182 +351,177 @@ msgstr "NTP"
 msgid "CUPS"
 msgstr "CUPS"
 
-#: package/contents/ui/About.qml:16
+#: ui/About.qml:16
 #, kde-format
 msgid "About Firewall"
 msgstr "Güvenlik Duvarı Hakkında"
 
-#: package/contents/ui/About.qml:21
+#: ui/About.qml:21
 #, kde-format
 msgid "Backend:"
 msgstr "Arka uç:"
 
-#: package/contents/ui/About.qml:25
+#: ui/About.qml:25
 #, kde-format
 msgid "Version:"
 msgstr "Sürüm:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:31
-#: package/contents/ui/SimpleRuleEdit.qml:29
+#: ui/AdvancedRuleEdit.qml:31 ui/SimpleRuleEdit.qml:29
 #, kde-format
 msgid "Policy:"
 msgstr "Politika:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:40
-#: package/contents/ui/SimpleRuleEdit.qml:38
+#: ui/AdvancedRuleEdit.qml:40 ui/SimpleRuleEdit.qml:38
 #, kde-format
 msgid "Direction:"
 msgstr "Yön:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:43
-#: package/contents/ui/SimpleRuleEdit.qml:42
+#: ui/AdvancedRuleEdit.qml:43 ui/SimpleRuleEdit.qml:42
 #, kde-format
 msgid "Incoming"
 msgstr "Gelen"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:49
-#: package/contents/ui/SimpleRuleEdit.qml:48
+#: ui/AdvancedRuleEdit.qml:49 ui/SimpleRuleEdit.qml:48
 #, kde-format
 msgid "Outgoing"
 msgstr "Giden"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:57
+#: ui/AdvancedRuleEdit.qml:57
 #, kde-format
 msgid "IP Version:"
 msgstr "IP Sürümü:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:60
+#: ui/AdvancedRuleEdit.qml:60
 #, kde-format
 msgid "IPv4"
 msgstr "IPv4"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:65
+#: ui/AdvancedRuleEdit.qml:65
 #, kde-format
 msgid "IPv6"
 msgstr "IPv6"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:72
+#: ui/AdvancedRuleEdit.qml:72
 #, kde-format
 msgid "Source:"
 msgstr "Kaynak:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:92
+#: ui/AdvancedRuleEdit.qml:92
 #, kde-format
 msgid "Destination:"
 msgstr "Hedef:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:112
+#: ui/AdvancedRuleEdit.qml:112
 #, kde-format
 msgid "Protocol:"
 msgstr "Protokol:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:121
+#: ui/AdvancedRuleEdit.qml:121
 #, kde-format
 msgid "Interface:"
 msgstr "Arabirim:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:131
+#: ui/AdvancedRuleEdit.qml:131
 #, kde-format
 msgid "Logging:"
 msgstr "Günlükleme:"
 
-#: package/contents/ui/ConnectionsView.qml:14
+#: ui/ConnectionsView.qml:14
 #, kde-format
 msgid "Connections"
 msgstr "Bağlantılar"
 
-#: package/contents/ui/ConnectionsView.qml:18
-#: package/contents/ui/LogsView.qml:19
+#: ui/ConnectionsView.qml:18 ui/LogsView.qml:19
 #, kde-format
 msgid "Protocol"
 msgstr "Protokol"
 
-#: package/contents/ui/ConnectionsView.qml:19
+#: ui/ConnectionsView.qml:19
 #, kde-format
 msgid "Local Address"
 msgstr "Yerel Adres"
 
-#: package/contents/ui/ConnectionsView.qml:20
+#: ui/ConnectionsView.qml:20
 #, kde-format
 msgid "Foreign Address"
 msgstr "Yabancı Adres"
 
-#: package/contents/ui/ConnectionsView.qml:21
+#: ui/ConnectionsView.qml:21
 #, kde-format
 msgid "Status"
 msgstr "Durum"
 
-#: package/contents/ui/ConnectionsView.qml:22
+#: ui/ConnectionsView.qml:22
 #, kde-format
 msgid "PID"
 msgstr "PID"
 
-#: package/contents/ui/ConnectionsView.qml:23
+#: ui/ConnectionsView.qml:23
 #, kde-format
 msgid "Program"
 msgstr "Program"
 
-#: package/contents/ui/ConnectionsView.qml:26
+#: ui/ConnectionsView.qml:26
 #, kde-format
 msgid "There are currently no open connections"
 msgstr "Şu anda açık bağlantı yok"
 
-#: package/contents/ui/ConnectionsView.qml:35
+#: ui/ConnectionsView.qml:35
 #, kde-format
 msgid "Created a blacklist rule from this connection."
 msgstr "Bu bağlantıdan bir kara liste kuralı oluşturuldu."
 
-#: package/contents/ui/ConnectionsView.qml:52
+#: ui/ConnectionsView.qml:52
 #, kde-format
 msgid "could not find iproute2 or net-tools packages installed."
 msgstr "iproute2 veya net-tools paketi kurulu bulunamadı."
 
-#: package/contents/ui/IpTextField.qml:14
+#: ui/IpTextField.qml:14
 #, kde-format
 msgid "Any IP address"
 msgstr "Herhangi bir IP adresi"
 
-#: package/contents/ui/LogsView.qml:16
+#: ui/LogsView.qml:16
 #, kde-format
 msgid "Firewall Logs"
 msgstr "Güvenlik Duvarı Günlükleri"
 
-#: package/contents/ui/LogsView.qml:20 package/contents/ui/main.qml:348
+#: ui/LogsView.qml:20 ui/main.qml:348
 #, kde-format
 msgid "From"
 msgstr "Şuradan:"
 
-#: package/contents/ui/LogsView.qml:22 package/contents/ui/main.qml:353
+#: ui/LogsView.qml:22 ui/main.qml:353
 #, kde-format
 msgid "To"
 msgstr "Şuraya:"
 
-#: package/contents/ui/LogsView.qml:24
+#: ui/LogsView.qml:24
 #, kde-format
 msgid "Interface"
 msgstr "Arabirim"
 
-#: package/contents/ui/LogsView.qml:26
+#: ui/LogsView.qml:26
 #, kde-format
 msgid "There are currently no firewall log entries"
 msgstr "Şu anda güvenlik duvarı günlük girdisi yok"
 
-#: package/contents/ui/LogsView.qml:37
+#: ui/LogsView.qml:37
 #, kde-format
 msgid "Created a blacklist rule from this log entry."
 msgstr "Bu günlük girdisinden bir kara liste kuralı oluşturuldu."
 
-#: package/contents/ui/main.qml:23
+#: ui/main.qml:23
 #, kde-format
 msgid "Allow all connections"
 msgstr "Tüm bağlantılara izin ver"
 
-#: package/contents/ui/main.qml:24
+#: ui/main.qml:24
 #, kde-format
 msgid "Ignore"
 msgstr "Yok say"
 
-#: package/contents/ui/main.qml:24
+#: ui/main.qml:24
 #, kde-format
 msgid ""
 "Keeps the program waiting until the connection attempt times out, some short "
@@ -534,85 +529,84 @@ msgid ""
 msgstr ""
 "Biraz sonra bağlantı girişimi zaman aşımına uğrayana dek programı bekletir."
 
-#: package/contents/ui/main.qml:25
+#: ui/main.qml:25
 #, kde-format
 msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr "Ani ve bilgilendirici bir 'Bağlantı reddedildi' iletisi üretir"
 
-#: package/contents/ui/main.qml:40
+#: ui/main.qml:40
 #, kde-format
 msgid "Create A New Firewall Rule"
 msgstr "Yeni Bir Güvenlik Duvarı Kuralı Oluştur"
 
-#: package/contents/ui/main.qml:40
+#: ui/main.qml:40
 #, kde-format
 msgid "Edit Firewall Rule"
 msgstr "Güvenlik Duvarı Kuralı Düzenle"
 
-#: package/contents/ui/main.qml:76 package/contents/ui/main.qml:263
-#: package/contents/ui/main.qml:398
+#: ui/main.qml:76 ui/main.qml:263 ui/main.qml:398
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr ""
 "Arka uç bağlantısı kesildi, lütfen Plasma Güvenlik Duvarı'nı yeniden "
 "başlatın."
 
-#: package/contents/ui/main.qml:90 package/contents/ui/ViewBase.qml:110
+#: ui/main.qml:90 ui/ViewBase.qml:110
 #, kde-format
 msgid "Error creating rule: %1"
 msgstr "Kural oluşturulurken hata: %1"
 
-#: package/contents/ui/main.qml:92
+#: ui/main.qml:92
 #, kde-format
 msgid "Error updating rule: %1"
 msgstr "Kural güncellenirken hata: %1"
 
-#: package/contents/ui/main.qml:124
+#: ui/main.qml:124
 #, kde-format
 msgid "Create"
 msgstr "Oluştur"
 
-#: package/contents/ui/main.qml:124
+#: ui/main.qml:124
 #, kde-format
 msgid "Save"
 msgstr "Kaydet"
 
-#: package/contents/ui/main.qml:149
+#: ui/main.qml:149
 #, kde-format
 msgid "Firewall Status:"
 msgstr "Güvenlik Duvarı Durumu:"
 
-#: package/contents/ui/main.qml:155
+#: ui/main.qml:155
 #, kde-format
 msgid "Disabling…"
 msgstr "Devre dışı bırakılıyor…"
 
-#: package/contents/ui/main.qml:155
+#: ui/main.qml:155
 #, kde-format
 msgid "Enabled"
 msgstr "Etkin"
 
-#: package/contents/ui/main.qml:157
+#: ui/main.qml:157
 #, kde-format
 msgid "Enabling…"
 msgstr "Etkinleştiriliyor…"
 
-#: package/contents/ui/main.qml:157
+#: ui/main.qml:157
 #, kde-format
 msgid "Disabled"
 msgstr "Devre dışı"
 
-#: package/contents/ui/main.qml:183
+#: ui/main.qml:183
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr "Güvenlik duvarı uygulaması, lütfen %1 kurun"
 
-#: package/contents/ui/main.qml:197
+#: ui/main.qml:197
 #, kde-format
 msgid "Permission denied"
 msgstr "İzin reddedildi"
 
-#: package/contents/ui/main.qml:201
+#: ui/main.qml:201
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
@@ -621,49 +615,49 @@ msgstr ""
 "Yakın zamanda çekirdek güncellenmiş. Iptables ilklendirilemiyor, lütfen "
 "yeniden başlatın."
 
-#: package/contents/ui/main.qml:204
+#: ui/main.qml:204
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr "Güvenlik duvarı etkinleştirilirken hata: %1"
 
-#: package/contents/ui/main.qml:205
+#: ui/main.qml:205
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr "Güvenlik duvarı devre dışı bırakılırken hata: %1"
 
-#: package/contents/ui/main.qml:225
+#: ui/main.qml:225
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "Öntanımlı Gelen Politikası:"
 
-#: package/contents/ui/main.qml:226
+#: ui/main.qml:226
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "Öntanımlı Giden Politikası:"
 
-#: package/contents/ui/main.qml:273
+#: ui/main.qml:273
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Politika değiştirilirken hata: %1"
 
-#: package/contents/ui/main.qml:336
+#: ui/main.qml:336
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "Güvenlik duvarı devre dışı"
 
-#: package/contents/ui/main.qml:336
+#: ui/main.qml:336
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Bir güvenlik duvarı kuralı eklenmedi"
 
-#: package/contents/ui/main.qml:338
+#: ui/main.qml:338
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button below to add one"
 msgstr ""
 "Eklemek için aşağıdaki <interface>Kural Ekle…</interface> düğmesine tıklayın"
 
-#: package/contents/ui/main.qml:339
+#: ui/main.qml:339
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -675,101 +669,101 @@ msgstr ""
 "güvenlik duvarını etkinleştirin ve ardından bir tane eklemek için aşağıdaki "
 "<interface>Kural Ekle…</interface> düğmesine tıklayın."
 
-#: package/contents/ui/main.qml:343
+#: ui/main.qml:343
 #, kde-format
 msgid "Action"
 msgstr "Eylem"
 
-#: package/contents/ui/main.qml:358
+#: ui/main.qml:358
 #, kde-format
 msgid "IP"
 msgstr "IP"
 
-#: package/contents/ui/main.qml:363
+#: ui/main.qml:363
 #, kde-format
 msgid "Logging"
 msgstr "Günlükleme"
 
-#: package/contents/ui/main.qml:389
+#: ui/main.qml:389
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Kuralı Düzenle"
 
-#: package/contents/ui/main.qml:409
+#: ui/main.qml:409
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Kural kaldırılırken hata: %1"
 
-#: package/contents/ui/main.qml:416
+#: ui/main.qml:416
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Kuralı Kaldır"
 
-#: package/contents/ui/main.qml:426
+#: ui/main.qml:426
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
 msgstr "Bağlantıları Görüntüle"
 
-#: package/contents/ui/main.qml:431
+#: ui/main.qml:431
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
 msgstr "Günlükleri Görüntüle"
 
-#: package/contents/ui/main.qml:442
+#: ui/main.qml:442
 #, kde-format
 msgid "Add Rule…"
 msgstr "Kural Ekle…"
 
-#: package/contents/ui/main.qml:451
+#: ui/main.qml:451
 #, kde-format
 msgid "About"
 msgstr "Hakkında"
 
-#: package/contents/ui/main.qml:459
+#: ui/main.qml:459
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Lütfen, ufw veya firewalld gibi bir güvenlik duvarı kurun"
 
-#: package/contents/ui/PortTextField.qml:11
+#: ui/PortTextField.qml:11
 #, kde-format
 msgid "Any Port"
 msgstr "Herhangi Bir Kapı"
 
-#: package/contents/ui/RuleEdit.qml:41
+#: ui/RuleEdit.qml:41
 #, kde-format
 msgid "New Connections"
 msgstr "Yeni Bağlantılar"
 
-#: package/contents/ui/RuleEdit.qml:42
+#: ui/RuleEdit.qml:42
 #, kde-format
 msgid "All Packets"
 msgstr "Tüm Paketler"
 
-#: package/contents/ui/RuleEdit.qml:57 package/contents/ui/RuleEdit.qml:64
+#: ui/RuleEdit.qml:57 ui/RuleEdit.qml:64
 #, kde-format
 msgid "The default incoming policy is already '%1'."
 msgstr "Öntanımlı gelen politikası halihazırda '%1'."
 
-#: package/contents/ui/RuleEdit.qml:58 package/contents/ui/RuleEdit.qml:65
+#: ui/RuleEdit.qml:58 ui/RuleEdit.qml:65
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
 msgstr "Öntanımlı giden politikası halihazırda '%1'."
 
-#: package/contents/ui/SimpleRuleEdit.qml:23
+#: ui/SimpleRuleEdit.qml:23
 #, kde-format
 msgid "Allow connections for:"
 msgstr "Şunlar için bağlantılara izin ver:"
 
-#: package/contents/ui/SimpleRuleEdit.qml:23
+#: ui/SimpleRuleEdit.qml:23
 #, kde-format
 msgid "Application:"
 msgstr "Uygulama:"
 
-#: package/contents/ui/ViewBase.qml:222
+#: ui/ViewBase.qml:222
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Bağlantıyı Kara Listeye Al"

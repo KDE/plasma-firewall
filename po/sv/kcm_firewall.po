@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-01 02:11+0000\n"
+"POT-Creation-Date: 2023-06-10 02:09+0000\n"
 "PO-Revision-Date: 2022-02-16 20:12+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -185,7 +185,7 @@ msgstr "Hög"
 msgid "Full"
 msgstr "Fullständig"
 
-#: core/types.cpp:45 package/contents/ui/RuleEdit.qml:40
+#: core/types.cpp:45 ui/RuleEdit.qml:40
 #, kde-format
 msgid "None"
 msgstr "Ingen"
@@ -200,7 +200,7 @@ msgstr "Nya anslutningar"
 msgid "All packets"
 msgstr "Alla paket"
 
-#: core/types.cpp:58 package/contents/ui/main.qml:23
+#: core/types.cpp:58 ui/main.qml:23
 #, kde-format
 msgid "Allow"
 msgstr "Tillåt"
@@ -210,7 +210,7 @@ msgstr "Tillåt"
 msgid "Deny"
 msgstr "Neka"
 
-#: core/types.cpp:62 package/contents/ui/main.qml:25
+#: core/types.cpp:62 ui/main.qml:25
 #, kde-format
 msgid "Reject"
 msgstr "Avslå"
@@ -350,182 +350,177 @@ msgstr "NTP"
 msgid "CUPS"
 msgstr "CUPS"
 
-#: package/contents/ui/About.qml:16
+#: ui/About.qml:16
 #, kde-format
 msgid "About Firewall"
 msgstr "Om brandvägg"
 
-#: package/contents/ui/About.qml:21
+#: ui/About.qml:21
 #, kde-format
 msgid "Backend:"
 msgstr "Bakgrundsprogram: "
 
-#: package/contents/ui/About.qml:25
+#: ui/About.qml:25
 #, kde-format
 msgid "Version:"
 msgstr "Version:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:31
-#: package/contents/ui/SimpleRuleEdit.qml:29
+#: ui/AdvancedRuleEdit.qml:31 ui/SimpleRuleEdit.qml:29
 #, kde-format
 msgid "Policy:"
 msgstr "Princip:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:40
-#: package/contents/ui/SimpleRuleEdit.qml:38
+#: ui/AdvancedRuleEdit.qml:40 ui/SimpleRuleEdit.qml:38
 #, kde-format
 msgid "Direction:"
 msgstr "Riktning:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:43
-#: package/contents/ui/SimpleRuleEdit.qml:42
+#: ui/AdvancedRuleEdit.qml:43 ui/SimpleRuleEdit.qml:42
 #, kde-format
 msgid "Incoming"
 msgstr "Inkommande"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:49
-#: package/contents/ui/SimpleRuleEdit.qml:48
+#: ui/AdvancedRuleEdit.qml:49 ui/SimpleRuleEdit.qml:48
 #, kde-format
 msgid "Outgoing"
 msgstr "Utgående"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:57
+#: ui/AdvancedRuleEdit.qml:57
 #, kde-format
 msgid "IP Version:"
 msgstr "IP-version:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:60
+#: ui/AdvancedRuleEdit.qml:60
 #, kde-format
 msgid "IPv4"
 msgstr "IPv4"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:65
+#: ui/AdvancedRuleEdit.qml:65
 #, kde-format
 msgid "IPv6"
 msgstr "IPv6"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:72
+#: ui/AdvancedRuleEdit.qml:72
 #, kde-format
 msgid "Source:"
 msgstr "Källa:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:92
+#: ui/AdvancedRuleEdit.qml:92
 #, kde-format
 msgid "Destination:"
 msgstr "Mål:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:112
+#: ui/AdvancedRuleEdit.qml:112
 #, kde-format
 msgid "Protocol:"
 msgstr "Protokoll:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:121
+#: ui/AdvancedRuleEdit.qml:121
 #, kde-format
 msgid "Interface:"
 msgstr "Gränssnitt:"
 
-#: package/contents/ui/AdvancedRuleEdit.qml:131
+#: ui/AdvancedRuleEdit.qml:131
 #, kde-format
 msgid "Logging:"
 msgstr "Loggning:"
 
-#: package/contents/ui/ConnectionsView.qml:14
+#: ui/ConnectionsView.qml:14
 #, kde-format
 msgid "Connections"
 msgstr "Anslutningar"
 
-#: package/contents/ui/ConnectionsView.qml:18
-#: package/contents/ui/LogsView.qml:19
+#: ui/ConnectionsView.qml:18 ui/LogsView.qml:19
 #, kde-format
 msgid "Protocol"
 msgstr "Protokoll"
 
-#: package/contents/ui/ConnectionsView.qml:19
+#: ui/ConnectionsView.qml:19
 #, kde-format
 msgid "Local Address"
 msgstr "Lokal adress"
 
-#: package/contents/ui/ConnectionsView.qml:20
+#: ui/ConnectionsView.qml:20
 #, kde-format
 msgid "Foreign Address"
 msgstr "Främmande adress"
 
-#: package/contents/ui/ConnectionsView.qml:21
+#: ui/ConnectionsView.qml:21
 #, kde-format
 msgid "Status"
 msgstr "Status"
 
-#: package/contents/ui/ConnectionsView.qml:22
+#: ui/ConnectionsView.qml:22
 #, kde-format
 msgid "PID"
 msgstr "Process-ID"
 
-#: package/contents/ui/ConnectionsView.qml:23
+#: ui/ConnectionsView.qml:23
 #, kde-format
 msgid "Program"
 msgstr "Program"
 
-#: package/contents/ui/ConnectionsView.qml:26
+#: ui/ConnectionsView.qml:26
 #, kde-format
 msgid "There are currently no open connections"
 msgstr "För närvarande finns inga öppna anslutningar"
 
-#: package/contents/ui/ConnectionsView.qml:35
+#: ui/ConnectionsView.qml:35
 #, kde-format
 msgid "Created a blacklist rule from this connection."
 msgstr "Skapade svartlistningsregel från anslutningen."
 
-#: package/contents/ui/ConnectionsView.qml:52
+#: ui/ConnectionsView.qml:52
 #, kde-format
 msgid "could not find iproute2 or net-tools packages installed."
 msgstr "Kunde inte hitta installation av paketen iproute2 eller net-tools."
 
-#: package/contents/ui/IpTextField.qml:14
+#: ui/IpTextField.qml:14
 #, kde-format
 msgid "Any IP address"
 msgstr "Alla IP-adresser"
 
-#: package/contents/ui/LogsView.qml:16
+#: ui/LogsView.qml:16
 #, kde-format
 msgid "Firewall Logs"
 msgstr "Brandväggsloggar"
 
-#: package/contents/ui/LogsView.qml:20 package/contents/ui/main.qml:348
+#: ui/LogsView.qml:20 ui/main.qml:348
 #, kde-format
 msgid "From"
 msgstr "Från"
 
-#: package/contents/ui/LogsView.qml:22 package/contents/ui/main.qml:353
+#: ui/LogsView.qml:22 ui/main.qml:353
 #, kde-format
 msgid "To"
 msgstr "Till"
 
-#: package/contents/ui/LogsView.qml:24
+#: ui/LogsView.qml:24
 #, kde-format
 msgid "Interface"
 msgstr "Gränssnitt"
 
-#: package/contents/ui/LogsView.qml:26
+#: ui/LogsView.qml:26
 #, kde-format
 msgid "There are currently no firewall log entries"
 msgstr "För närvarande finns inga poster i brandväggsloggen"
 
-#: package/contents/ui/LogsView.qml:37
+#: ui/LogsView.qml:37
 #, kde-format
 msgid "Created a blacklist rule from this log entry."
 msgstr "Skapade svartlistningsregel från loggposten."
 
-#: package/contents/ui/main.qml:23
+#: ui/main.qml:23
 #, kde-format
 msgid "Allow all connections"
 msgstr "Tillåt alla anslutningar"
 
-#: package/contents/ui/main.qml:24
+#: ui/main.qml:24
 #, kde-format
 msgid "Ignore"
 msgstr "Ignorera"
 
-#: package/contents/ui/main.qml:24
+#: ui/main.qml:24
 #, kde-format
 msgid ""
 "Keeps the program waiting until the connection attempt times out, some short "
@@ -534,87 +529,86 @@ msgstr ""
 "Låter programmet vänta tills anslutningsförsökets tidsgräns går ut, en kort "
 "tid senare."
 
-#: package/contents/ui/main.qml:25
+#: ui/main.qml:25
 #, kde-format
 msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr ""
 "Producerar ett omedelbart och mycket informativt 'Anslutning vägrades'-"
 "meddelande"
 
-#: package/contents/ui/main.qml:40
+#: ui/main.qml:40
 #, kde-format
 msgid "Create A New Firewall Rule"
 msgstr "Skapa en ny brandväggsregel"
 
-#: package/contents/ui/main.qml:40
+#: ui/main.qml:40
 #, kde-format
 msgid "Edit Firewall Rule"
 msgstr "Redigera brandväggsregel"
 
-#: package/contents/ui/main.qml:76 package/contents/ui/main.qml:263
-#: package/contents/ui/main.qml:398
+#: ui/main.qml:76 ui/main.qml:263 ui/main.qml:398
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr "Starta om Plasma brandvägg, bakgrundsprogrammet har kopplats bort."
 
-#: package/contents/ui/main.qml:90 package/contents/ui/ViewBase.qml:110
+#: ui/main.qml:90 ui/ViewBase.qml:110
 #, kde-format
 msgid "Error creating rule: %1"
 msgstr "Fel när regel skulle skapas: %1"
 
-#: package/contents/ui/main.qml:92
+#: ui/main.qml:92
 #, kde-format
 msgid "Error updating rule: %1"
 msgstr "Fel vid uppdatering av regel: %1"
 
-#: package/contents/ui/main.qml:124
+#: ui/main.qml:124
 #, kde-format
 msgid "Create"
 msgstr "Skapa"
 
-#: package/contents/ui/main.qml:124
+#: ui/main.qml:124
 #, kde-format
 msgid "Save"
 msgstr "Spara"
 
-#: package/contents/ui/main.qml:149
+#: ui/main.qml:149
 #, kde-format
 msgid "Firewall Status:"
 msgstr "Brandväggsstatus:"
 
-#: package/contents/ui/main.qml:155
+#: ui/main.qml:155
 #, fuzzy, kde-format
 #| msgid "Disabling..."
 msgid "Disabling…"
 msgstr "Inaktiverar..."
 
-#: package/contents/ui/main.qml:155
+#: ui/main.qml:155
 #, kde-format
 msgid "Enabled"
 msgstr "Aktiverad"
 
-#: package/contents/ui/main.qml:157
+#: ui/main.qml:157
 #, fuzzy, kde-format
 #| msgid "Enabling..."
 msgid "Enabling…"
 msgstr "Aktiverar..."
 
-#: package/contents/ui/main.qml:157
+#: ui/main.qml:157
 #, kde-format
 msgid "Disabled"
 msgstr "Inaktiverad"
 
-#: package/contents/ui/main.qml:183
+#: ui/main.qml:183
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr "Brandväggsprogrammet, vänligen installera %1"
 
-#: package/contents/ui/main.qml:197
+#: ui/main.qml:197
 #, kde-format
 msgid "Permission denied"
 msgstr "Åtkomst nekas"
 
-#: package/contents/ui/main.qml:201
+#: ui/main.qml:201
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
@@ -623,42 +617,42 @@ msgstr ""
 "Du har nyligen uppdaterat kärnan. Iptables initiering misslyckas, starta om "
 "datorn."
 
-#: package/contents/ui/main.qml:204
+#: ui/main.qml:204
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr "Fel vid aktivering av brandvägg: %1"
 
-#: package/contents/ui/main.qml:205
+#: ui/main.qml:205
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr "Fel vid inaktivering av brandvägg: %1"
 
-#: package/contents/ui/main.qml:225
+#: ui/main.qml:225
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "Standardprincip för inkommande:"
 
-#: package/contents/ui/main.qml:226
+#: ui/main.qml:226
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "Standardprincip för utgående:"
 
-#: package/contents/ui/main.qml:273
+#: ui/main.qml:273
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Fel vid ändring av princip: %1"
 
-#: package/contents/ui/main.qml:336
+#: ui/main.qml:336
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "Brandväggen är inaktiverad"
 
-#: package/contents/ui/main.qml:336
+#: ui/main.qml:336
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Inga brandväggsregler har lagts till"
 
-#: package/contents/ui/main.qml:338
+#: ui/main.qml:338
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid "Click the <interface>Add Rule...</interface> button below to add one"
@@ -668,7 +662,7 @@ msgstr ""
 "Klicka på knappen <interface>Lägg till regel...</interface> nedan för att "
 "lägga till en"
 
-#: package/contents/ui/main.qml:339
+#: ui/main.qml:339
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -685,102 +679,102 @@ msgstr ""
 "ovan, och klicka sedan på knappen <interface>Lägg till regel...</interface> "
 "nedan för att lägga till en"
 
-#: package/contents/ui/main.qml:343
+#: ui/main.qml:343
 #, kde-format
 msgid "Action"
 msgstr "Åtgärd"
 
-#: package/contents/ui/main.qml:358
+#: ui/main.qml:358
 #, kde-format
 msgid "IP"
 msgstr "IP"
 
-#: package/contents/ui/main.qml:363
+#: ui/main.qml:363
 #, kde-format
 msgid "Logging"
 msgstr "Loggning"
 
-#: package/contents/ui/main.qml:389
+#: ui/main.qml:389
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Redigera regel"
 
-#: package/contents/ui/main.qml:409
+#: ui/main.qml:409
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Fel vid borttagning av regel: %1"
 
-#: package/contents/ui/main.qml:416
+#: ui/main.qml:416
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Ta bort regel"
 
-#: package/contents/ui/main.qml:426
+#: ui/main.qml:426
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
 msgstr "Visa anslutningar"
 
-#: package/contents/ui/main.qml:431
+#: ui/main.qml:431
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
 msgstr "Visa loggar"
 
-#: package/contents/ui/main.qml:442
+#: ui/main.qml:442
 #, fuzzy, kde-format
 #| msgid "Add Rule..."
 msgid "Add Rule…"
 msgstr "Lägg till regel..."
 
-#: package/contents/ui/main.qml:451
+#: ui/main.qml:451
 #, kde-format
 msgid "About"
 msgstr "Om"
 
-#: package/contents/ui/main.qml:459
+#: ui/main.qml:459
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Installera en brandvägg, såsom ufw eller firewalld"
 
-#: package/contents/ui/PortTextField.qml:11
+#: ui/PortTextField.qml:11
 #, kde-format
 msgid "Any Port"
 msgstr "Alla portar"
 
-#: package/contents/ui/RuleEdit.qml:41
+#: ui/RuleEdit.qml:41
 #, kde-format
 msgid "New Connections"
 msgstr "Nya anslutningar"
 
-#: package/contents/ui/RuleEdit.qml:42
+#: ui/RuleEdit.qml:42
 #, kde-format
 msgid "All Packets"
 msgstr "Alla paket"
 
-#: package/contents/ui/RuleEdit.qml:57 package/contents/ui/RuleEdit.qml:64
+#: ui/RuleEdit.qml:57 ui/RuleEdit.qml:64
 #, kde-format
 msgid "The default incoming policy is already '%1'."
 msgstr "Inkommande standardprincip är redan '%1'."
 
-#: package/contents/ui/RuleEdit.qml:58 package/contents/ui/RuleEdit.qml:65
+#: ui/RuleEdit.qml:58 ui/RuleEdit.qml:65
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
 msgstr "Utgående standardprincip är redan '%1'."
 
-#: package/contents/ui/SimpleRuleEdit.qml:23
+#: ui/SimpleRuleEdit.qml:23
 #, kde-format
 msgid "Allow connections for:"
 msgstr "Tillåt anslutningar för:"
 
-#: package/contents/ui/SimpleRuleEdit.qml:23
+#: ui/SimpleRuleEdit.qml:23
 #, kde-format
 msgid "Application:"
 msgstr "Program:"
 
-#: package/contents/ui/ViewBase.qml:222
+#: ui/ViewBase.qml:222
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Svartlista anslutning"
