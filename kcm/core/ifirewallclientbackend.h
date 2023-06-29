@@ -15,6 +15,7 @@
 
 #include <QString>
 #include <QVector>
+#include <kcm_firewall_core_export.h>
 
 class KJob;
 class LogListModel;
@@ -22,7 +23,7 @@ class Rule;
 class RuleListModel;
 class FirewallClient;
 
-class Q_DECL_EXPORT IFirewallClientBackend : public QObject
+class KCM_FIREWALL_CORE_EXPORT IFirewallClientBackend : public QObject
 {
     Q_OBJECT
 public:
