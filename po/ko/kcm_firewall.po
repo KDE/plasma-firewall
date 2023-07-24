@@ -597,7 +597,7 @@ msgstr "사용 안 함"
 #: ui/main.qml:183
 #, kde-format
 msgid "The firewall application, please install %1"
-msgstr "방화벽 프로그램, %1을(를) 설치하십시오"
+msgstr "방화벽 앱, %1을(를) 설치하십시오"
 
 #: ui/main.qml:197
 #, kde-format
@@ -768,7 +768,7 @@ msgstr "다음의 연결 허용:"
 #: ui/SimpleRuleEdit.qml:23
 #, kde-format
 msgid "Application:"
-msgstr "프로그램:"
+msgstr "앱:"
 
 #: ui/ViewBase.qml:222
 #, kde-format
