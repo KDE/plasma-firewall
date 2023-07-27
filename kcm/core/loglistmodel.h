@@ -24,7 +24,7 @@ struct LogData {
     QString time;
     QString date;
 };
-Q_DECLARE_TYPEINFO(LogData, Q_MOVABLE_TYPE);
+Q_DECLARE_TYPEINFO(LogData, Q_RELOCATABLE_TYPE);
 
 class KCM_FIREWALL_CORE_EXPORT LogListModel : public QAbstractListModel
 {
