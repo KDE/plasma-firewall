@@ -3,10 +3,9 @@
 // SPDX-FileCopyrightText: 2020 Tomaz Canabrava <tcanabrava@kde.org>
 
 import QtQml 2.12
-import QtQuick 2.12
+import QtQuick
 import QtQuick.Layouts 1.3
-import QtQuick.Controls 2.12 as QQC2
-import QtQuick.Controls 1.4 as QQC1
+import QtQuick.Controls as QQC2
 import org.kde.kirigami 2.14 as Kirigami
 
 import org.kde.kcmutils as KCMUtils
@@ -17,38 +16,38 @@ KCMUtils.ScrollViewKCM {
     id: root
 
     property QtObject model
-    property var roles: []
+    property var columns: []
     property alias emptyListText: emptyListLabel.text
 
     property QtObject currentJob: null
 
     property var blacklistRuleFactory
-    property var blacklistRuleRoleNames: []
+    property var blacklistColumns: []
     property string blacklistRuleSuccessMessage
 
-    property string defaultSortRole: ""
+    property int sortColumn: 0
+    property int sortOrder: Qt.AscendingOrder
 
     property alias filterPlaceholderText: searchField.placeholderText
-    property var filterRoleNames: []
+    property var filterColumns: []
 
     property var errorMessage: modelErrorMessage
 
     KSortFilterProxyModel {
         id: proxyModel
         sourceModel: root.model
-        sortRole: tableView.sortIndicatorColumn > -1 ? roles[tableView.sortIndicatorColumn].role : ""
-        sortOrder: tableView.sortIndicatorOrder
+        sortColumn: root.sortColumn
+        sortOrder:  root.sortOrder
 
         function filterCb(source_row, source_parent) {
             const query = searchField.text.toLocaleLowerCase();
-            const roleNames = filterRoleNames;
+            const columns = filterColumns;
 
             const modelType = getModelType();
-            const idx = sourceModel.index(source_row, 0, source_parent);
 
-            for (var i = 0, length = roleNames.length; i < length; ++i) {
-                const roleName = roleNames[i];
-                const data = String(sourceModel.data(idx, modelType[roleName + "Role"]) || "").toLocaleLowerCase();
+            for (var i = 0, length = columns.length; i < length; ++i) {
+                const idx = sourceModel.index(source_row,  columns[i], source_parent);
+                const data = String(sourceModel.data(idx) || "").toLocaleLowerCase();
 
                 if (data.includes(query)) {
                     return true;
@@ -58,7 +57,11 @@ KCMUtils.ScrollViewKCM {
             return false;
         }
 
-        filterRowCallback: searchField.length > 0 && filterRoleNames.length > 0 ? filterCb : null
+        filterRowCallback: searchField.length > 0 && filterColumns.length > 0 ? filterCb : null
+
+        filterColumnCallback: (source_column, source_parent) => {
+            return columns.map(column => column.column).includes(source_column)
+        }
     }
 
     function getModelType() {
@@ -80,10 +83,9 @@ KCMUtils.ScrollViewKCM {
 
         console.log("Accessing blacklist row", row);
         const idx = proxyModel.index(row, 0);
-        const roles = blacklistRuleRoleNames;
-        const modelType = getModelType();
-        const args = roles.map((role) => {
-            return proxyModel.data(idx, modelType[role + "Role"]);
+        const columns = blacklistColumns;
+        const args = columns.map((column) => {
+            return proxyModel.data(proxyModel.index(row, column));
         });
 
         if (args[0] === undefined) {
@@ -149,65 +151,94 @@ KCMUtils.ScrollViewKCM {
             Layout.fillWidth: true
             onTextChanged: proxyModel.invalidateFilter();
             enabled: root.model.count > 0
-            visible: root.filterRoleNames.length > 0
+            visible: root.filterColumns.length > 0
         }
     }
 
-    view: Flickable {
-        QQC1.TableView {
-            id: tableView
-            anchors.fill: parent
-            activeFocusOnTab: true
+    QQC2.HorizontalHeaderView {
+        id: horizontalHeader
+        visible: tableView.rows > 0
+        model: KColumnHeadersModel {
+            sourceModel: proxyModel
+            sortColumn: root.sortColumn
+        }
+        selectionModel: ItemSelectionModel{}
+        syncView: tableView
+        Layout.fillWidth: true
 
-            // ScrollViewKCM does its own frame
-            frameVisible: false
+        TapHandler {
+            acceptedButtons: Qt.LeftButton
 
-            sortIndicatorVisible: sortIndicatorColumn > 0 // column -1 apparently means "do something stupid" rather than "no column"
-            sortIndicatorColumn: root.roles.findIndex((column) => {
-                return column.role === root.defaultSortRole;
-            });
-
-            // Would be nice to support multi-selection
-            //selectionMode: QQC1.SelectionMode.ExtendedSelection
-
-            // TODO let Delete key add blacklist rule?
-
-            QQC2.BusyIndicator {
-                anchors.centerIn: parent
-                // Show busy spinner only on initial population and not while an error is shown
-                running: root.model.count === 0 && root.model.busy && !modelErrorMessage.visible
-            }
-
-            Kirigami.PlaceholderMessage {
-                id: emptyListLabel
-                anchors.centerIn: parent
-                width: parent.width - (Kirigami.Units.largeSpacing * 4)
-                visible: root.model.count === 0 && !root.model.busy && !modelErrorMessage.visible
-            }
-
-            model: proxyModel
-
-            Instantiator {
-                id: columnInstantiator
-                model: root.roles
-                delegate: QQC1.TableViewColumn {
-                    title: modelData.title
-                    role: modelData.role
-                    width: {
-                        // Stretch last column to fill
-                        if (index === columnInstantiator.count - 1) {
-                            let rest = tableView.viewport.width;
-                            for (let i = 0; i < tableView.columnCount - 1; ++i) {
-                                rest -= tableView.getColumn(i).width;
-                            }
-                            return Math.max(modelData.width, rest);
-                        }
-                        return modelData.width;
-                    }
+            onTapped: (eventPoint, button) => {
+                let cell = horizontalHeader.cellAtPosition(eventPoint.position)
+                if (cell.x == root.sortColumn) {
+                    root.sortOrder = header.sortOrder == Qt.AscendingOrder ? Qt.DescendingOrder : Qt.AscendingOrder
+                } else {
+                    root.sortOrder = Qt.AscendingOrder
                 }
-                onObjectAdded: tableView.addColumn(object);
+                root.sortColumn = cell.x
             }
         }
+    }
+
+    view: TableView {
+        id: tableView
+        anchors.fill: parent
+        topMargin: horizontalHeader.height
+        alternatingRows: true
+
+        selectionModel: ItemSelectionModel {}
+        selectionBehavior: TreeView.SelectRows
+        function selectRelative(delta) {
+            var nextRow = selectionModel.currentIndex.row + delta
+            if (nextRow < 0) {
+                nextRow = 0
+            }
+            if (nextRow >= rows) {
+                nextRow = rows - 1
+            }
+            var index = model.index(nextRow, selectionModel.currentIndex.column)
+            selectionModel.setCurrentIndex(index, ItemSelectionModel.ClearAndSelect | ItemSelectionModel.Rows)
+        }
+        Keys.onUpPressed: selectRelative(-1)
+        Keys.onDownPressed: selectRelative(1)
+
+        model: proxyModel
+        columnWidthProvider: (column) => {
+            let explicitWidth = explicitColumnWidth(column)
+            if (explicitWidth > 0) {
+                return explicitWidth
+            }
+            let sourceColumn = proxyModel.mapToSource(proxyModel.index(0, column)).column
+            let width = root.columns.find(c => c.column == sourceColumn).width
+            return width
+        }
+        clip: true
+        delegate: QQC2.ItemDelegate {
+            required property var model
+            required property bool selected
+            required property bool current
+            text: model.display
+            highlighted: selected || current
+            onClicked: {
+                tableView.selectionModel.setCurrentIndex(tableView.model.index(model.row, model.column), ItemSelectionModel.Rows | ItemSelectionModel.ClearAndSelect)
+            }
+        }
+    }
+
+    Kirigami.PlaceholderMessage {
+        id: emptyListLabel
+        parent: tableView.parent
+        anchors.centerIn: parent
+        width: parent.width - (Kirigami.Units.largeSpacing * 4)
+        visible: root.model.count === 0 && !root.model.busy && !modelErrorMessage.visible
+    }
+
+    QQC2.BusyIndicator {
+        parent: tableView.parent
+        anchors.centerIn: parent
+        // Show busy spinner only on initial population and not while an error is shown
+        running: root.model.count === 0 && root.model.busy && !modelErrorMessage.visible
     }
 
     footer: RowLayout {
@@ -224,8 +255,8 @@ KCMUtils.ScrollViewKCM {
             text: i18n("Blacklist Connection")
             icon.name: "network-disconnect"
             // HACK TableView lets us select a fake zero index when view is empty...
-            enabled: tableView.selection.count > 0 && model.count > 0 && !root.currentJob
-            onClicked: blacklistRow(tableView.selection.forEach(blacklistRow))
+            enabled: tableView.selectionModel.currentIndex  && model.count > 0 && !root.currentJob
+            onClicked: blacklistRow(tableView.selectionModel.currentIndex.row)
         }
     }
 }

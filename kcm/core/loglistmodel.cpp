@@ -10,9 +10,10 @@
 
 #include <QDateTime>
 #include <QRegularExpression>
+#include <klocalizedstring.h>
 
 LogListModel::LogListModel(QObject *parent)
-    : QAbstractListModel(parent)
+    : QAbstractTableModel(parent)
 {
 }
 
@@ -38,8 +39,15 @@ int LogListModel::rowCount(const QModelIndex &parent) const
     return m_logsData.size();
 }
 
+int LogListModel::columnCount(const QModelIndex &parent) const
+{
+    Q_UNUSED(parent)
+    return 9;
+}
+
 QVariant LogListModel::data(const QModelIndex &index, int role) const
 {
+    Q_UNUSED(role)
     const auto checkIndexFlags = QAbstractItemModel::CheckIndexOption::IndexIsValid | QAbstractItemModel::CheckIndexOption::ParentIsInvalid;
 
     if (!checkIndex(index, checkIndexFlags)) {
@@ -47,43 +55,55 @@ QVariant LogListModel::data(const QModelIndex &index, int role) const
     }
 
     LogData data = m_logsData.at(index.row());
-    switch (role) {
-    case SourceAddressRole:
-        return data.sourceAddress;
-    case SourcePortRole:
-        return data.sourcePort;
-    case DestinationAddressRole:
-        return data.destinationAddress;
-    case DestinationPortRole:
-        return data.destinationPort;
-    case ProtocolRole:
-        return data.protocol;
-    case InterfaceRole:
-        return data.interface;
-    case ActionRole:
-        return data.action;
-    case TimeRole:
-        return data.time;
-    case DateRole:
-        return data.date;
-    };
 
-    return {};
+    switch (index.column()) {
+    case SourceAddressColumn:
+        return data.sourceAddress;
+    case SourcePortColumn:
+        return data.sourcePort;
+    case DestinationAddressColumn:
+        return data.destinationAddress;
+    case DestinationPortColumn:
+        return data.destinationPort;
+    case ProtocolColumn:
+        return data.protocol;
+    case InterfaceColumn:
+        return data.interface;
+    case ActionColumn:
+        return data.action;
+    case TimeColumn:
+        return data.time;
+    case DateColumn:
+        return data.date;
+    }
+    return QVariant();
 }
 
-QHash<int, QByteArray> LogListModel::roleNames() const
+QVariant LogListModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
-    return {
-        {SourceAddressRole, "sourceAddress"},
-        {SourcePortRole, "sourcePort"},
-        {DestinationAddressRole, "destinationAddress"},
-        {DestinationPortRole, "destinationPort"},
-        {ProtocolRole, "protocol"},
-        {InterfaceRole, "interface"},
-        {ActionRole, "action"},
-        {TimeRole, "time"},
-        {DateRole, "date"},
-    };
+    Q_UNUSED(orientation)
+    Q_UNUSED(role)
+    switch (section) {
+    case SourceAddressColumn:
+        return i18nc("@title:column", "From");
+    case SourcePortColumn:
+        return i18nc("@title:column", "Source port");
+    case DestinationAddressColumn:
+        return i18nc("@title:column", "To");
+    case DestinationPortColumn:
+        return i18nc("@title:column", "Destination port");
+    case ProtocolColumn:
+        return i18nc("@title:column", "Protocol");
+    case InterfaceColumn:
+        return i18nc("@title:column", "Interface");
+    case ActionColumn:
+        return i18nc("@title:column", "Action");
+    case TimeColumn:
+        return i18nc("@title:column", "Time");
+    case DateColumn:
+        return i18nc("@title:column", "Date");
+    }
+    return QVariant();
 }
 
 void LogListModel::appendLogData(const QList<LogData> &newData)

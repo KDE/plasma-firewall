@@ -14,27 +14,27 @@ ViewBase {
     title: i18n("Connections")
 
     model: netStatClient.connectionsModel
-    roles: [
-        {title: i18n("Protocol"), role: "protocol", width: Kirigami.Units.gridUnit * 4},
-        {title: i18n("Local Address"), role: "localAddress", width: Kirigami.Units.gridUnit * 10},
-        {title: i18n("Foreign Address"), role: "foreignAddress", width: Kirigami.Units.gridUnit * 10},
-        {title: i18n("Status"), role: "status", width: Kirigami.Units.gridUnit * 5},
-        {title: i18n("PID"), role: "pid", width: Kirigami.Units.gridUnit * 3},
-        {title: i18n("Program"), role: "program", width: Kirigami.Units.gridUnit * 7}
+    columns: [
+        {column: ConnectionsModel.ProtocolColumn, width: Kirigami.Units.gridUnit * 4},
+        {column: ConnectionsModel.LocalAddressColumn, width: Kirigami.Units.gridUnit * 10},
+        {column: ConnectionsModel.ForeignAddressColumn, width: Kirigami.Units.gridUnit * 10},
+        {column: ConnectionsModel.StatusColumn, width: Kirigami.Units.gridUnit * 5},
+        {column: ConnectionsModel.PidColumn, width: Kirigami.Units.gridUnit * 3},
+        {column: ConnectionsModel.ProgramColumn, width: Kirigami.Units.gridUnit * 7}
     ]
-    defaultSortRole: "program"
+    sortColumn: ConnectionsModel.ProgramColumn
     emptyListText: i18n("There are currently no open connections")
 
     blacklistRuleFactory: kcm.client.createRuleFromConnection
-    blacklistRuleRoleNames: [
-        "Protocol",
-        "LocalAddress",
-        "ForeignAddress",
-        "Status"
+    blacklistColumns: [
+        ConnectionsModel.ProtocolColumn,
+        ConnectionsModel.LocalAddressColumn,
+        ConnectionsModel.ForeignAddressColumn,
+        ConnectionsModel.StatusColumn
     ]
     blacklistRuleSuccessMessage: i18n("Created a blacklist rule from this connection.");
 
-    filterRoleNames: blacklistRuleRoleNames.concat(["Pid", "Program"])
+    filterColumns: [ConnectionsModel.PidColumn, ConnectionsModel.ProgramColumn]
 
     NetstatClient {
         id: netStatClient

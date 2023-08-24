@@ -7,9 +7,10 @@
  */
 
 #include "rulelistmodel.h"
+#include <klocalizedstring.h>
 
 RuleListModel::RuleListModel(QObject *parent)
-    : QAbstractListModel(parent)
+    : QAbstractTableModel(parent)
 {
 }
 
@@ -35,8 +36,15 @@ int RuleListModel::rowCount(const QModelIndex &parent) const
     return m_rules.count();
 }
 
+int RuleListModel::columnCount(const QModelIndex &parent) const
+{
+    Q_UNUSED(parent);
+    return 6;
+}
+
 QVariant RuleListModel::data(const QModelIndex &index, int role) const
 {
+    Q_UNUSED(role)
     const auto checkIndexFlags = QAbstractItemModel::CheckIndexOption::IndexIsValid | QAbstractItemModel::CheckIndexOption::ParentIsInvalid;
 
     if (!checkIndex(index, checkIndexFlags)) {
@@ -45,19 +53,19 @@ QVariant RuleListModel::data(const QModelIndex &index, int role) const
 
     const Rule *rule = m_rules.at(index.row());
 
-    switch (role) {
-    case ActionRole:
+    switch (index.column()) {
+    case ActionColumn:
         return rule->actionStr();
-    case FromRole:
+    case FromColumn:
         return rule->fromStr();
-    case ToRole:
+    case ToColumn:
         return rule->toStr();
-    case Ipv6Role:
-        return rule->ipv6() ? "IPv6" : "IPv4";
-    case LoggingRole:
+    case Ipv6Column:
+        return rule->ipv6() ? QStringLiteral("IPv6") : QStringLiteral("IPv4");
+    case LoggingColumn:
         return rule->loggingStr();
     }
-    return {};
+    return QVariant();
 }
 
 void RuleListModel::setProfile(const Profile &profile)
@@ -70,13 +78,22 @@ void RuleListModel::setProfile(const Profile &profile)
     endResetModel();
 }
 
-QHash<int, QByteArray> RuleListModel::roleNames() const
+QVariant RuleListModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
-    return {
-        {ActionRole, "action"},
-        {FromRole, "from"},
-        {ToRole, "to"},
-        {Ipv6Role, "ipVersion"},
-        {LoggingRole, "logging"},
-    };
+    Q_UNUSED(orientation)
+    Q_UNUSED(role)
+    switch (section) {
+    case ActionColumn:
+        return i18nc("@title:column", "Action");
+    case FromColumn:
+        return i18nc("@title:column", "From");
+    case ToColumn:
+        return i18nc("@title:column", "To");
+    case Ipv6Column:
+        return i18nc("@title:column", "IP");
+    case LoggingColumn:
+        return i18nc("@title:column", "Logging");
+    }
+    return QVariant();
+
 }

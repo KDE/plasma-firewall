@@ -15,27 +15,27 @@ ViewBase {
 
     title: i18n("Firewall Logs")
     model: kcm.client.logsModel
-    roles: [
-        {title: i18n("Protocol"), role: "protocol", width: Kirigami.Units.gridUnit * 3},
-        {title: i18n("From"), role: "sourceAddress", width: Kirigami.Units.gridUnit * 10},
-        {title: "", role: "sourcePort", width: Kirigami.Units.gridUnit * 3},
-        {title: i18n("To"), role: "destinationAddress", width: Kirigami.Units.gridUnit * 10},
-        {title: "", role: "destinationPort", width: Kirigami.Units.gridUnit * 3},
-        {title: i18n("Interface"), role: "interface", width: Kirigami.Units.gridUnit * 3}
+    columns: [
+        {column: LogListModel.ProtocolColumn, width: Kirigami.Units.gridUnit * 3},
+        {column: LogListModel.SourceAddressColumn, width: Kirigami.Units.gridUnit * 10},
+        {column: LogListModel.SourcePortColumn, width: Kirigami.Units.gridUnit * 3},
+        {column: LogListModel.DestinationAddressColumn, width: Kirigami.Units.gridUnit * 10},
+        {column: LogListModel.DestinationPortColumn, width: Kirigami.Units.gridUnit * 3},
+        {column: LogListModel.InterfaceColumn, width: Kirigami.Units.gridUnit * 3}
     ]
     emptyListText: i18n("There are currently no firewall log entries")
 
     blacklistRuleFactory: kcm.client.createRuleFromLog
-    blacklistRuleRoleNames: [
-        "Protocol",
-        "SourceAddress",
-        "SourcePort",
-        "DestinationAddress",
-        "DestinationPort",
-        "Interface"
+    blacklistColumns: [
+        LogListModel.ProtocolColumn,
+        LogListModel.SourceAddressColumn,
+        LogListModel.SourcePortColumn,
+        LogListModel.DestinationAddressColumn,
+        LogListModel.DestinationPortColumn,
+        LogListModel.InterfaceColumn
     ]
     blacklistRuleSuccessMessage: i18n("Created a blacklist rule from this log entry.");
 
-    filterRoleNames: blacklistRuleRoleNames
+    filterColumns: blacklistColumns
     onActiveChanged: kcm.client.logsAutoRefresh = active
 }

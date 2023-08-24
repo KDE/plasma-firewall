@@ -5,7 +5,7 @@
 #ifndef CONECTIONSMODEL_H
 #define CONECTIONSMODEL_H
 
-#include <QAbstractListModel>
+#include <QAbstractTableModel>
 #include <QTimer>
 
 #include <QLoggingCategory>
@@ -29,7 +29,7 @@ struct ConnectionsData {
     }
 };
 
-class ConnectionsModel : public QAbstractListModel
+class ConnectionsModel : public QAbstractTableModel
 {
     Q_OBJECT
 
@@ -37,18 +37,18 @@ class ConnectionsModel : public QAbstractListModel
     Q_PROPERTY(bool busy READ busy NOTIFY busyChanged)
 
 public:
-    enum ConnectionsModelRoles { ProtocolRole = Qt::UserRole + 1, LocalAddressRole, ForeignAddressRole, StatusRole, PidRole, ProgramRole };
-    Q_ENUM(ConnectionsModelRoles)
+    enum ConnectionsModelColumns { ProtocolColumn = 0, LocalAddressColumn, ForeignAddressColumn, StatusColumn, PidColumn, ProgramColumn };
+    Q_ENUM(ConnectionsModelColumns)
 
     explicit ConnectionsModel(QObject *parent = nullptr);
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+    int columnCount(const QModelIndex &parent) const override;
 
     bool busy() const;
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
-
-    QHash<int, QByteArray> roleNames() const override;
+    QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
 
     Q_INVOKABLE void start();
     Q_INVOKABLE void stop();

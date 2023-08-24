@@ -10,28 +10,28 @@
 
 #include <kcm_firewall_core_export.h>
 
-#include <QAbstractListModel>
+#include <QAbstractTableModel>
 
 #include "profile.h"
 
-class KCM_FIREWALL_CORE_EXPORT RuleListModel : public QAbstractListModel
+class KCM_FIREWALL_CORE_EXPORT RuleListModel : public QAbstractTableModel
 {
     Q_OBJECT
 
 public:
-    enum ProfileItemModelRoles { ActionRole = Qt::UserRole + 1, FromRole, ToRole, Ipv6Role, LoggingRole };
+    enum ProfileItemModelColumns { ActionColumn = 0, FromColumn, ToColumn, Ipv6Column, LoggingColumn, EditColumn};
+    Q_ENUM(ProfileItemModelColumns)
 
     explicit RuleListModel(QObject *parent = nullptr);
 
     Q_INVOKABLE void move(int from, int to);
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+    int columnCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+    QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
 
     void setProfile(const Profile &profile);
-
-protected:
-    QHash<int, QByteArray> roleNames() const override;
 
 private:
     Profile m_profile;

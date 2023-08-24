@@ -11,7 +11,7 @@
 #include "netstatclient.h"
 
 ConnectionsModel::ConnectionsModel(QObject *parent)
-    : QAbstractListModel(parent)
+    : QAbstractTableModel(parent)
 {
     connect(&m_netstatHelper, &NetstatHelper::queryFinished, this, &ConnectionsModel::refreshConnections);
     connect(&timer, &QTimer::timeout, &m_netstatHelper, &NetstatHelper::query);
@@ -40,6 +40,12 @@ int ConnectionsModel::rowCount(const QModelIndex &parent) const
     return m_connectionsData.size();
 }
 
+int ConnectionsModel::columnCount(const QModelIndex &parent) const
+{
+    Q_UNUSED(parent)
+    return 6;
+}
+
 bool ConnectionsModel::busy() const
 {
     return m_busy;
@@ -54,38 +60,49 @@ QVariant ConnectionsModel::data(const QModelIndex &index, int role) const
     }
 
     ConnectionsData data = m_connectionsData.at(index.row());
-    switch (role) {
-    case ProtocolRole:
+
+    switch (index.column()) {
+    case ProtocolColumn:
         return data.protocol;
-    case LocalAddressRole:
+    case LocalAddressColumn:
         return data.localAddress;
-    case ForeignAddressRole:
+    case ForeignAddressColumn:
         return data.foreignAddress;
-    case StatusRole:
+    case StatusColumn:
         return data.status;
-    case PidRole:
+    case PidColumn:
         return data.pid;
-    case ProgramRole:
+    case ProgramColumn:
         // HACK. Firefox reports as MainThread
         if (data.program == QLatin1String("MainThread")) {
             return "Firefox";
         } else {
             return data.program;
         }
+        break;
     }
-    return {};
+    return QVariant();
 }
 
-QHash<int, QByteArray> ConnectionsModel::roleNames() const
+QVariant ConnectionsModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
-    return {
-        {ProtocolRole, "protocol"},
-        {LocalAddressRole, "localAddress"},
-        {ForeignAddressRole, "foreignAddress"},
-        {StatusRole, "status"},
-        {PidRole, "pid"},
-        {ProgramRole, "program"},
-    };
+    Q_UNUSED(orientation)
+    Q_UNUSED(role)
+    switch (section) {
+    case ProtocolColumn:
+        return i18nc("@title:column", "Protocol");
+    case LocalAddressColumn:
+        return i18nc("@title:column", "Local address");
+    case ForeignAddressColumn:
+        return i18nc("@title:column", "Foreign address");
+    case StatusColumn:
+        return i18nc("@title:column", "Status");
+    case PidColumn:
+        return i18nc("@title:column", "PID");
+    case ProgramColumn:
+        return i18nc("@title:column", "Program");
+    }
+    return QVariant();
 }
 
 void ConnectionsModel::refreshConnections(const QList<QStringList> &result)

@@ -10,7 +10,7 @@
 
 #include <kcm_firewall_core_export.h>
 
-#include <QAbstractListModel>
+#include <QAbstractTableModel>
 #include <QVariantList>
 
 struct LogData {
@@ -26,7 +26,7 @@ struct LogData {
 };
 Q_DECLARE_TYPEINFO(LogData, Q_RELOCATABLE_TYPE);
 
-class KCM_FIREWALL_CORE_EXPORT LogListModel : public QAbstractListModel
+class KCM_FIREWALL_CORE_EXPORT LogListModel : public QAbstractTableModel
 {
     Q_OBJECT
 
@@ -36,26 +36,28 @@ class KCM_FIREWALL_CORE_EXPORT LogListModel : public QAbstractListModel
 public:
     explicit LogListModel(QObject *parent = nullptr);
 
-    enum LogItemModelRoles {
-        SourceAddressRole = Qt::UserRole + 1,
-        SourcePortRole,
-        DestinationAddressRole,
-        DestinationPortRole,
-        ProtocolRole,
-        InterfaceRole,
-        ActionRole,
-        TimeRole,
-        DateRole,
+    enum LogItemModelColumns {
+        SourceAddressColumn = 0,
+        SourcePortColumn,
+        DestinationAddressColumn,
+        DestinationPortColumn,
+        ProtocolColumn,
+        InterfaceColumn,
+        ActionColumn,
+        TimeColumn,
+        DateColumn,
     };
-    Q_ENUM(LogItemModelRoles)
+    Q_ENUM(LogItemModelColumns)
 
     bool busy() const;
     void setBusy(bool busy);
     Q_SIGNAL void busyChanged();
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+    int columnCount(const QModelIndex &parent) const override;
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+    QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
 
     virtual void addRawLogs(const QStringList &rawLogsList) = 0;
 
@@ -65,9 +67,6 @@ Q_SIGNALS:
     void countChanged();
 
     void showErrorMessage(const QString &message);
-
-protected:
-    QHash<int, QByteArray> roleNames() const override;
 
 private:
     QList<LogData> m_logsData;
