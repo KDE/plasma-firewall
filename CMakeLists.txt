@@ -33,8 +33,7 @@ add_feature_info(UFW_BACKEND ${BUILD_UFW_BACKEND} "Build the Uncomplicated Firew
 #-----------------------------------------------------------------------------
 #                              DEPENDENCIES
 #-----------------------------------------------------------------------------
-# Python3 (search for this first so that we will not get Python2 by accident)
-find_package(PythonInterp 3 REQUIRED)
+find_package(Python3 COMPONENTS Interpreter)
 # KF6
 find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
