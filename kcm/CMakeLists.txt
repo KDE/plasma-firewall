@@ -13,7 +13,7 @@ target_sources(kcm_firewall PRIVATE
    kcm.cpp
    kcm.h
 )
-target_link_libraries(kcm_firewall
+target_link_libraries(kcm_firewall PRIVATE
     Qt::Quick
     Qt::DBus
 
