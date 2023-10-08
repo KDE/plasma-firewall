@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
 // SPDX-FileCopyrightText: 2018 Alexis Lopes Zubeta <contact@azubieta.net>
 // SPDX-FileCopyrightText: 2020 Tomaz Canabrava <tcanabrava@kde.org>
-
+// SPDX-FileCopyrightText: 2023 ivan tkachenko <me@ratijas.tk>
 
 import QtQuick 2.6
 import QtQuick.Layouts 1.3
@@ -29,9 +29,11 @@ KCMUtils.ScrollViewKCM {
 
     Kirigami.OverlaySheet {
         id: drawer
-        parent: root.parent
-        onSheetOpenChanged: {
-            if (sheetOpen) {
+
+        parent: root.QQC2.Overlay.overlay
+
+        onVisibleChanged: {
+            if (visible) {
                 ruleEdit.forceActiveFocus();
             } else {
                 // FIXME also reset rule
@@ -56,23 +58,10 @@ KCMUtils.ScrollViewKCM {
                 height: childrenRect.height
                 implicitWidth: 30 * Kirigami.Units.gridUnit
 
-                Keys.onEnterPressed: Keys.onReturnPressed(event)
-                Keys.onReturnPressed: {
-                    if (drawer.sheetOpen) {
-                        accepted();
-                    } else { // FIXME OverlaySheet should lose focus once hidden
-                        event.accepted = false;
-                    }
-                }
-                Keys.onEscapePressed: {
-                    if (drawer.sheetOpen) {
-                        drawer.close()
-                    } else {
-                        event.accepted = false;
-                    }
-                }
+                Keys.onEnterPressed: event => accept()
+                Keys.onReturnPressed: event => accept()
 
-                onAccepted:  {
+                function accept() {
                     var job = kcm.client[newRule ? "addRule" : "updateRule"](rule);
                     if (!job) {
                         ruleEditMessage.text = i18n("Please restart plasma firewall, the backend disconnected.");
@@ -82,7 +71,7 @@ KCMUtils.ScrollViewKCM {
 
                     busy = true;
                     kcm.needsSave = true;
-                    job.result.connect(function() {
+                    job.result.connect(() => {
                         busy = false;
 
                         if (job.error) {
@@ -101,7 +90,6 @@ KCMUtils.ScrollViewKCM {
                         }
 
                         drawer.close();
-
                     });
                 }
             }
@@ -111,29 +99,22 @@ KCMUtils.ScrollViewKCM {
                 running: ruleEdit.busy
                 visible: running
             }
+        }
 
-            QQC2.DialogButtonBox {
-                Layout.fillWidth: true
+        footer: QQC2.DialogButtonBox {
+            enabled: ruleEdit.ready
 
-                leftPadding: 0
-                rightPadding: 0
-                bottomPadding: 0
-                topPadding: 0
+            QQC2.Button {
+                text: ruleEdit.newRule ? i18n("Create") : i18n("Save")
+                icon.name: ruleEdit.newRule ? "document-new" : "document-save"
+                QQC2.DialogButtonBox.buttonRole: QQC2.DialogButtonBox.AcceptRole
+            }
 
-                enabled: ruleEdit.ready
-
-                QQC2.Button {
-                    text: ruleEdit.newRule ? i18n("Create") : i18n("Save")
-                    icon.name: ruleEdit.newRule ? "document-new" : "document-save"
-                    QQC2.DialogButtonBox.buttonRole: QQC2.DialogButtonBox.AcceptRole
+            onAccepted: {
+                if (ruleEdit.simple.index > -1) {
+                    ruleEdit.rule.sourceApplication = ruleEdit.simple.service[ruleEdit.simple.index]
                 }
-
-                onAccepted: {
-                    if (ruleEdit.simple.index > -1) {
-                        ruleEdit.rule.sourceApplication = ruleEdit.simple.service[ruleEdit.simple.index]
-                    }
-                    ruleEdit.accepted()
-                }
+                ruleEdit.accept()
             }
         }
     }
@@ -451,7 +432,7 @@ KCMUtils.ScrollViewKCM {
         QQC2.Button {
             icon.name: "help-about"
             text: i18n("About")
-            onClicked: about.sheetOpen = true
+            onClicked: root.showAboutView()
         }
 
     }
@@ -467,7 +448,17 @@ KCMUtils.ScrollViewKCM {
         }
     }
 
-    About {
-        id: about
+    function showAboutView() {
+        const sheet = aboutComponent.createObject(this);
+        sheet.open();
+    }
+
+    Component {
+        id: aboutComponent
+        About {
+            parent: root.QQC2.Overlay.overlay
+
+            onClosed: destroy()
+        }
     }
 }

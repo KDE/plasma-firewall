@@ -14,8 +14,6 @@ import org.kcm.firewall 1.0 as Firewall
 FocusScope {
     id: ruleEdit
 
-    signal accepted
-
     property bool busy: false
     property bool ready: (!advancedRuleEdit.sourceAddress.length || advancedRuleEdit.sourceAddress.acceptableInput)
                           && (!advancedRuleEdit.destinationAddress.length || advancedRuleEdit.destinationAddress.acceptableInput)
