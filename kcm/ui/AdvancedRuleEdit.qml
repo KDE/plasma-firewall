@@ -33,7 +33,9 @@ Kirigami.FormLayout {
         model: policyChoices
         textRole: "text"
         currentIndex: rule == null ? 0 : rule.policy == "" ? 0 : policyChoices.findIndex((policy) => policy.data == rule.policy)
-        onActivated: rule.policy = policyChoices[index].data
+        onActivated: index => {
+            rule.policy = policyChoices[index].data;
+        }
     }
 
     RowLayout {
@@ -113,7 +115,9 @@ Kirigami.FormLayout {
         Layout.preferredWidth: root.maxComboboxWidth
         model: ruleEdit.client.knownProtocols()
         currentIndex: rule.protocol
-        onActivated: rule.protocol = index
+        onActivated: index => {
+            rule.protocol = index;
+        }
     }
     QQC2.ComboBox {
         id: interfaceCb
@@ -122,7 +126,9 @@ Kirigami.FormLayout {
         Layout.preferredWidth: root.maxComboboxWidth
         model: ruleEdit.client.knownInterfaces()
         currentIndex: rule.interface
-        onActivated: rule.interface = index
+        onActivated: index => {
+            rule.interface = index;
+        }
     }
 
     QQC2.ComboBox {
@@ -133,6 +139,8 @@ Kirigami.FormLayout {
         model: ruleChoices
         textRole: "text"
         currentIndex: rule.logging == "" ? 0 : ruleChoices.findIndex((rules) => rules.data == rule.logging)
-        onActivated: rule.logging = ruleChoices[index].data
+        onActivated: index => {
+            rule.logging = ruleChoices[index].data;
+        }
     }
 }

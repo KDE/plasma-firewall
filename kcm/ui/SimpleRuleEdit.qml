@@ -30,8 +30,10 @@ i18n("Allow connections for:") : i18n("Application:")
         model: policyChoices
         textRole: "text"
         currentIndex: rule.policy == "" ? 0 : policyChoices.findIndex((policy) => policy.data == rule.policy)
-        onActivated: rule.policy = policyChoices[index].data
         visible: kcm.client.name != "firewalld"
+        onActivated: index => {
+            rule.policy = policyChoices[index].data;
+        }
     }
 
     RowLayout {
