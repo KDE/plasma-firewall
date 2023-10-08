@@ -119,6 +119,8 @@ KCM.ScrollViewKCM {
         });
     }
 
+    extraFooterTopPadding: false
+
     header: ColumnLayout {
         Kirigami.InlineMessage {
             id: modelErrorMessage

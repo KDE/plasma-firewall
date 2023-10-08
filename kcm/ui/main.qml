@@ -19,6 +19,8 @@ KCM.ScrollViewKCM {
     implicitHeight: Kirigami.Units.gridUnit * 25
     implicitWidth: Kirigami.Units.gridUnit * 44
 
+    extraFooterTopPadding: false
+
     property var policyChoices : [
         {text: i18n("Allow"), data: "allow", tooltip: i18n("Allow all connections")},
         {text: i18n("Ignore"), data: "deny", tooltip: i18n("Keeps the program waiting until the connection attempt times out, some short time later.")},
