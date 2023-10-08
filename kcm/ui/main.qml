@@ -8,12 +8,12 @@ import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.9 as QQC2
 import QtQuick.Controls 1.4 as QQC1 // for Table View.
 
-import org.kde.kcmutils 1.2 as KCM
+import org.kde.kcmutils as KCMUtils
 import org.kcm.firewall 1.0
 
 import org.kde.kirigami 2.14 as Kirigami
 
-KCM.ScrollViewKCM {
+KCMUtils.ScrollViewKCM {
     id: root
 
     implicitHeight: Kirigami.Units.gridUnit * 25
