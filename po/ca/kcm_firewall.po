@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-10 02:09+0000\n"
+"POT-Creation-Date: 2023-10-09 01:46+0000\n"
 "PO-Revision-Date: 2023-09-24 17:21+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -189,7 +189,7 @@ msgstr "Alt"
 msgid "Full"
 msgstr "Complet"
 
-#: core/types.cpp:45 ui/RuleEdit.qml:40
+#: core/types.cpp:45 ui/RuleEdit.qml:38
 #, kde-format
 msgid "None"
 msgstr "Sense"
@@ -204,7 +204,7 @@ msgstr "Connexions noves"
 msgid "All packets"
 msgstr "Tots els paquets"
 
-#: core/types.cpp:58 ui/main.qml:23
+#: core/types.cpp:58 ui/main.qml:25
 #, kde-format
 msgid "Allow"
 msgstr "Permet"
@@ -214,7 +214,7 @@ msgstr "Permet"
 msgid "Deny"
 msgstr "Denega"
 
-#: core/types.cpp:62 ui/main.qml:25
+#: core/types.cpp:62 ui/main.qml:27
 #, kde-format
 msgid "Reject"
 msgstr "Rebutja"
@@ -354,17 +354,17 @@ msgstr "NTP"
 msgid "CUPS"
 msgstr "CUPS"
 
-#: ui/About.qml:16
+#: ui/About.qml:25
 #, kde-format
 msgid "About Firewall"
 msgstr "Quant al tallafoc"
 
-#: ui/About.qml:21
+#: ui/About.qml:32
 #, kde-format
 msgid "Backend:"
 msgstr "Dorsal:"
 
-#: ui/About.qml:25
+#: ui/About.qml:39
 #, kde-format
 msgid "Version:"
 msgstr "Versió:"
@@ -374,57 +374,57 @@ msgstr "Versió:"
 msgid "Policy:"
 msgstr "Política:"
 
-#: ui/AdvancedRuleEdit.qml:40 ui/SimpleRuleEdit.qml:38
+#: ui/AdvancedRuleEdit.qml:42 ui/SimpleRuleEdit.qml:40
 #, kde-format
 msgid "Direction:"
 msgstr "Direcció:"
 
-#: ui/AdvancedRuleEdit.qml:43 ui/SimpleRuleEdit.qml:42
+#: ui/AdvancedRuleEdit.qml:45 ui/SimpleRuleEdit.qml:44
 #, kde-format
 msgid "Incoming"
 msgstr "Entrades"
 
-#: ui/AdvancedRuleEdit.qml:49 ui/SimpleRuleEdit.qml:48
+#: ui/AdvancedRuleEdit.qml:51 ui/SimpleRuleEdit.qml:50
 #, kde-format
 msgid "Outgoing"
 msgstr "Sortides"
 
-#: ui/AdvancedRuleEdit.qml:57
+#: ui/AdvancedRuleEdit.qml:59
 #, kde-format
 msgid "IP Version:"
 msgstr "Versió IP:"
 
-#: ui/AdvancedRuleEdit.qml:60
+#: ui/AdvancedRuleEdit.qml:62
 #, kde-format
 msgid "IPv4"
 msgstr "IPv4"
 
-#: ui/AdvancedRuleEdit.qml:65
+#: ui/AdvancedRuleEdit.qml:67
 #, kde-format
 msgid "IPv6"
 msgstr "IPv6"
 
-#: ui/AdvancedRuleEdit.qml:72
+#: ui/AdvancedRuleEdit.qml:74
 #, kde-format
 msgid "Source:"
 msgstr "Origen:"
 
-#: ui/AdvancedRuleEdit.qml:92
+#: ui/AdvancedRuleEdit.qml:94
 #, kde-format
 msgid "Destination:"
 msgstr "Destinació:"
 
-#: ui/AdvancedRuleEdit.qml:112
+#: ui/AdvancedRuleEdit.qml:114
 #, kde-format
 msgid "Protocol:"
 msgstr "Protocol:"
 
-#: ui/AdvancedRuleEdit.qml:121
+#: ui/AdvancedRuleEdit.qml:125
 #, kde-format
 msgid "Interface:"
 msgstr "Interfície:"
 
-#: ui/AdvancedRuleEdit.qml:131
+#: ui/AdvancedRuleEdit.qml:137
 #, kde-format
 msgid "Logging:"
 msgstr "Registre:"
@@ -490,12 +490,12 @@ msgstr "Qualsevol adreça IP"
 msgid "Firewall Logs"
 msgstr "Registres del tallafoc"
 
-#: ui/LogsView.qml:20 ui/main.qml:348
+#: ui/LogsView.qml:20 ui/main.qml:331
 #, kde-format
 msgid "From"
 msgstr "Des de"
 
-#: ui/LogsView.qml:22 ui/main.qml:353
+#: ui/LogsView.qml:22 ui/main.qml:336
 #, kde-format
 msgid "To"
 msgstr "a"
@@ -516,17 +516,17 @@ msgid "Created a blacklist rule from this log entry."
 msgstr ""
 "S'ha creat una regla de llista negra a partir d'aquesta entrada del registre."
 
-#: ui/main.qml:23
+#: ui/main.qml:25
 #, kde-format
 msgid "Allow all connections"
 msgstr "Permet totes les connexions"
 
-#: ui/main.qml:24
+#: ui/main.qml:26
 #, kde-format
 msgid "Ignore"
 msgstr "Ignora"
 
-#: ui/main.qml:24
+#: ui/main.qml:26
 #, kde-format
 msgid ""
 "Keeps the program waiting until the connection attempt times out, some short "
@@ -535,82 +535,82 @@ msgstr ""
 "Manté el programa esperant fins que la connexió ha exhaurit el temps, una "
 "estona després."
 
-#: ui/main.qml:25
+#: ui/main.qml:27
 #, kde-format
 msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr "Produeix un missatge immediat i molt informatiu «Connexió rebutjada»"
 
-#: ui/main.qml:40
+#: ui/main.qml:44
 #, kde-format
 msgid "Create A New Firewall Rule"
 msgstr "Crea una regla nova del tallafoc"
 
-#: ui/main.qml:40
+#: ui/main.qml:44
 #, kde-format
 msgid "Edit Firewall Rule"
 msgstr "Edita una regla del tallafoc"
 
-#: ui/main.qml:76 ui/main.qml:263 ui/main.qml:398
+#: ui/main.qml:67 ui/main.qml:246 ui/main.qml:381
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr "Reinicieu el tallafoc del Plasma, el dorsal s'ha desconnectat."
 
-#: ui/main.qml:90 ui/ViewBase.qml:110
+#: ui/main.qml:81 ui/ViewBase.qml:110
 #, kde-format
 msgid "Error creating rule: %1"
 msgstr "Error en crear la regla: %1"
 
-#: ui/main.qml:92
+#: ui/main.qml:83
 #, kde-format
 msgid "Error updating rule: %1"
 msgstr "Error en actualitzar la regla: %1"
 
-#: ui/main.qml:124
+#: ui/main.qml:108
 #, kde-format
 msgid "Create"
 msgstr "Crea"
 
-#: ui/main.qml:124
+#: ui/main.qml:108
 #, kde-format
 msgid "Save"
 msgstr "Desa"
 
-#: ui/main.qml:149
+#: ui/main.qml:132
 #, kde-format
 msgid "Firewall Status:"
 msgstr "Estat del tallafoc:"
 
-#: ui/main.qml:155
+#: ui/main.qml:138
 #, kde-format
 msgid "Disabling…"
 msgstr "S'està desactivant…"
 
-#: ui/main.qml:155
+#: ui/main.qml:138
 #, kde-format
 msgid "Enabled"
 msgstr "Activat"
 
-#: ui/main.qml:157
+#: ui/main.qml:140
 #, kde-format
 msgid "Enabling…"
 msgstr "S'està activant…"
 
-#: ui/main.qml:157
+#: ui/main.qml:140
 #, kde-format
 msgid "Disabled"
 msgstr "Desactivat"
 
-#: ui/main.qml:183
+#: ui/main.qml:166
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr "L'aplicació tallafoc, instal·leu %1"
 
-#: ui/main.qml:197
+#: ui/main.qml:180
 #, kde-format
 msgid "Permission denied"
 msgstr "S'ha denegat el permís"
 
-#: ui/main.qml:201
+#: ui/main.qml:184
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
@@ -619,42 +619,42 @@ msgstr ""
 "S'ha actualitzat el nucli recentment. L'«iptables» ha fallat en inicialitzar-"
 "se. Cal reiniciar."
 
-#: ui/main.qml:204
+#: ui/main.qml:187
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr "Error en activar el tallafoc: %1"
 
-#: ui/main.qml:205
+#: ui/main.qml:188
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr "Error en desactivar el tallafoc: %1"
 
-#: ui/main.qml:225
+#: ui/main.qml:208
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "Política predeterminada d'entrada:"
 
-#: ui/main.qml:226
+#: ui/main.qml:209
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "Política predeterminada de sortida:"
 
-#: ui/main.qml:273
+#: ui/main.qml:256
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Error en canviar la política: %1"
 
-#: ui/main.qml:336
+#: ui/main.qml:319
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "El tallafoc està desactivat"
 
-#: ui/main.qml:336
+#: ui/main.qml:319
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "No s'ha afegit cap regla del tallafoc"
 
-#: ui/main.qml:338
+#: ui/main.qml:321
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button below to add one"
@@ -662,7 +662,7 @@ msgstr ""
 "Feu clic al botó <interface>Afegeix una regla…</interface> de sota per a "
 "afegir-ne una"
 
-#: ui/main.qml:339
+#: ui/main.qml:322
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -674,61 +674,61 @@ msgstr ""
 "tallafoc</interface> de dalt, i després feu clic al botó <interface>Afegeix "
 "una regla…</interface> de sota per a afegir-ne una"
 
-#: ui/main.qml:343
+#: ui/main.qml:326
 #, kde-format
 msgid "Action"
 msgstr "Acció"
 
-#: ui/main.qml:358
+#: ui/main.qml:341
 #, kde-format
 msgid "IP"
 msgstr "IP"
 
-#: ui/main.qml:363
+#: ui/main.qml:346
 #, kde-format
 msgid "Logging"
 msgstr "Registre"
 
-#: ui/main.qml:389
+#: ui/main.qml:372
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Edita una regla"
 
-#: ui/main.qml:409
+#: ui/main.qml:392
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Error en eliminar la regla: %1"
 
-#: ui/main.qml:416
+#: ui/main.qml:399
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Elimina la regla"
 
-#: ui/main.qml:426
+#: ui/main.qml:409
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
 msgstr "Visualitza les connexions"
 
-#: ui/main.qml:431
+#: ui/main.qml:414
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
 msgstr "Visualitza els registres"
 
-#: ui/main.qml:442
+#: ui/main.qml:425
 #, kde-format
 msgid "Add Rule…"
 msgstr "Afegeix una regla…"
 
-#: ui/main.qml:451
+#: ui/main.qml:434
 #, kde-format
 msgid "About"
 msgstr "Quant a"
 
-#: ui/main.qml:459
+#: ui/main.qml:442
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Instal·leu un tallafoc, per exemple l'«ufw» o «firewalld»"
@@ -738,22 +738,22 @@ msgstr "Instal·leu un tallafoc, per exemple l'«ufw» o «firewalld»"
 msgid "Any Port"
 msgstr "Qualsevol port"
 
-#: ui/RuleEdit.qml:41
+#: ui/RuleEdit.qml:39
 #, kde-format
 msgid "New Connections"
 msgstr "Connexions noves"
 
-#: ui/RuleEdit.qml:42
+#: ui/RuleEdit.qml:40
 #, kde-format
 msgid "All Packets"
 msgstr "Tots els paquets"
 
-#: ui/RuleEdit.qml:57 ui/RuleEdit.qml:64
+#: ui/RuleEdit.qml:55 ui/RuleEdit.qml:62
 #, kde-format
 msgid "The default incoming policy is already '%1'."
 msgstr "La política predeterminada d'entrada ja és «%1»."
 
-#: ui/RuleEdit.qml:58 ui/RuleEdit.qml:65
+#: ui/RuleEdit.qml:56 ui/RuleEdit.qml:63
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
 msgstr "La política predeterminada de sortida ja és «%1»."
@@ -768,7 +768,7 @@ msgstr "Permet les connexions per:"
 msgid "Application:"
 msgstr "Aplicació:"
 
-#: ui/ViewBase.qml:222
+#: ui/ViewBase.qml:224
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Connexió a la llista negra"
