@@ -569,7 +569,7 @@ msgstr "S'ha produït un error en crear la regla: %1"
 #: package/contents/ui/main.qml:92
 #, kde-format
 msgid "Error updating rule: %1"
-msgstr "S'ha produït un error en actualitzar la regla: %1"
+msgstr "S'ha produït un error durant l'actualització de la regla: %1"
 
 #: package/contents/ui/main.qml:124
 #, kde-format
