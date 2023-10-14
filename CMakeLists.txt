@@ -69,9 +69,10 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
 #-----------------------------------------------------------------------------
 add_subdirectory(kcm)
 
-enable_testing(true)
-add_subdirectory(autotests)
-add_subdirectory(tests)
+if (BUILD_TESTING)
+    add_subdirectory(autotests)
+    add_subdirectory(tests)
+endif()
 
 #-----------------------------------------------------------------------------
 #                               Clang Format
