@@ -126,7 +126,7 @@ QVector<QStringList> NetstatHelper::parseSSOutput(const QByteArray &netstatOutpu
     };
 
     // Extract Information
-    for (const auto &line : qAsConst(outputLines)) {
+    for (const auto &line : std::as_const(outputLines)) {
         QStringList values = line.split(QLatin1Char(' '), Qt::SkipEmptyParts);
         if (values.isEmpty()) {
             continue;

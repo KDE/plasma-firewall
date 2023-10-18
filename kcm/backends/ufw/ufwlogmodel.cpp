@@ -35,7 +35,7 @@ std::map<QString, QString> parseString(const QString &line)
 
     // We can drop now everything up to 7.
     splited.erase(std::begin(splited), std::begin(splited) + 7);
-    for (const QString &element : qAsConst(splited)) {
+    for (const QString &element : std::as_const(splited)) {
         for (const QString &key :
              {QStringLiteral("IN"), QStringLiteral("SRC"), QStringLiteral("DST"), QStringLiteral("PROTO"), QStringLiteral("STP"), QStringLiteral("DPT")}) {
             if (element.startsWith(key)) {
