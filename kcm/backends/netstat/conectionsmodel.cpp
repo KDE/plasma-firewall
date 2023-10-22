@@ -88,7 +88,7 @@ QHash<int, QByteArray> ConnectionsModel::roleNames() const
     };
 }
 
-void ConnectionsModel::refreshConnections(const QVector<QStringList> &result)
+void ConnectionsModel::refreshConnections(const QList<QStringList> &result)
 {
     if (m_netstatHelper.hasError()) {
         Q_EMIT showErrorMessage(i18n("Failed to get connections: %1", m_netstatHelper.errorString()));
@@ -96,7 +96,7 @@ void ConnectionsModel::refreshConnections(const QVector<QStringList> &result)
     }
 
     const auto oldConnectionsData = m_connectionsData;
-    QVector<ConnectionsData> newConnectionsData;
+    QList<ConnectionsData> newConnectionsData;
 
     beginResetModel();
     m_connectionsData.clear();

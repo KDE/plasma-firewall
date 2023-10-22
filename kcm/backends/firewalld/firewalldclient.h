@@ -71,8 +71,8 @@ protected slots:
     void refreshLogs();
 
 protected:
-    QVector<Rule *> extractRulesFromResponse(const QList<firewalld_reply> &reply) const;
-    QVector<Rule *> extractRulesFromResponse(const QStringList &reply) const;
+    QList<Rule *> extractRulesFromResponse(const QList<firewalld_reply> &reply) const;
+    QList<Rule *> extractRulesFromResponse(const QStringList &reply) const;
     QVariantList buildRule(const Rule *r) const;
     void setProfile(Profile profile);
     void queryKnownApplications();

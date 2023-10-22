@@ -401,7 +401,7 @@ KJob *UfwClient::updateRule(Rule *r)
 
 KJob *UfwClient::moveRule(int from, int to)
 {
-    const QVector<Rule *> cRules = m_currentProfile.rules();
+    const QList<Rule *> cRules = m_currentProfile.rules();
     if (from < 0 || from >= cRules.count()) {
         qWarning() << "invalid from index";
         return nullptr;
@@ -587,7 +587,7 @@ void UfwClient::refreshProfiles()
 
     const QStringList files(QDir(constProfileDir).entryList(QDir::NoDotAndDotDot));
 
-    QVector<Entry> profiles;
+    QList<Entry> profiles;
     for (const auto &file : files) {
         KConfig cfg(constProfileDir + file, KConfig::SimpleConfig);
 

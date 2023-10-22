@@ -97,7 +97,7 @@ KJob *FirewalldClient::queryStatus(FirewallClient::DefaultDataBehavior defaultsB
             return;
         }
         qCDebug(FirewallDClientDebug) << job->name();
-        QVector<Rule *> const rules = extractRulesFromResponse(job->getFirewalldreply()) + extractRulesFromResponse(job->getServices());
+        QList<Rule *> const rules = extractRulesFromResponse(job->getFirewalldreply()) + extractRulesFromResponse(job->getServices());
         const QVariantMap args = {{"defaultIncomingPolicy", defaultIncomingPolicy()},
                                   {"defaultOutgoingPolicy", defaultOutgoingPolicy()},
                                   {"status", true},
@@ -207,7 +207,7 @@ bool FirewalldClient::supportsRuleUpdate() const
 
 KJob *FirewalldClient::moveRule(int from, int to)
 {
-    QVector<Rule *> cRules = m_currentProfile.rules();
+    QList<Rule *> cRules = m_currentProfile.rules();
     if (from < 0 || from >= cRules.count()) {
         qWarning() << "invalid from index";
     }
@@ -444,9 +444,9 @@ LogListModel *FirewalldClient::logs()
     return m_logs;
 }
 
-QVector<Rule *> FirewalldClient::extractRulesFromResponse(const QStringList &reply) const
+QList<Rule *> FirewalldClient::extractRulesFromResponse(const QStringList &reply) const
 {
-    QVector<Rule *> simple_rules;
+    QList<Rule *> simple_rules;
     if (reply.size() <= 0) {
         return {};
     }
@@ -487,9 +487,9 @@ QVector<Rule *> FirewalldClient::extractRulesFromResponse(const QStringList &rep
     return simple_rules;
 }
 
-QVector<Rule *> FirewalldClient::extractRulesFromResponse(const QList<firewalld_reply> &reply) const
+QList<Rule *> FirewalldClient::extractRulesFromResponse(const QList<firewalld_reply> &reply) const
 {
-    QVector<Rule *> message_rules;
+    QList<Rule *> message_rules;
     if (reply.size() <= 0) {
         return {};
     }

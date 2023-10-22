@@ -49,7 +49,7 @@ std::map<QString, QString> parseString(const QString &line)
 
 void UfwLogModel::addRawLogs(const QStringList &rawLogsList)
 {
-    QVector<LogData> newLogs;
+    QList<LogData> newLogs;
     newLogs.reserve(rawLogsList.count());
     for (const QString &log : rawLogsList) {
         auto map = parseString(log);

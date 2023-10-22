@@ -15,7 +15,7 @@
 IFirewallClientBackend::IFirewallClientBackend(QObject *parent, const QVariantList &)
     : QObject(parent){};
 
-void IFirewallClientBackend::setProfiles(const QVector<Entry> &profiles)
+void IFirewallClientBackend::setProfiles(const QList<Entry> &profiles)
 {
     m_profiles = profiles;
     std::sort(std::begin(m_profiles), std::end(m_profiles));

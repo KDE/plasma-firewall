@@ -59,10 +59,10 @@ Q_SIGNALS:
     void showErrorMessage(const QString &message);
 
 protected slots:
-    void refreshConnections(const QVector<QStringList> &results);
+    void refreshConnections(const QList<QStringList> &results);
 
 private:
-    QVector<ConnectionsData> m_connectionsData;
+    QList<ConnectionsData> m_connectionsData;
     QTimer timer;
     bool m_busy = false;
     NetstatHelper m_netstatHelper;

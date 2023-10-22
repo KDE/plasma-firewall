@@ -30,10 +30,10 @@ private Q_SLOTS:
     void stepExecuteFinished(int exitCode);
 
 Q_SIGNALS:
-    void queryFinished(const QVector<QStringList> &query);
+    void queryFinished(const QList<QStringList> &query);
 
 private:
-    QVector<QStringList> parseSSOutput(const QByteArray &ss);
+    QList<QStringList> parseSSOutput(const QByteArray &ss);
 
     QString extractAndStrip(const QString &src, int index, int size);
 

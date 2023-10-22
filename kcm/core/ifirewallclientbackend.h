@@ -13,8 +13,8 @@
 #include "appprofiles.h"
 #include "firewallclient.h"
 
+#include <QList>
 #include <QString>
-#include <QVector>
 #include <kcm_firewall_core_export.h>
 
 class KJob;
@@ -86,8 +86,8 @@ public:
     virtual QStringList knownProtocols() = 0;
     virtual QStringList knownApplications() = 0;
 
-    void setProfiles(const QVector<Entry> &profiles);
-    QVector<Entry> profiles();
+    void setProfiles(const QList<Entry> &profiles);
+    QList<Entry> profiles();
     Entry profileByName(const QString &profileName);
 
     void queryExecutable(const QString &executableName);
@@ -105,7 +105,7 @@ Q_SIGNALS:
     void showErrorMessage(const QString &message);
 
 private:
-    QVector<Entry> m_profiles;
+    QList<Entry> m_profiles;
     QString m_executablePath;
 };
 

@@ -79,7 +79,7 @@ void NetstatHelper::stepExecuteFinished(int exitCode)
         m_hasError = true;
         m_errorString = m_executableProcess->readAllStandardError();
     } else {
-        QVector<QStringList> result = parseSSOutput(m_executableProcess->readAllStandardOutput());
+        QList<QStringList> result = parseSSOutput(m_executableProcess->readAllStandardOutput());
         Q_EMIT queryFinished(result);
         ;
     }
@@ -98,12 +98,12 @@ QString NetstatHelper::errorString() const
     return m_errorString;
 }
 
-QVector<QStringList> NetstatHelper::parseSSOutput(const QByteArray &netstatOutput)
+QList<QStringList> NetstatHelper::parseSSOutput(const QByteArray &netstatOutput)
 {
     QString rawOutput = netstatOutput;
     QStringList outputLines = rawOutput.split(QStringLiteral("\n"));
 
-    QVector<QStringList> connections;
+    QList<QStringList> connections;
 
     // discard lines.
     while (outputLines.size()) {

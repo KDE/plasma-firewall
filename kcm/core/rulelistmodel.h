@@ -35,5 +35,5 @@ protected:
 
 private:
     Profile m_profile;
-    QVector<Rule *> m_rules;
+    QList<Rule *> m_rules;
 };

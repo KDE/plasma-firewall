@@ -43,8 +43,8 @@ public:
     {
     }
 
-    Profile(const QVector<Rule *> &rules, const QVariantMap &args, bool isSys = false);
-    Profile(bool ipv6, Types::LogLevel ll, Types::Policy dip, Types::Policy dop, const QVector<Rule *> &r, const QSet<QString> &m)
+    Profile(const QList<Rule *> &rules, const QVariantMap &args, bool isSys = false);
+    Profile(bool ipv6, Types::LogLevel ll, Types::Policy dip, Types::Policy dop, const QList<Rule *> &r, const QSet<QString> &m)
         : m_fields(0xFF)
         , m_enabled(true)
         , m_ipv6Enabled(ipv6)
@@ -108,7 +108,7 @@ public:
     {
         return m_defaultOutgoingPolicy;
     }
-    const QVector<Rule *> rules() const
+    const QList<Rule *> rules() const
     {
         return m_rules;
     }
@@ -125,7 +125,7 @@ public:
         return m_isSystem;
     }
 
-    void setRules(const QVector<Rule *> &newrules);
+    void setRules(const QList<Rule *> &newrules);
     void setArgs(const QVariantMap &args);
     void setEnabled(bool value);
     void setDefaultIncomingPolicy(const QString &policy);
@@ -139,7 +139,7 @@ private:
     bool m_enabled, m_ipv6Enabled;
     Types::LogLevel m_logLevel;
     Types::Policy m_defaultIncomingPolicy, m_defaultOutgoingPolicy;
-    QVector<Rule *> m_rules;
+    QList<Rule *> m_rules;
     QSet<QString> m_modules;
     QString m_fileName;
     bool m_isSystem;

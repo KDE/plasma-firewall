@@ -43,7 +43,7 @@ Profile::Profile(QFile &file, bool isSys)
     load(&file);
 }
 
-Profile::Profile(const QVector<Rule *> &rules, const QVariantMap &args, bool isSys)
+Profile::Profile(const QList<Rule *> &rules, const QVariantMap &args, bool isSys)
     : m_fields(0)
     , m_enabled(false)
     , m_ipv6Enabled(false)
@@ -56,7 +56,7 @@ Profile::Profile(const QVector<Rule *> &rules, const QVariantMap &args, bool isS
     setArgs(args);
 }
 
-void Profile::setRules(const QVector<Rule *> &newrules)
+void Profile::setRules(const QList<Rule *> &newrules)
 {
     m_rules = newrules;
 }
