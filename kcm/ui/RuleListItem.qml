@@ -4,12 +4,9 @@
 
 import QtQuick 2.0
 import QtQuick.Layouts 1.3
-
 import QtQuick.Controls 2.12 as QQC2
 
-import org.kde.kirigami 2.4 as Kirigami
-
-Kirigami.BasicListItem {
+QQC2.ItemDelegate {
     id: itemRoot
 
     property bool dropAreasVisible: false
@@ -21,7 +18,7 @@ Kirigami.BasicListItem {
 
     onClicked: edit(index)
 
-    RowLayout {
+    contentItem: RowLayout {
         QQC2.Label {
             Layout.fillHeight: true
             Layout.leftMargin: 4
