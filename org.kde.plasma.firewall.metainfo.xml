@@ -126,7 +126,7 @@
     <p xml:lang="zh-CN">Plasma 防火墙是一款配置简便的防火墙前端程序，兼容多种防火墙后端程序。</p>
     <p xml:lang="zh-TW">Plasma 防火牆作為多個防火牆軟體的前端設定界面，降低設定網際網路的專業門檻。</p>
   </description>
-  <icon type="stock">preferences-security-firewall</icon>
+  <icon type="stock">firewall-config</icon>
   <screenshots>
     <screenshot type="default">
       <caption>The plasma firewall showing a default configuration page</caption>
