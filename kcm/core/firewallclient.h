@@ -46,7 +46,7 @@ class KCM_FIREWALL_CORE_EXPORT FirewallClient : public QObject
     Q_PROPERTY(bool logsAutoRefresh READ logsAutoRefresh WRITE setLogsAutoRefresh NOTIFY logsAutoRefreshChanged)
     Q_PROPERTY(bool hasExecutable READ hasExecutable NOTIFY hasExecutableChanged)
     Q_PROPERTY(Capabilities capabilities READ capabilities NOTIFY capabilitiesChanged)
-    Q_PROPERTY(QString name READ name)
+    Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(bool supportsRuleUpdate READ supportsRuleUpdate CONSTANT)
 
 public:
