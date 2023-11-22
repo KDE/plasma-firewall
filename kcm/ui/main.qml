@@ -449,15 +449,13 @@ KCMUtils.ScrollViewKCM {
     }
 
     function showAboutView() {
-        const sheet = aboutComponent.createObject(this);
+        const sheet = aboutComponent.createObject(root.QQC2.Overlay.overlay, {name: kcm.client.name, version: kcm.client.version()});
         sheet.open();
     }
 
     Component {
         id: aboutComponent
         About {
-            parent: root.QQC2.Overlay.overlay
-
             onClosed: destroy()
         }
     }

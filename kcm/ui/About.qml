@@ -42,12 +42,4 @@ Kirigami.OverlaySheet {
             text: root.version
         }
     }
-
-    function refresh() {
-        // name is a non-NOTIFYable property
-        name = kcm.client.name;
-        version = kcm.client.version();
-    }
-
-    Component.onCompleted: refresh()
 }
