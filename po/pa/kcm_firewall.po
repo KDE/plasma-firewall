@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:46+0000\n"
+"POT-Creation-Date: 2023-11-28 01:37+0000\n"
 "PO-Revision-Date: 2023-04-01 20:48-0700\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -52,22 +52,64 @@ msgstr "firewalld %1"
 msgid "firewalld listing rules and services"
 msgstr ""
 
-#: backends/netstat/conectionsmodel.cpp:94
+#: backends/netstat/conectionsmodel.cpp:93 core/loglistmodel.cpp:96
+#, fuzzy, kde-format
+#| msgid "Protocol"
+msgctxt "@title:column"
+msgid "Protocol"
+msgstr "ਪਰੋਟੋਕਾਲ"
+
+#: backends/netstat/conectionsmodel.cpp:95
+#, fuzzy, kde-format
+#| msgid "Local Address"
+msgctxt "@title:column"
+msgid "Local address"
+msgstr "ਲੋਕਲ ਐਡਰੈਸ"
+
+#: backends/netstat/conectionsmodel.cpp:97
+#, fuzzy, kde-format
+#| msgid "Foreign Address"
+msgctxt "@title:column"
+msgid "Foreign address"
+msgstr "ਬਾਹਰੀ ਸਿਰਨਾਵਾਂ"
+
+#: backends/netstat/conectionsmodel.cpp:99
+#, fuzzy, kde-format
+#| msgid "Status"
+msgctxt "@title:column"
+msgid "Status"
+msgstr "ਹਾਲਤ"
+
+#: backends/netstat/conectionsmodel.cpp:101
+#, fuzzy, kde-format
+#| msgid "PID"
+msgctxt "@title:column"
+msgid "PID"
+msgstr "PID"
+
+#: backends/netstat/conectionsmodel.cpp:103
+#, fuzzy, kde-format
+#| msgid "Program"
+msgctxt "@title:column"
+msgid "Program"
+msgstr "ਪਰੋਗਰਾਮ"
+
+#: backends/netstat/conectionsmodel.cpp:111
 #, kde-format
 msgid "Failed to get connections: %1"
 msgstr ""
 
-#: backends/netstat/conectionsmodel.cpp:112
+#: backends/netstat/conectionsmodel.cpp:129
 #, kde-format
 msgid "Not Connected"
 msgstr "ਕਨੈਕਟ ਨਹੀਂ ਹੈ"
 
-#: backends/netstat/conectionsmodel.cpp:114
+#: backends/netstat/conectionsmodel.cpp:131
 #, kde-format
 msgid "Established"
 msgstr "ਸਥਾਪਿਤ ਹੈ"
 
-#: backends/netstat/conectionsmodel.cpp:116
+#: backends/netstat/conectionsmodel.cpp:133
 #, kde-format
 msgid "Listening"
 msgstr "ਸੁਣ ਰਹੀ ਹੈ"
@@ -119,6 +161,60 @@ msgstr ""
 msgid "Any"
 msgstr "ਕੋਈ ਵੀ"
 
+#: core/loglistmodel.cpp:88 core/rulelistmodel.cpp:89
+#, fuzzy, kde-format
+#| msgid "From"
+msgctxt "@title:column"
+msgid "From"
+msgstr "ਤੋਂ"
+
+#: core/loglistmodel.cpp:90
+#, fuzzy, kde-format
+#| msgid "Source:"
+msgctxt "@title:column"
+msgid "Source port"
+msgstr "ਸਰੋਤ:"
+
+#: core/loglistmodel.cpp:92 core/rulelistmodel.cpp:91
+#, fuzzy, kde-format
+#| msgid "To"
+msgctxt "@title:column"
+msgid "To"
+msgstr "ਵੱਲ"
+
+#: core/loglistmodel.cpp:94
+#, fuzzy, kde-format
+#| msgid "Destination:"
+msgctxt "@title:column"
+msgid "Destination port"
+msgstr "ਟਿਕਾਣਾ:"
+
+#: core/loglistmodel.cpp:98
+#, fuzzy, kde-format
+#| msgid "Interface"
+msgctxt "@title:column"
+msgid "Interface"
+msgstr "ਇੰਟਰਫੇਸ"
+
+#: core/loglistmodel.cpp:100 core/rulelistmodel.cpp:87
+#, fuzzy, kde-format
+#| msgid "Action"
+msgctxt "@title:column"
+msgid "Action"
+msgstr "ਐਕਸ਼ਨ"
+
+#: core/loglistmodel.cpp:102
+#, kde-format
+msgctxt "@title:column"
+msgid "Time"
+msgstr ""
+
+#: core/loglistmodel.cpp:104
+#, kde-format
+msgctxt "@title:column"
+msgid "Date"
+msgstr ""
+
 #: core/rule.cpp:46
 #, kde-format
 msgctxt "address on interface"
@@ -152,6 +248,19 @@ msgstr "%1 ਜਾਣ ਵਾਲੇ"
 #, kde-format
 msgid "Yes"
 msgstr "ਹਾਂ"
+
+#: core/rulelistmodel.cpp:93
+#, fuzzy, kde-format
+#| msgid "IP"
+msgctxt "@title:column"
+msgid "IP"
+msgstr "IP"
+
+#: core/rulelistmodel.cpp:95
+#, kde-format
+msgctxt "@title:column"
+msgid "Logging"
+msgstr ""
 
 #: core/systemdjob.cpp:51
 #, kde-format
@@ -198,7 +307,7 @@ msgstr "ਨਵੇਂ ਕਨੈਕਸ਼ਨ"
 msgid "All packets"
 msgstr "ਸਾਰੇ ਪੈਕੇਟ"
 
-#: core/types.cpp:58 ui/main.qml:25
+#: core/types.cpp:58 ui/main.qml:26
 #, kde-format
 msgid "Allow"
 msgstr "ਮਨਜ਼ੂਰ"
@@ -208,7 +317,7 @@ msgstr "ਮਨਜ਼ੂਰ"
 msgid "Deny"
 msgstr "ਇਨਕਾਰ"
 
-#: core/types.cpp:62 ui/main.qml:27
+#: core/types.cpp:62 ui/main.qml:28
 #, kde-format
 msgid "Reject"
 msgstr "ਰੱਦ"
@@ -428,36 +537,6 @@ msgstr ""
 msgid "Connections"
 msgstr "ਕਨੈਕਸ਼ਨ"
 
-#: ui/ConnectionsView.qml:18 ui/LogsView.qml:19
-#, kde-format
-msgid "Protocol"
-msgstr "ਪਰੋਟੋਕਾਲ"
-
-#: ui/ConnectionsView.qml:19
-#, kde-format
-msgid "Local Address"
-msgstr "ਲੋਕਲ ਐਡਰੈਸ"
-
-#: ui/ConnectionsView.qml:20
-#, kde-format
-msgid "Foreign Address"
-msgstr "ਬਾਹਰੀ ਸਿਰਨਾਵਾਂ"
-
-#: ui/ConnectionsView.qml:21
-#, kde-format
-msgid "Status"
-msgstr "ਹਾਲਤ"
-
-#: ui/ConnectionsView.qml:22
-#, kde-format
-msgid "PID"
-msgstr "PID"
-
-#: ui/ConnectionsView.qml:23
-#, kde-format
-msgid "Program"
-msgstr "ਪਰੋਗਰਾਮ"
-
 #: ui/ConnectionsView.qml:26
 #, kde-format
 msgid "There are currently no open connections"
@@ -483,21 +562,6 @@ msgstr ""
 msgid "Firewall Logs"
 msgstr "ਫ਼ਾਇਰਵਾਲ ਲਾਗ"
 
-#: ui/LogsView.qml:20 ui/main.qml:331
-#, kde-format
-msgid "From"
-msgstr "ਤੋਂ"
-
-#: ui/LogsView.qml:22 ui/main.qml:336
-#, kde-format
-msgid "To"
-msgstr "ਵੱਲ"
-
-#: ui/LogsView.qml:24
-#, kde-format
-msgid "Interface"
-msgstr "ਇੰਟਰਫੇਸ"
-
 #: ui/LogsView.qml:26
 #, kde-format
 msgid "There are currently no firewall log entries"
@@ -508,149 +572,166 @@ msgstr ""
 msgid "Created a blacklist rule from this log entry."
 msgstr ""
 
-#: ui/main.qml:25
+#: ui/main.qml:26
 #, kde-format
 msgid "Allow all connections"
 msgstr ""
 
-#: ui/main.qml:26
+#: ui/main.qml:27
 #, kde-format
 msgid "Ignore"
 msgstr "ਅਣਡਿੱਠਾ ਕਰੋ"
 
-#: ui/main.qml:26
+#: ui/main.qml:27
 #, kde-format
 msgid ""
 "Keeps the program waiting until the connection attempt times out, some short "
 "time later."
 msgstr ""
 
-#: ui/main.qml:27
+#: ui/main.qml:28
 #, kde-format
 msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr ""
 
-#: ui/main.qml:44
+#: ui/main.qml:45
 #, kde-format
 msgid "Create A New Firewall Rule"
 msgstr ""
 
-#: ui/main.qml:44
+#: ui/main.qml:45
 #, kde-format
 msgid "Edit Firewall Rule"
 msgstr ""
 
-#: ui/main.qml:67 ui/main.qml:246 ui/main.qml:381
+#: ui/main.qml:68 ui/main.qml:247 ui/main.qml:371
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr ""
 
-#: ui/main.qml:81 ui/ViewBase.qml:110
+#: ui/main.qml:82 ui/ViewBase.qml:112
 #, kde-format
 msgid "Error creating rule: %1"
 msgstr ""
 
-#: ui/main.qml:83
+#: ui/main.qml:84
 #, kde-format
 msgid "Error updating rule: %1"
 msgstr ""
 
-#: ui/main.qml:108
+#: ui/main.qml:109
 #, kde-format
 msgid "Create"
 msgstr "ਬਣਾਓ"
 
-#: ui/main.qml:108
+#: ui/main.qml:109
 #, kde-format
 msgid "Save"
 msgstr "ਸੰਭਾਲੋ"
 
-#: ui/main.qml:132
+#: ui/main.qml:133
 #, kde-format
 msgid "Firewall Status:"
 msgstr "ਫ਼ਾਇਰਵਾਲ ਸਥਿਤੀ:"
 
-#: ui/main.qml:138
+#: ui/main.qml:139
 #, fuzzy, kde-format
 #| msgid "Disabling..."
 msgid "Disabling…"
 msgstr "...ਅਸਮਰੱਥ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
 
-#: ui/main.qml:138
+#: ui/main.qml:139
 #, kde-format
 msgid "Enabled"
 msgstr "ਸਮਰੱਥ ਹੈ"
 
-#: ui/main.qml:140
+#: ui/main.qml:141
 #, fuzzy, kde-format
 #| msgid "Enabling..."
 msgid "Enabling…"
 msgstr "...ਸਮਰੱਥ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
 
-#: ui/main.qml:140
+#: ui/main.qml:141
 #, kde-format
 msgid "Disabled"
 msgstr "ਅਸਮਰੱਥ ਹੈ"
 
-#: ui/main.qml:166
+#: ui/main.qml:167
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr ""
 
-#: ui/main.qml:180
+#: ui/main.qml:181
 #, kde-format
 msgid "Permission denied"
 msgstr "ਇਜਾਜ਼ਤ ਲਈ ਇਨਕਾਰ ਹੈ"
 
-#: ui/main.qml:184
+#: ui/main.qml:185
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
 "reboot."
 msgstr ""
 
-#: ui/main.qml:187
+#: ui/main.qml:188
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr ""
 
-#: ui/main.qml:188
+#: ui/main.qml:189
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr ""
 
-#: ui/main.qml:208
+#: ui/main.qml:209
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr ""
 
-#: ui/main.qml:209
+#: ui/main.qml:210
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr ""
 
-#: ui/main.qml:256
+#: ui/main.qml:257
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr ""
 
-#: ui/main.qml:319
+#: ui/main.qml:362
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Edit Rule"
+msgstr ""
+
+#: ui/main.qml:382
+#, kde-format
+msgid "Error removing rule: %1"
+msgstr ""
+
+#: ui/main.qml:389
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Remove Rule"
+msgstr ""
+
+#: ui/main.qml:413
 #, kde-format
 msgid "Firewall is disabled"
 msgstr ""
 
-#: ui/main.qml:319
+#: ui/main.qml:413
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr ""
 
-#: ui/main.qml:321
+#: ui/main.qml:415
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button below to add one"
 msgstr ""
 
-#: ui/main.qml:322
+#: ui/main.qml:416
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -659,61 +740,29 @@ msgid ""
 "add one"
 msgstr ""
 
-#: ui/main.qml:326
-#, kde-format
-msgid "Action"
-msgstr "ਐਕਸ਼ਨ"
-
-#: ui/main.qml:341
-#, kde-format
-msgid "IP"
-msgstr "IP"
-
-#: ui/main.qml:346
-#, kde-format
-msgid "Logging"
-msgstr ""
-
-#: ui/main.qml:372
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "Edit Rule"
-msgstr ""
-
-#: ui/main.qml:392
-#, kde-format
-msgid "Error removing rule: %1"
-msgstr ""
-
-#: ui/main.qml:399
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "Remove Rule"
-msgstr ""
-
-#: ui/main.qml:409
+#: ui/main.qml:422
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
 msgstr "ਕਨੈਕਸ਼ਨ ਵੇਖੋ"
 
-#: ui/main.qml:414
+#: ui/main.qml:427
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
 msgstr ""
 
-#: ui/main.qml:425
+#: ui/main.qml:438
 #, kde-format
 msgid "Add Rule…"
 msgstr ""
 
-#: ui/main.qml:434
+#: ui/main.qml:447
 #, kde-format
 msgid "About"
 msgstr "ਇਸ ਬਾਰੇ"
 
-#: ui/main.qml:442
+#: ui/main.qml:454
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr ""
@@ -753,7 +802,7 @@ msgstr ""
 msgid "Application:"
 msgstr "ਐਪਲੀਕੇਸ਼ਨ:"
 
-#: ui/ViewBase.qml:224
+#: ui/ViewBase.qml:255
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "ਪਾਬੰਦੀ ਲਾਏ ਕਨੈਕਸ਼ਨ"

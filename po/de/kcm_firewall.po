@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:46+0000\n"
+"POT-Creation-Date: 2023-11-28 01:37+0000\n"
 "PO-Revision-Date: 2023-04-26 20:30+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -54,22 +54,64 @@ msgstr "firewalld %1"
 msgid "firewalld listing rules and services"
 msgstr ""
 
-#: backends/netstat/conectionsmodel.cpp:94
+#: backends/netstat/conectionsmodel.cpp:93 core/loglistmodel.cpp:96
+#, fuzzy, kde-format
+#| msgid "Protocol"
+msgctxt "@title:column"
+msgid "Protocol"
+msgstr "Protokoll"
+
+#: backends/netstat/conectionsmodel.cpp:95
+#, fuzzy, kde-format
+#| msgid "Local Address"
+msgctxt "@title:column"
+msgid "Local address"
+msgstr "Lokale Adresse"
+
+#: backends/netstat/conectionsmodel.cpp:97
+#, fuzzy, kde-format
+#| msgid "Foreign Address"
+msgctxt "@title:column"
+msgid "Foreign address"
+msgstr "Fremdadresse"
+
+#: backends/netstat/conectionsmodel.cpp:99
+#, fuzzy, kde-format
+#| msgid "Status"
+msgctxt "@title:column"
+msgid "Status"
+msgstr "Status"
+
+#: backends/netstat/conectionsmodel.cpp:101
+#, fuzzy, kde-format
+#| msgid "PID"
+msgctxt "@title:column"
+msgid "PID"
+msgstr "PID"
+
+#: backends/netstat/conectionsmodel.cpp:103
+#, fuzzy, kde-format
+#| msgid "Program"
+msgctxt "@title:column"
+msgid "Program"
+msgstr "Programm"
+
+#: backends/netstat/conectionsmodel.cpp:111
 #, kde-format
 msgid "Failed to get connections: %1"
 msgstr ""
 
-#: backends/netstat/conectionsmodel.cpp:112
+#: backends/netstat/conectionsmodel.cpp:129
 #, kde-format
 msgid "Not Connected"
 msgstr "Nicht verbunden"
 
-#: backends/netstat/conectionsmodel.cpp:114
+#: backends/netstat/conectionsmodel.cpp:131
 #, kde-format
 msgid "Established"
 msgstr "Hergestellt"
 
-#: backends/netstat/conectionsmodel.cpp:116
+#: backends/netstat/conectionsmodel.cpp:133
 #, kde-format
 msgid "Listening"
 msgstr "Horchend"
@@ -121,6 +163,60 @@ msgstr "Fehler beim Einholen der Firewall-Protokolle: %1"
 msgid "Any"
 msgstr "Beliebig"
 
+#: core/loglistmodel.cpp:88 core/rulelistmodel.cpp:89
+#, fuzzy, kde-format
+#| msgid "From"
+msgctxt "@title:column"
+msgid "From"
+msgstr "Von"
+
+#: core/loglistmodel.cpp:90
+#, fuzzy, kde-format
+#| msgid "Source:"
+msgctxt "@title:column"
+msgid "Source port"
+msgstr "Quelle:"
+
+#: core/loglistmodel.cpp:92 core/rulelistmodel.cpp:91
+#, fuzzy, kde-format
+#| msgid "To"
+msgctxt "@title:column"
+msgid "To"
+msgstr "An"
+
+#: core/loglistmodel.cpp:94
+#, fuzzy, kde-format
+#| msgid "Destination:"
+msgctxt "@title:column"
+msgid "Destination port"
+msgstr "Ziel:"
+
+#: core/loglistmodel.cpp:98
+#, fuzzy, kde-format
+#| msgid "Interface"
+msgctxt "@title:column"
+msgid "Interface"
+msgstr "Schnittstelle"
+
+#: core/loglistmodel.cpp:100 core/rulelistmodel.cpp:87
+#, fuzzy, kde-format
+#| msgid "Action"
+msgctxt "@title:column"
+msgid "Action"
+msgstr "Aktion"
+
+#: core/loglistmodel.cpp:102
+#, kde-format
+msgctxt "@title:column"
+msgid "Time"
+msgstr ""
+
+#: core/loglistmodel.cpp:104
+#, kde-format
+msgctxt "@title:column"
+msgid "Date"
+msgstr ""
+
 #: core/rule.cpp:46
 #, kde-format
 msgctxt "address on interface"
@@ -154,6 +250,20 @@ msgstr "%1 Ausgehend"
 #, kde-format
 msgid "Yes"
 msgstr "Ja"
+
+#: core/rulelistmodel.cpp:93
+#, fuzzy, kde-format
+#| msgid "IP"
+msgctxt "@title:column"
+msgid "IP"
+msgstr "IP"
+
+#: core/rulelistmodel.cpp:95
+#, fuzzy, kde-format
+#| msgid "Logging"
+msgctxt "@title:column"
+msgid "Logging"
+msgstr "Protokollierung"
 
 #: core/systemdjob.cpp:51
 #, kde-format
@@ -200,7 +310,7 @@ msgstr "Neue Verbindungen"
 msgid "All packets"
 msgstr "Alle Pakete"
 
-#: core/types.cpp:58 ui/main.qml:25
+#: core/types.cpp:58 ui/main.qml:26
 #, kde-format
 msgid "Allow"
 msgstr "Zulassen"
@@ -210,7 +320,7 @@ msgstr "Zulassen"
 msgid "Deny"
 msgstr "Ablehnen"
 
-#: core/types.cpp:62 ui/main.qml:27
+#: core/types.cpp:62 ui/main.qml:28
 #, kde-format
 msgid "Reject"
 msgstr "Zurückweisen"
@@ -430,36 +540,6 @@ msgstr "Protokollierung:"
 msgid "Connections"
 msgstr "Verbindungen"
 
-#: ui/ConnectionsView.qml:18 ui/LogsView.qml:19
-#, kde-format
-msgid "Protocol"
-msgstr "Protokoll"
-
-#: ui/ConnectionsView.qml:19
-#, kde-format
-msgid "Local Address"
-msgstr "Lokale Adresse"
-
-#: ui/ConnectionsView.qml:20
-#, kde-format
-msgid "Foreign Address"
-msgstr "Fremdadresse"
-
-#: ui/ConnectionsView.qml:21
-#, kde-format
-msgid "Status"
-msgstr "Status"
-
-#: ui/ConnectionsView.qml:22
-#, kde-format
-msgid "PID"
-msgstr "PID"
-
-#: ui/ConnectionsView.qml:23
-#, kde-format
-msgid "Program"
-msgstr "Programm"
-
 #: ui/ConnectionsView.qml:26
 #, kde-format
 msgid "There are currently no open connections"
@@ -485,21 +565,6 @@ msgstr "Beliebige IP-Adresse"
 msgid "Firewall Logs"
 msgstr "Firewall-Protokolle"
 
-#: ui/LogsView.qml:20 ui/main.qml:331
-#, kde-format
-msgid "From"
-msgstr "Von"
-
-#: ui/LogsView.qml:22 ui/main.qml:336
-#, kde-format
-msgid "To"
-msgstr "An"
-
-#: ui/LogsView.qml:24
-#, kde-format
-msgid "Interface"
-msgstr "Schnittstelle"
-
 #: ui/LogsView.qml:26
 #, kde-format
 msgid "There are currently no firewall log entries"
@@ -510,150 +575,167 @@ msgstr "Es gibt zurzeit keine Firewall-Protokolleinträge"
 msgid "Created a blacklist rule from this log entry."
 msgstr ""
 
-#: ui/main.qml:25
+#: ui/main.qml:26
 #, kde-format
 msgid "Allow all connections"
 msgstr "Alle Verbindungen zulassen"
 
-#: ui/main.qml:26
+#: ui/main.qml:27
 #, kde-format
 msgid "Ignore"
 msgstr "Ignorieren"
 
-#: ui/main.qml:26
+#: ui/main.qml:27
 #, kde-format
 msgid ""
 "Keeps the program waiting until the connection attempt times out, some short "
 "time later."
 msgstr ""
 
-#: ui/main.qml:27
+#: ui/main.qml:28
 #, kde-format
 msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr ""
 
-#: ui/main.qml:44
+#: ui/main.qml:45
 #, kde-format
 msgid "Create A New Firewall Rule"
 msgstr "Eine neue Firewall-Regel erstellen"
 
-#: ui/main.qml:44
+#: ui/main.qml:45
 #, kde-format
 msgid "Edit Firewall Rule"
 msgstr "Firewall-Regel bearbeiten"
 
-#: ui/main.qml:67 ui/main.qml:246 ui/main.qml:381
+#: ui/main.qml:68 ui/main.qml:247 ui/main.qml:371
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr ""
 
-#: ui/main.qml:81 ui/ViewBase.qml:110
+#: ui/main.qml:82 ui/ViewBase.qml:112
 #, kde-format
 msgid "Error creating rule: %1"
 msgstr "Fehler beim Erstellen der Regel: %1"
 
-#: ui/main.qml:83
+#: ui/main.qml:84
 #, kde-format
 msgid "Error updating rule: %1"
 msgstr "Fehler beim Aktualisieren der Regel: %1"
 
-#: ui/main.qml:108
+#: ui/main.qml:109
 #, kde-format
 msgid "Create"
 msgstr "Erstellen"
 
-#: ui/main.qml:108
+#: ui/main.qml:109
 #, kde-format
 msgid "Save"
 msgstr "Speichern"
 
-#: ui/main.qml:132
+#: ui/main.qml:133
 #, kde-format
 msgid "Firewall Status:"
 msgstr "Firewall-Status:"
 
-#: ui/main.qml:138
+#: ui/main.qml:139
 #, fuzzy, kde-format
 #| msgid "Disabling..."
 msgid "Disabling…"
 msgstr "Deaktivierung ..."
 
-#: ui/main.qml:138
+#: ui/main.qml:139
 #, kde-format
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: ui/main.qml:140
+#: ui/main.qml:141
 #, fuzzy, kde-format
 #| msgid "Enabling..."
 msgid "Enabling…"
 msgstr "Aktivierung ..."
 
-#: ui/main.qml:140
+#: ui/main.qml:141
 #, fuzzy, kde-format
 #| msgid "Enabled"
 msgid "Disabled"
 msgstr "Aktiviert"
 
-#: ui/main.qml:166
+#: ui/main.qml:167
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr ""
 
-#: ui/main.qml:180
+#: ui/main.qml:181
 #, kde-format
 msgid "Permission denied"
 msgstr "Zugriff verweigert"
 
-#: ui/main.qml:184
+#: ui/main.qml:185
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
 "reboot."
 msgstr ""
 
-#: ui/main.qml:187
+#: ui/main.qml:188
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr "Fehler beim Aktivieren der Firewall: %1"
 
-#: ui/main.qml:188
+#: ui/main.qml:189
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr "Fehler beim Ausschalten der Firewall: %1"
 
-#: ui/main.qml:208
+#: ui/main.qml:209
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr ""
 
-#: ui/main.qml:209
+#: ui/main.qml:210
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr ""
 
-#: ui/main.qml:256
+#: ui/main.qml:257
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Fehler beim Ändern der Regelung: %1"
 
-#: ui/main.qml:319
+#: ui/main.qml:362
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Edit Rule"
+msgstr "Regel bearbeiten"
+
+#: ui/main.qml:382
+#, kde-format
+msgid "Error removing rule: %1"
+msgstr "Fehler beim Entfernen der Regel: %1"
+
+#: ui/main.qml:389
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Remove Rule"
+msgstr "Regel entfernen"
+
+#: ui/main.qml:413
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "Die Firewall ist deaktiviert"
 
-#: ui/main.qml:319
+#: ui/main.qml:413
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Es wurden noch keine Firewall-Regeln hinzugefügt"
 
-#: ui/main.qml:321
+#: ui/main.qml:415
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button below to add one"
 msgstr ""
 
-#: ui/main.qml:322
+#: ui/main.qml:416
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -662,62 +744,30 @@ msgid ""
 "add one"
 msgstr ""
 
-#: ui/main.qml:326
-#, kde-format
-msgid "Action"
-msgstr "Aktion"
-
-#: ui/main.qml:341
-#, kde-format
-msgid "IP"
-msgstr "IP"
-
-#: ui/main.qml:346
-#, kde-format
-msgid "Logging"
-msgstr "Protokollierung"
-
-#: ui/main.qml:372
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "Edit Rule"
-msgstr "Regel bearbeiten"
-
-#: ui/main.qml:392
-#, kde-format
-msgid "Error removing rule: %1"
-msgstr "Fehler beim Entfernen der Regel: %1"
-
-#: ui/main.qml:399
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "Remove Rule"
-msgstr "Regel entfernen"
-
-#: ui/main.qml:409
+#: ui/main.qml:422
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
 msgstr "Verbindungen anzeigen"
 
-#: ui/main.qml:414
+#: ui/main.qml:427
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
 msgstr "Protokolle anzeigen"
 
-#: ui/main.qml:425
+#: ui/main.qml:438
 #, fuzzy, kde-format
 #| msgid "Add Rule..."
 msgid "Add Rule…"
 msgstr "Regel hinzufügen ..."
 
-#: ui/main.qml:434
+#: ui/main.qml:447
 #, kde-format
 msgid "About"
 msgstr "Über"
 
-#: ui/main.qml:442
+#: ui/main.qml:454
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Bitte installieren Sie eine Firewall wie „ufw“ oder „firewalld“"
@@ -759,7 +809,7 @@ msgstr "Alle Verbindungen zulassen"
 msgid "Application:"
 msgstr "Aktion"
 
-#: ui/ViewBase.qml:224
+#: ui/ViewBase.qml:255
 #, kde-format
 msgid "Blacklist Connection"
 msgstr ""

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:46+0000\n"
+"POT-Creation-Date: 2023-11-28 01:37+0000\n"
 "PO-Revision-Date: 2023-04-27 12:18+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -53,22 +53,64 @@ msgstr "‏firewalld %1"
 msgid "firewalld listing rules and services"
 msgstr "‏firewalld يسرد القواعد والخدمات"
 
-#: backends/netstat/conectionsmodel.cpp:94
+#: backends/netstat/conectionsmodel.cpp:93 core/loglistmodel.cpp:96
+#, fuzzy, kde-format
+#| msgid "Protocol"
+msgctxt "@title:column"
+msgid "Protocol"
+msgstr "الميفاق"
+
+#: backends/netstat/conectionsmodel.cpp:95
+#, fuzzy, kde-format
+#| msgid "Local Address"
+msgctxt "@title:column"
+msgid "Local address"
+msgstr "عنوان محلي"
+
+#: backends/netstat/conectionsmodel.cpp:97
+#, fuzzy, kde-format
+#| msgid "Foreign Address"
+msgctxt "@title:column"
+msgid "Foreign address"
+msgstr "عنوان خارجي"
+
+#: backends/netstat/conectionsmodel.cpp:99
+#, fuzzy, kde-format
+#| msgid "Status"
+msgctxt "@title:column"
+msgid "Status"
+msgstr "الحالة"
+
+#: backends/netstat/conectionsmodel.cpp:101
+#, fuzzy, kde-format
+#| msgid "PID"
+msgctxt "@title:column"
+msgid "PID"
+msgstr "معرّف العمليةالمعرّف"
+
+#: backends/netstat/conectionsmodel.cpp:103
+#, fuzzy, kde-format
+#| msgid "Program"
+msgctxt "@title:column"
+msgid "Program"
+msgstr "البرنامج"
+
+#: backends/netstat/conectionsmodel.cpp:111
 #, kde-format
 msgid "Failed to get connections: %1"
 msgstr "فشل في الحصول على الاتصالات: %1"
 
-#: backends/netstat/conectionsmodel.cpp:112
+#: backends/netstat/conectionsmodel.cpp:129
 #, kde-format
 msgid "Not Connected"
 msgstr "غير متصل"
 
-#: backends/netstat/conectionsmodel.cpp:114
+#: backends/netstat/conectionsmodel.cpp:131
 #, kde-format
 msgid "Established"
 msgstr "أنشئت"
 
-#: backends/netstat/conectionsmodel.cpp:116
+#: backends/netstat/conectionsmodel.cpp:133
 #, kde-format
 msgid "Listening"
 msgstr "يستمع"
@@ -122,6 +164,60 @@ msgstr "خطأ في جلب سجل الجدار الناري: %1"
 msgid "Any"
 msgstr "أيّ"
 
+#: core/loglistmodel.cpp:88 core/rulelistmodel.cpp:89
+#, fuzzy, kde-format
+#| msgid "From"
+msgctxt "@title:column"
+msgid "From"
+msgstr "من"
+
+#: core/loglistmodel.cpp:90
+#, fuzzy, kde-format
+#| msgid "Source:"
+msgctxt "@title:column"
+msgid "Source port"
+msgstr "المصدر:"
+
+#: core/loglistmodel.cpp:92 core/rulelistmodel.cpp:91
+#, fuzzy, kde-format
+#| msgid "To"
+msgctxt "@title:column"
+msgid "To"
+msgstr "إلى"
+
+#: core/loglistmodel.cpp:94
+#, fuzzy, kde-format
+#| msgid "Destination:"
+msgctxt "@title:column"
+msgid "Destination port"
+msgstr "المقصد:"
+
+#: core/loglistmodel.cpp:98
+#, fuzzy, kde-format
+#| msgid "Interface"
+msgctxt "@title:column"
+msgid "Interface"
+msgstr "الواجهة"
+
+#: core/loglistmodel.cpp:100 core/rulelistmodel.cpp:87
+#, fuzzy, kde-format
+#| msgid "Action"
+msgctxt "@title:column"
+msgid "Action"
+msgstr "الإجراء"
+
+#: core/loglistmodel.cpp:102
+#, kde-format
+msgctxt "@title:column"
+msgid "Time"
+msgstr ""
+
+#: core/loglistmodel.cpp:104
+#, kde-format
+msgctxt "@title:column"
+msgid "Date"
+msgstr ""
+
 #: core/rule.cpp:46
 #, kde-format
 msgctxt "address on interface"
@@ -155,6 +251,20 @@ msgstr "‏%1 الصادرة"
 #, kde-format
 msgid "Yes"
 msgstr "نعم"
+
+#: core/rulelistmodel.cpp:93
+#, fuzzy, kde-format
+#| msgid "IP"
+msgctxt "@title:column"
+msgid "IP"
+msgstr "آي بي:"
+
+#: core/rulelistmodel.cpp:95
+#, fuzzy, kde-format
+#| msgid "Logging"
+msgctxt "@title:column"
+msgid "Logging"
+msgstr "السجلّ"
 
 #: core/systemdjob.cpp:51
 #, kde-format
@@ -201,7 +311,7 @@ msgstr "الاتصالات الجديدة"
 msgid "All packets"
 msgstr "جميع الحزم"
 
-#: core/types.cpp:58 ui/main.qml:25
+#: core/types.cpp:58 ui/main.qml:26
 #, kde-format
 msgid "Allow"
 msgstr "اسمح"
@@ -211,7 +321,7 @@ msgstr "اسمح"
 msgid "Deny"
 msgstr "امنع"
 
-#: core/types.cpp:62 ui/main.qml:27
+#: core/types.cpp:62 ui/main.qml:28
 #, kde-format
 msgid "Reject"
 msgstr "ارفض"
@@ -431,36 +541,6 @@ msgstr "السجلّ:"
 msgid "Connections"
 msgstr "الاتصالات"
 
-#: ui/ConnectionsView.qml:18 ui/LogsView.qml:19
-#, kde-format
-msgid "Protocol"
-msgstr "الميفاق"
-
-#: ui/ConnectionsView.qml:19
-#, kde-format
-msgid "Local Address"
-msgstr "عنوان محلي"
-
-#: ui/ConnectionsView.qml:20
-#, kde-format
-msgid "Foreign Address"
-msgstr "عنوان خارجي"
-
-#: ui/ConnectionsView.qml:21
-#, kde-format
-msgid "Status"
-msgstr "الحالة"
-
-#: ui/ConnectionsView.qml:22
-#, kde-format
-msgid "PID"
-msgstr "معرّف العمليةالمعرّف"
-
-#: ui/ConnectionsView.qml:23
-#, kde-format
-msgid "Program"
-msgstr "البرنامج"
-
 #: ui/ConnectionsView.qml:26
 #, kde-format
 msgid "There are currently no open connections"
@@ -486,21 +566,6 @@ msgstr "أي عنوان IP"
 msgid "Firewall Logs"
 msgstr "سجل الجدار الناري"
 
-#: ui/LogsView.qml:20 ui/main.qml:331
-#, kde-format
-msgid "From"
-msgstr "من"
-
-#: ui/LogsView.qml:22 ui/main.qml:336
-#, kde-format
-msgid "To"
-msgstr "إلى"
-
-#: ui/LogsView.qml:24
-#, kde-format
-msgid "Interface"
-msgstr "الواجهة"
-
 #: ui/LogsView.qml:26
 #, kde-format
 msgid "There are currently no firewall log entries"
@@ -511,147 +576,164 @@ msgstr "لا يوجد حاليا مدخلات في سجل الجدار النا�
 msgid "Created a blacklist rule from this log entry."
 msgstr "أنشئت قاعدة حظر من هذه المدخلة في السجل."
 
-#: ui/main.qml:25
+#: ui/main.qml:26
 #, kde-format
 msgid "Allow all connections"
 msgstr "اسمح بكل الاتصال"
 
-#: ui/main.qml:26
+#: ui/main.qml:27
 #, kde-format
 msgid "Ignore"
 msgstr "تجاهل"
 
-#: ui/main.qml:26
+#: ui/main.qml:27
 #, kde-format
 msgid ""
 "Keeps the program waiting until the connection attempt times out, some short "
 "time later."
 msgstr "تبقي البرنامج ينتظر حتى تصدر حالة انتهاء المهلة، بعض الوقت لاحقا."
 
-#: ui/main.qml:27
+#: ui/main.qml:28
 #, kde-format
 msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr "تولد رسالة فورية وأكيدة \"رفض الاتصال\""
 
-#: ui/main.qml:44
+#: ui/main.qml:45
 #, kde-format
 msgid "Create A New Firewall Rule"
 msgstr "أنشئ قاعدة جديدة"
 
-#: ui/main.qml:44
+#: ui/main.qml:45
 #, kde-format
 msgid "Edit Firewall Rule"
 msgstr "حرر قاعدة"
 
-#: ui/main.qml:67 ui/main.qml:246 ui/main.qml:381
+#: ui/main.qml:68 ui/main.qml:247 ui/main.qml:371
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr "الرجاء إعادة تشغيل الجدار الناري لبلازما، فصلت الخلفية."
 
-#: ui/main.qml:81 ui/ViewBase.qml:110
+#: ui/main.qml:82 ui/ViewBase.qml:112
 #, kde-format
 msgid "Error creating rule: %1"
 msgstr "خطأ في إنشاء القاعدة: %1"
 
-#: ui/main.qml:83
+#: ui/main.qml:84
 #, kde-format
 msgid "Error updating rule: %1"
 msgstr "خطأ في تحديد القاعدة: %1"
 
-#: ui/main.qml:108
+#: ui/main.qml:109
 #, kde-format
 msgid "Create"
 msgstr "أنشئ"
 
-#: ui/main.qml:108
+#: ui/main.qml:109
 #, kde-format
 msgid "Save"
 msgstr "احفظ"
 
-#: ui/main.qml:132
+#: ui/main.qml:133
 #, kde-format
 msgid "Firewall Status:"
 msgstr "حالة الجدار الناري:"
 
-#: ui/main.qml:138
+#: ui/main.qml:139
 #, kde-format
 msgid "Disabling…"
 msgstr "يعطل…"
 
-#: ui/main.qml:138
+#: ui/main.qml:139
 #, kde-format
 msgid "Enabled"
 msgstr "ممكّن"
 
-#: ui/main.qml:140
+#: ui/main.qml:141
 #, kde-format
 msgid "Enabling…"
 msgstr "يمكن…"
 
-#: ui/main.qml:140
+#: ui/main.qml:141
 #, kde-format
 msgid "Disabled"
 msgstr "معطّل"
 
-#: ui/main.qml:166
+#: ui/main.qml:167
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr "تطبيق الجدار الناري، الرجاء تثبيت %1"
 
-#: ui/main.qml:180
+#: ui/main.qml:181
 #, kde-format
 msgid "Permission denied"
 msgstr "طلب الإذن مرفوض"
 
-#: ui/main.qml:184
+#: ui/main.qml:185
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
 "reboot."
 msgstr "لقد حدثت نواتك مؤخرا، فشل Iptables في البدء، الرجاء إعادة التشغيل."
 
-#: ui/main.qml:187
+#: ui/main.qml:188
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr "خطأ في تمكين الجدار الناري: %1"
 
-#: ui/main.qml:188
+#: ui/main.qml:189
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr "خطأ في تعطيل الجدار الناري: %1"
 
-#: ui/main.qml:208
+#: ui/main.qml:209
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "سياسة الاتصالات الواردة المبدئة:"
 
-#: ui/main.qml:209
+#: ui/main.qml:210
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "سياسة الاتصالات الصادرة المبدئية:"
 
-#: ui/main.qml:256
+#: ui/main.qml:257
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "خطأ في تغيير سياسة: %1"
 
-#: ui/main.qml:319
+#: ui/main.qml:362
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Edit Rule"
+msgstr "حرر القاعدة"
+
+#: ui/main.qml:382
+#, kde-format
+msgid "Error removing rule: %1"
+msgstr "خطأ في إزالة القاعدة: %1"
+
+#: ui/main.qml:389
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Remove Rule"
+msgstr "أزِل القاعدة"
+
+#: ui/main.qml:413
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "الجدار الناري معطل"
 
-#: ui/main.qml:319
+#: ui/main.qml:413
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "لم تضف قواعد للجدار الناري"
 
-#: ui/main.qml:321
+#: ui/main.qml:415
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button below to add one"
 msgstr "انقر زر <interface>أضف قاعدة…</interface> لتضيف واحدة"
 
-#: ui/main.qml:322
+#: ui/main.qml:416
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -663,61 +745,29 @@ msgstr ""
 "interface>  في الأعلى، ثم انقر على زر <interface>أضف قاعدة…</interface> في "
 "الأسفل لتضيف واحدة"
 
-#: ui/main.qml:326
-#, kde-format
-msgid "Action"
-msgstr "الإجراء"
-
-#: ui/main.qml:341
-#, kde-format
-msgid "IP"
-msgstr "آي بي:"
-
-#: ui/main.qml:346
-#, kde-format
-msgid "Logging"
-msgstr "السجلّ"
-
-#: ui/main.qml:372
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "Edit Rule"
-msgstr "حرر القاعدة"
-
-#: ui/main.qml:392
-#, kde-format
-msgid "Error removing rule: %1"
-msgstr "خطأ في إزالة القاعدة: %1"
-
-#: ui/main.qml:399
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "Remove Rule"
-msgstr "أزِل القاعدة"
-
-#: ui/main.qml:409
+#: ui/main.qml:422
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
 msgstr "اعرض الاتصالات"
 
-#: ui/main.qml:414
+#: ui/main.qml:427
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
 msgstr "اعرض السجل"
 
-#: ui/main.qml:425
+#: ui/main.qml:438
 #, kde-format
 msgid "Add Rule…"
 msgstr "أضِف قاعدة…"
 
-#: ui/main.qml:434
+#: ui/main.qml:447
 #, kde-format
 msgid "About"
 msgstr "عن"
 
-#: ui/main.qml:442
+#: ui/main.qml:454
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "الرجاء تثبيت جدار ناري ، مثل ufw أو firewalld"
@@ -757,7 +807,7 @@ msgstr "اسمح باتصالات:"
 msgid "Application:"
 msgstr "التطبيق:"
 
-#: ui/ViewBase.qml:224
+#: ui/ViewBase.qml:255
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "الاتصال محظرور"
