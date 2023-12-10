@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-28 01:37+0000\n"
-"PO-Revision-Date: 2023-11-25 02:26\n"
+"PO-Revision-Date: 2023-12-09 09:24\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -53,43 +53,37 @@ msgid "firewalld listing rules and services"
 msgstr "firewalld 列表规则和服务"
 
 #: backends/netstat/conectionsmodel.cpp:93 core/loglistmodel.cpp:96
-#, fuzzy, kde-format
-#| msgid "Protocol"
+#, kde-format
 msgctxt "@title:column"
 msgid "Protocol"
 msgstr "协议"
 
 #: backends/netstat/conectionsmodel.cpp:95
-#, fuzzy, kde-format
-#| msgid "Local Address"
+#, kde-format
 msgctxt "@title:column"
 msgid "Local address"
 msgstr "本地地址"
 
 #: backends/netstat/conectionsmodel.cpp:97
-#, fuzzy, kde-format
-#| msgid "Foreign Address"
+#, kde-format
 msgctxt "@title:column"
 msgid "Foreign address"
 msgstr "远程地址"
 
 #: backends/netstat/conectionsmodel.cpp:99
-#, fuzzy, kde-format
-#| msgid "Status"
+#, kde-format
 msgctxt "@title:column"
 msgid "Status"
 msgstr "状态"
 
 #: backends/netstat/conectionsmodel.cpp:101
-#, fuzzy, kde-format
-#| msgid "PID"
+#, kde-format
 msgctxt "@title:column"
 msgid "PID"
 msgstr "PID"
 
 #: backends/netstat/conectionsmodel.cpp:103
-#, fuzzy, kde-format
-#| msgid "Program"
+#, kde-format
 msgctxt "@title:column"
 msgid "Program"
 msgstr "程序"
@@ -164,43 +158,37 @@ msgid "Any"
 msgstr "任意"
 
 #: core/loglistmodel.cpp:88 core/rulelistmodel.cpp:89
-#, fuzzy, kde-format
-#| msgid "From"
+#, kde-format
 msgctxt "@title:column"
 msgid "From"
 msgstr "来源"
 
 #: core/loglistmodel.cpp:90
-#, fuzzy, kde-format
-#| msgid "Source:"
+#, kde-format
 msgctxt "@title:column"
 msgid "Source port"
-msgstr "来源："
+msgstr "来源端口"
 
 #: core/loglistmodel.cpp:92 core/rulelistmodel.cpp:91
-#, fuzzy, kde-format
-#| msgid "To"
+#, kde-format
 msgctxt "@title:column"
 msgid "To"
 msgstr "目标"
 
 #: core/loglistmodel.cpp:94
-#, fuzzy, kde-format
-#| msgid "Destination:"
+#, kde-format
 msgctxt "@title:column"
 msgid "Destination port"
-msgstr "目标："
+msgstr "目标端口"
 
 #: core/loglistmodel.cpp:98
-#, fuzzy, kde-format
-#| msgid "Interface"
+#, kde-format
 msgctxt "@title:column"
 msgid "Interface"
 msgstr "接口"
 
 #: core/loglistmodel.cpp:100 core/rulelistmodel.cpp:87
-#, fuzzy, kde-format
-#| msgid "Action"
+#, kde-format
 msgctxt "@title:column"
 msgid "Action"
 msgstr "操作"
@@ -209,13 +197,13 @@ msgstr "操作"
 #, kde-format
 msgctxt "@title:column"
 msgid "Time"
-msgstr ""
+msgstr "时间"
 
 #: core/loglistmodel.cpp:104
 #, kde-format
 msgctxt "@title:column"
 msgid "Date"
-msgstr ""
+msgstr "日期"
 
 #: core/rule.cpp:46
 #, kde-format
@@ -252,15 +240,13 @@ msgid "Yes"
 msgstr "是"
 
 #: core/rulelistmodel.cpp:93
-#, fuzzy, kde-format
-#| msgid "IP"
+#, kde-format
 msgctxt "@title:column"
 msgid "IP"
 msgstr "IP"
 
 #: core/rulelistmodel.cpp:95
-#, fuzzy, kde-format
-#| msgid "Logging"
+#, kde-format
 msgctxt "@title:column"
 msgid "Logging"
 msgstr "日志"
