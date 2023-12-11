@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
 #
-# Kishore G <kishore96@gmail.com>, 2023.
+# SPDX-FileCopyrightText: 2023 Kishore G <kishore96@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-28 01:37+0000\n"
-"PO-Revision-Date: 2023-04-02 17:27+0530\n"
+"PO-Revision-Date: 2023-12-10 11:39+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.03.90\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -56,37 +56,37 @@ msgstr ""
 #, kde-format
 msgctxt "@title:column"
 msgid "Protocol"
-msgstr ""
+msgstr "நெறிமுறை"
 
 #: backends/netstat/conectionsmodel.cpp:95
 #, kde-format
 msgctxt "@title:column"
 msgid "Local address"
-msgstr ""
+msgstr "உள்ளக முகவரி"
 
 #: backends/netstat/conectionsmodel.cpp:97
 #, kde-format
 msgctxt "@title:column"
 msgid "Foreign address"
-msgstr ""
+msgstr "வெளி முகவரி"
 
 #: backends/netstat/conectionsmodel.cpp:99
 #, kde-format
 msgctxt "@title:column"
 msgid "Status"
-msgstr ""
+msgstr "நிலை"
 
 #: backends/netstat/conectionsmodel.cpp:101
 #, kde-format
 msgctxt "@title:column"
 msgid "PID"
-msgstr ""
+msgstr "பணியெண்"
 
 #: backends/netstat/conectionsmodel.cpp:103
 #, kde-format
 msgctxt "@title:column"
 msgid "Program"
-msgstr ""
+msgstr "நிரல்"
 
 #: backends/netstat/conectionsmodel.cpp:111
 #, kde-format
@@ -111,7 +111,7 @@ msgstr "கவனிக்கிறது"
 #: backends/ufw/helper/helper.cpp:213
 #, kde-format
 msgid "Invalid arguments passed to the profile"
-msgstr ""
+msgstr "பயன்முறைக்கு முறையற்ற தருமதிப்புகள் வழங்கப்பட்டன"
 
 #: backends/ufw/helper/helper.cpp:243
 #, kde-format
@@ -121,12 +121,12 @@ msgstr "அமைப்புத்திட்டத்தை சேமிப�
 #: backends/ufw/helper/helper.cpp:267
 #, kde-format
 msgid "Invalid arguments passed to delete profile"
-msgstr ""
+msgstr "பயன்முறையை நீக்குவதற்கு முறையற்ற தருமதிப்புகள் வழங்கப்பட்டன"
 
 #: backends/ufw/helper/helper.cpp:274
 #, kde-format
 msgid "Could not remove the profile from disk."
-msgstr ""
+msgstr "பயன்முறையை வட்டிலிருந்து நீக்க முடியவில்லை."
 
 #: backends/ufw/helper/helper.cpp:289
 #, kde-format
@@ -144,6 +144,8 @@ msgid ""
 "There was an error in the backend! Please report it.\n"
 "%1 %2"
 msgstr ""
+"பின்நிலையில் சிக்கல்! தயவுசெய்து அதைத் தெரிவிக்கவும்.\n"
+"%1 %2"
 
 #: backends/ufw/ufwclient.cpp:268
 #, kde-format
@@ -159,49 +161,49 @@ msgstr "ஏதேனும்"
 #, kde-format
 msgctxt "@title:column"
 msgid "From"
-msgstr ""
+msgstr "அனுப்புநர்"
 
 #: core/loglistmodel.cpp:90
 #, kde-format
 msgctxt "@title:column"
 msgid "Source port"
-msgstr ""
+msgstr "மூலப் புறை"
 
 #: core/loglistmodel.cpp:92 core/rulelistmodel.cpp:91
 #, kde-format
 msgctxt "@title:column"
 msgid "To"
-msgstr ""
+msgstr "பெறுநர்"
 
 #: core/loglistmodel.cpp:94
 #, kde-format
 msgctxt "@title:column"
 msgid "Destination port"
-msgstr ""
+msgstr "இலக்கு புறை"
 
 #: core/loglistmodel.cpp:98
 #, kde-format
 msgctxt "@title:column"
 msgid "Interface"
-msgstr ""
+msgstr "இடைமுகப்பு"
 
 #: core/loglistmodel.cpp:100 core/rulelistmodel.cpp:87
 #, kde-format
 msgctxt "@title:column"
 msgid "Action"
-msgstr ""
+msgstr "செயல்"
 
 #: core/loglistmodel.cpp:102
 #, kde-format
 msgctxt "@title:column"
 msgid "Time"
-msgstr ""
+msgstr "நேரம்"
 
 #: core/loglistmodel.cpp:104
 #, kde-format
 msgctxt "@title:column"
 msgid "Date"
-msgstr ""
+msgstr "தேதி"
 
 #: core/rule.cpp:46
 #, kde-format
@@ -257,22 +259,22 @@ msgstr ""
 #: core/types.cpp:19
 #, kde-format
 msgid "Off"
-msgstr ""
+msgstr "முடக்கத்தில்"
 
 #: core/types.cpp:22
 #, kde-format
 msgid "Low"
-msgstr ""
+msgstr "குறைவானது"
 
 #: core/types.cpp:24
 #, kde-format
 msgid "Medium"
-msgstr ""
+msgstr "நடுத்தரமானது"
 
 #: core/types.cpp:26
 #, kde-format
 msgid "High"
-msgstr ""
+msgstr "உயர்வானது"
 
 #: core/types.cpp:28
 #, kde-format
