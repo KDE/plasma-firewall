@@ -13,10 +13,6 @@
 
 Q_LOGGING_CATEGORY(NetstatHelperDebug, "netstat.helper")
 
-NetstatHelper::NetstatHelper()
-{
-}
-
 void NetstatHelper::query()
 {
     if (m_executableProcess) {

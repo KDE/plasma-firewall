@@ -17,7 +17,7 @@ class NetstatHelper : public QObject
 {
     Q_OBJECT
 public:
-    NetstatHelper();
+    using QObject::QObject;
     QString errorString() const;
     bool hasError() const;
 
