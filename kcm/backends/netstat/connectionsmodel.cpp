@@ -11,8 +11,6 @@
 
 #include <KLocalizedString>
 
-#include "netstatclient.h"
-
 using namespace std::chrono_literals;
 
 ConnectionsModel::ConnectionsModel(QObject *parent)
@@ -58,6 +56,7 @@ bool ConnectionsModel::busy() const
 
 QVariant ConnectionsModel::data(const QModelIndex &index, int role) const
 {
+    Q_UNUSED(role);
     const auto checkIndexFlags = QAbstractItemModel::CheckIndexOption::IndexIsValid | QAbstractItemModel::CheckIndexOption::ParentIsInvalid;
 
     if (!checkIndex(index, checkIndexFlags)) {
@@ -86,7 +85,7 @@ QVariant ConnectionsModel::data(const QModelIndex &index, int role) const
         }
         break;
     }
-    return QVariant();
+    return {};
 }
 
 QVariant ConnectionsModel::headerData(int section, Qt::Orientation orientation, int role) const
@@ -107,7 +106,7 @@ QVariant ConnectionsModel::headerData(int section, Qt::Orientation orientation, 
     case ProgramColumn:
         return i18nc("@title:column", "Program");
     }
-    return QVariant();
+    return {};
 }
 
 void ConnectionsModel::refreshConnections(const QList<QStringList> &result)
