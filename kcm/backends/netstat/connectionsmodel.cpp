@@ -65,7 +65,7 @@ QVariant ConnectionsModel::data(const QModelIndex &index, int role) const
 
     ConnectionsData data = m_connectionsData.at(index.row());
 
-    switch (index.column()) {
+    switch (static_cast<ConnectionsModelColumns>(index.column())) {
     case ProtocolColumn:
         return data.protocol;
     case LocalAddressColumn:
@@ -92,7 +92,7 @@ QVariant ConnectionsModel::headerData(int section, Qt::Orientation orientation, 
 {
     Q_UNUSED(orientation)
     Q_UNUSED(role)
-    switch (section) {
+    switch (static_cast<ConnectionsModelColumns>(section)) {
     case ProtocolColumn:
         return i18nc("@title:column", "Protocol");
     case LocalAddressColumn:
