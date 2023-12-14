@@ -19,9 +19,13 @@ NetstatHelper::NetstatHelper()
 
 void NetstatHelper::query()
 {
+    if (m_executableProcess) {
+        // If we get queried again before the process finished, we'll forcefully terminate the process and start from scratch
+        // without host name resolution to hopefully speed things up.
+        stopProcess();
+    }
+
     m_executableProcess = new QProcess();
-    m_processKillerTimer = new QTimer();
-    m_processKillerTimer->setSingleShot(true);
 
     /* parameters passed to ss
      *  -r, --resolve       resolve host names
@@ -35,13 +39,8 @@ void NetstatHelper::query()
     const QString executable = QStringLiteral("ss");
 
     connect(m_executableProcess, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &NetstatHelper::stepExecuteFinished);
-
-    connect(m_processKillerTimer, &QTimer::timeout, this, &NetstatHelper::stopProcess);
-
     m_executableProcess->start(executable, netstatArgs, QIODevice::ReadOnly);
 
-    // We wait 10 seconds before killing the process.
-    m_processKillerTimer->start(10000);
     qDebug() << "Running process";
 }
 
@@ -49,10 +48,6 @@ void NetstatHelper::stopProcess()
 {
     qDebug() << "Timing out!";
     m_hasTimeoutError = true;
-
-    m_processKillerTimer->stop();
-    m_processKillerTimer->deleteLater();
-    m_processKillerTimer = nullptr;
 
     m_executableProcess->disconnect();
     m_executableProcess->kill();
@@ -62,17 +57,6 @@ void NetstatHelper::stopProcess()
 
 void NetstatHelper::stepExecuteFinished(int exitCode)
 {
-    // No need to kill anything - we had success executing the process.
-    if (!m_processKillerTimer) {
-        return;
-    }
-
-    if (m_processKillerTimer != nullptr) {
-        m_processKillerTimer->stop();
-        m_processKillerTimer->deleteLater();
-        m_processKillerTimer = nullptr;
-    }
-
     m_hasError = false;
 
     if (0 != exitCode) {

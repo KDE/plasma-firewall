@@ -42,7 +42,6 @@ private:
     QString m_errorString;
     bool m_hasError = false;
     QProcess *m_executableProcess = nullptr;
-    QTimer *m_processKillerTimer = nullptr;
     bool m_hasTimeoutError = false;
 };
 
