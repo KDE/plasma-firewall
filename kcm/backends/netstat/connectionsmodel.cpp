@@ -4,18 +4,22 @@
 
 #include "connectionsmodel.h"
 
+#include <chrono>
+
 #include <QDebug>
 
 #include <KLocalizedString>
 
 #include "netstatclient.h"
 
+using namespace std::chrono_literals;
+
 ConnectionsModel::ConnectionsModel(QObject *parent)
     : QAbstractTableModel(parent)
 {
     connect(&m_netstatHelper, &NetstatHelper::queryFinished, this, &ConnectionsModel::refreshConnections);
     connect(&timer, &QTimer::timeout, &m_netstatHelper, &NetstatHelper::query);
-    timer.setInterval(10500);
+    timer.setInterval(10s); // arbitrary query interval, should be long enough to let the helper finish on its own
 }
 
 void ConnectionsModel::start()
