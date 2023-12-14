@@ -7,6 +7,7 @@
 #include <chrono>
 
 #include <QDebug>
+#include <QMetaEnum>
 
 #include <KLocalizedString>
 
@@ -47,7 +48,7 @@ int ConnectionsModel::rowCount(const QModelIndex &parent) const
 int ConnectionsModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
-    return 6;
+    return QMetaEnum::fromType<ConnectionsModelColumns>().keyCount();
 }
 
 bool ConnectionsModel::busy() const
