@@ -2,7 +2,7 @@
 // SPDX-FileCopyrightText: 2018 Alexis Lopes Zubeta <contact@azubieta.net>
 // SPDX-FileCopyrightText: 2020 Tomaz Canabrava <tcanabrava@kde.org>
 
-#include "conectionsmodel.h"
+#include "connectionsmodel.h"
 
 #include <QDebug>
 

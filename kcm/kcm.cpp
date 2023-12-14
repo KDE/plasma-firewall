@@ -18,7 +18,7 @@
 #include "core/rulelistmodel.h"
 #include "version.h"
 
-#include "backends/netstat/conectionsmodel.h"
+#include "backends/netstat/connectionsmodel.h"
 #include "backends/netstat/netstatclient.h"
 
 K_PLUGIN_CLASS_WITH_JSON(KCMFirewall, "kcm_firewall.json")

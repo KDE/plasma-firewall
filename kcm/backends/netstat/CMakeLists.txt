@@ -16,8 +16,8 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
 add_library(networkstatus STATIC)
 set_property(TARGET networkstatus PROPERTY POSITION_INDEPENDENT_CODE ON)
 target_sources(networkstatus PRIVATE
-    conectionsmodel.cpp
-    conectionsmodel.h
+    connectionsmodel.cpp
+    connectionsmodel.h
     netstatclient.cpp
     netstatclient.h
     netstathelper.cpp

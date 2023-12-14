@@ -2,8 +2,7 @@
 // SPDX-FileCopyrightText: 2018 Alexis Lopes Zubeta <contact@azubieta.net>
 // SPDX-FileCopyrightText: 2020 Tomaz Canabrava <tcanabrava@kde.org>
 
-#ifndef CONECTIONSMODEL_H
-#define CONECTIONSMODEL_H
+#pragma once
 
 #include <QAbstractTableModel>
 #include <QTimer>
@@ -67,5 +66,3 @@ private:
     bool m_busy = false;
     NetstatHelper m_netstatHelper;
 };
-
-#endif // CONECTIONSMODEL_H

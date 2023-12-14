@@ -61,7 +61,6 @@ void NetstatHelper::stepExecuteFinished(int exitCode)
     } else {
         QList<QStringList> result = parseSSOutput(m_executableProcess->readAllStandardOutput());
         Q_EMIT queryFinished(result);
-        ;
     }
 
     m_executableProcess->deleteLater();

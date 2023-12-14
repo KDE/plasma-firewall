@@ -8,7 +8,7 @@
 #include <QLoggingCategory>
 #include <QObject>
 
-#include "conectionsmodel.h"
+#include "connectionsmodel.h"
 #include "netstathelper.h"
 
 Q_DECLARE_LOGGING_CATEGORY(NetstatClientDebug)
