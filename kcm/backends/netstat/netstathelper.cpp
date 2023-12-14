@@ -21,7 +21,7 @@ void NetstatHelper::query()
         stopProcess();
     }
 
-    m_executableProcess = new QProcess();
+    m_executableProcess = new QProcess(this);
 
     /* parameters passed to ss
      *  -r, --resolve       resolve host names
