@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-28 01:37+0000\n"
+"POT-Creation-Date: 2023-12-20 01:35+0000\n"
 "PO-Revision-Date: 2020-08-19 19:41-0700\n"
 "Last-Translator: Japanese KDE translation team <kde-jp@kde.org>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -49,58 +49,58 @@ msgstr ""
 msgid "firewalld listing rules and services"
 msgstr ""
 
-#: backends/netstat/conectionsmodel.cpp:93 core/loglistmodel.cpp:96
+#: backends/netstat/connectionsmodel.cpp:97 core/loglistmodel.cpp:96
 #, kde-format
 msgctxt "@title:column"
 msgid "Protocol"
 msgstr ""
 
-#: backends/netstat/conectionsmodel.cpp:95
+#: backends/netstat/connectionsmodel.cpp:99
 #, kde-format
 msgctxt "@title:column"
 msgid "Local address"
 msgstr ""
 
-#: backends/netstat/conectionsmodel.cpp:97
+#: backends/netstat/connectionsmodel.cpp:101
 #, kde-format
 msgctxt "@title:column"
 msgid "Foreign address"
 msgstr ""
 
-#: backends/netstat/conectionsmodel.cpp:99
+#: backends/netstat/connectionsmodel.cpp:103
 #, kde-format
 msgctxt "@title:column"
 msgid "Status"
 msgstr ""
 
-#: backends/netstat/conectionsmodel.cpp:101
+#: backends/netstat/connectionsmodel.cpp:105
 #, kde-format
 msgctxt "@title:column"
 msgid "PID"
 msgstr ""
 
-#: backends/netstat/conectionsmodel.cpp:103
+#: backends/netstat/connectionsmodel.cpp:107
 #, kde-format
 msgctxt "@title:column"
 msgid "Program"
 msgstr ""
 
-#: backends/netstat/conectionsmodel.cpp:111
+#: backends/netstat/connectionsmodel.cpp:115
 #, kde-format
 msgid "Failed to get connections: %1"
 msgstr ""
 
-#: backends/netstat/conectionsmodel.cpp:129
+#: backends/netstat/connectionsmodel.cpp:133
 #, kde-format
 msgid "Not Connected"
 msgstr ""
 
-#: backends/netstat/conectionsmodel.cpp:131
+#: backends/netstat/connectionsmodel.cpp:135
 #, kde-format
 msgid "Established"
 msgstr ""
 
-#: backends/netstat/conectionsmodel.cpp:133
+#: backends/netstat/connectionsmodel.cpp:137
 #, kde-format
 msgid "Listening"
 msgstr ""

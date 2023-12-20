@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-28 01:37+0000\n"
+"POT-Creation-Date: 2023-12-20 01:35+0000\n"
 "PO-Revision-Date: 2023-12-17 11:26\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -52,58 +52,58 @@ msgstr "firewalld %1"
 msgid "firewalld listing rules and services"
 msgstr "firewalld 列表规则和服务"
 
-#: backends/netstat/conectionsmodel.cpp:93 core/loglistmodel.cpp:96
+#: backends/netstat/connectionsmodel.cpp:97 core/loglistmodel.cpp:96
 #, kde-format
 msgctxt "@title:column"
 msgid "Protocol"
 msgstr "协议"
 
-#: backends/netstat/conectionsmodel.cpp:95
+#: backends/netstat/connectionsmodel.cpp:99
 #, kde-format
 msgctxt "@title:column"
 msgid "Local address"
 msgstr "本地地址"
 
-#: backends/netstat/conectionsmodel.cpp:97
+#: backends/netstat/connectionsmodel.cpp:101
 #, kde-format
 msgctxt "@title:column"
 msgid "Foreign address"
 msgstr "远程地址"
 
-#: backends/netstat/conectionsmodel.cpp:99
+#: backends/netstat/connectionsmodel.cpp:103
 #, kde-format
 msgctxt "@title:column"
 msgid "Status"
 msgstr "状态"
 
-#: backends/netstat/conectionsmodel.cpp:101
+#: backends/netstat/connectionsmodel.cpp:105
 #, kde-format
 msgctxt "@title:column"
 msgid "PID"
 msgstr "PID"
 
-#: backends/netstat/conectionsmodel.cpp:103
+#: backends/netstat/connectionsmodel.cpp:107
 #, kde-format
 msgctxt "@title:column"
 msgid "Program"
 msgstr "程序"
 
-#: backends/netstat/conectionsmodel.cpp:111
+#: backends/netstat/connectionsmodel.cpp:115
 #, kde-format
 msgid "Failed to get connections: %1"
 msgstr "无法获取连接： %1"
 
-#: backends/netstat/conectionsmodel.cpp:129
+#: backends/netstat/connectionsmodel.cpp:133
 #, kde-format
 msgid "Not Connected"
 msgstr "未连接"
 
-#: backends/netstat/conectionsmodel.cpp:131
+#: backends/netstat/connectionsmodel.cpp:135
 #, kde-format
 msgid "Established"
 msgstr "已建立"
 
-#: backends/netstat/conectionsmodel.cpp:133
+#: backends/netstat/connectionsmodel.cpp:137
 #, kde-format
 msgid "Listening"
 msgstr "正在监听"

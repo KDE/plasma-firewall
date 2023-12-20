@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-28 01:37+0000\n"
+"POT-Creation-Date: 2023-12-20 01:35+0000\n"
 "PO-Revision-Date: 2023-11-28 09:43+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -53,58 +53,58 @@ msgstr "firewalld %1"
 msgid "firewalld listing rules and services"
 msgstr "firewalld seznam pravil in storitev"
 
-#: backends/netstat/conectionsmodel.cpp:93 core/loglistmodel.cpp:96
+#: backends/netstat/connectionsmodel.cpp:97 core/loglistmodel.cpp:96
 #, kde-format
 msgctxt "@title:column"
 msgid "Protocol"
 msgstr "Protokol"
 
-#: backends/netstat/conectionsmodel.cpp:95
+#: backends/netstat/connectionsmodel.cpp:99
 #, kde-format
 msgctxt "@title:column"
 msgid "Local address"
 msgstr "Lokalni naslov"
 
-#: backends/netstat/conectionsmodel.cpp:97
+#: backends/netstat/connectionsmodel.cpp:101
 #, kde-format
 msgctxt "@title:column"
 msgid "Foreign address"
 msgstr "Zunanji naslov"
 
-#: backends/netstat/conectionsmodel.cpp:99
+#: backends/netstat/connectionsmodel.cpp:103
 #, kde-format
 msgctxt "@title:column"
 msgid "Status"
 msgstr "Stanje"
 
-#: backends/netstat/conectionsmodel.cpp:101
+#: backends/netstat/connectionsmodel.cpp:105
 #, kde-format
 msgctxt "@title:column"
 msgid "PID"
 msgstr "PID"
 
-#: backends/netstat/conectionsmodel.cpp:103
+#: backends/netstat/connectionsmodel.cpp:107
 #, kde-format
 msgctxt "@title:column"
 msgid "Program"
 msgstr "Program"
 
-#: backends/netstat/conectionsmodel.cpp:111
+#: backends/netstat/connectionsmodel.cpp:115
 #, kde-format
 msgid "Failed to get connections: %1"
 msgstr "Ni bilo mogoče pridobiti povezav: %1"
 
-#: backends/netstat/conectionsmodel.cpp:129
+#: backends/netstat/connectionsmodel.cpp:133
 #, kde-format
 msgid "Not Connected"
 msgstr "Ni povezano"
 
-#: backends/netstat/conectionsmodel.cpp:131
+#: backends/netstat/connectionsmodel.cpp:135
 #, kde-format
 msgid "Established"
 msgstr "Vzpostavljeno"
 
-#: backends/netstat/conectionsmodel.cpp:133
+#: backends/netstat/connectionsmodel.cpp:137
 #, kde-format
 msgid "Listening"
 msgstr "Poslušanje"

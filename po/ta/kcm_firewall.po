@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-28 01:37+0000\n"
+"POT-Creation-Date: 2023-12-20 01:35+0000\n"
 "PO-Revision-Date: 2023-12-10 11:39+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -52,58 +52,58 @@ msgstr ""
 msgid "firewalld listing rules and services"
 msgstr ""
 
-#: backends/netstat/conectionsmodel.cpp:93 core/loglistmodel.cpp:96
+#: backends/netstat/connectionsmodel.cpp:97 core/loglistmodel.cpp:96
 #, kde-format
 msgctxt "@title:column"
 msgid "Protocol"
 msgstr "நெறிமுறை"
 
-#: backends/netstat/conectionsmodel.cpp:95
+#: backends/netstat/connectionsmodel.cpp:99
 #, kde-format
 msgctxt "@title:column"
 msgid "Local address"
 msgstr "உள்ளக முகவரி"
 
-#: backends/netstat/conectionsmodel.cpp:97
+#: backends/netstat/connectionsmodel.cpp:101
 #, kde-format
 msgctxt "@title:column"
 msgid "Foreign address"
 msgstr "வெளி முகவரி"
 
-#: backends/netstat/conectionsmodel.cpp:99
+#: backends/netstat/connectionsmodel.cpp:103
 #, kde-format
 msgctxt "@title:column"
 msgid "Status"
 msgstr "நிலை"
 
-#: backends/netstat/conectionsmodel.cpp:101
+#: backends/netstat/connectionsmodel.cpp:105
 #, kde-format
 msgctxt "@title:column"
 msgid "PID"
 msgstr "பணியெண்"
 
-#: backends/netstat/conectionsmodel.cpp:103
+#: backends/netstat/connectionsmodel.cpp:107
 #, kde-format
 msgctxt "@title:column"
 msgid "Program"
 msgstr "நிரல்"
 
-#: backends/netstat/conectionsmodel.cpp:111
+#: backends/netstat/connectionsmodel.cpp:115
 #, kde-format
 msgid "Failed to get connections: %1"
 msgstr "இணைப்புகளைப் பெற முடியவில்லை: %1"
 
-#: backends/netstat/conectionsmodel.cpp:129
+#: backends/netstat/connectionsmodel.cpp:133
 #, kde-format
 msgid "Not Connected"
 msgstr "இணைக்கப்படவில்லை"
 
-#: backends/netstat/conectionsmodel.cpp:131
+#: backends/netstat/connectionsmodel.cpp:135
 #, kde-format
 msgid "Established"
 msgstr "உருவாக்கப்பட்டுள்ளது"
 
-#: backends/netstat/conectionsmodel.cpp:133
+#: backends/netstat/connectionsmodel.cpp:137
 #, kde-format
 msgid "Listening"
 msgstr "கவனிக்கிறது"

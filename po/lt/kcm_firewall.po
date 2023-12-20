@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-28 01:37+0000\n"
+"POT-Creation-Date: 2023-12-20 01:35+0000\n"
 "PO-Revision-Date: 2022-09-19 13:27+0300\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: none\n"
@@ -54,64 +54,64 @@ msgstr "firewalld %1"
 msgid "firewalld listing rules and services"
 msgstr "firewalld sąrašo taisyklės ir tarnybos"
 
-#: backends/netstat/conectionsmodel.cpp:93 core/loglistmodel.cpp:96
+#: backends/netstat/connectionsmodel.cpp:97 core/loglistmodel.cpp:96
 #, fuzzy, kde-format
 #| msgid "Protocol"
 msgctxt "@title:column"
 msgid "Protocol"
 msgstr "Protokolas"
 
-#: backends/netstat/conectionsmodel.cpp:95
+#: backends/netstat/connectionsmodel.cpp:99
 #, fuzzy, kde-format
 #| msgid "Local Address"
 msgctxt "@title:column"
 msgid "Local address"
 msgstr "Vietinis adresas"
 
-#: backends/netstat/conectionsmodel.cpp:97
+#: backends/netstat/connectionsmodel.cpp:101
 #, fuzzy, kde-format
 #| msgid "Foreign Address"
 msgctxt "@title:column"
 msgid "Foreign address"
 msgstr "Išorinis adresas"
 
-#: backends/netstat/conectionsmodel.cpp:99
+#: backends/netstat/connectionsmodel.cpp:103
 #, fuzzy, kde-format
 #| msgid "Status"
 msgctxt "@title:column"
 msgid "Status"
 msgstr "Būsena"
 
-#: backends/netstat/conectionsmodel.cpp:101
+#: backends/netstat/connectionsmodel.cpp:105
 #, fuzzy, kde-format
 #| msgid "PID"
 msgctxt "@title:column"
 msgid "PID"
 msgstr "PID"
 
-#: backends/netstat/conectionsmodel.cpp:103
+#: backends/netstat/connectionsmodel.cpp:107
 #, fuzzy, kde-format
 #| msgid "Program"
 msgctxt "@title:column"
 msgid "Program"
 msgstr "Programa"
 
-#: backends/netstat/conectionsmodel.cpp:111
+#: backends/netstat/connectionsmodel.cpp:115
 #, kde-format
 msgid "Failed to get connections: %1"
 msgstr "Nepavyko gauti ryšių: %1"
 
-#: backends/netstat/conectionsmodel.cpp:129
+#: backends/netstat/connectionsmodel.cpp:133
 #, kde-format
 msgid "Not Connected"
 msgstr "Neprisijungta"
 
-#: backends/netstat/conectionsmodel.cpp:131
+#: backends/netstat/connectionsmodel.cpp:135
 #, kde-format
 msgid "Established"
 msgstr "Nustatyta"
 
-#: backends/netstat/conectionsmodel.cpp:133
+#: backends/netstat/connectionsmodel.cpp:137
 #, kde-format
 msgid "Listening"
 msgstr "Klausomasi"
