@@ -74,8 +74,7 @@ msgid "Foreign address"
 msgstr "Cizí adresa"
 
 #: backends/netstat/connectionsmodel.cpp:103
-#, fuzzy, kde-format
-#| msgid "Status"
+#, kde-format
 msgctxt "@title:column"
 msgid "Status"
 msgstr "Stav"
@@ -197,8 +196,7 @@ msgid "Interface"
 msgstr "Rozhraní"
 
 #: core/loglistmodel.cpp:100 core/rulelistmodel.cpp:87
-#, fuzzy, kde-format
-#| msgid "Action"
+#, kde-format
 msgctxt "@title:column"
 msgid "Action"
 msgstr "Činnost"
@@ -207,13 +205,13 @@ msgstr "Činnost"
 #, kde-format
 msgctxt "@title:column"
 msgid "Time"
-msgstr ""
+msgstr "Čas"
 
 #: core/loglistmodel.cpp:104
 #, kde-format
 msgctxt "@title:column"
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: core/rule.cpp:46
 #, kde-format
@@ -257,8 +255,7 @@ msgid "IP"
 msgstr "IP"
 
 #: core/rulelistmodel.cpp:95
-#, fuzzy, kde-format
-#| msgid "Logging"
+#, kde-format
 msgctxt "@title:column"
 msgid "Logging"
 msgstr "Záznamy"
