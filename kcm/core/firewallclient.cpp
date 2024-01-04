@@ -297,7 +297,7 @@ void FirewallClient::setBackend(const QStringList &backendList)
         m_currentBackend = nullptr;
     }
     // cppcheck-suppress unknownMacro
-    const auto plugins = KPluginMetaData::findPlugins(QStringLiteral("kf" QT_STRINGIFY(QT_VERSION_MAJOR) "/plasma_firewall"));
+    const auto plugins = KPluginMetaData::findPlugins(QStringLiteral("kf6/plasma_firewall"));
 
     QList<KPluginFactory *> factories;
     for (const KPluginMetaData &metadata : plugins) {
