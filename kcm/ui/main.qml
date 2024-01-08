@@ -307,7 +307,7 @@ KCMUtils.ScrollViewKCM {
             ruleEdit.newRule = false;
             drawer.open();
         }
-        Keys.onEnterPressed: Keys.onReturnPressed(event)
+        Keys.onEnterPressed: Keys.returnPressed(event)
         Keys.onReturnPressed: {
             if (selectionModel.currentIndex) {
                 editRule(selectionModel.currentIndex.row)
