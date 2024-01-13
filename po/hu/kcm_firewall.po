@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-20 01:35+0000\n"
+"POT-Creation-Date: 2024-01-13 00:39+0000\n"
 "PO-Revision-Date: 2023-12-16 20:58+0100\n"
 "Last-Translator: Kristof Kiszel <kiszel.kristof@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -297,7 +297,7 @@ msgstr "Új kapcsolatok"
 msgid "All packets"
 msgstr "Minden csomag"
 
-#: core/types.cpp:58 ui/main.qml:26
+#: core/types.cpp:58 ui/main.qml:24
 #, kde-format
 msgid "Allow"
 msgstr "Engedélyezés"
@@ -307,7 +307,7 @@ msgstr "Engedélyezés"
 msgid "Deny"
 msgstr "Tiltás"
 
-#: core/types.cpp:62 ui/main.qml:28
+#: core/types.cpp:62 ui/main.qml:26
 #, kde-format
 msgid "Reject"
 msgstr "Elutasítás"
@@ -562,17 +562,17 @@ msgstr "Jelenleg nincsenek bejegyzések a tűzfalnaplóban"
 msgid "Created a blacklist rule from this log entry."
 msgstr "Tiltólista szabály létrehozva ebből a naplóbejegyzésből."
 
-#: ui/main.qml:26
+#: ui/main.qml:24
 #, kde-format
 msgid "Allow all connections"
 msgstr "Minden kapcsolat engedélyezése"
 
-#: ui/main.qml:27
+#: ui/main.qml:25
 #, kde-format
 msgid "Ignore"
 msgstr "Mellőzés"
 
-#: ui/main.qml:27
+#: ui/main.qml:25
 #, kde-format
 msgid ""
 "Keeps the program waiting until the connection attempt times out, some short "
@@ -581,83 +581,83 @@ msgstr ""
 "Várakoztassa a programot, amíg a kapcsolat időtúllépés miatt meg nem szakad "
 "rövid idővel később."
 
-#: ui/main.qml:28
+#: ui/main.qml:26
 #, kde-format
 msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr ""
 "Azonnali és rendkívül informatív „Kapcsolat elutasítva” üzenetet produkál"
 
-#: ui/main.qml:45
+#: ui/main.qml:43
 #, kde-format
 msgid "Create A New Firewall Rule"
 msgstr "Új tűzfalszabály létrehozása"
 
-#: ui/main.qml:45
+#: ui/main.qml:43
 #, kde-format
 msgid "Edit Firewall Rule"
 msgstr "Tűzfalszabály szerkesztése"
 
-#: ui/main.qml:68 ui/main.qml:247 ui/main.qml:371
+#: ui/main.qml:66 ui/main.qml:245 ui/main.qml:369
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr "Indítsa újra a Plasma Firewallt, a háttérprogram lekapcsolódott."
 
-#: ui/main.qml:82 ui/ViewBase.qml:112
+#: ui/main.qml:80 ui/ViewBase.qml:112
 #, kde-format
 msgid "Error creating rule: %1"
 msgstr "Hiba a szabály létrehozásakor: %1"
 
-#: ui/main.qml:84
+#: ui/main.qml:82
 #, kde-format
 msgid "Error updating rule: %1"
 msgstr "Hiba a szabály frissítésekor: %1"
 
-#: ui/main.qml:109
+#: ui/main.qml:107
 #, kde-format
 msgid "Create"
 msgstr "Létrehozás"
 
-#: ui/main.qml:109
+#: ui/main.qml:107
 #, kde-format
 msgid "Save"
 msgstr "Mentés"
 
-#: ui/main.qml:133
+#: ui/main.qml:131
 #, kde-format
 msgid "Firewall Status:"
 msgstr "Tűzfal állapota:"
 
-#: ui/main.qml:139
+#: ui/main.qml:137
 #, kde-format
 msgid "Disabling…"
 msgstr "Kikapcsolás…"
 
-#: ui/main.qml:139
+#: ui/main.qml:137
 #, kde-format
 msgid "Enabled"
 msgstr "Bekapcsolva"
 
-#: ui/main.qml:141
+#: ui/main.qml:139
 #, kde-format
 msgid "Enabling…"
 msgstr "Bekapcsolás…"
 
-#: ui/main.qml:141
+#: ui/main.qml:139
 #, kde-format
 msgid "Disabled"
 msgstr "Kikapcsolva"
 
-#: ui/main.qml:167
+#: ui/main.qml:165
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr "A tűzfal alkalmazás, telepítse ezt: %1"
 
-#: ui/main.qml:181
+#: ui/main.qml:179
 #, kde-format
 msgid "Permission denied"
 msgstr "Hozzáférés megtagadva"
 
-#: ui/main.qml:185
+#: ui/main.qml:183
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
@@ -666,66 +666,66 @@ msgstr ""
 "A kernel nemrég frissült. Az iptables inicializálása meghiúsult, indítsa "
 "újra a rendszert."
 
-#: ui/main.qml:188
+#: ui/main.qml:186
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr "Hiba a tűzfal bekapcsolásakor: %1"
 
-#: ui/main.qml:189
+#: ui/main.qml:187
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr "Hiba a tűzfal kikapcsolásakor: %1"
 
-#: ui/main.qml:209
+#: ui/main.qml:207
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "Alapértelmezett bejövő házirend:"
 
-#: ui/main.qml:210
+#: ui/main.qml:208
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "Alapértelmezett kimenő házirend:"
 
-#: ui/main.qml:257
+#: ui/main.qml:255
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Hiba a szabály megváltoztatásakor: %1"
 
-#: ui/main.qml:362
+#: ui/main.qml:360
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Szabály szerkesztése"
 
-#: ui/main.qml:382
+#: ui/main.qml:380
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Hiba a szabály törlésekor: %1"
 
-#: ui/main.qml:389
+#: ui/main.qml:387
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Szabály törlése"
 
-#: ui/main.qml:413
+#: ui/main.qml:411
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "A tűzfal ki van kapcsolva"
 
-#: ui/main.qml:413
+#: ui/main.qml:411
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Nincsenek tűzfalszabályok hozzáadva"
 
-#: ui/main.qml:415
+#: ui/main.qml:413
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button below to add one"
 msgstr ""
 "Kattintson a <interface>Szabály hozzáadása…</interface> gombra a hozzáadáshoz"
 
-#: ui/main.qml:416
+#: ui/main.qml:414
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -737,29 +737,29 @@ msgstr ""
 "jelölőnégyzettel fentebb, és kattintson a <interface>Szabály hozzáadása…</"
 "interface> gombra egy szabály hozzáadásához"
 
-#: ui/main.qml:422
+#: ui/main.qml:420
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
 msgstr "Kapcsolatok megjelenítése"
 
-#: ui/main.qml:427
+#: ui/main.qml:425
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
 msgstr "Naplók megjelenítése"
 
-#: ui/main.qml:438
+#: ui/main.qml:436
 #, kde-format
 msgid "Add Rule…"
 msgstr "Szabály hozzáadása…"
 
-#: ui/main.qml:447
+#: ui/main.qml:445
 #, kde-format
 msgid "About"
 msgstr "Névjegy"
 
-#: ui/main.qml:454
+#: ui/main.qml:452
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Telepítsen egy tűzfalalkalmazást, például az ufw-t vagy a firewalld-t"
@@ -799,7 +799,7 @@ msgstr "Kapcsolatok engedélyezése:"
 msgid "Application:"
 msgstr "Alkalmazás:"
 
-#: ui/ViewBase.qml:255
+#: ui/ViewBase.qml:253
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Kapcsolat tiltólistára"

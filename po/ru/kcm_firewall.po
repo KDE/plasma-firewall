@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-20 01:35+0000\n"
+"POT-Creation-Date: 2024-01-13 00:39+0000\n"
 "PO-Revision-Date: 2024-01-04 21:23+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -298,7 +298,7 @@ msgstr "Новые соединения"
 msgid "All packets"
 msgstr "Все пакеты"
 
-#: core/types.cpp:58 ui/main.qml:26
+#: core/types.cpp:58 ui/main.qml:24
 #, kde-format
 msgid "Allow"
 msgstr "Разрешить"
@@ -308,7 +308,7 @@ msgstr "Разрешить"
 msgid "Deny"
 msgstr "Запретить"
 
-#: core/types.cpp:62 ui/main.qml:28
+#: core/types.cpp:62 ui/main.qml:26
 #, kde-format
 msgid "Reject"
 msgstr "Отклонить"
@@ -563,100 +563,100 @@ msgstr "Отсутствуют записи журнала брандмауэр�
 msgid "Created a blacklist rule from this log entry."
 msgstr "Правило блокирования создано на основе этой записи журнала."
 
-#: ui/main.qml:26
+#: ui/main.qml:24
 #, kde-format
 msgid "Allow all connections"
 msgstr "Разрешает любые соединения"
 
-#: ui/main.qml:27
+#: ui/main.qml:25
 #, kde-format
 msgid "Ignore"
 msgstr "Игнорировать"
 
-#: ui/main.qml:27
+#: ui/main.qml:25
 #, kde-format
 msgid ""
 "Keeps the program waiting until the connection attempt times out, some short "
 "time later."
 msgstr "Позволяет программе дождаться тайм-аута соединения."
 
-#: ui/main.qml:28
+#: ui/main.qml:26
 #, kde-format
 msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr "Немедленно сообщает программе об отклонении соединения."
 
-#: ui/main.qml:45
+#: ui/main.qml:43
 #, kde-format
 msgid "Create A New Firewall Rule"
 msgstr "Создать правило брандмауэра"
 
-#: ui/main.qml:45
+#: ui/main.qml:43
 #, kde-format
 msgid "Edit Firewall Rule"
 msgstr "Изменить правило брандмауэра"
 
-#: ui/main.qml:68 ui/main.qml:247 ui/main.qml:371
+#: ui/main.qml:66 ui/main.qml:245 ui/main.qml:369
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr ""
 "Произошло отключение от службы брандмауэра, требуется перезапуск приложения."
 
-#: ui/main.qml:82 ui/ViewBase.qml:112
+#: ui/main.qml:80 ui/ViewBase.qml:112
 #, kde-format
 msgid "Error creating rule: %1"
 msgstr "Не удалось создать правило: %1"
 
-#: ui/main.qml:84
+#: ui/main.qml:82
 #, kde-format
 msgid "Error updating rule: %1"
 msgstr "Не удалось изменить правило: %1"
 
-#: ui/main.qml:109
+#: ui/main.qml:107
 #, kde-format
 msgid "Create"
 msgstr "Создать"
 
-#: ui/main.qml:109
+#: ui/main.qml:107
 #, kde-format
 msgid "Save"
 msgstr "Сохранить"
 
-#: ui/main.qml:133
+#: ui/main.qml:131
 #, kde-format
 msgid "Firewall Status:"
 msgstr "Состояние брандмауэра:"
 
-#: ui/main.qml:139
+#: ui/main.qml:137
 #, kde-format
 msgid "Disabling…"
 msgstr "Отключение…"
 
-#: ui/main.qml:139
+#: ui/main.qml:137
 #, kde-format
 msgid "Enabled"
 msgstr "Включён"
 
-#: ui/main.qml:141
+#: ui/main.qml:139
 #, kde-format
 msgid "Enabling…"
 msgstr "Включение…"
 
-#: ui/main.qml:141
+#: ui/main.qml:139
 #, kde-format
 msgid "Disabled"
 msgstr "Отключён"
 
-#: ui/main.qml:167
+#: ui/main.qml:165
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr "Приложение брандмауэра, установите %1"
 
-#: ui/main.qml:181
+#: ui/main.qml:179
 #, kde-format
 msgid "Permission denied"
 msgstr "Доступ запрещён"
 
-#: ui/main.qml:185
+#: ui/main.qml:183
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
@@ -665,59 +665,59 @@ msgstr ""
 "Ядро было обновлено и для инициализации модулей iptables требуется "
 "перезагрузка."
 
-#: ui/main.qml:188
+#: ui/main.qml:186
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr "Не удалось включить брандмауэр: %1"
 
-#: ui/main.qml:189
+#: ui/main.qml:187
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr "Не удалось отключить брандмауэр: %1"
 
-#: ui/main.qml:209
+#: ui/main.qml:207
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "Правило по умолчанию для входящих соединений:"
 
-#: ui/main.qml:210
+#: ui/main.qml:208
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "Правило по умолчанию для исходящих соединений:"
 
-#: ui/main.qml:257
+#: ui/main.qml:255
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Не удалось изменить правило: %1"
 
-#: ui/main.qml:362
+#: ui/main.qml:360
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Изменить правило"
 
-#: ui/main.qml:382
+#: ui/main.qml:380
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Не удалось удалить правило: %1"
 
-#: ui/main.qml:389
+#: ui/main.qml:387
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Удалить правило"
 
-#: ui/main.qml:413
+#: ui/main.qml:411
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "Брандмауэр отключён"
 
-#: ui/main.qml:413
+#: ui/main.qml:411
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Ни одного правила не было добавлено"
 
-#: ui/main.qml:415
+#: ui/main.qml:413
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button below to add one"
@@ -725,7 +725,7 @@ msgstr ""
 "Для добавления правила нажмите кнопку <interface>Добавить правило…</"
 "interface>"
 
-#: ui/main.qml:416
+#: ui/main.qml:414
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -737,29 +737,29 @@ msgstr ""
 "брандмауэра</interface>, после чего для добавления правил нажмите кнопку "
 "<interface>Добавить правило…</interface>"
 
-#: ui/main.qml:422
+#: ui/main.qml:420
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
 msgstr "Просмотр соединений"
 
-#: ui/main.qml:427
+#: ui/main.qml:425
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
 msgstr "Просмотр журналов"
 
-#: ui/main.qml:438
+#: ui/main.qml:436
 #, kde-format
 msgid "Add Rule…"
 msgstr "Добавить правило…"
 
-#: ui/main.qml:447
+#: ui/main.qml:445
 #, kde-format
 msgid "About"
 msgstr "О программе"
 
-#: ui/main.qml:454
+#: ui/main.qml:452
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Установите службу брандмауэра ufw или firewalld"
@@ -799,7 +799,7 @@ msgstr "Разрешить соединения:"
 msgid "Application:"
 msgstr "Приложение:"
 
-#: ui/ViewBase.qml:255
+#: ui/ViewBase.qml:253
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Заблокировать соединение"
