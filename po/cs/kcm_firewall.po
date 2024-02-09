@@ -53,25 +53,22 @@ msgid "firewalld listing rules and services"
 msgstr ""
 
 #: backends/netstat/connectionsmodel.cpp:97 core/loglistmodel.cpp:96
-#, fuzzy, kde-format
-#| msgid "Protocol"
+#, kde-format
 msgctxt "@title:column"
 msgid "Protocol"
-msgstr "Protokol"
+msgstr ""
 
 #: backends/netstat/connectionsmodel.cpp:99
-#, fuzzy, kde-format
-#| msgid "Local Address"
+#, kde-format
 msgctxt "@title:column"
 msgid "Local address"
-msgstr "Lokální adresa"
+msgstr ""
 
 #: backends/netstat/connectionsmodel.cpp:101
-#, fuzzy, kde-format
-#| msgid "Foreign Address"
+#, kde-format
 msgctxt "@title:column"
 msgid "Foreign address"
-msgstr "Cizí adresa"
+msgstr ""
 
 #: backends/netstat/connectionsmodel.cpp:103
 #, kde-format
@@ -80,18 +77,16 @@ msgid "Status"
 msgstr "Stav"
 
 #: backends/netstat/connectionsmodel.cpp:105
-#, fuzzy, kde-format
-#| msgid "PID"
+#, kde-format
 msgctxt "@title:column"
 msgid "PID"
-msgstr "PID"
+msgstr ""
 
 #: backends/netstat/connectionsmodel.cpp:107
-#, fuzzy, kde-format
-#| msgid "Program"
+#, kde-format
 msgctxt "@title:column"
 msgid "Program"
-msgstr "Program"
+msgstr ""
 
 #: backends/netstat/connectionsmodel.cpp:115
 #, kde-format
@@ -161,39 +156,34 @@ msgid "Any"
 msgstr "Cokoliv"
 
 #: core/loglistmodel.cpp:88 core/rulelistmodel.cpp:89
-#, fuzzy, kde-format
-#| msgid "From"
+#, kde-format
 msgctxt "@title:column"
 msgid "From"
-msgstr "Od"
+msgstr ""
 
 #: core/loglistmodel.cpp:90
-#, fuzzy, kde-format
-#| msgid "Source:"
+#, kde-format
 msgctxt "@title:column"
 msgid "Source port"
-msgstr "Zdroj:"
+msgstr ""
 
 #: core/loglistmodel.cpp:92 core/rulelistmodel.cpp:91
-#, fuzzy, kde-format
-#| msgid "To"
+#, kde-format
 msgctxt "@title:column"
 msgid "To"
-msgstr "Komu"
+msgstr ""
 
 #: core/loglistmodel.cpp:94
-#, fuzzy, kde-format
-#| msgid "Destination:"
+#, kde-format
 msgctxt "@title:column"
 msgid "Destination port"
-msgstr "Cíl:"
+msgstr ""
 
 #: core/loglistmodel.cpp:98
-#, fuzzy, kde-format
-#| msgid "Interface"
+#, kde-format
 msgctxt "@title:column"
 msgid "Interface"
-msgstr "Rozhraní"
+msgstr ""
 
 #: core/loglistmodel.cpp:100 core/rulelistmodel.cpp:87
 #, kde-format
@@ -248,11 +238,10 @@ msgid "Yes"
 msgstr "Ano"
 
 #: core/rulelistmodel.cpp:93
-#, fuzzy, kde-format
-#| msgid "IP"
+#, kde-format
 msgctxt "@title:column"
 msgid "IP"
-msgstr "IP"
+msgstr ""
 
 #: core/rulelistmodel.cpp:95
 #, kde-format
