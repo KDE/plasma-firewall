@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
-# Shinjo Park <kde@peremen.name>, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-20 02:45+0000\n"
-"PO-Revision-Date: 2022-02-20 21:25+0100\n"
+"PO-Revision-Date: 2024-02-09 19:28+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -136,19 +136,19 @@ msgstr "임의"
 #, kde-format
 msgctxt "service/application name (port numbers)"
 msgid "%1 (%2)"
-msgstr "%1 (%2)"
+msgstr "%1(%2)"
 
 #: core/rule.cpp:199
 #, kde-format
 msgctxt "firewallAction incoming"
 msgid "%1 incoming"
-msgstr "%1 수신"
+msgstr "수신 %1"
 
 #: core/rule.cpp:200
 #, kde-format
 msgctxt "firewallAction outgoing"
 msgid "%1 outgoing"
-msgstr "%1 발신"
+msgstr "발신 %1"
 
 #: core/rule.cpp:205
 #, kde-format
