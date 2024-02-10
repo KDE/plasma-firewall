@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
-# Shinjo Park <kde@peremen.name>, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-13 00:39+0000\n"
-"PO-Revision-Date: 2023-07-25 01:12+0200\n"
+"PO-Revision-Date: 2024-02-09 19:28+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -53,46 +53,40 @@ msgid "firewalld listing rules and services"
 msgstr "firewalld 목록과 서비스 표시"
 
 #: backends/netstat/connectionsmodel.cpp:97 core/loglistmodel.cpp:96
-#, fuzzy, kde-format
-#| msgid "Protocol"
+#, kde-format
 msgctxt "@title:column"
 msgid "Protocol"
 msgstr "프로토콜"
 
 #: backends/netstat/connectionsmodel.cpp:99
-#, fuzzy, kde-format
-#| msgid "Local Address"
+#, kde-format
 msgctxt "@title:column"
 msgid "Local address"
 msgstr "로컬 주소"
 
 #: backends/netstat/connectionsmodel.cpp:101
-#, fuzzy, kde-format
-#| msgid "Foreign Address"
+#, kde-format
 msgctxt "@title:column"
 msgid "Foreign address"
 msgstr "원격 주소"
 
 #: backends/netstat/connectionsmodel.cpp:103
-#, fuzzy, kde-format
-#| msgid "Status"
+#, kde-format
 msgctxt "@title:column"
 msgid "Status"
 msgstr "상태"
 
 #: backends/netstat/connectionsmodel.cpp:105
-#, fuzzy, kde-format
-#| msgid "PID"
+#, kde-format
 msgctxt "@title:column"
 msgid "PID"
 msgstr "PID"
 
 #: backends/netstat/connectionsmodel.cpp:107
-#, fuzzy, kde-format
-#| msgid "Program"
+#, kde-format
 msgctxt "@title:column"
 msgid "Program"
-msgstr "프로그램"
+msgstr "앱"
 
 #: backends/netstat/connectionsmodel.cpp:115
 #, kde-format
@@ -164,43 +158,37 @@ msgid "Any"
 msgstr "임의"
 
 #: core/loglistmodel.cpp:88 core/rulelistmodel.cpp:89
-#, fuzzy, kde-format
-#| msgid "From"
+#, kde-format
 msgctxt "@title:column"
 msgid "From"
 msgstr "발신"
 
 #: core/loglistmodel.cpp:90
-#, fuzzy, kde-format
-#| msgid "Source:"
+#, kde-format
 msgctxt "@title:column"
 msgid "Source port"
-msgstr "원본:"
+msgstr "발신 포트"
 
 #: core/loglistmodel.cpp:92 core/rulelistmodel.cpp:91
-#, fuzzy, kde-format
-#| msgid "To"
+#, kde-format
 msgctxt "@title:column"
 msgid "To"
 msgstr "수신"
 
 #: core/loglistmodel.cpp:94
-#, fuzzy, kde-format
-#| msgid "Destination:"
+#, kde-format
 msgctxt "@title:column"
 msgid "Destination port"
-msgstr "대상:"
+msgstr "대상 포트"
 
 #: core/loglistmodel.cpp:98
-#, fuzzy, kde-format
-#| msgid "Interface"
+#, kde-format
 msgctxt "@title:column"
 msgid "Interface"
 msgstr "인터페이스"
 
 #: core/loglistmodel.cpp:100 core/rulelistmodel.cpp:87
-#, fuzzy, kde-format
-#| msgid "Action"
+#, kde-format
 msgctxt "@title:column"
 msgid "Action"
 msgstr "동작"
@@ -209,13 +197,13 @@ msgstr "동작"
 #, kde-format
 msgctxt "@title:column"
 msgid "Time"
-msgstr ""
+msgstr "시간"
 
 #: core/loglistmodel.cpp:104
 #, kde-format
 msgctxt "@title:column"
 msgid "Date"
-msgstr ""
+msgstr "날짜"
 
 #: core/rule.cpp:46
 #, kde-format
@@ -232,19 +220,19 @@ msgstr "임의"
 #, kde-format
 msgctxt "service/application name (port numbers)"
 msgid "%1 (%2)"
-msgstr "%1 (%2)"
+msgstr "%1(%2)"
 
 #: core/rule.cpp:199
 #, kde-format
 msgctxt "firewallAction incoming"
 msgid "%1 incoming"
-msgstr "%1 수신"
+msgstr "수신 %1"
 
 #: core/rule.cpp:200
 #, kde-format
 msgctxt "firewallAction outgoing"
 msgid "%1 outgoing"
-msgstr "%1 발신"
+msgstr "발신 %1"
 
 #: core/rule.cpp:205
 #, kde-format
@@ -252,15 +240,13 @@ msgid "Yes"
 msgstr "예"
 
 #: core/rulelistmodel.cpp:93
-#, fuzzy, kde-format
-#| msgid "IP"
+#, kde-format
 msgctxt "@title:column"
 msgid "IP"
 msgstr "IP"
 
 #: core/rulelistmodel.cpp:95
-#, fuzzy, kde-format
-#| msgid "Logging"
+#, kde-format
 msgctxt "@title:column"
 msgid "Logging"
 msgstr "로그 작성"
