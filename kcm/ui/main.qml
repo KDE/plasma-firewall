@@ -40,13 +40,13 @@ KCMUtils.ScrollViewKCM {
             visible: !kcm.client.busy && kcm.client.enabled
             text: i18nc("'view' is being used as a verb here", "View Connections")
             icon.name: "network-connect"
-            onTriggered: kcm.push("ConnectionsView.qml");
+            onTriggered: kcm.push("ConnectionsView.qml")
         },
         Kirigami.Action {
             visible: !kcm.client.busy && kcm.client.enabled
             text: i18nc("'view' is being used as a verb here", "View Logs")
             icon.name: "viewlog"
-            onTriggered: kcm.push("LogsView.qml");
+            onTriggered: kcm.push("LogsView.qml")
         },
         Kirigami.Action {
             icon.name: "help-about"
