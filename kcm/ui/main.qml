@@ -26,6 +26,32 @@ KCMUtils.ScrollViewKCM {
         {text: i18n("Reject"), data: "reject", tooltip: i18n("Produces an immediate and very informative 'Connection refused' message")}
     ]
 
+    actions: [
+        Kirigami.Action {
+            text: i18nc("'view' is being used as a verb here", "View Connections")
+            icon.name: "network-connect"
+            onTriggered: kcm.push("ConnectionsView.qml");
+        },
+        Kirigami.Action {
+            text: i18nc("'view' is being used as a verb here", "View Logs")
+            icon.name: "viewlog"
+            onTriggered: kcm.push("LogsView.qml");
+        },
+        Kirigami.Action{
+            enabled: !kcm.client.busy && kcm.client.enabled
+            icon.name: "list-add"
+            text: i18n("Add Rule…")
+            onTriggered: {
+                ruleEdit.newRule = true
+                drawer.open()
+            }
+        },
+        Kirigami.Action {
+            icon.name: "help-about"
+            text: i18n("About")
+            onTriggered: root.showAboutView()
+        }
+    ]
     Kirigami.OverlaySheet {
         id: drawer
 
@@ -410,43 +436,11 @@ KCMUtils.ScrollViewKCM {
             visible: tableView.rows === 0
             text: !kcm.client.enabled ? i18n("Firewall is disabled") : i18n("No firewall rules have been added")
             explanation: kcm.client.enabled ?
-                xi18nc("@info", "Click the <interface>Add Rule…</interface> button below to add one") :
-                xi18nc("@info", "Enable the firewall with the <interface>Firewall Status</interface> checkbox above, and then click the <interface>Add Rule…</interface> button below to add one")
+                xi18nc("@info", "Click the <interface>Add Rule…</interface> button to add one") :
+                xi18nc("@info", "Enable the firewall with the <interface>Firewall Status</interface> checkbox, and then click the <interface>Add Rule…</interface> button to add one")
         }
     }
 
-    footer: RowLayout {
-        QQC2.Button {
-            text: i18nc("'view' is being used as a verb here", "View Connections")
-            icon.name: "network-connect"
-            onClicked: kcm.push("ConnectionsView.qml");
-        }
-        QQC2.Button {
-            text: i18nc("'view' is being used as a verb here", "View Logs")
-            icon.name: "viewlog"
-            onClicked: kcm.push("LogsView.qml");
-        }
-        Item {
-            Layout.fillWidth: true
-        }
-
-        QQC2.Button {
-            enabled: !kcm.client.busy && kcm.client.enabled
-            icon.name: "list-add"
-            text: i18n("Add Rule…")
-            onClicked: {
-                ruleEdit.newRule = true
-                drawer.open()
-            }
-        }
-
-        QQC2.Button {
-            icon.name: "help-about"
-            text: i18n("About")
-            onClicked: root.showAboutView()
-        }
-
-    }
     Component.onCompleted: {
         if (kcm.client.name === "") {
             firewallInlineErrorMessage.text = i18n("Please install a firewall, such as ufw or firewalld");
