@@ -28,23 +28,25 @@ KCMUtils.ScrollViewKCM {
 
     actions: [
         Kirigami.Action {
-            text: i18nc("'view' is being used as a verb here", "View Connections")
-            icon.name: "network-connect"
-            onTriggered: kcm.push("ConnectionsView.qml");
-        },
-        Kirigami.Action {
-            text: i18nc("'view' is being used as a verb here", "View Logs")
-            icon.name: "viewlog"
-            onTriggered: kcm.push("LogsView.qml");
-        },
-        Kirigami.Action{
-            enabled: !kcm.client.busy && kcm.client.enabled
+            visible: !kcm.client.busy && kcm.client.enabled
             icon.name: "list-add"
             text: i18n("Add Rule…")
             onTriggered: {
                 ruleEdit.newRule = true
                 drawer.open()
             }
+        },
+        Kirigami.Action {
+            visible: !kcm.client.busy && kcm.client.enabled
+            text: i18nc("'view' is being used as a verb here", "View Connections")
+            icon.name: "network-connect"
+            onTriggered: kcm.push("ConnectionsView.qml");
+        },
+        Kirigami.Action {
+            visible: !kcm.client.busy && kcm.client.enabled
+            text: i18nc("'view' is being used as a verb here", "View Logs")
+            icon.name: "viewlog"
+            onTriggered: kcm.push("LogsView.qml");
         },
         Kirigami.Action {
             icon.name: "help-about"
