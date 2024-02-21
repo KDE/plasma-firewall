@@ -12,7 +12,7 @@ import org.kde.kcmutils as KCMUtils
 
 import org.kcm.firewall 1.0
 
-import org.kde.kirigami 2.14 as Kirigami
+import org.kde.kirigami 2.20 as Kirigami
 
 KCMUtils.ScrollViewKCM {
     id: root
@@ -47,11 +47,6 @@ KCMUtils.ScrollViewKCM {
             text: i18nc("'view' is being used as a verb here", "View Logs")
             icon.name: "viewlog"
             onTriggered: kcm.push("LogsView.qml")
-        },
-        Kirigami.Action {
-            icon.name: "help-about"
-            text: i18n("About")
-            onTriggered: root.showAboutView()
         },
         Kirigami.Action {
             text: enabledCheckBox.text
@@ -236,6 +231,23 @@ KCMUtils.ScrollViewKCM {
             type: Kirigami.MessageType.Error
         }
         Kirigami.FormLayout {
+            RowLayout {
+                spacing: Kirigami.Units.smallSpacing
+                implicitHeight: versionButton.implicitHeight
+
+                Kirigami.FormData.label: i18n("Firewall type:")
+                Kirigami.SelectableLabel {
+                    Layout.fillWidth: true
+                    textFormat: TextEdit.PlainText
+                    text: kcm.client.name
+                }
+                KCMUtils.ContextualHelpButton {
+                    id: versionButton
+                    toolTipText: i18nc("@info", "Firewall version: %1", kcm.client.version().trim())
+                    checkable: true
+                }
+            }
+
             Repeater {
                 model: [
                     {label: i18n("Default Incoming Policy:"), key: "Incoming"},
@@ -458,18 +470,6 @@ KCMUtils.ScrollViewKCM {
         } else {
             // Initialize the client's status.
             kcm.client.refresh();
-        }
-    }
-
-    function showAboutView() {
-        const sheet = aboutComponent.createObject(root.QQC2.Overlay.overlay, {name: kcm.client.name, version: kcm.client.version()});
-        sheet.open();
-    }
-
-    Component {
-        id: aboutComponent
-        About {
-            onClosed: destroy()
         }
     }
 }
