@@ -434,6 +434,7 @@ KCMUtils.ScrollViewKCM {
             anchors.centerIn: parent
             width: tableView.width - (Kirigami.Units.largeSpacing * 12)
             visible: tableView.rows === 0
+            icon.name: kcm.client.enabled ? "edit-none" : "security-low"
             text: !kcm.client.enabled ? i18n("Firewall is disabled") : i18n("No firewall rules have been added")
             explanation: kcm.client.enabled ?
                 xi18nc("@info", "Click the <interface>Add Rule…</interface> button to add one") :
