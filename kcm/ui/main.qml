@@ -52,8 +52,89 @@ KCMUtils.ScrollViewKCM {
             icon.name: "help-about"
             text: i18n("About")
             onTriggered: root.showAboutView()
+        },
+        Kirigami.Action {
+            text: enabledCheckBox.text
+            checkable: true
+            checked: enabledCheckBox.checked
+            onTriggered: {
+                enabledCheckBox.toggle()
+            }
+            displayComponent: QQC2.Switch {
+                id: enabledCheckBox
+                property QtObject activeJob: null
+                text: {
+                    if (kcm.client.enabled) {
+                        return activeJob ? i18n("Disabling…") : i18n("Enabled")
+                    } else {
+                        return activeJob ? i18n("Enabling…") : i18n("Disabled")
+                    }
+                }
+                enabled: !activeJob && !connectEnableTimer.running
+
+                function bindCurrent() {
+                    checked = Qt.binding(function() {
+                        return kcm.client.enabled;
+                    });
+                }
+                Component.onCompleted: bindCurrent()
+
+                // FirewallD has a delay after the request to disable, to accept
+                // enable actions, but the delay does not return with the job result
+                // this is an ugly hack.
+                Timer {
+                    id: connectEnableTimer
+                    interval: 4000
+                    repeat: false
+                }
+                onToggled: {
+                    const enable = checked; // store the state on job begin, not when it finished
+
+                    const job = kcm.client.setEnabled(checked);
+                    if (job === null) {
+                        firewallInlineErrorMessage.text = i18n("The firewall application, please install %1", kcm.client.name);
+                        firewallInlineErrorMessage.visible = true;
+                        return;
+                    }
+                    enabledCheckBox.activeJob = job;
+                    job.result.connect(function () {
+                        enabledCheckBox.activeJob = null; // need to explicitly unset since gc will clear it non-deterministic
+                        bindCurrent();
+
+                        if (job.error && job.error !== 4) {
+                            console.log(job.errorString);
+                            var errorString = job.errorString;
+                            // Firewalld is sending a typo to us.
+                            if (errorString.indexOf("Permission denied") !== -1) {
+                                errorString = i18n("Permission denied");
+                            }
+
+                            if (errorString.indexOf("unable to initialize table") !== -1) {
+                                firewallInlineErrorMessage.text = i18n("You recently updated your kernel. Iptables is failing to initialize, please reboot.")
+                            } else {
+                                firewallInlineErrorMessage.text = enabled
+                                ? i18n("Error enabling firewall: %1", errorString)
+                                : i18n("Error disabling firewall: %1", errorString)
+                            }
+                            firewallInlineErrorMessage.visible = true;
+                        }
+                        if (!enable && !job.error) {
+                            connectEnableTimer.start();
+                        }
+                    });
+                    job.start();
+                }
+
+                InlineBusyIndicator {
+                    anchors.centerIn: parent.indicator
+                    z: 999
+                    horizontalAlignment: Qt.AlignHCenter
+                    running: enabledCheckBox.activeJob !== null || connectEnableTimer.running
+                }
+            }
         }
     ]
+
     Kirigami.OverlaySheet {
         id: drawer
 
@@ -155,81 +236,6 @@ KCMUtils.ScrollViewKCM {
             type: Kirigami.MessageType.Error
         }
         Kirigami.FormLayout {
-            RowLayout {
-                Kirigami.FormData.label: i18n("Firewall Status:")
-                QQC2.Switch {
-                    id: enabledCheckBox
-                    property QtObject activeJob: null
-                    text: {
-                        if (kcm.client.enabled) {
-                            return activeJob ? i18n("Disabling…") : i18n("Enabled")
-                        } else {
-                            return activeJob ? i18n("Enabling…") : i18n("Disabled")
-                        }
-                    }
-                    enabled: !activeJob && !connectEnableTimer.running
-
-                    function bindCurrent() {
-                        checked = Qt.binding(function() {
-                            return kcm.client.enabled;
-                        });
-                    }
-                    Component.onCompleted: bindCurrent()
-
-                    // FirewallD has a delay after the request to disable, to accept
-                    // enable actions, but the delay does not return with the job result
-                    // this is an ugly hack.
-                    Timer {
-                        id: connectEnableTimer
-                        interval: 4000
-                        repeat: false
-                    }
-
-                    onToggled: {
-                        const enable = checked; // store the state on job begin, not when it finished
-
-                        const job = kcm.client.setEnabled(checked);
-                        if (job === null) {
-                            firewallInlineErrorMessage.text = i18n("The firewall application, please install %1", kcm.client.name);
-                            firewallInlineErrorMessage.visible = true;
-                            return;
-                        }
-                        enabledCheckBox.activeJob = job;
-                        job.result.connect(function () {
-                            enabledCheckBox.activeJob = null; // need to explicitly unset since gc will clear it non-deterministic
-                            bindCurrent();
-
-                            if (job.error && job.error !== 4) {
-                                console.log(job.errorString);
-                                var errorString = job.errorString;
-                                // Firewalld is sending a typo to us.
-                                if (errorString.indexOf("Permission denied") !== -1) {
-                                    errorString = i18n("Permission denied");
-                                }
-
-                                if (errorString.indexOf("unable to initialize table") !== -1) {
-                                    firewallInlineErrorMessage.text = i18n("You recently updated your kernel. Iptables is failing to initialize, please reboot.")
-                                } else {
-                                    firewallInlineErrorMessage.text = enabled
-                                        ? i18n("Error enabling firewall: %1", errorString)
-                                        : i18n("Error disabling firewall: %1", errorString)
-                                }
-                                firewallInlineErrorMessage.visible = true;
-                            }
-                            if (!enable && !job.error) {
-                                connectEnableTimer.start();
-                            }
-                        });
-                        job.start();
-                    }
-                }
-
-                InlineBusyIndicator {
-                    Layout.fillHeight: true
-                    running: enabledCheckBox.activeJob !== null || connectEnableTimer.running
-                }
-            }
-
             Repeater {
                 model: [
                     {label: i18n("Default Incoming Policy:"), key: "Incoming"},
