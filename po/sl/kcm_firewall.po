@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-13 00:39+0000\n"
+"POT-Creation-Date: 2024-02-27 00:39+0000\n"
 "PO-Revision-Date: 2023-11-28 09:43+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -447,21 +447,6 @@ msgstr "NTP"
 msgid "CUPS"
 msgstr "CUPS"
 
-#: ui/About.qml:25
-#, kde-format
-msgid "About Firewall"
-msgstr "O programu Firewall"
-
-#: ui/About.qml:32
-#, kde-format
-msgid "Backend:"
-msgstr "Zaledje:"
-
-#: ui/About.qml:39
-#, kde-format
-msgid "Version:"
-msgstr "Verzija:"
-
 #: ui/AdvancedRuleEdit.qml:31 ui/SimpleRuleEdit.qml:29
 #, kde-format
 msgid "Policy:"
@@ -584,77 +569,54 @@ msgstr "Program čaka do izteka poskusa povezave, čez nekaj časa."
 msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr "Ustvari takojšnje in zelo informativno sporočilo 'Povezava zavrnjena'"
 
-#: ui/main.qml:43
+#: ui/main.qml:33
 #, kde-format
-msgid "Create A New Firewall Rule"
-msgstr "Ustvari novo pravilo vdorobrana"
+msgid "Add Rule…"
+msgstr "Dodaj pravilo…"
 
-#: ui/main.qml:43
+#: ui/main.qml:41
 #, kde-format
-msgid "Edit Firewall Rule"
-msgstr "Uredi pravilo vdorobrana"
+msgctxt "'view' is being used as a verb here"
+msgid "View Connections"
+msgstr "Poglej povezave"
 
-#: ui/main.qml:66 ui/main.qml:245 ui/main.qml:369
+#: ui/main.qml:47
 #, kde-format
-msgid "Please restart plasma firewall, the backend disconnected."
-msgstr "Ponovno zaženi vdorobran, zaledje je odklopljeno."
+msgctxt "'view' is being used as a verb here"
+msgid "View Logs"
+msgstr "Poglej dnevnike"
 
-#: ui/main.qml:80 ui/ViewBase.qml:112
-#, kde-format
-msgid "Error creating rule: %1"
-msgstr "Napaka pri ustvarjanju pravila: %1"
-
-#: ui/main.qml:82
-#, kde-format
-msgid "Error updating rule: %1"
-msgstr "Napaka pri osveževanju pravila: %1"
-
-#: ui/main.qml:107
-#, kde-format
-msgid "Create"
-msgstr "Ustvari"
-
-#: ui/main.qml:107
-#, kde-format
-msgid "Save"
-msgstr "Shrani"
-
-#: ui/main.qml:131
-#, kde-format
-msgid "Firewall Status:"
-msgstr "Stanje vdorobrana:"
-
-#: ui/main.qml:137
+#: ui/main.qml:63
 #, kde-format
 msgid "Disabling…"
 msgstr "Onemogočam…"
 
-#: ui/main.qml:137
+#: ui/main.qml:63
 #, kde-format
 msgid "Enabled"
 msgstr "Omogočeno"
 
-#: ui/main.qml:139
+#: ui/main.qml:65
 #, kde-format
 msgid "Enabling…"
 msgstr "Omogočam…"
 
-#: ui/main.qml:139
+#: ui/main.qml:65
 #, kde-format
 msgid "Disabled"
 msgstr "Onemogočeno"
 
-#: ui/main.qml:165
+#: ui/main.qml:90
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr "Aplikacija vdorobrana, prosim namestite %1"
 
-#: ui/main.qml:179
+#: ui/main.qml:104
 #, kde-format
 msgid "Permission denied"
 msgstr "Dovoljenje zavrnjeno"
 
-#: ui/main.qml:183
+#: ui/main.qml:108
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
@@ -663,99 +625,131 @@ msgstr ""
 "Pred kratkim ste osvežili kernel. Ni mogoče nastaviti začetne vrednosti "
 "Iptables, prosim za ponovni zagon računalnika."
 
-#: ui/main.qml:186
+#: ui/main.qml:111
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr "Napaka pri omogočanju vdorobrana: %1"
 
-#: ui/main.qml:187
+#: ui/main.qml:112
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr "Napaka pri onemogočanju vdorobrana: %1"
 
-#: ui/main.qml:207
+#: ui/main.qml:147
+#, kde-format
+msgid "Create A New Firewall Rule"
+msgstr "Ustvari novo pravilo vdorobrana"
+
+#: ui/main.qml:147
+#, kde-format
+msgid "Edit Firewall Rule"
+msgstr "Uredi pravilo vdorobrana"
+
+#: ui/main.qml:170 ui/main.qml:291 ui/main.qml:415
+#, kde-format
+msgid "Please restart plasma firewall, the backend disconnected."
+msgstr "Ponovno zaženi vdorobran, zaledje je odklopljeno."
+
+#: ui/main.qml:184 ui/ViewBase.qml:112
+#, kde-format
+msgid "Error creating rule: %1"
+msgstr "Napaka pri ustvarjanju pravila: %1"
+
+#: ui/main.qml:186
+#, kde-format
+msgid "Error updating rule: %1"
+msgstr "Napaka pri osveževanju pravila: %1"
+
+#: ui/main.qml:211
+#, kde-format
+msgid "Create"
+msgstr "Ustvari"
+
+#: ui/main.qml:211
+#, kde-format
+msgid "Save"
+msgstr "Shrani"
+
+#: ui/main.qml:238
+#, fuzzy, kde-format
+#| msgid "Firewall Status:"
+msgid "Firewall type:"
+msgstr "Stanje vdorobrana:"
+
+#: ui/main.qml:246
+#, fuzzy, kde-format
+#| msgid "firewalld %1"
+msgctxt "@info"
+msgid "Firewall version: %1"
+msgstr "firewalld %1"
+
+#: ui/main.qml:253
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "Privzeta politika dohodnega prometa:"
 
-#: ui/main.qml:208
+#: ui/main.qml:254
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "Privzeta politika odhodnega prometa:"
 
-#: ui/main.qml:255
+#: ui/main.qml:301
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Napaka pri spremembi politike: %1"
 
-#: ui/main.qml:360
+#: ui/main.qml:406
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Uredi pravilo"
 
-#: ui/main.qml:380
+#: ui/main.qml:426
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Napaka pri odstranjevanju pravila: %1"
 
-#: ui/main.qml:387
+#: ui/main.qml:433
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Odstrani pravilo"
 
-#: ui/main.qml:411
+#: ui/main.qml:458
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "Vdorobran je onemogočen"
 
-#: ui/main.qml:411
+#: ui/main.qml:458
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Ni bilo dodanega nobenega pravila vdorobrana"
 
-#: ui/main.qml:413
-#, kde-kuit-format
+#: ui/main.qml:460
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "Click the <interface>Add Rule…</interface> button below to add one"
 msgctxt "@info"
-msgid "Click the <interface>Add Rule…</interface> button below to add one"
+msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr "Kliknite gumb <interface>Dodaj pravilo…</interface> za dodajanje"
 
-#: ui/main.qml:414
-#, kde-kuit-format
+#: ui/main.qml:461
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Enable the firewall with the <interface>Firewall Status</interface> "
+#| "checkbox above, and then click the <interface>Add Rule…</interface> "
+#| "button below to add one"
 msgctxt "@info"
 msgid ""
-"Enable the firewall with the <interface>Firewall Status</interface> checkbox "
-"above, and then click the <interface>Add Rule…</interface> button below to "
-"add one"
+"Enable the firewall with the <interface>Firewall Status</interface> switch, "
+"and then click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
 "Omogočite vdorobran z rubriko <interface>Stanje vdorobrana</interface> "
 "zgoraj nato pa kliknite gumb <interface>Dodaj pravilo…</interface>, da "
 "pravilo dodate"
 
-#: ui/main.qml:420
-#, kde-format
-msgctxt "'view' is being used as a verb here"
-msgid "View Connections"
-msgstr "Poglej povezave"
-
-#: ui/main.qml:425
-#, kde-format
-msgctxt "'view' is being used as a verb here"
-msgid "View Logs"
-msgstr "Poglej dnevnike"
-
-#: ui/main.qml:436
-#, kde-format
-msgid "Add Rule…"
-msgstr "Dodaj pravilo…"
-
-#: ui/main.qml:445
-#, kde-format
-msgid "About"
-msgstr "O programu"
-
-#: ui/main.qml:452
+#: ui/main.qml:467
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Namestite vdorobran kot npr. ufw ali firewalld"
@@ -799,6 +793,18 @@ msgstr "Aplikacija:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Povezava na črnem seznamu"
+
+#~ msgid "About Firewall"
+#~ msgstr "O programu Firewall"
+
+#~ msgid "Backend:"
+#~ msgstr "Zaledje:"
+
+#~ msgid "Version:"
+#~ msgstr "Verzija:"
+
+#~ msgid "About"
+#~ msgstr "O programu"
 
 #~ msgctxt "@title"
 #~ msgid "Configure Firewall"

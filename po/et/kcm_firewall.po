@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-13 00:39+0000\n"
+"POT-Creation-Date: 2024-02-27 00:39+0000\n"
 "PO-Revision-Date: 2020-10-25 21:58+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -461,23 +461,6 @@ msgstr "NTP"
 msgid "CUPS"
 msgstr "CUPS"
 
-#: ui/About.qml:25
-#, fuzzy, kde-format
-#| msgid "Configure Firewall"
-msgid "About Firewall"
-msgstr "Tulemüüri seadistamine"
-
-#: ui/About.qml:32
-#, kde-format
-msgid "Backend:"
-msgstr ""
-
-#: ui/About.qml:39
-#, fuzzy, kde-format
-#| msgid "IP Version:"
-msgid "Version:"
-msgstr "IP versioon:"
-
 #: ui/AdvancedRuleEdit.qml:31 ui/SimpleRuleEdit.qml:29
 #, fuzzy, kde-format
 msgid "Policy:"
@@ -602,80 +585,58 @@ msgstr "Laseb programmil oodata kuni ühenduskatse veidi aja pärast aegub."
 msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr "Väljastab viivitamata väga informatiivse teate \"Ühendusest keelduti\""
 
-#: ui/main.qml:43
+#: ui/main.qml:33
 #, fuzzy, kde-format
-#| msgid "Create New Firewall Rule"
-msgid "Create A New Firewall Rule"
-msgstr "Uue tulemüüri reegli loomine"
+msgid "Add Rule…"
+msgstr "Lisa reegel"
 
-#: ui/main.qml:43
-#, kde-format
-msgid "Edit Firewall Rule"
-msgstr "Tulemüüri reegli muutmine"
+#: ui/main.qml:41
+#, fuzzy, kde-format
+#| msgid "New Connections"
+msgctxt "'view' is being used as a verb here"
+msgid "View Connections"
+msgstr "Uued ühendused"
 
-#: ui/main.qml:66 ui/main.qml:245 ui/main.qml:369
-#, kde-format
-msgid "Please restart plasma firewall, the backend disconnected."
-msgstr ""
+#: ui/main.qml:47
+#, fuzzy, kde-format
+#| msgid "Firewall Logs"
+msgctxt "'view' is being used as a verb here"
+msgid "View Logs"
+msgstr "Tulemüüri logid"
 
-#: ui/main.qml:80 ui/ViewBase.qml:112
-#, kde-format
-msgid "Error creating rule: %1"
-msgstr "Tõrge reegli loomisel: %1"
-
-#: ui/main.qml:82
-#, kde-format
-msgid "Error updating rule: %1"
-msgstr "Tõrge reegli uuendamisel: %1"
-
-#: ui/main.qml:107
-#, kde-format
-msgid "Create"
-msgstr "Loo"
-
-#: ui/main.qml:107
-#, kde-format
-msgid "Save"
-msgstr "Salvesta"
-
-#: ui/main.qml:131
-#, kde-format
-msgid "Firewall Status:"
-msgstr "Tulemüüri olek:"
-
-#: ui/main.qml:137
+#: ui/main.qml:63
 #, fuzzy, kde-format
 #| msgid "Enabled"
 msgid "Disabling…"
 msgstr "Sisselülitatud"
 
-#: ui/main.qml:137
+#: ui/main.qml:63
 #, kde-format
 msgid "Enabled"
 msgstr "Sisselülitatud"
 
-#: ui/main.qml:139
+#: ui/main.qml:65
 #, kde-format
 msgid "Enabling…"
 msgstr ""
 
-#: ui/main.qml:139
+#: ui/main.qml:65
 #, fuzzy, kde-format
 #| msgid "Enabled"
 msgid "Disabled"
 msgstr "Sisselülitatud"
 
-#: ui/main.qml:165
+#: ui/main.qml:90
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr "Palun paigalda tulemüürirakendus %1"
 
-#: ui/main.qml:179
+#: ui/main.qml:104
 #, kde-format
 msgid "Permission denied"
 msgstr ""
 
-#: ui/main.qml:183
+#: ui/main.qml:108
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
@@ -684,100 +645,124 @@ msgstr ""
 "Iptables'i initsialiseerimine nurjus. Kuna oled hiljuti kernelit uuendanud, "
 "taaskäivita palun arvuti."
 
-#: ui/main.qml:186
+#: ui/main.qml:111
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr "Tõrge tulemüüri sisselülitamisel: %1"
 
-#: ui/main.qml:187
+#: ui/main.qml:112
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr "Tõrge tulemüüri väljalülitamisel: %1"
 
-#: ui/main.qml:207
+#: ui/main.qml:147
+#, fuzzy, kde-format
+#| msgid "Create New Firewall Rule"
+msgid "Create A New Firewall Rule"
+msgstr "Uue tulemüüri reegli loomine"
+
+#: ui/main.qml:147
+#, kde-format
+msgid "Edit Firewall Rule"
+msgstr "Tulemüüri reegli muutmine"
+
+#: ui/main.qml:170 ui/main.qml:291 ui/main.qml:415
+#, kde-format
+msgid "Please restart plasma firewall, the backend disconnected."
+msgstr ""
+
+#: ui/main.qml:184 ui/ViewBase.qml:112
+#, kde-format
+msgid "Error creating rule: %1"
+msgstr "Tõrge reegli loomisel: %1"
+
+#: ui/main.qml:186
+#, kde-format
+msgid "Error updating rule: %1"
+msgstr "Tõrge reegli uuendamisel: %1"
+
+#: ui/main.qml:211
+#, kde-format
+msgid "Create"
+msgstr "Loo"
+
+#: ui/main.qml:211
+#, kde-format
+msgid "Save"
+msgstr "Salvesta"
+
+#: ui/main.qml:238
+#, fuzzy, kde-format
+#| msgid "Firewall Status:"
+msgid "Firewall type:"
+msgstr "Tulemüüri olek:"
+
+#: ui/main.qml:246
+#, fuzzy, kde-format
+#| msgid "firewalld %1"
+msgctxt "@info"
+msgid "Firewall version: %1"
+msgstr "Firewalld %1"
+
+#: ui/main.qml:253
 #, fuzzy, kde-format
 msgid "Default Incoming Policy:"
 msgstr "Sisenevate ühenduste vaikereegel:"
 
-#: ui/main.qml:208
+#: ui/main.qml:254
 #, fuzzy, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "Väljuvate ühenduste vaikereegel:"
 
-#: ui/main.qml:255
+#: ui/main.qml:301
 #, fuzzy, kde-format
 msgid "Error changing policy: %1"
 msgstr "Viga reegli muutmisel: %1"
 
-#: ui/main.qml:360
+#: ui/main.qml:406
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Muuda reeglit"
 
-#: ui/main.qml:380
+#: ui/main.qml:426
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Tõrge reegli eemaldamisel: %1"
 
-#: ui/main.qml:387
+#: ui/main.qml:433
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Eemalda reegel"
 
-#: ui/main.qml:411
+#: ui/main.qml:458
 #, fuzzy, kde-format
 #| msgid "Using %1 as firewall backend"
 msgid "Firewall is disabled"
 msgstr "Tulemüüri taustaprogrammina on kasutusel %1"
 
-#: ui/main.qml:411
+#: ui/main.qml:458
 #, fuzzy, kde-format
 #| msgid "No firewall rules have been added."
 msgid "No firewall rules have been added"
 msgstr "Ühtegi tulemüürireeglit pole lisatud."
 
-#: ui/main.qml:413
+#: ui/main.qml:460
 #, kde-kuit-format
 msgctxt "@info"
-msgid "Click the <interface>Add Rule…</interface> button below to add one"
+msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
 
-#: ui/main.qml:414
+#: ui/main.qml:461
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
-"Enable the firewall with the <interface>Firewall Status</interface> checkbox "
-"above, and then click the <interface>Add Rule…</interface> button below to "
-"add one"
+"Enable the firewall with the <interface>Firewall Status</interface> switch, "
+"and then click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
 
-#: ui/main.qml:420
-#, fuzzy, kde-format
-#| msgid "New Connections"
-msgctxt "'view' is being used as a verb here"
-msgid "View Connections"
-msgstr "Uued ühendused"
-
-#: ui/main.qml:425
-#, fuzzy, kde-format
-#| msgid "Firewall Logs"
-msgctxt "'view' is being used as a verb here"
-msgid "View Logs"
-msgstr "Tulemüüri logid"
-
-#: ui/main.qml:436
-#, fuzzy, kde-format
-msgid "Add Rule…"
-msgstr "Lisa reegel"
-
-#: ui/main.qml:445
-#, kde-format
-msgid "About"
-msgstr ""
-
-#: ui/main.qml:452
+#: ui/main.qml:467
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Palun paigalda esmalt mõni tulemüür, näiteks UFW või Firewalld"
@@ -823,6 +808,16 @@ msgstr "Toiming"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Lisa ühendus keeluloendisse"
+
+#, fuzzy
+#~| msgid "Configure Firewall"
+#~ msgid "About Firewall"
+#~ msgstr "Tulemüüri seadistamine"
+
+#, fuzzy
+#~| msgid "IP Version:"
+#~ msgid "Version:"
+#~ msgstr "IP versioon:"
 
 #, fuzzy
 #~| msgid "Configure Firewall"

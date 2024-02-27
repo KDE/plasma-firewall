@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-13 00:39+0000\n"
+"POT-Creation-Date: 2024-02-27 00:39+0000\n"
 "PO-Revision-Date: 2023-11-28 17:32+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -450,21 +450,6 @@ msgstr "NTP"
 msgid "CUPS"
 msgstr "CUPS"
 
-#: ui/About.qml:25
-#, kde-format
-msgid "About Firewall"
-msgstr "Про брандмауер"
-
-#: ui/About.qml:32
-#, kde-format
-msgid "Backend:"
-msgstr "Модуль:"
-
-#: ui/About.qml:39
-#, kde-format
-msgid "Version:"
-msgstr "Версія:"
-
 #: ui/AdvancedRuleEdit.qml:31 ui/SimpleRuleEdit.qml:29
 #, kde-format
 msgid "Policy:"
@@ -590,78 +575,54 @@ msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr ""
 "Створює негайне і дуже інформативне повідомлення «У з'єднанні відмовлено»"
 
-#: ui/main.qml:43
+#: ui/main.qml:33
 #, kde-format
-msgid "Create A New Firewall Rule"
-msgstr "Створення правила брандмауера"
+msgid "Add Rule…"
+msgstr "Додати правило…"
 
-#: ui/main.qml:43
+#: ui/main.qml:41
 #, kde-format
-msgid "Edit Firewall Rule"
-msgstr "Редагування правила брандмауера"
+msgctxt "'view' is being used as a verb here"
+msgid "View Connections"
+msgstr "Переглянути з'єднання"
 
-#: ui/main.qml:66 ui/main.qml:245 ui/main.qml:369
+#: ui/main.qml:47
 #, kde-format
-msgid "Please restart plasma firewall, the backend disconnected."
-msgstr ""
-"Будь ласка, перезапустіть брандмауер Плазми — модуль обробки від'єднано."
+msgctxt "'view' is being used as a verb here"
+msgid "View Logs"
+msgstr "Переглянути журнал"
 
-#: ui/main.qml:80 ui/ViewBase.qml:112
-#, kde-format
-msgid "Error creating rule: %1"
-msgstr "Помилка під час спроби створити правило: %1"
-
-#: ui/main.qml:82
-#, kde-format
-msgid "Error updating rule: %1"
-msgstr "Помилка під час спроби оновити правило: %1"
-
-#: ui/main.qml:107
-#, kde-format
-msgid "Create"
-msgstr "Створити"
-
-#: ui/main.qml:107
-#, kde-format
-msgid "Save"
-msgstr "Зберегти"
-
-#: ui/main.qml:131
-#, kde-format
-msgid "Firewall Status:"
-msgstr "Стан брандмауера:"
-
-#: ui/main.qml:137
+#: ui/main.qml:63
 #, kde-format
 msgid "Disabling…"
 msgstr "Вимикання…"
 
-#: ui/main.qml:137
+#: ui/main.qml:63
 #, kde-format
 msgid "Enabled"
 msgstr "Увімкнено"
 
-#: ui/main.qml:139
+#: ui/main.qml:65
 #, kde-format
 msgid "Enabling…"
 msgstr "Вмикання…"
 
-#: ui/main.qml:139
+#: ui/main.qml:65
 #, kde-format
 msgid "Disabled"
 msgstr "Вимкнено"
 
-#: ui/main.qml:165
+#: ui/main.qml:90
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr "Програма-брандмауер. Будь ласка, встановіть %1"
 
-#: ui/main.qml:179
+#: ui/main.qml:104
 #, kde-format
 msgid "Permission denied"
 msgstr "Відмовлено у доступі"
 
-#: ui/main.qml:183
+#: ui/main.qml:108
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
@@ -670,101 +631,134 @@ msgstr ""
 "Вами нещодавно оновлено ядро системи. У результаті не вдається "
 "ініціалізувати iptables. Будь ласка, перезавантажте систему."
 
-#: ui/main.qml:186
+#: ui/main.qml:111
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr "Помилка під час спроби увімкнути брандмауер: %1"
 
-#: ui/main.qml:187
+#: ui/main.qml:112
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr "Помилка під час спроби вимкнути брандмауер: %1"
 
-#: ui/main.qml:207
+#: ui/main.qml:147
+#, kde-format
+msgid "Create A New Firewall Rule"
+msgstr "Створення правила брандмауера"
+
+#: ui/main.qml:147
+#, kde-format
+msgid "Edit Firewall Rule"
+msgstr "Редагування правила брандмауера"
+
+#: ui/main.qml:170 ui/main.qml:291 ui/main.qml:415
+#, kde-format
+msgid "Please restart plasma firewall, the backend disconnected."
+msgstr ""
+"Будь ласка, перезапустіть брандмауер Плазми — модуль обробки від'єднано."
+
+#: ui/main.qml:184 ui/ViewBase.qml:112
+#, kde-format
+msgid "Error creating rule: %1"
+msgstr "Помилка під час спроби створити правило: %1"
+
+#: ui/main.qml:186
+#, kde-format
+msgid "Error updating rule: %1"
+msgstr "Помилка під час спроби оновити правило: %1"
+
+#: ui/main.qml:211
+#, kde-format
+msgid "Create"
+msgstr "Створити"
+
+#: ui/main.qml:211
+#, kde-format
+msgid "Save"
+msgstr "Зберегти"
+
+#: ui/main.qml:238
+#, fuzzy, kde-format
+#| msgid "Firewall Status:"
+msgid "Firewall type:"
+msgstr "Стан брандмауера:"
+
+#: ui/main.qml:246
+#, fuzzy, kde-format
+#| msgid "firewalld %1"
+msgctxt "@info"
+msgid "Firewall version: %1"
+msgstr "firewalld %1"
+
+#: ui/main.qml:253
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "Типові правила для вхідних:"
 
-#: ui/main.qml:208
+#: ui/main.qml:254
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "Типові правила для вихідних:"
 
-#: ui/main.qml:255
+#: ui/main.qml:301
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Помилка під час спроби змінити правила: %1"
 
-#: ui/main.qml:360
+#: ui/main.qml:406
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Змінити правило"
 
-#: ui/main.qml:380
+#: ui/main.qml:426
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Помилка під час спроби вилучення правила: %1"
 
-#: ui/main.qml:387
+#: ui/main.qml:433
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Вилучити правило"
 
-#: ui/main.qml:411
+#: ui/main.qml:458
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "Брандмауер вимкнено"
 
-#: ui/main.qml:411
+#: ui/main.qml:458
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Не було додано жодного правила брандмауера"
 
-#: ui/main.qml:413
-#, kde-kuit-format
+#: ui/main.qml:460
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "Click the <interface>Add Rule…</interface> button below to add one"
 msgctxt "@info"
-msgid "Click the <interface>Add Rule…</interface> button below to add one"
+msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
 "Натисніть розташовану нижче кнопку <interface>Додати правило…</interface>, "
 "щоб додати правило"
 
-#: ui/main.qml:414
-#, kde-kuit-format
+#: ui/main.qml:461
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Enable the firewall with the <interface>Firewall Status</interface> "
+#| "checkbox above, and then click the <interface>Add Rule…</interface> "
+#| "button below to add one"
 msgctxt "@info"
 msgid ""
-"Enable the firewall with the <interface>Firewall Status</interface> checkbox "
-"above, and then click the <interface>Add Rule…</interface> button below to "
-"add one"
+"Enable the firewall with the <interface>Firewall Status</interface> switch, "
+"and then click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
 "Увімкніть брандмауер за допомогою розташованого вище пункту <interface>Стан "
 "брандмауера</interface>, потім натисніть розташовану нижче кнопку "
 "<interface>Додати правило...</interface>, щоб додати правило"
 
-#: ui/main.qml:420
-#, kde-format
-msgctxt "'view' is being used as a verb here"
-msgid "View Connections"
-msgstr "Переглянути з'єднання"
-
-#: ui/main.qml:425
-#, kde-format
-msgctxt "'view' is being used as a verb here"
-msgid "View Logs"
-msgstr "Переглянути журнал"
-
-#: ui/main.qml:436
-#, kde-format
-msgid "Add Rule…"
-msgstr "Додати правило…"
-
-#: ui/main.qml:445
-#, kde-format
-msgid "About"
-msgstr "Про програму"
-
-#: ui/main.qml:452
+#: ui/main.qml:467
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Будь ласка, встановіть брандмауер, наприклад ufw або firewalld"
@@ -808,6 +802,18 @@ msgstr "Програма:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Додати з'єднання до «чорного» списку"
+
+#~ msgid "About Firewall"
+#~ msgstr "Про брандмауер"
+
+#~ msgid "Backend:"
+#~ msgstr "Модуль:"
+
+#~ msgid "Version:"
+#~ msgstr "Версія:"
+
+#~ msgid "About"
+#~ msgstr "Про програму"
 
 #~ msgctxt "@title"
 #~ msgid "Configure Firewall"

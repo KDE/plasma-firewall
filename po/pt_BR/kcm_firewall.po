@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-13 00:39+0000\n"
+"POT-Creation-Date: 2024-02-27 00:39+0000\n"
 "PO-Revision-Date: 2023-12-01 17:17-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -447,21 +447,6 @@ msgstr "NTP"
 msgid "CUPS"
 msgstr "CUPS"
 
-#: ui/About.qml:25
-#, kde-format
-msgid "About Firewall"
-msgstr "Sobre o Firewall"
-
-#: ui/About.qml:32
-#, kde-format
-msgid "Backend:"
-msgstr "Infraestrutura:"
-
-#: ui/About.qml:39
-#, kde-format
-msgid "Version:"
-msgstr "Versão:"
-
 #: ui/AdvancedRuleEdit.qml:31 ui/SimpleRuleEdit.qml:29
 #, kde-format
 msgid "Policy:"
@@ -588,77 +573,54 @@ msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr ""
 "Gera uma mensagem imediata e bastante informativa de \"Conexão negada\""
 
-#: ui/main.qml:43
+#: ui/main.qml:33
 #, kde-format
-msgid "Create A New Firewall Rule"
-msgstr "Criar uma nova regra de firewall"
+msgid "Add Rule…"
+msgstr "Adicionar regra..."
 
-#: ui/main.qml:43
+#: ui/main.qml:41
 #, kde-format
-msgid "Edit Firewall Rule"
-msgstr "Editar regra de firewall"
+msgctxt "'view' is being used as a verb here"
+msgid "View Connections"
+msgstr "Ver conexões"
 
-#: ui/main.qml:66 ui/main.qml:245 ui/main.qml:369
+#: ui/main.qml:47
 #, kde-format
-msgid "Please restart plasma firewall, the backend disconnected."
-msgstr "Reinicie o firewall do Plasma, a infraestrutura desconectou."
+msgctxt "'view' is being used as a verb here"
+msgid "View Logs"
+msgstr "Ver registros"
 
-#: ui/main.qml:80 ui/ViewBase.qml:112
-#, kde-format
-msgid "Error creating rule: %1"
-msgstr "Erro ao criar regra: %1"
-
-#: ui/main.qml:82
-#, kde-format
-msgid "Error updating rule: %1"
-msgstr "Erro ao atualizar regra: %1"
-
-#: ui/main.qml:107
-#, kde-format
-msgid "Create"
-msgstr "Criar"
-
-#: ui/main.qml:107
-#, kde-format
-msgid "Save"
-msgstr "Salvar"
-
-#: ui/main.qml:131
-#, kde-format
-msgid "Firewall Status:"
-msgstr "Estado do firewall:"
-
-#: ui/main.qml:137
+#: ui/main.qml:63
 #, kde-format
 msgid "Disabling…"
 msgstr "Desabilitando..."
 
-#: ui/main.qml:137
+#: ui/main.qml:63
 #, kde-format
 msgid "Enabled"
 msgstr "Ativado"
 
-#: ui/main.qml:139
+#: ui/main.qml:65
 #, kde-format
 msgid "Enabling…"
 msgstr "Habilitando..."
 
-#: ui/main.qml:139
+#: ui/main.qml:65
 #, kde-format
 msgid "Disabled"
 msgstr "Desabilitado"
 
-#: ui/main.qml:165
+#: ui/main.qml:90
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr "O aplicativo do firewall, instale %1"
 
-#: ui/main.qml:179
+#: ui/main.qml:104
 #, kde-format
 msgid "Permission denied"
 msgstr "Permissão negada"
 
-#: ui/main.qml:183
+#: ui/main.qml:108
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
@@ -667,101 +629,133 @@ msgstr ""
 "O seu kernel foi atualizado recentemente. O iptables pode estar falhando "
 "para inicializar, reinicie o seu sistema."
 
-#: ui/main.qml:186
+#: ui/main.qml:111
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr "Erro ao ativar o firewall: %1"
 
-#: ui/main.qml:187
+#: ui/main.qml:112
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr "Erro ao desativar o firewall: %1"
 
-#: ui/main.qml:207
+#: ui/main.qml:147
+#, kde-format
+msgid "Create A New Firewall Rule"
+msgstr "Criar uma nova regra de firewall"
+
+#: ui/main.qml:147
+#, kde-format
+msgid "Edit Firewall Rule"
+msgstr "Editar regra de firewall"
+
+#: ui/main.qml:170 ui/main.qml:291 ui/main.qml:415
+#, kde-format
+msgid "Please restart plasma firewall, the backend disconnected."
+msgstr "Reinicie o firewall do Plasma, a infraestrutura desconectou."
+
+#: ui/main.qml:184 ui/ViewBase.qml:112
+#, kde-format
+msgid "Error creating rule: %1"
+msgstr "Erro ao criar regra: %1"
+
+#: ui/main.qml:186
+#, kde-format
+msgid "Error updating rule: %1"
+msgstr "Erro ao atualizar regra: %1"
+
+#: ui/main.qml:211
+#, kde-format
+msgid "Create"
+msgstr "Criar"
+
+#: ui/main.qml:211
+#, kde-format
+msgid "Save"
+msgstr "Salvar"
+
+#: ui/main.qml:238
+#, fuzzy, kde-format
+#| msgid "Firewall Status:"
+msgid "Firewall type:"
+msgstr "Estado do firewall:"
+
+#: ui/main.qml:246
+#, fuzzy, kde-format
+#| msgid "firewalld %1"
+msgctxt "@info"
+msgid "Firewall version: %1"
+msgstr "firewalld %1"
+
+#: ui/main.qml:253
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "Política padrão de entrada:"
 
-#: ui/main.qml:208
+#: ui/main.qml:254
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "Política padrão de saída:"
 
-#: ui/main.qml:255
+#: ui/main.qml:301
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Erro ao trocar de política: %1"
 
-#: ui/main.qml:360
+#: ui/main.qml:406
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Editar regra"
 
-#: ui/main.qml:380
+#: ui/main.qml:426
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Erro ao remover regra: %1"
 
-#: ui/main.qml:387
+#: ui/main.qml:433
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Remover regra"
 
-#: ui/main.qml:411
+#: ui/main.qml:458
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "O firewall está desabilitado"
 
-#: ui/main.qml:411
+#: ui/main.qml:458
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Nenhuma regra de firewall foi adicionada"
 
-#: ui/main.qml:413
-#, kde-kuit-format
+#: ui/main.qml:460
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "Click the <interface>Add Rule…</interface> button below to add one"
 msgctxt "@info"
-msgid "Click the <interface>Add Rule…</interface> button below to add one"
+msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
 "Clique no botão <interface>Adicionar regra...</interface> abaixo para "
 "adicionar uma regra"
 
-#: ui/main.qml:414
-#, kde-kuit-format
+#: ui/main.qml:461
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Enable the firewall with the <interface>Firewall Status</interface> "
+#| "checkbox above, and then click the <interface>Add Rule…</interface> "
+#| "button below to add one"
 msgctxt "@info"
 msgid ""
-"Enable the firewall with the <interface>Firewall Status</interface> checkbox "
-"above, and then click the <interface>Add Rule…</interface> button below to "
-"add one"
+"Enable the firewall with the <interface>Firewall Status</interface> switch, "
+"and then click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
 "Habilite o firewall marcando o <interface>Status do firewall</interface> "
 "acima e clique no botão <interface>Adicionar regra...</interface> abaixo "
 "para adicionar uma regra"
 
-#: ui/main.qml:420
-#, kde-format
-msgctxt "'view' is being used as a verb here"
-msgid "View Connections"
-msgstr "Ver conexões"
-
-#: ui/main.qml:425
-#, kde-format
-msgctxt "'view' is being used as a verb here"
-msgid "View Logs"
-msgstr "Ver registros"
-
-#: ui/main.qml:436
-#, kde-format
-msgid "Add Rule…"
-msgstr "Adicionar regra..."
-
-#: ui/main.qml:445
-#, kde-format
-msgid "About"
-msgstr "Sobre"
-
-#: ui/main.qml:452
+#: ui/main.qml:467
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Favor instalar um firewall como o ufw ou firewalld"
@@ -805,6 +799,18 @@ msgstr "Aplicativo:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Conexão de bloqueio"
+
+#~ msgid "About Firewall"
+#~ msgstr "Sobre o Firewall"
+
+#~ msgid "Backend:"
+#~ msgstr "Infraestrutura:"
+
+#~ msgid "Version:"
+#~ msgstr "Versão:"
+
+#~ msgid "About"
+#~ msgstr "Sobre"
 
 #~ msgctxt "@title"
 #~ msgid "Configure Firewall"
