@@ -1,14 +1,14 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
 #
 # Volkan Gezer <volkangezer@gmail.com>, 2022.
-# Emir SARI <emir_sari@icloud.com>, 2023.
+# SPDX-FileCopyrightText: 2023, 2024 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-27 00:39+0000\n"
-"PO-Revision-Date: 2023-11-28 20:17+0300\n"
+"PO-Revision-Date: 2024-02-27 12:57+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.11.70\n"
+"X-Generator: Lokalize 24.04.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -137,7 +137,7 @@ msgstr "Kural eklemek için geçersiz argümanlar geçirildi"
 #: backends/ufw/helper/helper.cpp:361
 #, kde-format
 msgid "An error occurred in command '%1': %2"
-msgstr "'%1' komutunda bir hata oluştu: %2"
+msgstr "‘%1’ komutunda bir hata oluştu: %2"
 
 #: backends/ufw/ufwclient.cpp:161
 #, kde-format
@@ -470,7 +470,7 @@ msgstr "Giden"
 #: ui/AdvancedRuleEdit.qml:59
 #, kde-format
 msgid "IP Version:"
-msgstr "IP Sürümü:"
+msgstr "IP sürümü:"
 
 #: ui/AdvancedRuleEdit.qml:62
 #, kde-format
@@ -568,7 +568,7 @@ msgstr ""
 #: ui/main.qml:26
 #, kde-format
 msgid "Produces an immediate and very informative 'Connection refused' message"
-msgstr "Ani ve bilgilendirici bir 'Bağlantı reddedildi' iletisi üretir"
+msgstr "Ani ve bilgilendirici bir 'Bağlantı reddedildi’ iletisi üretir"
 
 #: ui/main.qml:33
 #, kde-format
@@ -650,7 +650,7 @@ msgstr "Güvenlik Duvarı Kuralı Düzenle"
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr ""
-"Arka uç bağlantısı kesildi, lütfen Plasma Güvenlik Duvarı'nı yeniden "
+"Arka uç bağlantısı kesildi, lütfen Plasma Güvenlik Duvarı’nı yeniden "
 "başlatın."
 
 #: ui/main.qml:184 ui/ViewBase.qml:112
@@ -674,27 +674,25 @@ msgid "Save"
 msgstr "Kaydet"
 
 #: ui/main.qml:238
-#, fuzzy, kde-format
-#| msgid "Firewall Status:"
+#, kde-format
 msgid "Firewall type:"
-msgstr "Güvenlik Duvarı Durumu:"
+msgstr "Güvenlik duvarı türü:"
 
 #: ui/main.qml:246
-#, fuzzy, kde-format
-#| msgid "firewalld %1"
+#, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
-msgstr "firewalld %1"
+msgstr "Güvenlik duvarı sürümü: %1"
 
 #: ui/main.qml:253
 #, kde-format
 msgid "Default Incoming Policy:"
-msgstr "Öntanımlı Gelen Politikası:"
+msgstr "Öntanımlı gelen politikası:"
 
 #: ui/main.qml:254
 #, kde-format
 msgid "Default Outgoing Policy:"
-msgstr "Öntanımlı Giden Politikası:"
+msgstr "Öntanımlı giden politikası:"
 
 #: ui/main.qml:301
 #, kde-format
@@ -729,28 +727,21 @@ msgid "No firewall rules have been added"
 msgstr "Bir güvenlik duvarı kuralı eklenmedi"
 
 #: ui/main.qml:460
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click the <interface>Add Rule…</interface> button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
-"Eklemek için aşağıdaki <interface>Kural Ekle…</interface> düğmesine tıklayın"
+"Bir tane eklemek için <interface>Kural Ekle…</interface> düğmesine tıklayın"
 
 #: ui/main.qml:461
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule…</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Enable the firewall with the <interface>Firewall Status</interface> switch, "
 "and then click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
-"Yukarıdaki <interface>Güvenlik Duvarı Durumu</interface> onay kutusuyla "
-"güvenlik duvarını etkinleştirin ve ardından bir tane eklemek için aşağıdaki "
+"Yukarıdaki <interface>Güvenlik Duvarı Durumu</interface> anahtarıyla "
+"güvenlik duvarını etkinleştirin ve ardından bir tane eklemek için "
 "<interface>Kural Ekle…</interface> düğmesine tıklayın."
 
 #: ui/main.qml:467
@@ -776,12 +767,12 @@ msgstr "Tüm Paketler"
 #: ui/RuleEdit.qml:55 ui/RuleEdit.qml:62
 #, kde-format
 msgid "The default incoming policy is already '%1'."
-msgstr "Öntanımlı gelen politikası halihazırda '%1'."
+msgstr "Öntanımlı gelen politikası halihazırda ‘%1’."
 
 #: ui/RuleEdit.qml:56 ui/RuleEdit.qml:63
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
-msgstr "Öntanımlı giden politikası halihazırda '%1'."
+msgstr "Öntanımlı giden politikası halihazırda ‘%1’."
 
 #: ui/SimpleRuleEdit.qml:23
 #, kde-format

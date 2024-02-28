@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-27 00:39+0000\n"
-"PO-Revision-Date: 2024-01-05 21:11+0100\n"
+"PO-Revision-Date: 2024-02-27 21:53+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -673,17 +673,15 @@ msgid "Save"
 msgstr "Konservi"
 
 #: ui/main.qml:238
-#, fuzzy, kde-format
-#| msgid "Firewall Status:"
+#, kde-format
 msgid "Firewall type:"
-msgstr "Statuso de fajroŝirmilo:"
+msgstr "Tipo de fajroŝirmilo:"
 
 #: ui/main.qml:246
-#, fuzzy, kde-format
-#| msgid "firewalld %1"
+#, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
-msgstr "fajroŝirmilo %1"
+msgstr "Versio de fajroŝirmilo: %1"
 
 #: ui/main.qml:253
 #, kde-format
@@ -728,30 +726,22 @@ msgid "No firewall rules have been added"
 msgstr "Neniuj fajroŝirmilaj reguloj estis aldonitaj"
 
 #: ui/main.qml:460
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click the <interface>Add Rule…</interface> button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
-"Alklaku la suban butonon <interface>Aldoni Regulon...</interface> por aldoni "
-"unu"
+"Alklaku la butonon <interface>Aldoni Regulon…</interface> por aldoni unu"
 
 #: ui/main.qml:461
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule…</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Enable the firewall with the <interface>Firewall Status</interface> switch, "
 "and then click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
-"Ebligu la fajroŝirmilon per la markobutono <interface>Firewall Status</"
-"interface> supre, kaj poste alklaku la butonon <interface>Aldoni Regulon...</"
-"interface> sube por aldoni unu."
+"Ebligu la fajroŝirmilon per la ŝaltilo <interface>Firewall Status</"
+"interface>, kaj poste alklaku la butonon <interface>Aldoni Regulon…</"
+"interface> por aldoni unu."
 
 #: ui/main.qml:467
 #, kde-format
@@ -797,15 +787,3 @@ msgstr "Apliko:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Nigra Listo Konekto"
-
-#~ msgid "About Firewall"
-#~ msgstr "Pri Fajromuro"
-
-#~ msgid "Backend:"
-#~ msgstr "Backend:"
-
-#~ msgid "Version:"
-#~ msgstr "Versio:"
-
-#~ msgid "About"
-#~ msgstr "Pri"

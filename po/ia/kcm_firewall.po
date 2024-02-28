@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
 #
-# giovanni <g.sora@tiscali.it>, 2021, 2022, 2023.
+# giovanni <g.sora@tiscali.it>, 2021, 2022, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-27 00:39+0000\n"
-"PO-Revision-Date: 2023-11-28 08:49+0100\n"
+"PO-Revision-Date: 2024-02-27 09:55+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -676,17 +676,15 @@ msgid "Save"
 msgstr "Salveguarda"
 
 #: ui/main.qml:238
-#, fuzzy, kde-format
-#| msgid "Firewall Status:"
+#, kde-format
 msgid "Firewall type:"
-msgstr "Stato de Talia Foco (Firewall):"
+msgstr "Typo de Talia Foco (Firewall):"
 
 #: ui/main.qml:246
-#, fuzzy, kde-format
-#| msgid "firewalld %1"
+#, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
-msgstr "firewalld %1"
+msgstr "Version d4e talia foco (firewall): %1"
 
 #: ui/main.qml:253
 #, kde-format
@@ -731,29 +729,21 @@ msgid "No firewall rules have been added"
 msgstr "Necun regulas de talia foco ha essite addite"
 
 #: ui/main.qml:460
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click the <interface>Add Rule…</interface> button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
-msgstr ""
-"Clicca le button <interface>Adde regula...</interface> a basso per adder un"
+msgstr "Clicca le button <interface>Adde regula...</interface>  per adder un"
 
 #: ui/main.qml:461
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule…</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Enable the firewall with the <interface>Firewall Status</interface> switch, "
 "and then click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
-"Habilita le taliafoco (firewall) con le quadrato de selection "
-"<interface>Stato de Firewall (taliafoco)</interface> de supra, e depois "
-"clicca le button <interface>Adde Regula...</interface> a basso per adder un"
+"Habilita le taliafoco (firewall) con le quadrato de commutar "
+"<interface>Stato de Firewall (taliafoco)</interface>  e depois clicca le "
+"button <interface>Adde Regula...</interface>  per adder un"
 
 #: ui/main.qml:467
 #, kde-format

@@ -1,21 +1,20 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# SPDX-FileCopyrightText: 2024 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-27 00:39+0000\n"
-"PO-Revision-Date: 2024-01-27 22:28+0200\n"
+"PO-Revision-Date: 2024-02-27 22:07+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
+"Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Lokalize 23.08.4\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
 
@@ -670,17 +669,15 @@ msgid "Save"
 msgstr "שמירה"
 
 #: ui/main.qml:238
-#, fuzzy, kde-format
-#| msgid "Firewall Status:"
+#, kde-format
 msgid "Firewall type:"
-msgstr "מצב חומת אש:"
+msgstr "סוג חומת אש:"
 
 #: ui/main.qml:246
-#, fuzzy, kde-format
-#| msgid "firewalld %1"
+#, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
-msgstr "firewalld %1"
+msgstr "גרסת חומת אש: %1"
 
 #: ui/main.qml:253
 #, kde-format
@@ -725,29 +722,20 @@ msgid "No firewall rules have been added"
 msgstr "לא נוספו כללים לחומת האש"
 
 #: ui/main.qml:460
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click the <interface>Add Rule…</interface> button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
-msgstr ""
-"יש ללחוץ על כפתור <interface>הוספת כלל…</interface> להלן כדי להוסיף אחד כזה"
+msgstr "יש ללחוץ על כפתור <interface>הוספת כלל…</interface> כדי להוסיף אחד כזה"
 
 #: ui/main.qml:461
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule…</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Enable the firewall with the <interface>Firewall Status</interface> switch, "
 "and then click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
-"יש להפעיל את חומת האש עם תיבת הסימון <interface>מצב חומת אש</interface> "
-"שלעיל, ואז ללחוץ על הכפתור <interface>הוספת כלל…</interface> שלהלן כדי "
-"להוסיף אחד כזה"
+"יש להפעיל את חומת האש עם המתג <interface>מצב חומת אש</interface>, ואז ללחוץ "
+"על הכפתור <interface>הוספת כלל…</interface> כדי להוסיף אחד כזה"
 
 #: ui/main.qml:467
 #, kde-format
