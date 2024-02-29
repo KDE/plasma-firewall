@@ -3,13 +3,13 @@
 # Copyright (C) 2022 This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
 # Automatically generated, 2022.
-# SPDX-FileCopyrightText: 2022, 2023 Kisaragi Hiu <mail@kisaragi-hiu.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-27 00:39+0000\n"
-"PO-Revision-Date: 2023-11-29 19:16+0900\n"
+"PO-Revision-Date: 2024-02-29 02:48+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 24.04.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -670,17 +670,15 @@ msgid "Save"
 msgstr "儲存"
 
 #: ui/main.qml:238
-#, fuzzy, kde-format
-#| msgid "Firewall Status:"
+#, kde-format
 msgid "Firewall type:"
-msgstr "防火牆狀態："
+msgstr "防火牆類型："
 
 #: ui/main.qml:246
-#, fuzzy, kde-format
-#| msgid "firewalld %1"
+#, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
-msgstr "firewalld %1"
+msgstr "防火牆版本：%1"
 
 #: ui/main.qml:253
 #, kde-format
@@ -725,27 +723,20 @@ msgid "No firewall rules have been added"
 msgstr "尚未新增防火牆規則"
 
 #: ui/main.qml:460
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click the <interface>Add Rule…</interface> button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
-msgstr "點擊下方 <interface>新增規則…</interface> 按鈕來新增規則"
+msgstr "點擊 <interface>新增規則…</interface> 按鈕來新增規則"
 
 #: ui/main.qml:461
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule…</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Enable the firewall with the <interface>Firewall Status</interface> switch, "
 "and then click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
-"使用上方 <interface>防火牆狀態</interface> 選項啟用防火牆，再點擊下方 "
-"<interface>新增規則…</interface> 按鈕來新增規則"
+"使用 <interface>防火牆狀態</interface> 開關來啟用防火牆，再點擊 <interface>新"
+"增規則…</interface> 按鈕來新增規則"
 
 #: ui/main.qml:467
 #, kde-format

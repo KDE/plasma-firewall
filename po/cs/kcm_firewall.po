@@ -666,17 +666,15 @@ msgid "Save"
 msgstr "Uložit"
 
 #: ui/main.qml:238
-#, fuzzy, kde-format
-#| msgid "Firewall Status:"
+#, kde-format
 msgid "Firewall type:"
-msgstr "Stav firewallu:"
+msgstr ""
 
 #: ui/main.qml:246
-#, fuzzy, kde-format
-#| msgid "firewalld %1"
+#, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
-msgstr "firewall %1"
+msgstr ""
 
 #: ui/main.qml:253
 #, kde-format
@@ -721,14 +719,10 @@ msgid "No firewall rules have been added"
 msgstr "Nebyla přidána žádná pravidla firewallu"
 
 #: ui/main.qml:460
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click the <interface>Add Rule…</interface> button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
-"Klikněte na tlačítko <interface>Přidat pravidlo...</interface> níže pro "
-"přidání"
 
 #: ui/main.qml:461
 #, kde-kuit-format
@@ -782,15 +776,3 @@ msgstr "Aplikace:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Zakázat spojení"
-
-#~ msgid "About Firewall"
-#~ msgstr "O firewallu"
-
-#~ msgid "Backend:"
-#~ msgstr "Podpůrná vrstva:"
-
-#~ msgid "Version:"
-#~ msgstr "Verze:"
-
-#~ msgid "About"
-#~ msgstr "O aplikaci"

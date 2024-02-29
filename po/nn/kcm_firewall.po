@@ -811,15 +811,3 @@ msgstr "Program:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Svartelist tilkopling"
-
-#~ msgid "About Firewall"
-#~ msgstr "Om brannmuren"
-
-#~ msgid "Backend:"
-#~ msgstr "Motor:"
-
-#~ msgid "Version:"
-#~ msgstr "Versjon:"
-
-#~ msgid "About"
-#~ msgstr "Om"
