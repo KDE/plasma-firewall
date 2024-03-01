@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-27 00:39+0000\n"
-"PO-Revision-Date: 2024-02-05 11:37\n"
+"PO-Revision-Date: 2024-02-29 12:52\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -668,17 +668,15 @@ msgid "Save"
 msgstr "保存"
 
 #: ui/main.qml:238
-#, fuzzy, kde-format
-#| msgid "Firewall Status:"
+#, kde-format
 msgid "Firewall type:"
-msgstr "防火墙状态："
+msgstr "防火墙类型："
 
 #: ui/main.qml:246
-#, fuzzy, kde-format
-#| msgid "firewalld %1"
+#, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
-msgstr "firewalld %1"
+msgstr "防火墙版本：%1"
 
 #: ui/main.qml:253
 #, kde-format
@@ -723,27 +721,20 @@ msgid "No firewall rules have been added"
 msgstr "尚未建立任何防火墙规则"
 
 #: ui/main.qml:460
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click the <interface>Add Rule…</interface> button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
-msgstr "点击下方的 <interface>新建规则…</interface> 按钮来新建一条规则"
+msgstr "点击 <interface>新建规则…</interface> 按钮来新建一条规则"
 
 #: ui/main.qml:461
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule…</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Enable the firewall with the <interface>Firewall Status</interface> switch, "
 "and then click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
-"勾选上方的<interface>防火墙状态</interface>选框以启用防火墙，然后点击"
-"<interface>新建规则…</interface>按钮以新增防火墙规则。"
+"打开<interface>防火墙状态</interface>开关以启用防火墙，然后点击<interface>新"
+"建规则…</interface>按钮以新增防火墙规则。"
 
 #: ui/main.qml:467
 #, kde-format
@@ -789,15 +780,3 @@ msgstr "应用程序："
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "黑名单连接"
-
-#~ msgid "About Firewall"
-#~ msgstr "关于防火墙"
-
-#~ msgid "Backend:"
-#~ msgstr "后端程序："
-
-#~ msgid "Version:"
-#~ msgstr "程序版本："
-
-#~ msgid "About"
-#~ msgstr "关于"
