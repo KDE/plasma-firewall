@@ -1,21 +1,22 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
 # Tommi Nieminen <translator@legisign.org>, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2024 Kimmo Kujansuu <mrkujansuu@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-14 03:08+0000\n"
-"PO-Revision-Date: 2023-12-11 18:25+0200\n"
-"Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
+"PO-Revision-Date: 2024-02-27 00:06+0200\n"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.04.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -464,7 +465,7 @@ msgstr "Versio:"
 #: ui/AdvancedRuleEdit.qml:31 ui/SimpleRuleEdit.qml:29
 #, kde-format
 msgid "Policy:"
-msgstr "Käytänne:"
+msgstr "Käytäntö:"
 
 #: ui/AdvancedRuleEdit.qml:42 ui/SimpleRuleEdit.qml:40
 #, kde-format
@@ -541,10 +542,11 @@ msgstr "Tästä yhteydestä luotiin torjuntasääntö."
 msgid "could not find iproute2 or net-tools packages installed."
 msgstr "Asennettuja iproute2- tai net-tools-paketteja ei löytynyt."
 
+# Lyhensin sana osoite koska se ei mahtunut kenttään
 #: ui/IpTextField.qml:14
 #, kde-format
 msgid "Any IP address"
-msgstr "Mikä tahansa IP-osoite"
+msgstr "Mikä tahansa IP"
 
 #: ui/LogsView.qml:16
 #, kde-format
@@ -661,8 +663,8 @@ msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
 "reboot."
 msgstr ""
-"Ydin on vastikään päivittynyt. iptablesin alustaminen ei onnistu: käynnistä "
-"kone uudelleen."
+"Kernel on vastikään päivittynyt. iptablesin alustaminen ei onnistu: "
+"käynnistä tietokone uudelleen."
 
 #: ui/main.qml:186
 #, kde-format
@@ -677,17 +679,17 @@ msgstr "Virhe poistettaessa palomuuria käytöstä: %1"
 #: ui/main.qml:207
 #, kde-format
 msgid "Default Incoming Policy:"
-msgstr "Saapuva oletuskäytänne:"
+msgstr "Saapuva oletuskäytäntö:"
 
 #: ui/main.qml:208
 #, kde-format
 msgid "Default Outgoing Policy:"
-msgstr "Lähtevä oletuskäytänne:"
+msgstr "Lähtevä oletuskäytäntö:"
 
 #: ui/main.qml:255
 #, kde-format
 msgid "Error changing policy: %1"
-msgstr "Virhe muutettaessa käytännettä: %1"
+msgstr "Virhe muutettaessa käytäntöä: %1"
 
 #: ui/main.qml:360
 #, kde-format
@@ -761,10 +763,11 @@ msgstr "Tietoa"
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Asenna palomuuri kuten ufw tai firewalld"
 
+# Lyhensin koska kenttä on niin lyhyt, että käyttäjä näkee vain Mikä tahansa sanat
 #: ui/PortTextField.qml:11
 #, kde-format
 msgid "Any Port"
-msgstr "Mikä tahansa portti"
+msgstr "Portti"
 
 #: ui/RuleEdit.qml:39
 #, kde-format
@@ -779,12 +782,12 @@ msgstr "Kaikki paketit"
 #: ui/RuleEdit.qml:55 ui/RuleEdit.qml:62
 #, kde-format
 msgid "The default incoming policy is already '%1'."
-msgstr "Saapuvan liikenteen oletuskäytänne on jo ”%1”."
+msgstr "Saapuvan liikenteen oletuskäytäntö on jo ”%1”."
 
 #: ui/RuleEdit.qml:56 ui/RuleEdit.qml:63
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
-msgstr "Lähtevän liikenteen oletuskäytänne on jo ”%1”."
+msgstr "Lähtevän liikenteen oletuskäytäntö on jo ”%1”."
 
 #: ui/SimpleRuleEdit.qml:23
 #, kde-format
