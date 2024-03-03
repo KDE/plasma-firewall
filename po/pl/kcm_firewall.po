@@ -1,14 +1,14 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
 #
-# SPDX-FileCopyrightText: 2021, 2022, 2023 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-27 00:39+0000\n"
-"PO-Revision-Date: 2023-12-23 13:54+0100\n"
-"Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmai.com>\n"
+"PO-Revision-Date: 2024-03-02 12:47+0100\n"
+"Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -671,17 +671,15 @@ msgid "Save"
 msgstr "Zapisz"
 
 #: ui/main.qml:238
-#, fuzzy, kde-format
-#| msgid "Firewall Status:"
+#, kde-format
 msgid "Firewall type:"
-msgstr "Stan zapory ogniowej:"
+msgstr "Rodzaj zapory ogniowej:"
 
 #: ui/main.qml:246
-#, fuzzy, kde-format
-#| msgid "firewalld %1"
+#, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
-msgstr "firewalld %1"
+msgstr "Wersja zapory ogniowej: %1"
 
 #: ui/main.qml:253
 #, kde-format
@@ -726,30 +724,22 @@ msgid "No firewall rules have been added"
 msgstr "Nie dodano żadnych zasad zapory ogniowej"
 
 #: ui/main.qml:460
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click the <interface>Add Rule…</interface> button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
-"Naciśnij poniższy przycisk <interface>Dodaj zasadę…</interface>, aby dodać "
-"zasadę"
+"Naciśnij przycisk <interface>Dodaj zasadę…</interface>, aby dodać zasadę"
 
 #: ui/main.qml:461
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule…</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Enable the firewall with the <interface>Firewall Status</interface> switch, "
 "and then click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
-"Włącz zaporę ogniową, zaznaczając pole obok <interface>Stanu zapory "
-"ogniowej</interface> powyżej, a następnie naciśnij przycisk <interface>Dodaj "
-"zasadę…</interface>, aby dodać zasadę"
+"Włącz zaporę ogniową, przestawiając suwak <interface>Stanu zapory ogniowej</"
+"interface> powyżej, a następnie naciśnij przycisk <interface>Dodaj zasadę…</"
+"interface>, aby dodać zasadę"
 
 #: ui/main.qml:467
 #, kde-format
