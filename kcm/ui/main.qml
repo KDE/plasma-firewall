@@ -458,7 +458,7 @@ KCMUtils.ScrollViewKCM {
             text: !kcm.client.enabled ? i18n("Firewall is disabled") : i18n("No firewall rules have been added")
             explanation: kcm.client.enabled ?
                 xi18nc("@info", "Click the <interface>Add Rule…</interface> button to add one") :
-                xi18nc("@info", "Enable the firewall with the <interface>Firewall Status</interface> switch, and then click the <interface>Add Rule…</interface> button to add one")
+                xi18nc("@info", "Click switch above to enable it")
         }
     }
 
