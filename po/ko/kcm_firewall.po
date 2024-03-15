@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-27 00:39+0000\n"
+"POT-Creation-Date: 2024-03-15 00:39+0000\n"
 "PO-Revision-Date: 2024-02-09 19:28+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -734,20 +734,10 @@ msgstr ""
 "아래의 <interface>규칙 추가…</interface> 단추를 클릭해서 규칙을 추가하십시오"
 
 #: ui/main.qml:461
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule…</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
-msgid ""
-"Enable the firewall with the <interface>Firewall Status</interface> switch, "
-"and then click the <interface>Add Rule…</interface> button to add one"
+msgid "Click switch above to enable it"
 msgstr ""
-"위쪽의 <interface>방화벽 상태</interface> 체크 상자를 통해서 방화벽을 활성화"
-"하고, 아래쪽의 <interface>규칙 추가…</interface> 단추를 클릭해서 규칙을 추가"
-"하십시오"
 
 #: ui/main.qml:467
 #, kde-format
@@ -793,6 +783,22 @@ msgstr "앱:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "연결 차단 목록"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid ""
+#~| "Enable the firewall with the <interface>Firewall Status</interface> "
+#~| "checkbox above, and then click the <interface>Add Rule…</interface> "
+#~| "button below to add one"
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Enable the firewall with the <interface>Firewall Status</interface> "
+#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
+#~ "one"
+#~ msgstr ""
+#~ "위쪽의 <interface>방화벽 상태</interface> 체크 상자를 통해서 방화벽을 활성"
+#~ "화하고, 아래쪽의 <interface>규칙 추가…</interface> 단추를 클릭해서 규칙을 "
+#~ "추가하십시오"
 
 #~ msgid "About Firewall"
 #~ msgstr "방화벽 정보"

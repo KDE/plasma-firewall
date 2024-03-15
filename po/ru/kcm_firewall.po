@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-27 00:39+0000\n"
+"POT-Creation-Date: 2024-03-15 00:39+0000\n"
 "PO-Revision-Date: 2024-01-04 21:23+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -738,20 +738,10 @@ msgstr ""
 "interface>"
 
 #: ui/main.qml:461
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule…</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
-msgid ""
-"Enable the firewall with the <interface>Firewall Status</interface> switch, "
-"and then click the <interface>Add Rule…</interface> button to add one"
+msgid "Click switch above to enable it"
 msgstr ""
-"Для активации брандмауэра включите параметр <interface>Состояние "
-"брандмауэра</interface>, после чего для добавления правил нажмите кнопку "
-"<interface>Добавить правило…</interface>"
 
 #: ui/main.qml:467
 #, kde-format
@@ -797,6 +787,22 @@ msgstr "Приложение:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Заблокировать соединение"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid ""
+#~| "Enable the firewall with the <interface>Firewall Status</interface> "
+#~| "checkbox above, and then click the <interface>Add Rule…</interface> "
+#~| "button below to add one"
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Enable the firewall with the <interface>Firewall Status</interface> "
+#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
+#~ "one"
+#~ msgstr ""
+#~ "Для активации брандмауэра включите параметр <interface>Состояние "
+#~ "брандмауэра</interface>, после чего для добавления правил нажмите кнопку "
+#~ "<interface>Добавить правило…</interface>"
 
 #~ msgid "About Firewall"
 #~ msgstr "О брандмауэре"

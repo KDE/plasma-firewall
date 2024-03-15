@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-27 00:39+0000\n"
+"POT-Creation-Date: 2024-03-15 00:39+0000\n"
 "PO-Revision-Date: 2024-02-27 22:50+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -738,13 +738,8 @@ msgstr "Pulse el botón <interface>Añadir regla...</interface> para añadir una
 #: ui/main.qml:461
 #, kde-kuit-format
 msgctxt "@info"
-msgid ""
-"Enable the firewall with the <interface>Firewall Status</interface> switch, "
-"and then click the <interface>Add Rule…</interface> button to add one"
+msgid "Click switch above to enable it"
 msgstr ""
-"Active el cortafuegos con el interruptor <interface>Estado del cortafuegos</"
-"interface> y pulse el botón <interface>Añadir regla...</interface> para "
-"añadir alguna."
 
 #: ui/main.qml:467
 #, kde-format
@@ -790,6 +785,16 @@ msgstr "Aplicación:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Poner conexión en la lista negra"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Enable the firewall with the <interface>Firewall Status</interface> "
+#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
+#~ "one"
+#~ msgstr ""
+#~ "Active el cortafuegos con el interruptor <interface>Estado del "
+#~ "cortafuegos</interface> y pulse el botón <interface>Añadir regla...</"
+#~ "interface> para añadir alguna."
 
 #~ msgid "About Firewall"
 #~ msgstr "Acerca del cortafuegos"

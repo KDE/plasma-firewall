@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-27 00:39+0000\n"
+"POT-Creation-Date: 2024-03-15 00:39+0000\n"
 "PO-Revision-Date: 2024-02-29 02:48+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -731,12 +731,8 @@ msgstr "點擊 <interface>新增規則…</interface> 按鈕來新增規則"
 #: ui/main.qml:461
 #, kde-kuit-format
 msgctxt "@info"
-msgid ""
-"Enable the firewall with the <interface>Firewall Status</interface> switch, "
-"and then click the <interface>Add Rule…</interface> button to add one"
+msgid "Click switch above to enable it"
 msgstr ""
-"使用 <interface>防火牆狀態</interface> 開關來啟用防火牆，再點擊 <interface>新"
-"增規則…</interface> 按鈕來新增規則"
 
 #: ui/main.qml:467
 #, kde-format
@@ -782,6 +778,15 @@ msgstr "應用程式："
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "將連線加入黑名單"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Enable the firewall with the <interface>Firewall Status</interface> "
+#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
+#~ "one"
+#~ msgstr ""
+#~ "使用 <interface>防火牆狀態</interface> 開關來啟用防火牆，再點擊 "
+#~ "<interface>新增規則…</interface> 按鈕來新增規則"
 
 #~ msgid "About Firewall"
 #~ msgstr "關於防火牆"

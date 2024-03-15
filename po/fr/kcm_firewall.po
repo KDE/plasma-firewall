@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-27 00:39+0000\n"
+"POT-Creation-Date: 2024-03-15 00:39+0000\n"
 "PO-Revision-Date: 2024-02-28 09:19+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
@@ -736,13 +736,8 @@ msgstr ""
 #: ui/main.qml:461
 #, kde-kuit-format
 msgctxt "@info"
-msgid ""
-"Enable the firewall with the <interface>Firewall Status</interface> switch, "
-"and then click the <interface>Add Rule…</interface> button to add one"
+msgid "Click switch above to enable it"
 msgstr ""
-"Activez le pare-feu grâce à la boîte à cocher <interface>État du pare-feu</"
-"interface>. Ensuite, veuillez cliquer sur le bouton <interface>Ajouter une "
-"Règle...</interface> pour en ajouter une règle."
 
 #: ui/main.qml:467
 #, kde-format
@@ -788,6 +783,16 @@ msgstr "Application :"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Mettre sur liste noire une connexion"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Enable the firewall with the <interface>Firewall Status</interface> "
+#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
+#~ "one"
+#~ msgstr ""
+#~ "Activez le pare-feu grâce à la boîte à cocher <interface>État du pare-"
+#~ "feu</interface>. Ensuite, veuillez cliquer sur le bouton "
+#~ "<interface>Ajouter une Règle...</interface> pour en ajouter une règle."
 
 #~ msgid "About Firewall"
 #~ msgstr "A propos du pare-feu"

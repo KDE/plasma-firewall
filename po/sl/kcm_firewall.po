@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-27 00:39+0000\n"
+"POT-Creation-Date: 2024-03-15 00:39+0000\n"
 "PO-Revision-Date: 2024-02-27 07:55+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -733,13 +733,8 @@ msgstr ""
 #: ui/main.qml:461
 #, kde-kuit-format
 msgctxt "@info"
-msgid ""
-"Enable the firewall with the <interface>Firewall Status</interface> switch, "
-"and then click the <interface>Add Rule…</interface> button to add one"
+msgid "Click switch above to enable it"
 msgstr ""
-"Omogočite vdorobran z rubriko <interface>Stanje vdorobrana</interface> "
-"zgoraj nato pa kliknite gumb <interface>Dodaj pravilo…</interface>, da "
-"dodate pravilo"
 
 #: ui/main.qml:467
 #, kde-format
@@ -785,6 +780,16 @@ msgstr "Aplikacija:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Povezava na črnem seznamu"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Enable the firewall with the <interface>Firewall Status</interface> "
+#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
+#~ "one"
+#~ msgstr ""
+#~ "Omogočite vdorobran z rubriko <interface>Stanje vdorobrana</interface> "
+#~ "zgoraj nato pa kliknite gumb <interface>Dodaj pravilo…</interface>, da "
+#~ "dodate pravilo"
 
 #~ msgid "About Firewall"
 #~ msgstr "O programu Firewall"

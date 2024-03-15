@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-27 00:39+0000\n"
+"POT-Creation-Date: 2024-03-15 00:39+0000\n"
 "PO-Revision-Date: 2022-03-26 19:12+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -753,20 +753,10 @@ msgstr ""
 "menambahkannya"
 
 #: ui/main.qml:461
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule...</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
-msgid ""
-"Enable the firewall with the <interface>Firewall Status</interface> switch, "
-"and then click the <interface>Add Rule…</interface> button to add one"
+msgid "Click switch above to enable it"
 msgstr ""
-"Fungsikan firewall dengan kotak-centang <interface>Status Firewall</"
-"interface> di atas, dan kemudian klik tombol <interface>Tambahkan Rule...</"
-"interface> di bawah untuk menambahkannya"
 
 #: ui/main.qml:467
 #, kde-format
@@ -812,6 +802,22 @@ msgstr "Aplikasi:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Daftar Hitam Koneksi"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid ""
+#~| "Enable the firewall with the <interface>Firewall Status</interface> "
+#~| "checkbox above, and then click the <interface>Add Rule...</interface> "
+#~| "button below to add one"
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Enable the firewall with the <interface>Firewall Status</interface> "
+#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
+#~ "one"
+#~ msgstr ""
+#~ "Fungsikan firewall dengan kotak-centang <interface>Status Firewall</"
+#~ "interface> di atas, dan kemudian klik tombol <interface>Tambahkan Rule..."
+#~ "</interface> di bawah untuk menambahkannya"
 
 #~ msgid "About Firewall"
 #~ msgstr "Tentang Firewall"

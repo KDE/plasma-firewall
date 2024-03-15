@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-27 00:39+0000\n"
+"POT-Creation-Date: 2024-03-15 00:39+0000\n"
 "PO-Revision-Date: 2024-03-02 12:47+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -733,13 +733,8 @@ msgstr ""
 #: ui/main.qml:461
 #, kde-kuit-format
 msgctxt "@info"
-msgid ""
-"Enable the firewall with the <interface>Firewall Status</interface> switch, "
-"and then click the <interface>Add Rule…</interface> button to add one"
+msgid "Click switch above to enable it"
 msgstr ""
-"Włącz zaporę ogniową, przestawiając suwak <interface>Stanu zapory ogniowej</"
-"interface> powyżej, a następnie naciśnij przycisk <interface>Dodaj zasadę…</"
-"interface>, aby dodać zasadę"
 
 #: ui/main.qml:467
 #, kde-format
@@ -785,6 +780,16 @@ msgstr "Aplikacja:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Dodaj połączenie na czarną listę"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Enable the firewall with the <interface>Firewall Status</interface> "
+#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
+#~ "one"
+#~ msgstr ""
+#~ "Włącz zaporę ogniową, przestawiając suwak <interface>Stanu zapory "
+#~ "ogniowej</interface> powyżej, a następnie naciśnij przycisk "
+#~ "<interface>Dodaj zasadę…</interface>, aby dodać zasadę"
 
 #~ msgid "About Firewall"
 #~ msgstr "O zaporze ogniowej"

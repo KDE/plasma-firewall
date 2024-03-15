@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-27 00:39+0000\n"
+"POT-Creation-Date: 2024-03-15 00:39+0000\n"
 "PO-Revision-Date: 2024-02-27 22:07+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -730,12 +730,8 @@ msgstr "יש ללחוץ על כפתור <interface>הוספת כלל…</interfa
 #: ui/main.qml:461
 #, kde-kuit-format
 msgctxt "@info"
-msgid ""
-"Enable the firewall with the <interface>Firewall Status</interface> switch, "
-"and then click the <interface>Add Rule…</interface> button to add one"
+msgid "Click switch above to enable it"
 msgstr ""
-"יש להפעיל את חומת האש עם המתג <interface>מצב חומת אש</interface>, ואז ללחוץ "
-"על הכפתור <interface>הוספת כלל…</interface> כדי להוסיף אחד כזה"
 
 #: ui/main.qml:467
 #, kde-format
@@ -781,6 +777,15 @@ msgstr "יישום:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "חסימת החיבור לצמיתות"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Enable the firewall with the <interface>Firewall Status</interface> "
+#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
+#~ "one"
+#~ msgstr ""
+#~ "יש להפעיל את חומת האש עם המתג <interface>מצב חומת אש</interface>, ואז "
+#~ "ללחוץ על הכפתור <interface>הוספת כלל…</interface> כדי להוסיף אחד כזה"
 
 #~ msgid "About Firewall"
 #~ msgstr "על חומת האש"

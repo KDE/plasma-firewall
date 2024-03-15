@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-27 00:39+0000\n"
+"POT-Creation-Date: 2024-03-15 00:39+0000\n"
 "PO-Revision-Date: 2024-01-20 20:00+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -732,20 +732,10 @@ msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr "انقر زر <interface>أضف قاعدة…</interface> لتضيف واحدة"
 
 #: ui/main.qml:461
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule…</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
-msgid ""
-"Enable the firewall with the <interface>Firewall Status</interface> switch, "
-"and then click the <interface>Add Rule…</interface> button to add one"
+msgid "Click switch above to enable it"
 msgstr ""
-"مكن الجدار الناري بواسطة خانة اختيار <interface>حالة الجدار الناري</"
-"interface>  في الأعلى، ثم انقر على زر <interface>أضف قاعدة…</interface> في "
-"الأسفل لتضيف واحدة"
 
 #: ui/main.qml:467
 #, kde-format
@@ -791,6 +781,22 @@ msgstr "التطبيق:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "الاتصال محظرور"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid ""
+#~| "Enable the firewall with the <interface>Firewall Status</interface> "
+#~| "checkbox above, and then click the <interface>Add Rule…</interface> "
+#~| "button below to add one"
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Enable the firewall with the <interface>Firewall Status</interface> "
+#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
+#~ "one"
+#~ msgstr ""
+#~ "مكن الجدار الناري بواسطة خانة اختيار <interface>حالة الجدار الناري</"
+#~ "interface>  في الأعلى، ثم انقر على زر <interface>أضف قاعدة…</interface> "
+#~ "في الأسفل لتضيف واحدة"
 
 #~ msgid "About Firewall"
 #~ msgstr "عن الجدار الناري"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-27 00:39+0000\n"
+"POT-Creation-Date: 2024-03-15 00:39+0000\n"
 "PO-Revision-Date: 2024-02-28 00:07+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -738,13 +738,8 @@ msgstr ""
 #: ui/main.qml:461
 #, kde-kuit-format
 msgctxt "@info"
-msgid ""
-"Enable the firewall with the <interface>Firewall Status</interface> switch, "
-"and then click the <interface>Add Rule…</interface> button to add one"
+msgid "Click switch above to enable it"
 msgstr ""
-"Gaitu suhesia <interface>Suhesiaren egoera</interface> etengailuarekin, eta "
-"ondoren egin klik <interface>Gehitu araua...</interface> botoiari bat "
-"gehitzeko"
 
 #: ui/main.qml:467
 #, kde-format
@@ -790,6 +785,16 @@ msgstr "Aplikazioa:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Zerrenda-beltzeko konexioa"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Enable the firewall with the <interface>Firewall Status</interface> "
+#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
+#~ "one"
+#~ msgstr ""
+#~ "Gaitu suhesia <interface>Suhesiaren egoera</interface> etengailuarekin, "
+#~ "eta ondoren egin klik <interface>Gehitu araua...</interface> botoiari bat "
+#~ "gehitzeko"
 
 #~ msgid "About Firewall"
 #~ msgstr "Suhesiari buru"

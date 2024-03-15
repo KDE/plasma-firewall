@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-27 00:39+0000\n"
+"POT-Creation-Date: 2024-03-15 00:39+0000\n"
 "PO-Revision-Date: 2022-04-15 19:13+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -752,20 +752,10 @@ msgstr ""
 "Kliknite na tlačidlo <interface>Pridať pravidlo...</interface> a pridajte ho"
 
 #: ui/main.qml:461
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule...</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
-msgid ""
-"Enable the firewall with the <interface>Firewall Status</interface> switch, "
-"and then click the <interface>Add Rule…</interface> button to add one"
+msgid "Click switch above to enable it"
 msgstr ""
-"Povoľte bránu firewall pomocou vyššie uvedeného začiarkavacieho políčka "
-"<interface>Stav brány firewall</interface> a kliknutím na tlačidlo "
-"<interface>Pridať pravidlo...</interface> nižšie ho pridáte."
 
 #: ui/main.qml:467
 #, kde-format
@@ -811,6 +801,22 @@ msgstr "Aplikácia:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Vytvoriť pravidlo čiernej listiny"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid ""
+#~| "Enable the firewall with the <interface>Firewall Status</interface> "
+#~| "checkbox above, and then click the <interface>Add Rule...</interface> "
+#~| "button below to add one"
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Enable the firewall with the <interface>Firewall Status</interface> "
+#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
+#~ "one"
+#~ msgstr ""
+#~ "Povoľte bránu firewall pomocou vyššie uvedeného začiarkavacieho políčka "
+#~ "<interface>Stav brány firewall</interface> a kliknutím na tlačidlo "
+#~ "<interface>Pridať pravidlo...</interface> nižšie ho pridáte."
 
 #~ msgid "About Firewall"
 #~ msgstr "O bráne Firewall"

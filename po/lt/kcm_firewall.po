@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-27 00:39+0000\n"
+"POT-Creation-Date: 2024-03-15 00:39+0000\n"
 "PO-Revision-Date: 2024-01-11 16:49+0200\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: none\n"
@@ -739,20 +739,10 @@ msgstr ""
 "taisyklę…</interface>"
 
 #: ui/main.qml:461
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule…</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
-msgid ""
-"Enable the firewall with the <interface>Firewall Status</interface> switch, "
-"and then click the <interface>Add Rule…</interface> button to add one"
+msgid "Click switch above to enable it"
 msgstr ""
-"Įjunkite užkardą aukščiau naudodami <interface>Užkardos būsenos</interface> "
-"žymimąjį langelį, o tuomet, norėdami pridėti taisyklę, spustelėkite "
-"<interface>Pridėti taisyklę…</interface>"
 
 #: ui/main.qml:467
 #, kde-format
@@ -798,6 +788,22 @@ msgstr "Programa:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Įtraukti ryšį į juodąjį sąrašą"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid ""
+#~| "Enable the firewall with the <interface>Firewall Status</interface> "
+#~| "checkbox above, and then click the <interface>Add Rule…</interface> "
+#~| "button below to add one"
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Enable the firewall with the <interface>Firewall Status</interface> "
+#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
+#~ "one"
+#~ msgstr ""
+#~ "Įjunkite užkardą aukščiau naudodami <interface>Užkardos būsenos</"
+#~ "interface> žymimąjį langelį, o tuomet, norėdami pridėti taisyklę, "
+#~ "spustelėkite <interface>Pridėti taisyklę…</interface>"
 
 #~ msgid "About Firewall"
 #~ msgstr "Apie užkardą"

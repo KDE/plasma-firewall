@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-27 00:39+0000\n"
+"POT-Creation-Date: 2024-03-15 00:39+0000\n"
 "PO-Revision-Date: 2024-03-02 22:05+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -736,13 +736,8 @@ msgstr ""
 #: ui/main.qml:461
 #, kde-kuit-format
 msgctxt "@info"
-msgid ""
-"Enable the firewall with the <interface>Firewall Status</interface> switch, "
-"and then click the <interface>Add Rule…</interface> button to add one"
+msgid "Click switch above to enable it"
 msgstr ""
-"Kapcsolja be a tűzfalat a <interface>Tűzfal állapota</interface> "
-"kapcsolóval, és kattintson a <interface>Szabály hozzáadása…</interface> "
-"gombra egy szabály hozzáadásához"
 
 #: ui/main.qml:467
 #, kde-format
@@ -788,6 +783,16 @@ msgstr "Alkalmazás:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Kapcsolat tiltólistára"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Enable the firewall with the <interface>Firewall Status</interface> "
+#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
+#~ "one"
+#~ msgstr ""
+#~ "Kapcsolja be a tűzfalat a <interface>Tűzfal állapota</interface> "
+#~ "kapcsolóval, és kattintson a <interface>Szabály hozzáadása…</interface> "
+#~ "gombra egy szabály hozzáadásához"
 
 #~ msgid "About Firewall"
 #~ msgstr "A tűzfal névjegye"

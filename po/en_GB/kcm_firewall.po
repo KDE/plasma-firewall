@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-27 00:39+0000\n"
+"POT-Creation-Date: 2024-03-15 00:39+0000\n"
 "PO-Revision-Date: 2023-04-29 12:26+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -750,20 +750,10 @@ msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr "Click the <interface>Add Rule…</interface> button below to add one"
 
 #: ui/main.qml:461
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule…</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
-msgid ""
-"Enable the firewall with the <interface>Firewall Status</interface> switch, "
-"and then click the <interface>Add Rule…</interface> button to add one"
+msgid "Click switch above to enable it"
 msgstr ""
-"Enable the firewall with the <interface>Firewall Status</interface> tickbox "
-"above, and then click the <interface>Add Rule…</interface> button below to "
-"add one"
 
 #: ui/main.qml:467
 #, kde-format
@@ -809,6 +799,22 @@ msgstr "Application:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Blacklist Connection"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid ""
+#~| "Enable the firewall with the <interface>Firewall Status</interface> "
+#~| "checkbox above, and then click the <interface>Add Rule…</interface> "
+#~| "button below to add one"
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Enable the firewall with the <interface>Firewall Status</interface> "
+#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
+#~ "one"
+#~ msgstr ""
+#~ "Enable the firewall with the <interface>Firewall Status</interface> "
+#~ "tickbox above, and then click the <interface>Add Rule…</interface> button "
+#~ "below to add one"
 
 #~ msgid "About Firewall"
 #~ msgstr "About Firewall"

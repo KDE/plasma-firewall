@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-27 00:39+0000\n"
+"POT-Creation-Date: 2024-03-15 00:39+0000\n"
 "PO-Revision-Date: 2024-02-27 10:20+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -737,13 +737,8 @@ msgstr ""
 #: ui/main.qml:461
 #, kde-kuit-format
 msgctxt "@info"
-msgid ""
-"Enable the firewall with the <interface>Firewall Status</interface> switch, "
-"and then click the <interface>Add Rule…</interface> button to add one"
+msgid "Click switch above to enable it"
 msgstr ""
-"De firewall inschakelen met de schakelaar <interface>Firewallstatus</"
-"interface> en klik daarna op de knop <interface>Regel toevoegen…</interface> "
-"om er een toe te voegen"
 
 #: ui/main.qml:467
 #, kde-format
@@ -789,6 +784,16 @@ msgstr "Toepassing:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Verbinding op de zwarte lijst"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Enable the firewall with the <interface>Firewall Status</interface> "
+#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
+#~ "one"
+#~ msgstr ""
+#~ "De firewall inschakelen met de schakelaar <interface>Firewallstatus</"
+#~ "interface> en klik daarna op de knop <interface>Regel toevoegen…</"
+#~ "interface> om er een toe te voegen"
 
 #~ msgid "About Firewall"
 #~ msgstr "Info over Firewall"

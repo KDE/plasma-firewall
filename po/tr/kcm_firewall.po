@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-27 00:39+0000\n"
+"POT-Creation-Date: 2024-03-15 00:39+0000\n"
 "PO-Revision-Date: 2024-02-27 12:57+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -736,13 +736,8 @@ msgstr ""
 #: ui/main.qml:461
 #, kde-kuit-format
 msgctxt "@info"
-msgid ""
-"Enable the firewall with the <interface>Firewall Status</interface> switch, "
-"and then click the <interface>Add Rule…</interface> button to add one"
+msgid "Click switch above to enable it"
 msgstr ""
-"Yukarıdaki <interface>Güvenlik Duvarı Durumu</interface> anahtarıyla "
-"güvenlik duvarını etkinleştirin ve ardından bir tane eklemek için "
-"<interface>Kural Ekle…</interface> düğmesine tıklayın."
 
 #: ui/main.qml:467
 #, kde-format
@@ -788,6 +783,16 @@ msgstr "Uygulama:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Bağlantıyı Kara Listeye Al"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Enable the firewall with the <interface>Firewall Status</interface> "
+#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
+#~ "one"
+#~ msgstr ""
+#~ "Yukarıdaki <interface>Güvenlik Duvarı Durumu</interface> anahtarıyla "
+#~ "güvenlik duvarını etkinleştirin ve ardından bir tane eklemek için "
+#~ "<interface>Kural Ekle…</interface> düğmesine tıklayın."
 
 #~ msgid "About Firewall"
 #~ msgstr "Güvenlik Duvarı Hakkında"

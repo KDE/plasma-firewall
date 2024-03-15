@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-27 00:39+0000\n"
+"POT-Creation-Date: 2024-03-15 00:39+0000\n"
 "PO-Revision-Date: 2022-02-16 20:12+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -756,20 +756,10 @@ msgstr ""
 "lägga till en"
 
 #: ui/main.qml:461
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Enable the firewall with the <interface>Firewall Status</interface> "
-#| "checkbox above, and then click the <interface>Add Rule...</interface> "
-#| "button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
-msgid ""
-"Enable the firewall with the <interface>Firewall Status</interface> switch, "
-"and then click the <interface>Add Rule…</interface> button to add one"
+msgid "Click switch above to enable it"
 msgstr ""
-"Aktivera brandväggen med kryssrutan <interface>Brandväggsstatus</interface> "
-"ovan, och klicka sedan på knappen <interface>Lägg till regel...</interface> "
-"nedan för att lägga till en"
 
 #: ui/main.qml:467
 #, kde-format
@@ -815,6 +805,22 @@ msgstr "Program:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Svartlista anslutning"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid ""
+#~| "Enable the firewall with the <interface>Firewall Status</interface> "
+#~| "checkbox above, and then click the <interface>Add Rule...</interface> "
+#~| "button below to add one"
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Enable the firewall with the <interface>Firewall Status</interface> "
+#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
+#~ "one"
+#~ msgstr ""
+#~ "Aktivera brandväggen med kryssrutan <interface>Brandväggsstatus</"
+#~ "interface> ovan, och klicka sedan på knappen <interface>Lägg till regel..."
+#~ "</interface> nedan för att lägga till en"
 
 #~ msgid "About Firewall"
 #~ msgstr "Om brandvägg"
