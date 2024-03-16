@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-15 00:39+0000\n"
-"PO-Revision-Date: 2024-02-27 13:32+0100\n"
+"PO-Revision-Date: 2024-03-15 09:42+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -742,7 +742,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
-msgstr ""
+msgstr "Feu clic al commutador de dalt per a activar-ho"
 
 #: ui/main.qml:467
 #, kde-format

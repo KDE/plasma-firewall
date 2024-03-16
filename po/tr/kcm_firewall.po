@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-15 00:39+0000\n"
-"PO-Revision-Date: 2024-02-27 12:57+0300\n"
+"PO-Revision-Date: 2024-03-15 13:42+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.04.70\n"
+"X-Generator: Lokalize 24.02.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -568,7 +568,7 @@ msgstr ""
 #: ui/main.qml:26
 #, kde-format
 msgid "Produces an immediate and very informative 'Connection refused' message"
-msgstr "Ani ve bilgilendirici bir 'Bağlantı reddedildi’ iletisi üretir"
+msgstr "Ani ve bilgilendirici bir “Bağlantı reddedildi” iletisi verir"
 
 #: ui/main.qml:33
 #, kde-format
@@ -737,7 +737,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
-msgstr ""
+msgstr "Etkinleştirmek için yukarıdaki anahtara tıklayın"
 
 #: ui/main.qml:467
 #, kde-format

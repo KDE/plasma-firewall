@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-15 00:39+0000\n"
-"PO-Revision-Date: 2024-02-27 22:07+0200\n"
+"PO-Revision-Date: 2024-03-15 06:57+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -731,7 +731,7 @@ msgstr "יש ללחוץ על כפתור <interface>הוספת כלל…</interfa
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
-msgstr ""
+msgstr "יש ללחוץ על המתג שלעיל כדי להפעיל אותו"
 
 #: ui/main.qml:467
 #, kde-format
