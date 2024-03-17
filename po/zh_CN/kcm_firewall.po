@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-15 00:39+0000\n"
-"PO-Revision-Date: 2024-03-15 21:00\n"
+"PO-Revision-Date: 2024-03-16 20:45\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -730,7 +730,7 @@ msgstr "点击 <interface>新建规则…</interface> 按钮来新建一条规�
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
-msgstr ""
+msgstr "点击上面的开关以启用规则"
 
 #: ui/main.qml:467
 #, kde-format

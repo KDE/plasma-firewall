@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-15 00:39+0000\n"
-"PO-Revision-Date: 2024-02-27 13:32+0100\n"
+"PO-Revision-Date: 2024-03-15 09:42+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -742,7 +742,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
-msgstr ""
+msgstr "Feu clic en el commutador de dalt per a activar-ho"
 
 #: ui/main.qml:467
 #, kde-format
@@ -788,13 +788,3 @@ msgstr "Aplicació:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Connexió a la llista negra"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "Enable the firewall with the <interface>Firewall Status</interface> "
-#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
-#~ "one"
-#~ msgstr ""
-#~ "Habiliteu el tallafoc amb el commutador <interface>Estat del tallafoc</"
-#~ "interface>, i després feu clic en el botó <interface>Afig una regla…</"
-#~ "interface> per a afegir-ne una"
