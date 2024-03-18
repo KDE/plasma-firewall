@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-15 00:39+0000\n"
-"PO-Revision-Date: 2024-02-27 21:53+0100\n"
+"PO-Revision-Date: 2024-03-17 05:34+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -736,7 +736,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
-msgstr ""
+msgstr "Alklaku ŝaltilon supre por ebligi ĝin"
 
 #: ui/main.qml:467
 #, kde-format
@@ -782,13 +782,3 @@ msgstr "Apliko:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Nigra Listo Konekto"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "Enable the firewall with the <interface>Firewall Status</interface> "
-#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
-#~ "one"
-#~ msgstr ""
-#~ "Ebligu la fajroŝirmilon per la ŝaltilo <interface>Firewall Status</"
-#~ "interface>, kaj poste alklaku la butonon <interface>Aldoni Regulon…</"
-#~ "interface> por aldoni unu."
