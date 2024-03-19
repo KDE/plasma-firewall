@@ -29,6 +29,7 @@
   <name xml:lang="hu">Plasma Firewall</name>
   <name xml:lang="ia">Plasma Firewall</name>
   <name xml:lang="id">Plasma Firewall</name>
+  <name xml:lang="is">Plasma Firewall</name>
   <name xml:lang="it">Plasma Firewall</name>
   <name xml:lang="ka">Plasma Firewall</name>
   <name xml:lang="ko">Plasma 방화벽</name>
@@ -69,6 +70,7 @@
   <summary xml:lang="hu">Tűzfalbeállítú felület a Plasmához</summary>
   <summary xml:lang="ia">Interfacie de Taliafoco (Firewall) de Plasma</summary>
   <summary xml:lang="id">Antarmuka Firewall untuk Plasma</summary>
+  <summary xml:lang="is">Eldveggsviðmót fyrir Plasma</summary>
   <summary xml:lang="it">Interfaccia firewall per Plasma</summary>
   <summary xml:lang="ka">ბრანდმაუერის ინტერფეისი Plasma-სთვის</summary>
   <summary xml:lang="ko">Plasma 방화벽 인터페이스</summary>
@@ -110,6 +112,7 @@
     <p xml:lang="hu">A Plasma Firewall egy többfajta tűzfalat kezelni képes előtétprogram a hálózati beállítások könnyebb módosításához.</p>
     <p xml:lang="ia">Plasma Firewall (Taliafoco de Plasma) es un interfacie per multi-firewall per facilitar le configurationes de rete.</p>
     <p xml:lang="id">Plasma Firewall adalah sebuah frontend multi-firewall untuk meringankan konfigurasi jaringan.</p>
+    <p xml:lang="is">Plasma Firewall er framendi fyrir marga eldveggi sem auðveldar uppsetningu á eldvegg fyrir netið.</p>
     <p xml:lang="it">Plasma Firewall è un'interfaccia multi-firewall per facilitare le configurazioni di rete.</p>
     <p xml:lang="ka">Plasma Firewall მრავალი ბრანდმაუერის მხარდაჭერის მქონე წინაბოლოა, რომელიც ქსელის კონფიგურაციაში დაგეხმარებათ.</p>
     <p xml:lang="ko">Plasma 방화벽은 네트워크를 쉽게 설정할 수 있는 다중 방화벽 프론트엔드입니다.</p>
@@ -152,6 +155,7 @@
       <caption xml:lang="hu">A Plasma Firewall alapértelmezett kezdőoldala</caption>
       <caption xml:lang="ia">Le Plasma Firewall (Taliafoco de Plasma) monstrante un pagina de configuration predefinite</caption>
       <caption xml:lang="id">Plasma firewall menampilkan sebuah halaman konfigurasi default</caption>
+      <caption xml:lang="is">Plasma eldveggurinn með sjálfgefna grunnstillingasíðu</caption>
       <caption xml:lang="it">Plasma Firewall che mostra una pagina di configurazione predefinita</caption>
       <caption xml:lang="ka">Plasma Firewall კონფიგურაციის ნაგულისხმებ გვერდს აჩვენებს</caption>
       <caption xml:lang="ko">기본 설정 페이지를 표시하는 Plasma 방화벽</caption>
@@ -195,6 +199,7 @@
   <developer_name xml:lang="hu">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="ia">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="id">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
+  <developer_name xml:lang="is">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="it">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="ka">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="ko">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
