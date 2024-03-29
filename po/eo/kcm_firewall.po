@@ -1,106 +1,107 @@
+# translation of kcm_firewall.pot to Esperanto
+# Copyright (C) 2020 Free Software Foundation, Inc.
+# This file is distributed under the same license as the plasma-firewall package.
+# Oliver Kellogg <okellogg@users.sourceforge.net>, 2023.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: kdeorg\n"
+"Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-20 02:45+0000\n"
-"PO-Revision-Date: 2024-03-28 19:25\n"
-"Last-Translator: \n"
-"Language-Team: Chinese Simplified\n"
-"Language: zh_CN\n"
+"PO-Revision-Date: 2024-03-17 05:34+0100\n"
+"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
+"Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
+"Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: kdeorg\n"
-"X-Crowdin-Project-ID: 269464\n"
-"X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf5-stable/messages/plasma-firewall/kcm_firewall.pot\n"
-"X-Crowdin-File-ID: 25222\n"
+"X-Generator: translate-po (https://github.com/zcribe/translate-po)\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "KDE 中国,Tyson Tan"
+msgstr "Oliver Kellogg"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "kde-china@kde.org,tds00@qq.com"
+msgstr "okellogg@users.sourceforge.net"
 
 #: backends/firewalld/firewalldclient.cpp:600 backends/ufw/ufwclient.cpp:697
 #, kde-format
 msgid "Error fetching information from the firewall."
-msgstr "从防火墙获取信息时出错。"
+msgstr "Eraro alportante informojn de la fajroŝirmilo."
 
 #: backends/firewalld/firewalldjob.cpp:173
 #, kde-format
 msgid "firewalld saving (runtime to permanent)"
-msgstr "firewalld 保存 (运行时到常驻)"
+msgstr "ŝparado de fajroŝirmilo (rultempo al konstanta)"
 
 #: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
 msgid "firewalld saving"
-msgstr "firewalld 保存"
+msgstr "ŝparado de fajroŝirmilo"
 
 #: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
 msgid "firewalld %1"
-msgstr "firewalld %1"
+msgstr "fajroŝirmilo %1"
 
 #: backends/firewalld/queryrulesfirewalldjob.cpp:50
 #, kde-format
 msgid "firewalld listing rules and services"
-msgstr "firewalld 列表规则和服务"
+msgstr "firewalld listiganta regulojn kaj servojn"
 
 #: backends/netstat/conectionsmodel.cpp:94
 #, kde-format
 msgid "Failed to get connections: %1"
-msgstr "无法获取连接： %1"
+msgstr "Malsukcesis akiri konektojn: %1"
 
 #: backends/netstat/conectionsmodel.cpp:112
 #, kde-format
 msgid "Not Connected"
-msgstr "未连接"
+msgstr "Ne Konektita"
 
 #: backends/netstat/conectionsmodel.cpp:114
 #, kde-format
 msgid "Established"
-msgstr "已建立"
+msgstr "Establita"
 
 #: backends/netstat/conectionsmodel.cpp:116
 #, kde-format
 msgid "Listening"
-msgstr "正在监听"
+msgstr "Aŭskultanta"
 
 #: backends/ufw/helper/helper.cpp:220
 #, kde-format
 msgid "Invalid arguments passed to the profile"
-msgstr "配置文件的参数无效"
+msgstr "Nevalidaj argumentoj pasis al la profilo"
 
 #: backends/ufw/helper/helper.cpp:250
 #, kde-format
 msgid "Error saving the profile."
-msgstr "保存配置文件时出错。"
+msgstr "Eraro dum konservado de la profilo."
 
 #: backends/ufw/helper/helper.cpp:274
 #, kde-format
 msgid "Invalid arguments passed to delete profile"
-msgstr "删除配置文件的参数无效"
+msgstr "Nevalidaj argumentoj pasis por forigi profilon"
 
 #: backends/ufw/helper/helper.cpp:281
 #, kde-format
 msgid "Could not remove the profile from disk."
-msgstr "无法从磁盘删除配置文件。"
+msgstr "Ne eblis forigi la profilon de disko."
 
 #: backends/ufw/helper/helper.cpp:296
 #, kde-format
 msgid "Invalid argument passed to add Rules"
-msgstr "新建规则的参数无效"
+msgstr "Nevalida argumento pasis por aldoni Regulojn"
 
 #: backends/ufw/helper/helper.cpp:368
 #, kde-format
 msgid "An error occurred in command '%1': %2"
-msgstr "命令“%1”发生错误： %2"
+msgstr "Eraro okazis en la komando '%1': %2"
 
 #: backends/ufw/ufwclient.cpp:161
 #, kde-format
@@ -108,29 +109,29 @@ msgid ""
 "There was an error in the backend! Please report it.\n"
 "%1 %2"
 msgstr ""
-"后端程序出错！请向我们报告此情况。\n"
+"Estis eraro en la backend! Bonvolu raporti ĝin.\n"
 "%1 %2"
 
 #: backends/ufw/ufwclient.cpp:268
 #, kde-format
 msgid "Error fetching firewall logs: %1"
-msgstr "获取防火墙日志时出错： %1"
+msgstr "Eraro alportante fajroŝirmilojn: %1"
 
 #: backends/ufw/ufwclient.cpp:608 core/firewallclient.cpp:74
 #, kde-format
 msgid "Any"
-msgstr "任意"
+msgstr "Ajna"
 
 #: core/rule.cpp:46
 #, kde-format
 msgctxt "address on interface"
 msgid "%1 on %2"
-msgstr "%2 上的 %1"
+msgstr "%1 sur %2"
 
 #: core/rule.cpp:75 core/rule.cpp:165 core/rule.cpp:171
 #, kde-format
 msgid "Anywhere"
-msgstr "任何地方"
+msgstr "Ien ajn"
 
 #: core/rule.cpp:96 core/rule.cpp:109 core/rule.cpp:126
 #, kde-format
@@ -142,103 +143,103 @@ msgstr "%1 (%2)"
 #, kde-format
 msgctxt "firewallAction incoming"
 msgid "%1 incoming"
-msgstr "%1 传入操作"
+msgstr "%1 alvenanta"
 
 #: core/rule.cpp:200
 #, kde-format
 msgctxt "firewallAction outgoing"
 msgid "%1 outgoing"
-msgstr "%1 传出操作"
+msgstr "%1 eksiĝinta"
 
 #: core/rule.cpp:205
 #, kde-format
 msgid "Yes"
-msgstr "是"
+msgstr "Jes"
 
 #: core/systemdjob.cpp:51
 #, kde-format
 msgid "Invalid Call"
-msgstr "无效的调用"
+msgstr "Nevalida Voko"
 
 #: core/types.cpp:19
 #, kde-format
 msgid "Off"
-msgstr "关闭"
+msgstr "Malŝaltita"
 
 #: core/types.cpp:22
 #, kde-format
 msgid "Low"
-msgstr "低"
+msgstr "Malalta"
 
 #: core/types.cpp:24
 #, kde-format
 msgid "Medium"
-msgstr "中"
+msgstr "Meza"
 
 #: core/types.cpp:26
 #, kde-format
 msgid "High"
-msgstr "高"
+msgstr "Alta"
 
 #: core/types.cpp:28
 #, kde-format
 msgid "Full"
-msgstr "完全"
+msgstr "Plena"
 
 #: core/types.cpp:45 package/contents/ui/RuleEdit.qml:40
 #, kde-format
 msgid "None"
-msgstr "无"
+msgstr "Neniu"
 
 #: core/types.cpp:47
 #, kde-format
 msgid "New connections"
-msgstr "新连接"
+msgstr "Novaj rilatoj"
 
 #: core/types.cpp:49
 #, kde-format
 msgid "All packets"
-msgstr "所有数据包"
+msgstr "Ĉiuj pakoj"
 
 #: core/types.cpp:58 package/contents/ui/main.qml:23
 #, kde-format
 msgid "Allow"
-msgstr "允许"
+msgstr "Permesi"
 
 #: core/types.cpp:60
 #, kde-format
 msgid "Deny"
-msgstr "拒绝"
+msgstr "Nei"
 
 #: core/types.cpp:62 package/contents/ui/main.qml:25
 #, kde-format
 msgid "Reject"
-msgstr "拒绝"
+msgstr "Malakcepti"
 
 #: core/types.cpp:64
 #, kde-format
 msgid "Limit"
-msgstr "限制"
+msgstr "Limo"
 
 #: core/types.cpp:80
 #, kde-format
 msgid "Amule"
-msgstr "Amule"
+msgstr "Amulo"
 
 #: core/types.cpp:82
 #, kde-format
 msgid "Deluge"
-msgstr "Deluge"
+msgstr "Diluvo"
 
 #: core/types.cpp:84
 #, kde-format
 msgid "KTorrent"
-msgstr "KTorrent"
+msgstr "KTorento"
 
 #: core/types.cpp:86
 #, kde-format
 msgid "Nicotine"
-msgstr "Nicotine"
+msgstr "Nikotino"
 
 #: core/types.cpp:88
 #, kde-format
@@ -248,7 +249,7 @@ msgstr "qBittorrent"
 #: core/types.cpp:90
 #, kde-format
 msgid "Transmission"
-msgstr "Transmission"
+msgstr "Transdono"
 
 #: core/types.cpp:92
 #, kde-format
@@ -268,7 +269,7 @@ msgstr "Windows Live Messenger"
 #: core/types.cpp:98
 #, kde-format
 msgid "Yahoo! Messenger"
-msgstr "Yahoo! Messenger"
+msgstr "Yahoo! Mesaĝisto"
 
 #: core/types.cpp:100
 #, kde-format
@@ -283,7 +284,7 @@ msgstr "HTTP"
 #: core/types.cpp:104
 #, kde-format
 msgid "Secure HTTP"
-msgstr "Secure HTTP"
+msgstr "Sekura HTTP"
 
 #: core/types.cpp:106
 #, kde-format
@@ -293,7 +294,7 @@ msgstr "IMAP"
 #: core/types.cpp:108
 #, kde-format
 msgid "Secure IMAP"
-msgstr "Secure IMAP"
+msgstr "Sekurigi IMAP"
 
 #: core/types.cpp:110
 #, kde-format
@@ -303,7 +304,7 @@ msgstr "POP3"
 #: core/types.cpp:112
 #, kde-format
 msgid "Secure POP3"
-msgstr "Secure POP3"
+msgstr "Sekurigi POP3"
 
 #: core/types.cpp:114
 #, kde-format
@@ -318,12 +319,12 @@ msgstr "NFS"
 #: core/types.cpp:118
 #, kde-format
 msgid "Samba"
-msgstr "Samba"
+msgstr "sambo"
 
 #: core/types.cpp:120
 #, kde-format
 msgid "Secure Shell"
-msgstr "Secure Shell"
+msgstr "Sekura Ŝelo"
 
 #: core/types.cpp:122
 #, kde-format
@@ -348,51 +349,51 @@ msgstr "NTP"
 #: core/types.cpp:130
 #, kde-format
 msgid "CUPS"
-msgstr "CUPS"
+msgstr "TASOJ"
 
 #: package/contents/ui/About.qml:16
 #, kde-format
 msgid "About Firewall"
-msgstr "关于防火墙"
+msgstr "Pri Fajromuro"
 
 #: package/contents/ui/About.qml:21
 #, kde-format
 msgid "Backend:"
-msgstr "后端程序："
+msgstr "Backend:"
 
 #: package/contents/ui/About.qml:25
 #, kde-format
 msgid "Version:"
-msgstr "程序版本："
+msgstr "Versio:"
 
 #: package/contents/ui/AdvancedRuleEdit.qml:31
 #: package/contents/ui/SimpleRuleEdit.qml:29
 #, kde-format
 msgid "Policy:"
-msgstr "策略："
+msgstr "Politiko:"
 
 #: package/contents/ui/AdvancedRuleEdit.qml:40
 #: package/contents/ui/SimpleRuleEdit.qml:38
 #, kde-format
 msgid "Direction:"
-msgstr "方向："
+msgstr "Direkto:"
 
 #: package/contents/ui/AdvancedRuleEdit.qml:43
 #: package/contents/ui/SimpleRuleEdit.qml:42
 #, kde-format
 msgid "Incoming"
-msgstr "传入"
+msgstr "Alvenanta"
 
 #: package/contents/ui/AdvancedRuleEdit.qml:49
 #: package/contents/ui/SimpleRuleEdit.qml:48
 #, kde-format
 msgid "Outgoing"
-msgstr "传出"
+msgstr "Eksiĝinta"
 
 #: package/contents/ui/AdvancedRuleEdit.qml:57
 #, kde-format
 msgid "IP Version:"
-msgstr "IP 版本："
+msgstr "IP-Versio:"
 
 #: package/contents/ui/AdvancedRuleEdit.qml:60
 #, kde-format
@@ -407,53 +408,53 @@ msgstr "IPv6"
 #: package/contents/ui/AdvancedRuleEdit.qml:72
 #, kde-format
 msgid "Source:"
-msgstr "来源："
+msgstr "Fonto:"
 
 #: package/contents/ui/AdvancedRuleEdit.qml:92
 #, kde-format
 msgid "Destination:"
-msgstr "目标："
+msgstr "Celo:"
 
 #: package/contents/ui/AdvancedRuleEdit.qml:112
 #, kde-format
 msgid "Protocol:"
-msgstr "协议："
+msgstr "Protokolo:"
 
 #: package/contents/ui/AdvancedRuleEdit.qml:121
 #, kde-format
 msgid "Interface:"
-msgstr "接口："
+msgstr "Interfaco:"
 
 #: package/contents/ui/AdvancedRuleEdit.qml:131
 #, kde-format
 msgid "Logging:"
-msgstr "日志："
+msgstr "Registrado:"
 
 #: package/contents/ui/ConnectionsView.qml:14
 #, kde-format
 msgid "Connections"
-msgstr "连接"
+msgstr "Konektoj"
 
 #: package/contents/ui/ConnectionsView.qml:18
 #: package/contents/ui/LogsView.qml:19
 #, kde-format
 msgid "Protocol"
-msgstr "协议"
+msgstr "Protokolo"
 
 #: package/contents/ui/ConnectionsView.qml:19
 #, kde-format
 msgid "Local Address"
-msgstr "本地地址"
+msgstr ""
 
 #: package/contents/ui/ConnectionsView.qml:20
 #, kde-format
 msgid "Foreign Address"
-msgstr "远程地址"
+msgstr ""
 
 #: package/contents/ui/ConnectionsView.qml:21
 #, kde-format
 msgid "Status"
-msgstr "状态"
+msgstr "Statuso"
 
 #: package/contents/ui/ConnectionsView.qml:22
 #, kde-format
@@ -463,198 +464,202 @@ msgstr "PID"
 #: package/contents/ui/ConnectionsView.qml:23
 #, kde-format
 msgid "Program"
-msgstr "程序"
+msgstr "Programo"
 
 #: package/contents/ui/ConnectionsView.qml:26
 #, kde-format
 msgid "There are currently no open connections"
-msgstr "当前没有打开的连接"
+msgstr "Nuntempe ne estas malfermitaj konektoj"
 
 #: package/contents/ui/ConnectionsView.qml:35
 #, kde-format
 msgid "Created a blacklist rule from this connection."
-msgstr "从此连接创建黑名单规则。"
+msgstr "Kreis regulon de nigra listo de ĉi tiu konekto."
 
 #: package/contents/ui/ConnectionsView.qml:52
 #, kde-format
 msgid "could not find iproute2 or net-tools packages installed."
-msgstr "找不到本机安装的 iproute2 或者 net-tools 软件包。"
+msgstr "ne povis trovi instalitajn pakaĵojn iproute2 aŭ net-tools."
 
 #: package/contents/ui/IpTextField.qml:14
 #, kde-format
 msgid "Any IP address"
-msgstr "任意 IP 地址"
+msgstr "Ajna IP-adreso"
 
 #: package/contents/ui/LogsView.qml:16
 #, kde-format
 msgid "Firewall Logs"
-msgstr "防火墙日志"
+msgstr "Fajroŝirmilo Registroj"
 
 #: package/contents/ui/LogsView.qml:20 package/contents/ui/main.qml:350
 #, kde-format
 msgid "From"
-msgstr "来源"
+msgstr "De"
 
 #: package/contents/ui/LogsView.qml:22 package/contents/ui/main.qml:355
 #, kde-format
 msgid "To"
-msgstr "目标"
+msgstr "Al"
 
 #: package/contents/ui/LogsView.qml:24
 #, kde-format
 msgid "Interface"
-msgstr "接口"
+msgstr "Interfaco"
 
 #: package/contents/ui/LogsView.qml:26
 #, kde-format
 msgid "There are currently no firewall log entries"
-msgstr "目前没有防火墙日志条目"
+msgstr "Nuntempe ne ekzistas fajroŝirmilaj protokoloj"
 
 #: package/contents/ui/LogsView.qml:37
 #, kde-format
 msgid "Created a blacklist rule from this log entry."
-msgstr "从此日志条目创建黑名单规则。"
+msgstr "Kreis regulon de nigra listo el ĉi tiu protokolo."
 
 #: package/contents/ui/main.qml:23
 #, kde-format
 msgid "Allow all connections"
-msgstr "允许所有连接"
+msgstr "Permesi ĉiujn konektojn"
 
 #: package/contents/ui/main.qml:24
 #, kde-format
 msgid "Ignore"
-msgstr "忽略"
+msgstr "Ignori"
 
 #: package/contents/ui/main.qml:24
 #, kde-format
 msgid ""
 "Keeps the program waiting until the connection attempt times out, some short "
 "time later."
-msgstr "让程序等待直到在一段时间后连接尝试超时。"
+msgstr ""
+"Tenas la programon atendanta ĝis la konektoprovo elĉerpas, iom da tempo "
+"poste."
 
 #: package/contents/ui/main.qml:25
 #, kde-format
 msgid "Produces an immediate and very informative 'Connection refused' message"
-msgstr "生成即时且明确的“连接已被拒绝”消息"
+msgstr "Produktas tujan kaj tre informan mesaĝon \"Konekto rifuzita\"."
 
 #: package/contents/ui/main.qml:40
 #, kde-format
 msgid "Create A New Firewall Rule"
-msgstr "新建防火墙规则"
+msgstr "Krei Novan Fajroŝirmilan Regulon"
 
 #: package/contents/ui/main.qml:40
 #, kde-format
 msgid "Edit Firewall Rule"
-msgstr "编辑防火墙规则"
+msgstr "Redakti Firewall Regulon"
 
 #: package/contents/ui/main.qml:76 package/contents/ui/main.qml:265
 #: package/contents/ui/main.qml:400
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
-msgstr "请重新启动 Plasma 防火墙，后端程序已经断开连接。"
+msgstr "Bonvolu rekomenci plasman fajroŝirmilon, la backend malkonektita."
 
 #: package/contents/ui/main.qml:90 package/contents/ui/ViewBase.qml:110
 #, kde-format
 msgid "Error creating rule: %1"
-msgstr "创建规则出错： %1"
+msgstr "Eraro dum kreado de regulo: %1"
 
 #: package/contents/ui/main.qml:92
 #, kde-format
 msgid "Error updating rule: %1"
-msgstr "更新规则出错： %1"
+msgstr "Eraro dum ĝisdatigo de regulo: %1"
 
 #: package/contents/ui/main.qml:124
 #, kde-format
 msgid "Create"
-msgstr "创建"
+msgstr "Krei"
 
 #: package/contents/ui/main.qml:124
 #, kde-format
 msgid "Save"
-msgstr "保存"
+msgstr "Konservi"
 
 #: package/contents/ui/main.qml:149
 #, kde-format
 msgid "Firewall Status:"
-msgstr "防火墙状态："
+msgstr "Statuso de fajroŝirmilo:"
 
 #: package/contents/ui/main.qml:156
 #, kde-format
 msgid "Disabling..."
-msgstr "正在停用…"
+msgstr "Malebligante..."
 
 #: package/contents/ui/main.qml:156
 #, kde-format
 msgid "Enabled"
-msgstr "已启用"
+msgstr "Ebligita"
 
 #: package/contents/ui/main.qml:158
 #, kde-format
 msgid "Enabling..."
-msgstr "正在启用..."
+msgstr ""
 
 #: package/contents/ui/main.qml:158
 #, kde-format
 msgid "Disabled"
-msgstr "已禁用"
+msgstr "Malebligita"
 
 #: package/contents/ui/main.qml:184
 #, kde-format
 msgid "The firewall application, please install %1"
-msgstr "防火墙应用程序，请安装 %1"
+msgstr "La fajroŝirmila aplikaĵo, bonvolu instali %1"
 
 #: package/contents/ui/main.qml:198
 #, kde-format
 msgid "Permission denied"
-msgstr "权限被拒绝"
+msgstr "Permeso Rifuzita"
 
 #: package/contents/ui/main.qml:202
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
 "reboot."
-msgstr "您最近更新了操作系统内核。Iptable 无法初始化，请重新启动计算机。"
+msgstr ""
+"Vi lastatempe ĝisdatigis vian kernon. Iptables malsukcesas pravalorigi, "
+"bonvolu rekomenci."
 
 #: package/contents/ui/main.qml:205
 #, kde-format
 msgid "Error enabling firewall: %1"
-msgstr "启用防火墙出错： %1"
+msgstr "Eraro ebligante fajroŝirmilon: %1"
 
 #: package/contents/ui/main.qml:206
 #, kde-format
 msgid "Error disabling firewall: %1"
-msgstr "停用防火墙出错： %1"
+msgstr "Eraro malŝaltante fajroŝirmilon: %1"
 
 #: package/contents/ui/main.qml:226
 #, kde-format
 msgid "Default Incoming Policy:"
-msgstr "默认传入策略："
+msgstr "Defaŭlta Envena Politiko:"
 
 #: package/contents/ui/main.qml:227
 #, kde-format
 msgid "Default Outgoing Policy:"
-msgstr "默认传出策略："
+msgstr "Defaŭlta Elira Politiko:"
 
 #: package/contents/ui/main.qml:275
 #, kde-format
 msgid "Error changing policy: %1"
-msgstr "更改策略时出错： %1"
+msgstr "Eraro ŝanĝante politikon: %1"
 
 #: package/contents/ui/main.qml:338
 #, kde-format
 msgid "Firewall is disabled"
-msgstr "防火墙已禁用"
+msgstr "Fajroŝirmilo estas malŝaltita"
 
 #: package/contents/ui/main.qml:338
 #, kde-format
 msgid "No firewall rules have been added"
-msgstr "尚未建立任何防火墙规则"
+msgstr "Neniuj fajroŝirmilaj reguloj estis aldonitaj"
 
 #: package/contents/ui/main.qml:340
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule...</interface> button below to add one"
-msgstr "点击下方的 <interface>新建规则...</interface> 按钮来新建一条规则"
+msgstr ""
 
 #: package/contents/ui/main.qml:341
 #, kde-kuit-format
@@ -664,13 +669,11 @@ msgid ""
 "above, and then click the <interface>Add Rule...</interface> button below to "
 "add one"
 msgstr ""
-"勾选上方的<interface>防火墙状态</interface>选框以启用防火墙，然后点击"
-"<interface>新建规则...</interface>按钮以新增防火墙规则。"
 
 #: package/contents/ui/main.qml:345
 #, kde-format
 msgid "Action"
-msgstr "操作"
+msgstr "Ago"
 
 #: package/contents/ui/main.qml:360
 #, kde-format
@@ -680,88 +683,88 @@ msgstr "IP"
 #: package/contents/ui/main.qml:365
 #, kde-format
 msgid "Logging"
-msgstr "日志"
+msgstr "Protokolado"
 
 #: package/contents/ui/main.qml:391
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
-msgstr "编辑规则"
+msgstr "Redakti Regulon"
 
 #: package/contents/ui/main.qml:411
 #, kde-format
 msgid "Error removing rule: %1"
-msgstr "移除规则出错： %1"
+msgstr "Eraro dum forigo de regulo: %1"
 
 #: package/contents/ui/main.qml:418
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
-msgstr "移除规则"
+msgstr "Forigi Regulon"
 
 #: package/contents/ui/main.qml:428
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
-msgstr "查看连接"
+msgstr "Vidi Konektoj"
 
 #: package/contents/ui/main.qml:433
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
-msgstr "查看日志"
+msgstr "Vidi Protokolojn"
 
 #: package/contents/ui/main.qml:444
 #, kde-format
 msgid "Add Rule..."
-msgstr "新建规则..."
+msgstr "Aldoni regulon..."
 
 #: package/contents/ui/main.qml:453
 #, kde-format
 msgid "About"
-msgstr "关于"
+msgstr "Pri"
 
 #: package/contents/ui/main.qml:461
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
-msgstr "请先安装一款防火墙后端程序，例如 ufw 或者 firewalld"
+msgstr "Bonvolu instali fajroŝirmilon, kiel ufw aŭ firewalld"
 
 #: package/contents/ui/PortTextField.qml:11
 #, kde-format
 msgid "Any Port"
-msgstr "任意端口"
+msgstr "Ajna Haveno"
 
 #: package/contents/ui/RuleEdit.qml:41
 #, kde-format
 msgid "New Connections"
-msgstr "新连接"
+msgstr "Novaj Konektoj"
 
 #: package/contents/ui/RuleEdit.qml:42
 #, kde-format
 msgid "All Packets"
-msgstr "所有数据包"
+msgstr "Ĉiuj Pakoj"
 
 #: package/contents/ui/RuleEdit.qml:57 package/contents/ui/RuleEdit.qml:64
 #, kde-format
 msgid "The default incoming policy is already '%1'."
-msgstr "默认传入策略已经是“%1”。"
+msgstr "La defaŭlta envenanta politiko jam estas '%1'."
 
 #: package/contents/ui/RuleEdit.qml:58 package/contents/ui/RuleEdit.qml:65
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
-msgstr "默认传出策略已经是“%1”。"
+msgstr "La defaŭlta elira politiko jam estas '%1'."
 
 #: package/contents/ui/SimpleRuleEdit.qml:23
 #, kde-format
 msgid "Allow connections for:"
-msgstr "允许连接："
+msgstr "Permesi konektojn por:"
 
 #: package/contents/ui/SimpleRuleEdit.qml:23
 #, kde-format
 msgid "Application:"
-msgstr "应用程序："
+msgstr "Apliko:"
 
 #: package/contents/ui/ViewBase.qml:222
 #, kde-format
 msgid "Blacklist Connection"
-msgstr "黑名单连接"
+msgstr "Nigra Listo Konekto"
