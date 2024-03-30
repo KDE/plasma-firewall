@@ -18,6 +18,7 @@
   <name xml:lang="da">Plasma Firewall</name>
   <name xml:lang="de">Plasma-Firewall</name>
   <name xml:lang="en-GB">Plasma Firewall</name>
+  <name xml:lang="eo">Plasma Firewall</name>
   <name xml:lang="es">Cortafuegos de Plasma</name>
   <name xml:lang="et">Plasma tulemüür</name>
   <name xml:lang="eu">Plasma suhesia</name>
@@ -55,6 +56,7 @@
   <summary xml:lang="da">Firewallbrugerflade til Plasma</summary>
   <summary xml:lang="de">Firewall-Schnittstelle für Plasma</summary>
   <summary xml:lang="en-GB">Firewall Interface for Plasma</summary>
+  <summary xml:lang="eo">Fajroŝirmila interfaco por Plasma</summary>
   <summary xml:lang="es">Interfaz de cortafuegos para Plasma</summary>
   <summary xml:lang="et">Plasma tulemüüriliides</summary>
   <summary xml:lang="eu">Plasmarako suhesi interfazea</summary>
@@ -133,6 +135,7 @@
       <caption xml:lang="da">Plasma-firewallen der viser en standardkonfigurationsside</caption>
       <caption xml:lang="de">Die Plasma-Firewall mit der Anzeige der Standard-Einrichtungsseite</caption>
       <caption xml:lang="en-GB">The plasma firewall showing a default configuration page</caption>
+      <caption xml:lang="eo">La Plasma-fajroŝirmilo montranta defaŭltan agordpaĝon</caption>
       <caption xml:lang="es">El cortafuegos de Plasma mostrando una página de configuración predeterminada</caption>
       <caption xml:lang="et">Plasma tulemüüri vaikimisi seadistusleht</caption>
       <caption xml:lang="eu">Plasma suhesia lehenetsitako konfigurazio-orri bat erakusten duela</caption>
@@ -173,6 +176,7 @@
   <developer_name xml:lang="da">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="de">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="en-GB">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
+  <developer_name xml:lang="eo">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="es">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="et">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="eu">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
