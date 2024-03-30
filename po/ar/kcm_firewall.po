@@ -2,21 +2,22 @@
 # This file is distributed under the same license as the plasma-firewall package.
 #
 # SPDX-FileCopyrightText: 2021, 2022, 2023, 2024 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
+# Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-15 00:39+0000\n"
-"PO-Revision-Date: 2024-01-20 20:00+0400\n"
+"PO-Revision-Date: 2024-03-29 17:39+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
-"Language-Team: ar\n"
+"Language-Team: \n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -669,17 +670,15 @@ msgid "Save"
 msgstr "احفظ"
 
 #: ui/main.qml:238
-#, fuzzy, kde-format
-#| msgid "Firewall Status:"
+#, kde-format
 msgid "Firewall type:"
-msgstr "حالة الجدار الناري:"
+msgstr "نوع الجدار الناري:"
 
 #: ui/main.qml:246
-#, fuzzy, kde-format
-#| msgid "firewalld %1"
+#, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
-msgstr "‏firewalld %1"
+msgstr "‏إصدار الجدار الناري: %1"
 
 #: ui/main.qml:253
 #, kde-format
@@ -724,9 +723,7 @@ msgid "No firewall rules have been added"
 msgstr "لم تضف قواعد للجدار الناري"
 
 #: ui/main.qml:460
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click the <interface>Add Rule…</interface> button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr "انقر زر <interface>أضف قاعدة…</interface> لتضيف واحدة"
@@ -735,7 +732,7 @@ msgstr "انقر زر <interface>أضف قاعدة…</interface> لتضيف و�
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
-msgstr ""
+msgstr "انقر فوق التبديل أعلاه لتمكينه"
 
 #: ui/main.qml:467
 #, kde-format
