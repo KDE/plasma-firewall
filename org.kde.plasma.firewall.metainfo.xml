@@ -66,7 +66,7 @@
   <summary xml:lang="fi">Plasman palomuurikäyttöliittymä</summary>
   <summary xml:lang="fr">Interface du pare-feu de Plasma</summary>
   <summary xml:lang="gl">Interface de devasas para Plasma.</summary>
-  <summary xml:lang="he">מנשק חומת אש לפלזמה</summary>
+  <summary xml:lang="he">ממשק חומת אש לפלזמה</summary>
   <summary xml:lang="hu">Tűzfalbeállítú felület a Plasmához</summary>
   <summary xml:lang="ia">Interfacie de Taliafoco (Firewall) de Plasma</summary>
   <summary xml:lang="id">Antarmuka Firewall untuk Plasma</summary>
@@ -108,7 +108,7 @@
     <p xml:lang="fi">Plasma Firewall on verkkoasetuksia helpottava monen palomuurin käyttöliittymä.</p>
     <p xml:lang="fr">Le pare-feu de Plasma est une interface pour de multiples pare-feux, pour faciliter les configurations de réseaux.</p>
     <p xml:lang="gl">Plasma Firewall é unha interface para facilitar configuracións de rede compatíbel con varias devasas.</p>
-    <p xml:lang="he">חומת האש של פלזמה היא מנשק משתמש למגוון חומות אש להקלה על הגדרות הרשת.</p>
+    <p xml:lang="he">חומת האש של פלזמה היא ממשק משתמש למגוון חומות אש להקלה על הגדרות הרשת.</p>
     <p xml:lang="hu">A Plasma Firewall egy többfajta tűzfalat kezelni képes előtétprogram a hálózati beállítások könnyebb módosításához.</p>
     <p xml:lang="ia">Plasma Firewall (Taliafoco de Plasma) es un interfacie per multi-firewall per facilitar le configurationes de rete.</p>
     <p xml:lang="id">Plasma Firewall adalah sebuah frontend multi-firewall untuk meringankan konfigurasi jaringan.</p>
