@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
 #
-# Steve Allewell <steve.allewell@gmail.com>, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024 Steve Allewell <steve.allewell@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-15 00:39+0000\n"
-"PO-Revision-Date: 2023-04-29 12:26+0100\n"
+"PO-Revision-Date: 2024-05-23 19:26+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
 "Language: en_GB\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.03.70\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -53,43 +53,37 @@ msgid "firewalld listing rules and services"
 msgstr "firewalld listing rules and services"
 
 #: backends/netstat/connectionsmodel.cpp:97 core/loglistmodel.cpp:96
-#, fuzzy, kde-format
-#| msgid "Protocol"
+#, kde-format
 msgctxt "@title:column"
 msgid "Protocol"
 msgstr "Protocol"
 
 #: backends/netstat/connectionsmodel.cpp:99
-#, fuzzy, kde-format
-#| msgid "Local Address"
+#, kde-format
 msgctxt "@title:column"
 msgid "Local address"
-msgstr "Local Address"
+msgstr "Local address"
 
 #: backends/netstat/connectionsmodel.cpp:101
-#, fuzzy, kde-format
-#| msgid "Foreign Address"
+#, kde-format
 msgctxt "@title:column"
 msgid "Foreign address"
-msgstr "Foreign Address"
+msgstr "Foreign address"
 
 #: backends/netstat/connectionsmodel.cpp:103
-#, fuzzy, kde-format
-#| msgid "Status"
+#, kde-format
 msgctxt "@title:column"
 msgid "Status"
 msgstr "Status"
 
 #: backends/netstat/connectionsmodel.cpp:105
-#, fuzzy, kde-format
-#| msgid "PID"
+#, kde-format
 msgctxt "@title:column"
 msgid "PID"
 msgstr "PID"
 
 #: backends/netstat/connectionsmodel.cpp:107
-#, fuzzy, kde-format
-#| msgid "Program"
+#, kde-format
 msgctxt "@title:column"
 msgid "Program"
 msgstr "Program"
@@ -164,43 +158,37 @@ msgid "Any"
 msgstr "Any"
 
 #: core/loglistmodel.cpp:88 core/rulelistmodel.cpp:89
-#, fuzzy, kde-format
-#| msgid "From"
+#, kde-format
 msgctxt "@title:column"
 msgid "From"
 msgstr "From"
 
 #: core/loglistmodel.cpp:90
-#, fuzzy, kde-format
-#| msgid "Source:"
+#, kde-format
 msgctxt "@title:column"
 msgid "Source port"
-msgstr "Source:"
+msgstr "Source port"
 
 #: core/loglistmodel.cpp:92 core/rulelistmodel.cpp:91
-#, fuzzy, kde-format
-#| msgid "To"
+#, kde-format
 msgctxt "@title:column"
 msgid "To"
 msgstr "To"
 
 #: core/loglistmodel.cpp:94
-#, fuzzy, kde-format
-#| msgid "Destination:"
+#, kde-format
 msgctxt "@title:column"
 msgid "Destination port"
-msgstr "Destination:"
+msgstr "Destination port"
 
 #: core/loglistmodel.cpp:98
-#, fuzzy, kde-format
-#| msgid "Interface"
+#, kde-format
 msgctxt "@title:column"
 msgid "Interface"
 msgstr "Interface"
 
 #: core/loglistmodel.cpp:100 core/rulelistmodel.cpp:87
-#, fuzzy, kde-format
-#| msgid "Action"
+#, kde-format
 msgctxt "@title:column"
 msgid "Action"
 msgstr "Action"
@@ -209,13 +197,13 @@ msgstr "Action"
 #, kde-format
 msgctxt "@title:column"
 msgid "Time"
-msgstr ""
+msgstr "Time"
 
 #: core/loglistmodel.cpp:104
 #, kde-format
 msgctxt "@title:column"
 msgid "Date"
-msgstr ""
+msgstr "Date"
 
 #: core/rule.cpp:46
 #, kde-format
@@ -252,15 +240,13 @@ msgid "Yes"
 msgstr "Yes"
 
 #: core/rulelistmodel.cpp:93
-#, fuzzy, kde-format
-#| msgid "IP"
+#, kde-format
 msgctxt "@title:column"
 msgid "IP"
 msgstr "IP"
 
 #: core/rulelistmodel.cpp:95
-#, fuzzy, kde-format
-#| msgid "Logging"
+#, kde-format
 msgctxt "@title:column"
 msgid "Logging"
 msgstr "Logging"
@@ -687,17 +673,15 @@ msgid "Save"
 msgstr "Save"
 
 #: ui/main.qml:238
-#, fuzzy, kde-format
-#| msgid "Firewall Status:"
+#, kde-format
 msgid "Firewall type:"
-msgstr "Firewall Status:"
+msgstr "Firewall type:"
 
 #: ui/main.qml:246
-#, fuzzy, kde-format
-#| msgid "firewalld %1"
+#, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
-msgstr "firewalld %1"
+msgstr "Firewall version: %1"
 
 #: ui/main.qml:253
 #, kde-format
@@ -742,18 +726,16 @@ msgid "No firewall rules have been added"
 msgstr "No firewall rules have been added"
 
 #: ui/main.qml:460
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click the <interface>Add Rule…</interface> button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
-msgstr "Click the <interface>Add Rule…</interface> button below to add one"
+msgstr "Click the <interface>Add Rule…</interface> button to add one"
 
 #: ui/main.qml:461
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
-msgstr ""
+msgstr "Click switch above to enable it"
 
 #: ui/main.qml:467
 #, kde-format
