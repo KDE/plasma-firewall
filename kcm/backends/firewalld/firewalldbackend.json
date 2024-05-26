@@ -43,11 +43,7 @@
         "Name[uk]": "Модуль для Firewalld",
         "Name[x-test]": "xxBackend for Firewalldxx",
         "Name[zh_CN]": "Firewalld 后端程序",
-        "Name[zh_TW]": "Firewalld 後端",
-        "ServiceTypes": [
-            "KFileItemAction/Plugin",
-            "Plasma/FirewallBackend"
-        ]
+        "Name[zh_TW]": "Firewalld 後端"
     },
     "MimeType": "application/octet-stream;"
 }
