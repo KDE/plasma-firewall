@@ -788,25 +788,3 @@ msgstr "Aplicació:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Connexió a la llista negra"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "Enable the firewall with the <interface>Firewall Status</interface> "
-#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
-#~ "one"
-#~ msgstr ""
-#~ "Habiliteu el tallafoc amb el commutador <interface>Estat del tallafoc</"
-#~ "interface>, i després feu clic al botó <interface>Afegeix una regla…</"
-#~ "interface> per a afegir-ne una"
-
-#~ msgid "About Firewall"
-#~ msgstr "Quant al tallafoc"
-
-#~ msgid "Backend:"
-#~ msgstr "Dorsal:"
-
-#~ msgid "Version:"
-#~ msgstr "Versió:"
-
-#~ msgid "About"
-#~ msgstr "Quant a"
