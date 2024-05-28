@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-15 00:39+0000\n"
+"POT-Creation-Date: 2024-05-28 02:29+0000\n"
 "PO-Revision-Date: 2021-06-02 20:53+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -160,7 +160,7 @@ msgstr ""
 msgid "Error fetching firewall logs: %1"
 msgstr "Eroare la preluarea jurnalelor firewall-ului: %1"
 
-#: backends/ufw/ufwclient.cpp:608 core/firewallclient.cpp:74
+#: backends/ufw/ufwclient.cpp:608 core/firewallclient.cpp:76
 #, kde-format
 msgid "Any"
 msgstr "Oricare"
