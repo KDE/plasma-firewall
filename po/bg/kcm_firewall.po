@@ -785,25 +785,3 @@ msgstr "Приложение:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Поставяне на връзка в черен списък"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "Enable the firewall with the <interface>Firewall Status</interface> "
-#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
-#~ "one"
-#~ msgstr ""
-#~ "Активирайте защитната стена с отметка на <interface>Състояние на защитна "
-#~ "стена</interface>отгоре и след това щракнете бутона<interface>Добавяне на "
-#~ "правило...</interface>, за да добавите ново правило"
-
-#~ msgid "About Firewall"
-#~ msgstr "Относно защитна стена"
-
-#~ msgid "Backend:"
-#~ msgstr "Бекенд:"
-
-#~ msgid "Version:"
-#~ msgstr "Версия:"
-
-#~ msgid "About"
-#~ msgstr "За програмата"
