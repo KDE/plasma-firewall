@@ -1,21 +1,21 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
-# Vit Pelcak <vit@pelcak.org>, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024 Vit Pelcak <vit@pelcak.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-28 02:29+0000\n"
-"PO-Revision-Date: 2023-05-02 15:23+0200\n"
-"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
+"PO-Revision-Date: 2024-05-30 09:46+0200\n"
+"Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.04.0\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -56,19 +56,19 @@ msgstr ""
 #, kde-format
 msgctxt "@title:column"
 msgid "Protocol"
-msgstr ""
+msgstr "Protokol"
 
 #: backends/netstat/connectionsmodel.cpp:99
 #, kde-format
 msgctxt "@title:column"
 msgid "Local address"
-msgstr ""
+msgstr "Lokální adresa"
 
 #: backends/netstat/connectionsmodel.cpp:101
 #, kde-format
 msgctxt "@title:column"
 msgid "Foreign address"
-msgstr ""
+msgstr "Cizí adresa"
 
 #: backends/netstat/connectionsmodel.cpp:103
 #, kde-format
@@ -80,13 +80,13 @@ msgstr "Stav"
 #, kde-format
 msgctxt "@title:column"
 msgid "PID"
-msgstr ""
+msgstr "PID"
 
 #: backends/netstat/connectionsmodel.cpp:107
 #, kde-format
 msgctxt "@title:column"
 msgid "Program"
-msgstr ""
+msgstr "Program"
 
 #: backends/netstat/connectionsmodel.cpp:115
 #, kde-format
@@ -159,31 +159,31 @@ msgstr "Cokoliv"
 #, kde-format
 msgctxt "@title:column"
 msgid "From"
-msgstr ""
+msgstr "Od"
 
 #: core/loglistmodel.cpp:90
 #, kde-format
 msgctxt "@title:column"
 msgid "Source port"
-msgstr ""
+msgstr "Port zdroje"
 
 #: core/loglistmodel.cpp:92 core/rulelistmodel.cpp:91
 #, kde-format
 msgctxt "@title:column"
 msgid "To"
-msgstr ""
+msgstr "Komu"
 
 #: core/loglistmodel.cpp:94
 #, kde-format
 msgctxt "@title:column"
 msgid "Destination port"
-msgstr ""
+msgstr "Cílový port"
 
 #: core/loglistmodel.cpp:98
 #, kde-format
 msgctxt "@title:column"
 msgid "Interface"
-msgstr ""
+msgstr "Rozhraní"
 
 #: core/loglistmodel.cpp:100 core/rulelistmodel.cpp:87
 #, kde-format
@@ -241,7 +241,7 @@ msgstr "Ano"
 #, kde-format
 msgctxt "@title:column"
 msgid "IP"
-msgstr ""
+msgstr "IP"
 
 #: core/rulelistmodel.cpp:95
 #, kde-format
@@ -668,13 +668,13 @@ msgstr "Uložit"
 #: ui/main.qml:238
 #, kde-format
 msgid "Firewall type:"
-msgstr ""
+msgstr "Typ Firewallu:"
 
 #: ui/main.qml:246
 #, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
-msgstr ""
+msgstr "Verze Firewall: %1"
 
 #: ui/main.qml:253
 #, kde-format
@@ -723,12 +723,13 @@ msgstr "Nebyla přidána žádná pravidla firewallu"
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
+"Klikněte na tlačítko <interface>Přidat pravidlo…</interface> pro přidání"
 
 #: ui/main.qml:461
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
-msgstr ""
+msgstr "Klikněte na přepínač pro povolení"
 
 #: ui/main.qml:467
 #, kde-format
