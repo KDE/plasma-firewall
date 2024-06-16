@@ -34,6 +34,7 @@
   <name xml:lang="ka">Plasma Firewall</name>
   <name xml:lang="ko">Plasma 방화벽</name>
   <name xml:lang="lt">Plasma užkarda</name>
+  <name xml:lang="lv">Plasma Firewall</name>
   <name xml:lang="nl">Plasma-firewall</name>
   <name xml:lang="nn">Plasma-brannmur</name>
   <name xml:lang="pa">ਪਲਾਜ਼ਮਾ ਫ਼ਾਇਰਵਾਲ</name>
@@ -75,6 +76,7 @@
   <summary xml:lang="ka">ბრანდმაუერის ინტერფეისი Plasma-სთვის</summary>
   <summary xml:lang="ko">Plasma 방화벽 인터페이스</summary>
   <summary xml:lang="lt">Užkardos sąsaja, skirta Plasma</summary>
+  <summary xml:lang="lv">Ugunsmūra saskarne „Plasma“ darbvirsmai</summary>
   <summary xml:lang="nl">Firewall-interface voor Plasma</summary>
   <summary xml:lang="nn">Plasma-brukarflate for brannmur</summary>
   <summary xml:lang="pa">ਪਲਾਜ਼ਮਾ ਲਈ ਫ਼ਾਇਰਵਾਲ ਇੰਟਰਫ਼ੇਸ</summary>
@@ -117,6 +119,7 @@
     <p xml:lang="ka">Plasma Firewall მრავალი ბრანდმაუერის მხარდაჭერის მქონე წინაბოლოა, რომელიც ქსელის კონფიგურაციაში დაგეხმარებათ.</p>
     <p xml:lang="ko">Plasma 방화벽은 네트워크를 쉽게 설정할 수 있는 다중 방화벽 프론트엔드입니다.</p>
     <p xml:lang="lt">Plasma užkarda yra kelių užkardų naudotojo sąsaja, skirta palengvinti tinklo konfigūracijas.</p>
+    <p xml:lang="lv">„Plasma Firewall“ ir priekšsistēma dažādiem ugunsmūriem, lai atvieglotu to konfigurāciju.</p>
     <p xml:lang="nl">Plasma-firewall is een multi-firewall-frontend om netwerkconfiguratie gemakkelijker te maken.</p>
     <p xml:lang="nn">Plasma Firewall er ei grafisk brukarflate for fleire brannmurar, for lettare oppsett.</p>
     <p xml:lang="pl">Zapora ogniowa Plazmy jest nakładką na wiele zapór ogniowych dla łatwego ustawiania sieci.</p>
@@ -160,6 +163,7 @@
       <caption xml:lang="ka">Plasma Firewall კონფიგურაციის ნაგულისხმებ გვერდს აჩვენებს</caption>
       <caption xml:lang="ko">기본 설정 페이지를 표시하는 Plasma 방화벽</caption>
       <caption xml:lang="lt">Plasma užkarda atvaizduojanti numatytąjį konfigūracijos puslapį</caption>
+      <caption xml:lang="lv">„Plasma Firewall“ rāda noklusējuma konfigurācijas lapu</caption>
       <caption xml:lang="nl">De plasma-firewall toont een standaard configuratiepagina</caption>
       <caption xml:lang="nn">Plasma-brannmur som viser ei standard oppsettside</caption>
       <caption xml:lang="pl">Zapora ogniowa Plazmy pokazująca domyślną stronę ustawień</caption>
@@ -204,6 +208,7 @@
   <developer_name xml:lang="ka">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="ko">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="lt">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
+  <developer_name xml:lang="lv">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="nl">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="nn">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="pl">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
