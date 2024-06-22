@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
 #
-# Stefan Asserhäll <stefan.asserhall@gmail.com>, 2020, 2021, 2022.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2024 Stefan Asserhäll <stefan.asserhall@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-28 00:39+0000\n"
-"PO-Revision-Date: 2022-02-16 20:12+0100\n"
+"PO-Revision-Date: 2024-06-21 09:53+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.08.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -53,43 +53,37 @@ msgid "firewalld listing rules and services"
 msgstr "Brandväggsdemon listar regler och tjänster"
 
 #: backends/netstat/connectionsmodel.cpp:97 core/loglistmodel.cpp:96
-#, fuzzy, kde-format
-#| msgid "Protocol"
+#, kde-format
 msgctxt "@title:column"
 msgid "Protocol"
 msgstr "Protokoll"
 
 #: backends/netstat/connectionsmodel.cpp:99
-#, fuzzy, kde-format
-#| msgid "Local Address"
+#, kde-format
 msgctxt "@title:column"
 msgid "Local address"
 msgstr "Lokal adress"
 
 #: backends/netstat/connectionsmodel.cpp:101
-#, fuzzy, kde-format
-#| msgid "Foreign Address"
+#, kde-format
 msgctxt "@title:column"
 msgid "Foreign address"
 msgstr "Främmande adress"
 
 #: backends/netstat/connectionsmodel.cpp:103
-#, fuzzy, kde-format
-#| msgid "Status"
+#, kde-format
 msgctxt "@title:column"
 msgid "Status"
 msgstr "Status"
 
 #: backends/netstat/connectionsmodel.cpp:105
-#, fuzzy, kde-format
-#| msgid "PID"
+#, kde-format
 msgctxt "@title:column"
 msgid "PID"
 msgstr "Process-ID"
 
 #: backends/netstat/connectionsmodel.cpp:107
-#, fuzzy, kde-format
-#| msgid "Program"
+#, kde-format
 msgctxt "@title:column"
 msgid "Program"
 msgstr "Program"
@@ -164,43 +158,37 @@ msgid "Any"
 msgstr "Alla"
 
 #: core/loglistmodel.cpp:88 core/rulelistmodel.cpp:89
-#, fuzzy, kde-format
-#| msgid "From"
+#, kde-format
 msgctxt "@title:column"
 msgid "From"
 msgstr "Från"
 
 #: core/loglistmodel.cpp:90
-#, fuzzy, kde-format
-#| msgid "Source:"
+#, kde-format
 msgctxt "@title:column"
 msgid "Source port"
-msgstr "Källa:"
+msgstr "Källport"
 
 #: core/loglistmodel.cpp:92 core/rulelistmodel.cpp:91
-#, fuzzy, kde-format
-#| msgid "To"
+#, kde-format
 msgctxt "@title:column"
 msgid "To"
 msgstr "Till"
 
 #: core/loglistmodel.cpp:94
-#, fuzzy, kde-format
-#| msgid "Destination:"
+#, kde-format
 msgctxt "@title:column"
 msgid "Destination port"
-msgstr "Mål:"
+msgstr "Målport"
 
 #: core/loglistmodel.cpp:98
-#, fuzzy, kde-format
-#| msgid "Interface"
+#, kde-format
 msgctxt "@title:column"
 msgid "Interface"
 msgstr "Gränssnitt"
 
 #: core/loglistmodel.cpp:100 core/rulelistmodel.cpp:87
-#, fuzzy, kde-format
-#| msgid "Action"
+#, kde-format
 msgctxt "@title:column"
 msgid "Action"
 msgstr "Åtgärd"
@@ -209,13 +197,13 @@ msgstr "Åtgärd"
 #, kde-format
 msgctxt "@title:column"
 msgid "Time"
-msgstr ""
+msgstr "Tid"
 
 #: core/loglistmodel.cpp:104
 #, kde-format
 msgctxt "@title:column"
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: core/rule.cpp:46
 #, kde-format
@@ -252,15 +240,13 @@ msgid "Yes"
 msgstr "Ja"
 
 #: core/rulelistmodel.cpp:93
-#, fuzzy, kde-format
-#| msgid "IP"
+#, kde-format
 msgctxt "@title:column"
 msgid "IP"
 msgstr "IP"
 
 #: core/rulelistmodel.cpp:95
-#, fuzzy, kde-format
-#| msgid "Logging"
+#, kde-format
 msgctxt "@title:column"
 msgid "Logging"
 msgstr "Loggning"
@@ -587,10 +573,9 @@ msgstr ""
 "meddelande"
 
 #: ui/main.qml:33
-#, fuzzy, kde-format
-#| msgid "Add Rule..."
+#, kde-format
 msgid "Add Rule…"
-msgstr "Lägg till regel..."
+msgstr "Lägg till regel…"
 
 #: ui/main.qml:41
 #, kde-format
@@ -605,10 +590,9 @@ msgid "View Logs"
 msgstr "Visa loggar"
 
 #: ui/main.qml:63
-#, fuzzy, kde-format
-#| msgid "Disabling..."
+#, kde-format
 msgid "Disabling…"
-msgstr "Inaktiverar..."
+msgstr "Inaktiverar…"
 
 #: ui/main.qml:63
 #, kde-format
@@ -616,10 +600,9 @@ msgid "Enabled"
 msgstr "Aktiverad"
 
 #: ui/main.qml:65
-#, fuzzy, kde-format
-#| msgid "Enabling..."
+#, kde-format
 msgid "Enabling…"
-msgstr "Aktiverar..."
+msgstr "Aktiverar…"
 
 #: ui/main.qml:65
 #, kde-format
@@ -691,17 +674,15 @@ msgid "Save"
 msgstr "Spara"
 
 #: ui/main.qml:238
-#, fuzzy, kde-format
-#| msgid "Firewall Status:"
+#, kde-format
 msgid "Firewall type:"
-msgstr "Brandväggsstatus:"
+msgstr "Brandväggstyp:"
 
 #: ui/main.qml:246
-#, fuzzy, kde-format
-#| msgid "firewalld %1"
+#, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
-msgstr "Brandväggsdemon %1"
+msgstr "Brandväggsversion: %1"
 
 #: ui/main.qml:253
 #, kde-format
@@ -746,20 +727,18 @@ msgid "No firewall rules have been added"
 msgstr "Inga brandväggsregler har lagts till"
 
 #: ui/main.qml:460
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click the <interface>Add Rule...</interface> button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
-"Klicka på knappen <interface>Lägg till regel...</interface> nedan för att "
-"lägga till en"
+"Klicka på knappen <interface>Lägg till regel...</interface> för att lägga "
+"till en"
 
 #: ui/main.qml:461
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
-msgstr ""
+msgstr "Klicka på omkopplaren ovan för att aktivera den"
 
 #: ui/main.qml:467
 #, kde-format
