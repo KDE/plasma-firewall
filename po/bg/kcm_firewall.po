@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-28 00:39+0000\n"
-"PO-Revision-Date: 2024-03-20 13:19+0100\n"
+"PO-Revision-Date: 2024-07-05 15:58+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.02.0\n"
+"X-Generator: Lokalize 24.05.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -575,7 +575,7 @@ msgstr ""
 #: ui/main.qml:33
 #, kde-format
 msgid "Add Rule…"
-msgstr "Добавяне на правило..."
+msgstr "Добавяне на правило…"
 
 #: ui/main.qml:41
 #, kde-format
@@ -592,7 +592,7 @@ msgstr "Преглед на журнала"
 #: ui/main.qml:63
 #, kde-format
 msgid "Disabling…"
-msgstr "Деактивиране..."
+msgstr "Деактивиране…"
 
 #: ui/main.qml:63
 #, kde-format
@@ -602,7 +602,7 @@ msgstr "Включено"
 #: ui/main.qml:65
 #, kde-format
 msgid "Enabling…"
-msgstr "Активиране..."
+msgstr "Активиране…"
 
 #: ui/main.qml:65
 #, kde-format
@@ -732,7 +732,7 @@ msgstr "Не са добавени правила за защитна стена
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
-"Щракнете бутона<interface>Добавяне на правило...</interface>, за да добавите "
+"Щракнете бутона<interface>Добавяне на правило…</interface>, за да добавите "
 "ново правило"
 
 #: ui/main.qml:461
