@@ -7,16 +7,15 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-28 02:29+0000\n"
-"PO-Revision-Date: 2024-03-15 06:57+0200\n"
+"PO-Revision-Date: 2024-08-02 09:49+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
-"Language: he\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.4\n"
-"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
-"n % 10 == 0) ? 2 : 3));\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 24.05.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -669,15 +668,17 @@ msgid "Save"
 msgstr "שמירה"
 
 #: ui/main.qml:238
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Firewall Status:"
 msgid "Firewall type:"
-msgstr "סוג חומת אש:"
+msgstr "מצב חומת אש:"
 
 #: ui/main.qml:246
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "firewalld %1"
 msgctxt "@info"
 msgid "Firewall version: %1"
-msgstr "גרסת חומת אש: %1"
+msgstr "firewalld %1"
 
 #: ui/main.qml:253
 #, kde-format
@@ -722,16 +723,18 @@ msgid "No firewall rules have been added"
 msgstr "לא נוספו כללים לחומת האש"
 
 #: ui/main.qml:460
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "Click the <interface>Add Rule…</interface> button below to add one"
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
-msgstr "יש ללחוץ על כפתור <interface>הוספת כלל…</interface> כדי להוסיף אחד כזה"
+msgstr "לחיצה על <interface>הוספת כלל…</interface> תאפשר לך להוסיף אחד"
 
 #: ui/main.qml:461
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
-msgstr "יש ללחוץ על המתג שלעיל כדי להפעיל אותו"
+msgstr ""
 
 #: ui/main.qml:467
 #, kde-format
@@ -778,15 +781,6 @@ msgstr "יישום:"
 msgid "Blacklist Connection"
 msgstr "חסימת החיבור לצמיתות"
 
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "Enable the firewall with the <interface>Firewall Status</interface> "
-#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
-#~ "one"
-#~ msgstr ""
-#~ "יש להפעיל את חומת האש עם המתג <interface>מצב חומת אש</interface>, ואז "
-#~ "ללחוץ על הכפתור <interface>הוספת כלל…</interface> כדי להוסיף אחד כזה"
-
 #~ msgid "About Firewall"
 #~ msgstr "על חומת האש"
 
@@ -795,6 +789,16 @@ msgstr "חסימת החיבור לצמיתות"
 
 #~ msgid "Version:"
 #~ msgstr "גרסה:"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Enable the firewall with the <interface>Firewall Status</interface> "
+#~ "checkbox above, and then click the <interface>Add Rule…</interface> "
+#~ "button below to add one"
+#~ msgstr ""
+#~ "אפשר להפעיל את חומת האש בעזרת תיבת הסימון <interface>מצב חומת אש</"
+#~ "interface> ואז ללחוץ על הכפתור <interface>הוספת כלל…</interface> שלמטה "
+#~ "כדי להוסיף אחד כזה"
 
 #~ msgid "About"
 #~ msgstr "על אודות"
