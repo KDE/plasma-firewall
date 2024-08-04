@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-28 02:29+0000\n"
-"PO-Revision-Date: 2024-08-02 09:49+0300\n"
+"PO-Revision-Date: 2024-08-03 06:30+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: en_US\n"
@@ -668,17 +668,15 @@ msgid "Save"
 msgstr "שמירה"
 
 #: ui/main.qml:238
-#, fuzzy, kde-format
-#| msgid "Firewall Status:"
+#, kde-format
 msgid "Firewall type:"
-msgstr "מצב חומת אש:"
+msgstr "סוג חומת אש:"
 
 #: ui/main.qml:246
-#, fuzzy, kde-format
-#| msgid "firewalld %1"
+#, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
-msgstr "firewalld %1"
+msgstr "גרסת חומת אש: %1"
 
 #: ui/main.qml:253
 #, kde-format
@@ -723,18 +721,16 @@ msgid "No firewall rules have been added"
 msgstr "לא נוספו כללים לחומת האש"
 
 #: ui/main.qml:460
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click the <interface>Add Rule…</interface> button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
-msgstr "לחיצה על <interface>הוספת כלל…</interface> תאפשר לך להוסיף אחד"
+msgstr "יש ללחוץ על כפתור <interface>הוספת כלל…</interface> כדי להוסיף אחד כזה"
 
 #: ui/main.qml:461
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
-msgstr ""
+msgstr "יש ללחוץ על המתג שלעיל כדי להפעיל אותו"
 
 #: ui/main.qml:467
 #, kde-format
