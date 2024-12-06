@@ -6,7 +6,8 @@
 import QtQuick
 import QtQuick.Layouts 1.3
 import QtQuick.Controls as QQC2
-import Qt.labs.qmlmodels as Labs
+import QtQml.Models
+import Qt.labs.qmlmodels
 
 import org.kde.kcmutils as KCMUtils
 
@@ -379,8 +380,8 @@ KCMUtils.ScrollViewKCM {
             columnWidths[RuleListModel.EditColumn] = Kirigami.Units.gridUnit * 6
             return columnWidths[column]
         }
-        delegate: Labs.DelegateChooser {
-            Labs.DelegateChoice {
+        delegate: DelegateChooser {
+            DelegateChoice {
                 column: RuleListModel.EditColumn
                 RowLayout {
                     id: ruleActionsRow
@@ -435,7 +436,7 @@ KCMUtils.ScrollViewKCM {
                     }
                 }
             }
-            Labs.DelegateChoice {
+            DelegateChoice {
                 QQC2.ItemDelegate {
                     required property var model
                     required property bool current
