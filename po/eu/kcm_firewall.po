@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-28 00:39+0000\n"
+"POT-Creation-Date: 2024-12-07 02:33+0000\n"
 "PO-Revision-Date: 2024-03-23 22:46+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -299,7 +299,7 @@ msgstr "Konexio berriak"
 msgid "All packets"
 msgstr "Pakete guztiak"
 
-#: core/types.cpp:58 ui/main.qml:24
+#: core/types.cpp:58 ui/main.qml:25
 #, kde-format
 msgid "Allow"
 msgstr "Baimendu"
@@ -309,7 +309,7 @@ msgstr "Baimendu"
 msgid "Deny"
 msgstr "Ukatu"
 
-#: core/types.cpp:62 ui/main.qml:26
+#: core/types.cpp:62 ui/main.qml:27
 #, kde-format
 msgid "Reject"
 msgstr "Errefuxatu"
@@ -549,17 +549,17 @@ msgstr "Une honetan ez dago suhesiaren egunkariko sarrerarik"
 msgid "Created a blacklist rule from this log entry."
 msgstr "Sortu zerrenda-beltzeko arau bat egunkari sarrera honetatik."
 
-#: ui/main.qml:24
+#: ui/main.qml:25
 #, kde-format
 msgid "Allow all connections"
 msgstr "Baimendu konexio guztiak"
 
-#: ui/main.qml:25
+#: ui/main.qml:26
 #, kde-format
 msgid "Ignore"
 msgstr "Ezikusi"
 
-#: ui/main.qml:25
+#: ui/main.qml:26
 #, kde-format
 msgid ""
 "Keeps the program waiting until the connection attempt times out, some short "
@@ -567,60 +567,60 @@ msgid ""
 msgstr ""
 "Programa itxoiten mantentzen du konexio saiakeraren denbora-muga bete arte."
 
-#: ui/main.qml:26
+#: ui/main.qml:27
 #, kde-format
 msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr ""
 "Berehalako informazio asko duen «Konexioa errefusatu da» mezu bat sortzen du"
 
-#: ui/main.qml:33
+#: ui/main.qml:34
 #, kde-format
 msgid "Add Rule…"
 msgstr "Gehitu araua..."
 
-#: ui/main.qml:41
+#: ui/main.qml:42
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
 msgstr "Ikusi konexioak"
 
-#: ui/main.qml:47
+#: ui/main.qml:48
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
 msgstr "Ikusi egunkari-sarrerak"
 
-#: ui/main.qml:63
+#: ui/main.qml:64
 #, kde-format
 msgid "Disabling…"
 msgstr "Ezgaitzen..."
 
-#: ui/main.qml:63
+#: ui/main.qml:64
 #, kde-format
 msgid "Enabled"
 msgstr "Gaituta"
 
-#: ui/main.qml:65
+#: ui/main.qml:66
 #, kde-format
 msgid "Enabling…"
 msgstr "Gaitzen..."
 
-#: ui/main.qml:65
+#: ui/main.qml:66
 #, kde-format
 msgid "Disabled"
 msgstr "Ezgaituta"
 
-#: ui/main.qml:90
+#: ui/main.qml:91
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr "Suhesi aplikazioa, mesedez, instalatu %1"
 
-#: ui/main.qml:104
+#: ui/main.qml:105
 #, kde-format
 msgid "Permission denied"
 msgstr "Baimena ukatu da"
 
-#: ui/main.qml:108
+#: ui/main.qml:109
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
@@ -629,119 +629,119 @@ msgstr ""
 "Duela gutxi muina («kernel») aldatu duzu. «Iptables» ez da hasieratzen, "
 "berrabiarazi mesedez."
 
-#: ui/main.qml:111
+#: ui/main.qml:112
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr "Errorea suhesia gaitzean: %1"
 
-#: ui/main.qml:112
+#: ui/main.qml:113
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr "Errorea suhesia ezgaitzean: %1"
 
-#: ui/main.qml:147
+#: ui/main.qml:148
 #, kde-format
 msgid "Create A New Firewall Rule"
 msgstr "Sortu suhesiko arau berri bat"
 
-#: ui/main.qml:147
+#: ui/main.qml:148
 #, kde-format
 msgid "Edit Firewall Rule"
 msgstr "Editatu suhesiko araua"
 
-#: ui/main.qml:170 ui/main.qml:291 ui/main.qml:415
+#: ui/main.qml:171 ui/main.qml:292 ui/main.qml:416
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr ""
 "Mesedez, berrabiarazi plasma suhesia, bizkarraldekoa deskonektatu egin da."
 
-#: ui/main.qml:184 ui/ViewBase.qml:112
+#: ui/main.qml:185 ui/ViewBase.qml:112
 #, kde-format
 msgid "Error creating rule: %1"
 msgstr "Errorea araua sortzean: %1"
 
-#: ui/main.qml:186
+#: ui/main.qml:187
 #, kde-format
 msgid "Error updating rule: %1"
 msgstr "Errorea araua eguneratzean: %1"
 
-#: ui/main.qml:211
+#: ui/main.qml:212
 #, kde-format
 msgid "Create"
 msgstr "Sortu"
 
-#: ui/main.qml:211
+#: ui/main.qml:212
 #, kde-format
 msgid "Save"
 msgstr "Gorde"
 
-#: ui/main.qml:238
+#: ui/main.qml:239
 #, kde-format
 msgid "Firewall type:"
 msgstr "Suhesi mota:"
 
-#: ui/main.qml:246
+#: ui/main.qml:247
 #, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
 msgstr "Suhesi bertsioa: %1"
 
-#: ui/main.qml:253
+#: ui/main.qml:254
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "Sarrerako gidalerro lehenetsia:"
 
-#: ui/main.qml:254
+#: ui/main.qml:255
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "Irteerako gidalerro lehenetsia:"
 
-#: ui/main.qml:301
+#: ui/main.qml:302
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Errorea gidalerroa aldatzean: %1"
 
-#: ui/main.qml:406
+#: ui/main.qml:407
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Editatu araua"
 
-#: ui/main.qml:426
+#: ui/main.qml:427
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Errorea araua kentzean: %1"
 
-#: ui/main.qml:433
+#: ui/main.qml:434
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Kendu araua"
 
-#: ui/main.qml:458
+#: ui/main.qml:459
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "Suhesia ezgaituta dago"
 
-#: ui/main.qml:458
+#: ui/main.qml:459
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Ez da suhesiko araurik gehitu"
 
-#: ui/main.qml:460
+#: ui/main.qml:461
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
 "Egin klik <interface>Gehitu araua...</interface> botoiari bat gehitzeko"
 
-#: ui/main.qml:461
+#: ui/main.qml:462
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr "Gaitzeko, egin klik goiko etengailuan"
 
-#: ui/main.qml:467
+#: ui/main.qml:468
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Instalatu suhesi bat, ufw edo firewalld esaterako"
