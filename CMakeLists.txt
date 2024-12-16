@@ -51,8 +51,8 @@ find_package(Qt6 REQUIRED COMPONENTS
     Test
 )
 
-ecm_set_disabled_deprecation_versions(QT 6.4
-    KF 5.240
+ecm_set_disabled_deprecation_versions(QT 6.8.1
+    KF 6.9.0
 )
 
 find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS 
