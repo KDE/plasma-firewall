@@ -53,7 +53,7 @@ public:
     enum DefaultDataBehavior { DontReadDefaults, ReadDefaults };
     enum ProfilesBehavior { DontListenProfiles, ListenProfiles };
     explicit FirewallClient(QObject *parent = nullptr);
-    ~FirewallClient();
+    ~FirewallClient() override;
 
     void setBackend(const QStringList &backendList);
 

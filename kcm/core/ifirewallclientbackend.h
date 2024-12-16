@@ -28,7 +28,7 @@ class KCM_FIREWALL_CORE_EXPORT IFirewallClientBackend : public QObject
     Q_OBJECT
 public:
     IFirewallClientBackend(QObject *parent, const QVariantList &args);
-    ~IFirewallClientBackend() = default;
+    ~IFirewallClientBackend() override = default;
 
     virtual QString name() const = 0;
     virtual void refresh() = 0;

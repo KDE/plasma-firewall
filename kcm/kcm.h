@@ -20,7 +20,7 @@ class KCMFirewall : public KQuickConfigModule
 public:
     explicit KCMFirewall(QObject *parent, const KPluginMetaData &metaData);
 
-    ~KCMFirewall();
+    ~KCMFirewall() override;
     void save() override;
     FirewallClient *client() const;
 

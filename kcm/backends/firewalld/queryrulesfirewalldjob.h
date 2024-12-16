@@ -17,7 +17,7 @@ class QueryRulesFirewalldJob : public KJob
 
 public:
     QueryRulesFirewalldJob();
-    ~QueryRulesFirewalldJob();
+    ~QueryRulesFirewalldJob() override;
 
     void start() override;
     QList<firewalld_reply> getFirewalldreply() const;

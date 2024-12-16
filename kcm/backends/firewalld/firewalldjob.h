@@ -23,7 +23,7 @@ public:
     explicit FirewalldJob(const QByteArray &call, const QVariantList &args = {}, const FirewalldJob::JobType &type = FIREWALLD);
     explicit FirewalldJob(const FirewalldJob::JobType &type);
     FirewalldJob();
-    ~FirewalldJob();
+    ~FirewalldJob() override;
     void start() override;
     QList<firewalld_reply> getFirewalldreply() const;
     QStringList getServices() const;

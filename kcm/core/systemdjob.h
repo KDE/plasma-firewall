@@ -26,7 +26,7 @@ class KCM_FIREWALL_CORE_EXPORT SystemdJob : public KJob
 
 public:
     SystemdJob(const SYSTEMD::actions &action, const QString &service, bool serviceOnly = false);
-    ~SystemdJob();
+    ~SystemdJob() override;
     void start() override;
 
 private:
