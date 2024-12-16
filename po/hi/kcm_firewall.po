@@ -1,64 +1,61 @@
-# Sanskrit translations for plasma-firewall package.
+# Hindi translations for plasma-firewall package.
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
 # Kali <EMAIL@ADDRESS>, 2024.
 #
-# SPDX-FileCopyrightText: 2024 kali <skkalwar999@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-12-07 00:42+0000\n"
-"PO-Revision-Date: 2024-12-14 01:12+0530\n"
-"Last-Translator: kali <skkalwar999@gmail.com>\n"
-"Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
-"Language: sa\n"
+"PO-Revision-Date: 2024-12-15 17:35+0530\n"
+"Last-Translator: Kali <EMAIL@ADDRESS>\n"
+"Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
+"Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n>2);\n"
-"X-Generator: Lokalize 24.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "भवतः नामानि"
+msgstr "तुम्हारे नाम"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "भवतः ईमेलपत्राणि"
+msgstr "आपके ईमेल"
 
 #: backends/firewalld/firewalldclient.cpp:600 backends/ufw/ufwclient.cpp:697
 #, kde-format
 msgid "Error fetching information from the firewall."
-msgstr "अग्निप्रावरणात् सूचनां आनयितुं त्रुटिः।"
+msgstr "फ़ायरवॉल से जानकारी प्राप्त करने में त्रुटि हुई."
 
 #: backends/firewalld/firewalldjob.cpp:173
 #, kde-format
 msgid "firewalld saving (runtime to permanent)"
-msgstr "अग्निप्रावरणस्य रक्षणम् (रनटाइम् स्थायिपर्यन्तं) ."
+msgstr "फ़ायरवॉल्ड सहेजा जा रहा है (रनटाइम से स्थायी तक)"
 
 #: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
 msgid "firewalld saving"
-msgstr "अग्निप्रावरणस्य रक्षणम्"
+msgstr "फ़ायरवॉल्ड बचत"
 
 #: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
 msgid "firewalld %1"
-msgstr "अग्निप्रावरण %1"
+msgstr "फ़ायरवॉल्ड %1"
 
 #: backends/firewalld/queryrulesfirewalldjob.cpp:50
 #, kde-format
 msgid "firewalld listing rules and services"
-msgstr "firewald सूचीकरणनियमाः सेवाश्च"
+msgstr "फ़ायरवॉल्ड लिस्टिंग नियम और सेवाएँ"
 
 #: backends/netstat/connectionsmodel.cpp:97 core/loglistmodel.cpp:96
 #, kde-format
 msgctxt "@title:column"
 msgid "Protocol"
-msgstr "प्रोटोकॉल"
+msgstr "शिष्टाचार"
 
 #: backends/netstat/connectionsmodel.cpp:99
 #, kde-format
@@ -70,13 +67,13 @@ msgstr "स्थानीय पता"
 #, kde-format
 msgctxt "@title:column"
 msgid "Foreign address"
-msgstr "विदेशीय सम्बोधनम्"
+msgstr "विदेश पता"
 
 #: backends/netstat/connectionsmodel.cpp:103
 #, kde-format
 msgctxt "@title:column"
 msgid "Status"
-msgstr "स्थितिः"
+msgstr "स्थिति"
 
 #: backends/netstat/connectionsmodel.cpp:105
 #, kde-format
@@ -93,12 +90,12 @@ msgstr "कार्यक्रम"
 #: backends/netstat/connectionsmodel.cpp:115
 #, kde-format
 msgid "Failed to get connections: %1"
-msgstr "संयोजनानि प्राप्तुं असफलम्: %1"
+msgstr "कनेक्शन प्राप्त करने में विफल: %1"
 
 #: backends/netstat/connectionsmodel.cpp:133
 #, kde-format
 msgid "Not Connected"
-msgstr "न संबद्धम्"
+msgstr "जुड़े नहीं हैं"
 
 #: backends/netstat/connectionsmodel.cpp:135
 #, kde-format
@@ -108,37 +105,37 @@ msgstr "स्थापित"
 #: backends/netstat/connectionsmodel.cpp:137
 #, kde-format
 msgid "Listening"
-msgstr "श्राव्य"
+msgstr "सुनना"
 
 #: backends/ufw/helper/helper.cpp:213
 #, kde-format
 msgid "Invalid arguments passed to the profile"
-msgstr "अमान्यतर्काः प्रोफाइलं प्रति पारिताः"
+msgstr "प्रोफ़ाइल में अमान्य तर्क दिए गए"
 
 #: backends/ufw/helper/helper.cpp:243
 #, kde-format
 msgid "Error saving the profile."
-msgstr "प्रोफाइलं रक्षितुं त्रुटिः।"
+msgstr "प्रोफ़ाइल सहेजने में त्रुटि."
 
 #: backends/ufw/helper/helper.cpp:267
 #, kde-format
 msgid "Invalid arguments passed to delete profile"
-msgstr "प्रोफाइलं विलोपयितुं अमान्यतर्काः पारिताः"
+msgstr "प्रोफ़ाइल हटाने के लिए अमान्य तर्क दिए गए"
 
 #: backends/ufw/helper/helper.cpp:274
 #, kde-format
 msgid "Could not remove the profile from disk."
-msgstr "डिस्कतः प्रोफाइलं निष्कासयितुं न शक्तवान् ।"
+msgstr "प्रोफ़ाइल को डिस्क से हटाया नहीं जा सका."
 
 #: backends/ufw/helper/helper.cpp:289
 #, kde-format
 msgid "Invalid argument passed to add Rules"
-msgstr "Rules योजयितुं अमान्य तर्कः पारितः"
+msgstr "नियम जोड़ने के लिए गलत तर्क दिया गया"
 
 #: backends/ufw/helper/helper.cpp:361
 #, kde-format
 msgid "An error occurred in command '%1': %2"
-msgstr "'%1': %2 इति आदेशे त्रुटिः अभवत्"
+msgstr "आदेश '%1' में त्रुटि हुई: %2"
 
 #: backends/ufw/ufwclient.cpp:161
 #, kde-format
@@ -146,106 +143,106 @@ msgid ""
 "There was an error in the backend! Please report it.\n"
 "%1 %2"
 msgstr ""
-"पृष्ठभागे त्रुटिः आसीत्! कृपया निवेदयन्तु।\n"
+"बैकएंड में कोई त्रुटि थी! कृपया इसकी रिपोर्ट करें।\n"
 "%1 %2"
 
 #: backends/ufw/ufwclient.cpp:268
 #, kde-format
 msgid "Error fetching firewall logs: %1"
-msgstr "अग्निप्रावरणवृत्तलेखान् आनयितुं त्रुटिः: %1"
+msgstr "फ़ायरवॉल लॉग प्राप्त करने में त्रुटि: %1"
 
 #: backends/ufw/ufwclient.cpp:608 core/firewallclient.cpp:76
 #, kde-format
 msgid "Any"
-msgstr "कश्चित्‌"
+msgstr "कोई"
 
 #: core/loglistmodel.cpp:88 core/rulelistmodel.cpp:89
 #, kde-format
 msgctxt "@title:column"
 msgid "From"
-msgstr "इत्यस्मात्‌"
+msgstr "से"
 
 #: core/loglistmodel.cpp:90
 #, kde-format
 msgctxt "@title:column"
 msgid "Source port"
-msgstr "स्रोत पोर्ट्"
+msgstr "स्रोत पोर्ट"
 
 #: core/loglistmodel.cpp:92 core/rulelistmodel.cpp:91
 #, kde-format
 msgctxt "@title:column"
 msgid "To"
-msgstr "इत्यस्मै"
+msgstr "को"
 
 #: core/loglistmodel.cpp:94
 #, kde-format
 msgctxt "@title:column"
 msgid "Destination port"
-msgstr "गन्तव्यं पोर्ट्"
+msgstr "गंतव्य बंदरगाह"
 
 #: core/loglistmodel.cpp:98
 #, kde-format
 msgctxt "@title:column"
 msgid "Interface"
-msgstr "अन्तरफलकम्"
+msgstr "इंटरफ़ेस"
 
 #: core/loglistmodel.cpp:100 core/rulelistmodel.cpp:87
 #, kde-format
 msgctxt "@title:column"
 msgid "Action"
-msgstr "नामपत्र"
+msgstr "कार्रवाई"
 
 #: core/loglistmodel.cpp:102
 #, kde-format
 msgctxt "@title:column"
 msgid "Time"
-msgstr "कालः"
+msgstr "समय"
 
 #: core/loglistmodel.cpp:104
 #, kde-format
 msgctxt "@title:column"
 msgid "Date"
-msgstr "दिनाङ्कः"
+msgstr "तारीख"
 
 #: core/rule.cpp:46
 #, kde-format
 msgctxt "address on interface"
 msgid "%1 on %2"
-msgstr "%2 इत्यत्र %1"
+msgstr "%1 पर %2"
 
 #: core/rule.cpp:75 core/rule.cpp:165 core/rule.cpp:171
 #, kde-format
 msgid "Anywhere"
-msgstr "कुत्रापि"
+msgstr "कहीं भी"
 
 #: core/rule.cpp:96 core/rule.cpp:109 core/rule.cpp:126
 #, kde-format
 msgctxt "service/application name (port numbers)"
 msgid "%1 (%2)"
-msgstr "%1 (%2) २."
+msgstr "%1 (%2)"
 
 #: core/rule.cpp:199
 #, kde-format
 msgctxt "firewallAction incoming"
 msgid "%1 incoming"
-msgstr "%1 आगच्छन्"
+msgstr "%1 आनेवाला"
 
 #: core/rule.cpp:200
 #, kde-format
 msgctxt "firewallAction outgoing"
 msgid "%1 outgoing"
-msgstr "%1 बहिर्गमनम्"
+msgstr "%1 आउटगोइंग"
 
 #: core/rule.cpp:205
 #, kde-format
 msgid "Yes"
-msgstr "आम्‌"
+msgstr "हाँ"
 
 #: core/rulelistmodel.cpp:93
 #, kde-format
 msgctxt "@title:column"
 msgid "IP"
-msgstr "IP"
+msgstr "आई पी"
 
 #: core/rulelistmodel.cpp:95
 #, kde-format
@@ -256,17 +253,17 @@ msgstr "लॉगिंग"
 #: core/systemdjob.cpp:51
 #, kde-format
 msgid "Invalid Call"
-msgstr "अमान्य आह्वान"
+msgstr "अमान्य कॉल"
 
 #: core/types.cpp:19
 #, kde-format
 msgid "Off"
-msgstr "दूरे"
+msgstr "बंद"
 
 #: core/types.cpp:22
 #, kde-format
 msgid "Low"
-msgstr "न्यूनम्‌"
+msgstr "कम"
 
 #: core/types.cpp:24
 #, kde-format
@@ -276,77 +273,77 @@ msgstr "मध्यम"
 #: core/types.cpp:26
 #, kde-format
 msgid "High"
-msgstr "उच्चैः"
+msgstr "उच्च"
 
 #: core/types.cpp:28
 #, kde-format
 msgid "Full"
-msgstr "पूर्ण"
+msgstr "भरा हुआ"
 
 #: core/types.cpp:45 ui/RuleEdit.qml:38
 #, kde-format
 msgid "None"
-msgstr "न कश्चित्"
+msgstr "कोई नहीं"
 
 #: core/types.cpp:47
 #, kde-format
 msgid "New connections"
-msgstr "नवीनसंयोजनानि"
+msgstr "नये कनेक्शन"
 
 #: core/types.cpp:49
 #, kde-format
 msgid "All packets"
-msgstr "सर्वे पॅकेट्"
+msgstr "सभी पैकेट"
 
 #: core/types.cpp:58 ui/main.qml:25
 #, kde-format
 msgid "Allow"
-msgstr "अनुमन्यताम्‌"
+msgstr "अनुमति दें"
 
 #: core/types.cpp:60
 #, kde-format
 msgid "Deny"
-msgstr "अपह्नुते"
+msgstr "अस्वीकार करना"
 
 #: core/types.cpp:62 ui/main.qml:27
 #, kde-format
 msgid "Reject"
-msgstr "अस्वीकार"
+msgstr "अस्वीकार करना"
 
 #: core/types.cpp:64
 #, kde-format
 msgid "Limit"
-msgstr "सीमा"
+msgstr "आप LIMIT"
 
 #: core/types.cpp:80
 #, kde-format
 msgid "Amule"
-msgstr "ताबीज"
+msgstr "ताबीज़"
 
 #: core/types.cpp:82
 #, kde-format
 msgid "Deluge"
-msgstr "जलप्रलयः"
+msgstr "बाढ़"
 
 #: core/types.cpp:84
 #, kde-format
 msgid "KTorrent"
-msgstr "KTorrent इति"
+msgstr "केटोरेंट"
 
 #: core/types.cpp:86
 #, kde-format
 msgid "Nicotine"
-msgstr "निकोटिनम्"
+msgstr "निकोटीन"
 
 #: core/types.cpp:88
 #, kde-format
 msgid "qBittorrent"
-msgstr "qबिट्टोरेन्ट्"
+msgstr "qबिटटोरेंट"
 
 #: core/types.cpp:90
 #, kde-format
 msgid "Transmission"
-msgstr "संचरणम्"
+msgstr "हस्तांतरण"
 
 #: core/types.cpp:92
 #, kde-format
@@ -356,22 +353,22 @@ msgstr "आईसीक्यू"
 #: core/types.cpp:94
 #, kde-format
 msgid "Jabber"
-msgstr "जब्बर"
+msgstr "गपशप"
 
 #: core/types.cpp:96
 #, kde-format
 msgid "Windows Live Messenger"
-msgstr "विण्डोज लाइव मेसेन्जर"
+msgstr "विंडोज गतिशील संदेशवाहक"
 
 #: core/types.cpp:98
 #, kde-format
 msgid "Yahoo! Messenger"
-msgstr "याहू! दूत"
+msgstr "याहू! मैसेंजर"
 
 #: core/types.cpp:100
 #, kde-format
 msgid "FTP"
-msgstr "FTP"
+msgstr "एफ़टीपी"
 
 #: core/types.cpp:102
 #, kde-format
@@ -386,7 +383,7 @@ msgstr "सुरक्षित HTTP"
 #: core/types.cpp:106
 #, kde-format
 msgid "IMAP"
-msgstr "IMAP"
+msgstr "आईएमएपी"
 
 #: core/types.cpp:108
 #, kde-format
@@ -396,7 +393,7 @@ msgstr "सुरक्षित IMAP"
 #: core/types.cpp:110
 #, kde-format
 msgid "POP3"
-msgstr "POP3"
+msgstr "पॉप 3"
 
 #: core/types.cpp:112
 #, kde-format
@@ -406,7 +403,7 @@ msgstr "सुरक्षित POP3"
 #: core/types.cpp:114
 #, kde-format
 msgid "SMTP"
-msgstr "एस एम टी पी"
+msgstr "एसएमटीपी"
 
 #: core/types.cpp:116
 #, kde-format
@@ -416,27 +413,27 @@ msgstr "एनएफएस"
 #: core/types.cpp:118
 #, kde-format
 msgid "Samba"
-msgstr "साम्बः"
+msgstr "सांबा"
 
 #: core/types.cpp:120
 #, kde-format
 msgid "Secure Shell"
-msgstr "सुरक्षितं शेल्"
+msgstr "सुरक्षित खोल"
 
 #: core/types.cpp:122
 #, kde-format
 msgid "VNC"
-msgstr "वि एन सी"
+msgstr "वीएनसी"
 
 #: core/types.cpp:124
 #, kde-format
 msgid "Zeroconf"
-msgstr "शून्यसंकल्पः"
+msgstr "जीरोकॉन्फ़"
 
 #: core/types.cpp:126
 #, kde-format
 msgid "Telnet"
-msgstr "टेल्नेट्"
+msgstr "टेलनेट"
 
 #: core/types.cpp:128
 #, kde-format
@@ -446,7 +443,7 @@ msgstr "एनटीपी"
 #: core/types.cpp:130
 #, kde-format
 msgid "CUPS"
-msgstr "CUPS"
+msgstr "कप"
 
 #: ui/AdvancedRuleEdit.qml:31 ui/SimpleRuleEdit.qml:29
 #, kde-format
@@ -456,107 +453,107 @@ msgstr "नीति:"
 #: ui/AdvancedRuleEdit.qml:42 ui/SimpleRuleEdit.qml:40
 #, kde-format
 msgid "Direction:"
-msgstr "निर्देश:"
+msgstr "दिशा:"
 
 #: ui/AdvancedRuleEdit.qml:45 ui/SimpleRuleEdit.qml:44
 #, kde-format
 msgid "Incoming"
-msgstr "आगमनम्"
+msgstr "आने वाली"
 
 #: ui/AdvancedRuleEdit.qml:51 ui/SimpleRuleEdit.qml:50
 #, kde-format
 msgid "Outgoing"
-msgstr "बहिर्गामी"
+msgstr "जावक"
 
 #: ui/AdvancedRuleEdit.qml:59
 #, kde-format
 msgid "IP Version:"
-msgstr "IP संस्करणम् : १."
+msgstr "आईपी संस्करण:"
 
 #: ui/AdvancedRuleEdit.qml:62
 #, kde-format
 msgid "IPv4"
-msgstr "IPv4"
+msgstr "आईपीवी 4"
 
 #: ui/AdvancedRuleEdit.qml:67
 #, kde-format
 msgid "IPv6"
-msgstr "IPv6"
+msgstr "आईपीवी6"
 
 #: ui/AdvancedRuleEdit.qml:74
 #, kde-format
 msgid "Source:"
-msgstr "स्रोतः:"
+msgstr "स्रोत:"
 
 #: ui/AdvancedRuleEdit.qml:94
 #, kde-format
 msgid "Destination:"
-msgstr "गन्तव्य:"
+msgstr "गंतव्य:"
 
 #: ui/AdvancedRuleEdit.qml:114
 #, kde-format
 msgid "Protocol:"
-msgstr "प्रोटोकॉलः : १."
+msgstr "शिष्टाचार:"
 
 #: ui/AdvancedRuleEdit.qml:125
 #, kde-format
 msgid "Interface:"
-msgstr "अन्तरफलकम् : १."
+msgstr "इंटरफ़ेस:"
 
 #: ui/AdvancedRuleEdit.qml:137
 #, kde-format
 msgid "Logging:"
-msgstr "लॉगिंग् : १."
+msgstr "लॉगिंग:"
 
 #: ui/ConnectionsView.qml:14
 #, kde-format
 msgid "Connections"
-msgstr "संबन्धाः"
+msgstr "कनेक्शन"
 
 #: ui/ConnectionsView.qml:26
 #, kde-format
 msgid "There are currently no open connections"
-msgstr "सम्प्रति मुक्तसंयोजनानि नास्ति"
+msgstr "वर्तमान में कोई खुला कनेक्शन नहीं है"
 
 #: ui/ConnectionsView.qml:35
 #, kde-format
 msgid "Created a blacklist rule from this connection."
-msgstr "अस्मात् संयोजनात् कृष्णसूचीनियमः निर्मितः ।"
+msgstr "इस कनेक्शन से एक ब्लैकलिस्ट नियम बनाया गया."
 
 #: ui/ConnectionsView.qml:52
 #, kde-format
 msgid "could not find iproute2 or net-tools packages installed."
-msgstr "iproute2 अथवा net-tools संकुलं संस्थापितं न प्राप्नोत् ।"
+msgstr "iproute2 या net-tools पैकेज स्थापित नहीं पाया जा सका."
 
 #: ui/IpTextField.qml:14
 #, kde-format
 msgid "Any IP address"
-msgstr "कोऽपि IP-सङ्केतः"
+msgstr "कोई भी आईपी पता"
 
 #: ui/LogsView.qml:16
 #, kde-format
 msgid "Firewall Logs"
-msgstr "अग्निप्रावरण लॉग"
+msgstr "फ़ायरवॉल लॉग"
 
 #: ui/LogsView.qml:26
 #, kde-format
 msgid "There are currently no firewall log entries"
-msgstr "सम्प्रति अग्निप्रावरणवृत्तप्रविष्टयः नास्ति"
+msgstr "वर्तमान में कोई फ़ायरवॉल लॉग प्रविष्टियाँ नहीं हैं"
 
 #: ui/LogsView.qml:37
 #, kde-format
 msgid "Created a blacklist rule from this log entry."
-msgstr "अस्मात् लॉग् प्रविष्ट्याः कृष्णसूचीनियमः निर्मितः ।"
+msgstr "इस लॉग प्रविष्टि से एक ब्लैकलिस्ट नियम बनाया गया."
 
 #: ui/main.qml:25
 #, kde-format
 msgid "Allow all connections"
-msgstr "सर्वाणि संयोजनानि अनुमन्यताम्"
+msgstr "सभी कनेक्शन की अनुमति दें"
 
 #: ui/main.qml:26
 #, kde-format
 msgid "Ignore"
-msgstr "उपेक्षा"
+msgstr "अनदेखा करना"
 
 #: ui/main.qml:26
 #, kde-format
@@ -564,60 +561,60 @@ msgid ""
 "Keeps the program waiting until the connection attempt times out, some short "
 "time later."
 msgstr ""
-"यावत् संयोजनप्रयासस्य समयः समाप्तः न भवति तावत् कार्यक्रमं प्रतीक्षते, किञ्चित् "
-"अल्पकालानन्तरं ।"
+"प्रोग्राम को तब तक प्रतीक्षा में रखता है जब तक कि कनेक्शन का प्रयास समाप्त नहीं हो जाता, "
+"कुछ समय बाद।"
 
 #: ui/main.qml:27
 #, kde-format
 msgid "Produces an immediate and very informative 'Connection refused' message"
-msgstr "तत्कालं अतीव सूचनाप्रदं 'Connection refused' इति सन्देशं उत्पादयति"
+msgstr "तत्काल और बहुत जानकारीपूर्ण 'कनेक्शन अस्वीकृत' संदेश उत्पन्न करता है"
 
 #: ui/main.qml:34
 #, kde-format
 msgid "Add Rule…"
-msgstr "नियमं योजयतु..."
+msgstr "नियम जोड़ें…"
 
 #: ui/main.qml:42
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
-msgstr "संयोजनानि पश्यन्तु"
+msgstr "कनेक्शन देखें"
 
 #: ui/main.qml:48
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
-msgstr "लॉग्स् पश्यन्तु"
+msgstr "लॉग देखें"
 
 #: ui/main.qml:64
 #, kde-format
 msgid "Disabling…"
-msgstr "अक्षमीकरणम्..."
+msgstr "अक्षम किया जा रहा है…"
 
 #: ui/main.qml:64
 #, kde-format
 msgid "Enabled"
-msgstr "सक्षमम्"
+msgstr "सक्रिय"
 
 #: ui/main.qml:66
 #, kde-format
 msgid "Enabling…"
-msgstr "सक्षमीकरण..."
+msgstr "सक्षम करना…"
 
 #: ui/main.qml:66
 #, kde-format
 msgid "Disabled"
-msgstr "अक्षमित"
+msgstr "अक्षम"
 
 #: ui/main.qml:91
 #, kde-format
 msgid "The firewall application, please install %1"
-msgstr "अग्निप्रावरण-अनुप्रयोगं, कृपया %1 संस्थापयन्तु"
+msgstr "फ़ायरवॉल अनुप्रयोग, कृपया %1 स्थापित करें"
 
 #: ui/main.qml:105
 #, kde-format
 msgid "Permission denied"
-msgstr "अनुमतिः अङ्गीकृता"
+msgstr "अनुमति नहीं मिली"
 
 #: ui/main.qml:109
 #, kde-format
@@ -625,160 +622,160 @@ msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
 "reboot."
 msgstr ""
-"भवान् अद्यैव स्वस्य कर्नेल् अद्यतनं कृतवान् । Iptables आरम्भं कर्तुं असफलः अस्ति, कृपया पुनः "
-"आरम्भं कुर्वन्तु ।"
+"आपने हाल ही में अपना कर्नेल अपडेट किया है। Iptables आरंभ करने में विफल हो रहा है, कृपया "
+"रीबूट करें।"
 
 #: ui/main.qml:112
 #, kde-format
 msgid "Error enabling firewall: %1"
-msgstr "अग्निप्रावरणं सक्षमीकरणे त्रुटिः: %1"
+msgstr "फ़ायरवॉल सक्षम करते समय त्रुटि: %1"
 
 #: ui/main.qml:113
 #, kde-format
 msgid "Error disabling firewall: %1"
-msgstr "अग्निप्रावरणं निष्क्रियं कुर्वन् त्रुटिः: %1"
+msgstr "फ़ायरवॉल अक्षम करते समय त्रुटि: %1"
 
 #: ui/main.qml:148
 #, kde-format
 msgid "Create A New Firewall Rule"
-msgstr "एकं नूतनं Firewall Rule रचयन्तु"
+msgstr "नया फ़ायरवॉल नियम बनाएँ"
 
 #: ui/main.qml:148
 #, kde-format
 msgid "Edit Firewall Rule"
-msgstr "अग्निप्रावर नियम सम्पादयतु"
+msgstr "फ़ायरवॉल नियम संपादित करें"
 
 #: ui/main.qml:171 ui/main.qml:292 ui/main.qml:416
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
-msgstr "कृपया प्लाज्मा अग्निप्रावरणं पुनः आरभत, पृष्ठभागः विच्छिन्नः ।"
+msgstr "कृपया प्लाज़्मा फ़ायरवॉल पुनः आरंभ करें, बैकएंड डिस्कनेक्ट हो गया है।"
 
 #: ui/main.qml:185 ui/ViewBase.qml:112
 #, kde-format
 msgid "Error creating rule: %1"
-msgstr "नियमस्य निर्माणे त्रुटिः: %1"
+msgstr "नियम बनाते समय त्रुटि: %1"
 
 #: ui/main.qml:187
 #, kde-format
 msgid "Error updating rule: %1"
-msgstr "अद्यतनीकरणे त्रुटिः नियमः: %1"
+msgstr "नियम अपडेट करते समय त्रुटि: %1"
 
 #: ui/main.qml:212
 #, kde-format
 msgid "Create"
-msgstr "निर्मियताम्"
+msgstr "बनाएं"
 
 #: ui/main.qml:212
 #, kde-format
 msgid "Save"
-msgstr "रक्ष्"
+msgstr "बचाना"
 
 #: ui/main.qml:239
 #, kde-format
 msgid "Firewall type:"
-msgstr "अग्निप्रावरणस्य प्रकारः : १."
+msgstr "फ़ायरवॉल प्रकार:"
 
 #: ui/main.qml:247
 #, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
-msgstr "अग्निप्रावरणसंस्करणम् : %1"
+msgstr "फ़ायरवॉल संस्करण: %1"
 
 #: ui/main.qml:254
 #, kde-format
 msgid "Default Incoming Policy:"
-msgstr "पूर्वनिर्धारित आगमननीतिः : १."
+msgstr "डिफ़ॉल्ट इनकमिंग नीति:"
 
 #: ui/main.qml:255
 #, kde-format
 msgid "Default Outgoing Policy:"
-msgstr "पूर्वनिर्धारित बहिर्गमननीतिः : १."
+msgstr "डिफ़ॉल्ट आउटगोइंग नीति:"
 
 #: ui/main.qml:302
 #, kde-format
 msgid "Error changing policy: %1"
-msgstr "नीतिपरिवर्तने त्रुटिः: %1"
+msgstr "नीति बदलते समय त्रुटि: %1"
 
 #: ui/main.qml:407
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
-msgstr "सम्पादन नियम"
+msgstr "नियम संपादित करें"
 
 #: ui/main.qml:427
 #, kde-format
 msgid "Error removing rule: %1"
-msgstr "नियमं निष्कासयितुं त्रुटिः: %1"
+msgstr "नियम हटाते समय त्रुटि: %1"
 
 #: ui/main.qml:434
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
-msgstr "नियमं निष्कासयतु"
+msgstr "नियम हटाएँ"
 
 #: ui/main.qml:459
 #, kde-format
 msgid "Firewall is disabled"
-msgstr "अग्निप्रावरणं अक्षमम् अस्ति"
+msgstr "फ़ायरवॉल अक्षम है"
 
 #: ui/main.qml:459
 #, kde-format
 msgid "No firewall rules have been added"
-msgstr "अग्निप्रावरणनियमाः न योजिताः"
+msgstr "कोई फ़ायरवॉल नियम नहीं जोड़ा गया है"
 
 #: ui/main.qml:461
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
-msgstr "एकं योजयितुं <interface>Add Rule...</interface> इति बटन् नुदन्तु"
+msgstr "एक नियम जोड़ने के लिए <interface>नियम जोड़ें…</interface> बटन पर क्लिक करें"
 
 #: ui/main.qml:462
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
-msgstr "तत् सक्षमं कर्तुं उपरि switch नुदन्तु"
+msgstr "इसे सक्षम करने के लिए ऊपर दिए गए स्विच पर क्लिक करें"
 
 #: ui/main.qml:468
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
-msgstr "कृपया अग्निप्रावरणं संस्थापयन्तु, यथा ufw अथवा firewald"
+msgstr "कृपया फ़ायरवॉल स्थापित करें, जैसे कि ufw या firewalld"
 
 #: ui/PortTextField.qml:11
 #, kde-format
 msgid "Any Port"
-msgstr "कोऽपि पोर्ट्"
+msgstr "कोई भी बंदरगाह"
 
 #: ui/RuleEdit.qml:39
 #, kde-format
 msgid "New Connections"
-msgstr "नवीनसंयोजनानि"
+msgstr "नये कनेक्शन"
 
 #: ui/RuleEdit.qml:40
 #, kde-format
 msgid "All Packets"
-msgstr "सर्वे पॅकेट्"
+msgstr "सभी पैकेट"
 
 #: ui/RuleEdit.qml:55 ui/RuleEdit.qml:62
 #, kde-format
 msgid "The default incoming policy is already '%1'."
-msgstr "पूर्वनिर्धारितं आगच्छन्ती नीतिः पूर्वमेव '%1' अस्ति ।"
+msgstr "डिफ़ॉल्ट इनकमिंग नीति पहले से ही '%1' है."
 
 #: ui/RuleEdit.qml:56 ui/RuleEdit.qml:63
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
-msgstr "पूर्वनिर्धारितनिर्गमनीतिः पूर्वमेव '%1' अस्ति ।"
+msgstr "डिफ़ॉल्ट आउटगोइंग नीति पहले से ही '%1' है."
 
 #: ui/SimpleRuleEdit.qml:23
 #, kde-format
 msgid "Allow connections for:"
-msgstr "कृते संयोजनानि अनुमन्यताम् :"
+msgstr "निम्न के लिए कनेक्शन की अनुमति दें:"
 
 #: ui/SimpleRuleEdit.qml:23
 #, kde-format
 msgid "Application:"
-msgstr "अनुप्रयोगः:"
+msgstr "आवेदन पत्र:"
 
 #: ui/ViewBase.qml:253
 #, kde-format
 msgid "Blacklist Connection"
-msgstr "कालीसूचीसंयोजनम्"
+msgstr "ब्लैकलिस्ट कनेक्शन"
