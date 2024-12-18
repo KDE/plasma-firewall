@@ -24,7 +24,7 @@
   <name xml:lang="eu">Plasma suhesia</name>
   <name xml:lang="fi">Plasma Firewall</name>
   <name xml:lang="fr">Pare-feu de Plasma</name>
-  <name xml:lang="gl">Plasma Firewall</name>
+  <name xml:lang="gl">Devasa de Plasma</name>
   <name xml:lang="he">חומת אש של פלזמה</name>
   <name xml:lang="hi">प्लाज्मा फ़ायरवॉल</name>
   <name xml:lang="hu">Plasma Firewall</name>
@@ -159,7 +159,7 @@
       <caption xml:lang="eu">Plasma suhesia lehenetsitako konfigurazio-orri bat erakusten duela</caption>
       <caption xml:lang="fi">Plasma Firewallin oletusasetussivu</caption>
       <caption xml:lang="fr">Le pare-feu de Plasma affichant une page par défaut de configuration</caption>
-      <caption xml:lang="gl">Plasma Firewall amosando a páxina de configuración predeterminada.</caption>
+      <caption xml:lang="gl">A devasa de Plasma na páxina de configuración predeterminada.</caption>
       <caption xml:lang="he">חומת האש של פלזמה מציגה את עמוד ברירת המחדל</caption>
       <caption xml:lang="hi">प्लाज्मा फ़ायरवॉल डिफ़ॉल्ट कॉन्फ़िगरेशन पृष्ठ दिखा रहा है</caption>
       <caption xml:lang="hu">A Plasma Firewall alapértelmezett kezdőoldala</caption>
