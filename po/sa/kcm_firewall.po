@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-12-07 00:42+0000\n"
-"PO-Revision-Date: 2024-12-14 01:12+0530\n"
+"PO-Revision-Date: 2024-12-20 21:53+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -222,7 +222,7 @@ msgstr "कुत्रापि"
 #, kde-format
 msgctxt "service/application name (port numbers)"
 msgid "%1 (%2)"
-msgstr "%1 (%2) २."
+msgstr "%1 (%2)"
 
 #: core/rule.cpp:199
 #, kde-format
@@ -471,7 +471,7 @@ msgstr "बहिर्गामी"
 #: ui/AdvancedRuleEdit.qml:59
 #, kde-format
 msgid "IP Version:"
-msgstr "IP संस्करणम् : १."
+msgstr "IP संस्करणम् :"
 
 #: ui/AdvancedRuleEdit.qml:62
 #, kde-format
@@ -496,17 +496,17 @@ msgstr "गन्तव्य:"
 #: ui/AdvancedRuleEdit.qml:114
 #, kde-format
 msgid "Protocol:"
-msgstr "प्रोटोकॉलः : १."
+msgstr "प्रोटोकॉलः :"
 
 #: ui/AdvancedRuleEdit.qml:125
 #, kde-format
 msgid "Interface:"
-msgstr "अन्तरफलकम् : १."
+msgstr "अन्तरफलकम् :"
 
 #: ui/AdvancedRuleEdit.qml:137
 #, kde-format
 msgid "Logging:"
-msgstr "लॉगिंग् : १."
+msgstr "लॉगिंग् :"
 
 #: ui/ConnectionsView.qml:14
 #, kde-format
@@ -676,7 +676,7 @@ msgstr "रक्ष्"
 #: ui/main.qml:239
 #, kde-format
 msgid "Firewall type:"
-msgstr "अग्निप्रावरणस्य प्रकारः : १."
+msgstr "अग्निप्रावरणस्य प्रकारः :"
 
 #: ui/main.qml:247
 #, kde-format
@@ -687,12 +687,12 @@ msgstr "अग्निप्रावरणसंस्करणम् : %1"
 #: ui/main.qml:254
 #, kde-format
 msgid "Default Incoming Policy:"
-msgstr "पूर्वनिर्धारित आगमननीतिः : १."
+msgstr "पूर्वनिर्धारित आगमननीतिः :"
 
 #: ui/main.qml:255
 #, kde-format
 msgid "Default Outgoing Policy:"
-msgstr "पूर्वनिर्धारित बहिर्गमननीतिः : १."
+msgstr "पूर्वनिर्धारित बहिर्गमननीतिः :"
 
 #: ui/main.qml:302
 #, kde-format
