@@ -3,13 +3,13 @@
 # Copyright (C) 2022 This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
 # Automatically generated, 2022.
-# SPDX-FileCopyrightText: 2022, 2023, 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-12-07 00:42+0000\n"
-"PO-Revision-Date: 2024-03-20 18:15+0900\n"
+"PO-Revision-Date: 2025-01-08 16:03+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.04.70\n"
+"X-Generator: Lokalize 25.03.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -573,19 +573,19 @@ msgstr "會馬上產生容易理解的「連線已被拒絕」訊息"
 #: ui/main.qml:34
 #, kde-format
 msgid "Add Rule…"
-msgstr "新增規則…"
+msgstr "新增規則(&D)…"
 
 #: ui/main.qml:42
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
-msgstr "檢視連線"
+msgstr "檢視連線(&V)"
 
 #: ui/main.qml:48
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
-msgstr "檢視紀錄"
+msgstr "檢視紀錄(&L)"
 
 #: ui/main.qml:64
 #, kde-format
@@ -595,7 +595,7 @@ msgstr "正在停用…"
 #: ui/main.qml:64
 #, kde-format
 msgid "Enabled"
-msgstr "啟用"
+msgstr "啟用(&E)"
 
 #: ui/main.qml:66
 #, kde-format
@@ -605,7 +605,7 @@ msgstr "正在啟用…"
 #: ui/main.qml:66
 #, kde-format
 msgid "Disabled"
-msgstr "停用"
+msgstr "停用(&D)"
 
 #: ui/main.qml:91
 #, kde-format
