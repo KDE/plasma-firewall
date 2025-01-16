@@ -16,7 +16,6 @@
 #include "core/ipvalidator.h"
 #include "core/loglistmodel.h"
 #include "core/rulelistmodel.h"
-#include "version.h"
 
 #include "backends/netstat/connectionsmodel.h"
 #include "backends/netstat/netstatclient.h"
