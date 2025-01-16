@@ -169,8 +169,8 @@ KCMUtils.ScrollViewKCM {
 
             onTapped: (eventPoint, button) => {
                 let cell = horizontalHeader.cellAtPosition(eventPoint.position)
-                if (cell.x == root.sortColumn) {
-                    root.sortOrder = header.sortOrder == Qt.AscendingOrder ? Qt.DescendingOrder : Qt.AscendingOrder
+                if (cell.x === root.sortColumn) {
+                    root.sortOrder = header.sortOrder === Qt.AscendingOrder ? Qt.DescendingOrder : Qt.AscendingOrder
                 } else {
                     root.sortOrder = Qt.AscendingOrder
                 }
@@ -208,7 +208,7 @@ KCMUtils.ScrollViewKCM {
                 return explicitWidth
             }
             let sourceColumn = proxyModel.mapToSource(proxyModel.index(0, column)).column
-            let width = root.columns.find(c => c.column == sourceColumn).width
+            let width = root.columns.find(c => c.column === sourceColumn).width
             return width
         }
         clip: true

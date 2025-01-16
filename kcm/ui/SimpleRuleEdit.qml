@@ -19,7 +19,7 @@ Kirigami.FormLayout {
 
     QQC2.ComboBox {
         id: application
-        Kirigami.FormData.label: kcm.client.name == "firewalld" ?
+        Kirigami.FormData.label: kcm.client.name === "firewalld" ?
 i18n("Allow connections for:") : i18n("Application:")
         model: kcm.client.knownApplications()
     }
@@ -29,8 +29,8 @@ i18n("Allow connections for:") : i18n("Application:")
         Kirigami.FormData.label: i18n("Policy:")
         model: policyChoices
         textRole: "text"
-        currentIndex: rule.policy == "" ? 0 : policyChoices.findIndex((policy) => policy.data == rule.policy)
-        visible: kcm.client.name != "firewalld"
+        currentIndex: rule.policy === "" ? 0 : policyChoices.findIndex((policy) => policy.data === rule.policy)
+        visible: kcm.client.name !== "firewalld"
         onActivated: index => {
             rule.policy = policyChoices[index].data;
         }
@@ -38,7 +38,7 @@ i18n("Allow connections for:") : i18n("Application:")
 
     RowLayout {
         Kirigami.FormData.label: i18n("Direction:")
-        visible: kcm.client.name != "firewalld"
+        visible: kcm.client.name !== "firewalld"
         QQC2.RadioButton {
             id: incoming
             text: i18n("Incoming")

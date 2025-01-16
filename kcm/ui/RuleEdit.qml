@@ -19,7 +19,7 @@ FocusScope {
                           && (!advancedRuleEdit.destinationAddress.length || advancedRuleEdit.destinationAddress.acceptableInput)
                           && !(advancedRuleEdit.sourceAddress.text == advancedRuleEdit.destinationAddress.text
                                && advancedRuleEdit.sourcePort.text == advancedRuleEdit.destinationPort.text)
-                          || simple.index != -1
+                          || simple.index !== -1
     property alias simple: simpleRuleEdit
 
     property Firewall.FirewallClient client: null

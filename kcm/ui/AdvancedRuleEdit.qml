@@ -32,7 +32,7 @@ Kirigami.FormLayout {
         Layout.preferredWidth: root.maxComboboxWidth
         model: policyChoices
         textRole: "text"
-        currentIndex: rule == null ? 0 : rule.policy == "" ? 0 : policyChoices.findIndex((policy) => policy.data == rule.policy)
+        currentIndex: rule == null ? 0 : rule.policy === "" ? 0 : policyChoices.findIndex((policy) => policy.data === rule.policy)
         onActivated: index => {
             rule.policy = policyChoices[index].data;
         }
@@ -138,7 +138,7 @@ Kirigami.FormLayout {
         Layout.preferredWidth: root.maxComboboxWidth
         model: ruleChoices
         textRole: "text"
-        currentIndex: rule.logging == "" ? 0 : ruleChoices.findIndex((rules) => rules.data == rule.logging)
+        currentIndex: rule.logging == "" ? 0 : ruleChoices.findIndex((rules) => rules.data === rule.logging)
         onActivated: index => {
             rule.logging = ruleChoices[index].data;
         }
