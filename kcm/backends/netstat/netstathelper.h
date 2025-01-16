@@ -11,7 +11,6 @@
 
 Q_DECLARE_LOGGING_CATEGORY(NetstatHelperDebug)
 
-class QTimer;
 
 class NetstatHelper : public QObject
 {

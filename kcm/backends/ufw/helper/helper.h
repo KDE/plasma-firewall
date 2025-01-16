@@ -14,7 +14,6 @@
 #include <QVariantMap>
 #include <QtContainerFwd>
 
-class QByteArray;
 
 using namespace KAuth;
 
