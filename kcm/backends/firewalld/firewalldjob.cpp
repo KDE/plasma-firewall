@@ -186,7 +186,7 @@ void FirewalldJob::start()
     }
 
     default:
-        emitResult();
+        QMetaObject::invokeMethod(this, &FirewalldJob::emitResult, Qt::QueuedConnection);
         return;
     }
     return;
