@@ -299,6 +299,8 @@ KCMUtils.ScrollViewKCM {
                                 policyCombo.activeJob = null;
                                 bindCurrent();
 
+                                kcm.needsSave = true;
+
                                 if (job.error && job.error !== 4) { // TODO magic number
                                     firewallInlineErrorMessage.text = i18n("Error changing policy: %1", job.errorString)
                                     firewallInlineErrorMessage.visible = true;
