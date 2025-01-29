@@ -30,6 +30,7 @@ KCMUtils.ScrollViewKCM {
     actions: [
         Kirigami.Action {
             visible: !kcm.client.busy && kcm.client.enabled
+            displayHint: Kirigami.DisplayHint.KeepVisible
             icon.name: "list-add"
             text: i18n("Add Rule…")
             onTriggered: {
