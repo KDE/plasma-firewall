@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-07 00:42+0000\n"
+"POT-Creation-Date: 2025-01-31 00:42+0000\n"
 "PO-Revision-Date: 2025-01-19 13:45+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -573,54 +573,54 @@ msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr ""
 "Produce unha mensaxe de «denegouse a conexión» inmediata e moi informativa."
 
-#: ui/main.qml:34
+#: ui/main.qml:35
 #, kde-format
 msgid "Add Rule…"
 msgstr "Engadir unha regra…"
 
-#: ui/main.qml:42
+#: ui/main.qml:43
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
 msgstr "Ver as conexións"
 
-#: ui/main.qml:48
+#: ui/main.qml:49
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
 msgstr "Ver os rexistros"
 
-#: ui/main.qml:64
+#: ui/main.qml:65
 #, kde-format
 msgid "Disabling…"
 msgstr "Desactivando…"
 
-#: ui/main.qml:64
+#: ui/main.qml:65
 #, kde-format
 msgid "Enabled"
 msgstr "Activado"
 
-#: ui/main.qml:66
+#: ui/main.qml:67
 #, kde-format
 msgid "Enabling…"
 msgstr "Activando…"
 
-#: ui/main.qml:66
+#: ui/main.qml:67
 #, kde-format
 msgid "Disabled"
 msgstr "Desactivado"
 
-#: ui/main.qml:91
+#: ui/main.qml:92
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr "A aplicación de devasa, instale %1"
 
-#: ui/main.qml:105
+#: ui/main.qml:106
 #, kde-format
 msgid "Permission denied"
 msgstr "Denegouse o permiso"
 
-#: ui/main.qml:109
+#: ui/main.qml:110
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
@@ -629,105 +629,105 @@ msgstr ""
 "Actualizou o núcleo recentemente. A inicialización de Iptables está "
 "fallando, reinicie."
 
-#: ui/main.qml:112
+#: ui/main.qml:113
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr "Produciuse un erro ao activar a devasa: %1"
 
-#: ui/main.qml:113
+#: ui/main.qml:114
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr "Produciuse un erro ao desactivar a devasa: %1"
 
-#: ui/main.qml:148
+#: ui/main.qml:149
 #, kde-format
 msgid "Create A New Firewall Rule"
 msgstr "Crear unha nova regra de devasa"
 
-#: ui/main.qml:148
+#: ui/main.qml:149
 #, kde-format
 msgid "Edit Firewall Rule"
 msgstr "Editar a regra de devasa"
 
-#: ui/main.qml:171 ui/main.qml:292 ui/main.qml:416
+#: ui/main.qml:172 ui/main.qml:293 ui/main.qml:417
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr "Reinicie a devasa de Plasma, o motor desconectouse."
 
-#: ui/main.qml:185 ui/ViewBase.qml:112
+#: ui/main.qml:186 ui/ViewBase.qml:112
 #, kde-format
 msgid "Error creating rule: %1"
 msgstr "Produciuse un erro ao crear a regra: %1"
 
-#: ui/main.qml:187
+#: ui/main.qml:188
 #, kde-format
 msgid "Error updating rule: %1"
 msgstr "Produciuse un erro ao actualizar a regra: %1"
 
-#: ui/main.qml:212
+#: ui/main.qml:213
 #, kde-format
 msgid "Create"
 msgstr "Crear"
 
-#: ui/main.qml:212
+#: ui/main.qml:213
 #, kde-format
 msgid "Save"
 msgstr "Gardar"
 
-#: ui/main.qml:239
+#: ui/main.qml:240
 #, kde-format
 msgid "Firewall type:"
 msgstr "Tipo de devasa:"
 
-#: ui/main.qml:247
+#: ui/main.qml:248
 #, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
 msgstr "Versión da devasa: %1"
 
-#: ui/main.qml:254
+#: ui/main.qml:255
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "Directriz entrante predeterminada:"
 
-#: ui/main.qml:255
+#: ui/main.qml:256
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "Directriz saínte predeterminada:"
 
-#: ui/main.qml:302
+#: ui/main.qml:303
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Produciuse un erro ao cambiar a directriz: %1"
 
-#: ui/main.qml:407
+#: ui/main.qml:408
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Editar a regra"
 
-#: ui/main.qml:427
+#: ui/main.qml:428
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Produciuse un erro ao retirar a regra: %1"
 
-#: ui/main.qml:434
+#: ui/main.qml:435
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Retirar a regra"
 
-#: ui/main.qml:459
+#: ui/main.qml:460
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "A devasa está desactivada"
 
-#: ui/main.qml:459
+#: ui/main.qml:460
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Non se engadiron regras de devasa"
 
-#: ui/main.qml:461
+#: ui/main.qml:462
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
@@ -735,13 +735,13 @@ msgstr ""
 "Prema o botón de <interface>Engadir unha regra…</interface> para engadir "
 "unha."
 
-#: ui/main.qml:462
+#: ui/main.qml:463
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr "Prema o conmutador de enriba para activala."
 
-#: ui/main.qml:468
+#: ui/main.qml:469
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Instale unha devasa, como ufw ou firewalld."

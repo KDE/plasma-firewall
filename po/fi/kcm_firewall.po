@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-07 00:42+0000\n"
+"POT-Creation-Date: 2025-01-31 00:42+0000\n"
 "PO-Revision-Date: 2024-10-18 11:46+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -571,54 +571,54 @@ msgstr ""
 msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr "Tuottaa välittömän ja hyvin informatiivisen ”Yhteys torjuttu” -viestin"
 
-#: ui/main.qml:34
+#: ui/main.qml:35
 #, kde-format
 msgid "Add Rule…"
 msgstr "Lisää sääntö…"
 
-#: ui/main.qml:42
+#: ui/main.qml:43
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
 msgstr "Näytä yhteydet"
 
-#: ui/main.qml:48
+#: ui/main.qml:49
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
 msgstr "Näytä loki"
 
-#: ui/main.qml:64
+#: ui/main.qml:65
 #, kde-format
 msgid "Disabling…"
 msgstr "Poistetaan käytöstä…"
 
-#: ui/main.qml:64
+#: ui/main.qml:65
 #, kde-format
 msgid "Enabled"
 msgstr "Käytössä"
 
-#: ui/main.qml:66
+#: ui/main.qml:67
 #, kde-format
 msgid "Enabling…"
 msgstr "Otetaan käyttöön…"
 
-#: ui/main.qml:66
+#: ui/main.qml:67
 #, kde-format
 msgid "Disabled"
 msgstr "Ei käytössä"
 
-#: ui/main.qml:91
+#: ui/main.qml:92
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr "Palomuurisovellus: asenna %1"
 
-#: ui/main.qml:105
+#: ui/main.qml:106
 #, kde-format
 msgid "Permission denied"
 msgstr "Ei käyttöoikeutta"
 
-#: ui/main.qml:109
+#: ui/main.qml:110
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
@@ -627,118 +627,118 @@ msgstr ""
 "Kernel on vastikään päivittynyt. iptablesin alustaminen ei onnistu: "
 "käynnistä tietokone uudelleen."
 
-#: ui/main.qml:112
+#: ui/main.qml:113
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr "Virhe otettaessa palomuuria käyttöön: %1"
 
-#: ui/main.qml:113
+#: ui/main.qml:114
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr "Virhe poistettaessa palomuuria käytöstä: %1"
 
-#: ui/main.qml:148
+#: ui/main.qml:149
 #, kde-format
 msgid "Create A New Firewall Rule"
 msgstr "Luo uusi palomuurisääntö"
 
-#: ui/main.qml:148
+#: ui/main.qml:149
 #, kde-format
 msgid "Edit Firewall Rule"
 msgstr "Muokkaa palomuurisääntöä"
 
-#: ui/main.qml:171 ui/main.qml:292 ui/main.qml:416
+#: ui/main.qml:172 ui/main.qml:293 ui/main.qml:417
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr ""
 "Käynnistä Plasman palomuuri uudelleen: taustajärjestelmä katkaisi yhteyden."
 
-#: ui/main.qml:185 ui/ViewBase.qml:112
+#: ui/main.qml:186 ui/ViewBase.qml:112
 #, kde-format
 msgid "Error creating rule: %1"
 msgstr "Virhe luotaessa sääntöä: %1"
 
-#: ui/main.qml:187
+#: ui/main.qml:188
 #, kde-format
 msgid "Error updating rule: %1"
 msgstr "Virhe päivitettäessä sääntöä: %1"
 
-#: ui/main.qml:212
+#: ui/main.qml:213
 #, kde-format
 msgid "Create"
 msgstr "Luo"
 
-#: ui/main.qml:212
+#: ui/main.qml:213
 #, kde-format
 msgid "Save"
 msgstr "Tallenna"
 
-#: ui/main.qml:239
+#: ui/main.qml:240
 #, kde-format
 msgid "Firewall type:"
 msgstr "Palomuurin tyyppi:"
 
-#: ui/main.qml:247
+#: ui/main.qml:248
 #, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
 msgstr "Palomuurin versio: %1"
 
-#: ui/main.qml:254
+#: ui/main.qml:255
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "Saapuva oletuskäytäntö:"
 
-#: ui/main.qml:255
+#: ui/main.qml:256
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "Lähtevä oletuskäytäntö:"
 
-#: ui/main.qml:302
+#: ui/main.qml:303
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Virhe muutettaessa käytäntöä: %1"
 
-#: ui/main.qml:407
+#: ui/main.qml:408
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Muokkaa sääntöä"
 
-#: ui/main.qml:427
+#: ui/main.qml:428
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Virhe poistettaessa sääntöä: %1"
 
-#: ui/main.qml:434
+#: ui/main.qml:435
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Poista sääntö"
 
-#: ui/main.qml:459
+#: ui/main.qml:460
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "Palomuuri ei ole käytössä"
 
-#: ui/main.qml:459
+#: ui/main.qml:460
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Palomuurisääntöjä ei ole lisätty"
 
-#: ui/main.qml:461
+#: ui/main.qml:462
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr "Lisää sääntö napsauttamalla alta <interface>Lisää sääntö…</interface>"
 
-#: ui/main.qml:462
+#: ui/main.qml:463
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr "Ota käyttöön napsauttamalla yllä olevaa säädintä"
 
-#: ui/main.qml:468
+#: ui/main.qml:469
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Asenna palomuuri kuten ufw tai firewalld"
