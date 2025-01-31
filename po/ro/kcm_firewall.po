@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-07 00:42+0000\n"
+"POT-Creation-Date: 2025-01-31 02:36+0000\n"
 "PO-Revision-Date: 2021-06-02 20:53+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -587,167 +587,167 @@ msgstr ""
 msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr "Produce un mesaj imediat și foarte informativ de „Conexiune refuzată”"
 
-#: ui/main.qml:34
+#: ui/main.qml:35
 #, fuzzy, kde-format
 #| msgid "Add Rule..."
 msgid "Add Rule…"
 msgstr "Adaugă regulă..."
 
-#: ui/main.qml:42
+#: ui/main.qml:43
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
 msgstr "Vezi conexiunile"
 
-#: ui/main.qml:48
+#: ui/main.qml:49
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
 msgstr "Vezi jurnalele"
 
-#: ui/main.qml:64
+#: ui/main.qml:65
 #, fuzzy, kde-format
 #| msgid "Disabling..."
 msgid "Disabling…"
 msgstr "Se dezactivează..."
 
-#: ui/main.qml:64
+#: ui/main.qml:65
 #, kde-format
 msgid "Enabled"
 msgstr "Activat"
 
-#: ui/main.qml:66
+#: ui/main.qml:67
 #, fuzzy, kde-format
 #| msgid "Disabling..."
 msgid "Enabling…"
 msgstr "Se dezactivează..."
 
-#: ui/main.qml:66
+#: ui/main.qml:67
 #, fuzzy, kde-format
 #| msgid "Enabled"
 msgid "Disabled"
 msgstr "Activat"
 
-#: ui/main.qml:91
+#: ui/main.qml:92
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr "Aplicația de firewall, instalați %1"
 
-#: ui/main.qml:105
+#: ui/main.qml:106
 #, kde-format
 msgid "Permission denied"
 msgstr "Permisiune refuzată"
 
-#: ui/main.qml:109
+#: ui/main.qml:110
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
 "reboot."
 msgstr ""
 
-#: ui/main.qml:112
+#: ui/main.qml:113
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr "Eroare la activarea firewall-ului: %1"
 
-#: ui/main.qml:113
+#: ui/main.qml:114
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr "Eroare la dezactivarea firewall-ului: %1"
 
-#: ui/main.qml:148
+#: ui/main.qml:149
 #, kde-format
 msgid "Create A New Firewall Rule"
 msgstr "Creează regulă de firewall nouă"
 
-#: ui/main.qml:148
+#: ui/main.qml:149
 #, kde-format
 msgid "Edit Firewall Rule"
 msgstr "Modifică regula de firewall"
 
-#: ui/main.qml:171 ui/main.qml:292 ui/main.qml:416
+#: ui/main.qml:172 ui/main.qml:293 ui/main.qml:417
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr ""
 
-#: ui/main.qml:185 ui/ViewBase.qml:112
+#: ui/main.qml:186 ui/ViewBase.qml:112
 #, kde-format
 msgid "Error creating rule: %1"
 msgstr "Eroare la crearea regulii: %1"
 
-#: ui/main.qml:187
+#: ui/main.qml:188
 #, kde-format
 msgid "Error updating rule: %1"
 msgstr "Eroare la actualizarea regulii: %1"
 
-#: ui/main.qml:212
+#: ui/main.qml:213
 #, kde-format
 msgid "Create"
 msgstr "Creează"
 
-#: ui/main.qml:212
+#: ui/main.qml:213
 #, kde-format
 msgid "Save"
 msgstr "Salvează"
 
-#: ui/main.qml:239
+#: ui/main.qml:240
 #, fuzzy, kde-format
 #| msgid "Firewall Status:"
 msgid "Firewall type:"
 msgstr "Stare firewall:"
 
-#: ui/main.qml:247
+#: ui/main.qml:248
 #, fuzzy, kde-format
 #| msgid "firewalld %1"
 msgctxt "@info"
 msgid "Firewall version: %1"
 msgstr "firewalld %1"
 
-#: ui/main.qml:254
+#: ui/main.qml:255
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "Politică implicită de intrare:"
 
-#: ui/main.qml:255
+#: ui/main.qml:256
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "Politică implicită de ieșire:"
 
-#: ui/main.qml:302
+#: ui/main.qml:303
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Eroare la schimbarea politicii: %1"
 
-#: ui/main.qml:407
+#: ui/main.qml:408
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Modifică regula"
 
-#: ui/main.qml:427
+#: ui/main.qml:428
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Eroare la eliminarea regulii: %1"
 
-#: ui/main.qml:434
+#: ui/main.qml:435
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Elimină regula"
 
-#: ui/main.qml:459
+#: ui/main.qml:460
 #, fuzzy, kde-format
 #| msgid "Using %1 as firewall backend"
 msgid "Firewall is disabled"
 msgstr "Se folosește platforma de firewall %1"
 
-#: ui/main.qml:459
+#: ui/main.qml:460
 #, fuzzy, kde-format
 #| msgid "No firewall rules have been added."
 msgid "No firewall rules have been added"
 msgstr "Nu au fost adăugate reguli de firewall."
 
-#: ui/main.qml:461
+#: ui/main.qml:462
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid "Click the <interface>Add Rule...</interface> button below to add one"
@@ -757,13 +757,13 @@ msgstr ""
 "Apăsați butonul <interface>Adaugă regulă...</interface> de mai jos pentru a "
 "adăuga una"
 
-#: ui/main.qml:462
+#: ui/main.qml:463
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr ""
 
-#: ui/main.qml:468
+#: ui/main.qml:469
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Instalați un firewall, cum ar fi UFW sau FirewallD"
