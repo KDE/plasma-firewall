@@ -123,6 +123,10 @@ QList<QStringList> NetstatHelper::parseSSOutput(const QByteArray &netstatOutput)
             values[6].chop(QStringLiteral("))").size());
 
             QStringList substrings = values[6].split(',');
+            if (substrings.count() < 2) {
+                qWarning() << "Failed to parse line" << values[6];
+                continue;
+            }
             appName = substrings[0].remove(QStringLiteral("\""));
             pid = substrings[1].split('=')[1];
         }
