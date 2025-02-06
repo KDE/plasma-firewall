@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-31 00:42+0000\n"
+"POT-Creation-Date: 2025-02-06 00:42+0000\n"
 "PO-Revision-Date: 2024-12-15 17:35+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
@@ -646,7 +646,7 @@ msgstr "नया फ़ायरवॉल नियम बनाएँ"
 msgid "Edit Firewall Rule"
 msgstr "फ़ायरवॉल नियम संपादित करें"
 
-#: ui/main.qml:172 ui/main.qml:293 ui/main.qml:417
+#: ui/main.qml:172 ui/main.qml:293 ui/main.qml:419
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr "कृपया प्लाज़्मा फ़ायरवॉल पुनः आरंभ करें, बैकएंड डिस्कनेक्ट हो गया है।"
@@ -692,51 +692,51 @@ msgstr "डिफ़ॉल्ट इनकमिंग नीति:"
 msgid "Default Outgoing Policy:"
 msgstr "डिफ़ॉल्ट आउटगोइंग नीति:"
 
-#: ui/main.qml:303
+#: ui/main.qml:305
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "नीति बदलते समय त्रुटि: %1"
 
-#: ui/main.qml:408
+#: ui/main.qml:410
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "नियम संपादित करें"
 
-#: ui/main.qml:428
+#: ui/main.qml:430
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "नियम हटाते समय त्रुटि: %1"
 
-#: ui/main.qml:435
+#: ui/main.qml:437
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "नियम हटाएँ"
 
-#: ui/main.qml:460
+#: ui/main.qml:462
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "फ़ायरवॉल अक्षम है"
 
-#: ui/main.qml:460
+#: ui/main.qml:462
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "कोई फ़ायरवॉल नियम नहीं जोड़ा गया है"
 
-#: ui/main.qml:462
+#: ui/main.qml:464
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr "एक नियम जोड़ने के लिए <interface>नियम जोड़ें…</interface> बटन पर क्लिक करें"
 
-#: ui/main.qml:463
+#: ui/main.qml:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr "इसे सक्षम करने के लिए ऊपर दिए गए स्विच पर क्लिक करें"
 
-#: ui/main.qml:469
+#: ui/main.qml:471
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "कृपया फ़ायरवॉल स्थापित करें, जैसे कि ufw या firewalld"

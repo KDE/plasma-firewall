@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-31 00:42+0000\n"
+"POT-Creation-Date: 2025-02-06 00:42+0000\n"
 "PO-Revision-Date: 2025-01-08 16:03+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -644,7 +644,7 @@ msgstr "建立新防火牆規則"
 msgid "Edit Firewall Rule"
 msgstr "編輯防火牆規則"
 
-#: ui/main.qml:172 ui/main.qml:293 ui/main.qml:417
+#: ui/main.qml:172 ui/main.qml:293 ui/main.qml:419
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr "由於後端斷線，請重開 Plasma 防火牆。"
@@ -690,51 +690,51 @@ msgstr "預設傳入策略："
 msgid "Default Outgoing Policy:"
 msgstr "預設傳出策略："
 
-#: ui/main.qml:303
+#: ui/main.qml:305
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "修改策略時發生錯誤：%1"
 
-#: ui/main.qml:408
+#: ui/main.qml:410
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "編輯規則"
 
-#: ui/main.qml:428
+#: ui/main.qml:430
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "移除規則時發生錯誤：%1"
 
-#: ui/main.qml:435
+#: ui/main.qml:437
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "移除規則"
 
-#: ui/main.qml:460
+#: ui/main.qml:462
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "防火牆未開啟"
 
-#: ui/main.qml:460
+#: ui/main.qml:462
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "尚未新增防火牆規則"
 
-#: ui/main.qml:462
+#: ui/main.qml:464
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr "點擊 <interface>新增規則…</interface> 按鈕來新增規則"
 
-#: ui/main.qml:463
+#: ui/main.qml:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr "點擊上方開關來啟用"
 
-#: ui/main.qml:469
+#: ui/main.qml:471
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "請安裝防火牆，例如 ufw 或 firewalld"

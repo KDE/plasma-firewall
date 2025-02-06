@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-31 00:42+0000\n"
+"POT-Creation-Date: 2025-02-06 00:42+0000\n"
 "PO-Revision-Date: 2020-10-29 21:56+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -667,7 +667,7 @@ msgstr "Opret ny firewallregel"
 msgid "Edit Firewall Rule"
 msgstr "Rediger firewallregel"
 
-#: ui/main.qml:172 ui/main.qml:293 ui/main.qml:417
+#: ui/main.qml:172 ui/main.qml:293 ui/main.qml:419
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr ""
@@ -715,53 +715,53 @@ msgstr "Standardpolitik for indgående:"
 msgid "Default Outgoing Policy:"
 msgstr "Standardpolitik for udgående:"
 
-#: ui/main.qml:303
+#: ui/main.qml:305
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Fejl da politik skulle ændres: %1"
 
-#: ui/main.qml:408
+#: ui/main.qml:410
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Rediger regel"
 
-#: ui/main.qml:428
+#: ui/main.qml:430
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Fejl da regel skulle fjernes: %1"
 
-#: ui/main.qml:435
+#: ui/main.qml:437
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Fjern regel"
 
-#: ui/main.qml:460
+#: ui/main.qml:462
 #, fuzzy, kde-format
 #| msgid "Using %1 as firewall backend"
 msgid "Firewall is disabled"
 msgstr "Bruger %1 som firewallmotor"
 
-#: ui/main.qml:460
+#: ui/main.qml:462
 #, fuzzy, kde-format
 #| msgid "No firewall rules have been added."
 msgid "No firewall rules have been added"
 msgstr "Der er ikke tilføjet nogle firewallregler."
 
-#: ui/main.qml:462
+#: ui/main.qml:464
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
 
-#: ui/main.qml:463
+#: ui/main.qml:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr ""
 
-#: ui/main.qml:469
+#: ui/main.qml:471
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Installer venligst en firewall såsom ufw eller firewalld"

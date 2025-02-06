@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-31 00:42+0000\n"
+"POT-Creation-Date: 2025-02-06 00:42+0000\n"
 "PO-Revision-Date: 2024-08-20 00:40+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -644,7 +644,7 @@ msgstr "새 방화벽 규칙 만들기"
 msgid "Edit Firewall Rule"
 msgstr "방화벽 규칙 편집"
 
-#: ui/main.qml:172 ui/main.qml:293 ui/main.qml:417
+#: ui/main.qml:172 ui/main.qml:293 ui/main.qml:419
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr "백엔드가 연결 해제되었습니다. Plasma 방화벽을 다시 시작하십시오."
@@ -690,51 +690,51 @@ msgstr "기본 들어오는 연결 정책:"
 msgid "Default Outgoing Policy:"
 msgstr "기본 나가는 연결 정책:"
 
-#: ui/main.qml:303
+#: ui/main.qml:305
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "정책 변경 오류: %1"
 
-#: ui/main.qml:408
+#: ui/main.qml:410
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "규칙 편집"
 
-#: ui/main.qml:428
+#: ui/main.qml:430
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "규칙 삭제 오류: %1"
 
-#: ui/main.qml:435
+#: ui/main.qml:437
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "규칙 삭제"
 
-#: ui/main.qml:460
+#: ui/main.qml:462
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "방화벽이 비활성화됨"
 
-#: ui/main.qml:460
+#: ui/main.qml:462
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "방화벽 규칙을 추가하지 않았음"
 
-#: ui/main.qml:462
+#: ui/main.qml:464
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr "<interface>규칙 추가…</interface> 단추를 클릭해서 규칙을 추가하십시오"
 
-#: ui/main.qml:463
+#: ui/main.qml:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr "위쪽의 스위치를 클릭하여 활성화하십시오"
 
-#: ui/main.qml:469
+#: ui/main.qml:471
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "ufw나 firewalld와 같은 방화벽을 설치하십시오"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-31 00:42+0000\n"
+"POT-Creation-Date: 2025-02-06 00:42+0000\n"
 "PO-Revision-Date: 2024-04-30 00:20+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -646,7 +646,7 @@ msgstr "Yeni Bir Güvenlik Duvarı Kuralı Oluştur"
 msgid "Edit Firewall Rule"
 msgstr "Güvenlik Duvarı Kuralı Düzenle"
 
-#: ui/main.qml:172 ui/main.qml:293 ui/main.qml:417
+#: ui/main.qml:172 ui/main.qml:293 ui/main.qml:419
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr ""
@@ -694,52 +694,52 @@ msgstr "Öntanımlı gelen politikası:"
 msgid "Default Outgoing Policy:"
 msgstr "Öntanımlı giden politikası:"
 
-#: ui/main.qml:303
+#: ui/main.qml:305
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Politika değiştirilirken hata: %1"
 
-#: ui/main.qml:408
+#: ui/main.qml:410
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Kuralı düzenle"
 
-#: ui/main.qml:428
+#: ui/main.qml:430
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Kural kaldırılırken hata: %1"
 
-#: ui/main.qml:435
+#: ui/main.qml:437
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Kuralı kaldır"
 
-#: ui/main.qml:460
+#: ui/main.qml:462
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "Güvenlik duvarı devre dışı"
 
-#: ui/main.qml:460
+#: ui/main.qml:462
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Bir güvenlik duvarı kuralı eklenmedi"
 
-#: ui/main.qml:462
+#: ui/main.qml:464
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
 "Bir tane eklemek için <interface>Kural Ekle…</interface> düğmesine tıklayın"
 
-#: ui/main.qml:463
+#: ui/main.qml:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr "Etkinleştirmek için yukarıdaki anahtara tıklayın"
 
-#: ui/main.qml:469
+#: ui/main.qml:471
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Lütfen, ufw veya firewalld gibi bir güvenlik duvarı kurun"

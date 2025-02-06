@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-31 00:42+0000\n"
+"POT-Creation-Date: 2025-02-06 00:42+0000\n"
 "PO-Revision-Date: 2022-03-26 19:12+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -662,7 +662,7 @@ msgstr "Buat Sebuah Rule Firewall Baru"
 msgid "Edit Firewall Rule"
 msgstr "Edit Rule Firewall"
 
-#: ui/main.qml:172 ui/main.qml:293 ui/main.qml:417
+#: ui/main.qml:172 ui/main.qml:293 ui/main.qml:419
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr "Mohon jalankan ulang firewall plasma, backend terdiskonek."
@@ -710,39 +710,39 @@ msgstr "Default Kebijakan Masuk:"
 msgid "Default Outgoing Policy:"
 msgstr "Default Kebijakan Keluar:"
 
-#: ui/main.qml:303
+#: ui/main.qml:305
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Galat mengubah kebijakan: %1"
 
-#: ui/main.qml:408
+#: ui/main.qml:410
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Edit Rule"
 
-#: ui/main.qml:428
+#: ui/main.qml:430
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Galat menghapus rule: %1"
 
-#: ui/main.qml:435
+#: ui/main.qml:437
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Hapus Rule"
 
-#: ui/main.qml:460
+#: ui/main.qml:462
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "Firewall dinonfungsikan"
 
-#: ui/main.qml:460
+#: ui/main.qml:462
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Tidak ada rules firewall yang ditambahkan"
 
-#: ui/main.qml:462
+#: ui/main.qml:464
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid "Click the <interface>Add Rule...</interface> button below to add one"
@@ -752,13 +752,13 @@ msgstr ""
 "Klik tombol <interface>Tambahkan Rule...</interface> di bawah untuk "
 "menambahkannya"
 
-#: ui/main.qml:463
+#: ui/main.qml:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr ""
 
-#: ui/main.qml:469
+#: ui/main.qml:471
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Silakan pasang firewall, sepertihalnya ufw atau firewall"

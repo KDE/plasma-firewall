@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-31 00:42+0000\n"
+"POT-Creation-Date: 2025-02-06 00:42+0000\n"
 "PO-Revision-Date: 2021-06-02 20:53+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -665,7 +665,7 @@ msgstr "Creează regulă de firewall nouă"
 msgid "Edit Firewall Rule"
 msgstr "Modifică regula de firewall"
 
-#: ui/main.qml:172 ui/main.qml:293 ui/main.qml:417
+#: ui/main.qml:172 ui/main.qml:293 ui/main.qml:419
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr ""
@@ -713,41 +713,41 @@ msgstr "Politică implicită de intrare:"
 msgid "Default Outgoing Policy:"
 msgstr "Politică implicită de ieșire:"
 
-#: ui/main.qml:303
+#: ui/main.qml:305
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Eroare la schimbarea politicii: %1"
 
-#: ui/main.qml:408
+#: ui/main.qml:410
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Modifică regula"
 
-#: ui/main.qml:428
+#: ui/main.qml:430
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Eroare la eliminarea regulii: %1"
 
-#: ui/main.qml:435
+#: ui/main.qml:437
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Elimină regula"
 
-#: ui/main.qml:460
+#: ui/main.qml:462
 #, fuzzy, kde-format
 #| msgid "Using %1 as firewall backend"
 msgid "Firewall is disabled"
 msgstr "Se folosește platforma de firewall %1"
 
-#: ui/main.qml:460
+#: ui/main.qml:462
 #, fuzzy, kde-format
 #| msgid "No firewall rules have been added."
 msgid "No firewall rules have been added"
 msgstr "Nu au fost adăugate reguli de firewall."
 
-#: ui/main.qml:462
+#: ui/main.qml:464
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid "Click the <interface>Add Rule...</interface> button below to add one"
@@ -757,13 +757,13 @@ msgstr ""
 "Apăsați butonul <interface>Adaugă regulă...</interface> de mai jos pentru a "
 "adăuga una"
 
-#: ui/main.qml:463
+#: ui/main.qml:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr ""
 
-#: ui/main.qml:469
+#: ui/main.qml:471
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Instalați un firewall, cum ar fi UFW sau FirewallD"
