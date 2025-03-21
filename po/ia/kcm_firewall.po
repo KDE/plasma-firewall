@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
 #
-# giovanni <g.sora@tiscali.it>, 2021, 2022, 2023, 2024.
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024, 2025 giovanni <g.sora@tiscali.it>
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-06 00:42+0000\n"
-"PO-Revision-Date: 2024-03-15 18:43+0100\n"
+"PO-Revision-Date: 2025-03-20 19:39+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -743,7 +743,7 @@ msgstr "Clicca commutator supra pro habilitar lo"
 #: ui/main.qml:471
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
-msgstr "Profavor installa un taliafoco (firewall), tal como ufw o firewalld"
+msgstr "Pro favor installa un taliafoco (firewall), tal como ufw o firewalld"
 
 #: ui/PortTextField.qml:11
 #, kde-format
