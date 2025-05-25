@@ -735,14 +735,14 @@ msgstr "No s'ha afegit cap regla del tallafoc"
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
-"Feu clic en el botó <interface>Afig una regla…</interface> per a afegir-ne "
-"una"
+"Cliqueu damunt del botó <interface>Afig una regla…</interface> per a afegir-"
+"ne una"
 
 #: ui/main.qml:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
-msgstr "Feu clic en el commutador de dalt per a activar-ho"
+msgstr "Cliqueu damunt del commutador de dalt per a activar-ho"
 
 #: ui/main.qml:471
 #, kde-format
