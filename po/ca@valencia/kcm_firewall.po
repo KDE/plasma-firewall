@@ -589,7 +589,7 @@ msgstr "Estat del tallafoc:"
 #: package/contents/ui/main.qml:156
 #, kde-format
 msgid "Disabling..."
-msgstr "S'està desactivant..."
+msgstr "S'està desactivant…"
 
 #: package/contents/ui/main.qml:156
 #, kde-format
@@ -599,7 +599,7 @@ msgstr "Activat"
 #: package/contents/ui/main.qml:158
 #, kde-format
 msgid "Enabling..."
-msgstr "S'està activant..."
+msgstr "S'està activant…"
 
 #: package/contents/ui/main.qml:158
 #, kde-format
@@ -665,8 +665,8 @@ msgstr "No s'ha afegit cap regla del tallafoc"
 msgctxt "@info"
 msgid "Click the <interface>Add Rule...</interface> button below to add one"
 msgstr ""
-"Feu clic en el botó <interface>Afig una regla...</interface> de davall per a "
-"afegir-ne una"
+"Cliqueu damunt del botó <interface>Afig una regla…</interface> de davall per "
+"a afegir-ne una"
 
 #: package/contents/ui/main.qml:341
 #, kde-kuit-format
@@ -677,8 +677,8 @@ msgid ""
 "add one"
 msgstr ""
 "Habiliteu el tallafoc amb la casella de selecció <interface>Estat del "
-"tallafoc</interface> de dalt, i després feu clic en el botó <interface>Afig "
-"una regla...</interface> de davall per a afegir-ne una"
+"tallafoc</interface> de dalt, i després cliqueu damunt del botó "
+"<interface>Afig una regla…</interface> de davall per a afegir-ne una"
 
 #: package/contents/ui/main.qml:345
 #, kde-format
@@ -727,7 +727,7 @@ msgstr "Visualitza els registres"
 #: package/contents/ui/main.qml:444
 #, kde-format
 msgid "Add Rule..."
-msgstr "Afig una regla..."
+msgstr "Afig una regla…"
 
 #: package/contents/ui/main.qml:453
 #, kde-format
