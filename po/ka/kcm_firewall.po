@@ -763,12 +763,12 @@ msgstr "ყველა პაკეტი"
 #: ui/RuleEdit.qml:55 ui/RuleEdit.qml:62
 #, kde-format
 msgid "The default incoming policy is already '%1'."
-msgstr "შემომავალი პაკეტების ნაგულისხმები წესი უკვე %1-ა."
+msgstr "შემომავალი პაკეტების ნაგულისხმევი წესი უკვე %1-ა."
 
 #: ui/RuleEdit.qml:56 ui/RuleEdit.qml:63
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
-msgstr "გამავალი პაკეტების ნაგულისხმები წესი უკვე %1-ა."
+msgstr "გამავალი პაკეტების ნაგულისხმევი წესი უკვე %1-ა."
 
 #: ui/SimpleRuleEdit.qml:23
 #, kde-format
