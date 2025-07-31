@@ -36,8 +36,6 @@ private:
 
     QString extractAndStrip(const QString &src, int index, int size);
 
-    void resetPointers();
-
     QString m_errorString;
     bool m_hasError = false;
     QProcess *m_executableProcess = nullptr;
