@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-20 02:45+0000\n"
-"PO-Revision-Date: 2022-02-15 18:30+0400\n"
+"PO-Revision-Date: 2024-03-29 17:39+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: \n"
 "Language: ar\n"
@@ -726,7 +726,7 @@ msgstr "عن"
 #: package/contents/ui/main.qml:461
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
-msgstr "الرجاء تثبيت جدار ناري ، مثل ufw أو firewalld"
+msgstr "الرجاء تثبيت جدار ناري، مثل ufw أو firewalld"
 
 #: package/contents/ui/PortTextField.qml:11
 #, kde-format
