@@ -736,7 +736,7 @@ msgstr "انقر فوق التبديل أعلاه لتمكينه"
 #: ui/main.qml:471
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
-msgstr "الرجاء تثبيت جدار ناري ، مثل ufw أو firewalld"
+msgstr "الرجاء تثبيت جدار ناري، مثل ufw أو firewalld"
 
 #: ui/PortTextField.qml:11
 #, kde-format
