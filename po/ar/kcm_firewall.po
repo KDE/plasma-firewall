@@ -756,12 +756,12 @@ msgstr "جميع الحزم"
 #: ui/RuleEdit.qml:55 ui/RuleEdit.qml:62
 #, kde-format
 msgid "The default incoming policy is already '%1'."
-msgstr "سياسة الاتصالات الواردة المبدئية بالفعل '%1'."
+msgstr "سياسة الاتصالات الواردة المبدئية فعلًا '%1'."
 
 #: ui/RuleEdit.qml:56 ui/RuleEdit.qml:63
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
-msgstr "سياسة الاتصالات الصادرة المبدئية بالفعل '%1'."
+msgstr "سياسة الاتصالات الصادرة المبدئية فعلًا '%1'."
 
 #: ui/SimpleRuleEdit.qml:23
 #, kde-format
