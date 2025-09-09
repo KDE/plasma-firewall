@@ -39,7 +39,6 @@
         "Name[sv]": "Gränssnitt för okomplicerad brandvägg",
         "Name[tr]": "Yalın Güvenlik Duvarı için Arka Uç",
         "Name[uk]": "Модуль для Uncomplicated Firewall",
-        "Name[x-test]": "xxBackend for Uncomplicated Firewallxx",
         "Name[zh_CN]": "UFW 后端程序",
         "Name[zh_TW]": "Uncomplicated Firewall 後端",
         "ServiceTypes": [

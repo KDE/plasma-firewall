@@ -36,7 +36,6 @@
         "Description[sv]": "Bestäm dina nätverksregler",
         "Description[tr]": "Ağ kurallarınızı denetleyin",
         "Description[uk]": "Керування вашими правилами мережі",
-        "Description[x-test]": "xxControl your network rulesxx",
         "Description[zh_CN]": "控制本机的网络规则",
         "Description[zh_TW]": "控制您的網路規則",
         "Icon": "preferences-security-firewall",
@@ -76,7 +75,6 @@
         "Name[sv]": "Brandvägg",
         "Name[tr]": "Güvenlik Duvarı",
         "Name[uk]": "Брандмауер",
-        "Name[x-test]": "xxFirewallxx",
         "Name[zh_CN]": "防火墙",
         "Name[zh_TW]": "防火牆",
         "ServiceTypes": [
@@ -106,7 +104,6 @@
     "X-KDE-Keywords[sl]": "vdorobran,omrežje,varnost,blokiraj,dovoli,internet,splet,spletna mesta,seznam belih,črni seznam,seznam dovoljenih,seznam blokiranih,vrata,pravila,povezave,udp,tcp,ip,naslov,ipv4,ipv6,zaščita,zasebnost,lokalni naslov,oddaljeni naslov,prehod,lokalni gostitelj,ufw,firewalld,pravila vdorobrana,izjema vdorobrana,izjeme vdorobrana,izvor,cilj,protokol,vmesnik",
     "X-KDE-Keywords[sv]": "brandvägg,nätverk,säkerhet,blockera,tillåta,internet,webb,webbplatser,vitlista,svartlista,tillåtelselista,blockeringslista,portar,regler,anslutningar,udp,tcp,ip,adress,ipv4,ipv6,skydd,integritet,lokal adress,fjärrkontrolladress,förmedlingsnod,localhost,ufw,brandvägg,brandväggsregler,brandväggsundantag,ursprung,mål,protokoll,gränssnitt",
     "X-KDE-Keywords[uk]": "firewall,network,security,block,allow,internet,web,websites,whitelist,blacklist,allowlist,blocklist,ports,rules,connections,udp,tcp,ip,address,ipv4,ipv6,protection,privacy,local address,remote address,gateway,localhost,ufw,firewalld,firewall rules,firewall exception,firewall exceptions,origin,destination,protocol,interface,брандмауер,мережа,безпека,блокування,дозвіл,інтернет,мережа,сайти,білий,список,чорний,порти,правила,з'єднання,адреса,захист,конфіденційність,приватність,локальна адреса,віддалена адреса,шлюз,правила брандмауера,виключення,походження,призначення,протокол,інтерфейс",
-    "X-KDE-Keywords[x-test]": "xxfirewallxx,xxnetworkxx,xxsecurityxx,xxblockxx,xxallowxx,xxinternetxx,xxwebxx,xxwebsitesxx,xxwhitelistxx,xxblacklistxx,xxallowlistxx,xxblocklistxx,xxportsxx,xxrulesxx,xxconnectionsxx,xxudpxx,xxtcpxx,xxipxx,xxaddressxx,xxipv4xx,xxipv6xx,xxprotectionxx,xxprivacyxx,xxlocal addressxx,xxremote addressxx,xxgatewayxx,xxlocalhostxx,xxufwxx,xxfirewalldxx,xxfirewall rulesxx,xxfirewall exceptionxx,xxfirewall exceptionsxx,xxoriginxx,xxdestinationxx,xxprotocolxx,xxinterfacexx",
     "X-KDE-ParentApp": "kcontrol",
     "X-KDE-System-Settings-Parent-Category": "network",
     "X-KDE-Weight": 80
