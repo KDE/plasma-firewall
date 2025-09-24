@@ -1,10 +1,11 @@
+# SPDX-FileCopyrightText: 2025 Yuma Kakei <yumasansansan@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-06 00:42+0000\n"
-"PO-Revision-Date: 2020-08-19 19:41-0700\n"
-"Last-Translator: Japanese KDE translation team <kde-jp@kde.org>\n"
+"PO-Revision-Date: 2025-09-21 17:30+0900\n"
+"Last-Translator: Yuma Kakei <yumasansansan@gmail.com>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -13,21 +14,22 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Yuma Kakei"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "yumasansansan@gmail.com"
 
 #: backends/firewalld/firewalldclient.cpp:600 backends/ufw/ufwclient.cpp:697
 #, kde-format
 msgid "Error fetching information from the firewall."
-msgstr ""
+msgstr "ファイアウォールからの情報の取得に失敗しました。"
 
 #: backends/firewalld/firewalldjob.cpp:173
 #, kde-format
@@ -53,42 +55,42 @@ msgstr ""
 #, kde-format
 msgctxt "@title:column"
 msgid "Protocol"
-msgstr ""
+msgstr "プロトコル"
 
 #: backends/netstat/connectionsmodel.cpp:99
 #, kde-format
 msgctxt "@title:column"
 msgid "Local address"
-msgstr ""
+msgstr "ローカル アドレス"
 
 #: backends/netstat/connectionsmodel.cpp:101
 #, kde-format
 msgctxt "@title:column"
 msgid "Foreign address"
-msgstr ""
+msgstr "外部アドレス"
 
 #: backends/netstat/connectionsmodel.cpp:103
 #, kde-format
 msgctxt "@title:column"
 msgid "Status"
-msgstr ""
+msgstr "状態"
 
 #: backends/netstat/connectionsmodel.cpp:105
 #, kde-format
 msgctxt "@title:column"
 msgid "PID"
-msgstr ""
+msgstr "PID"
 
 #: backends/netstat/connectionsmodel.cpp:107
 #, kde-format
 msgctxt "@title:column"
 msgid "Program"
-msgstr ""
+msgstr "プログラム"
 
 #: backends/netstat/connectionsmodel.cpp:115
 #, kde-format
 msgid "Failed to get connections: %1"
-msgstr ""
+msgstr "接続の取得に失敗しました: %1"
 
 #: backends/netstat/connectionsmodel.cpp:133
 #, kde-format
@@ -108,32 +110,32 @@ msgstr ""
 #: backends/ufw/helper/helper.cpp:213
 #, kde-format
 msgid "Invalid arguments passed to the profile"
-msgstr ""
+msgstr "プロファイルに渡された引数が無効です。"
 
 #: backends/ufw/helper/helper.cpp:243
 #, kde-format
 msgid "Error saving the profile."
-msgstr ""
+msgstr "プロファイルの保存に失敗しました。"
 
 #: backends/ufw/helper/helper.cpp:267
 #, kde-format
 msgid "Invalid arguments passed to delete profile"
-msgstr ""
+msgstr "プロファイル削除に渡された引数が無効です。"
 
 #: backends/ufw/helper/helper.cpp:274
 #, kde-format
 msgid "Could not remove the profile from disk."
-msgstr ""
+msgstr "ディスクからプロファイルを削除できませんでした。"
 
 #: backends/ufw/helper/helper.cpp:289
 #, kde-format
 msgid "Invalid argument passed to add Rules"
-msgstr ""
+msgstr "ルール追加に渡された引数が無効です。"
 
 #: backends/ufw/helper/helper.cpp:361
 #, kde-format
 msgid "An error occurred in command '%1': %2"
-msgstr ""
+msgstr "コマンド「%1」でエラーが発生しました: %2"
 
 #: backends/ufw/ufwclient.cpp:161
 #, kde-format
@@ -141,46 +143,48 @@ msgid ""
 "There was an error in the backend! Please report it.\n"
 "%1 %2"
 msgstr ""
+"バックエンドでエラーが発生しました！報告してください。\n"
+"%1 %2"
 
 #: backends/ufw/ufwclient.cpp:268
 #, kde-format
 msgid "Error fetching firewall logs: %1"
-msgstr ""
+msgstr "ファイアウォールログの取得に失敗しました: %1"
 
 #: backends/ufw/ufwclient.cpp:608 core/firewallclient.cpp:76
 #, kde-format
 msgid "Any"
-msgstr ""
+msgstr "任意"
 
 #: core/loglistmodel.cpp:88 core/rulelistmodel.cpp:89
 #, kde-format
 msgctxt "@title:column"
 msgid "From"
-msgstr ""
+msgstr "送信元"
 
 #: core/loglistmodel.cpp:90
 #, kde-format
 msgctxt "@title:column"
 msgid "Source port"
-msgstr ""
+msgstr "送信元ポート"
 
 #: core/loglistmodel.cpp:92 core/rulelistmodel.cpp:91
 #, kde-format
 msgctxt "@title:column"
 msgid "To"
-msgstr ""
+msgstr "宛先"
 
 #: core/loglistmodel.cpp:94
 #, kde-format
 msgctxt "@title:column"
 msgid "Destination port"
-msgstr ""
+msgstr "宛先ポート"
 
 #: core/loglistmodel.cpp:98
 #, kde-format
 msgctxt "@title:column"
 msgid "Interface"
-msgstr ""
+msgstr "インターフェース"
 
 #: core/loglistmodel.cpp:100 core/rulelistmodel.cpp:87
 #, kde-format
@@ -192,13 +196,13 @@ msgstr ""
 #, kde-format
 msgctxt "@title:column"
 msgid "Time"
-msgstr ""
+msgstr "時間"
 
 #: core/loglistmodel.cpp:104
 #, kde-format
 msgctxt "@title:column"
 msgid "Date"
-msgstr ""
+msgstr "日付"
 
 #: core/rule.cpp:46
 #, kde-format
@@ -209,25 +213,25 @@ msgstr ""
 #: core/rule.cpp:75 core/rule.cpp:165 core/rule.cpp:171
 #, kde-format
 msgid "Anywhere"
-msgstr ""
+msgstr "任意の場所"
 
 #: core/rule.cpp:96 core/rule.cpp:109 core/rule.cpp:126
 #, kde-format
 msgctxt "service/application name (port numbers)"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: core/rule.cpp:199
 #, kde-format
 msgctxt "firewallAction incoming"
 msgid "%1 incoming"
-msgstr ""
+msgstr "%1 (受信)"
 
 #: core/rule.cpp:200
 #, kde-format
 msgctxt "firewallAction outgoing"
 msgid "%1 outgoing"
-msgstr ""
+msgstr "%1 (送信)"
 
 #: core/rule.cpp:205
 #, kde-format
@@ -238,13 +242,13 @@ msgstr ""
 #, kde-format
 msgctxt "@title:column"
 msgid "IP"
-msgstr ""
+msgstr "IP"
 
 #: core/rulelistmodel.cpp:95
 #, kde-format
 msgctxt "@title:column"
 msgid "Logging"
-msgstr ""
+msgstr "ログ"
 
 #: core/systemdjob.cpp:51
 #, kde-format
@@ -284,57 +288,57 @@ msgstr ""
 #: core/types.cpp:47
 #, kde-format
 msgid "New connections"
-msgstr ""
+msgstr "新しい接続"
 
 #: core/types.cpp:49
 #, kde-format
 msgid "All packets"
-msgstr ""
+msgstr "すべてのパケット"
 
 #: core/types.cpp:58 ui/main.qml:25
 #, kde-format
 msgid "Allow"
-msgstr ""
+msgstr "許可"
 
 #: core/types.cpp:60
 #, kde-format
 msgid "Deny"
-msgstr ""
+msgstr "破棄"
 
 #: core/types.cpp:62 ui/main.qml:27
 #, kde-format
 msgid "Reject"
-msgstr ""
+msgstr "拒否"
 
 #: core/types.cpp:64
 #, kde-format
 msgid "Limit"
-msgstr ""
+msgstr "制限"
 
 #: core/types.cpp:80
 #, kde-format
 msgid "Amule"
-msgstr ""
+msgstr "Amule"
 
 #: core/types.cpp:82
 #, kde-format
 msgid "Deluge"
-msgstr ""
+msgstr "Deluge"
 
 #: core/types.cpp:84
 #, kde-format
 msgid "KTorrent"
-msgstr ""
+msgstr "KTorrent"
 
 #: core/types.cpp:86
 #, kde-format
 msgid "Nicotine"
-msgstr ""
+msgstr "Nicotine"
 
 #: core/types.cpp:88
 #, kde-format
 msgid "qBittorrent"
-msgstr ""
+msgstr "qBittorrent"
 
 #: core/types.cpp:90
 #, kde-format
@@ -354,202 +358,204 @@ msgstr ""
 #: core/types.cpp:96
 #, kde-format
 msgid "Windows Live Messenger"
-msgstr ""
+msgstr "Windows Live メッセンジャー"
 
 #: core/types.cpp:98
 #, kde-format
 msgid "Yahoo! Messenger"
-msgstr ""
+msgstr "Yahoo! メッセンジャー"
 
 #: core/types.cpp:100
 #, kde-format
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
 #: core/types.cpp:102
 #, kde-format
 msgid "HTTP"
-msgstr ""
+msgstr "HTTP"
 
 #: core/types.cpp:104
 #, kde-format
 msgid "Secure HTTP"
-msgstr ""
+msgstr "Secure HTTP"
 
 #: core/types.cpp:106
 #, kde-format
 msgid "IMAP"
-msgstr ""
+msgstr "IMAP"
 
 #: core/types.cpp:108
 #, kde-format
 msgid "Secure IMAP"
-msgstr ""
+msgstr "Secure IMAP"
 
 #: core/types.cpp:110
 #, kde-format
 msgid "POP3"
-msgstr ""
+msgstr "POP3"
 
 #: core/types.cpp:112
 #, kde-format
 msgid "Secure POP3"
-msgstr ""
+msgstr "Secure POP3"
 
 #: core/types.cpp:114
 #, kde-format
 msgid "SMTP"
-msgstr ""
+msgstr "SMTP"
 
 #: core/types.cpp:116
 #, kde-format
 msgid "NFS"
-msgstr ""
+msgstr "NFS"
 
 #: core/types.cpp:118
 #, kde-format
 msgid "Samba"
-msgstr ""
+msgstr "Samba"
 
 #: core/types.cpp:120
 #, kde-format
 msgid "Secure Shell"
-msgstr ""
+msgstr "Secure Shell"
 
 #: core/types.cpp:122
 #, kde-format
 msgid "VNC"
-msgstr ""
+msgstr "VNC"
 
 #: core/types.cpp:124
 #, kde-format
 msgid "Zeroconf"
-msgstr ""
+msgstr "Zeroconf"
 
 #: core/types.cpp:126
 #, kde-format
 msgid "Telnet"
-msgstr ""
+msgstr "Telnet"
 
 #: core/types.cpp:128
 #, kde-format
 msgid "NTP"
-msgstr ""
+msgstr "NTP"
 
 #: core/types.cpp:130
 #, kde-format
 msgid "CUPS"
-msgstr ""
+msgstr "CUPS"
 
 #: ui/AdvancedRuleEdit.qml:31 ui/SimpleRuleEdit.qml:29
 #, kde-format
 msgid "Policy:"
-msgstr ""
+msgstr "ポリシー:"
 
 #: ui/AdvancedRuleEdit.qml:42 ui/SimpleRuleEdit.qml:40
 #, kde-format
 msgid "Direction:"
-msgstr ""
+msgstr "方向:"
 
 #: ui/AdvancedRuleEdit.qml:45 ui/SimpleRuleEdit.qml:44
 #, kde-format
 msgid "Incoming"
-msgstr ""
+msgstr "受信"
 
 #: ui/AdvancedRuleEdit.qml:51 ui/SimpleRuleEdit.qml:50
 #, kde-format
 msgid "Outgoing"
-msgstr ""
+msgstr "送信"
 
 #: ui/AdvancedRuleEdit.qml:59
 #, kde-format
 msgid "IP Version:"
-msgstr ""
+msgstr "IP バージョン:"
 
 #: ui/AdvancedRuleEdit.qml:62
 #, kde-format
 msgid "IPv4"
-msgstr ""
+msgstr "IPv4"
 
 #: ui/AdvancedRuleEdit.qml:67
 #, kde-format
 msgid "IPv6"
-msgstr ""
+msgstr "IPv6"
 
 #: ui/AdvancedRuleEdit.qml:74
 #, kde-format
 msgid "Source:"
-msgstr ""
+msgstr "送信元:"
 
 #: ui/AdvancedRuleEdit.qml:94
 #, kde-format
 msgid "Destination:"
-msgstr ""
+msgstr "宛先:"
 
 #: ui/AdvancedRuleEdit.qml:114
 #, kde-format
 msgid "Protocol:"
-msgstr ""
+msgstr "プロトコル:"
 
 #: ui/AdvancedRuleEdit.qml:125
 #, kde-format
 msgid "Interface:"
-msgstr ""
+msgstr "インターフェース:"
 
 #: ui/AdvancedRuleEdit.qml:137
 #, kde-format
 msgid "Logging:"
-msgstr ""
+msgstr "ログ:"
 
 #: ui/ConnectionsView.qml:14
 #, kde-format
 msgid "Connections"
-msgstr ""
+msgstr "接続"
 
 #: ui/ConnectionsView.qml:26
 #, kde-format
 msgid "There are currently no open connections"
-msgstr ""
+msgstr "現在開かれている接続はありません。"
 
 #: ui/ConnectionsView.qml:35
 #, kde-format
 msgid "Created a blacklist rule from this connection."
-msgstr ""
+msgstr "この接続からブラックリストルールを作成しました。"
 
 #: ui/ConnectionsView.qml:52
 #, kde-format
 msgid "could not find iproute2 or net-tools packages installed."
 msgstr ""
+"インストール済みの iproute2 または net-tools パッケージが見つかりませんでし"
+"た。"
 
 #: ui/IpTextField.qml:14
 #, kde-format
 msgid "Any IP address"
-msgstr ""
+msgstr "任意の IP アドレス"
 
 #: ui/LogsView.qml:16
 #, kde-format
 msgid "Firewall Logs"
-msgstr ""
+msgstr "ファイアウォールログ"
 
 #: ui/LogsView.qml:26
 #, kde-format
 msgid "There are currently no firewall log entries"
-msgstr ""
+msgstr "現在ファイアウォールログはありません。"
 
 #: ui/LogsView.qml:37
 #, kde-format
 msgid "Created a blacklist rule from this log entry."
-msgstr ""
+msgstr "このログからブラックリストルールを作成しました。"
 
 #: ui/main.qml:25
 #, kde-format
 msgid "Allow all connections"
-msgstr ""
+msgstr "すべての接続を許可"
 
 #: ui/main.qml:26
 #, kde-format
 msgid "Ignore"
-msgstr ""
+msgstr "無視"
 
 #: ui/main.qml:26
 #, kde-format
@@ -566,39 +572,39 @@ msgstr ""
 #: ui/main.qml:35
 #, kde-format
 msgid "Add Rule…"
-msgstr ""
+msgstr "ルールを追加…"
 
 #: ui/main.qml:43
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
-msgstr ""
+msgstr "接続を見る"
 
 #: ui/main.qml:49
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
-msgstr ""
+msgstr "ログを見る"
 
 #: ui/main.qml:65
 #, kde-format
 msgid "Disabling…"
-msgstr ""
+msgstr "無効化しています…"
 
 #: ui/main.qml:65
 #, kde-format
 msgid "Enabled"
-msgstr ""
+msgstr "有効"
 
 #: ui/main.qml:67
 #, kde-format
 msgid "Enabling…"
-msgstr ""
+msgstr "有効化しています…"
 
 #: ui/main.qml:67
 #, kde-format
 msgid "Disabled"
-msgstr ""
+msgstr "無効"
 
 #: ui/main.qml:92
 #, kde-format
@@ -608,7 +614,7 @@ msgstr ""
 #: ui/main.qml:106
 #, kde-format
 msgid "Permission denied"
-msgstr ""
+msgstr "権限がありません。"
 
 #: ui/main.qml:110
 #, kde-format
@@ -616,146 +622,148 @@ msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
 "reboot."
 msgstr ""
+"最近カーネルを更新しました。iptables の初期化に失敗しています。再起動してくだ"
+"さい。"
 
 #: ui/main.qml:113
 #, kde-format
 msgid "Error enabling firewall: %1"
-msgstr ""
+msgstr "ファイアウォールの有効化に失敗しました: %1"
 
 #: ui/main.qml:114
 #, kde-format
 msgid "Error disabling firewall: %1"
-msgstr ""
+msgstr "ファイアウォールの無効化に失敗しました: %1"
 
 #: ui/main.qml:149
 #, kde-format
 msgid "Create A New Firewall Rule"
-msgstr ""
+msgstr "新しいファイアウォールルールを作成"
 
 #: ui/main.qml:149
 #, kde-format
 msgid "Edit Firewall Rule"
-msgstr ""
+msgstr "ファイアウォールルールを編集"
 
 #: ui/main.qml:172 ui/main.qml:293 ui/main.qml:419
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
-msgstr ""
+msgstr "plasma firewall を再起動してください。バックエンドが切断されました。"
 
 #: ui/main.qml:186 ui/ViewBase.qml:112
 #, kde-format
 msgid "Error creating rule: %1"
-msgstr ""
+msgstr "ルールの作成に失敗しました: %1"
 
 #: ui/main.qml:188
 #, kde-format
 msgid "Error updating rule: %1"
-msgstr ""
+msgstr "ルールの更新に失敗しました: %1"
 
 #: ui/main.qml:213
 #, kde-format
 msgid "Create"
-msgstr ""
+msgstr "作成"
 
 #: ui/main.qml:213
 #, kde-format
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 #: ui/main.qml:240
 #, kde-format
 msgid "Firewall type:"
-msgstr ""
+msgstr "ファイアウォールの種類:"
 
 #: ui/main.qml:248
 #, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
-msgstr ""
+msgstr "ファイアウォールのバージョン: %1"
 
 #: ui/main.qml:255
 #, kde-format
 msgid "Default Incoming Policy:"
-msgstr ""
+msgstr "デフォルトの受信ポリシー:"
 
 #: ui/main.qml:256
 #, kde-format
 msgid "Default Outgoing Policy:"
-msgstr ""
+msgstr "デフォルトの送信ポリシー:"
 
 #: ui/main.qml:305
 #, kde-format
 msgid "Error changing policy: %1"
-msgstr ""
+msgstr "ポリシーの変更に失敗しました: %1"
 
 #: ui/main.qml:410
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
-msgstr ""
+msgstr "ルールを編集"
 
 #: ui/main.qml:430
 #, kde-format
 msgid "Error removing rule: %1"
-msgstr ""
+msgstr "ルールの削除に失敗しました: %1"
 
 #: ui/main.qml:437
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
-msgstr ""
+msgstr "ルールを削除"
 
 #: ui/main.qml:462
 #, kde-format
 msgid "Firewall is disabled"
-msgstr ""
+msgstr "ファイアウォールは無効化されています。"
 
 #: ui/main.qml:462
 #, kde-format
 msgid "No firewall rules have been added"
-msgstr ""
+msgstr "ファイアウォールルールが追加されていません。"
 
 #: ui/main.qml:464
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
-msgstr ""
+msgstr "<interface>Add Rule…</interface>ボタンをクリックして追加します。"
 
 #: ui/main.qml:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
-msgstr ""
+msgstr "上のスイッチをクリックして有効化します。"
 
 #: ui/main.qml:471
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
-msgstr ""
+msgstr "ufw や firewalld などのファイアウォールをインストールしてください。"
 
 #: ui/PortTextField.qml:11
 #, kde-format
 msgid "Any Port"
-msgstr ""
+msgstr "任意のポート"
 
 #: ui/RuleEdit.qml:39
 #, kde-format
 msgid "New Connections"
-msgstr ""
+msgstr "新しい接続"
 
 #: ui/RuleEdit.qml:40
 #, kde-format
 msgid "All Packets"
-msgstr ""
+msgstr "すべてのパケット"
 
 #: ui/RuleEdit.qml:55 ui/RuleEdit.qml:62
 #, kde-format
 msgid "The default incoming policy is already '%1'."
-msgstr ""
+msgstr "デフォルトの受信ポリシーは既に「%1」です。"
 
 #: ui/RuleEdit.qml:56 ui/RuleEdit.qml:63
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
-msgstr ""
+msgstr "デフォルトの送信ポリシーは既に「%1」です。"
 
 #: ui/SimpleRuleEdit.qml:23
 #, kde-format
@@ -765,7 +773,7 @@ msgstr ""
 #: ui/SimpleRuleEdit.qml:23
 #, kde-format
 msgid "Application:"
-msgstr ""
+msgstr "アプリケーション:"
 
 #: ui/ViewBase.qml:253
 #, kde-format
