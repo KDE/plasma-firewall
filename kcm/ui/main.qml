@@ -53,6 +53,7 @@ KCMUtils.ScrollViewKCM {
         Kirigami.Action {
             text: enabledCheckBox.text
             checkable: true
+            enabled: enabledCheckBox.enabled
             checked: enabledCheckBox.checked
             onTriggered: {
                 enabledCheckBox.toggle()
@@ -67,7 +68,7 @@ KCMUtils.ScrollViewKCM {
                         return activeJob ? i18n("Enabling…") : i18n("Disabled")
                     }
                 }
-                enabled: !activeJob && !connectEnableTimer.running
+                enabled: kcm.client.name !== "" && !activeJob && !connectEnableTimer.running
 
                 function bindCurrent() {
                     checked = Qt.binding(function() {
@@ -470,7 +471,6 @@ KCMUtils.ScrollViewKCM {
         if (kcm.client.name === "") {
             firewallInlineErrorMessage.text = i18n("Please install a firewall, such as ufw or firewalld");
             firewallInlineErrorMessage.visible = true;
-            enabledCheckBox.enabled = false;
         } else {
             // Initialize the client's status.
             kcm.client.refresh();
