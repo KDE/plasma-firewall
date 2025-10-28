@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-06 00:42+0000\n"
+"POT-Creation-Date: 2025-10-28 02:41+0000\n"
 "PO-Revision-Date: 2024-03-15 12:41+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -588,37 +588,37 @@ msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
 msgstr "Logs bekijken"
 
-#: ui/main.qml:65
+#: ui/main.qml:66
 #, kde-format
 msgid "Disabling…"
 msgstr "Uitschakelen…"
 
-#: ui/main.qml:65
+#: ui/main.qml:66
 #, kde-format
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
-#: ui/main.qml:67
+#: ui/main.qml:68
 #, kde-format
 msgid "Enabling…"
 msgstr "Inschakelen…"
 
-#: ui/main.qml:67
+#: ui/main.qml:68
 #, kde-format
 msgid "Disabled"
 msgstr "Uitgeschakeld"
 
-#: ui/main.qml:92
+#: ui/main.qml:93
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr "De firewall-toepassing, gaarne %1 installeren "
 
-#: ui/main.qml:106
+#: ui/main.qml:107
 #, kde-format
 msgid "Permission denied"
 msgstr "Toestemming afgewezen"
 
-#: ui/main.qml:110
+#: ui/main.qml:111
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
@@ -627,106 +627,106 @@ msgstr ""
 "U hebt recent uw kernel bijgewerkt. Iptables mislukt bij initialiseren, "
 "start opnieuw."
 
-#: ui/main.qml:113
+#: ui/main.qml:114
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr "Fout bij inschakelen van firewall: %1"
 
-#: ui/main.qml:114
+#: ui/main.qml:115
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr "Fout bij uitschakelen van firewall: %1"
 
-#: ui/main.qml:149
+#: ui/main.qml:150
 #, kde-format
 msgid "Create A New Firewall Rule"
 msgstr "Een nieuwe firewall-regel aanmaken"
 
-#: ui/main.qml:149
+#: ui/main.qml:150
 #, kde-format
 msgid "Edit Firewall Rule"
 msgstr "Firewall-regel bewerken"
 
-#: ui/main.qml:172 ui/main.qml:293 ui/main.qml:419
+#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:420
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr ""
 "Herstart de plasma firewall, de verbinding met de backend is verbroken."
 
-#: ui/main.qml:186 ui/ViewBase.qml:112
+#: ui/main.qml:187 ui/ViewBase.qml:112
 #, kde-format
 msgid "Error creating rule: %1"
 msgstr "Fout bij het aanmaken van regel: %1"
 
-#: ui/main.qml:188
+#: ui/main.qml:189
 #, kde-format
 msgid "Error updating rule: %1"
 msgstr "Fout bij het bijwerken van regel; %1"
 
-#: ui/main.qml:213
+#: ui/main.qml:214
 #, kde-format
 msgid "Create"
 msgstr "Aanmaken"
 
-#: ui/main.qml:213
+#: ui/main.qml:214
 #, kde-format
 msgid "Save"
 msgstr "Opslaan"
 
-#: ui/main.qml:240
+#: ui/main.qml:241
 #, kde-format
 msgid "Firewall type:"
 msgstr "Type firewall:"
 
-#: ui/main.qml:248
+#: ui/main.qml:249
 #, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
 msgstr "Firewall-versie: %1"
 
-#: ui/main.qml:255
+#: ui/main.qml:256
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "Standaardbeleid voor inkomend:"
 
-#: ui/main.qml:256
+#: ui/main.qml:257
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "Standaardbeleid voor uitgaand:"
 
-#: ui/main.qml:305
+#: ui/main.qml:306
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Fout bij het wijzigen van beleid: %1"
 
-#: ui/main.qml:410
+#: ui/main.qml:411
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Regel bewerken"
 
-#: ui/main.qml:430
+#: ui/main.qml:431
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Fout bij verwijderen van regel: %1"
 
-#: ui/main.qml:437
+#: ui/main.qml:438
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Regel verwijderen"
 
-#: ui/main.qml:462
+#: ui/main.qml:463
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "Firewall is uitgeschakeld"
 
-#: ui/main.qml:462
+#: ui/main.qml:463
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Er zijn geen firewall-regels toegevoegd"
 
-#: ui/main.qml:464
+#: ui/main.qml:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
@@ -734,13 +734,13 @@ msgstr ""
 "Op de knop <interface>Regel toevoegen…</interface> klikken om er een toe te "
 "voegen"
 
-#: ui/main.qml:465
+#: ui/main.qml:466
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr "Op bovenstaande schakelaar klikken om het in te schakelen"
 
-#: ui/main.qml:471
+#: ui/main.qml:472
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Installeer en firewall, zoals ufw of firewalld"

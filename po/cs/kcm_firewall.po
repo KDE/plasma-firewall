@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-06 00:42+0000\n"
+"POT-Creation-Date: 2025-10-28 02:41+0000\n"
 "PO-Revision-Date: 2024-05-30 09:46+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -583,155 +583,155 @@ msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
 msgstr "Zobrazit záznamy"
 
-#: ui/main.qml:65
+#: ui/main.qml:66
 #, kde-format
 msgid "Disabling…"
 msgstr "Zakazuji…"
 
-#: ui/main.qml:65
+#: ui/main.qml:66
 #, kde-format
 msgid "Enabled"
 msgstr "Povoleno"
 
-#: ui/main.qml:67
+#: ui/main.qml:68
 #, kde-format
 msgid "Enabling…"
 msgstr "Povoluji…"
 
-#: ui/main.qml:67
+#: ui/main.qml:68
 #, kde-format
 msgid "Disabled"
 msgstr "Zakázáno"
 
-#: ui/main.qml:92
+#: ui/main.qml:93
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr ""
 
-#: ui/main.qml:106
+#: ui/main.qml:107
 #, kde-format
 msgid "Permission denied"
 msgstr "Přístup odepřen"
 
-#: ui/main.qml:110
+#: ui/main.qml:111
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
 "reboot."
 msgstr ""
 
-#: ui/main.qml:113
+#: ui/main.qml:114
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr ""
 
-#: ui/main.qml:114
+#: ui/main.qml:115
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr ""
 
-#: ui/main.qml:149
+#: ui/main.qml:150
 #, kde-format
 msgid "Create A New Firewall Rule"
 msgstr "Vytvořit nové pravidlo firewallu"
 
-#: ui/main.qml:149
+#: ui/main.qml:150
 #, kde-format
 msgid "Edit Firewall Rule"
 msgstr "Upravit pravidlo firewallu"
 
-#: ui/main.qml:172 ui/main.qml:293 ui/main.qml:419
+#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:420
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr "Prosím, restartujte firewall Plasma. Podpůrná vrstva byla odpojena."
 
-#: ui/main.qml:186 ui/ViewBase.qml:112
+#: ui/main.qml:187 ui/ViewBase.qml:112
 #, kde-format
 msgid "Error creating rule: %1"
 msgstr ""
 
-#: ui/main.qml:188
+#: ui/main.qml:189
 #, kde-format
 msgid "Error updating rule: %1"
 msgstr ""
 
-#: ui/main.qml:213
+#: ui/main.qml:214
 #, kde-format
 msgid "Create"
 msgstr "Vytvořit"
 
-#: ui/main.qml:213
+#: ui/main.qml:214
 #, kde-format
 msgid "Save"
 msgstr "Uložit"
 
-#: ui/main.qml:240
+#: ui/main.qml:241
 #, kde-format
 msgid "Firewall type:"
 msgstr "Typ Firewallu:"
 
-#: ui/main.qml:248
+#: ui/main.qml:249
 #, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
 msgstr "Verze Firewall: %1"
 
-#: ui/main.qml:255
+#: ui/main.qml:256
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr ""
 
-#: ui/main.qml:256
+#: ui/main.qml:257
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr ""
 
-#: ui/main.qml:305
+#: ui/main.qml:306
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr ""
 
-#: ui/main.qml:410
+#: ui/main.qml:411
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Upravit pravidlo"
 
-#: ui/main.qml:430
+#: ui/main.qml:431
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr ""
 
-#: ui/main.qml:437
+#: ui/main.qml:438
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Odstranit pravidlo"
 
-#: ui/main.qml:462
+#: ui/main.qml:463
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "Firewall je zakázán"
 
-#: ui/main.qml:462
+#: ui/main.qml:463
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Nebyla přidána žádná pravidla firewallu"
 
-#: ui/main.qml:464
+#: ui/main.qml:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
 "Klikněte na tlačítko <interface>Přidat pravidlo…</interface> pro přidání"
 
-#: ui/main.qml:465
+#: ui/main.qml:466
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr "Klikněte na přepínač pro povolení"
 
-#: ui/main.qml:471
+#: ui/main.qml:472
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr ""
