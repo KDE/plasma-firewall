@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-06 00:42+0000\n"
+"POT-Creation-Date: 2025-10-28 00:44+0000\n"
 "PO-Revision-Date: 2025-01-08 16:03+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -587,154 +587,154 @@ msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
 msgstr "檢視紀錄(&L)"
 
-#: ui/main.qml:65
+#: ui/main.qml:66
 #, kde-format
 msgid "Disabling…"
 msgstr "正在停用…"
 
-#: ui/main.qml:65
+#: ui/main.qml:66
 #, kde-format
 msgid "Enabled"
 msgstr "啟用(&E)"
 
-#: ui/main.qml:67
+#: ui/main.qml:68
 #, kde-format
 msgid "Enabling…"
 msgstr "正在啟用…"
 
-#: ui/main.qml:67
+#: ui/main.qml:68
 #, kde-format
 msgid "Disabled"
 msgstr "停用(&D)"
 
-#: ui/main.qml:92
+#: ui/main.qml:93
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr "防火牆程式，請安裝 %1"
 
-#: ui/main.qml:106
+#: ui/main.qml:107
 #, kde-format
 msgid "Permission denied"
 msgstr "權限不足"
 
-#: ui/main.qml:110
+#: ui/main.qml:111
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
 "reboot."
 msgstr "您最近更新了內核。Iptables 無法初始化，請重新開機。"
 
-#: ui/main.qml:113
+#: ui/main.qml:114
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr "啟用防火牆時發生錯誤：%1"
 
-#: ui/main.qml:114
+#: ui/main.qml:115
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr "停用防火牆時發生錯誤：%1"
 
-#: ui/main.qml:149
+#: ui/main.qml:150
 #, kde-format
 msgid "Create A New Firewall Rule"
 msgstr "建立新防火牆規則"
 
-#: ui/main.qml:149
+#: ui/main.qml:150
 #, kde-format
 msgid "Edit Firewall Rule"
 msgstr "編輯防火牆規則"
 
-#: ui/main.qml:172 ui/main.qml:293 ui/main.qml:419
+#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:420
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr "由於後端斷線，請重開 Plasma 防火牆。"
 
-#: ui/main.qml:186 ui/ViewBase.qml:112
+#: ui/main.qml:187 ui/ViewBase.qml:112
 #, kde-format
 msgid "Error creating rule: %1"
 msgstr "建立規則時發生錯誤：%1"
 
-#: ui/main.qml:188
+#: ui/main.qml:189
 #, kde-format
 msgid "Error updating rule: %1"
 msgstr "更新規則時發生錯誤：%1"
 
-#: ui/main.qml:213
+#: ui/main.qml:214
 #, kde-format
 msgid "Create"
 msgstr "建立"
 
-#: ui/main.qml:213
+#: ui/main.qml:214
 #, kde-format
 msgid "Save"
 msgstr "儲存"
 
-#: ui/main.qml:240
+#: ui/main.qml:241
 #, kde-format
 msgid "Firewall type:"
 msgstr "防火牆類型："
 
-#: ui/main.qml:248
+#: ui/main.qml:249
 #, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
 msgstr "防火牆版本：%1"
 
-#: ui/main.qml:255
+#: ui/main.qml:256
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "預設傳入策略："
 
-#: ui/main.qml:256
+#: ui/main.qml:257
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "預設傳出策略："
 
-#: ui/main.qml:305
+#: ui/main.qml:306
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "修改策略時發生錯誤：%1"
 
-#: ui/main.qml:410
+#: ui/main.qml:411
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "編輯規則"
 
-#: ui/main.qml:430
+#: ui/main.qml:431
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "移除規則時發生錯誤：%1"
 
-#: ui/main.qml:437
+#: ui/main.qml:438
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "移除規則"
 
-#: ui/main.qml:462
+#: ui/main.qml:463
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "防火牆未開啟"
 
-#: ui/main.qml:462
+#: ui/main.qml:463
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "尚未新增防火牆規則"
 
-#: ui/main.qml:464
+#: ui/main.qml:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr "點擊 <interface>新增規則…</interface> 按鈕來新增規則"
 
-#: ui/main.qml:465
+#: ui/main.qml:466
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr "點擊上方開關來啟用"
 
-#: ui/main.qml:471
+#: ui/main.qml:472
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "請安裝防火牆，例如 ufw 或 firewalld"

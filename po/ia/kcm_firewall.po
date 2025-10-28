@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-06 00:42+0000\n"
+"POT-Creation-Date: 2025-10-28 00:44+0000\n"
 "PO-Revision-Date: 2025-03-20 19:39+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -589,37 +589,37 @@ msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
 msgstr "Vide registros"
 
-#: ui/main.qml:65
+#: ui/main.qml:66
 #, kde-format
 msgid "Disabling…"
 msgstr "Dishabilitante…"
 
-#: ui/main.qml:65
+#: ui/main.qml:66
 #, kde-format
 msgid "Enabled"
 msgstr "Habilitate"
 
-#: ui/main.qml:67
+#: ui/main.qml:68
 #, kde-format
 msgid "Enabling…"
 msgstr "Habilitante…"
 
-#: ui/main.qml:67
+#: ui/main.qml:68
 #, kde-format
 msgid "Disabled"
 msgstr "Dishabilitate"
 
-#: ui/main.qml:92
+#: ui/main.qml:93
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr "Le application de talia foco (firewall), pro favor installa %1"
 
-#: ui/main.qml:106
+#: ui/main.qml:107
 #, kde-format
 msgid "Permission denied"
 msgstr "Permission negate"
 
-#: ui/main.qml:110
+#: ui/main.qml:111
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
@@ -628,119 +628,119 @@ msgstr ""
 "Tu recentementa ha actualiste tu kernel, iptables falleva a initialisar, pro "
 "favore exeque un reboot."
 
-#: ui/main.qml:113
+#: ui/main.qml:114
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr "Error durante que il habilitava talia foco: %1"
 
-#: ui/main.qml:114
+#: ui/main.qml:115
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr "Error durante que  il dishabilitava talia foco: %1"
 
-#: ui/main.qml:149
+#: ui/main.qml:150
 #, kde-format
 msgid "Create A New Firewall Rule"
 msgstr "Crea un nove regula de Talia foco"
 
-#: ui/main.qml:149
+#: ui/main.qml:150
 #, kde-format
 msgid "Edit Firewall Rule"
 msgstr "Edita regula de Talia foco"
 
-#: ui/main.qml:172 ui/main.qml:293 ui/main.qml:419
+#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:420
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr ""
 "Pro favor restarta le firewall (taliafoco9 de plasma, le retroadinistration "
 "disconnecteva."
 
-#: ui/main.qml:186 ui/ViewBase.qml:112
+#: ui/main.qml:187 ui/ViewBase.qml:112
 #, kde-format
 msgid "Error creating rule: %1"
 msgstr "Error durante que il creava regula: %1"
 
-#: ui/main.qml:188
+#: ui/main.qml:189
 #, kde-format
 msgid "Error updating rule: %1"
 msgstr "Error durante que il actualisava regula: %1"
 
-#: ui/main.qml:213
+#: ui/main.qml:214
 #, kde-format
 msgid "Create"
 msgstr "Crea"
 
-#: ui/main.qml:213
+#: ui/main.qml:214
 #, kde-format
 msgid "Save"
 msgstr "Salveguarda"
 
-#: ui/main.qml:240
+#: ui/main.qml:241
 #, kde-format
 msgid "Firewall type:"
 msgstr "Typo de Talia Foco (Firewall):"
 
-#: ui/main.qml:248
+#: ui/main.qml:249
 #, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
 msgstr "Version d4e talia foco (firewall): %1"
 
-#: ui/main.qml:255
+#: ui/main.qml:256
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "Politica predefinite de arrivata:"
 
-#: ui/main.qml:256
+#: ui/main.qml:257
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "Politica predefinite de partita:"
 
-#: ui/main.qml:305
+#: ui/main.qml:306
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Error durante que il cambiava politica: %1"
 
-#: ui/main.qml:410
+#: ui/main.qml:411
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Modifica regula"
 
-#: ui/main.qml:430
+#: ui/main.qml:431
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Error durante que il removeva regula: %1"
 
-#: ui/main.qml:437
+#: ui/main.qml:438
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Remove regula"
 
-#: ui/main.qml:462
+#: ui/main.qml:463
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "Talia Foco es deactivate"
 
-#: ui/main.qml:462
+#: ui/main.qml:463
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Necun regulas de talia foco ha essite addite"
 
-#: ui/main.qml:464
+#: ui/main.qml:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr "Clicca le button <interface>Adde regula...</interface>  per adder un"
 
-#: ui/main.qml:465
+#: ui/main.qml:466
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr "Clicca commutator supra pro habilitar lo"
 
-#: ui/main.qml:471
+#: ui/main.qml:472
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Pro favor installa un taliafoco (firewall), tal como ufw o firewalld"
