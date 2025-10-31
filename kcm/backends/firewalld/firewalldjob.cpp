@@ -206,3 +206,5 @@ QString FirewalldJob::getDefaultIncomingPolicy() const
 {
     return m_target;
 }
+
+#include "moc_firewalldjob.cpp"

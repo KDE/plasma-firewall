@@ -724,3 +724,5 @@ void UfwClient::queryKnownApplications()
 }
 
 #include "ufwclient.moc"
+
+#include "moc_ufwclient.cpp"

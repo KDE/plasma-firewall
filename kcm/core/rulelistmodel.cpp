@@ -97,3 +97,5 @@ QVariant RuleListModel::headerData(int section, Qt::Orientation orientation, int
     return QVariant();
 
 }
+
+#include "moc_rulelistmodel.cpp"

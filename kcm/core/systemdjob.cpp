@@ -117,3 +117,5 @@ void SystemdJob::start()
 {
     systemdAction(m_action);
 };
+
+#include "moc_systemdjob.cpp"

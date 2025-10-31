@@ -160,3 +160,5 @@ QString NetstatHelper::extractAndStrip(const QString &src, int index, int size)
     str.remove(QLatin1String(" "));
     return str;
 }
+
+#include "moc_netstathelper.cpp"

@@ -424,3 +424,5 @@ bool Rule::simplified() const
 {
     return m_simplified;
 }
+
+#include "moc_rule.cpp"

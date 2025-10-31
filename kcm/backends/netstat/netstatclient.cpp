@@ -45,3 +45,5 @@ QString NetstatClient::status() const
 {
     return mStatus;
 }
+
+#include "moc_netstatclient.cpp"

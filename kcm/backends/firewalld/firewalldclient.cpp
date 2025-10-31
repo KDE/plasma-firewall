@@ -646,3 +646,5 @@ void FirewalldClient::getDefaultIncomingPolicyFromDbus()
 }
 
 #include "firewalldclient.moc"
+
+#include "moc_firewalldclient.cpp"

@@ -155,3 +155,5 @@ void ConnectionsModel::refreshConnections(const QList<QStringList> &result)
         Q_EMIT busyChanged();
     }
 }
+
+#include "moc_connectionsmodel.cpp"

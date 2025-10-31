@@ -68,3 +68,5 @@ void UfwLogModel::addRawLogs(const QStringList &rawLogsList)
     qDebug() << "Number of logs" << newLogs.count();
     appendLogData(newLogs);
 }
+
+#include "moc_ufwlogmodel.cpp"

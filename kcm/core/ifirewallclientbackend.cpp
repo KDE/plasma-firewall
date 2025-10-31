@@ -71,3 +71,5 @@ QString IFirewallClientBackend::executablePath() const
 {
     return m_executablePath;
 }
+
+#include "moc_ifirewallclientbackend.cpp"

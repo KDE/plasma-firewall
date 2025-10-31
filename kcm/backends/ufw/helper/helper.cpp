@@ -375,3 +375,5 @@ ActionReply Helper::run(const QStringList &args, const QString &cmd)
 }
 
 KAUTH_HELPER_MAIN("org.kde.ufw", UFW::Helper)
+
+#include "moc_helper.cpp"

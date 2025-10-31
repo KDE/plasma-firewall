@@ -68,3 +68,5 @@ void QueryRulesFirewalldJob::start()
 }
 
 QueryRulesFirewalldJob::~QueryRulesFirewalldJob() = default;
+
+#include "moc_queryrulesfirewalldjob.cpp"

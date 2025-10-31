@@ -114,3 +114,5 @@ QValidator::State IPValidator::validate(QString &arg, int &pos) const
 
     return std::min(addressValidity, netmaskValidity);
 }
+
+#include "moc_ipvalidator.cpp"

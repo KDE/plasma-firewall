@@ -116,3 +116,5 @@ void LogListModel::appendLogData(const QList<LogData> &newData)
     endResetModel();
     Q_EMIT countChanged();
 }
+
+#include "moc_loglistmodel.cpp"
