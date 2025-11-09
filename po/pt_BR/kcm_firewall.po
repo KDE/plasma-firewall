@@ -4,20 +4,21 @@
 # Thiago Masato Costa Sueto <herzenschein@gmail.com>, 2020.
 # Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2020, 2021, 2022, 2023.
 # SPDX-FileCopyrightText: 2024 Geraldo Simiao <geraldosimiao@fedoraproject.org>
+# SPDX-FileCopyrightText: 2025 Guilherme Marçal Silva <guimarcalsilva@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-28 00:44+0000\n"
-"PO-Revision-Date: 2024-06-20 00:40-0300\n"
-"Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
+"PO-Revision-Date: 2025-11-08 21:10-0300\n"
+"Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.05.0\n"
+"X-Generator: Lokalize 25.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -577,7 +578,7 @@ msgstr ""
 #: ui/main.qml:35
 #, kde-format
 msgid "Add Rule…"
-msgstr "Adicionar regra..."
+msgstr "Adicionar regra…"
 
 #: ui/main.qml:43
 #, kde-format
@@ -594,7 +595,7 @@ msgstr "Ver registros"
 #: ui/main.qml:66
 #, kde-format
 msgid "Disabling…"
-msgstr "Desabilitando..."
+msgstr "Desabilitando…"
 
 #: ui/main.qml:66
 #, kde-format
@@ -604,7 +605,7 @@ msgstr "Ativado"
 #: ui/main.qml:68
 #, kde-format
 msgid "Enabling…"
-msgstr "Habilitando..."
+msgstr "Habilitando…"
 
 #: ui/main.qml:68
 #, kde-format
@@ -733,7 +734,7 @@ msgstr "Nenhuma regra de firewall foi adicionada"
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
-"Clique no botão <interface>Adicionar regra...</interface> para adicionar uma "
+"Clique no botão <interface>Adicionar regra…</interface> para adicionar uma "
 "regra"
 
 #: ui/main.qml:466
