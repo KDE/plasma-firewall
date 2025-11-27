@@ -1,21 +1,22 @@
 # Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
-# SPDX-FileCopyrightText: 2020, 2022, 2023 Frederik Schwarzer <schwarzer@kde.org>
 # SPDX-FileCopyrightText: 2020, 2021 Burkhard Lück <lueck@hube-lueck.de>
+# SPDX-FileCopyrightText: 2020, 2022, 2023 Frederik Schwarzer <schwarzer@kde.org>
+# SPDX-FileCopyrightText: 2025 Philipp Kiemle <l10n.daphipz@fastmail.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 16:19+0000\n"
-"PO-Revision-Date: 2023-04-26 20:30+0200\n"
-"Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
+"PO-Revision-Date: 2025-11-16 19:06+0100\n"
+"Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.07.70\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -580,7 +581,7 @@ msgstr "Firewall-Status:"
 #: package/contents/ui/main.qml:156
 #, kde-format
 msgid "Disabling..."
-msgstr "Deaktivierung ..."
+msgstr "Deaktivierung …"
 
 #: package/contents/ui/main.qml:156
 #, kde-format
@@ -590,11 +591,10 @@ msgstr "Aktiviert"
 #: package/contents/ui/main.qml:158
 #, kde-format
 msgid "Enabling..."
-msgstr "Aktivierung ..."
+msgstr "Aktivierung …"
 
 #: package/contents/ui/main.qml:158
-#, fuzzy, kde-format
-#| msgid "Enabled"
+#, kde-format
 msgid "Disabled"
 msgstr "Aktiviert"
 
@@ -712,7 +712,7 @@ msgstr "Protokolle anzeigen"
 #: package/contents/ui/main.qml:444
 #, kde-format
 msgid "Add Rule..."
-msgstr "Regel hinzufügen ..."
+msgstr "Regel hinzufügen …"
 
 #: package/contents/ui/main.qml:453
 #, kde-format
@@ -750,16 +750,14 @@ msgid "The default outgoing policy is already '%1'."
 msgstr ""
 
 #: package/contents/ui/SimpleRuleEdit.qml:23
-#, fuzzy, kde-format
-#| msgid "Allow all connections"
+#, kde-format
 msgid "Allow connections for:"
-msgstr "Alle Verbindungen zulassen"
+msgstr "Verbindungen zulassen für:"
 
 #: package/contents/ui/SimpleRuleEdit.qml:23
-#, fuzzy, kde-format
-#| msgid "Action"
+#, kde-format
 msgid "Application:"
-msgstr "Aktion"
+msgstr "Anwendung:"
 
 #: package/contents/ui/ViewBase.qml:222
 #, kde-format
