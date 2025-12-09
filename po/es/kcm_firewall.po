@@ -1,15 +1,15 @@
 # Spanish translations for kcm_firewall.po package.
-# Copyright (C) 2020 This file is copyright:
+# Copyright (C) 2020-2025 This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
-#
 # Automatically generated, 2020.
-# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
+#
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024, 2025 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:53+0000\n"
-"PO-Revision-Date: 2024-03-15 12:30+0100\n"
+"PO-Revision-Date: 2025-12-08 12:10+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -578,7 +578,7 @@ msgstr "Genera un mensaje de «Conexión rechazada» inmediato y muy informativo
 #: ui/main.qml:35
 #, kde-format
 msgid "Add Rule…"
-msgstr "Añadir regla..."
+msgstr "Añadir regla…"
 
 #: ui/main.qml:43
 #, kde-format
@@ -595,7 +595,7 @@ msgstr "Ver registros"
 #: ui/main.qml:66
 #, kde-format
 msgid "Disabling…"
-msgstr "Desactivando..."
+msgstr "Desactivando…"
 
 #: ui/main.qml:66
 #, kde-format
@@ -605,7 +605,7 @@ msgstr "Activado"
 #: ui/main.qml:68
 #, kde-format
 msgid "Enabling…"
-msgstr "Activando..."
+msgstr "Activando…"
 
 #: ui/main.qml:68
 #, kde-format
@@ -733,7 +733,7 @@ msgstr "No se han añadido reglas al cortafuegos"
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
-msgstr "Pulse el botón <interface>Añadir regla...</interface> para añadir una"
+msgstr "Pulse el botón <interface>Añadir regla…</interface> para añadir una"
 
 #: ui/main.qml:466
 #, kde-kuit-format
@@ -785,78 +785,3 @@ msgstr "Aplicación:"
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Poner conexión en la lista negra"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "Enable the firewall with the <interface>Firewall Status</interface> "
-#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
-#~ "one"
-#~ msgstr ""
-#~ "Active el cortafuegos con el interruptor <interface>Estado del "
-#~ "cortafuegos</interface> y pulse el botón <interface>Añadir regla...</"
-#~ "interface> para añadir alguna."
-
-#~ msgid "About Firewall"
-#~ msgstr "Acerca del cortafuegos"
-
-#~ msgid "Backend:"
-#~ msgstr "Motor:"
-
-#~ msgid "Version:"
-#~ msgstr "Versión:"
-
-#~ msgid "About"
-#~ msgstr "Acerca de"
-
-#~ msgctxt "@title"
-#~ msgid "Configure Firewall"
-#~ msgstr "Configurar el cortafuegos"
-
-#~ msgctxt "@info:credit"
-#~ msgid "Alexis López Zubieta"
-#~ msgstr "Alexis López Zubieta"
-
-#~ msgctxt "@info:credit"
-#~ msgid "Tomaz Canabrava"
-#~ msgstr "Tomaz Canabrava"
-
-#~ msgctxt "@info:credit"
-#~ msgid "Lucas Januario"
-#~ msgstr "Lucas Januario"
-
-#~ msgid "Simple Rule Edit:"
-#~ msgstr "Edición de regla sencilla:"
-
-#~ msgid "Connections..."
-#~ msgstr "Conexiones..."
-
-#~ msgid "Logs..."
-#~ msgstr "Registros..."
-
-#~ msgid ""
-#~ "Could not open the log file for the ufw client. \n"
-#~ " Please verify that the following file exist \n"
-#~ " and you have read permissions. \n"
-#~ msgstr ""
-#~ "No se ha podido abrir el archivo de registro para el cliente UFW. \n"
-#~ " Compruebe que el siguiente archivo existe \n"
-#~ " y que tiene permisos de lectura sobre él. \n"
-
-#~ msgid "TCP"
-#~ msgstr "TCP"
-
-#~ msgid "UDP"
-#~ msgstr "UDP"
-
-#~ msgid "Any protocol"
-#~ msgstr "Cualquier protocolo"
-
-#~ msgid "No iproute or net-tools installed, can't run."
-#~ msgstr ""
-#~ "No se pude ejecutar porque no se ha instalado «iproute» o «net-tools»."
-
-#~ msgid "This module lets you configure firewall."
-#~ msgstr "Este módulo le permite configurar el cortafuegos."
-
-#~ msgid "Ip"
-#~ msgstr "IP"
