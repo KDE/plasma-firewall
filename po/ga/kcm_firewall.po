@@ -1,0 +1,763 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the plasma-firewall package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: plasma-firewall\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2025-11-17 16:19+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <kde-i18n-doc@kde.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+
+#: backends/firewalld/firewalldclient.cpp:600 backends/ufw/ufwclient.cpp:697
+#, kde-format
+msgid "Error fetching information from the firewall."
+msgstr ""
+
+#: backends/firewalld/firewalldjob.cpp:173
+#, kde-format
+msgid "firewalld saving (runtime to permanent)"
+msgstr ""
+
+#: backends/firewalld/firewalldjob.cpp:197
+#, kde-format
+msgid "firewalld saving"
+msgstr ""
+
+#: backends/firewalld/firewalldjob.cpp:197
+#, kde-format
+msgid "firewalld %1"
+msgstr ""
+
+#: backends/firewalld/queryrulesfirewalldjob.cpp:50
+#, kde-format
+msgid "firewalld listing rules and services"
+msgstr ""
+
+#: backends/netstat/conectionsmodel.cpp:94
+#, kde-format
+msgid "Failed to get connections: %1"
+msgstr ""
+
+#: backends/netstat/conectionsmodel.cpp:112
+#, kde-format
+msgid "Not Connected"
+msgstr ""
+
+#: backends/netstat/conectionsmodel.cpp:114
+#, kde-format
+msgid "Established"
+msgstr ""
+
+#: backends/netstat/conectionsmodel.cpp:116
+#, kde-format
+msgid "Listening"
+msgstr ""
+
+#: backends/ufw/helper/helper.cpp:220
+#, kde-format
+msgid "Invalid arguments passed to the profile"
+msgstr ""
+
+#: backends/ufw/helper/helper.cpp:250
+#, kde-format
+msgid "Error saving the profile."
+msgstr ""
+
+#: backends/ufw/helper/helper.cpp:274
+#, kde-format
+msgid "Invalid arguments passed to delete profile"
+msgstr ""
+
+#: backends/ufw/helper/helper.cpp:281
+#, kde-format
+msgid "Could not remove the profile from disk."
+msgstr ""
+
+#: backends/ufw/helper/helper.cpp:296
+#, kde-format
+msgid "Invalid argument passed to add Rules"
+msgstr ""
+
+#: backends/ufw/helper/helper.cpp:368
+#, kde-format
+msgid "An error occurred in command '%1': %2"
+msgstr ""
+
+#: backends/ufw/ufwclient.cpp:161
+#, kde-format
+msgid ""
+"There was an error in the backend! Please report it.\n"
+"%1 %2"
+msgstr ""
+
+#: backends/ufw/ufwclient.cpp:268
+#, kde-format
+msgid "Error fetching firewall logs: %1"
+msgstr ""
+
+#: backends/ufw/ufwclient.cpp:608 core/firewallclient.cpp:74
+#, kde-format
+msgid "Any"
+msgstr ""
+
+#: core/rule.cpp:46
+#, kde-format
+msgctxt "address on interface"
+msgid "%1 on %2"
+msgstr ""
+
+#: core/rule.cpp:75 core/rule.cpp:165 core/rule.cpp:171
+#, kde-format
+msgid "Anywhere"
+msgstr ""
+
+#: core/rule.cpp:96 core/rule.cpp:109 core/rule.cpp:126
+#, kde-format
+msgctxt "service/application name (port numbers)"
+msgid "%1 (%2)"
+msgstr ""
+
+#: core/rule.cpp:199
+#, kde-format
+msgctxt "firewallAction incoming"
+msgid "%1 incoming"
+msgstr ""
+
+#: core/rule.cpp:200
+#, kde-format
+msgctxt "firewallAction outgoing"
+msgid "%1 outgoing"
+msgstr ""
+
+#: core/rule.cpp:205
+#, kde-format
+msgid "Yes"
+msgstr ""
+
+#: core/systemdjob.cpp:51
+#, kde-format
+msgid "Invalid Call"
+msgstr ""
+
+#: core/types.cpp:19
+#, kde-format
+msgid "Off"
+msgstr ""
+
+#: core/types.cpp:22
+#, kde-format
+msgid "Low"
+msgstr ""
+
+#: core/types.cpp:24
+#, kde-format
+msgid "Medium"
+msgstr ""
+
+#: core/types.cpp:26
+#, kde-format
+msgid "High"
+msgstr ""
+
+#: core/types.cpp:28
+#, kde-format
+msgid "Full"
+msgstr ""
+
+#: core/types.cpp:45 package/contents/ui/RuleEdit.qml:40
+#, kde-format
+msgid "None"
+msgstr ""
+
+#: core/types.cpp:47
+#, kde-format
+msgid "New connections"
+msgstr ""
+
+#: core/types.cpp:49
+#, kde-format
+msgid "All packets"
+msgstr ""
+
+#: core/types.cpp:58 package/contents/ui/main.qml:23
+#, kde-format
+msgid "Allow"
+msgstr ""
+
+#: core/types.cpp:60
+#, kde-format
+msgid "Deny"
+msgstr ""
+
+#: core/types.cpp:62 package/contents/ui/main.qml:25
+#, kde-format
+msgid "Reject"
+msgstr ""
+
+#: core/types.cpp:64
+#, kde-format
+msgid "Limit"
+msgstr ""
+
+#: core/types.cpp:80
+#, kde-format
+msgid "Amule"
+msgstr ""
+
+#: core/types.cpp:82
+#, kde-format
+msgid "Deluge"
+msgstr ""
+
+#: core/types.cpp:84
+#, kde-format
+msgid "KTorrent"
+msgstr ""
+
+#: core/types.cpp:86
+#, kde-format
+msgid "Nicotine"
+msgstr ""
+
+#: core/types.cpp:88
+#, kde-format
+msgid "qBittorrent"
+msgstr ""
+
+#: core/types.cpp:90
+#, kde-format
+msgid "Transmission"
+msgstr ""
+
+#: core/types.cpp:92
+#, kde-format
+msgid "ICQ"
+msgstr ""
+
+#: core/types.cpp:94
+#, kde-format
+msgid "Jabber"
+msgstr ""
+
+#: core/types.cpp:96
+#, kde-format
+msgid "Windows Live Messenger"
+msgstr ""
+
+#: core/types.cpp:98
+#, kde-format
+msgid "Yahoo! Messenger"
+msgstr ""
+
+#: core/types.cpp:100
+#, kde-format
+msgid "FTP"
+msgstr ""
+
+#: core/types.cpp:102
+#, kde-format
+msgid "HTTP"
+msgstr ""
+
+#: core/types.cpp:104
+#, kde-format
+msgid "Secure HTTP"
+msgstr ""
+
+#: core/types.cpp:106
+#, kde-format
+msgid "IMAP"
+msgstr ""
+
+#: core/types.cpp:108
+#, kde-format
+msgid "Secure IMAP"
+msgstr ""
+
+#: core/types.cpp:110
+#, kde-format
+msgid "POP3"
+msgstr ""
+
+#: core/types.cpp:112
+#, kde-format
+msgid "Secure POP3"
+msgstr ""
+
+#: core/types.cpp:114
+#, kde-format
+msgid "SMTP"
+msgstr ""
+
+#: core/types.cpp:116
+#, kde-format
+msgid "NFS"
+msgstr ""
+
+#: core/types.cpp:118
+#, kde-format
+msgid "Samba"
+msgstr ""
+
+#: core/types.cpp:120
+#, kde-format
+msgid "Secure Shell"
+msgstr ""
+
+#: core/types.cpp:122
+#, kde-format
+msgid "VNC"
+msgstr ""
+
+#: core/types.cpp:124
+#, kde-format
+msgid "Zeroconf"
+msgstr ""
+
+#: core/types.cpp:126
+#, kde-format
+msgid "Telnet"
+msgstr ""
+
+#: core/types.cpp:128
+#, kde-format
+msgid "NTP"
+msgstr ""
+
+#: core/types.cpp:130
+#, kde-format
+msgid "CUPS"
+msgstr ""
+
+#: package/contents/ui/About.qml:16
+#, kde-format
+msgid "About Firewall"
+msgstr ""
+
+#: package/contents/ui/About.qml:21
+#, kde-format
+msgid "Backend:"
+msgstr ""
+
+#: package/contents/ui/About.qml:25
+#, kde-format
+msgid "Version:"
+msgstr ""
+
+#: package/contents/ui/AdvancedRuleEdit.qml:31
+#: package/contents/ui/SimpleRuleEdit.qml:29
+#, kde-format
+msgid "Policy:"
+msgstr ""
+
+#: package/contents/ui/AdvancedRuleEdit.qml:40
+#: package/contents/ui/SimpleRuleEdit.qml:38
+#, kde-format
+msgid "Direction:"
+msgstr ""
+
+#: package/contents/ui/AdvancedRuleEdit.qml:43
+#: package/contents/ui/SimpleRuleEdit.qml:42
+#, kde-format
+msgid "Incoming"
+msgstr ""
+
+#: package/contents/ui/AdvancedRuleEdit.qml:49
+#: package/contents/ui/SimpleRuleEdit.qml:48
+#, kde-format
+msgid "Outgoing"
+msgstr ""
+
+#: package/contents/ui/AdvancedRuleEdit.qml:57
+#, kde-format
+msgid "IP Version:"
+msgstr ""
+
+#: package/contents/ui/AdvancedRuleEdit.qml:60
+#, kde-format
+msgid "IPv4"
+msgstr ""
+
+#: package/contents/ui/AdvancedRuleEdit.qml:65
+#, kde-format
+msgid "IPv6"
+msgstr ""
+
+#: package/contents/ui/AdvancedRuleEdit.qml:72
+#, kde-format
+msgid "Source:"
+msgstr ""
+
+#: package/contents/ui/AdvancedRuleEdit.qml:92
+#, kde-format
+msgid "Destination:"
+msgstr ""
+
+#: package/contents/ui/AdvancedRuleEdit.qml:112
+#, kde-format
+msgid "Protocol:"
+msgstr ""
+
+#: package/contents/ui/AdvancedRuleEdit.qml:121
+#, kde-format
+msgid "Interface:"
+msgstr ""
+
+#: package/contents/ui/AdvancedRuleEdit.qml:131
+#, kde-format
+msgid "Logging:"
+msgstr ""
+
+#: package/contents/ui/ConnectionsView.qml:14
+#, kde-format
+msgid "Connections"
+msgstr ""
+
+#: package/contents/ui/ConnectionsView.qml:18
+#: package/contents/ui/LogsView.qml:19
+#, kde-format
+msgid "Protocol"
+msgstr ""
+
+#: package/contents/ui/ConnectionsView.qml:19
+#, kde-format
+msgid "Local Address"
+msgstr ""
+
+#: package/contents/ui/ConnectionsView.qml:20
+#, kde-format
+msgid "Foreign Address"
+msgstr ""
+
+#: package/contents/ui/ConnectionsView.qml:21
+#, kde-format
+msgid "Status"
+msgstr ""
+
+#: package/contents/ui/ConnectionsView.qml:22
+#, kde-format
+msgid "PID"
+msgstr ""
+
+#: package/contents/ui/ConnectionsView.qml:23
+#, kde-format
+msgid "Program"
+msgstr ""
+
+#: package/contents/ui/ConnectionsView.qml:26
+#, kde-format
+msgid "There are currently no open connections"
+msgstr ""
+
+#: package/contents/ui/ConnectionsView.qml:35
+#, kde-format
+msgid "Created a blacklist rule from this connection."
+msgstr ""
+
+#: package/contents/ui/ConnectionsView.qml:52
+#, kde-format
+msgid "could not find iproute2 or net-tools packages installed."
+msgstr ""
+
+#: package/contents/ui/IpTextField.qml:14
+#, kde-format
+msgid "Any IP address"
+msgstr ""
+
+#: package/contents/ui/LogsView.qml:16
+#, kde-format
+msgid "Firewall Logs"
+msgstr ""
+
+#: package/contents/ui/LogsView.qml:20 package/contents/ui/main.qml:350
+#, kde-format
+msgid "From"
+msgstr ""
+
+#: package/contents/ui/LogsView.qml:22 package/contents/ui/main.qml:355
+#, kde-format
+msgid "To"
+msgstr ""
+
+#: package/contents/ui/LogsView.qml:24
+#, kde-format
+msgid "Interface"
+msgstr ""
+
+#: package/contents/ui/LogsView.qml:26
+#, kde-format
+msgid "There are currently no firewall log entries"
+msgstr ""
+
+#: package/contents/ui/LogsView.qml:37
+#, kde-format
+msgid "Created a blacklist rule from this log entry."
+msgstr ""
+
+#: package/contents/ui/main.qml:23
+#, kde-format
+msgid "Allow all connections"
+msgstr ""
+
+#: package/contents/ui/main.qml:24
+#, kde-format
+msgid "Ignore"
+msgstr ""
+
+#: package/contents/ui/main.qml:24
+#, kde-format
+msgid ""
+"Keeps the program waiting until the connection attempt times out, some short "
+"time later."
+msgstr ""
+
+#: package/contents/ui/main.qml:25
+#, kde-format
+msgid "Produces an immediate and very informative 'Connection refused' message"
+msgstr ""
+
+#: package/contents/ui/main.qml:40
+#, kde-format
+msgid "Create A New Firewall Rule"
+msgstr ""
+
+#: package/contents/ui/main.qml:40
+#, kde-format
+msgid "Edit Firewall Rule"
+msgstr ""
+
+#: package/contents/ui/main.qml:76 package/contents/ui/main.qml:265
+#: package/contents/ui/main.qml:400
+#, kde-format
+msgid "Please restart plasma firewall, the backend disconnected."
+msgstr ""
+
+#: package/contents/ui/main.qml:90 package/contents/ui/ViewBase.qml:110
+#, kde-format
+msgid "Error creating rule: %1"
+msgstr ""
+
+#: package/contents/ui/main.qml:92
+#, kde-format
+msgid "Error updating rule: %1"
+msgstr ""
+
+#: package/contents/ui/main.qml:124
+#, kde-format
+msgid "Create"
+msgstr ""
+
+#: package/contents/ui/main.qml:124
+#, kde-format
+msgid "Save"
+msgstr ""
+
+#: package/contents/ui/main.qml:149
+#, kde-format
+msgid "Firewall Status:"
+msgstr ""
+
+#: package/contents/ui/main.qml:156
+#, kde-format
+msgid "Disabling..."
+msgstr ""
+
+#: package/contents/ui/main.qml:156
+#, kde-format
+msgid "Enabled"
+msgstr ""
+
+#: package/contents/ui/main.qml:158
+#, kde-format
+msgid "Enabling..."
+msgstr ""
+
+#: package/contents/ui/main.qml:158
+#, kde-format
+msgid "Disabled"
+msgstr ""
+
+#: package/contents/ui/main.qml:184
+#, kde-format
+msgid "The firewall application, please install %1"
+msgstr ""
+
+#: package/contents/ui/main.qml:198
+#, kde-format
+msgid "Permission denied"
+msgstr ""
+
+#: package/contents/ui/main.qml:202
+#, kde-format
+msgid ""
+"You recently updated your kernel. Iptables is failing to initialize, please "
+"reboot."
+msgstr ""
+
+#: package/contents/ui/main.qml:205
+#, kde-format
+msgid "Error enabling firewall: %1"
+msgstr ""
+
+#: package/contents/ui/main.qml:206
+#, kde-format
+msgid "Error disabling firewall: %1"
+msgstr ""
+
+#: package/contents/ui/main.qml:226
+#, kde-format
+msgid "Default Incoming Policy:"
+msgstr ""
+
+#: package/contents/ui/main.qml:227
+#, kde-format
+msgid "Default Outgoing Policy:"
+msgstr ""
+
+#: package/contents/ui/main.qml:275
+#, kde-format
+msgid "Error changing policy: %1"
+msgstr ""
+
+#: package/contents/ui/main.qml:338
+#, kde-format
+msgid "Firewall is disabled"
+msgstr ""
+
+#: package/contents/ui/main.qml:338
+#, kde-format
+msgid "No firewall rules have been added"
+msgstr ""
+
+#: package/contents/ui/main.qml:340
+#, kde-kuit-format
+msgctxt "@info"
+msgid "Click the <interface>Add Rule...</interface> button below to add one"
+msgstr ""
+
+#: package/contents/ui/main.qml:341
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Enable the firewall with the <interface>Firewall Status</interface> checkbox "
+"above, and then click the <interface>Add Rule...</interface> button below to "
+"add one"
+msgstr ""
+
+#: package/contents/ui/main.qml:345
+#, kde-format
+msgid "Action"
+msgstr ""
+
+#: package/contents/ui/main.qml:360
+#, kde-format
+msgid "IP"
+msgstr ""
+
+#: package/contents/ui/main.qml:365
+#, kde-format
+msgid "Logging"
+msgstr ""
+
+#: package/contents/ui/main.qml:391
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Edit Rule"
+msgstr ""
+
+#: package/contents/ui/main.qml:411
+#, kde-format
+msgid "Error removing rule: %1"
+msgstr ""
+
+#: package/contents/ui/main.qml:418
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Remove Rule"
+msgstr ""
+
+#: package/contents/ui/main.qml:428
+#, kde-format
+msgctxt "'view' is being used as a verb here"
+msgid "View Connections"
+msgstr ""
+
+#: package/contents/ui/main.qml:433
+#, kde-format
+msgctxt "'view' is being used as a verb here"
+msgid "View Logs"
+msgstr ""
+
+#: package/contents/ui/main.qml:444
+#, kde-format
+msgid "Add Rule..."
+msgstr ""
+
+#: package/contents/ui/main.qml:453
+#, kde-format
+msgid "About"
+msgstr ""
+
+#: package/contents/ui/main.qml:461
+#, kde-format
+msgid "Please install a firewall, such as ufw or firewalld"
+msgstr ""
+
+#: package/contents/ui/PortTextField.qml:11
+#, kde-format
+msgid "Any Port"
+msgstr ""
+
+#: package/contents/ui/RuleEdit.qml:41
+#, kde-format
+msgid "New Connections"
+msgstr ""
+
+#: package/contents/ui/RuleEdit.qml:42
+#, kde-format
+msgid "All Packets"
+msgstr ""
+
+#: package/contents/ui/RuleEdit.qml:57 package/contents/ui/RuleEdit.qml:64
+#, kde-format
+msgid "The default incoming policy is already '%1'."
+msgstr ""
+
+#: package/contents/ui/RuleEdit.qml:58 package/contents/ui/RuleEdit.qml:65
+#, kde-format
+msgid "The default outgoing policy is already '%1'."
+msgstr ""
+
+#: package/contents/ui/SimpleRuleEdit.qml:23
+#, kde-format
+msgid "Allow connections for:"
+msgstr ""
+
+#: package/contents/ui/SimpleRuleEdit.qml:23
+#, kde-format
+msgid "Application:"
+msgstr ""
+
+#: package/contents/ui/ViewBase.qml:222
+#, kde-format
+msgid "Blacklist Connection"
+msgstr ""
