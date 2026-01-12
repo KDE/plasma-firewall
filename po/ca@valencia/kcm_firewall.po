@@ -34,7 +34,7 @@ msgstr "txemaq@gmail.com"
 #: backends/firewalld/firewalldclient.cpp:600 backends/ufw/ufwclient.cpp:697
 #, kde-format
 msgid "Error fetching information from the firewall."
-msgstr "S'ha produït un error en recuperar informació del tallafoc."
+msgstr "S'ha produït un error mentre es recuperava informació del tallafoc."
 
 #: backends/firewalld/firewalldjob.cpp:173
 #, kde-format
@@ -59,7 +59,7 @@ msgstr "Llistat de regles i servix de «firewalld»"
 #: backends/netstat/conectionsmodel.cpp:94
 #, kde-format
 msgid "Failed to get connections: %1"
-msgstr "No s'han pogut obtindre les connexions: %1"
+msgstr "Ha fallat mentre s'obtenien les connexions: %1"
 
 #: backends/netstat/conectionsmodel.cpp:112
 #, kde-format
@@ -84,7 +84,7 @@ msgstr "Arguments no vàlids passats al perfil"
 #: backends/ufw/helper/helper.cpp:250
 #, kde-format
 msgid "Error saving the profile."
-msgstr "S'ha produït un error en guardar el perfil."
+msgstr "S'ha produït un error mentre es guardava el perfil."
 
 #: backends/ufw/helper/helper.cpp:274
 #, kde-format
@@ -118,7 +118,8 @@ msgstr ""
 #: backends/ufw/ufwclient.cpp:268
 #, kde-format
 msgid "Error fetching firewall logs: %1"
-msgstr "S'ha produït un error en recuperar els registres del tallafoc: %1"
+msgstr ""
+"S'ha produït un error mentre es recuperaven els registres del tallafoc: %1"
 
 #: backends/ufw/ufwclient.cpp:608 core/firewallclient.cpp:74
 #, kde-format
@@ -564,12 +565,12 @@ msgstr "Reinicieu el tallafoc de Plasma, el dorsal s'ha desconnectat."
 #: package/contents/ui/main.qml:90 package/contents/ui/ViewBase.qml:110
 #, kde-format
 msgid "Error creating rule: %1"
-msgstr "S'ha produït un error en crear la regla: %1"
+msgstr "S'ha produït un error mentre es creava la regla: %1"
 
 #: package/contents/ui/main.qml:92
 #, kde-format
 msgid "Error updating rule: %1"
-msgstr "S'ha produït un error durant l'actualització de la regla: %1"
+msgstr "S'ha produït un error mentre s'actualitzava la regla: %1"
 
 #: package/contents/ui/main.qml:124
 #, kde-format
@@ -622,18 +623,18 @@ msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
 "reboot."
 msgstr ""
-"S'ha actualitzat el nucli recentment. «iptables» ha fallat en restablir-se. "
-"Cal reiniciar."
+"S'ha actualitzat el nucli recentment. «iptables» ha fallat mentre es "
+"restablia. Cal reiniciar."
 
 #: package/contents/ui/main.qml:205
 #, kde-format
 msgid "Error enabling firewall: %1"
-msgstr "S'ha produït un error en activar el tallafoc: %1"
+msgstr "S'ha produït un error mentre s'activava el tallafoc: %1"
 
 #: package/contents/ui/main.qml:206
 #, kde-format
 msgid "Error disabling firewall: %1"
-msgstr "S'ha produït un error en desactivar el tallafoc: %1"
+msgstr "S'ha produït un error mentre es desactivava el tallafoc: %1"
 
 #: package/contents/ui/main.qml:226
 #, kde-format
@@ -648,7 +649,7 @@ msgstr "Política predeterminada d'eixida:"
 #: package/contents/ui/main.qml:275
 #, kde-format
 msgid "Error changing policy: %1"
-msgstr "S'ha produït un error en canviar la política: %1"
+msgstr "S'ha produït un error mentre es canviava la política: %1"
 
 #: package/contents/ui/main.qml:338
 #, kde-format
@@ -704,7 +705,7 @@ msgstr "Edita una regla"
 #: package/contents/ui/main.qml:411
 #, kde-format
 msgid "Error removing rule: %1"
-msgstr "S'ha produït un error en eliminar la regla: %1"
+msgstr "S'ha produït un error mentre s'eliminava la regla: %1"
 
 #: package/contents/ui/main.qml:418
 #, kde-format
