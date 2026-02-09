@@ -70,7 +70,7 @@ FocusScope {
 
         CheckBox {
             id: advancedRules
-            text:"Advanced"
+            text: i18nc("Advanced firewall rules", "Advanced")
             onClicked: rule.simplified = !rule.simplified
             checked: rule.simplified ? false : true // show advanced mode directly if isn't simple !
         }
