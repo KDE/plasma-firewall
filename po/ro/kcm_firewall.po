@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-02-10 02:38+0000\n"
 "PO-Revision-Date: 2021-06-02 20:53+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -792,6 +792,12 @@ msgstr "Politica implicită de intrare e deja „%1”."
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
 msgstr "Politica implicită de ieșire e deja „%1”."
+
+#: ui/RuleEdit.qml:73
+#, kde-format
+msgctxt "Advanced firewall rules"
+msgid "Advanced"
+msgstr ""
 
 #: ui/SimpleRuleEdit.qml:23
 #, fuzzy, kde-format

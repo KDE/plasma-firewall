@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-02-10 02:38+0000\n"
 "PO-Revision-Date: 2025-01-08 16:03+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -763,6 +763,12 @@ msgstr "預設傳入策略已經是 '%1'。"
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
 msgstr "預設傳出策略已經是 '%1'。"
+
+#: ui/RuleEdit.qml:73
+#, kde-format
+msgctxt "Advanced firewall rules"
+msgid "Advanced"
+msgstr ""
 
 #: ui/SimpleRuleEdit.qml:23
 #, kde-format

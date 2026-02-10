@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-02-10 02:38+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -767,6 +767,12 @@ msgstr "पूर्वनिर्धारितं आगच्छन्त�
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
 msgstr "पूर्वनिर्धारितनिर्गमनीतिः पूर्वमेव '%1' अस्ति ।"
+
+#: ui/RuleEdit.qml:73
+#, kde-format
+msgctxt "Advanced firewall rules"
+msgid "Advanced"
+msgstr ""
 
 #: ui/SimpleRuleEdit.qml:23
 #, kde-format

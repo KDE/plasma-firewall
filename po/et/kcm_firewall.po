@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-02-10 02:38+0000\n"
 "PO-Revision-Date: 2020-10-25 21:58+0100\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -789,6 +789,12 @@ msgstr "Sisenevate ühenduste vaikimisi reegel on juba \"%1\"."
 #, fuzzy, kde-format
 msgid "The default outgoing policy is already '%1'."
 msgstr "Väljuvate ühenduste vaikimisi reegel on juba \"%1\"."
+
+#: ui/RuleEdit.qml:73
+#, kde-format
+msgctxt "Advanced firewall rules"
+msgid "Advanced"
+msgstr ""
 
 #: ui/SimpleRuleEdit.qml:23
 #, fuzzy, kde-format
