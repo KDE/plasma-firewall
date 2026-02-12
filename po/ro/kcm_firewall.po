@@ -1,22 +1,22 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2026 This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
 # Sergiu Bivol <sergiu@cip.md>, 2020, 2021.
-#
+# SPDX-FileCopyrightText: 2026 Viorel-Cătălin Răpițeanu <rapiteanu.catalin@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-10 02:38+0000\n"
-"PO-Revision-Date: 2021-06-02 20:53+0100\n"
-"Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
-"Language-Team: Romanian\n"
+"PO-Revision-Date: 2026-02-09 23:08+0200\n"
+"Last-Translator: Viorel-Cătălin Răpițeanu <rapiteanu.catalin@gmail.com>\n"
+"Language-Team: ro\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Lokalize 19.12.3\n"
+"X-Generator: Lokalize 25.12.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -31,7 +31,7 @@ msgstr "sergiu@cip.md"
 #: backends/firewalld/firewalldclient.cpp:600 backends/ufw/ufwclient.cpp:697
 #, kde-format
 msgid "Error fetching information from the firewall."
-msgstr ""
+msgstr "Eroare la preluarea informațiilor de la firewall."
 
 #: backends/firewalld/firewalldjob.cpp:173
 #, kde-format
@@ -55,43 +55,37 @@ msgid "firewalld listing rules and services"
 msgstr ""
 
 #: backends/netstat/connectionsmodel.cpp:97 core/loglistmodel.cpp:96
-#, fuzzy, kde-format
-#| msgid "Protocol"
+#, kde-format
 msgctxt "@title:column"
 msgid "Protocol"
 msgstr "Protocol"
 
 #: backends/netstat/connectionsmodel.cpp:99
-#, fuzzy, kde-format
-#| msgid "Local Address"
+#, kde-format
 msgctxt "@title:column"
 msgid "Local address"
 msgstr "Adresă locală"
 
 #: backends/netstat/connectionsmodel.cpp:101
-#, fuzzy, kde-format
-#| msgid "Foreign Address"
+#, kde-format
 msgctxt "@title:column"
 msgid "Foreign address"
 msgstr "Adresă străină"
 
 #: backends/netstat/connectionsmodel.cpp:103
-#, fuzzy, kde-format
-#| msgid "Status"
+#, kde-format
 msgctxt "@title:column"
 msgid "Status"
 msgstr "Stare"
 
 #: backends/netstat/connectionsmodel.cpp:105
-#, fuzzy, kde-format
-#| msgid "PID"
+#, kde-format
 msgctxt "@title:column"
 msgid "PID"
 msgstr "PID"
 
 #: backends/netstat/connectionsmodel.cpp:107
-#, fuzzy, kde-format
-#| msgid "Program"
+#, kde-format
 msgctxt "@title:column"
 msgid "Program"
 msgstr "Program"
@@ -166,43 +160,37 @@ msgid "Any"
 msgstr "Oricare"
 
 #: core/loglistmodel.cpp:88 core/rulelistmodel.cpp:89
-#, fuzzy, kde-format
-#| msgid "From"
+#, kde-format
 msgctxt "@title:column"
 msgid "From"
 msgstr "De la"
 
 #: core/loglistmodel.cpp:90
-#, fuzzy, kde-format
-#| msgid "Source:"
+#, kde-format
 msgctxt "@title:column"
 msgid "Source port"
-msgstr "Sursă:"
+msgstr "Port sursă"
 
 #: core/loglistmodel.cpp:92 core/rulelistmodel.cpp:91
-#, fuzzy, kde-format
-#| msgid "To"
+#, kde-format
 msgctxt "@title:column"
 msgid "To"
 msgstr "La"
 
 #: core/loglistmodel.cpp:94
-#, fuzzy, kde-format
-#| msgid "Destination:"
+#, kde-format
 msgctxt "@title:column"
 msgid "Destination port"
-msgstr "Destinație:"
+msgstr "Port destinație"
 
 #: core/loglistmodel.cpp:98
-#, fuzzy, kde-format
-#| msgid "Interface"
+#, kde-format
 msgctxt "@title:column"
 msgid "Interface"
 msgstr "Interfață"
 
 #: core/loglistmodel.cpp:100 core/rulelistmodel.cpp:87
-#, fuzzy, kde-format
-#| msgid "Action"
+#, kde-format
 msgctxt "@title:column"
 msgid "Action"
 msgstr "Acțiune"
@@ -254,15 +242,13 @@ msgid "Yes"
 msgstr "Da"
 
 #: core/rulelistmodel.cpp:93
-#, fuzzy, kde-format
-#| msgid "IP"
+#, kde-format
 msgctxt "@title:column"
 msgid "IP"
 msgstr "IP"
 
 #: core/rulelistmodel.cpp:95
-#, fuzzy, kde-format
-#| msgid "Logging"
+#, kde-format
 msgctxt "@title:column"
 msgid "Logging"
 msgstr "Jurnalizare"
@@ -588,10 +574,9 @@ msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr "Produce un mesaj imediat și foarte informativ de „Conexiune refuzată”"
 
 #: ui/main.qml:35
-#, fuzzy, kde-format
-#| msgid "Add Rule..."
+#, kde-format
 msgid "Add Rule…"
-msgstr "Adaugă regulă..."
+msgstr "Adaugă regulă…"
 
 #: ui/main.qml:43
 #, kde-format
@@ -606,10 +591,9 @@ msgid "View Logs"
 msgstr "Vezi jurnalele"
 
 #: ui/main.qml:66
-#, fuzzy, kde-format
-#| msgid "Disabling..."
+#, kde-format
 msgid "Disabling…"
-msgstr "Se dezactivează..."
+msgstr "Se dezactivează…"
 
 #: ui/main.qml:66
 #, kde-format
@@ -617,16 +601,14 @@ msgid "Enabled"
 msgstr "Activat"
 
 #: ui/main.qml:68
-#, fuzzy, kde-format
-#| msgid "Disabling..."
+#, kde-format
 msgid "Enabling…"
-msgstr "Se dezactivează..."
+msgstr "Se activează…"
 
 #: ui/main.qml:68
-#, fuzzy, kde-format
-#| msgid "Enabled"
+#, kde-format
 msgid "Disabled"
-msgstr "Activat"
+msgstr "Dezactivat"
 
 #: ui/main.qml:93
 #, kde-format
@@ -691,17 +673,15 @@ msgid "Save"
 msgstr "Salvează"
 
 #: ui/main.qml:241
-#, fuzzy, kde-format
-#| msgid "Firewall Status:"
+#, kde-format
 msgid "Firewall type:"
-msgstr "Stare firewall:"
+msgstr "Tip firewall:"
 
 #: ui/main.qml:249
-#, fuzzy, kde-format
-#| msgid "firewalld %1"
+#, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
-msgstr "firewalld %1"
+msgstr "Versiune firewall: %1"
 
 #: ui/main.qml:256
 #, kde-format
@@ -736,37 +716,32 @@ msgid "Remove Rule"
 msgstr "Elimină regula"
 
 #: ui/main.qml:463
-#, fuzzy, kde-format
-#| msgid "Using %1 as firewall backend"
+#, kde-format
 msgid "Firewall is disabled"
-msgstr "Se folosește platforma de firewall %1"
+msgstr "Firewall-ul este dezactivat"
 
 #: ui/main.qml:463
-#, fuzzy, kde-format
-#| msgid "No firewall rules have been added."
+#, kde-format
 msgid "No firewall rules have been added"
-msgstr "Nu au fost adăugate reguli de firewall."
+msgstr "Nu au fost adăugate reguli de firewall"
 
 #: ui/main.qml:465
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Click the <interface>Add Rule...</interface> button below to add one"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
-"Apăsați butonul <interface>Adaugă regulă...</interface> de mai jos pentru a "
-"adăuga una"
+"Apăsați butonul <interface>Adaugă regulă…</interface> pentru a adăuga una"
 
 #: ui/main.qml:466
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
-msgstr ""
+msgstr "Apăsați pe comutatorul de mai sus pentru a-l activa"
 
 #: ui/main.qml:472
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
-msgstr "Instalați un firewall, cum ar fi UFW sau FirewallD"
+msgstr "Instalați un firewall, cum ar fi ufw sau firewalld"
 
 #: ui/PortTextField.qml:11
 #, kde-format
@@ -800,16 +775,14 @@ msgid "Advanced"
 msgstr ""
 
 #: ui/SimpleRuleEdit.qml:23
-#, fuzzy, kde-format
-#| msgid "Allow all connections"
+#, kde-format
 msgid "Allow connections for:"
-msgstr "Permite toate conexiunile"
+msgstr "Permite conexiunile pentru:"
 
 #: ui/SimpleRuleEdit.qml:23
-#, fuzzy, kde-format
-#| msgid "Action"
+#, kde-format
 msgid "Application:"
-msgstr "Acțiune"
+msgstr "Aplicație:"
 
 #: ui/ViewBase.qml:253
 #, kde-format
