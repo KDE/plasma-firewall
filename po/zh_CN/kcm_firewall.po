@@ -766,7 +766,7 @@ msgstr "默认传出策略已经是“%1”。"
 #, kde-format
 msgctxt "Advanced firewall rules"
 msgid "Advanced"
-msgstr ""
+msgstr "高级"
 
 #: ui/SimpleRuleEdit.qml:23
 #, kde-format
