@@ -1,21 +1,21 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
 #
-# SPDX-FileCopyrightText: 2023 Kishore G <kishore96@gmail.com>
+# SPDX-FileCopyrightText: 2023, 2026 Kishore G <kishore96@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-10 00:45+0000\n"
-"PO-Revision-Date: 2023-12-10 11:39+0530\n"
+"PO-Revision-Date: 2026-02-27 21:27+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
-"Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
+"Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 25.12.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -243,13 +243,13 @@ msgstr "ஆம்"
 #, kde-format
 msgctxt "@title:column"
 msgid "IP"
-msgstr ""
+msgstr "முகவரி"
 
 #: core/rulelistmodel.cpp:95
 #, kde-format
 msgctxt "@title:column"
 msgid "Logging"
-msgstr ""
+msgstr "பதிவிடுவது"
 
 #: core/systemdjob.cpp:51
 #, kde-format
@@ -279,17 +279,17 @@ msgstr "உயர்வானது"
 #: core/types.cpp:28
 #, kde-format
 msgid "Full"
-msgstr ""
+msgstr "அதிகபட்சம்"
 
 #: core/types.cpp:45 ui/RuleEdit.qml:38
 #, kde-format
 msgid "None"
-msgstr ""
+msgstr "வேண்டாம்"
 
 #: core/types.cpp:47
 #, kde-format
 msgid "New connections"
-msgstr ""
+msgstr "புதிய இணைப்புகள்"
 
 #: core/types.cpp:49
 #, kde-format
@@ -299,22 +299,22 @@ msgstr ""
 #: core/types.cpp:58 ui/main.qml:25
 #, kde-format
 msgid "Allow"
-msgstr ""
+msgstr "அனுமதி"
 
 #: core/types.cpp:60
 #, kde-format
 msgid "Deny"
-msgstr ""
+msgstr "பொருட்படுத்தாதே"
 
 #: core/types.cpp:62 ui/main.qml:27
 #, kde-format
 msgid "Reject"
-msgstr ""
+msgstr "மறு"
 
 #: core/types.cpp:64
 #, kde-format
 msgid "Limit"
-msgstr ""
+msgstr "வரம்பிடு"
 
 #: core/types.cpp:80
 #, kde-format
@@ -449,7 +449,7 @@ msgstr ""
 #: ui/AdvancedRuleEdit.qml:31 ui/SimpleRuleEdit.qml:29
 #, kde-format
 msgid "Policy:"
-msgstr ""
+msgstr "கொள்கை:"
 
 #: ui/AdvancedRuleEdit.qml:42 ui/SimpleRuleEdit.qml:40
 #, kde-format
@@ -459,62 +459,62 @@ msgstr ""
 #: ui/AdvancedRuleEdit.qml:45 ui/SimpleRuleEdit.qml:44
 #, kde-format
 msgid "Incoming"
-msgstr ""
+msgstr "உள்வருவது"
 
 #: ui/AdvancedRuleEdit.qml:51 ui/SimpleRuleEdit.qml:50
 #, kde-format
 msgid "Outgoing"
-msgstr ""
+msgstr "வேளிவருவது"
 
 #: ui/AdvancedRuleEdit.qml:59
 #, kde-format
 msgid "IP Version:"
-msgstr ""
+msgstr "IP வகை"
 
 #: ui/AdvancedRuleEdit.qml:62
 #, kde-format
 msgid "IPv4"
-msgstr ""
+msgstr "IPv4"
 
 #: ui/AdvancedRuleEdit.qml:67
 #, kde-format
 msgid "IPv6"
-msgstr ""
+msgstr "IPv6"
 
 #: ui/AdvancedRuleEdit.qml:74
 #, kde-format
 msgid "Source:"
-msgstr ""
+msgstr "மூலம்:"
 
 #: ui/AdvancedRuleEdit.qml:94
 #, kde-format
 msgid "Destination:"
-msgstr ""
+msgstr "சேருமிடம்:"
 
 #: ui/AdvancedRuleEdit.qml:114
 #, kde-format
 msgid "Protocol:"
-msgstr ""
+msgstr "நெறிமுறை:"
 
 #: ui/AdvancedRuleEdit.qml:125
 #, kde-format
 msgid "Interface:"
-msgstr ""
+msgstr "இடைமுகப்பு:"
 
 #: ui/AdvancedRuleEdit.qml:137
 #, kde-format
 msgid "Logging:"
-msgstr ""
+msgstr "பதிவிடுவது:"
 
 #: ui/ConnectionsView.qml:14
 #, kde-format
 msgid "Connections"
-msgstr ""
+msgstr "இணைப்புகள்"
 
 #: ui/ConnectionsView.qml:26
 #, kde-format
 msgid "There are currently no open connections"
-msgstr ""
+msgstr "தற்போது எந்த இணைப்பும் சேயலிலில்லை"
 
 #: ui/ConnectionsView.qml:35
 #, kde-format
@@ -534,12 +534,12 @@ msgstr ""
 #: ui/LogsView.qml:16
 #, kde-format
 msgid "Firewall Logs"
-msgstr ""
+msgstr "தீயரண் பதிவுகள்"
 
 #: ui/LogsView.qml:26
 #, kde-format
 msgid "There are currently no firewall log entries"
-msgstr ""
+msgstr "தீயரண் பதிவுகளில் ஏதுமில்லை"
 
 #: ui/LogsView.qml:37
 #, kde-format
@@ -549,12 +549,12 @@ msgstr ""
 #: ui/main.qml:25
 #, kde-format
 msgid "Allow all connections"
-msgstr ""
+msgstr "அனைத்து இணைப்புகளையும் அனுமதி"
 
 #: ui/main.qml:26
 #, kde-format
 msgid "Ignore"
-msgstr ""
+msgstr "பொருட்படுத்தாதே"
 
 #: ui/main.qml:26
 #, kde-format
@@ -571,39 +571,39 @@ msgstr ""
 #: ui/main.qml:35
 #, kde-format
 msgid "Add Rule…"
-msgstr ""
+msgstr "விதியை சேர்…"
 
 #: ui/main.qml:43
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
-msgstr ""
+msgstr "இணைப்புகளைக் காட்டு"
 
 #: ui/main.qml:49
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
-msgstr ""
+msgstr "பதிவுகளைக் காட்டு"
 
 #: ui/main.qml:66
 #, kde-format
 msgid "Disabling…"
-msgstr ""
+msgstr "முடக்கப்படுகிறது…"
 
 #: ui/main.qml:66
 #, kde-format
 msgid "Enabled"
-msgstr ""
+msgstr "இயக்கப்பட்டுள்ளது"
 
 #: ui/main.qml:68
 #, kde-format
 msgid "Enabling…"
-msgstr ""
+msgstr "இயக்கப்படுகிறது…"
 
 #: ui/main.qml:68
 #, kde-format
 msgid "Disabled"
-msgstr ""
+msgstr "முடக்கப்பட்டுள்ளது"
 
 #: ui/main.qml:93
 #, kde-format
@@ -613,7 +613,7 @@ msgstr ""
 #: ui/main.qml:107
 #, kde-format
 msgid "Permission denied"
-msgstr ""
+msgstr "அனுமதி மறுக்கப்பட்டது"
 
 #: ui/main.qml:111
 #, kde-format
@@ -625,12 +625,12 @@ msgstr ""
 #: ui/main.qml:114
 #, kde-format
 msgid "Error enabling firewall: %1"
-msgstr ""
+msgstr "தீயரணை இயக்குவதில் சிக்கல்: %1"
 
 #: ui/main.qml:115
 #, kde-format
 msgid "Error disabling firewall: %1"
-msgstr ""
+msgstr "தீயரணை முடக்குவதில் சிக்கல்: %1"
 
 #: ui/main.qml:150
 #, kde-format
