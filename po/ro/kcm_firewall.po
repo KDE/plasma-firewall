@@ -1,22 +1,22 @@
 # Copyright (C) 2026 This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
-# Sergiu Bivol <sergiu@cip.md>, 2020, 2021.
+# SPDX-FileCopyrightText: 2020, 2021, 2026 Sergiu Bivol <sergiu@cip.md>
 # SPDX-FileCopyrightText: 2026 Viorel-Cătălin Răpițeanu <rapiteanu.catalin@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-10 02:38+0000\n"
-"PO-Revision-Date: 2026-02-09 23:08+0200\n"
-"Last-Translator: Viorel-Cătălin Răpițeanu <rapiteanu.catalin@gmail.com>\n"
-"Language-Team: ro\n"
+"PO-Revision-Date: 2026-02-11 13:08+0000\n"
+"Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
+"Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -36,13 +36,12 @@ msgstr "Eroare la preluarea informațiilor de la firewall."
 #: backends/firewalld/firewalldjob.cpp:173
 #, kde-format
 msgid "firewalld saving (runtime to permanent)"
-msgstr ""
+msgstr "firewalld salvează (din temporar în permanent)"
 
 #: backends/firewalld/firewalldjob.cpp:197
-#, fuzzy, kde-format
-#| msgid "Firewall Logs"
+#, kde-format
 msgid "firewalld saving"
-msgstr "Jurnale firewall"
+msgstr "firewalld salvează"
 
 #: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
@@ -52,7 +51,7 @@ msgstr "firewalld %1"
 #: backends/firewalld/queryrulesfirewalldjob.cpp:50
 #, kde-format
 msgid "firewalld listing rules and services"
-msgstr ""
+msgstr "firewalld enumeră reguli și servicii"
 
 #: backends/netstat/connectionsmodel.cpp:97 core/loglistmodel.cpp:96
 #, kde-format
@@ -199,13 +198,13 @@ msgstr "Acțiune"
 #, kde-format
 msgctxt "@title:column"
 msgid "Time"
-msgstr ""
+msgstr "Oră"
 
 #: core/loglistmodel.cpp:104
 #, kde-format
 msgctxt "@title:column"
 msgid "Date"
-msgstr ""
+msgstr "Dată"
 
 #: core/rule.cpp:46
 #, kde-format
@@ -526,7 +525,7 @@ msgstr "Creează o regulă în lista neagră din această conexiune."
 #: ui/ConnectionsView.qml:52
 #, kde-format
 msgid "could not find iproute2 or net-tools packages installed."
-msgstr ""
+msgstr "pachetele iproute2 sau net-tools nu au fost găsite instalate."
 
 #: ui/IpTextField.qml:14
 #, kde-format
@@ -626,6 +625,8 @@ msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
 "reboot."
 msgstr ""
+"Ați actualizat recent nucleul. iptables nu se poate inițializa, reporniți "
+"sistemul."
 
 #: ui/main.qml:114
 #, kde-format
@@ -650,7 +651,7 @@ msgstr "Modifică regula de firewall"
 #: ui/main.qml:173 ui/main.qml:294 ui/main.qml:420
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
-msgstr ""
+msgstr "Reporniți Plasma Firewall, platforma s-a deconectat."
 
 #: ui/main.qml:187 ui/ViewBase.qml:112
 #, kde-format
@@ -772,7 +773,7 @@ msgstr "Politica implicită de ieșire e deja „%1”."
 #, kde-format
 msgctxt "Advanced firewall rules"
 msgid "Advanced"
-msgstr ""
+msgstr "Avansate"
 
 #: ui/SimpleRuleEdit.qml:23
 #, kde-format
