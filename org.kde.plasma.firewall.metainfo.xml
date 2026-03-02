@@ -128,6 +128,7 @@
     <p xml:lang="pl">Zapora ogniowa Plazmy jest nakładką na wiele zapór ogniowych dla łatwego ustawiania sieci.</p>
     <p xml:lang="pt">A 'Firewall' do Plasma é uma interface para várias 'firewalls' que simplifica as configurações de rede.</p>
     <p xml:lang="pt-BR">O Plasma Firewall é uma interface multi-firewall para facilitar as configurações de redes.</p>
+    <p xml:lang="ro">Plasma Firewall e o interfață multi-firewall pentru ușurarea configurării rețelei.</p>
     <p xml:lang="ru">Управление брандмауэром для Plasma — приложение для упрощения настройки параметров сетевых подключений, поддерживающее работу с различными службами брандмауэров.</p>
     <p xml:lang="sa">प्लाज्मा फायरवालः संजालविन्यासस्य सुगमतायै बहु-अग्निप्रावरण-अग्रभागः अस्ति ।</p>
     <p xml:lang="sk">Plasma Firewall je frontend s viacerými firewallmi, ktorý uľahčuje konfiguráciu siete.</p>
@@ -173,6 +174,7 @@
       <caption xml:lang="pl">Zapora ogniowa Plazmy pokazująca domyślną stronę ustawień</caption>
       <caption xml:lang="pt">A 'firewall' do Plasma a mostrar uma página de configuração predefinida</caption>
       <caption xml:lang="pt-BR">O firewall do Plasma mostrando uma página de configuração padrão</caption>
+      <caption xml:lang="ro">Plasma Firewall arătând o pagină cu configurări implicite</caption>
       <caption xml:lang="ru">Страница по умолчанию управления конфигурацией брандмауэра.</caption>
       <caption xml:lang="sa">पूर्वनिर्धारितं विन्यासपृष्ठं दर्शयति प्लाज्मा अग्निप्रावरणम्</caption>
       <caption xml:lang="sk">Plasma Firewall zobrazujúci predvolenú konfiguračnú stránku</caption>
