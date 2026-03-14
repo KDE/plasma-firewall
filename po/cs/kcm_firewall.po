@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-10 00:45+0000\n"
-"PO-Revision-Date: 2026-02-27 21:19+0100\n"
+"PO-Revision-Date: 2026-03-13 11:36+0100\n"
 "Last-Translator:  Vít Pelčák <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -35,12 +35,12 @@ msgstr "Chyba při stahování informací z firewallu."
 #: backends/firewalld/firewalldjob.cpp:173
 #, kde-format
 msgid "firewalld saving (runtime to permanent)"
-msgstr ""
+msgstr "Ukládání firewalld (z dočasného do trvalého)"
 
 #: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
 msgid "firewalld saving"
-msgstr ""
+msgstr "Ukládání firewalld"
 
 #: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
@@ -50,7 +50,7 @@ msgstr "firewall %1"
 #: backends/firewalld/queryrulesfirewalldjob.cpp:50
 #, kde-format
 msgid "firewalld listing rules and services"
-msgstr ""
+msgstr "Seznam pravidel a služeb firewalld"
 
 #: backends/netstat/connectionsmodel.cpp:97 core/loglistmodel.cpp:96
 #, kde-format
@@ -91,7 +91,7 @@ msgstr "Program"
 #: backends/netstat/connectionsmodel.cpp:115
 #, kde-format
 msgid "Failed to get connections: %1"
-msgstr ""
+msgstr "Nepodařilo se navázat připojení: %1"
 
 #: backends/netstat/connectionsmodel.cpp:133
 #, kde-format
@@ -111,32 +111,32 @@ msgstr "Poslouchám"
 #: backends/ufw/helper/helper.cpp:213
 #, kde-format
 msgid "Invalid arguments passed to the profile"
-msgstr ""
+msgstr "Neplatné argumenty předané profilu"
 
 #: backends/ufw/helper/helper.cpp:243
 #, kde-format
 msgid "Error saving the profile."
-msgstr ""
+msgstr "Chyba při ukládání profilu."
 
 #: backends/ufw/helper/helper.cpp:267
 #, kde-format
 msgid "Invalid arguments passed to delete profile"
-msgstr ""
+msgstr "Neplatné argumenty předané k odstranění profilu"
 
 #: backends/ufw/helper/helper.cpp:274
 #, kde-format
 msgid "Could not remove the profile from disk."
-msgstr ""
+msgstr "Nelze odstranit profil z disku."
 
 #: backends/ufw/helper/helper.cpp:289
 #, kde-format
 msgid "Invalid argument passed to add Rules"
-msgstr ""
+msgstr "Neplatný argument předán pravidlům pro přidání"
 
 #: backends/ufw/helper/helper.cpp:361
 #, kde-format
 msgid "An error occurred in command '%1': %2"
-msgstr ""
+msgstr "Při provádění příkazu \"%1\" došlo k chybě: %2"
 
 #: backends/ufw/ufwclient.cpp:161
 #, kde-format
@@ -144,11 +144,13 @@ msgid ""
 "There was an error in the backend! Please report it.\n"
 "%1 %2"
 msgstr ""
+"Došlo k chybě v podpůrné vrstvě! Nahlaste ji prosím.\n"
+"%1 %2"
 
 #: backends/ufw/ufwclient.cpp:268
 #, kde-format
 msgid "Error fetching firewall logs: %1"
-msgstr ""
+msgstr "Chyba při načítání protokolů firewallu: %1"
 
 #: backends/ufw/ufwclient.cpp:608 core/firewallclient.cpp:76
 #, kde-format
@@ -517,7 +519,7 @@ msgstr "Momentálně nejsou žádná otevřená spojení"
 #: ui/ConnectionsView.qml:35
 #, kde-format
 msgid "Created a blacklist rule from this connection."
-msgstr ""
+msgstr "Z tohoto připojení bylo vytvořeno pravidlo černé listiny."
 
 #: ui/ConnectionsView.qml:52
 #, kde-format
@@ -542,7 +544,7 @@ msgstr "Momentálně nejsou žádné záznamy firewallu"
 #: ui/LogsView.qml:37
 #, kde-format
 msgid "Created a blacklist rule from this log entry."
-msgstr ""
+msgstr "Z tohoto záznamu v protokolu bylo vytvořeno pravidlo černé listiny."
 
 #: ui/main.qml:25
 #, kde-format
@@ -560,11 +562,14 @@ msgid ""
 "Keeps the program waiting until the connection attempt times out, some short "
 "time later."
 msgstr ""
+"Nechat program čekat, dokud po nějaké době nevyprší časový limit pokusu o "
+"připojení."
 
 #: ui/main.qml:27
 #, kde-format
 msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr ""
+"Zobrazí okamžitou a velmi informativní zprávu „Připojení bylo odmítnuto“."
 
 #: ui/main.qml:35
 #, kde-format
@@ -606,7 +611,7 @@ msgstr "Zakázáno"
 #: ui/main.qml:93
 #, kde-format
 msgid "The firewall application, please install %1"
-msgstr ""
+msgstr "Nainstalujte si prosím aplikaci firewall %1"
 
 #: ui/main.qml:107
 #, kde-format
@@ -619,16 +624,18 @@ msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
 "reboot."
 msgstr ""
+"Nedávno jste aktualizovali jádro. Iptables se nedaří inicializovat, prosím "
+"restartujte počítač."
 
 #: ui/main.qml:114
 #, kde-format
 msgid "Error enabling firewall: %1"
-msgstr ""
+msgstr "Chyba při aktivaci firewallu: %1"
 
 #: ui/main.qml:115
 #, kde-format
 msgid "Error disabling firewall: %1"
-msgstr ""
+msgstr "Chyba při deaktivaci firewallu: %1"
 
 #: ui/main.qml:150
 #, kde-format
@@ -648,12 +655,12 @@ msgstr "Prosím, restartujte firewall Plasma. Podpůrná vrstva byla odpojena."
 #: ui/main.qml:187 ui/ViewBase.qml:112
 #, kde-format
 msgid "Error creating rule: %1"
-msgstr ""
+msgstr "Chyba při vytváření pravidla: %1"
 
 #: ui/main.qml:189
 #, kde-format
 msgid "Error updating rule: %1"
-msgstr ""
+msgstr "Chyba při aktualizaci pravidla: %1"
 
 #: ui/main.qml:214
 #, kde-format
@@ -679,17 +686,17 @@ msgstr "Verze Firewall: %1"
 #: ui/main.qml:256
 #, kde-format
 msgid "Default Incoming Policy:"
-msgstr ""
+msgstr "Výchozí politika pro příchozí provoz:"
 
 #: ui/main.qml:257
 #, kde-format
 msgid "Default Outgoing Policy:"
-msgstr ""
+msgstr "Výchozí politika pro odchozí provoz:"
 
 #: ui/main.qml:306
 #, kde-format
 msgid "Error changing policy: %1"
-msgstr ""
+msgstr "Chyba při změně politiky: %1"
 
 #: ui/main.qml:411
 #, kde-format
@@ -700,7 +707,7 @@ msgstr "Upravit pravidlo"
 #: ui/main.qml:431
 #, kde-format
 msgid "Error removing rule: %1"
-msgstr ""
+msgstr "Chyba při odstraňování pravidla: %1"
 
 #: ui/main.qml:438
 #, kde-format
@@ -734,7 +741,7 @@ msgstr "Klikněte na přepínač pro povolení"
 #: ui/main.qml:472
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
-msgstr ""
+msgstr "Nainstalujte prosím firewall, například ufw nebo firewalld"
 
 #: ui/PortTextField.qml:11
 #, kde-format
@@ -754,12 +761,12 @@ msgstr "Všechny pakety"
 #: ui/RuleEdit.qml:55 ui/RuleEdit.qml:62
 #, kde-format
 msgid "The default incoming policy is already '%1'."
-msgstr ""
+msgstr "Výchozí politika pro příchozí provoz je již '%1'."
 
 #: ui/RuleEdit.qml:56 ui/RuleEdit.qml:63
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
-msgstr ""
+msgstr "Výchozí politika pro odchozí provoz je již '%1'."
 
 #: ui/RuleEdit.qml:73
 #, kde-format
