@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 16:19+0000\n"
-"PO-Revision-Date: 2026-03-13 11:36+0100\n"
+"PO-Revision-Date: 2026-03-30 11:48+0200\n"
 "Last-Translator:  Vít Pelčák <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -671,6 +671,9 @@ msgid ""
 "above, and then click the <interface>Add Rule...</interface> button below to "
 "add one"
 msgstr ""
+"Zapněte firewall zaškrtnutím políčka <interface>Stav firewallu</interface> "
+"výše a poté klikněte na tlačítko <interface>Přidat pravidlo...</interface> "
+"níže, abyste přidali jedno pravidlo"
 
 #: package/contents/ui/main.qml:345
 #, kde-format
