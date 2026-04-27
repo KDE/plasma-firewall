@@ -49,7 +49,7 @@ msgstr "firewalld %1"
 #: backends/firewalld/queryrulesfirewalldjob.cpp:50
 #, kde-format
 msgid "firewalld listing rules and services"
-msgstr "vypís služieb a pravidiel firewalld"
+msgstr "výpis služieb a pravidiel firewalld"
 
 #: backends/netstat/conectionsmodel.cpp:94
 #, kde-format
