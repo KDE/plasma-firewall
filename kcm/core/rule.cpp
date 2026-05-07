@@ -8,7 +8,6 @@
 
 #include "rule.h"
 #include "appprofiles.h"
-#include "firewallclient.h"
 #include <KLocalizedString>
 #include <QByteArray>
 #include <QMap>
