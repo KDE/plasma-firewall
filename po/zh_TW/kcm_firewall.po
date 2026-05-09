@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-10 00:45+0000\n"
+"POT-Creation-Date: 2026-05-09 00:45+0000\n"
 "PO-Revision-Date: 2026-02-12 16:17+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -207,36 +207,36 @@ msgctxt "@title:column"
 msgid "Date"
 msgstr "日期"
 
-#: core/rule.cpp:46
+#: core/rule.cpp:45
 #, kde-format
 msgctxt "address on interface"
 msgid "%1 on %2"
 msgstr "%2 上的 %1"
 
-#: core/rule.cpp:75 core/rule.cpp:165 core/rule.cpp:171
+#: core/rule.cpp:74 core/rule.cpp:164 core/rule.cpp:170
 #, kde-format
 msgid "Anywhere"
 msgstr "任何地方"
 
-#: core/rule.cpp:96 core/rule.cpp:109 core/rule.cpp:126
+#: core/rule.cpp:95 core/rule.cpp:108 core/rule.cpp:125
 #, kde-format
 msgctxt "service/application name (port numbers)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: core/rule.cpp:199
+#: core/rule.cpp:198
 #, kde-format
 msgctxt "firewallAction incoming"
 msgid "%1 incoming"
 msgstr "%1 傳入"
 
-#: core/rule.cpp:200
+#: core/rule.cpp:199
 #, kde-format
 msgctxt "firewallAction outgoing"
 msgid "%1 outgoing"
 msgstr "%1 傳出"
 
-#: core/rule.cpp:205
+#: core/rule.cpp:204
 #, kde-format
 msgid "Yes"
 msgstr "是"

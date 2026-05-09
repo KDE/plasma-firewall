@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-10 00:45+0000\n"
+"POT-Creation-Date: 2026-05-09 00:45+0000\n"
 "PO-Revision-Date: 2024-01-01 11:06-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -203,36 +203,36 @@ msgctxt "@title:column"
 msgid "Date"
 msgstr "ਤਾਰੀਖ"
 
-#: core/rule.cpp:46
+#: core/rule.cpp:45
 #, kde-format
 msgctxt "address on interface"
 msgid "%1 on %2"
 msgstr "%2 ਉੱਤੇ %1"
 
-#: core/rule.cpp:75 core/rule.cpp:165 core/rule.cpp:171
+#: core/rule.cpp:74 core/rule.cpp:164 core/rule.cpp:170
 #, kde-format
 msgid "Anywhere"
 msgstr "ਕਿਤੋਂ ਵੀ"
 
-#: core/rule.cpp:96 core/rule.cpp:109 core/rule.cpp:126
+#: core/rule.cpp:95 core/rule.cpp:108 core/rule.cpp:125
 #, kde-format
 msgctxt "service/application name (port numbers)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: core/rule.cpp:199
+#: core/rule.cpp:198
 #, kde-format
 msgctxt "firewallAction incoming"
 msgid "%1 incoming"
 msgstr "%1 ਆਉਣ ਵਾਲੇ"
 
-#: core/rule.cpp:200
+#: core/rule.cpp:199
 #, kde-format
 msgctxt "firewallAction outgoing"
 msgid "%1 outgoing"
 msgstr "%1 ਜਾਣ ਵਾਲੇ"
 
-#: core/rule.cpp:205
+#: core/rule.cpp:204
 #, kde-format
 msgid "Yes"
 msgstr "ਹਾਂ"
