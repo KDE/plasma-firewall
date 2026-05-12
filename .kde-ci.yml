@@ -10,6 +10,7 @@ Dependencies:
     'frameworks/kcoreaddons': '@latest-kf6'
     'frameworks/ki18n': '@latest-kf6'
     'frameworks/kcmutils': '@latest-kf6'
+
 Options:
+ require-passing-tests-on: ['@all']
  cppcheck-arguments: '--inline-suppr'
- require-passing-tests-on: ['Linux', 'FreeBSD']
