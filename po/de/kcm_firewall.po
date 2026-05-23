@@ -1,14 +1,14 @@
 # Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
-# SPDX-FileCopyrightText: 2020, 2021 Burkhard Lück <lueck@hube-lueck.de>
-# SPDX-FileCopyrightText: 2020, 2022, 2023 Frederik Schwarzer <schwarzer@kde.org>
-# SPDX-FileCopyrightText: 2025 Philipp Kiemle <l10n.daphipz@fastmail.de>
+# SPDX-FileCopyrightText: 2020, 2022-2023 Frederik Schwarzer <schwarzer@kde.org>
+# SPDX-FileCopyrightText: 2020-2021 Burkhard Lück <lueck@hube-lueck.de>
+# SPDX-FileCopyrightText: 2025-2026 Philipp Kiemle <l10n.daphipz@fastmail.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 16:19+0000\n"
-"PO-Revision-Date: 2025-11-16 19:06+0100\n"
+"PO-Revision-Date: 2026-05-21 14:10+0200\n"
 "Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.08.3\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -57,7 +57,7 @@ msgstr ""
 #: backends/netstat/conectionsmodel.cpp:94
 #, kde-format
 msgid "Failed to get connections: %1"
-msgstr ""
+msgstr "Beziehen der Verbindungen fehlgeschlagen: %1"
 
 #: backends/netstat/conectionsmodel.cpp:112
 #, kde-format
@@ -77,7 +77,7 @@ msgstr "Horchend"
 #: backends/ufw/helper/helper.cpp:220
 #, kde-format
 msgid "Invalid arguments passed to the profile"
-msgstr ""
+msgstr "Ungültige Argumente an das Profil weitergegeben"
 
 #: backends/ufw/helper/helper.cpp:250
 #, kde-format
@@ -110,6 +110,8 @@ msgid ""
 "There was an error in the backend! Please report it.\n"
 "%1 %2"
 msgstr ""
+"Im Backend ist ein Fehler aufgetreten! Bitte melden Sie ihn.\n"
+"%1 %2"
 
 #: backends/ufw/ufwclient.cpp:268
 #, kde-format
@@ -473,12 +475,14 @@ msgstr "Es gibt zurzeit keine offenen Verbindungen"
 #: package/contents/ui/ConnectionsView.qml:35
 #, kde-format
 msgid "Created a blacklist rule from this connection."
-msgstr ""
+msgstr "Negativlisten-Regel auf Basis dieser Verbindung erstellt."
 
 #: package/contents/ui/ConnectionsView.qml:52
 #, kde-format
 msgid "could not find iproute2 or net-tools packages installed."
 msgstr ""
+"Weder „iproute2“, noch „net-tools“ können unter den installierten Paketen "
+"gefunden werden."
 
 #: package/contents/ui/IpTextField.qml:14
 #, kde-format
@@ -513,7 +517,7 @@ msgstr "Es gibt zurzeit keine Firewall-Protokolleinträge"
 #: package/contents/ui/LogsView.qml:37
 #, kde-format
 msgid "Created a blacklist rule from this log entry."
-msgstr ""
+msgstr "Negativlisten-Regel auf Basis dieses Protokolleintags erstellt."
 
 #: package/contents/ui/main.qml:23
 #, kde-format
@@ -536,6 +540,7 @@ msgstr ""
 #, kde-format
 msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr ""
+"Gibt sofort eine sehr informative „Verbindung fehlgeschlagen“-Nachricht aus"
 
 #: package/contents/ui/main.qml:40
 #, kde-format
@@ -552,6 +557,8 @@ msgstr "Firewall-Regel bearbeiten"
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr ""
+"Bitte starten Sie Plasma Firewall neu, die Verbindung zum Backend wurde "
+"getrennt."
 
 #: package/contents/ui/main.qml:90 package/contents/ui/ViewBase.qml:110
 #, kde-format
@@ -601,7 +608,7 @@ msgstr "Aktiviert"
 #: package/contents/ui/main.qml:184
 #, kde-format
 msgid "The firewall application, please install %1"
-msgstr ""
+msgstr "Die Firewall-Anwendung, bitte installieren Sie %1"
 
 #: package/contents/ui/main.qml:198
 #, kde-format
@@ -614,6 +621,8 @@ msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
 "reboot."
 msgstr ""
+"Sie haben kürzlich den Kernel aktualisiert. Die Initialisierung von "
+"„iptables“ schlägt fehl, bitte starten Sie das Gerät neu."
 
 #: package/contents/ui/main.qml:205
 #, kde-format
@@ -628,12 +637,12 @@ msgstr "Fehler beim Ausschalten der Firewall: %1"
 #: package/contents/ui/main.qml:226
 #, kde-format
 msgid "Default Incoming Policy:"
-msgstr ""
+msgstr "Standardregelung (eingehend):"
 
 #: package/contents/ui/main.qml:227
 #, kde-format
 msgid "Default Outgoing Policy:"
-msgstr ""
+msgstr "Standardregelung (ausgehend):"
 
 #: package/contents/ui/main.qml:275
 #, kde-format
@@ -655,6 +664,8 @@ msgstr "Es wurden noch keine Firewall-Regeln hinzugefügt"
 msgctxt "@info"
 msgid "Click the <interface>Add Rule...</interface> button below to add one"
 msgstr ""
+"Klicken Sie auf <interface>Regel hinzufügen …</interface> unten, um eine "
+"Regel hinzuzufügen."
 
 #: package/contents/ui/main.qml:341
 #, kde-kuit-format
@@ -664,6 +675,9 @@ msgid ""
 "above, and then click the <interface>Add Rule...</interface> button below to "
 "add one"
 msgstr ""
+"Aktivieren Sie die Firewall mit dem Ankreuzfeld <interface>Firewall-Status</"
+"interface> oben und klicken Sie dann auf <interface>Regel hinzufügen …</"
+"interface>, um eine hinzuzufügen"
 
 #: package/contents/ui/main.qml:345
 #, kde-format
@@ -742,12 +756,12 @@ msgstr "Alle Pakete"
 #: package/contents/ui/RuleEdit.qml:57 package/contents/ui/RuleEdit.qml:64
 #, kde-format
 msgid "The default incoming policy is already '%1'."
-msgstr ""
+msgstr "Die Standardregelung für eingehende Verbindungen ist bereits „%1“."
 
 #: package/contents/ui/RuleEdit.qml:58 package/contents/ui/RuleEdit.qml:65
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
-msgstr ""
+msgstr "Die Standardregelung für ausgehende Verbindungen ist bereits „%1“."
 
 #: package/contents/ui/SimpleRuleEdit.qml:23
 #, kde-format
@@ -762,7 +776,7 @@ msgstr "Anwendung:"
 #: package/contents/ui/ViewBase.qml:222
 #, kde-format
 msgid "Blacklist Connection"
-msgstr ""
+msgstr "Verbindung zur Negativliste hinzufügen"
 
 #~ msgctxt "@title"
 #~ msgid "Configure Firewall"
