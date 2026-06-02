@@ -1,143 +1,142 @@
-# Copyright (C) 2023 This file is copyright:
+# Uyghur translation for kcm_firewall.
+# Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
+# Abduqadir Abliz <sahranbay@gmail.com>, 2026., YEAR.
 #
-# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023 Kristóf Kiszel <kiszel.kristof@gmail.com>
-# SPDX-FileCopyrightText: 2022, 2024, 2026 Kristof Kiszel <ulysses@fsf.hu>
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-09 00:45+0000\n"
-"PO-Revision-Date: 2026-06-01 22:15+0200\n"
-"Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
-"Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
-"Language: hu\n"
+"PO-Revision-Date: 2026-06-01 17:57-0400\n"
+"Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
+"Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
+"Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 26.04.1\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Kiszel Kristóf"
+msgstr "ئابدۇقادىر ئابلىز، غەيرەت كەنجى"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "ulysses@fsf.hu"
+msgstr "sahranbay@gmail.com, gheyret@gmail.com"
 
 #: backends/firewalld/firewalldclient.cpp:600 backends/ufw/ufwclient.cpp:697
 #, kde-format
 msgid "Error fetching information from the firewall."
-msgstr "Hiba történt az információk lekérésekor a tűzfaltól."
+msgstr ""
 
 #: backends/firewalld/firewalldjob.cpp:173
 #, kde-format
 msgid "firewalld saving (runtime to permanent)"
-msgstr "firewalld mentés (futásidőben a véglegeshez)"
+msgstr ""
 
 #: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
 msgid "firewalld saving"
-msgstr "firewalld mentés"
+msgstr ""
 
 #: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
 msgid "firewalld %1"
-msgstr "firewalld %1"
+msgstr ""
 
 #: backends/firewalld/queryrulesfirewalldjob.cpp:50
 #, kde-format
 msgid "firewalld listing rules and services"
-msgstr "firewalld szabályok és szolgáltatások listázása"
+msgstr ""
 
 #: backends/netstat/connectionsmodel.cpp:97 core/loglistmodel.cpp:96
 #, kde-format
 msgctxt "@title:column"
 msgid "Protocol"
-msgstr "Protokoll"
+msgstr "كېلىشىم"
 
 #: backends/netstat/connectionsmodel.cpp:99
 #, kde-format
 msgctxt "@title:column"
 msgid "Local address"
-msgstr "Helyi cím"
+msgstr ""
 
 #: backends/netstat/connectionsmodel.cpp:101
 #, kde-format
 msgctxt "@title:column"
 msgid "Foreign address"
-msgstr "Idegen cím"
+msgstr ""
 
 #: backends/netstat/connectionsmodel.cpp:103
 #, kde-format
 msgctxt "@title:column"
 msgid "Status"
-msgstr "Állapot"
+msgstr "ھالىتى"
 
 #: backends/netstat/connectionsmodel.cpp:105
 #, kde-format
 msgctxt "@title:column"
 msgid "PID"
-msgstr "PID"
+msgstr ""
 
 #: backends/netstat/connectionsmodel.cpp:107
 #, kde-format
 msgctxt "@title:column"
 msgid "Program"
-msgstr "Program"
+msgstr "پىروگرامما"
 
 #: backends/netstat/connectionsmodel.cpp:115
 #, kde-format
 msgid "Failed to get connections: %1"
-msgstr "Nem sikerült lekérni a kapcsolatokat: %1"
+msgstr ""
 
 #: backends/netstat/connectionsmodel.cpp:133
 #, kde-format
 msgid "Not Connected"
-msgstr "Nincs kapcsolódva"
+msgstr ""
 
 #: backends/netstat/connectionsmodel.cpp:135
 #, kde-format
 msgid "Established"
-msgstr "Létrejött"
+msgstr ""
 
 #: backends/netstat/connectionsmodel.cpp:137
 #, kde-format
 msgid "Listening"
-msgstr "Figyelés"
+msgstr ""
 
 #: backends/ufw/helper/helper.cpp:213
 #, kde-format
 msgid "Invalid arguments passed to the profile"
-msgstr "Érvénytelen argumentumok lettek átadva a profilnak"
+msgstr ""
 
 #: backends/ufw/helper/helper.cpp:243
 #, kde-format
 msgid "Error saving the profile."
-msgstr "Hiba a profil mentésekor."
+msgstr ""
 
 #: backends/ufw/helper/helper.cpp:267
 #, kde-format
 msgid "Invalid arguments passed to delete profile"
-msgstr "Érvénytelen argumentumok lettek átadva a profil törléséhez"
+msgstr ""
 
 #: backends/ufw/helper/helper.cpp:274
 #, kde-format
 msgid "Could not remove the profile from disk."
-msgstr "Nem lehet törölni a profilt a lemezről."
+msgstr ""
 
 #: backends/ufw/helper/helper.cpp:289
 #, kde-format
 msgid "Invalid argument passed to add Rules"
-msgstr "Érvénytelen argumentumok lettek átadva a szabály létrehozásához"
+msgstr ""
 
 #: backends/ufw/helper/helper.cpp:361
 #, kde-format
 msgid "An error occurred in command '%1': %2"
-msgstr "Hiba történt a(z) „%1” parancsban: %2"
+msgstr ""
 
 #: backends/ufw/ufwclient.cpp:161
 #, kde-format
@@ -145,77 +144,75 @@ msgid ""
 "There was an error in the backend! Please report it.\n"
 "%1 %2"
 msgstr ""
-"Hiba történt a háttérprogramban, kérjük, jelentse azt.\n"
-"%1 %2"
 
 #: backends/ufw/ufwclient.cpp:268
 #, kde-format
 msgid "Error fetching firewall logs: %1"
-msgstr "Hiba a tűzfalnaplók lekérésekor: %1"
+msgstr ""
 
 #: backends/ufw/ufwclient.cpp:608 core/firewallclient.cpp:76
 #, kde-format
 msgid "Any"
-msgstr "Bármely"
+msgstr "خالىغان"
 
 #: core/loglistmodel.cpp:88 core/rulelistmodel.cpp:89
 #, kde-format
 msgctxt "@title:column"
 msgid "From"
-msgstr "Forrás"
+msgstr "كىمدىن"
 
 #: core/loglistmodel.cpp:90
 #, kde-format
 msgctxt "@title:column"
 msgid "Source port"
-msgstr "Forrásport"
+msgstr ""
 
 #: core/loglistmodel.cpp:92 core/rulelistmodel.cpp:91
 #, kde-format
 msgctxt "@title:column"
 msgid "To"
-msgstr "Cél"
+msgstr "تاپشۇرۇپ ئالغۇچى"
 
 #: core/loglistmodel.cpp:94
 #, kde-format
 msgctxt "@title:column"
 msgid "Destination port"
-msgstr "Célport"
+msgstr ""
 
 #: core/loglistmodel.cpp:98
 #, kde-format
 msgctxt "@title:column"
 msgid "Interface"
-msgstr "Interfész"
+msgstr "ئارايۈز"
 
 #: core/loglistmodel.cpp:100 core/rulelistmodel.cpp:87
 #, kde-format
 msgctxt "@title:column"
 msgid "Action"
-msgstr "Művelet"
+msgstr "مەشغۇلات"
 
 #: core/loglistmodel.cpp:102
 #, kde-format
 msgctxt "@title:column"
 msgid "Time"
-msgstr "Idő"
+msgstr "ۋاقىت"
 
 #: core/loglistmodel.cpp:104
 #, kde-format
 msgctxt "@title:column"
 msgid "Date"
-msgstr "Dátum"
+msgstr "چېسلا"
 
 #: core/rule.cpp:45
 #, kde-format
 msgctxt "address on interface"
 msgid "%1 on %2"
-msgstr "%1: %2"
+msgstr "%2 دىكى %1"
 
 #: core/rule.cpp:74 core/rule.cpp:164 core/rule.cpp:170
 #, kde-format
 msgid "Anywhere"
-msgstr "Bárhol"
+msgstr ""
 
 #: core/rule.cpp:95 core/rule.cpp:108 core/rule.cpp:125
 #, kde-format
@@ -227,130 +224,130 @@ msgstr "%1 (%2)"
 #, kde-format
 msgctxt "firewallAction incoming"
 msgid "%1 incoming"
-msgstr "%1 bejövő"
+msgstr ""
 
 #: core/rule.cpp:199
 #, kde-format
 msgctxt "firewallAction outgoing"
 msgid "%1 outgoing"
-msgstr "%1 kimenő"
+msgstr ""
 
 #: core/rule.cpp:204
 #, kde-format
 msgid "Yes"
-msgstr "Igen"
+msgstr "ھەئە"
 
 #: core/rulelistmodel.cpp:93
 #, kde-format
 msgctxt "@title:column"
 msgid "IP"
-msgstr "IP"
+msgstr ""
 
 #: core/rulelistmodel.cpp:95
 #, kde-format
 msgctxt "@title:column"
 msgid "Logging"
-msgstr "Naplózás"
+msgstr "كۈندىلىك خاتىرە"
 
 #: core/systemdjob.cpp:51
 #, kde-format
 msgid "Invalid Call"
-msgstr "Érvénytelen hívás"
+msgstr ""
 
 #: core/types.cpp:19
 #, kde-format
 msgid "Off"
-msgstr "Ki"
+msgstr "تاقاق"
 
 #: core/types.cpp:22
 #, kde-format
 msgid "Low"
-msgstr "Alacsony"
+msgstr "تۆۋەن"
 
 #: core/types.cpp:24
 #, kde-format
 msgid "Medium"
-msgstr "Közepes"
+msgstr "ئوتتۇراھال"
 
 #: core/types.cpp:26
 #, kde-format
 msgid "High"
-msgstr "Magas"
+msgstr "يۇقىرى"
 
 #: core/types.cpp:28
 #, kde-format
 msgid "Full"
-msgstr "Teljes"
+msgstr "تامامەن"
 
 #: core/types.cpp:45 ui/RuleEdit.qml:38
 #, kde-format
 msgid "None"
-msgstr "Nincs"
+msgstr "يوق"
 
 #: core/types.cpp:47
 #, kde-format
 msgid "New connections"
-msgstr "Új kapcsolatok"
+msgstr ""
 
 #: core/types.cpp:49
 #, kde-format
 msgid "All packets"
-msgstr "Minden csomag"
+msgstr ""
 
 #: core/types.cpp:58 ui/main.qml:25
 #, kde-format
 msgid "Allow"
-msgstr "Engedélyezés"
+msgstr "يول قوي"
 
 #: core/types.cpp:60
 #, kde-format
 msgid "Deny"
-msgstr "Tiltás"
+msgstr "رەت قىل"
 
 #: core/types.cpp:62 ui/main.qml:27
 #, kde-format
 msgid "Reject"
-msgstr "Elutasítás"
+msgstr "رەت قىل"
 
 #: core/types.cpp:64
 #, kde-format
 msgid "Limit"
-msgstr "Korlátozás"
+msgstr "چېكى"
 
 #: core/types.cpp:80
 #, kde-format
 msgid "Amule"
-msgstr "Amule"
+msgstr ""
 
 #: core/types.cpp:82
 #, kde-format
 msgid "Deluge"
-msgstr "Deluge"
+msgstr ""
 
 #: core/types.cpp:84
 #, kde-format
 msgid "KTorrent"
-msgstr "KTorrent"
+msgstr ""
 
 #: core/types.cpp:86
 #, kde-format
 msgid "Nicotine"
-msgstr "Nicotine"
+msgstr ""
 
 #: core/types.cpp:88
 #, kde-format
 msgid "qBittorrent"
-msgstr "qBittorrent"
+msgstr ""
 
 #: core/types.cpp:90
 #, kde-format
 msgid "Transmission"
-msgstr "Transmission"
+msgstr ""
 
 #: core/types.cpp:92
 #, kde-format
 msgid "ICQ"
-msgstr "ICQ"
+msgstr ""
 
 #: core/types.cpp:94
 #, kde-format
@@ -360,17 +357,17 @@ msgstr "Jabber"
 #: core/types.cpp:96
 #, kde-format
 msgid "Windows Live Messenger"
-msgstr "Windows Live Messenger"
+msgstr ""
 
 #: core/types.cpp:98
 #, kde-format
 msgid "Yahoo! Messenger"
-msgstr "Yahoo! Messenger"
+msgstr "Yahoo! مۇڭداشقۇ"
 
 #: core/types.cpp:100
 #, kde-format
 msgid "FTP"
-msgstr "FTP"
+msgstr ""
 
 #: core/types.cpp:102
 #, kde-format
@@ -380,32 +377,32 @@ msgstr "HTTP"
 #: core/types.cpp:104
 #, kde-format
 msgid "Secure HTTP"
-msgstr "Secure HTTP"
+msgstr ""
 
 #: core/types.cpp:106
 #, kde-format
 msgid "IMAP"
-msgstr "IMAP"
+msgstr ""
 
 #: core/types.cpp:108
 #, kde-format
 msgid "Secure IMAP"
-msgstr "Secure IMAP"
+msgstr ""
 
 #: core/types.cpp:110
 #, kde-format
 msgid "POP3"
-msgstr "POP3"
+msgstr ""
 
 #: core/types.cpp:112
 #, kde-format
 msgid "Secure POP3"
-msgstr "Secure POP3"
+msgstr ""
 
 #: core/types.cpp:114
 #, kde-format
 msgid "SMTP"
-msgstr "SMTP"
+msgstr ""
 
 #: core/types.cpp:116
 #, kde-format
@@ -415,12 +412,12 @@ msgstr "NFS"
 #: core/types.cpp:118
 #, kde-format
 msgid "Samba"
-msgstr "Samba"
+msgstr ""
 
 #: core/types.cpp:120
 #, kde-format
 msgid "Secure Shell"
-msgstr "Secure Shell"
+msgstr ""
 
 #: core/types.cpp:122
 #, kde-format
@@ -435,42 +432,42 @@ msgstr "Zeroconf"
 #: core/types.cpp:126
 #, kde-format
 msgid "Telnet"
-msgstr "Telnet"
+msgstr ""
 
 #: core/types.cpp:128
 #, kde-format
 msgid "NTP"
-msgstr "NTP"
+msgstr ""
 
 #: core/types.cpp:130
 #, kde-format
 msgid "CUPS"
-msgstr "CUPS"
+msgstr ""
 
 #: ui/AdvancedRuleEdit.qml:31 ui/SimpleRuleEdit.qml:29
 #, kde-format
 msgid "Policy:"
-msgstr "Szabály:"
+msgstr ""
 
 #: ui/AdvancedRuleEdit.qml:42 ui/SimpleRuleEdit.qml:40
 #, kde-format
 msgid "Direction:"
-msgstr "Irány:"
+msgstr "يونۇلۇش:"
 
 #: ui/AdvancedRuleEdit.qml:45 ui/SimpleRuleEdit.qml:44
 #, kde-format
 msgid "Incoming"
-msgstr "Bejövő"
+msgstr "كېلىۋاتىدۇ"
 
 #: ui/AdvancedRuleEdit.qml:51 ui/SimpleRuleEdit.qml:50
 #, kde-format
 msgid "Outgoing"
-msgstr "Kimenő"
+msgstr "چىقىۋاتىدۇ"
 
 #: ui/AdvancedRuleEdit.qml:59
 #, kde-format
 msgid "IP Version:"
-msgstr "IP-verzió:"
+msgstr ""
 
 #: ui/AdvancedRuleEdit.qml:62
 #, kde-format
@@ -485,77 +482,77 @@ msgstr "IPv6"
 #: ui/AdvancedRuleEdit.qml:74
 #, kde-format
 msgid "Source:"
-msgstr "Forrás:"
+msgstr "مەنبە:"
 
 #: ui/AdvancedRuleEdit.qml:94
 #, kde-format
 msgid "Destination:"
-msgstr "Cél:"
+msgstr "نىشان:"
 
 #: ui/AdvancedRuleEdit.qml:114
 #, kde-format
 msgid "Protocol:"
-msgstr "Protokoll:"
+msgstr "كېلىشىم:"
 
 #: ui/AdvancedRuleEdit.qml:125
 #, kde-format
 msgid "Interface:"
-msgstr "Interfész:"
+msgstr ""
 
 #: ui/AdvancedRuleEdit.qml:137
 #, kde-format
 msgid "Logging:"
-msgstr "Naplózás:"
+msgstr ""
 
 #: ui/ConnectionsView.qml:14
 #, kde-format
 msgid "Connections"
-msgstr "Kapcsolatok"
+msgstr "باغلىنىشلار"
 
 #: ui/ConnectionsView.qml:26
 #, kde-format
 msgid "There are currently no open connections"
-msgstr "Jelenleg nincsenek nyitott kapcsolatok"
+msgstr ""
 
 #: ui/ConnectionsView.qml:35
 #, kde-format
 msgid "Created a blacklist rule from this connection."
-msgstr "Tiltólista szabály létrehozva ebből a kapcsolatból."
+msgstr ""
 
 #: ui/ConnectionsView.qml:52
 #, kde-format
 msgid "could not find iproute2 or net-tools packages installed."
-msgstr "Az iproute2 vagy net-tools csomagok nem találhatók."
+msgstr ""
 
 #: ui/IpTextField.qml:14
 #, kde-format
 msgid "Any IP address"
-msgstr "Bármely IP-cím"
+msgstr ""
 
 #: ui/LogsView.qml:16
 #, kde-format
 msgid "Firewall Logs"
-msgstr "Tűzfalnaplók"
+msgstr ""
 
 #: ui/LogsView.qml:26
 #, kde-format
 msgid "There are currently no firewall log entries"
-msgstr "Jelenleg nincsenek bejegyzések a tűzfalnaplóban"
+msgstr ""
 
 #: ui/LogsView.qml:37
 #, kde-format
 msgid "Created a blacklist rule from this log entry."
-msgstr "Tiltólista szabály létrehozva ebből a naplóbejegyzésből."
+msgstr ""
 
 #: ui/main.qml:25
 #, kde-format
 msgid "Allow all connections"
-msgstr "Minden kapcsolat engedélyezése"
+msgstr ""
 
 #: ui/main.qml:26
 #, kde-format
 msgid "Ignore"
-msgstr "Mellőzés"
+msgstr "پەرۋا قىلما"
 
 #: ui/main.qml:26
 #, kde-format
@@ -563,61 +560,58 @@ msgid ""
 "Keeps the program waiting until the connection attempt times out, some short "
 "time later."
 msgstr ""
-"Várakoztassa a programot, amíg a kapcsolat időtúllépés miatt meg nem szakad "
-"rövid idővel később."
 
 #: ui/main.qml:27
 #, kde-format
 msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr ""
-"Azonnali és rendkívül informatív „Kapcsolat elutasítva” üzenetet produkál"
 
 #: ui/main.qml:35
 #, kde-format
 msgid "Add Rule…"
-msgstr "Szabály hozzáadása…"
+msgstr "قائىدە قوش…"
 
 #: ui/main.qml:43
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
-msgstr "Kapcsolatok megjelenítése"
+msgstr ""
 
 #: ui/main.qml:49
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
-msgstr "Naplók megjelenítése"
+msgstr ""
 
 #: ui/main.qml:66
 #, kde-format
 msgid "Disabling…"
-msgstr "Kikapcsolás…"
+msgstr ""
 
 #: ui/main.qml:66
 #, kde-format
 msgid "Enabled"
-msgstr "Bekapcsolva"
+msgstr "قوزغىتىلغان"
 
 #: ui/main.qml:68
 #, kde-format
 msgid "Enabling…"
-msgstr "Bekapcsolás…"
+msgstr ""
 
 #: ui/main.qml:68
 #, kde-format
 msgid "Disabled"
-msgstr "Kikapcsolva"
+msgstr "چەكلەنگەن"
 
 #: ui/main.qml:93
 #, kde-format
 msgid "The firewall application, please install %1"
-msgstr "A tűzfal alkalmazás, telepítse ezt: %1"
+msgstr ""
 
 #: ui/main.qml:107
 #, kde-format
 msgid "Permission denied"
-msgstr "Hozzáférés megtagadva"
+msgstr "ھوقۇقىڭىز يەتمىدى"
 
 #: ui/main.qml:111
 #, kde-format
@@ -625,214 +619,164 @@ msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
 "reboot."
 msgstr ""
-"A kernel nemrég frissült. Az iptables inicializálása meghiúsult, indítsa "
-"újra a rendszert."
 
 #: ui/main.qml:114
 #, kde-format
 msgid "Error enabling firewall: %1"
-msgstr "Hiba a tűzfal bekapcsolásakor: %1"
+msgstr ""
 
 #: ui/main.qml:115
 #, kde-format
 msgid "Error disabling firewall: %1"
-msgstr "Hiba a tűzfal kikapcsolásakor: %1"
+msgstr ""
 
 #: ui/main.qml:150
 #, kde-format
 msgid "Create A New Firewall Rule"
-msgstr "Új tűzfalszabály létrehozása"
+msgstr ""
 
 #: ui/main.qml:150
 #, kde-format
 msgid "Edit Firewall Rule"
-msgstr "Tűzfalszabály szerkesztése"
+msgstr ""
 
 #: ui/main.qml:173 ui/main.qml:294 ui/main.qml:420
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
-msgstr "Indítsa újra a Plasma Firewallt, a háttérprogram lekapcsolódott."
+msgstr ""
 
 #: ui/main.qml:187 ui/ViewBase.qml:112
 #, kde-format
 msgid "Error creating rule: %1"
-msgstr "Hiba a szabály létrehozásakor: %1"
+msgstr ""
 
 #: ui/main.qml:189
 #, kde-format
 msgid "Error updating rule: %1"
-msgstr "Hiba a szabály frissítésekor: %1"
+msgstr ""
 
 #: ui/main.qml:214
 #, kde-format
 msgid "Create"
-msgstr "Létrehozás"
+msgstr "ياسا"
 
 #: ui/main.qml:214
 #, kde-format
 msgid "Save"
-msgstr "Mentés"
+msgstr "ساقلا"
 
 #: ui/main.qml:241
 #, kde-format
 msgid "Firewall type:"
-msgstr "Tűzfaltípus:"
+msgstr ""
 
 #: ui/main.qml:249
 #, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
-msgstr "Tűzfalverzió: %1"
+msgstr ""
 
 #: ui/main.qml:256
 #, kde-format
 msgid "Default Incoming Policy:"
-msgstr "Alapértelmezett bejövő házirend:"
+msgstr ""
 
 #: ui/main.qml:257
 #, kde-format
 msgid "Default Outgoing Policy:"
-msgstr "Alapértelmezett kimenő házirend:"
+msgstr ""
 
 #: ui/main.qml:306
 #, kde-format
 msgid "Error changing policy: %1"
-msgstr "Hiba a szabály megváltoztatásakor: %1"
+msgstr ""
 
 #: ui/main.qml:411
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
-msgstr "Szabály szerkesztése"
+msgstr ""
 
 #: ui/main.qml:431
 #, kde-format
 msgid "Error removing rule: %1"
-msgstr "Hiba a szabály törlésekor: %1"
+msgstr ""
 
 #: ui/main.qml:438
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
-msgstr "Szabály törlése"
+msgstr "قائىدىنى چىقىرىۋەت"
 
 #: ui/main.qml:463
 #, kde-format
 msgid "Firewall is disabled"
-msgstr "A tűzfal ki van kapcsolva"
+msgstr ""
 
 #: ui/main.qml:463
 #, kde-format
 msgid "No firewall rules have been added"
-msgstr "Nincsenek tűzfalszabályok hozzáadva"
+msgstr ""
 
 #: ui/main.qml:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
-"Kattintson a <interface>Szabály hozzáadása…</interface> gombra a hozzáadáshoz"
 
 #: ui/main.qml:466
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
-msgstr "Kattintson a fenti kapcsolóra a bekapcsolásához"
+msgstr ""
 
 #: ui/main.qml:472
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
-msgstr "Telepítsen egy tűzfalalkalmazást, például az ufw-t vagy a firewalld-t"
+msgstr ""
 
 #: ui/PortTextField.qml:11
 #, kde-format
 msgid "Any Port"
-msgstr "Bármely port"
+msgstr ""
 
 #: ui/RuleEdit.qml:39
 #, kde-format
 msgid "New Connections"
-msgstr "Új kapcsolatok"
+msgstr ""
 
 #: ui/RuleEdit.qml:40
 #, kde-format
 msgid "All Packets"
-msgstr "Minden csomag"
+msgstr ""
 
 #: ui/RuleEdit.qml:55 ui/RuleEdit.qml:62
 #, kde-format
 msgid "The default incoming policy is already '%1'."
-msgstr "Az alapértelmezett bejövő szabály már „%1”."
+msgstr ""
 
 #: ui/RuleEdit.qml:56 ui/RuleEdit.qml:63
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
-msgstr "Az alapértelmezett kimenő szabály már „%1”."
+msgstr ""
 
 #: ui/RuleEdit.qml:73
 #, kde-format
 msgctxt "Advanced firewall rules"
 msgid "Advanced"
-msgstr "Speciális"
+msgstr "ئالىي"
 
 #: ui/SimpleRuleEdit.qml:23
 #, kde-format
 msgid "Allow connections for:"
-msgstr "Kapcsolatok engedélyezése:"
+msgstr ""
 
 #: ui/SimpleRuleEdit.qml:23
 #, kde-format
 msgid "Application:"
-msgstr "Alkalmazás:"
+msgstr "پىروگرامما:"
 
 #: ui/ViewBase.qml:253
 #, kde-format
 msgid "Blacklist Connection"
-msgstr "Kapcsolat tiltólistára"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "Enable the firewall with the <interface>Firewall Status</interface> "
-#~ "switch, and then click the <interface>Add Rule…</interface> button to add "
-#~ "one"
-#~ msgstr ""
-#~ "Kapcsolja be a tűzfalat a <interface>Tűzfal állapota</interface> "
-#~ "kapcsolóval, és kattintson a <interface>Szabály hozzáadása…</interface> "
-#~ "gombra egy szabály hozzáadásához"
-
-#~ msgid "About Firewall"
-#~ msgstr "A tűzfal névjegye"
-
-#~ msgid "Backend:"
-#~ msgstr "Háttérprogram:"
-
-#~ msgid "Version:"
-#~ msgstr "Verzió:"
-
-#~ msgid "About"
-#~ msgstr "Névjegy"
-
-#~ msgctxt "@title"
-#~ msgid "Configure Firewall"
-#~ msgstr "A tűzfal beállítása"
-
-#~ msgctxt "@info:credit"
-#~ msgid "Alexis López Zubieta"
-#~ msgstr "Alexis López Zubieta"
-
-#~ msgctxt "@info:credit"
-#~ msgid "Tomaz Canabrava"
-#~ msgstr "Tomaz Canabrava"
-
-#~ msgctxt "@info:credit"
-#~ msgid "Lucas Januario"
-#~ msgstr "Lucas Januario"
-
-#~ msgid "Simple Rule Edit:"
-#~ msgstr "Egyszerű szabály szerkesztés:"
-
-#~ msgid "Connections..."
-#~ msgstr "Kapcsolatok…"
-
-#~ msgid "Logs..."
-#~ msgstr "Naplók…"
+msgstr ""
