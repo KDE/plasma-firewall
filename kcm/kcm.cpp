@@ -8,6 +8,8 @@
 
 #include "kcm.h"
 
+#include <qqml.h>
+
 #include <KAboutData>
 #include <KJob>
 #include <KLocalizedString>
