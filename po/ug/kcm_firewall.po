@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-09 00:45+0000\n"
-"PO-Revision-Date: 2026-06-01 17:57-0400\n"
+"PO-Revision-Date: 2026-07-22 17:04-0400\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.9\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -31,27 +31,27 @@ msgstr "sahranbay@gmail.com, gheyret@gmail.com"
 #: backends/firewalld/firewalldclient.cpp:600 backends/ufw/ufwclient.cpp:697
 #, kde-format
 msgid "Error fetching information from the firewall."
-msgstr ""
+msgstr "مۇداپىئە تامدىن ئۇچۇرغا ئېرىشىۋاتقاندا خاتالىق كۆرۈلدى."
 
 #: backends/firewalld/firewalldjob.cpp:173
 #, kde-format
 msgid "firewalld saving (runtime to permanent)"
-msgstr ""
+msgstr "firewalld ساقلاۋاتىدۇ (ئىجرا قىلىشتىن مەڭگۈلۈككىچە)"
 
 #: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
 msgid "firewalld saving"
-msgstr ""
+msgstr "firewalld ساقلاۋاتىدۇ"
 
 #: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
 msgid "firewalld %1"
-msgstr ""
+msgstr "firewalld %1"
 
 #: backends/firewalld/queryrulesfirewalldjob.cpp:50
 #, kde-format
 msgid "firewalld listing rules and services"
-msgstr ""
+msgstr "firewalld قائىدە ۋە مۇلازىمەتنى تىزىپ كۆرسىتىۋاتىدۇ"
 
 #: backends/netstat/connectionsmodel.cpp:97 core/loglistmodel.cpp:96
 #, kde-format
@@ -63,13 +63,13 @@ msgstr "كېلىشىم"
 #, kde-format
 msgctxt "@title:column"
 msgid "Local address"
-msgstr ""
+msgstr "يەرلىك ئادرېس"
 
 #: backends/netstat/connectionsmodel.cpp:101
 #, kde-format
 msgctxt "@title:column"
 msgid "Foreign address"
-msgstr ""
+msgstr "سىرتقى ئادرېس"
 
 #: backends/netstat/connectionsmodel.cpp:103
 #, kde-format
@@ -81,7 +81,7 @@ msgstr "ھالىتى"
 #, kde-format
 msgctxt "@title:column"
 msgid "PID"
-msgstr ""
+msgstr "PID"
 
 #: backends/netstat/connectionsmodel.cpp:107
 #, kde-format
@@ -92,52 +92,52 @@ msgstr "پىروگرامما"
 #: backends/netstat/connectionsmodel.cpp:115
 #, kde-format
 msgid "Failed to get connections: %1"
-msgstr ""
+msgstr "باغلىنىشقا ئېرىشەلمىدى: %1"
 
 #: backends/netstat/connectionsmodel.cpp:133
 #, kde-format
 msgid "Not Connected"
-msgstr ""
+msgstr "باغلانمىغان"
 
 #: backends/netstat/connectionsmodel.cpp:135
 #, kde-format
 msgid "Established"
-msgstr ""
+msgstr "تۇرغۇزۇلدى"
 
 #: backends/netstat/connectionsmodel.cpp:137
 #, kde-format
 msgid "Listening"
-msgstr ""
+msgstr "تىڭشاۋاتىدۇ"
 
 #: backends/ufw/helper/helper.cpp:213
 #, kde-format
 msgid "Invalid arguments passed to the profile"
-msgstr ""
+msgstr "سەپلىمە ھۆججەتكە ئىناۋەتسىز ئۆزگەرگۈچى بېرىلگەن"
 
 #: backends/ufw/helper/helper.cpp:243
 #, kde-format
 msgid "Error saving the profile."
-msgstr ""
+msgstr "سەپلىمە ھۆججەتنى ساقلاۋاتقاندا خاتالىق كۆرۈلدى."
 
 #: backends/ufw/helper/helper.cpp:267
 #, kde-format
 msgid "Invalid arguments passed to delete profile"
-msgstr ""
+msgstr "سەپلىمە ھۆججەت ئۆچۈرىدىغان ئۆزگەرگۈچى ئىناۋەتسىز"
 
 #: backends/ufw/helper/helper.cpp:274
 #, kde-format
 msgid "Could not remove the profile from disk."
-msgstr ""
+msgstr "سەپلىمە ھۆججەتنى دىسكىدىن چىقىرىۋېتەلمەيدۇ."
 
 #: backends/ufw/helper/helper.cpp:289
 #, kde-format
 msgid "Invalid argument passed to add Rules"
-msgstr ""
+msgstr "قائىدە قوش ئۆزگەرگۈچىسى ئىناۋەتسىز"
 
 #: backends/ufw/helper/helper.cpp:361
 #, kde-format
 msgid "An error occurred in command '%1': %2"
-msgstr ""
+msgstr "«%1» بۇيرۇقىدا خاتالىق كۆرۈلدى: %2"
 
 #: backends/ufw/ufwclient.cpp:161
 #, kde-format
@@ -145,11 +145,13 @@ msgid ""
 "There was an error in the backend! Please report it.\n"
 "%1 %2"
 msgstr ""
+"ئارقا ئۇچتا خاتالىق كۆرۈلگەن! ئۇنى مەلۇم قىلىڭ.\n"
+"%1 %2"
 
 #: backends/ufw/ufwclient.cpp:268
 #, kde-format
 msgid "Error fetching firewall logs: %1"
-msgstr ""
+msgstr "مۇداپىئە تام خاتىرىسىگە ئېرىشىۋاتقاندا خاتالىق كۆرۈلدى: %1"
 
 #: backends/ufw/ufwclient.cpp:608 core/firewallclient.cpp:76
 #, kde-format
@@ -166,19 +168,19 @@ msgstr "كىمدىن"
 #, kde-format
 msgctxt "@title:column"
 msgid "Source port"
-msgstr ""
+msgstr "مەنبە ئېغىز"
 
 #: core/loglistmodel.cpp:92 core/rulelistmodel.cpp:91
 #, kde-format
 msgctxt "@title:column"
 msgid "To"
-msgstr "تاپشۇرۇپ ئالغۇچى"
+msgstr "كىمگە"
 
 #: core/loglistmodel.cpp:94
 #, kde-format
 msgctxt "@title:column"
 msgid "Destination port"
-msgstr ""
+msgstr "نىشان ئېغىز"
 
 #: core/loglistmodel.cpp:98
 #, kde-format
@@ -213,7 +215,7 @@ msgstr "%2 دىكى %1"
 #: core/rule.cpp:74 core/rule.cpp:164 core/rule.cpp:170
 #, kde-format
 msgid "Anywhere"
-msgstr ""
+msgstr "خالىغان جاي"
 
 #: core/rule.cpp:95 core/rule.cpp:108 core/rule.cpp:125
 #, kde-format
@@ -225,13 +227,13 @@ msgstr "%1 (%2)"
 #, kde-format
 msgctxt "firewallAction incoming"
 msgid "%1 incoming"
-msgstr ""
+msgstr "%1 كىرىۋاتىدۇ"
 
 #: core/rule.cpp:199
 #, kde-format
 msgctxt "firewallAction outgoing"
 msgid "%1 outgoing"
-msgstr ""
+msgstr "%1 چىقىۋاتىدۇ"
 
 #: core/rule.cpp:204
 #, kde-format
@@ -242,7 +244,7 @@ msgstr "ھەئە"
 #, kde-format
 msgctxt "@title:column"
 msgid "IP"
-msgstr ""
+msgstr "IP"
 
 #: core/rulelistmodel.cpp:95
 #, kde-format
@@ -253,7 +255,7 @@ msgstr "كۈندىلىك خاتىرە"
 #: core/systemdjob.cpp:51
 #, kde-format
 msgid "Invalid Call"
-msgstr ""
+msgstr "ئىناۋەتسىز چاقىرىش"
 
 #: core/types.cpp:19
 #, kde-format
@@ -268,7 +270,7 @@ msgstr "تۆۋەن"
 #: core/types.cpp:24
 #, kde-format
 msgid "Medium"
-msgstr "ئوتتۇراھال"
+msgstr "ئوتتۇرا ھال"
 
 #: core/types.cpp:26
 #, kde-format
@@ -288,12 +290,12 @@ msgstr "يوق"
 #: core/types.cpp:47
 #, kde-format
 msgid "New connections"
-msgstr ""
+msgstr "يېڭى باغلىنىش"
 
 #: core/types.cpp:49
 #, kde-format
 msgid "All packets"
-msgstr ""
+msgstr "ھەممە بوغچا"
 
 #: core/types.cpp:58 ui/main.qml:25
 #, kde-format
@@ -318,37 +320,37 @@ msgstr "چېكى"
 #: core/types.cpp:80
 #, kde-format
 msgid "Amule"
-msgstr ""
+msgstr "Amule"
 
 #: core/types.cpp:82
 #, kde-format
 msgid "Deluge"
-msgstr ""
+msgstr "Deluge"
 
 #: core/types.cpp:84
 #, kde-format
 msgid "KTorrent"
-msgstr ""
+msgstr "KTorrent"
 
 #: core/types.cpp:86
 #, kde-format
 msgid "Nicotine"
-msgstr ""
+msgstr "Nicotine"
 
 #: core/types.cpp:88
 #, kde-format
 msgid "qBittorrent"
-msgstr ""
+msgstr "qBittorrent"
 
 #: core/types.cpp:90
 #, kde-format
 msgid "Transmission"
-msgstr ""
+msgstr "Transmission"
 
 #: core/types.cpp:92
 #, kde-format
 msgid "ICQ"
-msgstr ""
+msgstr "ICQ"
 
 #: core/types.cpp:94
 #, kde-format
@@ -358,7 +360,7 @@ msgstr "Jabber"
 #: core/types.cpp:96
 #, kde-format
 msgid "Windows Live Messenger"
-msgstr ""
+msgstr "Windows Live مۇڭداشقۇ"
 
 #: core/types.cpp:98
 #, kde-format
@@ -368,7 +370,7 @@ msgstr "Yahoo! مۇڭداشقۇ"
 #: core/types.cpp:100
 #, kde-format
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
 #: core/types.cpp:102
 #, kde-format
@@ -378,32 +380,32 @@ msgstr "HTTP"
 #: core/types.cpp:104
 #, kde-format
 msgid "Secure HTTP"
-msgstr ""
+msgstr "بىخەتەر HTTP"
 
 #: core/types.cpp:106
 #, kde-format
 msgid "IMAP"
-msgstr ""
+msgstr "IMAP"
 
 #: core/types.cpp:108
 #, kde-format
 msgid "Secure IMAP"
-msgstr ""
+msgstr "بىخەتەر IMAP"
 
 #: core/types.cpp:110
 #, kde-format
 msgid "POP3"
-msgstr ""
+msgstr "POP3"
 
 #: core/types.cpp:112
 #, kde-format
 msgid "Secure POP3"
-msgstr ""
+msgstr "بىخەتەر POP3"
 
 #: core/types.cpp:114
 #, kde-format
 msgid "SMTP"
-msgstr ""
+msgstr "SMTP"
 
 #: core/types.cpp:116
 #, kde-format
@@ -413,12 +415,12 @@ msgstr "NFS"
 #: core/types.cpp:118
 #, kde-format
 msgid "Samba"
-msgstr ""
+msgstr "Samba"
 
 #: core/types.cpp:120
 #, kde-format
 msgid "Secure Shell"
-msgstr ""
+msgstr "بىخەتەر Shell"
 
 #: core/types.cpp:122
 #, kde-format
@@ -433,27 +435,27 @@ msgstr "Zeroconf"
 #: core/types.cpp:126
 #, kde-format
 msgid "Telnet"
-msgstr ""
+msgstr "Telnet"
 
 #: core/types.cpp:128
 #, kde-format
 msgid "NTP"
-msgstr ""
+msgstr "NTP"
 
 #: core/types.cpp:130
 #, kde-format
 msgid "CUPS"
-msgstr ""
+msgstr "CUPS"
 
 #: ui/AdvancedRuleEdit.qml:31 ui/SimpleRuleEdit.qml:29
 #, kde-format
 msgid "Policy:"
-msgstr ""
+msgstr "تۈزۈم:"
 
 #: ui/AdvancedRuleEdit.qml:42 ui/SimpleRuleEdit.qml:40
 #, kde-format
 msgid "Direction:"
-msgstr "يونۇلۇش:"
+msgstr "يۆنىلىش:"
 
 #: ui/AdvancedRuleEdit.qml:45 ui/SimpleRuleEdit.qml:44
 #, kde-format
@@ -468,7 +470,7 @@ msgstr "چىقىۋاتىدۇ"
 #: ui/AdvancedRuleEdit.qml:59
 #, kde-format
 msgid "IP Version:"
-msgstr ""
+msgstr "IP نەشرى:"
 
 #: ui/AdvancedRuleEdit.qml:62
 #, kde-format
@@ -498,57 +500,57 @@ msgstr "كېلىشىم:"
 #: ui/AdvancedRuleEdit.qml:125
 #, kde-format
 msgid "Interface:"
-msgstr ""
+msgstr "ئارايۈز:"
 
 #: ui/AdvancedRuleEdit.qml:137
 #, kde-format
 msgid "Logging:"
-msgstr ""
+msgstr "كۈندىلىك خاتىرە:"
 
 #: ui/ConnectionsView.qml:14
 #, kde-format
 msgid "Connections"
-msgstr "باغلىنىشلار"
+msgstr "باغلىنىش"
 
 #: ui/ConnectionsView.qml:26
 #, kde-format
 msgid "There are currently no open connections"
-msgstr ""
+msgstr "نۆۋەتتە ئوچۇق باغلىنىش يوق"
 
 #: ui/ConnectionsView.qml:35
 #, kde-format
 msgid "Created a blacklist rule from this connection."
-msgstr ""
+msgstr "بۇ باغلىنىشتىن قارا تىزىملىك قائىدىسى قۇرىدۇ."
 
 #: ui/ConnectionsView.qml:52
 #, kde-format
 msgid "could not find iproute2 or net-tools packages installed."
-msgstr ""
+msgstr "ئورنىتىلغان iproute2 ياكى net-tools بوغچىسى تېپىلمىدى."
 
 #: ui/IpTextField.qml:14
 #, kde-format
 msgid "Any IP address"
-msgstr ""
+msgstr "خالىغان IP ئادرېس"
 
 #: ui/LogsView.qml:16
 #, kde-format
 msgid "Firewall Logs"
-msgstr ""
+msgstr "مۇداپىئە تام كۈندىلىك خاتىرىسى"
 
 #: ui/LogsView.qml:26
 #, kde-format
 msgid "There are currently no firewall log entries"
-msgstr ""
+msgstr "نۆۋەتتە مۇداپىئە تامنىڭ ھېچقانداق  كۈندىلىك خاتىرە مەزمۇنى يوق"
 
 #: ui/LogsView.qml:37
 #, kde-format
 msgid "Created a blacklist rule from this log entry."
-msgstr ""
+msgstr "بۇ كۈندىلىك خاتىرە تۈرىدىن قارا تىزىملىك قائىدىسى قۇرىدۇ."
 
 #: ui/main.qml:25
 #, kde-format
 msgid "Allow all connections"
-msgstr ""
+msgstr "ھەممە باغلىنىشقا يول قوي"
 
 #: ui/main.qml:26
 #, kde-format
@@ -561,11 +563,13 @@ msgid ""
 "Keeps the program waiting until the connection attempt times out, some short "
 "time later."
 msgstr ""
+"قىسقا ۋاقىتتىن كېيىن، باغلىنىشنىڭ ۋاقتى ئۆتكۈچە پىروگراممىنىڭ كۈتۈش ھالىتىنى "
+"ساقلاپ قالىدۇ."
 
 #: ui/main.qml:27
 #, kde-format
 msgid "Produces an immediate and very informative 'Connection refused' message"
-msgstr ""
+msgstr "شۇئان ۋە ئىنتايىن چۈشىنىشلىك «باغلىنىش رەت قىلىندى» ئۇچۇرى ھاسىللايدۇ"
 
 #: ui/main.qml:35
 #, kde-format
@@ -576,18 +580,18 @@ msgstr "قائىدە قوش…"
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
-msgstr ""
+msgstr "باغلىنىش كۆرسەت"
 
 #: ui/main.qml:49
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
-msgstr ""
+msgstr "كۈندىلىك خاتىرىنى كۆرسەت"
 
 #: ui/main.qml:66
 #, kde-format
 msgid "Disabling…"
-msgstr ""
+msgstr "چەكلەۋاتىدۇ…"
 
 #: ui/main.qml:66
 #, kde-format
@@ -597,7 +601,7 @@ msgstr "قوزغىتىلغان"
 #: ui/main.qml:68
 #, kde-format
 msgid "Enabling…"
-msgstr ""
+msgstr "قوزغىتىۋاتىدۇ…"
 
 #: ui/main.qml:68
 #, kde-format
@@ -607,12 +611,12 @@ msgstr "چەكلەنگەن"
 #: ui/main.qml:93
 #, kde-format
 msgid "The firewall application, please install %1"
-msgstr ""
+msgstr "مۇداپىئە تام پىروگراممىسى، %1 نى ئورنىتىڭ"
 
 #: ui/main.qml:107
 #, kde-format
 msgid "Permission denied"
-msgstr "ھوقۇقىڭىز يەتمىدى"
+msgstr "ئىجازەت رەت قىلىندى"
 
 #: ui/main.qml:111
 #, kde-format
@@ -620,46 +624,47 @@ msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
 "reboot."
 msgstr ""
+"يېقىندا يادرو يېڭىلاندى. Iptables نى دەسلەپلەشتۈرەلمىدى، قايتا قوزغىتىڭ."
 
 #: ui/main.qml:114
 #, kde-format
 msgid "Error enabling firewall: %1"
-msgstr ""
+msgstr "مۇداپىئە تامنى قوزغىتىۋاتقاندا خاتالىق كۆرۈلدى: %1"
 
 #: ui/main.qml:115
 #, kde-format
 msgid "Error disabling firewall: %1"
-msgstr ""
+msgstr "مۇداپىئە تامنى چەكلەۋاتقاندا خاتالىق كۆرۈلدى: %1"
 
 #: ui/main.qml:150
 #, kde-format
 msgid "Create A New Firewall Rule"
-msgstr ""
+msgstr "يېڭى مۇداپىئە تام قائىدىسى قۇر"
 
 #: ui/main.qml:150
 #, kde-format
 msgid "Edit Firewall Rule"
-msgstr ""
+msgstr "مۇداپىئە تام قائىدىسىنى تەھرىرلە"
 
 #: ui/main.qml:173 ui/main.qml:294 ui/main.qml:420
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
-msgstr ""
+msgstr "Plasma مۇداپىئە تامنى قايتا قوزغىتىڭ، ئارقا ئۇچ ئۈزۈلدى."
 
 #: ui/main.qml:187 ui/ViewBase.qml:112
 #, kde-format
 msgid "Error creating rule: %1"
-msgstr ""
+msgstr "قائىدە قۇرۇۋاتقاندا خاتالىق كۆرۈلدى: %1"
 
 #: ui/main.qml:189
 #, kde-format
 msgid "Error updating rule: %1"
-msgstr ""
+msgstr "قائىدىنى يېڭىلاۋاتقاندا خاتالىق كۆرۈلدى: %1"
 
 #: ui/main.qml:214
 #, kde-format
 msgid "Create"
-msgstr "ياسا"
+msgstr "قۇر"
 
 #: ui/main.qml:214
 #, kde-format
@@ -669,39 +674,39 @@ msgstr "ساقلا"
 #: ui/main.qml:241
 #, kde-format
 msgid "Firewall type:"
-msgstr ""
+msgstr "مۇداپىئە تام تۈرى:"
 
 #: ui/main.qml:249
 #, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
-msgstr ""
+msgstr "مۇداپىئە تام نەشرى: %1"
 
 #: ui/main.qml:256
 #, kde-format
 msgid "Default Incoming Policy:"
-msgstr ""
+msgstr "كۆڭۈلدىكى كىرىش تۈزۈمى:"
 
 #: ui/main.qml:257
 #, kde-format
 msgid "Default Outgoing Policy:"
-msgstr ""
+msgstr "كۆڭۈلدىكى چىقىش تۈزۈمى:"
 
 #: ui/main.qml:306
 #, kde-format
 msgid "Error changing policy: %1"
-msgstr ""
+msgstr "تۈزۈمنى ئۆزگەرتىۋاتقاندا خاتالىق كۆرۈلدى: %1"
 
 #: ui/main.qml:411
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
-msgstr ""
+msgstr "قائىدە تەھرىر"
 
 #: ui/main.qml:431
 #, kde-format
 msgid "Error removing rule: %1"
-msgstr ""
+msgstr "قائىدىنى چىقىرىۋېتىۋاتقاندا خاتالىق كۆرۈلدى: %1"
 
 #: ui/main.qml:438
 #, kde-format
@@ -712,54 +717,54 @@ msgstr "قائىدىنى چىقىرىۋەت"
 #: ui/main.qml:463
 #, kde-format
 msgid "Firewall is disabled"
-msgstr ""
+msgstr "مۇداپىئە تام چەكلەنگەن"
 
 #: ui/main.qml:463
 #, kde-format
 msgid "No firewall rules have been added"
-msgstr ""
+msgstr "ھېچقانداق مۇداپىئە تام قائىدىسى قوشۇلمىغان"
 
 #: ui/main.qml:465
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
-msgstr ""
+msgstr "بىرنى قوشۇشتا <interface>قائىدە قوش…</interface> توپچە چېكىلىدۇ"
 
 #: ui/main.qml:466
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
-msgstr ""
+msgstr "ئۈستىدىكى ئالماشتۇرغۇچنى چېكىپ قوزغىتىلىدۇ"
 
 #: ui/main.qml:472
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
-msgstr ""
+msgstr "ufw ياكى firewalld غا ئوخشاش مۇداپىئە تام پىروگراممىسى ئورنىتىڭ"
 
 #: ui/PortTextField.qml:11
 #, kde-format
 msgid "Any Port"
-msgstr ""
+msgstr "خالىغان ئېغىز"
 
 #: ui/RuleEdit.qml:39
 #, kde-format
 msgid "New Connections"
-msgstr ""
+msgstr "يېڭى باغلىنىش"
 
 #: ui/RuleEdit.qml:40
 #, kde-format
 msgid "All Packets"
-msgstr ""
+msgstr "ھەممە بوغچا"
 
 #: ui/RuleEdit.qml:55 ui/RuleEdit.qml:62
 #, kde-format
 msgid "The default incoming policy is already '%1'."
-msgstr ""
+msgstr "كۆڭۈلدىكى كىرىش تۈزۈمى «%1»."
 
 #: ui/RuleEdit.qml:56 ui/RuleEdit.qml:63
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
-msgstr ""
+msgstr "كۆڭۈلدىكى چىقىش تۈزۈمى «%1»."
 
 #: ui/RuleEdit.qml:73
 #, kde-format
@@ -770,7 +775,7 @@ msgstr "ئالىي"
 #: ui/SimpleRuleEdit.qml:23
 #, kde-format
 msgid "Allow connections for:"
-msgstr ""
+msgstr "يول قويىدىغان باغلىنىش:"
 
 #: ui/SimpleRuleEdit.qml:23
 #, kde-format
@@ -780,4 +785,4 @@ msgstr "پىروگرامما:"
 #: ui/ViewBase.qml:253
 #, kde-format
 msgid "Blacklist Connection"
-msgstr ""
+msgstr "باغلىنىشنى قارا تىزىملىككە قوش"
