@@ -94,6 +94,7 @@
   <summary xml:lang="sl">Plasmin vmesnik za vdorobran</summary>
   <summary xml:lang="sv">Brandväggsgränssnitt för Plasma</summary>
   <summary xml:lang="tr">Plasma için Güvenlik Duvarı Arayüzü</summary>
+  <summary xml:lang="ug">Plasma نىڭ مۇداپىئە تام ئارايۈزى</summary>
   <summary xml:lang="uk">Інтерфейс до брандмауера для Плазми</summary>
   <summary xml:lang="zh-CN">Plasma 的防火墙界面</summary>
   <summary xml:lang="zh-TW">Plasma 設定防火牆的介面</summary>
@@ -138,6 +139,7 @@
     <p xml:lang="sl">Plasma Firewall je večkratni vdorobran za lažje nastavitve omrežja.</p>
     <p xml:lang="sv">Plasma brandvägg är ett gränssnitt för flera brandväggar för enkel nätverksinställning</p>
     <p xml:lang="tr">Plasma Güvenlik Duvarı, ağ yapılandırmalarınızı kolayca yönetmek için çoklu bir güvenlik duvarı arabirimidir.</p>
+    <p xml:lang="ug">Plasma مۇداپىئە تام سەپلەش ئاسان مۇداپىئە تام ئالدى ئۇچ پىروگراممىسى بولۇپ، نۇرغۇن مۇداپىئە تام ئارقا ئۇچ پىروگراممىسى بىلەن ماسلىشىدۇ.</p>
     <p xml:lang="uk">«Брандмауер Плазми» — оболонка доступу до декількох брандмауерів, яка спрощує налаштовування доступу до  мережі.</p>
     <p xml:lang="zh-CN">Plasma 防火墙是一款配置简便的防火墙前端程序，兼容多种防火墙后端程序。</p>
     <p xml:lang="zh-TW">Plasma 防火牆作為多個防火牆軟體的前端設定界面，降低設定網際網路的專業門檻。</p>
@@ -185,6 +187,7 @@
       <caption xml:lang="sl">Plasma firewall prikazuje privzeto nastavitveno stran</caption>
       <caption xml:lang="sv">Plasma brandvägg som visar en standardinställningssida</caption>
       <caption xml:lang="tr">Plasma güvenlik duvarı öntanımlı yapılandırma sayfası</caption>
+      <caption xml:lang="ug">Plasma مۇداپىئە تام كۆڭۈلدىكى سەپلىمە بېتىنى كۆرسىتىۋاتىدۇ</caption>
       <caption xml:lang="uk">Сторінка типових налаштувань «Брандмауера Плазми»</caption>
       <caption xml:lang="zh-CN">Plasma 防火墙前端正在显示默认配置页面</caption>
       <caption xml:lang="zh-TW">預設的 Plasma 防火牆設定頁面</caption>
@@ -233,6 +236,7 @@
   <developer_name xml:lang="sl">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="sv">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="tr">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
+  <developer_name xml:lang="ug">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="uk">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="zh-CN">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="zh-TW">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
