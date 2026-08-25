@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kcm_firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-09 00:45+0000\n"
-"PO-Revision-Date: 2026-05-21 14:10+0200\n"
+"PO-Revision-Date: 2026-08-22 14:34+0200\n"
 "Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 26.04.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -36,13 +36,12 @@ msgstr "Fehler beim Einholen von Informationen von der Firewall."
 #: backends/firewalld/firewalldjob.cpp:173
 #, kde-format
 msgid "firewalld saving (runtime to permanent)"
-msgstr ""
+msgstr "firewalld wird gespeichert (Laufzeit nach permanent)"
 
 #: backends/firewalld/firewalldjob.cpp:197
-#, fuzzy, kde-format
-#| msgid "Firewall Logs"
+#, kde-format
 msgid "firewalld saving"
-msgstr "Firewall-Protokolle"
+msgstr "firewalld wird gespeichert"
 
 #: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
@@ -52,7 +51,7 @@ msgstr "firewalld %1"
 #: backends/firewalld/queryrulesfirewalldjob.cpp:50
 #, kde-format
 msgid "firewalld listing rules and services"
-msgstr ""
+msgstr "firewalld listet Regeln und Dienste auf"
 
 #: backends/netstat/connectionsmodel.cpp:97 core/loglistmodel.cpp:96
 #, kde-format
@@ -123,17 +122,17 @@ msgstr "Fehler beim Speichern des Profils."
 #: backends/ufw/helper/helper.cpp:267
 #, kde-format
 msgid "Invalid arguments passed to delete profile"
-msgstr ""
+msgstr "Ungültige Argumente für das Löschen eines Profils weitergegeben"
 
 #: backends/ufw/helper/helper.cpp:274
 #, kde-format
 msgid "Could not remove the profile from disk."
-msgstr ""
+msgstr "Das Profil kann nicht von der Festplatte entfernt werden."
 
 #: backends/ufw/helper/helper.cpp:289
 #, kde-format
 msgid "Invalid argument passed to add Rules"
-msgstr ""
+msgstr "Ungültiges Argument für das Hinzufügen von Regeln weitergegeben"
 
 #: backends/ufw/helper/helper.cpp:361
 #, kde-format
@@ -566,6 +565,8 @@ msgid ""
 "Keeps the program waiting until the connection attempt times out, some short "
 "time later."
 msgstr ""
+"Lässt das Programm auf die Zeitüberschreitung für den Verbindungsversuch "
+"kurze Zeit später warten."
 
 #: ui/main.qml:27
 #, kde-format
@@ -741,7 +742,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
-msgstr ""
+msgstr "Klicken Sie zum Aktivieren auf den Schalter oben"
 
 #: ui/main.qml:472
 #, kde-format
