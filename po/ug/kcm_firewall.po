@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-09 00:45+0000\n"
-"PO-Revision-Date: 2026-07-22 17:04-0400\n"
+"PO-Revision-Date: 2026-09-22 18:03+0900\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
 "Language: ug\n"
@@ -46,7 +46,7 @@ msgstr "firewalld ساقلاۋاتىدۇ"
 #: backends/firewalld/firewalldjob.cpp:197
 #, kde-format
 msgid "firewalld %1"
-msgstr "firewalld %1"
+msgstr ""
 
 #: backends/firewalld/queryrulesfirewalldjob.cpp:50
 #, kde-format
@@ -81,7 +81,7 @@ msgstr "ھالىتى"
 #, kde-format
 msgctxt "@title:column"
 msgid "PID"
-msgstr "PID"
+msgstr ""
 
 #: backends/netstat/connectionsmodel.cpp:107
 #, kde-format
@@ -145,8 +145,6 @@ msgid ""
 "There was an error in the backend! Please report it.\n"
 "%1 %2"
 msgstr ""
-"ئارقا ئۇچتا خاتالىق كۆرۈلگەن! ئۇنى مەلۇم قىلىڭ.\n"
-"%1 %2"
 
 #: backends/ufw/ufwclient.cpp:268
 #, kde-format
@@ -174,7 +172,7 @@ msgstr "مەنبە ئېغىز"
 #, kde-format
 msgctxt "@title:column"
 msgid "To"
-msgstr "كىمگە"
+msgstr "تاپشۇرۇپ ئالغۇچى"
 
 #: core/loglistmodel.cpp:94
 #, kde-format
@@ -221,7 +219,7 @@ msgstr "خالىغان جاي"
 #, kde-format
 msgctxt "service/application name (port numbers)"
 msgid "%1 (%2)"
-msgstr "%1 (%2)"
+msgstr ""
 
 #: core/rule.cpp:198
 #, kde-format
@@ -244,7 +242,7 @@ msgstr "ھەئە"
 #, kde-format
 msgctxt "@title:column"
 msgid "IP"
-msgstr "IP"
+msgstr ""
 
 #: core/rulelistmodel.cpp:95
 #, kde-format
@@ -270,7 +268,7 @@ msgstr "تۆۋەن"
 #: core/types.cpp:24
 #, kde-format
 msgid "Medium"
-msgstr "ئوتتۇرا ھال"
+msgstr "ئوتتۇراھال"
 
 #: core/types.cpp:26
 #, kde-format
@@ -320,42 +318,42 @@ msgstr "چېكى"
 #: core/types.cpp:80
 #, kde-format
 msgid "Amule"
-msgstr "Amule"
+msgstr ""
 
 #: core/types.cpp:82
 #, kde-format
 msgid "Deluge"
-msgstr "Deluge"
+msgstr ""
 
 #: core/types.cpp:84
 #, kde-format
 msgid "KTorrent"
-msgstr "KTorrent"
+msgstr ""
 
 #: core/types.cpp:86
 #, kde-format
 msgid "Nicotine"
-msgstr "Nicotine"
+msgstr ""
 
 #: core/types.cpp:88
 #, kde-format
 msgid "qBittorrent"
-msgstr "qBittorrent"
+msgstr ""
 
 #: core/types.cpp:90
 #, kde-format
 msgid "Transmission"
-msgstr "Transmission"
+msgstr ""
 
 #: core/types.cpp:92
 #, kde-format
 msgid "ICQ"
-msgstr "ICQ"
+msgstr ""
 
 #: core/types.cpp:94
 #, kde-format
 msgid "Jabber"
-msgstr "Jabber"
+msgstr ""
 
 #: core/types.cpp:96
 #, kde-format
@@ -370,12 +368,12 @@ msgstr "Yahoo! مۇڭداشقۇ"
 #: core/types.cpp:100
 #, kde-format
 msgid "FTP"
-msgstr "FTP"
+msgstr ""
 
 #: core/types.cpp:102
 #, kde-format
 msgid "HTTP"
-msgstr "HTTP"
+msgstr ""
 
 #: core/types.cpp:104
 #, kde-format
@@ -385,7 +383,7 @@ msgstr "بىخەتەر HTTP"
 #: core/types.cpp:106
 #, kde-format
 msgid "IMAP"
-msgstr "IMAP"
+msgstr ""
 
 #: core/types.cpp:108
 #, kde-format
@@ -395,7 +393,7 @@ msgstr "بىخەتەر IMAP"
 #: core/types.cpp:110
 #, kde-format
 msgid "POP3"
-msgstr "POP3"
+msgstr ""
 
 #: core/types.cpp:112
 #, kde-format
@@ -405,17 +403,17 @@ msgstr "بىخەتەر POP3"
 #: core/types.cpp:114
 #, kde-format
 msgid "SMTP"
-msgstr "SMTP"
+msgstr ""
 
 #: core/types.cpp:116
 #, kde-format
 msgid "NFS"
-msgstr "NFS"
+msgstr ""
 
 #: core/types.cpp:118
 #, kde-format
 msgid "Samba"
-msgstr "Samba"
+msgstr ""
 
 #: core/types.cpp:120
 #, kde-format
@@ -425,27 +423,27 @@ msgstr "بىخەتەر Shell"
 #: core/types.cpp:122
 #, kde-format
 msgid "VNC"
-msgstr "VNC"
+msgstr ""
 
 #: core/types.cpp:124
 #, kde-format
 msgid "Zeroconf"
-msgstr "Zeroconf"
+msgstr ""
 
 #: core/types.cpp:126
 #, kde-format
 msgid "Telnet"
-msgstr "Telnet"
+msgstr ""
 
 #: core/types.cpp:128
 #, kde-format
 msgid "NTP"
-msgstr "NTP"
+msgstr ""
 
 #: core/types.cpp:130
 #, kde-format
 msgid "CUPS"
-msgstr "CUPS"
+msgstr ""
 
 #: ui/AdvancedRuleEdit.qml:31 ui/SimpleRuleEdit.qml:29
 #, kde-format
@@ -455,7 +453,7 @@ msgstr "تۈزۈم:"
 #: ui/AdvancedRuleEdit.qml:42 ui/SimpleRuleEdit.qml:40
 #, kde-format
 msgid "Direction:"
-msgstr "يۆنىلىش:"
+msgstr "يونۇلۇش:"
 
 #: ui/AdvancedRuleEdit.qml:45 ui/SimpleRuleEdit.qml:44
 #, kde-format
@@ -475,12 +473,12 @@ msgstr "IP نەشرى:"
 #: ui/AdvancedRuleEdit.qml:62
 #, kde-format
 msgid "IPv4"
-msgstr "IPv4"
+msgstr ""
 
 #: ui/AdvancedRuleEdit.qml:67
 #, kde-format
 msgid "IPv6"
-msgstr "IPv6"
+msgstr ""
 
 #: ui/AdvancedRuleEdit.qml:74
 #, kde-format
@@ -510,7 +508,7 @@ msgstr "كۈندىلىك خاتىرە:"
 #: ui/ConnectionsView.qml:14
 #, kde-format
 msgid "Connections"
-msgstr "باغلىنىش"
+msgstr "باغلىنىشلار"
 
 #: ui/ConnectionsView.qml:26
 #, kde-format
@@ -616,7 +614,7 @@ msgstr "مۇداپىئە تام پىروگراممىسى، %1 نى ئورنىت�
 #: ui/main.qml:107
 #, kde-format
 msgid "Permission denied"
-msgstr "ئىجازەت رەت قىلىندى"
+msgstr "ھوقۇقىڭىز يەتمىدى"
 
 #: ui/main.qml:111
 #, kde-format
@@ -624,7 +622,6 @@ msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
 "reboot."
 msgstr ""
-"يېقىندا يادرو يېڭىلاندى. Iptables نى دەسلەپلەشتۈرەلمىدى، قايتا قوزغىتىڭ."
 
 #: ui/main.qml:114
 #, kde-format
@@ -664,7 +661,7 @@ msgstr "قائىدىنى يېڭىلاۋاتقاندا خاتالىق كۆرۈل�
 #: ui/main.qml:214
 #, kde-format
 msgid "Create"
-msgstr "قۇر"
+msgstr "ياسا"
 
 #: ui/main.qml:214
 #, kde-format
