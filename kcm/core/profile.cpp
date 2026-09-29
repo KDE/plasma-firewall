@@ -184,7 +184,8 @@ void Profile::load(QIODevice *device)
                                     attr.value("sapp").toString(),
                                     attr.value("dapp").toString(),
                                     attr.value("position").toInt(),
-                                    attr.value("v6") == QStringLiteral("True")));
+                                    attr.value("v6") == QStringLiteral("True"),
+                                    attr.value("comment").toString()));
         } else if (reader.name() == QLatin1String("defaults")) {
             m_fields |= FIELD_DEFAULTS;
 

@@ -19,7 +19,7 @@ class KCM_FIREWALL_CORE_EXPORT RuleListModel : public QAbstractTableModel
     Q_OBJECT
 
 public:
-    enum ProfileItemModelColumns { ActionColumn = 0, FromColumn, ToColumn, Ipv6Column, LoggingColumn, EditColumn};
+    enum ProfileItemModelColumns { ActionColumn = 0, FromColumn, ToColumn, Ipv6Column, LoggingColumn, CommentColumn, EditColumn};
     Q_ENUM(ProfileItemModelColumns)
 
     explicit RuleListModel(QObject *parent = nullptr);

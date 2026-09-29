@@ -424,4 +424,18 @@ bool Rule::simplified() const
     return m_simplified;
 }
 
+QString Rule::comment() const
+{
+    return m_comment;
+}
+
+void Rule::setComment(const QString &comment)
+{
+    if (m_comment == comment) {
+        return;
+    }
+    m_comment = comment;
+    Q_EMIT commentChanged(comment);
+}
+
 #include "moc_rule.cpp"

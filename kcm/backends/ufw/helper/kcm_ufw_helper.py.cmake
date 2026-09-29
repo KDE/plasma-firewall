@@ -22,7 +22,7 @@ from copy import deepcopy
 
 import ufw.common
 import ufw.frontend
-from ufw.util import valid_address
+from ufw.util import valid_address, hex_encode
 from ufw.common import UFWRule
 
 ANY_ADDR       = '0.0.0.0/0'
@@ -214,6 +214,7 @@ def encodeText(str):
     str=str.replace("<", "&lt;")
     str=str.replace("\"", "&quot;")
     str=str.replace(">", "&gt;")
+    str=str.replace("\n", "&#10;").replace("\r", "&#13;").replace("\t", "&#9;")
     return str
 
 def ruleDetails(rule):
@@ -268,6 +269,8 @@ def toXml(rule, xmlStr):
 #         xmlStr.write(hashStr)
     xmlStr.write("\" logtype=\"")
     xmlStr.write(rule.logtype)
+    xmlStr.write("\" comment=\"")
+    xmlStr.write(encodeText(rule.get_comment() if getattr(rule, "comment", "") else ""))
     xmlStr.write("\" />")
 
 # Create rule from XML...
@@ -292,6 +295,10 @@ def fromXml(str):
     rule.interface_out=elem.get('interface_out', '')
     rule.logtype=elem.get('logtype', '').lower()
     rule.v6=elem.get('v6', 'False').lower() == "true"
+    comment = elem.get('comment', '')
+    if comment:
+        # UFWRule stores UTF-8 comments as hex, including through set_comment().
+        rule.set_comment(hex_encode(comment))
     return rule
 
 def getStatus(ufw, xmlStr):

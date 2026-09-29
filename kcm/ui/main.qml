@@ -371,6 +371,9 @@ KCMUtils.ScrollViewKCM {
 
         model: kcm.client.rulesModel
         columnWidthProvider: (column) => {
+            if (column === RuleListModel.CommentColumn && kcm.client.name !== "ufw") {
+                return 0
+            }
             let explicitWidth = explicitColumnWidth(column)
             if (explicitWidth > 0) {
                 return explicitWidth
@@ -381,6 +384,7 @@ KCMUtils.ScrollViewKCM {
             columnWidths[RuleListModel.ToColumn] =  Kirigami.Units.gridUnit * 10
             columnWidths[RuleListModel.Ipv6Column] = Kirigami.Units.gridUnit * 4
             columnWidths[RuleListModel.LoggingColumn] = Kirigami.Units.gridUnit * 5
+            columnWidths[RuleListModel.CommentColumn] = Kirigami.Units.gridUnit * 12
             columnWidths[RuleListModel.EditColumn] = Kirigami.Units.gridUnit * 6
             return columnWidths[column]
         }

@@ -39,7 +39,7 @@ int RuleListModel::rowCount(const QModelIndex &parent) const
 int RuleListModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    return 6;
+    return 7;
 }
 
 QVariant RuleListModel::data(const QModelIndex &index, int role) const
@@ -64,6 +64,8 @@ QVariant RuleListModel::data(const QModelIndex &index, int role) const
         return rule->ipv6() ? QStringLiteral("IPv6") : QStringLiteral("IPv4");
     case LoggingColumn:
         return rule->loggingStr();
+    case CommentColumn:
+        return rule->comment();
     }
     return QVariant();
 }
@@ -93,6 +95,8 @@ QVariant RuleListModel::headerData(int section, Qt::Orientation orientation, int
         return i18nc("@title:column", "IP");
     case LoggingColumn:
         return i18nc("@title:column", "Logging");
+    case CommentColumn:
+        return i18nc("@title:column", "Comment");
     }
     return QVariant();
 

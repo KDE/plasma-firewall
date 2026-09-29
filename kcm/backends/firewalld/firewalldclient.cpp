@@ -531,6 +531,7 @@ QList<Rule *> FirewalldClient::extractRulesFromResponse(const QList<firewalld_re
                                          "",
                                          i,
                                          r.ipv == "ipv6",
+                                         QString(),
                                          false));
         i += 1;
     }

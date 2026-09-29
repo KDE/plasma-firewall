@@ -143,4 +143,12 @@ Kirigami.FormLayout {
             rule.logging = ruleChoices[index].data;
         }
     }
+
+    QQC2.TextField {
+        Kirigami.FormData.label: i18nc("@label:textbox User-supplied comment about this firewall rule", "Comment:")
+        visible: ruleEdit.client && ruleEdit.client.name === "ufw"
+        placeholderText: i18nc("@info:placeholder", "Optional")
+        text: root.rule.comment
+        onTextEdited: root.rule.comment = text
+    }
 }

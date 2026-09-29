@@ -656,6 +656,10 @@ QString UfwClient::toXml(Rule *r) const
         xml.writeAttribute(QStringLiteral("interface_out"), r->interfaceOut());
     }
 
+    if (!r->comment().isEmpty()) {
+        xml.writeAttribute(QStringLiteral("comment"), r->comment());
+    }
+
     xml.writeAttribute(QStringLiteral("logtype"), Types::toString(r->logging()));
 
     xml.writeAttribute(QStringLiteral("v6"), r->ipv6() ? QStringLiteral("True") : QStringLiteral("False"));

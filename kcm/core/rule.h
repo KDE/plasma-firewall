@@ -17,6 +17,7 @@
 class KCM_FIREWALL_CORE_EXPORT Rule : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QString comment READ comment WRITE setComment NOTIFY commentChanged)
     Q_PROPERTY(QString policy READ policy WRITE setPolicy NOTIFY policyChanged)
     Q_PROPERTY(bool incoming READ incoming WRITE setIncoming NOTIFY incomingChanged)
     Q_PROPERTY(QString sourceAddress READ sourceAddress WRITE setSourceAddress NOTIFY sourceAddressChanged)
@@ -52,6 +53,7 @@ public:
          const QString &destApp = QString(),
          unsigned int i = 0,
          bool ipv6 = false,
+         const QString &comment = QString(),
          bool simplified = true)
         : m_position(i)
         , m_action(pol)
@@ -69,6 +71,7 @@ public:
         , m_interfaceIn(ifaceIn)
         , m_interfaceOut(ifaceOut)
         , m_interface(0)
+        , m_comment(comment)
     {
     }
     Rule(const Rule &rhs, QObject *parent)
@@ -88,8 +91,10 @@ public:
         , m_sourcePort(rhs.m_sourcePort)
         , m_interfaceIn(rhs.m_interfaceIn)
         , m_interfaceOut(rhs.m_interfaceIn)
-        , m_interface(rhs.m_interface){};
+        , m_interface(rhs.m_interface)
+        , m_comment(rhs.m_comment){};
 
+    QString comment() const;
     QString toStr() const;
     QString fromStr() const;
     QString actionStr() const;
@@ -120,7 +125,7 @@ public:
     // 'different' is used in the EditRule dialog to know whether the rule has actually changed...
     bool different(const Rule &o) const
     {
-        return m_logtype != o.m_logtype /*|| description!=o.description*/ || !(*this == o);
+        return m_logtype != o.m_logtype || m_comment != o.m_comment || !(*this == o);
     }
 
     bool operator==(const Rule &o) const
@@ -133,6 +138,7 @@ public:
     }
 
 public slots:
+    void setComment(const QString &comment);
     void setPolicy(const QString &policy);
     void setIncoming(bool incoming);
     void setSourceAddress(const QString &sourceAddress);
@@ -149,6 +155,7 @@ public slots:
     void setSourceApplication(const QString &app);
 
 Q_SIGNALS:
+    void commentChanged(const QString &comment);
     void policyChanged(const QString &policy);
     void directionChanged(const QString &direction);
     void sourceAddressChanged(const QString &sourceAddress);
@@ -180,6 +187,7 @@ private:
     QString m_interfaceOut;
     QString m_interfaceStr;
     int m_interface;
+    QString m_comment;
 };
 
 #endif
