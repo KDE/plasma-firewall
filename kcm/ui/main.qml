@@ -397,7 +397,6 @@ KCMUtils.ScrollViewKCM {
                     required property bool current
                     required property bool selected
                     property QtObject activeJob: null
-                    spacing: 0
                     // TODO InlineBusyIndicator?
                     enabled: !activeJob
                     visible: tableView.currentHoveredRow === model.row || selected
@@ -411,9 +410,9 @@ KCMUtils.ScrollViewKCM {
                         icon.name: "edit-entry"
                         visible: kcm.client.supportsRuleUpdate
                         onClicked: tableView.editRule(model.row)
-                        QQC2.ToolTip {
-                            text: i18nc("@info:tooltip", "Edit Rule")
-                        }
+                        QQC2.ToolTip.text: i18nc("@info:tooltip", "Edit Rule")
+                        QQC2.ToolTip.visible: hovered || activeFocus
+                        QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
                     }
                     QQC2.ToolButton {
                         Layout.fillHeight: true
@@ -438,9 +437,13 @@ KCMUtils.ScrollViewKCM {
 
                             });
                         }
-                        QQC2.ToolTip {
-                            text: i18nc("@info:tooltip", "Remove Rule")
-                        }
+                        QQC2.ToolTip.text: i18nc("@info:tooltip", "Remove Rule")
+                        QQC2.ToolTip.visible: hovered || activeFocus
+                        QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+                    }
+
+                    Item {
+                        Layout.fillWidth: true
                     }
                 }
             }

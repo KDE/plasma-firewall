@@ -97,6 +97,8 @@ QVariant RuleListModel::headerData(int section, Qt::Orientation orientation, int
         return i18nc("@title:column", "Logging");
     case CommentColumn:
         return i18nc("@title:column", "Comment");
+    case EditColumn:
+        return i18nc("@title:column", "Edit");
     }
     return QVariant();
 
