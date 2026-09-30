@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-09 00:45+0000\n"
+"POT-Creation-Date: 2026-09-30 00:48+0000\n"
 "PO-Revision-Date: 2026-02-12 16:17+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -29,7 +29,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "mail@kisaragi-hiu.com"
 
-#: backends/firewalld/firewalldclient.cpp:600 backends/ufw/ufwclient.cpp:697
+#: backends/firewalld/firewalldclient.cpp:601 backends/ufw/ufwclient.cpp:701
 #, kde-format
 msgid "Error fetching information from the firewall."
 msgstr "從防火牆取得資訊時發生錯誤。"
@@ -159,7 +159,7 @@ msgstr "取得防火牆紀錄時發生錯誤：%1"
 msgid "Any"
 msgstr "任何"
 
-#: core/loglistmodel.cpp:88 core/rulelistmodel.cpp:89
+#: core/loglistmodel.cpp:88 core/rulelistmodel.cpp:91
 #, kde-format
 msgctxt "@title:column"
 msgid "From"
@@ -171,7 +171,7 @@ msgctxt "@title:column"
 msgid "Source port"
 msgstr "來源埠："
 
-#: core/loglistmodel.cpp:92 core/rulelistmodel.cpp:91
+#: core/loglistmodel.cpp:92 core/rulelistmodel.cpp:93
 #, kde-format
 msgctxt "@title:column"
 msgid "To"
@@ -189,7 +189,7 @@ msgctxt "@title:column"
 msgid "Interface"
 msgstr "介面"
 
-#: core/loglistmodel.cpp:100 core/rulelistmodel.cpp:87
+#: core/loglistmodel.cpp:100 core/rulelistmodel.cpp:89
 #, kde-format
 msgctxt "@title:column"
 msgid "Action"
@@ -241,17 +241,23 @@ msgstr "%1 傳出"
 msgid "Yes"
 msgstr "是"
 
-#: core/rulelistmodel.cpp:93
+#: core/rulelistmodel.cpp:95
 #, kde-format
 msgctxt "@title:column"
 msgid "IP"
 msgstr "IP"
 
-#: core/rulelistmodel.cpp:95
+#: core/rulelistmodel.cpp:97
 #, kde-format
 msgctxt "@title:column"
 msgid "Logging"
 msgstr "記錄"
+
+#: core/rulelistmodel.cpp:99
+#, kde-format
+msgctxt "@title:column"
+msgid "Comment"
+msgstr ""
 
 #: core/systemdjob.cpp:51
 #, kde-format
@@ -283,7 +289,7 @@ msgstr "高"
 msgid "Full"
 msgstr "完整"
 
-#: core/types.cpp:45 ui/RuleEdit.qml:38
+#: core/types.cpp:45 ui/RuleEdit.qml:37
 #, kde-format
 msgid "None"
 msgstr "無"
@@ -508,6 +514,18 @@ msgstr "介面："
 msgid "Logging:"
 msgstr "記錄："
 
+#: ui/AdvancedRuleEdit.qml:148
+#, kde-format
+msgctxt "@label:textbox User-supplied comment about this firewall rule"
+msgid "Comment:"
+msgstr ""
+
+#: ui/AdvancedRuleEdit.qml:150
+#, kde-format
+msgctxt "@info:placeholder"
+msgid "Optional"
+msgstr ""
+
 #: ui/ConnectionsView.qml:14
 #, kde-format
 msgid "Connections"
@@ -644,7 +662,7 @@ msgstr "建立新防火牆規則"
 msgid "Edit Firewall Rule"
 msgstr "編輯防火牆規則"
 
-#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:420
+#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:424
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr "由於後端斷線，請重開 Plasma 防火牆。"
@@ -695,46 +713,46 @@ msgstr "預設傳出策略："
 msgid "Error changing policy: %1"
 msgstr "修改策略時發生錯誤：%1"
 
-#: ui/main.qml:411
+#: ui/main.qml:415
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "編輯規則"
 
-#: ui/main.qml:431
+#: ui/main.qml:435
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "移除規則時發生錯誤：%1"
 
-#: ui/main.qml:438
+#: ui/main.qml:442
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "移除規則"
 
-#: ui/main.qml:463
+#: ui/main.qml:467
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "防火牆未開啟"
 
-#: ui/main.qml:463
+#: ui/main.qml:467
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "尚未新增防火牆規則"
 
-#: ui/main.qml:465
+#: ui/main.qml:469
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr "點擊 <interface>新增規則…</interface> 按鈕來新增規則"
 
-#: ui/main.qml:466
+#: ui/main.qml:470
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr "點擊上方開關來啟用"
 
-#: ui/main.qml:472
+#: ui/main.qml:476
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "請安裝防火牆，例如 ufw 或 firewalld"
@@ -744,27 +762,27 @@ msgstr "請安裝防火牆，例如 ufw 或 firewalld"
 msgid "Any Port"
 msgstr "任何連接埠"
 
-#: ui/RuleEdit.qml:39
+#: ui/RuleEdit.qml:38
 #, kde-format
 msgid "New Connections"
 msgstr "新連線"
 
-#: ui/RuleEdit.qml:40
+#: ui/RuleEdit.qml:39
 #, kde-format
 msgid "All Packets"
 msgstr "所有封包"
 
-#: ui/RuleEdit.qml:55 ui/RuleEdit.qml:62
+#: ui/RuleEdit.qml:54 ui/RuleEdit.qml:61
 #, kde-format
 msgid "The default incoming policy is already '%1'."
 msgstr "預設傳入策略已經是 '%1'。"
 
-#: ui/RuleEdit.qml:56 ui/RuleEdit.qml:63
+#: ui/RuleEdit.qml:55 ui/RuleEdit.qml:62
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
 msgstr "預設傳出策略已經是 '%1'。"
 
-#: ui/RuleEdit.qml:73
+#: ui/RuleEdit.qml:72
 #, kde-format
 msgctxt "Advanced firewall rules"
 msgid "Advanced"

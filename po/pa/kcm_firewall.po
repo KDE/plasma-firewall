@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-09 00:45+0000\n"
+"POT-Creation-Date: 2026-09-30 00:48+0000\n"
 "PO-Revision-Date: 2024-01-01 11:06-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
@@ -27,7 +27,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "aalam@punlinux.org"
 
-#: backends/firewalld/firewalldclient.cpp:600 backends/ufw/ufwclient.cpp:697
+#: backends/firewalld/firewalldclient.cpp:601 backends/ufw/ufwclient.cpp:701
 #, kde-format
 msgid "Error fetching information from the firewall."
 msgstr "ਫ਼ਾਇਰਵਾਲ ਤੋਂ ਜਾਣਕਾਰੀ ਲੈਣ ਲਈ ਗਲਤੀ ਹੈ।"
@@ -155,7 +155,7 @@ msgstr ""
 msgid "Any"
 msgstr "ਕੋਈ ਵੀ"
 
-#: core/loglistmodel.cpp:88 core/rulelistmodel.cpp:89
+#: core/loglistmodel.cpp:88 core/rulelistmodel.cpp:91
 #, kde-format
 msgctxt "@title:column"
 msgid "From"
@@ -167,7 +167,7 @@ msgctxt "@title:column"
 msgid "Source port"
 msgstr "ਸਰੋਤ ਪੋਰਟ:"
 
-#: core/loglistmodel.cpp:92 core/rulelistmodel.cpp:91
+#: core/loglistmodel.cpp:92 core/rulelistmodel.cpp:93
 #, kde-format
 msgctxt "@title:column"
 msgid "To"
@@ -185,7 +185,7 @@ msgctxt "@title:column"
 msgid "Interface"
 msgstr "ਇੰਟਰਫੇਸ"
 
-#: core/loglistmodel.cpp:100 core/rulelistmodel.cpp:87
+#: core/loglistmodel.cpp:100 core/rulelistmodel.cpp:89
 #, kde-format
 msgctxt "@title:column"
 msgid "Action"
@@ -237,17 +237,23 @@ msgstr "%1 ਜਾਣ ਵਾਲੇ"
 msgid "Yes"
 msgstr "ਹਾਂ"
 
-#: core/rulelistmodel.cpp:93
+#: core/rulelistmodel.cpp:95
 #, kde-format
 msgctxt "@title:column"
 msgid "IP"
 msgstr "IP"
 
-#: core/rulelistmodel.cpp:95
+#: core/rulelistmodel.cpp:97
 #, kde-format
 msgctxt "@title:column"
 msgid "Logging"
 msgstr "ਲਾਗ"
+
+#: core/rulelistmodel.cpp:99
+#, kde-format
+msgctxt "@title:column"
+msgid "Comment"
+msgstr ""
 
 #: core/systemdjob.cpp:51
 #, kde-format
@@ -279,7 +285,7 @@ msgstr "ਜਿਆਦਾ"
 msgid "Full"
 msgstr "ਪੂਰਾ"
 
-#: core/types.cpp:45 ui/RuleEdit.qml:38
+#: core/types.cpp:45 ui/RuleEdit.qml:37
 #, kde-format
 msgid "None"
 msgstr "ਕੋਈ ਨਹੀਂ"
@@ -504,6 +510,18 @@ msgstr "ਇੰਟਰਫੇਸ:"
 msgid "Logging:"
 msgstr "ਲਾਗ ਰੱਖਣਾ:"
 
+#: ui/AdvancedRuleEdit.qml:148
+#, kde-format
+msgctxt "@label:textbox User-supplied comment about this firewall rule"
+msgid "Comment:"
+msgstr ""
+
+#: ui/AdvancedRuleEdit.qml:150
+#, kde-format
+msgctxt "@info:placeholder"
+msgid "Optional"
+msgstr ""
+
 #: ui/ConnectionsView.qml:14
 #, kde-format
 msgid "Connections"
@@ -642,7 +660,7 @@ msgstr "ਨਵਾਂ ਫਾਇਰਵਾਲ ਨਿਯਮ ਬਣਾਓ"
 msgid "Edit Firewall Rule"
 msgstr "ਫਾਇਰਵਾਲ ਨਿਯਮ ਨੂੰ ਸੋਧੋ"
 
-#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:420
+#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:424
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr "ਪਲਾਜ਼ਮਾ ਫਾਇਰਵਾਲ ਨੂੰ ਮੁੜ-ਚਾਲੂ ਕਰੋ, ਬੈਕਐਂਡ ਡਿਸ-ਕਨੈਕਟ ਹੈ।"
@@ -695,46 +713,46 @@ msgstr "ਮੂਲ ਭੇਜਣ ਵਾਲੀ ਪਾਲਸੀ:"
 msgid "Error changing policy: %1"
 msgstr ""
 
-#: ui/main.qml:411
+#: ui/main.qml:415
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "ਨਿਯਮ ਨੂੰ ਸੋਧੋ"
 
-#: ui/main.qml:431
+#: ui/main.qml:435
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "ਨਿਯਮ ਹਟਾਉਣ ਦੌਰਾਨ ਗਲਤੀ: %1"
 
-#: ui/main.qml:438
+#: ui/main.qml:442
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "ਨਿਯਮ ਨੂੰ ਹਟਾਓ"
 
-#: ui/main.qml:463
+#: ui/main.qml:467
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "ਫਾਇਰਵਾਲ ਅਸਮਰੱਥ ਹੈ"
 
-#: ui/main.qml:463
+#: ui/main.qml:467
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "ਕੋਈ ਫਾਇਰਵਾਲ ਨਿਯਮ ਨਹੀਂ ਜੋੜਿਆ ਗਿਆ ਹੈ"
 
-#: ui/main.qml:465
+#: ui/main.qml:469
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
 
-#: ui/main.qml:466
+#: ui/main.qml:470
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr ""
 
-#: ui/main.qml:472
+#: ui/main.qml:476
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "ਫਾਇਰਵਾਲ ਇੰਸਟਾਲ ਕਰੋ ਜਿਵੇਂ ufw ਜਾਂ firewalld"
@@ -744,27 +762,27 @@ msgstr "ਫਾਇਰਵਾਲ ਇੰਸਟਾਲ ਕਰੋ ਜਿਵੇਂ ufw �
 msgid "Any Port"
 msgstr "ਕੋਈ ਵੀ ਪੋਰਟ"
 
-#: ui/RuleEdit.qml:39
+#: ui/RuleEdit.qml:38
 #, kde-format
 msgid "New Connections"
 msgstr "ਨਵੇਂ ਕਨੈਕਸ਼ਨ"
 
-#: ui/RuleEdit.qml:40
+#: ui/RuleEdit.qml:39
 #, kde-format
 msgid "All Packets"
 msgstr "ਸਾਰੇ ਪੈਕੇਟ"
 
-#: ui/RuleEdit.qml:55 ui/RuleEdit.qml:62
+#: ui/RuleEdit.qml:54 ui/RuleEdit.qml:61
 #, kde-format
 msgid "The default incoming policy is already '%1'."
 msgstr ""
 
-#: ui/RuleEdit.qml:56 ui/RuleEdit.qml:63
+#: ui/RuleEdit.qml:55 ui/RuleEdit.qml:62
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
 msgstr ""
 
-#: ui/RuleEdit.qml:73
+#: ui/RuleEdit.qml:72
 #, kde-format
 msgctxt "Advanced firewall rules"
 msgid "Advanced"

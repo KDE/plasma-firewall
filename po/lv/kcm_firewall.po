@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-09 00:45+0000\n"
+"POT-Creation-Date: 2026-09-30 00:48+0000\n"
 "PO-Revision-Date: 2026-03-03 13:16+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -28,7 +28,7 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "toms.trasuns@posteo.net"
 
-#: backends/firewalld/firewalldclient.cpp:600 backends/ufw/ufwclient.cpp:697
+#: backends/firewalld/firewalldclient.cpp:601 backends/ufw/ufwclient.cpp:701
 #, kde-format
 msgid "Error fetching information from the firewall."
 msgstr "Kļūda, iegūstot informāciju no ugunsmūra"
@@ -158,7 +158,7 @@ msgstr "Kļūda, iegūstot ugunsmūra žurnālus: %1"
 msgid "Any"
 msgstr "Jebkāds"
 
-#: core/loglistmodel.cpp:88 core/rulelistmodel.cpp:89
+#: core/loglistmodel.cpp:88 core/rulelistmodel.cpp:91
 #, kde-format
 msgctxt "@title:column"
 msgid "From"
@@ -170,7 +170,7 @@ msgctxt "@title:column"
 msgid "Source port"
 msgstr "Avota ports"
 
-#: core/loglistmodel.cpp:92 core/rulelistmodel.cpp:91
+#: core/loglistmodel.cpp:92 core/rulelistmodel.cpp:93
 #, kde-format
 msgctxt "@title:column"
 msgid "To"
@@ -188,7 +188,7 @@ msgctxt "@title:column"
 msgid "Interface"
 msgstr "Saskarne"
 
-#: core/loglistmodel.cpp:100 core/rulelistmodel.cpp:87
+#: core/loglistmodel.cpp:100 core/rulelistmodel.cpp:89
 #, kde-format
 msgctxt "@title:column"
 msgid "Action"
@@ -240,17 +240,23 @@ msgstr "%1 izejošs"
 msgid "Yes"
 msgstr "Jā"
 
-#: core/rulelistmodel.cpp:93
+#: core/rulelistmodel.cpp:95
 #, kde-format
 msgctxt "@title:column"
 msgid "IP"
 msgstr "IP"
 
-#: core/rulelistmodel.cpp:95
+#: core/rulelistmodel.cpp:97
 #, kde-format
 msgctxt "@title:column"
 msgid "Logging"
 msgstr "Reģistrēšana žurnālā"
+
+#: core/rulelistmodel.cpp:99
+#, kde-format
+msgctxt "@title:column"
+msgid "Comment"
+msgstr ""
 
 #: core/systemdjob.cpp:51
 #, kde-format
@@ -282,7 +288,7 @@ msgstr "Augsts"
 msgid "Full"
 msgstr "Pilns"
 
-#: core/types.cpp:45 ui/RuleEdit.qml:38
+#: core/types.cpp:45 ui/RuleEdit.qml:37
 #, kde-format
 msgid "None"
 msgstr "Nav"
@@ -507,6 +513,18 @@ msgstr "Saskarne:"
 msgid "Logging:"
 msgstr "Reģistrēšana žurnālā:"
 
+#: ui/AdvancedRuleEdit.qml:148
+#, kde-format
+msgctxt "@label:textbox User-supplied comment about this firewall rule"
+msgid "Comment:"
+msgstr ""
+
+#: ui/AdvancedRuleEdit.qml:150
+#, kde-format
+msgctxt "@info:placeholder"
+msgid "Optional"
+msgstr ""
+
 #: ui/ConnectionsView.qml:14
 #, kde-format
 msgid "Connections"
@@ -646,7 +664,7 @@ msgstr "Izveidot jaunu ugunsmūra noteikumu"
 msgid "Edit Firewall Rule"
 msgstr "Rediģēt ugunsmūra noteikumu"
 
-#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:420
+#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:424
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr "Pārstartējiet „Plasma Firewall“, aizmugursistēma ir atvienota."
@@ -697,34 +715,34 @@ msgstr "Noklusējuma izejošo politika:"
 msgid "Error changing policy: %1"
 msgstr "Kļūda, mainot politiku: %1"
 
-#: ui/main.qml:411
+#: ui/main.qml:415
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Rediģēt noteikumu"
 
-#: ui/main.qml:431
+#: ui/main.qml:435
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Kļūda, noņemot noteikumu: %1"
 
-#: ui/main.qml:438
+#: ui/main.qml:442
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Noņemt noteikumu"
 
-#: ui/main.qml:463
+#: ui/main.qml:467
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "Ugunsmūris ir izslēgts"
 
-#: ui/main.qml:463
+#: ui/main.qml:467
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Nav pievienots neviens ugunsmūra noteikums"
 
-#: ui/main.qml:465
+#: ui/main.qml:469
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
@@ -732,13 +750,13 @@ msgstr ""
 "Spiediet uz <interface>Pievienot noteikumu…</interface> pogas, lai kādu "
 "pievienotu"
 
-#: ui/main.qml:466
+#: ui/main.qml:470
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr "Spiediet uz slēdža augstāk, lai to ieslēgtu"
 
-#: ui/main.qml:472
+#: ui/main.qml:476
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Ieinstalējiet ugunsmūri, piemēram, „ufw“ vai „firewalld“"
@@ -748,27 +766,27 @@ msgstr "Ieinstalējiet ugunsmūri, piemēram, „ufw“ vai „firewalld“"
 msgid "Any Port"
 msgstr "Jebkurš ports"
 
-#: ui/RuleEdit.qml:39
+#: ui/RuleEdit.qml:38
 #, kde-format
 msgid "New Connections"
 msgstr "Jauns savienojums"
 
-#: ui/RuleEdit.qml:40
+#: ui/RuleEdit.qml:39
 #, kde-format
 msgid "All Packets"
 msgstr "Visas paketes"
 
-#: ui/RuleEdit.qml:55 ui/RuleEdit.qml:62
+#: ui/RuleEdit.qml:54 ui/RuleEdit.qml:61
 #, kde-format
 msgid "The default incoming policy is already '%1'."
 msgstr "Noklusējuma ienākošo savienojumu politika jau ir „%1“."
 
-#: ui/RuleEdit.qml:56 ui/RuleEdit.qml:63
+#: ui/RuleEdit.qml:55 ui/RuleEdit.qml:62
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
 msgstr "Noklusējuma izejošo savienojumu politika jau ir „%1“."
 
-#: ui/RuleEdit.qml:73
+#: ui/RuleEdit.qml:72
 #, kde-format
 msgctxt "Advanced firewall rules"
 msgid "Advanced"
