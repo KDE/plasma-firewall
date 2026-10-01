@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-01 00:47+0000\n"
-"PO-Revision-Date: 2026-02-17 01:05+0200\n"
+"PO-Revision-Date: 2026-10-01 14:12+0300\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: none\n"
 "Language: lt\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -257,15 +257,13 @@ msgstr "Registravimas"
 #, kde-format
 msgctxt "@title:column"
 msgid "Comment"
-msgstr ""
+msgstr "Komentaras"
 
 #: core/rulelistmodel.cpp:101
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Edit Rule"
+#, kde-format
 msgctxt "@title:column"
 msgid "Edit"
-msgstr "Taisyti taisyklę"
+msgstr "Taisyti"
 
 #: core/systemdjob.cpp:51
 #, kde-format
@@ -526,13 +524,13 @@ msgstr "Registravimas:"
 #, kde-format
 msgctxt "@label:textbox User-supplied comment about this firewall rule"
 msgid "Comment:"
-msgstr ""
+msgstr "Komentaras:"
 
 #: ui/AdvancedRuleEdit.qml:150
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Optional"
-msgstr ""
+msgstr "Nebūtinas"
 
 #: ui/ConnectionsView.qml:14
 #, kde-format

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kcm_firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-01 00:47+0000\n"
-"PO-Revision-Date: 2026-09-30 17:19+0300\n"
+"PO-Revision-Date: 2026-10-01 14:14+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -262,12 +262,10 @@ msgid "Comment"
 msgstr "Коментар"
 
 #: core/rulelistmodel.cpp:101
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Edit Rule"
+#, kde-format
 msgctxt "@title:column"
 msgid "Edit"
-msgstr "Змінити правило"
+msgstr "Зміна"
 
 #: core/systemdjob.cpp:51
 #, kde-format

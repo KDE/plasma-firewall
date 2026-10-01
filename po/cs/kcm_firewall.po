@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-01 00:47+0000\n"
-"PO-Revision-Date: 2026-09-30 23:39+0200\n"
+"PO-Revision-Date: 2026-10-01 12:09+0200\n"
 "Last-Translator: Libor Filipek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -259,12 +259,10 @@ msgid "Comment"
 msgstr "Komentář"
 
 #: core/rulelistmodel.cpp:101
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Edit Rule"
+#, kde-format
 msgctxt "@title:column"
 msgid "Edit"
-msgstr "Upravit pravidlo"
+msgstr "Upravit"
 
 #: core/systemdjob.cpp:51
 #, kde-format
