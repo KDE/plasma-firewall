@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-30 00:48+0000\n"
+"POT-Creation-Date: 2026-10-01 00:47+0000\n"
 "PO-Revision-Date: 2026-02-17 01:05+0200\n"
 "Last-Translator: Moo <<>>\n"
 "Language-Team: none\n"
@@ -258,6 +258,14 @@ msgstr "Registravimas"
 msgctxt "@title:column"
 msgid "Comment"
 msgstr ""
+
+#: core/rulelistmodel.cpp:101
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "Edit Rule"
+msgctxt "@title:column"
+msgid "Edit"
+msgstr "Taisyti taisyklę"
 
 #: core/systemdjob.cpp:51
 #, kde-format
@@ -666,7 +674,7 @@ msgstr "Sukurti naują užkardos taisyklę"
 msgid "Edit Firewall Rule"
 msgstr "Taisyti užkardos taisyklę"
 
-#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:424
+#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:423
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr "Paleiskite Plasma užkardą iš naujo, vidinė pusė atsijungė."
@@ -717,34 +725,34 @@ msgstr "Numatytoji išsiunčiamų politika:"
 msgid "Error changing policy: %1"
 msgstr "Klaida keičiant politiką: %1"
 
-#: ui/main.qml:415
+#: ui/main.qml:413
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Taisyti taisyklę"
 
-#: ui/main.qml:435
+#: ui/main.qml:434
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Klaida šalinant taisyklę: %1"
 
-#: ui/main.qml:442
+#: ui/main.qml:440
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Šalinti taisyklę"
 
-#: ui/main.qml:467
+#: ui/main.qml:470
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "Užkarda yra išjungta"
 
-#: ui/main.qml:467
+#: ui/main.qml:470
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Nebuvo pridėta jokių užkardos taisyklių"
 
-#: ui/main.qml:469
+#: ui/main.qml:472
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
@@ -752,13 +760,13 @@ msgstr ""
 "Norėdami pridėti taisyklę, spustelėkite mygtuką <interface>Pridėti taisyklę…"
 "</interface>"
 
-#: ui/main.qml:470
+#: ui/main.qml:473
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr "Norėdami ją įjungti, spustelėkite aukščiau esantį perjungiklį"
 
-#: ui/main.qml:476
+#: ui/main.qml:479
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Įsidiekite užkardą, kaip, pavyzdžiui, ufw arba firewalld"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-30 00:48+0000\n"
+"POT-Creation-Date: 2026-10-01 00:47+0000\n"
 "PO-Revision-Date: 2026-09-23 06:56+0900\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
@@ -255,6 +255,14 @@ msgstr "كۈندىلىك خاتىرە"
 msgctxt "@title:column"
 msgid "Comment"
 msgstr ""
+
+#: core/rulelistmodel.cpp:101
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "Edit Rule"
+msgctxt "@title:column"
+msgid "Edit"
+msgstr "قائىدە تەھرىر"
 
 #: core/systemdjob.cpp:51
 #, kde-format
@@ -661,7 +669,7 @@ msgstr "يېڭى مۇداپىئە تام قائىدىسى قۇر"
 msgid "Edit Firewall Rule"
 msgstr "مۇداپىئە تام قائىدىسىنى تەھرىرلە"
 
-#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:424
+#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:423
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr "Plasma مۇداپىئە تامنى قايتا قوزغىتىڭ، ئارقا ئۇچ ئۈزۈلدى."
@@ -712,46 +720,46 @@ msgstr "كۆڭۈلدىكى چىقىش تۈزۈمى:"
 msgid "Error changing policy: %1"
 msgstr "تۈزۈمنى ئۆزگەرتىۋاتقاندا خاتالىق كۆرۈلدى: %1"
 
-#: ui/main.qml:415
+#: ui/main.qml:413
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "قائىدە تەھرىر"
 
-#: ui/main.qml:435
+#: ui/main.qml:434
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "قائىدىنى چىقىرىۋېتىۋاتقاندا خاتالىق كۆرۈلدى: %1"
 
-#: ui/main.qml:442
+#: ui/main.qml:440
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "قائىدىنى چىقىرىۋەت"
 
-#: ui/main.qml:467
+#: ui/main.qml:470
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "مۇداپىئە تام چەكلەنگەن"
 
-#: ui/main.qml:467
+#: ui/main.qml:470
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "ھېچقانداق مۇداپىئە تام قائىدىسى قوشۇلمىغان"
 
-#: ui/main.qml:469
+#: ui/main.qml:472
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr "بىرنى قوشۇشتا <interface>قائىدە قوش…</interface> توپچە چېكىلىدۇ"
 
-#: ui/main.qml:470
+#: ui/main.qml:473
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr "ئۈستىدىكى ئالماشتۇرغۇچنى چېكىپ قوزغىتىلىدۇ"
 
-#: ui/main.qml:476
+#: ui/main.qml:479
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "ufw ياكى firewalld غا ئوخشاش مۇداپىئە تام پىروگراممىسى ئورنىتىڭ"

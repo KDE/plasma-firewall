@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-30 00:48+0000\n"
+"POT-Creation-Date: 2026-10-01 00:47+0000\n"
 "PO-Revision-Date: 2022-07-06 09:32+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -270,6 +270,14 @@ msgstr "Gündəlik tutulur"
 msgctxt "@title:column"
 msgid "Comment"
 msgstr ""
+
+#: core/rulelistmodel.cpp:101
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "Edit Rule"
+msgctxt "@title:column"
+msgid "Edit"
+msgstr "Qaydanı dəyişmək"
 
 #: core/systemdjob.cpp:51
 #, kde-format
@@ -681,7 +689,7 @@ msgstr "Yeni təhlükəsizlik divarı qaydası yaratmaq"
 msgid "Edit Firewall Rule"
 msgstr "Təhlükəsizlik qaydası divarına düzəliş"
 
-#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:424
+#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:423
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr "Lütfən plasma təhlükəsizlik divarını yenidən başladın, modul ayrılıb."
@@ -734,34 +742,34 @@ msgstr "Çıxan bağlantıların standart qaydası:"
 msgid "Error changing policy: %1"
 msgstr "Qaydanın dəyişdirilməsi xətası: %1"
 
-#: ui/main.qml:415
+#: ui/main.qml:413
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Qaydanı dəyişmək"
 
-#: ui/main.qml:435
+#: ui/main.qml:434
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Qaydanın silinməsi xətası: %1"
 
-#: ui/main.qml:442
+#: ui/main.qml:440
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Qaydanı silmək"
 
-#: ui/main.qml:467
+#: ui/main.qml:470
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "Təhlükəsizlik divarı söndürülüb"
 
-#: ui/main.qml:467
+#: ui/main.qml:470
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Təhlükəsizlik qaydaları əlavə edilmədi"
 
-#: ui/main.qml:469
+#: ui/main.qml:472
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid "Click the <interface>Add Rule...</interface> button below to add one"
@@ -771,13 +779,13 @@ msgstr ""
 "Yeni birini əlavə etmək üçün aşağıdakı <interface>Qayda əlavə edin...</"
 "interface> düyməsinə vurun"
 
-#: ui/main.qml:470
+#: ui/main.qml:473
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr ""
 
-#: ui/main.qml:476
+#: ui/main.qml:479
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Təhlükəsizlik divarını quraşdırın, ufw və ya firewalld şəklində"

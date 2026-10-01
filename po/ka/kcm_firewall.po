@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-30 00:48+0000\n"
-"PO-Revision-Date: 2026-02-10 07:36+0100\n"
+"POT-Creation-Date: 2026-10-01 00:47+0000\n"
+"PO-Revision-Date: 2026-09-30 08:37+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -256,7 +256,15 @@ msgstr "ჟურნალი"
 #, kde-format
 msgctxt "@title:column"
 msgid "Comment"
-msgstr ""
+msgstr "კომენტარი"
+
+#: core/rulelistmodel.cpp:101
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "Edit Rule"
+msgctxt "@title:column"
+msgid "Edit"
+msgstr "წესის ჩასწორება"
 
 #: core/systemdjob.cpp:51
 #, kde-format
@@ -517,13 +525,13 @@ msgstr "ჟურნალი:"
 #, kde-format
 msgctxt "@label:textbox User-supplied comment about this firewall rule"
 msgid "Comment:"
-msgstr ""
+msgstr "კომენტარი:"
 
 #: ui/AdvancedRuleEdit.qml:150
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Optional"
-msgstr ""
+msgstr "არასავალდებულო"
 
 #: ui/ConnectionsView.qml:14
 #, kde-format
@@ -666,7 +674,7 @@ msgstr "ბრანდმაუერის ახალი წესის შ
 msgid "Edit Firewall Rule"
 msgstr "ბრანდმაუერის წესის ჩასწორება"
 
-#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:424
+#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:423
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr "გადატვირთეთ Plasma firewall, უკანბოლო გაითიშა."
@@ -717,34 +725,34 @@ msgstr "გამავალი პაკეტების ნაგული�
 msgid "Error changing policy: %1"
 msgstr "წესის ცვლილების შეცდომა: %1"
 
-#: ui/main.qml:415
+#: ui/main.qml:413
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "წესის ჩასწორება"
 
-#: ui/main.qml:435
+#: ui/main.qml:434
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "წესის წაშლის შეცდომა: %1"
 
-#: ui/main.qml:442
+#: ui/main.qml:440
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "წესის წაშლა"
 
-#: ui/main.qml:467
+#: ui/main.qml:470
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "ბრანდმაუერი გამორთულია"
 
-#: ui/main.qml:467
+#: ui/main.qml:470
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "ბრანდმაუერის წესები დამატებული არაა"
 
-#: ui/main.qml:469
+#: ui/main.qml:472
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
@@ -752,13 +760,13 @@ msgstr ""
 "ახალი წესის დასამატებლად <interface>წესის დამატების...</interface> ღილაკზე "
 "დააწკაპუნეთ"
 
-#: ui/main.qml:470
+#: ui/main.qml:473
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr "ჩასართავად ზემოთ გადასართველზე დააწკაპუნეთ"
 
-#: ui/main.qml:476
+#: ui/main.qml:479
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "დააყენეთ ბრანდმაუერის პროგრამა, მაგ. uwf an firewalld"

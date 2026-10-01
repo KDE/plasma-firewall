@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-30 00:48+0000\n"
+"POT-Creation-Date: 2026-10-01 00:47+0000\n"
 "PO-Revision-Date: 2026-07-14 17:45+0900\n"
 "Last-Translator: Mint <5602mint@gmail.com>\n"
 "Language-Team: Japanese <kde-i18n-doc@kde.org>\n"
@@ -256,6 +256,14 @@ msgstr "ログ"
 msgctxt "@title:column"
 msgid "Comment"
 msgstr ""
+
+#: core/rulelistmodel.cpp:101
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "Edit Rule"
+msgctxt "@title:column"
+msgid "Edit"
+msgstr "ルールを編集"
 
 #: core/systemdjob.cpp:51
 #, kde-format
@@ -664,7 +672,7 @@ msgstr "新しいファイアウォールルールを作成"
 msgid "Edit Firewall Rule"
 msgstr "ファイアウォールルールを編集"
 
-#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:424
+#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:423
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr "plasma firewall を再起動してください。バックエンドが切断されました。"
@@ -715,46 +723,46 @@ msgstr "デフォルトの送信ポリシー:"
 msgid "Error changing policy: %1"
 msgstr "ポリシーの変更に失敗しました: %1"
 
-#: ui/main.qml:415
+#: ui/main.qml:413
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "ルールを編集"
 
-#: ui/main.qml:435
+#: ui/main.qml:434
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "ルールの削除に失敗しました: %1"
 
-#: ui/main.qml:442
+#: ui/main.qml:440
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "ルールを削除"
 
-#: ui/main.qml:467
+#: ui/main.qml:470
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "ファイアウォールは無効化されています。"
 
-#: ui/main.qml:467
+#: ui/main.qml:470
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "ファイアウォールルールが追加されていません。"
 
-#: ui/main.qml:469
+#: ui/main.qml:472
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr "<interface>ルールを追加…</interface>ボタンをクリックして追加できます。"
 
-#: ui/main.qml:470
+#: ui/main.qml:473
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr "上のスイッチをクリックして有効化します。"
 
-#: ui/main.qml:476
+#: ui/main.qml:479
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "ufw や firewalld などのファイアウォールをインストールしてください。"

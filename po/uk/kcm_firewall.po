@@ -3,13 +3,13 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022, 2023, 2024, 2026.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024, 2026 Yuri Chornoivan <yurchor@ukr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-30 00:48+0000\n"
-"PO-Revision-Date: 2026-02-10 10:36+0200\n"
+"POT-Creation-Date: 2026-10-01 00:47+0000\n"
+"PO-Revision-Date: 2026-09-30 17:19+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.04.3\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -259,7 +259,15 @@ msgstr "Журналювання"
 #, kde-format
 msgctxt "@title:column"
 msgid "Comment"
-msgstr ""
+msgstr "Коментар"
+
+#: core/rulelistmodel.cpp:101
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "Edit Rule"
+msgctxt "@title:column"
+msgid "Edit"
+msgstr "Змінити правило"
 
 #: core/systemdjob.cpp:51
 #, kde-format
@@ -520,13 +528,13 @@ msgstr "Журналювання:"
 #, kde-format
 msgctxt "@label:textbox User-supplied comment about this firewall rule"
 msgid "Comment:"
-msgstr ""
+msgstr "Коментар:"
 
 #: ui/AdvancedRuleEdit.qml:150
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Optional"
-msgstr ""
+msgstr "Необов'язковий"
 
 #: ui/ConnectionsView.qml:14
 #, kde-format
@@ -669,7 +677,7 @@ msgstr "Створення правила брандмауера"
 msgid "Edit Firewall Rule"
 msgstr "Редагування правила брандмауера"
 
-#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:424
+#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:423
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr ""
@@ -721,47 +729,47 @@ msgstr "Типові правила для вихідних:"
 msgid "Error changing policy: %1"
 msgstr "Помилка під час спроби змінити правила: %1"
 
-#: ui/main.qml:415
+#: ui/main.qml:413
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Змінити правило"
 
-#: ui/main.qml:435
+#: ui/main.qml:434
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Помилка під час спроби вилучення правила: %1"
 
-#: ui/main.qml:442
+#: ui/main.qml:440
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Вилучити правило"
 
-#: ui/main.qml:467
+#: ui/main.qml:470
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "Брандмауер вимкнено"
 
-#: ui/main.qml:467
+#: ui/main.qml:470
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Не було додано жодного правила брандмауера"
 
-#: ui/main.qml:469
+#: ui/main.qml:472
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
 "Натисніть кнопку <interface>Додати правило…</interface>, щоб додати правило"
 
-#: ui/main.qml:470
+#: ui/main.qml:473
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr "Натисніть на перемикачі вище, щоб увімкнути"
 
-#: ui/main.qml:476
+#: ui/main.qml:479
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Будь ласка, встановіть брандмауер, наприклад ufw або firewalld"

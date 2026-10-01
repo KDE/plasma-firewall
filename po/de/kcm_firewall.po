@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-30 00:48+0000\n"
+"POT-Creation-Date: 2026-10-01 00:47+0000\n"
 "PO-Revision-Date: 2026-08-22 14:34+0200\n"
 "Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -257,6 +257,14 @@ msgstr "Protokollierung"
 msgctxt "@title:column"
 msgid "Comment"
 msgstr ""
+
+#: core/rulelistmodel.cpp:101
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "Edit Rule"
+msgctxt "@title:column"
+msgid "Edit"
+msgstr "Regel bearbeiten"
 
 #: core/systemdjob.cpp:51
 #, kde-format
@@ -668,7 +676,7 @@ msgstr "Eine neue Firewall-Regel erstellen"
 msgid "Edit Firewall Rule"
 msgstr "Firewall-Regel bearbeiten"
 
-#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:424
+#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:423
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr ""
@@ -721,34 +729,34 @@ msgstr "Standardregelung (ausgehend):"
 msgid "Error changing policy: %1"
 msgstr "Fehler beim Ändern der Regelung: %1"
 
-#: ui/main.qml:415
+#: ui/main.qml:413
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Regel bearbeiten"
 
-#: ui/main.qml:435
+#: ui/main.qml:434
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Fehler beim Entfernen der Regel: %1"
 
-#: ui/main.qml:442
+#: ui/main.qml:440
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Regel entfernen"
 
-#: ui/main.qml:467
+#: ui/main.qml:470
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "Die Firewall ist deaktiviert"
 
-#: ui/main.qml:467
+#: ui/main.qml:470
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Es wurden noch keine Firewall-Regeln hinzugefügt"
 
-#: ui/main.qml:469
+#: ui/main.qml:472
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
@@ -756,13 +764,13 @@ msgstr ""
 "Klicken Sie auf <interface>Regel hinzufügen …</interface>, um eine Regel "
 "hinzuzufügen."
 
-#: ui/main.qml:470
+#: ui/main.qml:473
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr "Klicken Sie zum Aktivieren auf den Schalter oben"
 
-#: ui/main.qml:476
+#: ui/main.qml:479
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Bitte installieren Sie eine Firewall wie „ufw“ oder „firewalld“"
