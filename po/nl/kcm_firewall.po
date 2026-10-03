@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-01 00:47+0000\n"
-"PO-Revision-Date: 2026-09-30 16:04+0200\n"
+"PO-Revision-Date: 2026-10-02 12:11+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -258,12 +258,10 @@ msgid "Comment"
 msgstr "Commentaar"
 
 #: core/rulelistmodel.cpp:101
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Edit Rule"
+#, kde-format
 msgctxt "@title:column"
 msgid "Edit"
-msgstr "Regel bewerken"
+msgstr "Bewerken"
 
 #: core/systemdjob.cpp:51
 #, kde-format
