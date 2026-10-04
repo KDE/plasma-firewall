@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-01 00:47+0000\n"
-"PO-Revision-Date: 2026-04-26 20:55+0200\n"
+"PO-Revision-Date: 2026-10-03 23:03+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -255,15 +255,13 @@ msgstr "로그 작성"
 #, kde-format
 msgctxt "@title:column"
 msgid "Comment"
-msgstr ""
+msgstr "설명"
 
 #: core/rulelistmodel.cpp:101
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Edit Rule"
+#, kde-format
 msgctxt "@title:column"
 msgid "Edit"
-msgstr "규칙 편집"
+msgstr "편집"
 
 #: core/systemdjob.cpp:51
 #, kde-format
@@ -524,13 +522,13 @@ msgstr "로그 작성:"
 #, kde-format
 msgctxt "@label:textbox User-supplied comment about this firewall rule"
 msgid "Comment:"
-msgstr ""
+msgstr "설명:"
 
 #: ui/AdvancedRuleEdit.qml:150
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Optional"
-msgstr ""
+msgstr "선택 사항"
 
 #: ui/ConnectionsView.qml:14
 #, kde-format
