@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-01 00:47+0000\n"
-"PO-Revision-Date: 2026-02-27 21:27+0530\n"
+"PO-Revision-Date: 2026-10-04 11:23+0200\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
 "Language: ta\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 26.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -131,7 +131,7 @@ msgstr "பயன்முறையை வட்டிலிருந்து �
 #: backends/ufw/helper/helper.cpp:289
 #, kde-format
 msgid "Invalid argument passed to add Rules"
-msgstr ""
+msgstr "விதியை சேர்ப்பதற்கு குறிப்பிட்ட தருமதிப்பு செல்லுபடியாகாதது"
 
 #: backends/ufw/helper/helper.cpp:361
 #, kde-format
@@ -150,7 +150,7 @@ msgstr ""
 #: backends/ufw/ufwclient.cpp:268
 #, kde-format
 msgid "Error fetching firewall logs: %1"
-msgstr ""
+msgstr "தீயரண் வரலாற்றுப்பதிவுகளைப் பெறுவதில் சிக்கல்: %1"
 
 #: backends/ufw/ufwclient.cpp:608 core/firewallclient.cpp:76
 #, kde-format
@@ -255,13 +255,13 @@ msgstr "பதிவிடுவது"
 #, kde-format
 msgctxt "@title:column"
 msgid "Comment"
-msgstr ""
+msgstr "குறிப்பு"
 
 #: core/rulelistmodel.cpp:101
 #, kde-format
 msgctxt "@title:column"
 msgid "Edit"
-msgstr ""
+msgstr "திருத்து"
 
 #: core/systemdjob.cpp:51
 #, kde-format
@@ -522,7 +522,7 @@ msgstr "பதிவிடுவது:"
 #, kde-format
 msgctxt "@label:textbox User-supplied comment about this firewall rule"
 msgid "Comment:"
-msgstr ""
+msgstr "குறிப்பு:"
 
 #: ui/AdvancedRuleEdit.qml:150
 #, kde-format
