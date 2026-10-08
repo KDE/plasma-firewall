@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 26.03.70\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 26.03.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -253,10 +253,10 @@ msgid "Logging"
 msgstr "Влизане"
 
 #: core/rulelistmodel.cpp:99
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@title:column"
 msgid "Comment"
-msgstr ""
+msgstr "Коментар"
 
 #: core/rulelistmodel.cpp:101
 #, fuzzy, kde-format
@@ -264,7 +264,7 @@ msgstr ""
 #| msgid "Edit Rule"
 msgctxt "@title:column"
 msgid "Edit"
-msgstr "Редактиране на правило"
+msgstr "Редакция"
 
 #: core/systemdjob.cpp:51
 #, kde-format
@@ -522,16 +522,16 @@ msgid "Logging:"
 msgstr "Записване в журнала:"
 
 #: ui/AdvancedRuleEdit.qml:148
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@label:textbox User-supplied comment about this firewall rule"
 msgid "Comment:"
-msgstr ""
+msgstr "Коментар:"
 
 #: ui/AdvancedRuleEdit.qml:150
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:placeholder"
 msgid "Optional"
-msgstr ""
+msgstr "Незадължително"
 
 #: ui/ConnectionsView.qml:14
 #, kde-format
