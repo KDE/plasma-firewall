@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the plasma-firewall package.
 #
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2026 Mincho Kondarev <mkondarev@yahoo.de>
+# SPDX-FileCopyrightText: 2022-2024, 2026 Mincho Kondarev <mkondarev@yahoo.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-01 00:47+0000\n"
-"PO-Revision-Date: 2026-02-11 22:17+0100\n"
+"PO-Revision-Date: 2026-10-08 16:00+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 26.03.70\n"
+"X-Generator: Lokalize 26.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -253,18 +253,16 @@ msgid "Logging"
 msgstr "Влизане"
 
 #: core/rulelistmodel.cpp:99
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:column"
 msgid "Comment"
 msgstr "Коментар"
 
 #: core/rulelistmodel.cpp:101
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Edit Rule"
+#, kde-format
 msgctxt "@title:column"
 msgid "Edit"
-msgstr "Редакция"
+msgstr "Редактиране"
 
 #: core/systemdjob.cpp:51
 #, kde-format
@@ -522,13 +520,13 @@ msgid "Logging:"
 msgstr "Записване в журнала:"
 
 #: ui/AdvancedRuleEdit.qml:148
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@label:textbox User-supplied comment about this firewall rule"
 msgid "Comment:"
 msgstr "Коментар:"
 
 #: ui/AdvancedRuleEdit.qml:150
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Optional"
 msgstr "Незадължително"
