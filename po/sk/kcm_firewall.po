@@ -254,15 +254,13 @@ msgstr "Záznam"
 #, kde-format
 msgctxt "@title:column"
 msgid "Comment"
-msgstr ""
+msgstr "Komentár"
 
 #: core/rulelistmodel.cpp:101
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Edit Rule"
+#, kde-format
 msgctxt "@title:column"
 msgid "Edit"
-msgstr "Upraviť pravidlo"
+msgstr "Upraviť"
 
 #: core/systemdjob.cpp:51
 #, kde-format
@@ -523,13 +521,13 @@ msgstr "Záznam:"
 #, kde-format
 msgctxt "@label:textbox User-supplied comment about this firewall rule"
 msgid "Comment:"
-msgstr ""
+msgstr "Komentár:"
 
 #: ui/AdvancedRuleEdit.qml:150
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Optional"
-msgstr ""
+msgstr "Voliteľné"
 
 #: ui/ConnectionsView.qml:14
 #, kde-format
