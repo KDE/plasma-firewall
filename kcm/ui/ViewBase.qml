@@ -12,8 +12,10 @@ import org.kde.kcmutils as KCMUtils
 import org.kde.kitemmodels 1.0
 import org.kcm.firewall 1.0
 
-KCMUtils.ScrollViewKCM {
+KCMUtils.AbstractKCM {
     id: root
+
+    framedView: false
 
     property QtObject model
     property var columns: []
@@ -153,73 +155,85 @@ KCMUtils.ScrollViewKCM {
         }
     }
 
-    QQC2.HorizontalHeaderView {
-        id: horizontalHeader
-        visible: tableView.rows > 0
-        model: KColumnHeadersModel {
-            sourceModel: proxyModel
-            sortColumn: root.sortColumn
-        }
-        selectionModel: ItemSelectionModel{}
-        syncView: tableView
-        Layout.fillWidth: true
-
-        TapHandler {
-            acceptedButtons: Qt.LeftButton
-
-            onTapped: (eventPoint, button) => {
-                let cell = horizontalHeader.cellAtPosition(eventPoint.position)
-                if (cell.x === root.sortColumn) {
-                    root.sortOrder = header.sortOrder === Qt.AscendingOrder ? Qt.DescendingOrder : Qt.AscendingOrder
-                } else {
-                    root.sortOrder = Qt.AscendingOrder
-                }
-                root.sortColumn = cell.x
-            }
-        }
-    }
-
-    view: TableView {
-        id: tableView
+    ColumnLayout {
         anchors.fill: parent
-        topMargin: horizontalHeader.height
-        alternatingRows: true
+        spacing: 0
 
-        selectionModel: ItemSelectionModel {}
-        selectionBehavior: TreeView.SelectRows
-        function selectRelative(delta) {
-            var nextRow = selectionModel.currentIndex.row + delta
-            if (nextRow < 0) {
-                nextRow = 0
+        QQC2.HorizontalHeaderView {
+            id: horizontalHeader
+            Layout.fillWidth: true
+            visible: tableView.rows > 0
+            clip: true
+            model: KColumnHeadersModel {
+                sourceModel: proxyModel
+                sortColumn: root.sortColumn
             }
-            if (nextRow >= rows) {
-                nextRow = rows - 1
-            }
-            var index = model.index(nextRow, selectionModel.currentIndex.column)
-            selectionModel.setCurrentIndex(index, ItemSelectionModel.ClearAndSelect | ItemSelectionModel.Rows)
-        }
-        Keys.onUpPressed: selectRelative(-1)
-        Keys.onDownPressed: selectRelative(1)
+            selectionModel: ItemSelectionModel{}
+            syncView: tableView
 
-        model: proxyModel
-        columnWidthProvider: (column) => {
-            let explicitWidth = explicitColumnWidth(column)
-            if (explicitWidth > 0) {
-                return explicitWidth
+            TapHandler {
+                acceptedButtons: Qt.LeftButton
+
+                onTapped: (eventPoint, button) => {
+                    let cell = horizontalHeader.cellAtPosition(eventPoint.position)
+                    if (cell.x === root.sortColumn) {
+                        root.sortOrder = header.sortOrder === Qt.AscendingOrder ? Qt.DescendingOrder : Qt.AscendingOrder
+                    } else {
+                        root.sortOrder = Qt.AscendingOrder
+                    }
+                    root.sortColumn = cell.x
+                }
             }
-            let sourceColumn = proxyModel.mapToSource(proxyModel.index(0, column)).column
-            let width = root.columns.find(c => c.column === sourceColumn).width
-            return width
         }
-        clip: true
-        delegate: QQC2.ItemDelegate {
-            required property var model
-            required property bool selected
-            required property bool current
-            text: model.display
-            highlighted: selected || current
-            onClicked: {
-                tableView.selectionModel.setCurrentIndex(tableView.model.index(model.row, model.column), ItemSelectionModel.Rows | ItemSelectionModel.ClearAndSelect)
+
+        QQC2.ScrollView {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            Kirigami.Theme.colorSet: Kirigami.Theme.View
+            Kirigami.Theme.inherit: false
+            QQC2.ScrollBar.horizontal.visible: false
+
+            TableView {
+                id: tableView
+                alternatingRows: true
+
+                selectionModel: ItemSelectionModel {}
+                selectionBehavior: TreeView.SelectRows
+                function selectRelative(delta) {
+                    var nextRow = selectionModel.currentIndex.row + delta
+                    if (nextRow < 0) {
+                        nextRow = 0
+                    }
+                    if (nextRow >= rows) {
+                        nextRow = rows - 1
+                    }
+                    var index = model.index(nextRow, selectionModel.currentIndex.column)
+                    selectionModel.setCurrentIndex(index, ItemSelectionModel.ClearAndSelect | ItemSelectionModel.Rows)
+                }
+                Keys.onUpPressed: selectRelative(-1)
+                Keys.onDownPressed: selectRelative(1)
+
+                model: proxyModel
+                columnWidthProvider: (column) => {
+                    let explicitWidth = explicitColumnWidth(column)
+                    if (explicitWidth > 0) {
+                        return explicitWidth
+                    }
+                    let sourceColumn = proxyModel.mapToSource(proxyModel.index(0, column)).column
+                    let width = root.columns.find(c => c.column === sourceColumn).width
+                    return width
+                }
+                clip: true
+                delegate: QQC2.ItemDelegate {
+                    required property var model
+                    required property bool selected
+                    required property bool current
+                    text: model.display
+                    highlighted: selected || current
+                    onClicked: {
+                        tableView.selectionModel.setCurrentIndex(tableView.model.index(model.row, model.column), ItemSelectionModel.Rows | ItemSelectionModel.ClearAndSelect)
+                    }
+                }
             }
         }
     }

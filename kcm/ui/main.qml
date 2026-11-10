@@ -15,8 +15,10 @@ import org.kcm.firewall 1.0
 
 import org.kde.kirigami 2.20 as Kirigami
 
-KCMUtils.ScrollViewKCM {
+KCMUtils.AbstractKCM {
     id: root
+
+    framedView: false
 
     implicitHeight: Kirigami.Units.gridUnit * 25
     implicitWidth: Kirigami.Units.gridUnit * 44
@@ -319,158 +321,171 @@ KCMUtils.ScrollViewKCM {
         }
     }
 
-    QQC2.HorizontalHeaderView {
-        id: horizontalHeader
-        syncView: tableView
-        visible: tableView.rows > 0
-        selectionModel: ItemSelectionModel{}
-    }
-
-    view: TableView {
-        id: tableView
+    ColumnLayout {
         anchors.fill: parent
-        topMargin: horizontalHeader.height
-        resizableColumns: true
-        alternatingRows: true
+        spacing: 0
 
-        property int currentHoveredRow: -1
-
-        selectionModel: ItemSelectionModel {}
-        selectionMode: TreeView.SelectRows
-        function selectRelative(delta) {
-            var nextRow = selectionModel.currentIndex.row + delta
-            if (nextRow < 0) {
-                nextRow = 0
-            }
-            if (nextRow >= rows) {
-                nextRow = rows - 1
-            }
-            var index = model.index(nextRow, selectionModel.currentIndex.column)
-            selectionModel.setCurrentIndex(index, ItemSelectionModel.ClearAndSelect | ItemSelectionModel.Rows)
-        }
-        Keys.onUpPressed: selectRelative(-1)
-        Keys.onDownPressed: selectRelative(1)
-
-        function editRule(row) {
-            ruleEdit.rule = kcm.client.ruleAt(row);
-            ruleEdit.newRule = false;
-            drawer.open();
-        }
-        Keys.onEnterPressed: Keys.returnPressed(event)
-        Keys.onReturnPressed: {
-            if (selectionModel.currentIndex) {
-                editRule(selectionModel.currentIndex.row)
-            }
+        QQC2.HorizontalHeaderView {
+            id: horizontalHeader
+            Layout.fillWidth: true
+            syncView: tableView
+            visible: tableView.rows > 0
+            clip: true
+            selectionModel: ItemSelectionModel{}
         }
 
-        HoverHandler {
-            onPointChanged: {
-                view.currentHoveredRow = view.cellAtPosition(point.position).y
-            }
-        }
+        QQC2.ScrollView {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            Kirigami.Theme.colorSet: Kirigami.Theme.View
+            Kirigami.Theme.inherit: false
+            QQC2.ScrollBar.horizontal.visible: false
 
-        model: kcm.client.rulesModel
-        columnWidthProvider: (column) => {
-            if (column === RuleListModel.CommentColumn && kcm.client.name !== "ufw") {
-                return 0
-            }
-            let explicitWidth = explicitColumnWidth(column)
-            if (explicitWidth > 0) {
-                return explicitWidth
-            }
-            const columnWidths = [];
-            columnWidths[RuleListModel.ActionColumn] =  Kirigami.Units.gridUnit * 8
-            columnWidths[RuleListModel.FromColumn] =  Kirigami.Units.gridUnit * 10
-            columnWidths[RuleListModel.ToColumn] =  Kirigami.Units.gridUnit * 10
-            columnWidths[RuleListModel.Ipv6Column] = Kirigami.Units.gridUnit * 4
-            columnWidths[RuleListModel.LoggingColumn] = Kirigami.Units.gridUnit * 5
-            columnWidths[RuleListModel.CommentColumn] = Kirigami.Units.gridUnit * 12
-            columnWidths[RuleListModel.EditColumn] = Kirigami.Units.gridUnit * 6
-            return columnWidths[column]
-        }
-        delegate: DelegateChooser {
-            DelegateChoice {
-                column: RuleListModel.EditColumn
-                RowLayout {
-                    id: ruleActionsRow
-                    required property var model
-                    required property bool current
-                    required property bool selected
-                    property QtObject activeJob: null
-                    // TODO InlineBusyIndicator?
-                    enabled: !activeJob
-                    visible: tableView.currentHoveredRow === model.row || selected
+            TableView {
+                id: tableView
+                resizableColumns: true
+                alternatingRows: true
 
-                    Item {
-                        Layout.fillWidth: true
+                property int currentHoveredRow: -1
+
+                selectionModel: ItemSelectionModel {}
+                selectionMode: TreeView.SelectRows
+                function selectRelative(delta) {
+                    var nextRow = selectionModel.currentIndex.row + delta
+                    if (nextRow < 0) {
+                        nextRow = 0
                     }
-
-                    QQC2.ToolButton {
-                        Layout.fillHeight: true
-                        icon.name: "edit-entry"
-                        visible: kcm.client.supportsRuleUpdate
-                        onClicked: tableView.editRule(model.row)
-                        QQC2.ToolTip.text: i18nc("@info:tooltip", "Edit Rule")
-                        QQC2.ToolTip.visible: hovered || activeFocus
-                        QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+                    if (nextRow >= rows) {
+                        nextRow = rows - 1
                     }
-                    QQC2.ToolButton {
-                        Layout.fillHeight: true
-                        icon.name: "edit-delete"
-                        onClicked: {
-                            const job = kcm.client.removeRule(model.row);
-                            if (!job) {
-                                firewallInlineErrorMessage.text = i18n("Please restart plasma firewall, the backend disconnected.");
-                                firewallInlineErrorMessage.visible = true;
-                                return;
+                    var index = model.index(nextRow, selectionModel.currentIndex.column)
+                    selectionModel.setCurrentIndex(index, ItemSelectionModel.ClearAndSelect | ItemSelectionModel.Rows)
+                }
+                Keys.onUpPressed: selectRelative(-1)
+                Keys.onDownPressed: selectRelative(1)
+
+                function editRule(row) {
+                    ruleEdit.rule = kcm.client.ruleAt(row);
+                    ruleEdit.newRule = false;
+                    drawer.open();
+                }
+                Keys.onEnterPressed: Keys.returnPressed(event)
+                Keys.onReturnPressed: {
+                    if (selectionModel.currentIndex) {
+                        editRule(selectionModel.currentIndex.row)
+                    }
+                }
+
+                HoverHandler {
+                    onPointChanged: {
+                        tableView.currentHoveredRow = tableView.cellAtPosition(point.position).y
+                    }
+                }
+
+                model: kcm.client.rulesModel
+                columnWidthProvider: (column) => {
+                    if (column === RuleListModel.CommentColumn && kcm.client.name !== "ufw") {
+                        return 0
+                    }
+                    let explicitWidth = explicitColumnWidth(column)
+                    if (explicitWidth > 0) {
+                        return explicitWidth
+                    }
+                    const columnWidths = [];
+                    columnWidths[RuleListModel.ActionColumn] =  Kirigami.Units.gridUnit * 8
+                    columnWidths[RuleListModel.FromColumn] =  Kirigami.Units.gridUnit * 10
+                    columnWidths[RuleListModel.ToColumn] =  Kirigami.Units.gridUnit * 10
+                    columnWidths[RuleListModel.Ipv6Column] = Kirigami.Units.gridUnit * 4
+                    columnWidths[RuleListModel.LoggingColumn] = Kirigami.Units.gridUnit * 5
+                    columnWidths[RuleListModel.CommentColumn] = Kirigami.Units.gridUnit * 12
+                    columnWidths[RuleListModel.EditColumn] = Kirigami.Units.gridUnit * 6
+                    return columnWidths[column]
+                }
+                delegate: DelegateChooser {
+                    DelegateChoice {
+                        column: RuleListModel.EditColumn
+                        RowLayout {
+                            id: ruleActionsRow
+                            required property var model
+                            required property bool current
+                            required property bool selected
+                            property QtObject activeJob: null
+                            // TODO InlineBusyIndicator?
+                            enabled: !activeJob
+                            visible: tableView.currentHoveredRow === model.row || selected
+
+                            Item {
+                                Layout.fillWidth: true
                             }
 
-                            ruleActionsRow.activeJob = job;
-                            kcm.needsSave = true;
-                            job.result.connect(function () {
-                                ruleActionsRow.activeJob = null;
+                            QQC2.ToolButton {
+                                Layout.fillHeight: true
+                                icon.name: "edit-entry"
+                                visible: kcm.client.supportsRuleUpdate
+                                onClicked: tableView.editRule(model.row)
+                                QQC2.ToolTip.text: i18nc("@info:tooltip", "Edit Rule")
+                                QQC2.ToolTip.visible: hovered || activeFocus
+                                QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+                            }
+                            QQC2.ToolButton {
+                                Layout.fillHeight: true
+                                icon.name: "edit-delete"
+                                onClicked: {
+                                    const job = kcm.client.removeRule(model.row);
+                                    if (!job) {
+                                        firewallInlineErrorMessage.text = i18n("Please restart plasma firewall, the backend disconnected.");
+                                        firewallInlineErrorMessage.visible = true;
+                                        return;
+                                    }
 
-                                if (job.error && job.error !== 4) { // TODO magic number
-                                    firewallInlineErrorMessage.text = i18n("Error removing rule: %1", job.errorString);
-                                    firewallInlineErrorMessage.visible = true;
+                                    ruleActionsRow.activeJob = job;
+                                    kcm.needsSave = true;
+                                    job.result.connect(function () {
+                                        ruleActionsRow.activeJob = null;
+
+                                        if (job.error && job.error !== 4) { // TODO magic number
+                                            firewallInlineErrorMessage.text = i18n("Error removing rule: %1", job.errorString);
+                                            firewallInlineErrorMessage.visible = true;
+                                        }
+
+                                    });
                                 }
+                                QQC2.ToolTip.text: i18nc("@info:tooltip", "Remove Rule")
+                                QQC2.ToolTip.visible: hovered || activeFocus
+                                QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+                            }
 
-                            });
+                            Item {
+                                Layout.fillWidth: true
+                            }
                         }
-                        QQC2.ToolTip.text: i18nc("@info:tooltip", "Remove Rule")
-                        QQC2.ToolTip.visible: hovered || activeFocus
-                        QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
                     }
-
-                    Item {
-                        Layout.fillWidth: true
-                    }
-                }
-            }
-            DelegateChoice {
-                QQC2.ItemDelegate {
-                    required property var model
-                    required property bool current
-                    required property bool selected
-                    text: model.display
-                    highlighted: selected || current
-                    onClicked: {
-                        tableView.selectionModel.setCurrentIndex(tableView.model.index(model.row, model.column), ItemSelectionModel.Rows | ItemSelectionModel.ClearAndSelect)
+                    DelegateChoice {
+                        QQC2.ItemDelegate {
+                            required property var model
+                            required property bool current
+                            required property bool selected
+                            text: model.display
+                            highlighted: selected || current
+                            onClicked: {
+                                tableView.selectionModel.setCurrentIndex(tableView.model.index(model.row, model.column), ItemSelectionModel.Rows | ItemSelectionModel.ClearAndSelect)
+                            }
+                        }
                     }
                 }
-            }
-        }
 
-        Kirigami.PlaceholderMessage {
-            parent: tableView.parent
-            anchors.centerIn: parent
-            width: tableView.width - (Kirigami.Units.largeSpacing * 12)
-            visible: tableView.rows === 0
-            icon.name: kcm.client.enabled ? "edit-none" : "security-low"
-            text: !kcm.client.enabled ? i18n("Firewall is disabled") : i18n("No firewall rules have been added")
-            explanation: kcm.client.enabled ?
-                xi18nc("@info", "Click the <interface>Add Rule…</interface> button to add one") :
-                xi18nc("@info", "Click switch above to enable it")
+                Kirigami.PlaceholderMessage {
+                    parent: tableView.parent
+                    anchors.centerIn: parent
+                    width: tableView.width - (Kirigami.Units.largeSpacing * 12)
+                    visible: tableView.rows === 0
+                    icon.name: kcm.client.enabled ? "edit-none" : "security-low"
+                    text: !kcm.client.enabled ? i18n("Firewall is disabled") : i18n("No firewall rules have been added")
+                    explanation: kcm.client.enabled ?
+                        xi18nc("@info", "Click the <interface>Add Rule…</interface> button to add one") :
+                        xi18nc("@info", "Click switch above to enable it")
+                }
+            }
         }
     }
 
