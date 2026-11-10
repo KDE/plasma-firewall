@@ -389,7 +389,7 @@ KCMUtils.AbstractKCM {
                     }
                     let explicitWidth = explicitColumnWidth(column)
                     if (explicitWidth > 0) {
-                        return explicitWidth
+                        return Math.max(explicitWidth, Kirigami.Units.gridUnit * 4)
                     }
                     const columnWidths = [];
                     columnWidths[RuleListModel.ActionColumn] =  Kirigami.Units.gridUnit * 8

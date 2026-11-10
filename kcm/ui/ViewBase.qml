@@ -217,7 +217,7 @@ KCMUtils.AbstractKCM {
                 columnWidthProvider: (column) => {
                     let explicitWidth = explicitColumnWidth(column)
                     if (explicitWidth > 0) {
-                        return explicitWidth
+                        return Math.max(explicitWidth, Kirigami.Units.gridUnit * 4)
                     }
                     let sourceColumn = proxyModel.mapToSource(proxyModel.index(0, column)).column
                     let width = root.columns.find(c => c.column === sourceColumn).width
