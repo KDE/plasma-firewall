@@ -249,7 +249,6 @@ KCMUtils.AbstractKCM {
                 Kirigami.ContextualHelpButton {
                     id: versionButton
                     toolTipText: i18nc("@info", "Firewall version: %1", kcm.client.version().trim())
-                    checkable: true
                 }
             }
 
