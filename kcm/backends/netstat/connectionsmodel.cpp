@@ -119,8 +119,6 @@ void ConnectionsModel::refreshConnections(const QList<QStringList> &result)
     const auto oldConnectionsData = m_connectionsData;
     QList<ConnectionsData> newConnectionsData;
 
-    beginResetModel();
-    m_connectionsData.clear();
     for (const auto &connection : result) {
         ConnectionsData conn{.protocol = connection.at(0),
                              .localAddress = connection.at(1),
