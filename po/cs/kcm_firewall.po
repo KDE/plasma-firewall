@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-01 00:47+0000\n"
+"POT-Creation-Date: 2026-11-11 01:04+0000\n"
 "PO-Revision-Date: 2026-10-01 12:09+0200\n"
 "Last-Translator: Libor Filipek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -309,7 +309,7 @@ msgstr "Nová spojení"
 msgid "All packets"
 msgstr "Všechny pakety"
 
-#: core/types.cpp:58 ui/main.qml:25
+#: core/types.cpp:58 ui/main.qml:27
 #, kde-format
 msgid "Allow"
 msgstr "Povolit"
@@ -319,7 +319,7 @@ msgstr "Povolit"
 msgid "Deny"
 msgstr "Zakázat"
 
-#: core/types.cpp:62 ui/main.qml:27
+#: core/types.cpp:62 ui/main.qml:29
 #, kde-format
 msgid "Reject"
 msgstr "Odmítnout"
@@ -571,17 +571,17 @@ msgstr "Momentálně nejsou žádné záznamy firewallu"
 msgid "Created a blacklist rule from this log entry."
 msgstr "Z tohoto záznamu v protokolu bylo vytvořeno pravidlo černé listiny."
 
-#: ui/main.qml:25
+#: ui/main.qml:27
 #, kde-format
 msgid "Allow all connections"
 msgstr "Povolit všechna spojení"
 
-#: ui/main.qml:26
+#: ui/main.qml:28
 #, kde-format
 msgid "Ignore"
 msgstr "Ignorovat"
 
-#: ui/main.qml:26
+#: ui/main.qml:28
 #, kde-format
 msgid ""
 "Keeps the program waiting until the connection attempt times out, some short "
@@ -590,60 +590,60 @@ msgstr ""
 "Nechat program čekat, dokud po nějaké době nevyprší časový limit pokusu o "
 "připojení."
 
-#: ui/main.qml:27
+#: ui/main.qml:29
 #, kde-format
 msgid "Produces an immediate and very informative 'Connection refused' message"
 msgstr ""
 "Zobrazí okamžitou a velmi informativní zprávu „Připojení bylo odmítnuto“."
 
-#: ui/main.qml:35
+#: ui/main.qml:37
 #, kde-format
 msgid "Add Rule…"
 msgstr "Přidat pravidlo…"
 
-#: ui/main.qml:43
+#: ui/main.qml:45
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Connections"
 msgstr "Prohlížet spojení"
 
-#: ui/main.qml:49
+#: ui/main.qml:51
 #, kde-format
 msgctxt "'view' is being used as a verb here"
 msgid "View Logs"
 msgstr "Zobrazit záznamy"
 
-#: ui/main.qml:66
+#: ui/main.qml:68
 #, kde-format
 msgid "Disabling…"
 msgstr "Zakazuji…"
 
-#: ui/main.qml:66
+#: ui/main.qml:68
 #, kde-format
 msgid "Enabled"
 msgstr "Povoleno"
 
-#: ui/main.qml:68
+#: ui/main.qml:70
 #, kde-format
 msgid "Enabling…"
 msgstr "Povoluji…"
 
-#: ui/main.qml:68
+#: ui/main.qml:70
 #, kde-format
 msgid "Disabled"
 msgstr "Zakázáno"
 
-#: ui/main.qml:93
+#: ui/main.qml:95
 #, kde-format
 msgid "The firewall application, please install %1"
 msgstr "Nainstalujte si prosím aplikaci firewall %1"
 
-#: ui/main.qml:107
+#: ui/main.qml:109
 #, kde-format
 msgid "Permission denied"
 msgstr "Přístup odepřen"
 
-#: ui/main.qml:111
+#: ui/main.qml:113
 #, kde-format
 msgid ""
 "You recently updated your kernel. Iptables is failing to initialize, please "
@@ -652,118 +652,118 @@ msgstr ""
 "Nedávno jste aktualizovali jádro. Iptables se nedaří inicializovat, prosím "
 "restartujte počítač."
 
-#: ui/main.qml:114
+#: ui/main.qml:116
 #, kde-format
 msgid "Error enabling firewall: %1"
 msgstr "Chyba při aktivaci firewallu: %1"
 
-#: ui/main.qml:115
+#: ui/main.qml:117
 #, kde-format
 msgid "Error disabling firewall: %1"
 msgstr "Chyba při deaktivaci firewallu: %1"
 
-#: ui/main.qml:150
+#: ui/main.qml:152
 #, kde-format
 msgid "Create A New Firewall Rule"
 msgstr "Vytvořit nové pravidlo firewallu"
 
-#: ui/main.qml:150
+#: ui/main.qml:152
 #, kde-format
 msgid "Edit Firewall Rule"
 msgstr "Upravit pravidlo firewallu"
 
-#: ui/main.qml:173 ui/main.qml:294 ui/main.qml:423
+#: ui/main.qml:175 ui/main.qml:296 ui/main.qml:436
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr "Prosím, restartujte firewall Plasma. Podpůrná vrstva byla odpojena."
 
-#: ui/main.qml:187 ui/ViewBase.qml:112
+#: ui/main.qml:189 ui/ViewBase.qml:114
 #, kde-format
 msgid "Error creating rule: %1"
 msgstr "Chyba při vytváření pravidla: %1"
 
-#: ui/main.qml:189
+#: ui/main.qml:191
 #, kde-format
 msgid "Error updating rule: %1"
 msgstr "Chyba při aktualizaci pravidla: %1"
 
-#: ui/main.qml:214
+#: ui/main.qml:216
 #, kde-format
 msgid "Create"
 msgstr "Vytvořit"
 
-#: ui/main.qml:214
+#: ui/main.qml:216
 #, kde-format
 msgid "Save"
 msgstr "Uložit"
 
-#: ui/main.qml:241
+#: ui/main.qml:243
 #, kde-format
 msgid "Firewall type:"
 msgstr "Typ Firewallu:"
 
-#: ui/main.qml:249
+#: ui/main.qml:251
 #, kde-format
 msgctxt "@info"
 msgid "Firewall version: %1"
 msgstr "Verze Firewall: %1"
 
-#: ui/main.qml:256
+#: ui/main.qml:258
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "Výchozí politika pro příchozí provoz:"
 
-#: ui/main.qml:257
+#: ui/main.qml:259
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "Výchozí politika pro odchozí provoz:"
 
-#: ui/main.qml:306
+#: ui/main.qml:308
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Chyba při změně politiky: %1"
 
-#: ui/main.qml:413
+#: ui/main.qml:426
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Upravit pravidlo"
 
-#: ui/main.qml:434
+#: ui/main.qml:447
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Chyba při odstraňování pravidla: %1"
 
-#: ui/main.qml:440
+#: ui/main.qml:453
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Odstranit pravidlo"
 
-#: ui/main.qml:470
+#: ui/main.qml:483
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "Firewall je zakázán"
 
-#: ui/main.qml:470
+#: ui/main.qml:483
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Nebyla přidána žádná pravidla firewallu"
 
-#: ui/main.qml:472
+#: ui/main.qml:485
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr ""
 "Klikněte na tlačítko <interface>Přidat pravidlo…</interface> pro přidání"
 
-#: ui/main.qml:473
+#: ui/main.qml:486
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr "Klikněte na přepínač pro povolení"
 
-#: ui/main.qml:479
+#: ui/main.qml:494
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Nainstalujte prosím firewall, například ufw nebo firewalld"
@@ -809,7 +809,7 @@ msgstr "Povolit spojení pro:"
 msgid "Application:"
 msgstr "Aplikace:"
 
-#: ui/ViewBase.qml:253
+#: ui/ViewBase.qml:267
 #, kde-format
 msgid "Blacklist Connection"
 msgstr "Zakázat spojení"
