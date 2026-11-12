@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-09 00:45+0000\n"
+"POT-Creation-Date: 2026-11-12 03:40+0000\n"
 "PO-Revision-Date: 2026-02-10 12:54+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -95,17 +95,17 @@ msgstr "Programa"
 msgid "Failed to get connections: %1"
 msgstr "No ha sido posible obtener las conexiones: %1"
 
-#: backends/netstat/connectionsmodel.cpp:133
+#: backends/netstat/connectionsmodel.cpp:131
 #, kde-format
 msgid "Not Connected"
 msgstr "No conectado"
 
-#: backends/netstat/connectionsmodel.cpp:135
+#: backends/netstat/connectionsmodel.cpp:133
 #, kde-format
 msgid "Established"
 msgstr "Establecida"
 
-#: backends/netstat/connectionsmodel.cpp:137
+#: backends/netstat/connectionsmodel.cpp:135
 #, kde-format
 msgid "Listening"
 msgstr "En escucha"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-09 00:45+0000\n"
+"POT-Creation-Date: 2026-11-12 03:40+0000\n"
 "PO-Revision-Date: 2026-04-26 20:55+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -93,17 +93,17 @@ msgstr "앱"
 msgid "Failed to get connections: %1"
 msgstr "연결을 가져올 수 없음: %1"
 
-#: backends/netstat/connectionsmodel.cpp:133
+#: backends/netstat/connectionsmodel.cpp:131
 #, kde-format
 msgid "Not Connected"
 msgstr "연결되지 않음"
 
-#: backends/netstat/connectionsmodel.cpp:135
+#: backends/netstat/connectionsmodel.cpp:133
 #, kde-format
 msgid "Established"
 msgstr "수립됨"
 
-#: backends/netstat/connectionsmodel.cpp:137
+#: backends/netstat/connectionsmodel.cpp:135
 #, kde-format
 msgid "Listening"
 msgstr "듣는 중"
