@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-11 01:04+0000\n"
+"POT-Creation-Date: 2026-11-12 01:04+0000\n"
 "PO-Revision-Date: 2026-10-04 12:24+0200\n"
 "Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -93,17 +93,17 @@ msgstr "програм"
 msgid "Failed to get connections: %1"
 msgstr "Не могу да добавим везе: %1"
 
-#: backends/netstat/connectionsmodel.cpp:133
+#: backends/netstat/connectionsmodel.cpp:131
 #, kde-format
 msgid "Not Connected"
 msgstr "неповезано"
 
-#: backends/netstat/connectionsmodel.cpp:135
+#: backends/netstat/connectionsmodel.cpp:133
 #, kde-format
 msgid "Established"
 msgstr "успостављено"
 
-#: backends/netstat/connectionsmodel.cpp:137
+#: backends/netstat/connectionsmodel.cpp:135
 #, kde-format
 msgid "Listening"
 msgstr "слуша"

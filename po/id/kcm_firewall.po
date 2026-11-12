@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-11 01:04+0000\n"
+"POT-Creation-Date: 2026-11-12 01:04+0000\n"
 "PO-Revision-Date: 2022-03-26 19:12+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -99,17 +99,17 @@ msgstr "Program"
 msgid "Failed to get connections: %1"
 msgstr "Gagal untuk mendapatkan koneksi: %1"
 
-#: backends/netstat/connectionsmodel.cpp:133
+#: backends/netstat/connectionsmodel.cpp:131
 #, kde-format
 msgid "Not Connected"
 msgstr "Tidak Terkoneksi"
 
-#: backends/netstat/connectionsmodel.cpp:135
+#: backends/netstat/connectionsmodel.cpp:133
 #, kde-format
 msgid "Established"
 msgstr "Didirikan"
 
-#: backends/netstat/connectionsmodel.cpp:137
+#: backends/netstat/connectionsmodel.cpp:135
 #, kde-format
 msgid "Listening"
 msgstr "Mengdengarkan"
