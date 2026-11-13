@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-12 01:04+0000\n"
+"POT-Creation-Date: 2026-11-13 01:01+0000\n"
 "PO-Revision-Date: 2026-10-01 08:16+0200\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -670,7 +670,7 @@ msgstr "Создать правило брандмауэра"
 msgid "Edit Firewall Rule"
 msgstr "Изменить правило брандмауэра"
 
-#: ui/main.qml:175 ui/main.qml:296 ui/main.qml:436
+#: ui/main.qml:175 ui/main.qml:295 ui/main.qml:435
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr ""
@@ -707,49 +707,49 @@ msgctxt "@info"
 msgid "Firewall version: %1"
 msgstr "Версия брандмауэра: %1"
 
-#: ui/main.qml:258
+#: ui/main.qml:257
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "Правило по умолчанию для входящих соединений:"
 
-#: ui/main.qml:259
+#: ui/main.qml:258
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "Правило по умолчанию для исходящих соединений:"
 
-#: ui/main.qml:308
+#: ui/main.qml:307
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Не удалось изменить правило: %1"
 
-#: ui/main.qml:426
+#: ui/main.qml:425
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Изменить правило"
 
-#: ui/main.qml:447
+#: ui/main.qml:446
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Не удалось удалить правило: %1"
 
-#: ui/main.qml:453
+#: ui/main.qml:452
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Удалить правило"
 
-#: ui/main.qml:483
+#: ui/main.qml:482
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "Брандмауэр отключён"
 
-#: ui/main.qml:483
+#: ui/main.qml:482
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Ни одного правила не было добавлено"
 
-#: ui/main.qml:485
+#: ui/main.qml:484
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
@@ -757,13 +757,13 @@ msgstr ""
 "Для добавления правила нажмите кнопку <interface>Добавить правило…</"
 "interface>"
 
-#: ui/main.qml:486
+#: ui/main.qml:485
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr "Для включения правила нажмите на переключатель"
 
-#: ui/main.qml:494
+#: ui/main.qml:493
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Установите службу брандмауэра ufw или firewalld"

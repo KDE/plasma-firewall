@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-12 01:04+0000\n"
+"POT-Creation-Date: 2026-11-13 01:01+0000\n"
 "PO-Revision-Date: 2026-11-03 19:47+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -668,7 +668,7 @@ msgstr "建立新防火牆規則"
 msgid "Edit Firewall Rule"
 msgstr "編輯防火牆規則"
 
-#: ui/main.qml:175 ui/main.qml:296 ui/main.qml:436
+#: ui/main.qml:175 ui/main.qml:295 ui/main.qml:435
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr "由於後端斷線，請重開 Plasma 防火牆。"
@@ -704,61 +704,61 @@ msgctxt "@info"
 msgid "Firewall version: %1"
 msgstr "防火牆版本：%1"
 
-#: ui/main.qml:258
+#: ui/main.qml:257
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "預設傳入策略："
 
-#: ui/main.qml:259
+#: ui/main.qml:258
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "預設傳出策略："
 
-#: ui/main.qml:308
+#: ui/main.qml:307
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "修改策略時發生錯誤：%1"
 
-#: ui/main.qml:426
+#: ui/main.qml:425
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "編輯規則"
 
-#: ui/main.qml:447
+#: ui/main.qml:446
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "移除規則時發生錯誤：%1"
 
-#: ui/main.qml:453
+#: ui/main.qml:452
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "移除規則"
 
-#: ui/main.qml:483
+#: ui/main.qml:482
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "防火牆未開啟"
 
-#: ui/main.qml:483
+#: ui/main.qml:482
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "尚未新增防火牆規則"
 
-#: ui/main.qml:485
+#: ui/main.qml:484
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr "點擊 <interface>新增規則…</interface> 按鈕來新增規則"
 
-#: ui/main.qml:486
+#: ui/main.qml:485
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr "點擊上方開關來啟用"
 
-#: ui/main.qml:494
+#: ui/main.qml:493
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "請安裝防火牆，例如 ufw 或 firewalld"

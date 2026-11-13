@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-12 01:04+0000\n"
+"POT-Creation-Date: 2026-11-13 01:01+0000\n"
 "PO-Revision-Date: 2026-09-14 16:54+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -674,7 +674,7 @@ msgstr "Crea un nove regula de Talia foco"
 msgid "Edit Firewall Rule"
 msgstr "Edita regula de Talia foco"
 
-#: ui/main.qml:175 ui/main.qml:296 ui/main.qml:436
+#: ui/main.qml:175 ui/main.qml:295 ui/main.qml:435
 #, kde-format
 msgid "Please restart plasma firewall, the backend disconnected."
 msgstr ""
@@ -712,61 +712,61 @@ msgctxt "@info"
 msgid "Firewall version: %1"
 msgstr "Version d4e talia foco (firewall): %1"
 
-#: ui/main.qml:258
+#: ui/main.qml:257
 #, kde-format
 msgid "Default Incoming Policy:"
 msgstr "Politica predefinite de arrivata:"
 
-#: ui/main.qml:259
+#: ui/main.qml:258
 #, kde-format
 msgid "Default Outgoing Policy:"
 msgstr "Politica predefinite de partita:"
 
-#: ui/main.qml:308
+#: ui/main.qml:307
 #, kde-format
 msgid "Error changing policy: %1"
 msgstr "Error durante que il cambiava politica: %1"
 
-#: ui/main.qml:426
+#: ui/main.qml:425
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Edit Rule"
 msgstr "Modifica regula"
 
-#: ui/main.qml:447
+#: ui/main.qml:446
 #, kde-format
 msgid "Error removing rule: %1"
 msgstr "Error durante que il removeva regula: %1"
 
-#: ui/main.qml:453
+#: ui/main.qml:452
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove Rule"
 msgstr "Remove regula"
 
-#: ui/main.qml:483
+#: ui/main.qml:482
 #, kde-format
 msgid "Firewall is disabled"
 msgstr "Talia Foco es deactivate"
 
-#: ui/main.qml:483
+#: ui/main.qml:482
 #, kde-format
 msgid "No firewall rules have been added"
 msgstr "Necun regulas de talia foco ha essite addite"
 
-#: ui/main.qml:485
+#: ui/main.qml:484
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click the <interface>Add Rule…</interface> button to add one"
 msgstr "Clicca le button <interface>Adde regula...</interface>  per adder un"
 
-#: ui/main.qml:486
+#: ui/main.qml:485
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Click switch above to enable it"
 msgstr "Clicca commutator supra pro habilitar lo"
 
-#: ui/main.qml:494
+#: ui/main.qml:493
 #, kde-format
 msgid "Please install a firewall, such as ufw or firewalld"
 msgstr "Pro favor installa un taliafoco (firewall), tal como ufw o firewalld"
