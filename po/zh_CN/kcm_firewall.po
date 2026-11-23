@@ -255,15 +255,13 @@ msgstr "日志"
 #, kde-format
 msgctxt "@title:column"
 msgid "Comment"
-msgstr ""
+msgstr "注释"
 
 #: core/rulelistmodel.cpp:101
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Edit Rule"
+#, kde-format
 msgctxt "@title:column"
 msgid "Edit"
-msgstr "编辑规则"
+msgstr "编辑"
 
 #: core/systemdjob.cpp:51
 #, kde-format
@@ -524,13 +522,13 @@ msgstr "日志："
 #, kde-format
 msgctxt "@label:textbox User-supplied comment about this firewall rule"
 msgid "Comment:"
-msgstr ""
+msgstr "注释："
 
 #: ui/AdvancedRuleEdit.qml:150
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Optional"
-msgstr ""
+msgstr "可选"
 
 #: ui/ConnectionsView.qml:14
 #, kde-format
