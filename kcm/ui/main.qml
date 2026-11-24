@@ -235,85 +235,87 @@ KCMUtils.AbstractKCM {
             Layout.fillWidth: true
             type: Kirigami.MessageType.Error
         }
-        Kirigami.FormLayout {
-            RowLayout {
-                spacing: Kirigami.Units.smallSpacing
-                implicitHeight: versionButton.implicitHeight
-
-                Kirigami.FormData.label: i18n("Firewall type:")
-                Kirigami.SelectableLabel {
-                    Layout.fillWidth: true
-                    textFormat: TextEdit.PlainText
-                    text: kcm.client.name
-                }
-                Kirigami.ContextualHelpButton {
-                    id: versionButton
-                    toolTipText: i18nc("@info", "Firewall version: %1", kcm.client.version().trim())
-                }
-            }
-
-            Repeater {
-                model: [
-                    {label: i18n("Default Incoming Policy:"), key: "Incoming"},
-                    {label: i18n("Default Outgoing Policy:"), key: "Outgoing"}
-                ]
-
-                RowLayout {
-                    Kirigami.FormData.label: modelData.label
-
-                    QQC2.ComboBox {
-                        id: policyCombo
-
-                        property QtObject activeJob: null
-                        // TODO currentValue
-                        readonly property string currentPolicy: policyChoices[currentIndex].data
-
-                        model: policyChoices
-                        textRole: "text"
-                        enabled: !activeJob && kcm.client.enabled
-                        QQC2.ToolTip.text: policyChoices[currentIndex].tooltip
-                        QQC2.ToolTip.delay: 1000
-                        QQC2.ToolTip.timeout: 5000
-                        QQC2.ToolTip.visible: hovered
-
-                        Binding { // :(
-                            target: ruleEdit
-                            property: "default" + modelData.key + "PolicyRule"
-                            value: policyCombo.currentPolicy
-                        }
-
-                        function bindCurrent() {
-                            currentIndex = Qt.binding(function() {
-                                return policyChoices.findIndex((choice) => choice.data === kcm.client["default" + modelData.key + "Policy"]);
-                            });
-                        }
-                        Component.onCompleted: bindCurrent()
-
-                        onActivated: {
-                            const job = kcm.client["setDefault" + modelData.key + "Policy"](currentPolicy)
-                            if (!job) {
-                                firewallInlineErrorMessage.text = i18n("Please restart plasma firewall, the backend disconnected.");
-                                firewallInlineErrorMessage.visible = true;
-                                return;
-                           }
-                            policyCombo.activeJob = job;
-                            job.result.connect(function () {
-                                policyCombo.activeJob = null;
-                                bindCurrent();
-
-                                kcm.needsSave = true;
-
-                                if (job.error && job.error !== 4) { // TODO magic number
-                                    firewallInlineErrorMessage.text = i18n("Error changing policy: %1", job.errorString)
-                                    firewallInlineErrorMessage.visible = true;
-                                }
-                            });
-                        }
+        Kirigami.Form {
+            Layout.fillWidth: true
+            Layout.topMargin: -Kirigami.Units.largeSpacing // HACK compensate for huge Form margin in header
+            Kirigami.FormGroup {
+                Kirigami.FormEntry {
+                    title: i18nc("@label:listbox", "Firewall type:")
+                    contentItem: Kirigami.SelectableLabel {
+                        Layout.fillWidth: true
+                        textFormat: TextEdit.PlainText
+                        text: kcm.client.name
                     }
+                    trailingItems: [
+                        Kirigami.ContextualHelpButton {
+                            id: versionButton
+                            toolTipText: i18nc("@info", "Firewall version: %1", kcm.client.version().trim())
+                        }
+                    ]
+                }
+                Repeater {
+                    model: [
+                        {label: i18nc("@label:listbox", "Default Incoming Policy:"), key: "Incoming"},
+                        {label: i18nc("@label:listbox", "Default Outgoing Policy:"), key: "Outgoing"}
+                    ]
 
-                    InlineBusyIndicator {
-                        Layout.fillHeight: true
-                        running: policyCombo.activeJob !== null
+                    delegate: Kirigami.FormEntry {
+                        title: modelData.label
+                        contentItem: QQC2.ComboBox {
+                            id: policyCombo
+
+                            property QtObject activeJob: null
+                            // TODO currentValue
+                            readonly property string currentPolicy: policyChoices[currentIndex].data
+
+                            model: policyChoices
+                            textRole: "text"
+                            enabled: !activeJob && kcm.client.enabled
+                            QQC2.ToolTip.text: policyChoices[currentIndex].tooltip
+                            QQC2.ToolTip.delay: 1000
+                            QQC2.ToolTip.timeout: 5000
+                            QQC2.ToolTip.visible: hovered
+
+                            Binding { // :(
+                                target: ruleEdit
+                                property: "default" + modelData.key + "PolicyRule"
+                                value: policyCombo.currentPolicy
+                            }
+
+                            function bindCurrent() {
+                                currentIndex = Qt.binding(function() {
+                                    return policyChoices.findIndex((choice) => choice.data === kcm.client["default" + modelData.key + "Policy"]);
+                                });
+                            }
+                            Component.onCompleted: bindCurrent()
+
+                            onActivated: {
+                                const job = kcm.client["setDefault" + modelData.key + "Policy"](currentPolicy)
+                                if (!job) {
+                                    firewallInlineErrorMessage.text = i18nc("@info:status", "Please restart plasma firewall, the backend disconnected.");
+                                    firewallInlineErrorMessage.visible = true;
+                                    return;
+                                }
+                                policyCombo.activeJob = job;
+                                job.result.connect(function () {
+                                    policyCombo.activeJob = null;
+                                    bindCurrent();
+
+                                    kcm.needsSave = true;
+
+                                    if (job.error && job.error !== 4) { // TODO magic number
+                                        firewallInlineErrorMessage.text = i18nc("@info:status", "Error changing policy: %1", job.errorString)
+                                        firewallInlineErrorMessage.visible = true;
+                                    }
+                                });
+                            }
+                        }
+                        trailingItems: [
+                            InlineBusyIndicator {
+                                Layout.fillHeight: true
+                                running: policyCombo.activeJob !== null
+                            }
+                        ]
                     }
                 }
             }
