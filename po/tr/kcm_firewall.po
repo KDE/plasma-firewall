@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: plasma-firewall\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-13 01:01+0000\n"
-"PO-Revision-Date: 2026-10-01 19:19+0300\n"
+"PO-Revision-Date: 2026-11-23 17:59+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -711,12 +711,12 @@ msgstr "Güvenlik duvarı sürümü: %1"
 #: ui/main.qml:257
 #, kde-format
 msgid "Default Incoming Policy:"
-msgstr "Öntanımlı gelen politikası:"
+msgstr "Varsayılan gelen politikası:"
 
 #: ui/main.qml:258
 #, kde-format
 msgid "Default Outgoing Policy:"
-msgstr "Öntanımlı giden politikası:"
+msgstr "Varsayılan giden politikası:"
 
 #: ui/main.qml:307
 #, kde-format
@@ -786,12 +786,12 @@ msgstr "Tüm Paketler"
 #: ui/RuleEdit.qml:54 ui/RuleEdit.qml:61
 #, kde-format
 msgid "The default incoming policy is already '%1'."
-msgstr "Öntanımlı gelen politikası hâlihazırda “%1”."
+msgstr "Varsayılan gelen politikası hâlihazırda “%1”."
 
 #: ui/RuleEdit.qml:55 ui/RuleEdit.qml:62
 #, kde-format
 msgid "The default outgoing policy is already '%1'."
-msgstr "Öntanımlı giden politikası hâlihazırda “%1”."
+msgstr "Varsayılan giden politikası hâlihazırda “%1”."
 
 #: ui/RuleEdit.qml:72
 #, kde-format
