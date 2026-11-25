@@ -17,6 +17,7 @@
   <name xml:lang="cs">Firewall Plasma</name>
   <name xml:lang="da">Plasma Firewall</name>
   <name xml:lang="de">Plasma-Firewall</name>
+  <name xml:lang="el">Τείχος προστασίας του Plasma</name>
   <name xml:lang="en-GB">Plasma Firewall</name>
   <name xml:lang="eo">Plasma Firewall</name>
   <name xml:lang="es">Cortafuegos de Plasma</name>
@@ -66,6 +67,7 @@
   <summary xml:lang="cs">Rozhraní firewallu pro prostředí Plasma</summary>
   <summary xml:lang="da">Firewallbrugerflade til Plasma</summary>
   <summary xml:lang="de">Firewall-Schnittstelle für Plasma</summary>
+  <summary xml:lang="el">Περιβάλλον ρύθμισης τείχους προστασίας για το Plasma</summary>
   <summary xml:lang="en-GB">Firewall Interface for Plasma</summary>
   <summary xml:lang="eo">Fajroŝirmila interfaco por Plasma</summary>
   <summary xml:lang="es">Interfaz de cortafuegos para Plasma</summary>
@@ -116,6 +118,7 @@
     <p xml:lang="cs">Plasma Firewall je rozhraní pro více firewallů, které usnadňuje konfiguraci sítě.</p>
     <p xml:lang="da">Plasma Firewall er en multi-firewallbrugerflade til at lette netværkskonfigurationer.</p>
     <p xml:lang="de">Plasma-Firewall ist eine Benutzerschnittstelle für mehrere Firewalls, um das Einrichten von Netzwerken zu erleichtern.</p>
+    <p xml:lang="el">Το Τείχος προστασίας του Plasma απλοποιεί τη ρύθμιση του δικτύου μέσω ενός κοινού περιβάλλοντος για διαφορετικά τείχη προστασίας.</p>
     <p xml:lang="en-GB">Plasma Firewall is a multi-firewall frontend for ease of network configurations.</p>
     <p xml:lang="eo">Plasma Firewall estas plurŝirmila fasado por faciligi retajn agordojn.</p>
     <p xml:lang="es">El cortafuegos de Plasma es una interfaz para varios cortafuegos que facilita la configuración de redes.</p>
@@ -168,6 +171,7 @@
       <caption xml:lang="cs">Výchozí stránka nastavení firewallu v prostředí Plasma</caption>
       <caption xml:lang="da">Plasma-firewallen der viser en standardkonfigurationsside</caption>
       <caption xml:lang="de">Die Plasma-Firewall mit der Anzeige der Standard-Einrichtungsseite</caption>
+      <caption xml:lang="el">Το Τείχος προστασίας του Plasma στη σελίδα προεπιλεγμένων ρυθμίσεων</caption>
       <caption xml:lang="en-GB">The plasma firewall showing a default configuration page</caption>
       <caption xml:lang="eo">La Plasma-fajroŝirmilo montranta defaŭltan agordpaĝon</caption>
       <caption xml:lang="es">El cortafuegos de Plasma mostrando una página de configuración predeterminada</caption>
@@ -221,6 +225,7 @@
   <developer_name xml:lang="cs">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="da">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="de">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
+  <developer_name xml:lang="el">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="en-GB">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="eo">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
   <developer_name xml:lang="es">Tomaz Canabrava &lt;tcanabrava@kde.org&gt;</developer_name>
