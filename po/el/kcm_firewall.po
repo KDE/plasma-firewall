@@ -1,0 +1,820 @@
+# Greek translations for plasma-firewall.
+# Copyright (C) 2026 This file is copyright:
+# This file is distributed under the same license as the plasma-firewall package.
+# Automatically generated, 2026.
+#
+# SPDX-FileCopyrightText: 2026 Petros Vidalis <pvidalis@gmail.com>
+msgid ""
+msgstr ""
+"Project-Id-Version: plasma-firewall\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2026-11-13 01:01+0000\n"
+"PO-Revision-Date: 2026-11-21 17:19+0200\n"
+"Last-Translator: Petros Vidalis <pvidalis@gmail.com>\n"
+"Language-Team: Greek <kde-i18n-el@kde.org>\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 25.12.3\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Πέτρος Βιδάλης"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "pvidalis@gmail.com"
+
+#: backends/firewalld/firewalldclient.cpp:601 backends/ufw/ufwclient.cpp:701
+#, kde-format
+msgid "Error fetching information from the firewall."
+msgstr "Σφάλμα κατά την ανάκτηση πληροφοριών από το τείχος προστασίας."
+
+#: backends/firewalld/firewalldjob.cpp:173
+#, kde-format
+msgid "firewalld saving (runtime to permanent)"
+msgstr "Αποθήκευση τρεχουσών ρυθμίσεων του firewalld ως μόνιμων"
+
+#: backends/firewalld/firewalldjob.cpp:197
+#, kde-format
+msgid "firewalld saving"
+msgstr "Αποθήκευση ρυθμίσεων του firewalld"
+
+#: backends/firewalld/firewalldjob.cpp:197
+#, kde-format
+msgid "firewalld %1"
+msgstr "firewalld %1"
+
+#: backends/firewalld/queryrulesfirewalldjob.cpp:50
+#, kde-format
+msgid "firewalld listing rules and services"
+msgstr "Εμφάνιση κανόνων και υπηρεσιών του firewalld"
+
+#: backends/netstat/connectionsmodel.cpp:97 core/loglistmodel.cpp:96
+#, kde-format
+msgctxt "@title:column"
+msgid "Protocol"
+msgstr "Πρωτόκολλο"
+
+#: backends/netstat/connectionsmodel.cpp:99
+#, kde-format
+msgctxt "@title:column"
+msgid "Local address"
+msgstr "Τοπική διεύθυνση"
+
+#: backends/netstat/connectionsmodel.cpp:101
+#, kde-format
+msgctxt "@title:column"
+msgid "Foreign address"
+msgstr "Απομακρυσμένη διεύθυνση"
+
+#: backends/netstat/connectionsmodel.cpp:103
+#, kde-format
+msgctxt "@title:column"
+msgid "Status"
+msgstr "Κατάσταση"
+
+#: backends/netstat/connectionsmodel.cpp:105
+#, kde-format
+msgctxt "@title:column"
+msgid "PID"
+msgstr "PID"
+
+#: backends/netstat/connectionsmodel.cpp:107
+#, kde-format
+msgctxt "@title:column"
+msgid "Program"
+msgstr "Πρόγραμμα"
+
+#: backends/netstat/connectionsmodel.cpp:115
+#, kde-format
+msgid "Failed to get connections: %1"
+msgstr "Αποτυχία ανάκτησης συνδέσεων: %1"
+
+#: backends/netstat/connectionsmodel.cpp:131
+#, kde-format
+msgid "Not Connected"
+msgstr "Χωρίς σύνδεση"
+
+#: backends/netstat/connectionsmodel.cpp:133
+#, kde-format
+msgid "Established"
+msgstr "Συνδεδεμένη"
+
+#: backends/netstat/connectionsmodel.cpp:135
+#, kde-format
+msgid "Listening"
+msgstr "Σε αναμονή συνδέσεων"
+
+#: backends/ufw/helper/helper.cpp:213
+#, kde-format
+msgid "Invalid arguments passed to the profile"
+msgstr "Δόθηκαν μη έγκυρα ορίσματα για το προφίλ"
+
+#: backends/ufw/helper/helper.cpp:243
+#, kde-format
+msgid "Error saving the profile."
+msgstr "Σφάλμα κατά την αποθήκευση του προφίλ."
+
+#: backends/ufw/helper/helper.cpp:267
+#, kde-format
+msgid "Invalid arguments passed to delete profile"
+msgstr "Δόθηκαν μη έγκυρα ορίσματα για τη διαγραφή του προφίλ"
+
+#: backends/ufw/helper/helper.cpp:274
+#, kde-format
+msgid "Could not remove the profile from disk."
+msgstr "Αδυναμία αφαίρεσης του προφίλ από τον δίσκο."
+
+#: backends/ufw/helper/helper.cpp:289
+#, kde-format
+msgid "Invalid argument passed to add Rules"
+msgstr "Δόθηκε μη έγκυρο όρισμα για την προσθήκη κανόνων"
+
+#: backends/ufw/helper/helper.cpp:361
+#, kde-format
+msgid "An error occurred in command '%1': %2"
+msgstr "Παρουσιάστηκε σφάλμα στην εντολή «%1»: %2"
+
+#: backends/ufw/ufwclient.cpp:161
+#, kde-format
+msgid ""
+"There was an error in the backend! Please report it.\n"
+"%1 %2"
+msgstr ""
+"Παρουσιάστηκε σφάλμα στο σύστημα υποστήριξης! Αναφέρετέ το.\n"
+"%1 %2"
+
+#: backends/ufw/ufwclient.cpp:268
+#, kde-format
+msgid "Error fetching firewall logs: %1"
+msgstr "Σφάλμα κατά την ανάκτηση των καταγραφών του τείχους προστασίας: %1"
+
+#: backends/ufw/ufwclient.cpp:608 core/firewallclient.cpp:76
+#, kde-format
+msgid "Any"
+msgstr "Οποιοδήποτε"
+
+#: core/loglistmodel.cpp:88 core/rulelistmodel.cpp:91
+#, kde-format
+msgctxt "@title:column"
+msgid "From"
+msgstr "Από"
+
+#: core/loglistmodel.cpp:90
+#, kde-format
+msgctxt "@title:column"
+msgid "Source port"
+msgstr "Θύρα προέλευσης"
+
+#: core/loglistmodel.cpp:92 core/rulelistmodel.cpp:93
+#, kde-format
+msgctxt "@title:column"
+msgid "To"
+msgstr "Προς"
+
+#: core/loglistmodel.cpp:94
+#, kde-format
+msgctxt "@title:column"
+msgid "Destination port"
+msgstr "Θύρα προορισμού"
+
+#: core/loglistmodel.cpp:98
+#, kde-format
+msgctxt "@title:column"
+msgid "Interface"
+msgstr "Διεπαφή"
+
+#: core/loglistmodel.cpp:100 core/rulelistmodel.cpp:89
+#, kde-format
+msgctxt "@title:column"
+msgid "Action"
+msgstr "Ενέργεια"
+
+#: core/loglistmodel.cpp:102
+#, kde-format
+msgctxt "@title:column"
+msgid "Time"
+msgstr "Ώρα"
+
+#: core/loglistmodel.cpp:104
+#, kde-format
+msgctxt "@title:column"
+msgid "Date"
+msgstr "Ημερομηνία"
+
+#: core/rule.cpp:45
+#, kde-format
+msgctxt "address on interface"
+msgid "%1 on %2"
+msgstr "%1 στη διεπαφή %2"
+
+#: core/rule.cpp:74 core/rule.cpp:164 core/rule.cpp:170
+#, kde-format
+msgid "Anywhere"
+msgstr "Οπουδήποτε"
+
+#: core/rule.cpp:95 core/rule.cpp:108 core/rule.cpp:125
+#, kde-format
+msgctxt "service/application name (port numbers)"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: core/rule.cpp:198
+#, kde-format
+msgctxt "firewallAction incoming"
+msgid "%1 incoming"
+msgstr "%1 εισερχομένων"
+
+#: core/rule.cpp:199
+#, kde-format
+msgctxt "firewallAction outgoing"
+msgid "%1 outgoing"
+msgstr "%1 εξερχομένων"
+
+#: core/rule.cpp:204
+#, kde-format
+msgid "Yes"
+msgstr "Ναι"
+
+#: core/rulelistmodel.cpp:95
+#, kde-format
+msgctxt "@title:column"
+msgid "IP"
+msgstr "IP"
+
+#: core/rulelistmodel.cpp:97
+#, kde-format
+msgctxt "@title:column"
+msgid "Logging"
+msgstr "Καταγραφή"
+
+#: core/rulelistmodel.cpp:99
+#, kde-format
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "Σχόλιο"
+
+#: core/rulelistmodel.cpp:101
+#, kde-format
+msgctxt "@title:column"
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+#: core/systemdjob.cpp:51
+#, kde-format
+msgid "Invalid Call"
+msgstr "Μη έγκυρη κλήση"
+
+#: core/types.cpp:19
+#, kde-format
+msgid "Off"
+msgstr "Ανενεργή"
+
+#: core/types.cpp:22
+#, kde-format
+msgid "Low"
+msgstr "Χαμηλή"
+
+#: core/types.cpp:24
+#, kde-format
+msgid "Medium"
+msgstr "Μέση"
+
+#: core/types.cpp:26
+#, kde-format
+msgid "High"
+msgstr "Υψηλή"
+
+#: core/types.cpp:28
+#, kde-format
+msgid "Full"
+msgstr "Πλήρης"
+
+#: core/types.cpp:45 ui/RuleEdit.qml:37
+#, kde-format
+msgid "None"
+msgstr "Καμία"
+
+#: core/types.cpp:47
+#, kde-format
+msgid "New connections"
+msgstr "Νέες συνδέσεις"
+
+#: core/types.cpp:49
+#, kde-format
+msgid "All packets"
+msgstr "Όλα τα πακέτα"
+
+#: core/types.cpp:58 ui/main.qml:27
+#, kde-format
+msgid "Allow"
+msgstr "Αποδοχή"
+
+#: core/types.cpp:60
+#, kde-format
+msgid "Deny"
+msgstr "Αποκλεισμός"
+
+#: core/types.cpp:62 ui/main.qml:29
+#, kde-format
+msgid "Reject"
+msgstr "Απόρριψη"
+
+#: core/types.cpp:64
+#, kde-format
+msgid "Limit"
+msgstr "Περιορισμός"
+
+#: core/types.cpp:80
+#, kde-format
+msgid "Amule"
+msgstr "Amule"
+
+#: core/types.cpp:82
+#, kde-format
+msgid "Deluge"
+msgstr "Deluge"
+
+#: core/types.cpp:84
+#, kde-format
+msgid "KTorrent"
+msgstr "KTorrent"
+
+#: core/types.cpp:86
+#, kde-format
+msgid "Nicotine"
+msgstr "Nicotine"
+
+#: core/types.cpp:88
+#, kde-format
+msgid "qBittorrent"
+msgstr "qBittorrent"
+
+#: core/types.cpp:90
+#, kde-format
+msgid "Transmission"
+msgstr "Transmission"
+
+#: core/types.cpp:92
+#, kde-format
+msgid "ICQ"
+msgstr "ICQ"
+
+#: core/types.cpp:94
+#, kde-format
+msgid "Jabber"
+msgstr "Jabber"
+
+#: core/types.cpp:96
+#, kde-format
+msgid "Windows Live Messenger"
+msgstr "Windows Live Messenger"
+
+#: core/types.cpp:98
+#, kde-format
+msgid "Yahoo! Messenger"
+msgstr "Yahoo! Messenger"
+
+#: core/types.cpp:100
+#, kde-format
+msgid "FTP"
+msgstr "FTP"
+
+#: core/types.cpp:102
+#, kde-format
+msgid "HTTP"
+msgstr "HTTP"
+
+#: core/types.cpp:104
+#, kde-format
+msgid "Secure HTTP"
+msgstr "Ασφαλές HTTP"
+
+#: core/types.cpp:106
+#, kde-format
+msgid "IMAP"
+msgstr "IMAP"
+
+#: core/types.cpp:108
+#, kde-format
+msgid "Secure IMAP"
+msgstr "Ασφαλές IMAP"
+
+#: core/types.cpp:110
+#, kde-format
+msgid "POP3"
+msgstr "POP3"
+
+#: core/types.cpp:112
+#, kde-format
+msgid "Secure POP3"
+msgstr "Ασφαλές POP3"
+
+#: core/types.cpp:114
+#, kde-format
+msgid "SMTP"
+msgstr "SMTP"
+
+#: core/types.cpp:116
+#, kde-format
+msgid "NFS"
+msgstr "NFS"
+
+#: core/types.cpp:118
+#, kde-format
+msgid "Samba"
+msgstr "Samba"
+
+#: core/types.cpp:120
+#, kde-format
+msgid "Secure Shell"
+msgstr "Secure Shell"
+
+#: core/types.cpp:122
+#, kde-format
+msgid "VNC"
+msgstr "VNC"
+
+#: core/types.cpp:124
+#, kde-format
+msgid "Zeroconf"
+msgstr "Zeroconf"
+
+#: core/types.cpp:126
+#, kde-format
+msgid "Telnet"
+msgstr "Telnet"
+
+#: core/types.cpp:128
+#, kde-format
+msgid "NTP"
+msgstr "NTP"
+
+#: core/types.cpp:130
+#, kde-format
+msgid "CUPS"
+msgstr "CUPS"
+
+#: ui/AdvancedRuleEdit.qml:31 ui/SimpleRuleEdit.qml:29
+#, kde-format
+msgid "Policy:"
+msgstr "Πολιτική:"
+
+#: ui/AdvancedRuleEdit.qml:42 ui/SimpleRuleEdit.qml:40
+#, kde-format
+msgid "Direction:"
+msgstr "Κατεύθυνση:"
+
+#: ui/AdvancedRuleEdit.qml:45 ui/SimpleRuleEdit.qml:44
+#, kde-format
+msgid "Incoming"
+msgstr "Εισερχόμενα"
+
+#: ui/AdvancedRuleEdit.qml:51 ui/SimpleRuleEdit.qml:50
+#, kde-format
+msgid "Outgoing"
+msgstr "Εξερχόμενα"
+
+#: ui/AdvancedRuleEdit.qml:59
+#, kde-format
+msgid "IP Version:"
+msgstr "Έκδοση IP:"
+
+#: ui/AdvancedRuleEdit.qml:62
+#, kde-format
+msgid "IPv4"
+msgstr "IPv4"
+
+#: ui/AdvancedRuleEdit.qml:67
+#, kde-format
+msgid "IPv6"
+msgstr "IPv6"
+
+#: ui/AdvancedRuleEdit.qml:74
+#, kde-format
+msgid "Source:"
+msgstr "Προέλευση:"
+
+#: ui/AdvancedRuleEdit.qml:94
+#, kde-format
+msgid "Destination:"
+msgstr "Προορισμός:"
+
+#: ui/AdvancedRuleEdit.qml:114
+#, kde-format
+msgid "Protocol:"
+msgstr "Πρωτόκολλο:"
+
+#: ui/AdvancedRuleEdit.qml:125
+#, kde-format
+msgid "Interface:"
+msgstr "Διεπαφή:"
+
+#: ui/AdvancedRuleEdit.qml:137
+#, kde-format
+msgid "Logging:"
+msgstr "Καταγραφή:"
+
+#: ui/AdvancedRuleEdit.qml:148
+#, kde-format
+msgctxt "@label:textbox User-supplied comment about this firewall rule"
+msgid "Comment:"
+msgstr "Σχόλιο:"
+
+#: ui/AdvancedRuleEdit.qml:150
+#, kde-format
+msgctxt "@info:placeholder"
+msgid "Optional"
+msgstr "Προαιρετικό"
+
+#: ui/ConnectionsView.qml:14
+#, kde-format
+msgid "Connections"
+msgstr "Συνδέσεις"
+
+#: ui/ConnectionsView.qml:26
+#, kde-format
+msgid "There are currently no open connections"
+msgstr "Προς το παρόν δεν υπάρχουν ανοιχτές συνδέσεις"
+
+#: ui/ConnectionsView.qml:35
+#, kde-format
+msgid "Created a blacklist rule from this connection."
+msgstr "Δημιουργήθηκε κανόνας αποκλεισμού με βάση αυτή τη σύνδεση."
+
+#: ui/ConnectionsView.qml:52
+#, kde-format
+msgid "could not find iproute2 or net-tools packages installed."
+msgstr "Δεν βρέθηκε εγκατεστημένο το πακέτο iproute2 ή το net-tools."
+
+#: ui/IpTextField.qml:14
+#, kde-format
+msgid "Any IP address"
+msgstr "Οποιαδήποτε διεύθυνση IP"
+
+#: ui/LogsView.qml:16
+#, kde-format
+msgid "Firewall Logs"
+msgstr "Καταγραφές του τείχους προστασίας"
+
+#: ui/LogsView.qml:26
+#, kde-format
+msgid "There are currently no firewall log entries"
+msgstr ""
+"Προς το παρόν δεν υπάρχουν εγγραφές στο αρχείο καταγραφής του τείχους "
+"προστασίας"
+
+#: ui/LogsView.qml:37
+#, kde-format
+msgid "Created a blacklist rule from this log entry."
+msgstr "Δημιουργήθηκε κανόνας αποκλεισμού με βάση αυτή την εγγραφή καταγραφής."
+
+#: ui/main.qml:27
+#, kde-format
+msgid "Allow all connections"
+msgstr "Αποδοχή όλων των συνδέσεων"
+
+#: ui/main.qml:28
+#, kde-format
+msgid "Ignore"
+msgstr "Αγνόηση"
+
+#: ui/main.qml:28
+#, kde-format
+msgid ""
+"Keeps the program waiting until the connection attempt times out, some short "
+"time later."
+msgstr ""
+"Κρατά το πρόγραμμα σε αναμονή μέχρι να λήξει το χρονικό όριο της προσπάθειας "
+"σύνδεσης, λίγο αργότερα."
+
+#: ui/main.qml:29
+#, kde-format
+msgid "Produces an immediate and very informative 'Connection refused' message"
+msgstr "Εμφανίζει αμέσως το σαφές μήνυμα «Η σύνδεση απορρίφθηκε»"
+
+#: ui/main.qml:37
+#, kde-format
+msgid "Add Rule…"
+msgstr "Προσθήκη κανόνα…"
+
+#: ui/main.qml:45
+#, kde-format
+msgctxt "'view' is being used as a verb here"
+msgid "View Connections"
+msgstr "Προβολή συνδέσεων"
+
+#: ui/main.qml:51
+#, kde-format
+msgctxt "'view' is being used as a verb here"
+msgid "View Logs"
+msgstr "Προβολή καταγραφών"
+
+#: ui/main.qml:68
+#, kde-format
+msgid "Disabling…"
+msgstr "Γίνεται απενεργοποίηση…"
+
+#: ui/main.qml:68
+#, kde-format
+msgid "Enabled"
+msgstr "Ενεργό"
+
+#: ui/main.qml:70
+#, kde-format
+msgid "Enabling…"
+msgstr "Γίνεται ενεργοποίηση…"
+
+#: ui/main.qml:70
+#, kde-format
+msgid "Disabled"
+msgstr "Ανενεργό"
+
+#: ui/main.qml:95
+#, kde-format
+msgid "The firewall application, please install %1"
+msgstr "Εγκαταστήστε την εφαρμογή τείχους προστασίας %1"
+
+#: ui/main.qml:109
+#, kde-format
+msgid "Permission denied"
+msgstr "Άρνηση πρόσβασης"
+
+#: ui/main.qml:113
+#, kde-format
+msgid ""
+"You recently updated your kernel. Iptables is failing to initialize, please "
+"reboot."
+msgstr ""
+"Ενημερώσατε πρόσφατα τον πυρήνα. Δεν είναι δυνατή η αρχικοποίηση του "
+"iptables. Κάντε επανεκκίνηση."
+
+#: ui/main.qml:116
+#, kde-format
+msgid "Error enabling firewall: %1"
+msgstr "Σφάλμα κατά την ενεργοποίηση του τείχους προστασίας: %1"
+
+#: ui/main.qml:117
+#, kde-format
+msgid "Error disabling firewall: %1"
+msgstr "Σφάλμα κατά την απενεργοποίηση του τείχους προστασίας: %1"
+
+#: ui/main.qml:152
+#, kde-format
+msgid "Create A New Firewall Rule"
+msgstr "Δημιουργία νέου κανόνα τείχους προστασίας"
+
+#: ui/main.qml:152
+#, kde-format
+msgid "Edit Firewall Rule"
+msgstr "Επεξεργασία κανόνα τείχους προστασίας"
+
+#: ui/main.qml:175 ui/main.qml:295 ui/main.qml:435
+#, kde-format
+msgid "Please restart plasma firewall, the backend disconnected."
+msgstr ""
+"Η υπηρεσία υποστήριξης αποσυνδέθηκε. Επανεκκινήστε το Τείχος προστασίας του "
+"Plasma."
+
+#: ui/main.qml:189 ui/ViewBase.qml:114
+#, kde-format
+msgid "Error creating rule: %1"
+msgstr "Σφάλμα κατά τη δημιουργία του κανόνα: %1"
+
+#: ui/main.qml:191
+#, kde-format
+msgid "Error updating rule: %1"
+msgstr "Σφάλμα κατά την ενημέρωση του κανόνα: %1"
+
+#: ui/main.qml:216
+#, kde-format
+msgid "Create"
+msgstr "Δημιουργία"
+
+#: ui/main.qml:216
+#, kde-format
+msgid "Save"
+msgstr "Αποθήκευση"
+
+#: ui/main.qml:243
+#, kde-format
+msgid "Firewall type:"
+msgstr "Τύπος τείχους προστασίας:"
+
+#: ui/main.qml:251
+#, kde-format
+msgctxt "@info"
+msgid "Firewall version: %1"
+msgstr "Έκδοση τείχους προστασίας: %1"
+
+#: ui/main.qml:257
+#, kde-format
+msgid "Default Incoming Policy:"
+msgstr "Προεπιλεγμένη πολιτική εισερχομένων:"
+
+#: ui/main.qml:258
+#, kde-format
+msgid "Default Outgoing Policy:"
+msgstr "Προεπιλεγμένη πολιτική εξερχομένων:"
+
+#: ui/main.qml:307
+#, kde-format
+msgid "Error changing policy: %1"
+msgstr "Σφάλμα κατά την αλλαγή της πολιτικής: %1"
+
+#: ui/main.qml:425
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Edit Rule"
+msgstr "Επεξεργασία κανόνα"
+
+#: ui/main.qml:446
+#, kde-format
+msgid "Error removing rule: %1"
+msgstr "Σφάλμα κατά την αφαίρεση του κανόνα: %1"
+
+#: ui/main.qml:452
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Remove Rule"
+msgstr "Αφαίρεση κανόνα"
+
+#: ui/main.qml:482
+#, kde-format
+msgid "Firewall is disabled"
+msgstr "Το τείχος προστασίας είναι ανενεργό"
+
+#: ui/main.qml:482
+#, kde-format
+msgid "No firewall rules have been added"
+msgstr "Δεν έχουν προστεθεί κανόνες στο τείχος προστασίας"
+
+#: ui/main.qml:484
+#, kde-kuit-format
+msgctxt "@info"
+msgid "Click the <interface>Add Rule…</interface> button to add one"
+msgstr ""
+"Πατήστε το κουμπί <interface>Προσθήκη κανόνα…</interface> για να προσθέσετε "
+"έναν κανόνα"
+
+#: ui/main.qml:485
+#, kde-kuit-format
+msgctxt "@info"
+msgid "Click switch above to enable it"
+msgstr "Πατήστε τον παραπάνω διακόπτη για ενεργοποίηση"
+
+#: ui/main.qml:493
+#, kde-format
+msgid "Please install a firewall, such as ufw or firewalld"
+msgstr "Εγκαταστήστε ένα τείχος προστασίας, όπως το ufw ή το firewalld"
+
+#: ui/PortTextField.qml:11
+#, kde-format
+msgid "Any Port"
+msgstr "Οποιαδήποτε θύρα"
+
+#: ui/RuleEdit.qml:38
+#, kde-format
+msgid "New Connections"
+msgstr "Νέες συνδέσεις"
+
+#: ui/RuleEdit.qml:39
+#, kde-format
+msgid "All Packets"
+msgstr "Όλα τα πακέτα"
+
+#: ui/RuleEdit.qml:54 ui/RuleEdit.qml:61
+#, kde-format
+msgid "The default incoming policy is already '%1'."
+msgstr "Η προεπιλεγμένη πολιτική εισερχομένων είναι ήδη «%1»."
+
+#: ui/RuleEdit.qml:55 ui/RuleEdit.qml:62
+#, kde-format
+msgid "The default outgoing policy is already '%1'."
+msgstr "Η προεπιλεγμένη πολιτική εξερχομένων είναι ήδη «%1»."
+
+#: ui/RuleEdit.qml:72
+#, kde-format
+msgctxt "Advanced firewall rules"
+msgid "Advanced"
+msgstr "Για προχωρημένους"
+
+#: ui/SimpleRuleEdit.qml:23
+#, kde-format
+msgid "Allow connections for:"
+msgstr "Αποδοχή συνδέσεων για:"
+
+#: ui/SimpleRuleEdit.qml:23
+#, kde-format
+msgid "Application:"
+msgstr "Εφαρμογή:"
+
+#: ui/ViewBase.qml:267
+#, kde-format
+msgid "Blacklist Connection"
+msgstr "Αποκλεισμός σύνδεσης"
